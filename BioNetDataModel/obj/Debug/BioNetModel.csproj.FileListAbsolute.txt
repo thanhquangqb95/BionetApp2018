@@ -1,0 +1,100 @@
+D:\Data\code\PowerSoft\ihis_BionetAppv1\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\Data\code\PowerSoft\ihis_BionetAppv1\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\Data\code\PowerSoft\ihis_BionetAppv1\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\Data\code\PowerSoft\ihis_BionetAppv1\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\Data\code\PowerSoft\ihis_BionetAppv1\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\Data\code\PowerSoft\ihis_BionetAppv1\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\Data\code\PowerSoft\ihis_BionetAppv2\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\Data\code\PowerSoft\ihis_BionetAppv2\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\Data\code\PowerSoft\ihis_BionetAppv2\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\Data\code\PowerSoft\ihis_BionetAppv2\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\Data\code\PowerSoft\ihis_BionetAppv2\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\Data\code\PowerSoft\ihis_BionetAppv2\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\Data\code\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\Data\code\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\Data\code\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\Data\code\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\Data\code\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\Data\code\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\BionetApp20-07-2017\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\BionetApp20-07-2017\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\BionetApp20-07-2017\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\BionetApp20-07-2017\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\BionetApp20-07-2017\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\BionetApp20-07-2017\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\work\BionetApp\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\work\BionetApp\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\work\BionetApp\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\work\BionetApp\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\work\BionetApp\BionetApp\BioNetSangLocSoSinh\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\Bionet-Git\AppTaoLaoV1.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\Bionet-Git\AppTaoLaoV1.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\Bionet-Git\AppTaoLaoV1.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\Bionet-Git\AppTaoLaoV1.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\Bionet-Git\AppTaoLaoV1.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+C:\Users\DEV01\Downloads\BioNetSangLocSoSinh (1)\BioNetSangLocSoSinh\BioNetSangLocSoSinh\AppTaoLaoV1.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+C:\Users\DEV01\Downloads\BioNetSangLocSoSinh (1)\BioNetSangLocSoSinh\BioNetSangLocSoSinh\AppTaoLaoV1.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+C:\Users\DEV01\Downloads\BioNetSangLocSoSinh (1)\BioNetSangLocSoSinh\BioNetSangLocSoSinh\AppTaoLaoV1.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+C:\Users\DEV01\Downloads\BioNetSangLocSoSinh (1)\BioNetSangLocSoSinh\BioNetSangLocSoSinh\AppTaoLaoV1.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+C:\Users\DEV01\Downloads\BioNetSangLocSoSinh (1)\BioNetSangLocSoSinh\BioNetSangLocSoSinh\AppTaoLaoV1.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+C:\Users\DEV01\Downloads\BioNetSangLocSoSinh (1)\BioNetSangLocSoSinh\BioNetSangLocSoSinh\AppTaoLaoV1.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+C:\Users\LeThanhQuang\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+C:\Users\LeThanhQuang\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+C:\Users\LeThanhQuang\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+C:\Users\LeThanhQuang\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+C:\Users\LeThanhQuang\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
+C:\Users\LeThanhQuang\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+C:\Users\LeThanhQuang\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+C:\Users\Dev02\Documents\thanhquangqb95\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+C:\Users\Dev02\Documents\thanhquangqb95\New folder (3)\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+C:\Users\Dev02\Documents\thanhquangqb95\New folder (3)\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+C:\Users\Dev02\Documents\thanhquangqb95\New folder (3)\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+C:\Users\Dev02\Documents\thanhquangqb95\New folder (3)\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+C:\Users\Dev02\Documents\thanhquangqb95\New folder (3)\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+C:\Users\Dev02\Documents\thanhquangqb95\New folder (3)\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\BionetQuang\BionetApp\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\BionetQuang\BionetApp\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\BionetQuang\BionetApp\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetApp\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\BionetQuang\BionetApp\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\BionetQuang\BionetApp\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\CongTy\BionetApp\BionetApp\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\CongTy\BionetApp\BionetApp\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\CongTy\BionetApp\BionetApp\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\CongTy\BionetApp\BionetApp\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\CongTy\BionetApp\BionetApp\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
+D:\CongTy\BionetApp\BionetApp\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\CongTy\BionetApp\BionetApp\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\Newtonsoft.Json.dll
+D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\Newtonsoft.Json.xml
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\Newtonsoft.Json.dll
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\bin\Debug\Newtonsoft.Json.xml
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csprojResolveAssemblyReference.cache
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb

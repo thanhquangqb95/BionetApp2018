@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table1>
+    <TenNhom>Gói xét nghiệm</TenNhom>
+    <TenChiTiet>Mẫu lấy lại</TenChiTiet>
+    <GiaTriChiTiet>49</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Gói xét nghiệm</TenNhom>
+    <TenChiTiet>2 Bệnh</TenChiTiet>
+    <GiaTriChiTiet>422</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Gói xét nghiệm</TenNhom>
+    <TenChiTiet>3 Bệnh</TenChiTiet>
+    <GiaTriChiTiet>727</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Gói xét nghiệm</TenNhom>
+    <TenChiTiet>5 Bệnh</TenChiTiet>
+    <GiaTriChiTiet>5538</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Chương trình sàng lọc</TenNhom>
+    <TenChiTiet>Chương trình demo</TenChiTiet>
+    <GiaTriChiTiet>0</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Chương trình sàng lọc</TenNhom>
+    <TenChiTiet>Chương trình quốc gia</TenChiTiet>
+    <GiaTriChiTiet>472</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Chương trình sàng lọc</TenNhom>
+    <TenChiTiet>Chương trình xã hội hóa</TenChiTiet>
+    <GiaTriChiTiet>6264</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Chất lượng mẫu</TenNhom>
+    <TenChiTiet>Chương trình demo</TenChiTiet>
+    <GiaTriChiTiet>0</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Chất lượng mẫu</TenNhom>
+    <TenChiTiet>Chương trình quốc gia</TenChiTiet>
+    <GiaTriChiTiet>472</GiaTriChiTiet>
+  </Table1>
+  <Table1>
+    <TenNhom>Chất lượng mẫu</TenNhom>
+    <TenChiTiet>Chương trình xã hội hóa</TenChiTiet>
+    <GiaTriChiTiet>6264</GiaTriChiTiet>
+  </Table1>
+</NewDataSet>
