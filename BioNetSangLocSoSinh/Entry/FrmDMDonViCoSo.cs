@@ -42,6 +42,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.repositoryItemLookUpEdit_KieuTraKetQua.DisplayMember = "name";
             this.repositoryItemLookUpEdit_KieuTraKetQua.ValueMember = "id";
             this.gridControl_DonViCoSo.DataSource = BioBLL.GetListDVCS();
+            AddItemForm();
         }
 
         private void gridView_DonViCoSo_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -70,10 +71,8 @@ namespace BioNetSangLocSoSinh.Entry
                     donVi.RowIDDVCS = Convert.ToInt16(gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "RowIDDVCS").ToString());
                     donVi.MaDVCS = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "MaDVCS").ToString();
                     donVi.TenDVCS = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "TenDVCS").ToString();
-                    donVi.DiaChiDVCS = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "DiaChiDVCS").ToString();
-                   
-                    // donVi.Email = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, col_th_Email).ToString();
-                    if (gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "SDTCS") == null)
+                    donVi.DiaChiDVCS = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "DiaChiDVCS").ToString();                   
+                    if(gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "SDTCS")==null)
                     {
                         donVi.SDTCS = string.Empty;
                     }
@@ -81,7 +80,9 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         donVi.SDTCS = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "SDTCS").ToString();
                     }
-                    if (gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "EmailTC")==null)
+
+                   // donVi.Email = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, col_th_Email).ToString();
+                    if(gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "EmailTC")==null)
                     {
                         donVi.EmailTC = string.Empty;
                     }
@@ -176,24 +177,6 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void gridControl_DonViCoSo_ProcessGridKey(object sender, KeyEventArgs e)
         {
-            //if (e.KeyCode == Keys.Delete && gridView_DonViCoSo.State != DevExpress.XtraGrid.Views.Grid.GridState.Editing)
-            //{
-            //    if (XtraMessageBox.Show("Bạn có muốn xóa danh mục này hay không?", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.No)
-            //    {
-            //        try
-            //        {
-            //            if (BioBLL.DelDonViCS(gridView_DonViCoSo.GetRowCellValue(gridView_DonViCoSo.FocusedRowHandle, "MaDVCS").ToString()))
-            //                this.gridControl_DonViCoSo.DataSource = BioBLL.GetListDonViCoSo();
-            //            else
-            //                XtraMessageBox.Show("Xóa danh mục thất bại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //        catch
-            //        {
-            //            XtraMessageBox.Show("Xóa danh mục thất bại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            return;
-            //        }
-            //    }
-            //}
         }
 
         private void repositoryItemPictureEdit_logo_Click(object sender, EventArgs e)
@@ -237,36 +220,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void gridView_DonViCoSo_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            //if (e.RowHandle >= 0)
-            //{
-            //    GridColumn column = e.Column;
-            //    if (column.Name == this.col_th_MaDVCS.Name)
-            //    {
-            //        string code = e.CellValue.ToString();
-            //        if (XtraMessageBox.Show("Bạn có muốn thay đổi mã " + code + " không?", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.No)
-            //        {
-            //            int result = 0;
-            //            do
-            //            {
-            //                FrmInputCode frm = new FrmInputCode(code.Substring(5, 3), code.Substring(0, 5), 3);
-            //                frm.ShowDialog();
-            //                if (frm.DialogResult == DialogResult.OK)
-            //                {
-            //                    code = frm.name + frm.code;
-            //                    if (CheckCodeExist(code))
-            //                    {
-            //                        result = 0;
-            //                        gridView_DonViCoSo.SetRowCellValue(e.RowHandle, e.Column, code);
-            //                    }
-            //                    else
-            //                        result = 1;
-            //                }
-            //                else
-            //                    result = 0;
-            //            } while (result == 1);
-            //        }
-            //    }
-            //}
+           
         }
 
         private void repositoryItemPictureEditChuKiDonVi_Click(object sender, EventArgs e)
@@ -286,6 +240,18 @@ namespace BioNetSangLocSoSinh.Entry
                 gridView_DonViCoSo.SetFocusedRowCellValue(col_ChuKiDonVi, image);
             }
             catch { }
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

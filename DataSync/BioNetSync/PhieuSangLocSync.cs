@@ -1,16 +1,14 @@
 ﻿using BioNetBLL;
 using BioNetModel;
 using BioNetModel.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
-using System.Xml;
-using System.Xml.Serialization;
-
+using System.Windows.Forms;
 
 namespace DataSync.BioNetSync
 {
@@ -20,8 +18,7 @@ namespace DataSync.BioNetSync
         private static string linkGetPhieuSangLoc = "/api/phieusangloc/getallFromApp?keyword=&page=0&pagesize=999";
         private static string linkPostPhieuSangLoc = "/api/phieusangloc/AddUpFromApp";
         private static string linkXoaPhieu = "/api/phieusangloc/getdeleted";
-
-
+        private static string linktest = Application.StartupPath + "\\xml\\test.txt";
         public static PsReponse GetPhieuSangLoc()
         {
             PsReponse res = new PsReponse();
@@ -41,8 +38,10 @@ namespace DataSync.BioNetSync
                         {
                             string json = result.ValueResult;
                             JavaScriptSerializer jss = new JavaScriptSerializer();
-                            ObjectModel.RootObjectAPI  psl = jss.Deserialize<ObjectModel.RootObjectAPI>(json);
                             List<PSPhieuSangLoc> lstpsl = new List<PSPhieuSangLoc>();
+                            var test = jss.Deserialize<List<PSPhieuSangLoc>>(json);
+                            ObjectModel.RootObjectAPI  psl = jss.Deserialize<ObjectModel.RootObjectAPI>(json);
+                           // List<PSPhieuSangLoc> lstpsl = new List<PSPhieuSangLoc>();
                             if (psl.TotalCount > 0)
                             {
                                 foreach(var item in psl.Items)
@@ -185,13 +184,15 @@ namespace DataSync.BioNetSync
                             while (datas.Count() > 1000)
                             {
                                 var temp = datas.Take(1000);
-                                Nhom = new JavaScriptSerializer().Serialize(temp);
+                                Nhom=JsonConvert.SerializeObject(temp);
+                               // Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                                 datas.RemoveRange(0, 1000);
                             }
                             if (datas.Count() <= 1000 && datas.Count() > 0)
                             {
-                                Nhom = new JavaScriptSerializer().Serialize(datas);
+                                Nhom = JsonConvert.SerializeObject(datas);
+                                // Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                             }
                             if (jsonstr.Count() > 0)
@@ -213,13 +214,10 @@ namespace DataSync.BioNetSync
                                         string json = result.ErorrResult;
                                         JavaScriptSerializer jss = new JavaScriptSerializer();
                                         List<String> psl = jss.Deserialize<List<String>>(json);
-                                        string loi = json;
-                                      
                                         if (psl != null)
                                         {
                                             if (psl.Count > 0)
                                             {
-                                                CTLoiDongBo.LoiDongBo(loi, "PSPhieuSangLoc", false);
                                                 res.StringError = "Danh sách phiếu sàng lọc bị lỗi: \r\n ";
                                                 foreach (var lst in psl)
                                                 {
@@ -232,37 +230,33 @@ namespace DataSync.BioNetSync
                                                             ds.isDongBo = false;
                                                             res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
                                                             listPhieuXoa.Remove(sn.Code);
-                                                            db.SubmitChanges();
                                                         }
                                                     }
                                                 }
+                                                db.SubmitChanges();
                                                 res.Result = false;
                                             }
-                                            else
-                                            {
-                                                CTLoiDongBo.LoiDongBo(loi, "PSPhieuSangLoc", true);
-                                            }
                                         }
-                                      
                                         #endregion
                                         PsReponse resXoa = BioNet_Bus.DeletePhieu(listPhieuXoa, true, null, null);
                                         if (resXoa.Result == false)
                                         {
                                             res.StringError = res.StringError + resXoa.StringError;
                                         }
+
                                     }
                                     else
                                     {
                                         res.Result = false;
                                         res.StringError = "Đồng bộ phiếu phiếu sàng lọc - Kiểm tra kết nội mạng! -" + result.ErorrResult + "!\r\n";
                                     }
+
                                 }
                                 #endregion
                             }
                             else
                             {
                                 res.Result = true;
-                                CTLoiDongBo.LoiDongBo("Không có dữ liệu cần đồng bộ","PSPhieuSangLoc",true);
                             }
                         }
                        
@@ -285,7 +279,6 @@ namespace DataSync.BioNetSync
             }
             return res;
         }
-
         public static PsReponse XoaPhieuDongBO()
         {
             PsReponse res = new PsReponse();

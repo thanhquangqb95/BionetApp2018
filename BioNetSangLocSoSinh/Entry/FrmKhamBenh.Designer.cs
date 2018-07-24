@@ -86,6 +86,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.txtMaPhieu2 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.txtMaPhieu1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtRowIDBenhNhanNguyCo = new DevExpress.XtraEditors.TextEdit();
@@ -150,8 +152,6 @@
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnBoQua = new DevExpress.XtraEditors.SimpleButton();
             this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.txtMaPhieu2 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -187,6 +187,7 @@
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRowIDBenhNhanNguyCo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).BeginInit();
@@ -212,7 +213,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVChiTietKQCu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnButton)).BeginInit();
             this.pnButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl2
@@ -322,8 +322,8 @@
             // 
             this.btnRefesh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefesh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnRefesh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefesh.Image")));
-            this.btnRefesh.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnRefesh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefesh.ImageOptions.Image")));
+            this.btnRefesh.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnRefesh.Location = new System.Drawing.Point(487, 55);
             this.btnRefesh.Name = "btnRefesh";
             this.btnRefesh.Size = new System.Drawing.Size(45, 42);
@@ -345,7 +345,6 @@
             this.txtTuNgay_ChuaKQ.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtTuNgay_ChuaKQ.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.txtTuNgay_ChuaKQ.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtTuNgay_ChuaKQ.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.txtTuNgay_ChuaKQ.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.txtTuNgay_ChuaKQ.Properties.NullDate = new System.DateTime(2016, 12, 15, 16, 49, 53, 0);
             this.txtTuNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 50, 0, 0);
@@ -434,7 +433,6 @@
             this.txtDenNgay_ChuaKQ.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtDenNgay_ChuaKQ.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.txtDenNgay_ChuaKQ.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtDenNgay_ChuaKQ.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.txtDenNgay_ChuaKQ.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.txtDenNgay_ChuaKQ.Properties.NullDate = new System.DateTime(2016, 12, 15, 16, 49, 27, 0);
             this.txtDenNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 49, 40, 0);
@@ -455,12 +453,13 @@
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.TabBNNguyCoCao,
             this.TabBNNguyCoGia});
+            this.xtraTabControl2.Click += new System.EventHandler(this.xtraTabControl2_Click);
             // 
             // TabBNNguyCoCao
             // 
             this.TabBNNguyCoCao.Controls.Add(this.GCDanhSachBenhNhanCho);
             this.TabBNNguyCoCao.Name = "TabBNNguyCoCao";
-            this.TabBNNguyCoCao.Size = new System.Drawing.Size(528, 538);
+            this.TabBNNguyCoCao.Size = new System.Drawing.Size(529, 541);
             this.TabBNNguyCoCao.Text = "Danh sách bệnh nhân nguy cơ cao";
             // 
             // GCDanhSachBenhNhanCho
@@ -472,7 +471,7 @@
             this.GCDanhSachBenhNhanCho.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryLookupDonVi,
             this.repositoryItemCheckisDaChuanDoan});
-            this.GCDanhSachBenhNhanCho.Size = new System.Drawing.Size(528, 538);
+            this.GCDanhSachBenhNhanCho.Size = new System.Drawing.Size(529, 541);
             this.GCDanhSachBenhNhanCho.TabIndex = 0;
             this.GCDanhSachBenhNhanCho.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachBenhNhanCho});
@@ -601,7 +600,7 @@
             // 
             this.TabBNNguyCoGia.Controls.Add(this.GCDanhSachBenhNhanNguyCoGia);
             this.TabBNNguyCoGia.Name = "TabBNNguyCoGia";
-            this.TabBNNguyCoGia.Size = new System.Drawing.Size(528, 538);
+            this.TabBNNguyCoGia.Size = new System.Drawing.Size(529, 541);
             this.TabBNNguyCoGia.Text = "Danh sách bệnh nhân nguy cơ giả";
             // 
             // GCDanhSachBenhNhanNguyCoGia
@@ -612,7 +611,7 @@
             this.GCDanhSachBenhNhanNguyCoGia.Name = "GCDanhSachBenhNhanNguyCoGia";
             this.GCDanhSachBenhNhanNguyCoGia.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpDonVi});
-            this.GCDanhSachBenhNhanNguyCoGia.Size = new System.Drawing.Size(528, 538);
+            this.GCDanhSachBenhNhanNguyCoGia.Size = new System.Drawing.Size(529, 541);
             this.GCDanhSachBenhNhanNguyCoGia.TabIndex = 1;
             this.GCDanhSachBenhNhanNguyCoGia.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachBenhNhanNguyCoGia});
@@ -853,6 +852,22 @@
             this.groupControl4.TabIndex = 2;
             this.groupControl4.Text = "Thông tin bệnh nhân";
             // 
+            // txtMaPhieu2
+            // 
+            this.txtMaPhieu2.Location = new System.Drawing.Point(85, 178);
+            this.txtMaPhieu2.Name = "txtMaPhieu2";
+            this.txtMaPhieu2.Properties.ReadOnly = true;
+            this.txtMaPhieu2.Size = new System.Drawing.Size(242, 20);
+            this.txtMaPhieu2.TabIndex = 11;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(5, 181);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(73, 13);
+            this.labelControl10.TabIndex = 10;
+            this.labelControl10.Text = "Mã phiếu lần 2:";
+            // 
             // txtMaPhieu1
             // 
             this.txtMaPhieu1.Location = new System.Drawing.Point(85, 152);
@@ -925,7 +940,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNgaySinh.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.txtNgaySinh.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.txtNgaySinh.Properties.ReadOnly = true;
             this.txtNgaySinh.Size = new System.Drawing.Size(132, 20);
@@ -1060,7 +1074,7 @@
             // 
             this.xtraTabKQChiTiet.Controls.Add(this.GCChiTietKetQua);
             this.xtraTabKQChiTiet.Name = "xtraTabKQChiTiet";
-            this.xtraTabKQChiTiet.Size = new System.Drawing.Size(524, 331);
+            this.xtraTabKQChiTiet.Size = new System.Drawing.Size(525, 334);
             this.xtraTabKQChiTiet.Text = "Kết quả";
             // 
             // GCChiTietKetQua
@@ -1069,7 +1083,7 @@
             this.GCChiTietKetQua.Location = new System.Drawing.Point(0, 0);
             this.GCChiTietKetQua.MainView = this.GVChiTietKQ;
             this.GCChiTietKetQua.Name = "GCChiTietKetQua";
-            this.GCChiTietKetQua.Size = new System.Drawing.Size(524, 331);
+            this.GCChiTietKetQua.Size = new System.Drawing.Size(525, 334);
             this.GCChiTietKetQua.TabIndex = 1;
             this.GCChiTietKetQua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVChiTietKQ});
@@ -1219,7 +1233,7 @@
             this.xtraTabKQChiTietCu.Controls.Add(this.GCChiTietKQCu);
             this.xtraTabKQChiTietCu.Name = "xtraTabKQChiTietCu";
             this.xtraTabKQChiTietCu.PageVisible = false;
-            this.xtraTabKQChiTietCu.Size = new System.Drawing.Size(524, 362);
+            this.xtraTabKQChiTietCu.Size = new System.Drawing.Size(524, 331);
             this.xtraTabKQChiTietCu.Text = "Kết quả của phiếu lần 1";
             // 
             // GCChiTietKQCu
@@ -1228,7 +1242,7 @@
             this.GCChiTietKQCu.Location = new System.Drawing.Point(0, 0);
             this.GCChiTietKQCu.MainView = this.GVChiTietKQCu;
             this.GCChiTietKQCu.Name = "GCChiTietKQCu";
-            this.GCChiTietKQCu.Size = new System.Drawing.Size(524, 362);
+            this.GCChiTietKQCu.Size = new System.Drawing.Size(524, 331);
             this.GCChiTietKQCu.TabIndex = 1;
             this.GCChiTietKQCu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVChiTietKQCu});
@@ -1398,7 +1412,7 @@
             // 
             this.btnMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMoi.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnMoi.Image")));
+            this.btnMoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnMoi.ImageOptions.Image")));
             this.btnMoi.Location = new System.Drawing.Point(211, 8);
             this.btnMoi.Name = "btnMoi";
             this.btnMoi.Size = new System.Drawing.Size(73, 23);
@@ -1410,7 +1424,7 @@
             // 
             this.btnNguyCoGia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNguyCoGia.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnNguyCoGia.Image = ((System.Drawing.Image)(resources.GetObject("btnNguyCoGia.Image")));
+            this.btnNguyCoGia.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNguyCoGia.ImageOptions.Image")));
             this.btnNguyCoGia.Location = new System.Drawing.Point(2, 8);
             this.btnNguyCoGia.Name = "btnNguyCoGia";
             this.btnNguyCoGia.Size = new System.Drawing.Size(92, 23);
@@ -1423,7 +1437,7 @@
             this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSua.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnSua.Enabled = false;
-            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
             this.btnSua.Location = new System.Drawing.Point(371, 8);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
@@ -1436,7 +1450,7 @@
             this.btnBoQua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBoQua.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnBoQua.Enabled = false;
-            this.btnBoQua.Image = ((System.Drawing.Image)(resources.GetObject("btnBoQua.Image")));
+            this.btnBoQua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBoQua.ImageOptions.Image")));
             this.btnBoQua.Location = new System.Drawing.Point(290, 8);
             this.btnBoQua.Name = "btnBoQua";
             this.btnBoQua.Size = new System.Drawing.Size(75, 23);
@@ -1448,29 +1462,13 @@
             this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLuu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnLuu.Enabled = false;
-            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
             this.btnLuu.Location = new System.Drawing.Point(452, 8);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 11;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(5, 181);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(73, 13);
-            this.labelControl10.TabIndex = 10;
-            this.labelControl10.Text = "Mã phiếu lần 2:";
-            // 
-            // txtMaPhieu2
-            // 
-            this.txtMaPhieu2.Location = new System.Drawing.Point(85, 178);
-            this.txtMaPhieu2.Name = "txtMaPhieu2";
-            this.txtMaPhieu2.Properties.ReadOnly = true;
-            this.txtMaPhieu2.Size = new System.Drawing.Size(242, 20);
-            this.txtMaPhieu2.TabIndex = 11;
             // 
             // FrmKhamBenh
             // 
@@ -1480,6 +1478,8 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.LookAndFeel.SkinName = "Office 2007 Blue";
+            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "FrmKhamBenh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmKhamBenh";
@@ -1523,6 +1523,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRowIDBenhNhanNguyCo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).EndInit();
@@ -1548,7 +1549,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVChiTietKQCu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnButton)).EndInit();
             this.pnButton.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu2.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -11,7 +11,7 @@ namespace DataSync.BioNetSync
     public class DanhGiaChatLuongMauSync
     {
         private static BioNetDBContextDataContext db = null;
-        
+
         private static string linkPostCTDanhGiaChatLuongMau = "/api/danhgiachatluong/AddUpChiTiet";
         public static PsReponse UpdateCTDanhGiaChatLuongMau(List<PSChiTietDanhGiaChatLuong> lstpsl)
         {
@@ -34,7 +34,7 @@ namespace DataSync.BioNetSync
                         cn.ConvertObjectToObject(psl, psldb);
                         psldb.IDMapsLyDoKhongDat = term;
                         db.SubmitChanges();
-                    }                   
+                    }
                 }
 
                 db.Transaction.Commit();
@@ -64,64 +64,82 @@ namespace DataSync.BioNetSync
                     string token = cn.GetToken(account.userName, account.passWord);
                     if (!string.IsNullOrEmpty(token))
                     {
-                        var datas = db.PSChiTietDanhGiaChatLuongs.Where(p => p.isDongBo !=true);
-                        if(datas!=null)
+                        var datas = db.PSChiTietDanhGiaChatLuongs.Where(p => p.isDongBo != true).ToList();
+                        if (datas != null)
                         {
-                            string jsonstr = new JavaScriptSerializer().Serialize(datas);
-                            var result = cn.PostRespone(cn.CreateLink(linkPostCTDanhGiaChatLuongMau), token, jsonstr);
-                            if (result.Result)
+                            string Nhom = (string)null;
+                            List<string> jsonstr = new List<string>();
+                            while (datas.Count() > 1000)
                             {
-                                foreach (var data in datas)
+                                var temp = datas.Take(1000);
+                                Nhom = new JavaScriptSerializer().Serialize(temp);
+                                jsonstr.Add(Nhom);
+                                datas.RemoveRange(0, 1000);
+                            }
+                            if (datas.Count() <= 1000 && datas.Count() > 0)
+                            {
+                                Nhom = new JavaScriptSerializer().Serialize(datas);
+                                jsonstr.Add(Nhom);
+                            }
+                            // string jsonstr = new JavaScriptSerializer().Serialize(datas);
+                            if (jsonstr.Count() > 0)
+                            {
+                                #region Đồng bộ phiếu
+                                foreach (var jsons in jsonstr)
                                 {
-                                    data.isDongBo = true;
-                                }
-                                db.SubmitChanges();
-                                string json = result.ErorrResult;
-                                JavaScriptSerializer jss = new JavaScriptSerializer();
-                                List<String> psl = jss.Deserialize<List<String>>(json);
-                                string loi = json;
-                                if (psl != null)
-                                {
-                                    if (psl.Count > 0)
+                                    var result = cn.PostRespone(cn.CreateLink(linkPostCTDanhGiaChatLuongMau), token, jsons);
+                                    if (result.Result)
                                     {
-                                        CTLoiDongBo.LoiDongBo(loi, "PSCTDanhGiaChatLuongMau", false);
-                                        res.StringError = "Danh sách phiếu chi tiết đánh giá chất lượng mẫu lỗi: \r\n ";
-                                        foreach (var lst in psl)
+                                        foreach (var data in datas)
                                         {
-                                            PSResposeSync sn = cn.CutString(lst);
-                                            if (sn != null)
-                                            {
-                                                var ds = db.PSChiTietDanhGiaChatLuongs.FirstOrDefault(p => p.IDPhieu == sn.Code);
-                                                if (ds != null)
-                                                {
-                                                    ds.isDongBo = false;
-                                                    res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
-                                                }
-
-                                            }
+                                            data.isDongBo = true;
                                         }
                                         db.SubmitChanges();
-                                        res.Result = false;
+                                        string json = result.ErorrResult;
+                                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                                        List<String> psl = jss.Deserialize<List<String>>(json);
+                                        string loi = json;
+                                        if (psl != null)
+                                        {
+                                            if (psl.Count > 0)
+                                            {
+                                                
+                                                res.StringError = "Danh sách phiếu chi tiết đánh giá chất lượng mẫu lỗi: \r\n ";
+                                                foreach (var lst in psl)
+                                                {
+                                                    PSResposeSync sn = cn.CutString(lst);
+                                                    if (sn != null)
+                                                    {
+                                                        var ds = db.PSChiTietDanhGiaChatLuongs.FirstOrDefault(p => p.IDPhieu == sn.Code);
+                                                        if (ds != null)
+                                                        {
+                                                            ds.isDongBo = false;
+                                                            res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
+                                                        }
+
+                                                    }
+                                                }
+                                                db.SubmitChanges();
+                                                res.Result = false;
+                                            }
+                                           
+                                        }
+                                        else
+                                        {
+                                            res.Result = true;
+                                        }
                                     }
                                     else
                                     {
-                                        CTLoiDongBo.LoiDongBo(loi, "PSCTDanhGiaChatLuongMau", true);
+                                        res.Result = false;
+                                        res.StringError = "Đồng bộ chi tiết đánh giá chất lượng mẫu lỗi - Kiểm tra kết nội mạng!\r\n";
                                     }
                                 }
-                               
+                                #endregion
+                            }
 
-                                else
-                                {
-                                    res.Result = true;
-                                }
-                            }
-                            else
-                            {
-                                res.Result = false;
-                                res.StringError = "Đồng bộ chi tiết đánh giá chất lượng mẫu lỗi - Kiểm tra kết nội mạng!\r\n";
-                            }
                         }
-                       
+
                     }
                 }
                 else
@@ -135,11 +153,8 @@ namespace DataSync.BioNetSync
             {
                 res.Result = false;
                 res.StringError += DateTime.Now.ToString() + "Lỗi khi đồng bộ dữ liệu Danh Sách Đơn Vị Lên Tổng Cục \r\n " + ex.Message;
-
             }
             return res;
         }
-
-
     }
 }

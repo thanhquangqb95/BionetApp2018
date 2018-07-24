@@ -201,7 +201,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateNgayKetThuc.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateNgayKetThuc.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateNgayKetThuc.Size = new System.Drawing.Size(156, 20);
             this.dateNgayKetThuc.TabIndex = 1078;
             // 
@@ -214,14 +213,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateNgayBD.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateNgayBD.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateNgayBD.Size = new System.Drawing.Size(156, 20);
             this.dateNgayBD.TabIndex = 1077;
             // 
             // btnTimKiem
             // 
             this.btnTimKiem.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnTimKiem.Image = global::BioNetSangLocSoSinh.Properties.Resources.EasyFind;
+            this.btnTimKiem.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.EasyFind;
             this.btnTimKiem.Location = new System.Drawing.Point(564, 33);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(163, 25);
@@ -272,7 +270,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(970, 73);
+            this.panelControl2.Size = new System.Drawing.Size(962, 73);
             this.panelControl2.TabIndex = 0;
             // 
             // btnKhoiPhucCTchatLuongMau
@@ -280,7 +278,7 @@
             this.btnKhoiPhucCTchatLuongMau.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhoiPhucCTchatLuongMau.Appearance.Options.UseFont = true;
             this.btnKhoiPhucCTchatLuongMau.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnKhoiPhucCTchatLuongMau.Image = global::BioNetSangLocSoSinh.Properties.Resources.restore2x24;
+            this.btnKhoiPhucCTchatLuongMau.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.restore2x24;
             this.btnKhoiPhucCTchatLuongMau.Location = new System.Drawing.Point(758, 6);
             this.btnKhoiPhucCTchatLuongMau.Name = "btnKhoiPhucCTchatLuongMau";
             this.btnKhoiPhucCTchatLuongMau.Size = new System.Drawing.Size(224, 52);
@@ -303,7 +301,7 @@
             this.GCDSCTDanhGiaChatLuongMau.Location = new System.Drawing.Point(2, 2);
             this.GCDSCTDanhGiaChatLuongMau.MainView = this.GVDSCTDanhGiaChatLuongMau;
             this.GCDSCTDanhGiaChatLuongMau.Name = "GCDSCTDanhGiaChatLuongMau";
-            this.GCDSCTDanhGiaChatLuongMau.Size = new System.Drawing.Size(698, 422);
+            this.GCDSCTDanhGiaChatLuongMau.Size = new System.Drawing.Size(690, 414);
             this.GCDSCTDanhGiaChatLuongMau.TabIndex = 0;
             this.GCDSCTDanhGiaChatLuongMau.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDSCTDanhGiaChatLuongMau});
@@ -412,7 +410,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(970, 499);
+            this.panelControl1.Size = new System.Drawing.Size(962, 491);
             this.panelControl1.TabIndex = 1;
             // 
             // panelControl3
@@ -423,7 +421,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 73);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(970, 426);
+            this.panelControl3.Size = new System.Drawing.Size(962, 418);
             this.panelControl3.TabIndex = 1;
             // 
             // panelControl5
@@ -432,16 +430,16 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(702, 426);
+            this.panelControl5.Size = new System.Drawing.Size(694, 418);
             this.panelControl5.TabIndex = 2;
             // 
             // panelControl4
             // 
             this.panelControl4.Controls.Add(this.groupControl7);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl4.Location = new System.Drawing.Point(702, 0);
+            this.panelControl4.Location = new System.Drawing.Point(694, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(268, 426);
+            this.panelControl4.Size = new System.Drawing.Size(268, 418);
             this.panelControl4.TabIndex = 1;
             // 
             // groupControl7
@@ -451,7 +449,7 @@
             this.groupControl7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl7.Location = new System.Drawing.Point(2, 2);
             this.groupControl7.Name = "groupControl7";
-            this.groupControl7.Size = new System.Drawing.Size(264, 422);
+            this.groupControl7.Size = new System.Drawing.Size(264, 414);
             this.groupControl7.TabIndex = 6;
             this.groupControl7.Text = "Đánh giá mẫu";
             // 
@@ -459,7 +457,7 @@
             // 
             this.panel6.Controls.Add(this.checkedListBoxLydoKhongDat);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(2, 23);
+            this.panel6.Location = new System.Drawing.Point(2, 15);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(260, 397);
             this.panel6.TabIndex = 33;
@@ -467,6 +465,7 @@
             // checkedListBoxLydoKhongDat
             // 
             this.checkedListBoxLydoKhongDat.CheckOnClick = true;
+            this.checkedListBoxLydoKhongDat.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkedListBoxLydoKhongDat.DisplayMember = "TenLyDo";
             this.checkedListBoxLydoKhongDat.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkedListBoxLydoKhongDat.HorizontalScrollbar = true;
@@ -506,7 +505,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 499);
+            this.ClientSize = new System.Drawing.Size(962, 491);
             this.ControlBox = false;
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

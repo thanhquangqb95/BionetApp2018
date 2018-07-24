@@ -12,6 +12,7 @@ using BioNetModel;
 using DevExpress.XtraCharts;
 using BioNetBLL;
 using DevExpress.XtraGrid.Views.Grid;
+using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.FrmReports
 {
@@ -35,7 +36,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
             this.txtDonVi.EditValue = "all";
-
+            AddItemForm();
         }
 
         private void butOK_Click(object sender, EventArgs e)
@@ -69,12 +70,9 @@ namespace BioNetSangLocSoSinh.FrmReports
                         trangthai = int.Parse(category);
                     }
                     catch { }
-
-
                     switch (trangthai)
                     {
                         case 1:
-
                             e.Appearance.BackColor = Color.DeepSkyBlue;
                             e.Appearance.BackColor2 = Color.LightCyan;
                             break;
@@ -103,7 +101,17 @@ namespace BioNetSangLocSoSinh.FrmReports
             }
             catch (Exception ex) { }
         }
-
-    
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            //CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
+        }
     }
 }

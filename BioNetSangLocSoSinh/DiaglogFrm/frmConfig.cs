@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
 using BioNetBLL;
+using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.DiaglogFrm
 {
@@ -26,6 +27,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             try
             {
                 this.GetServerName();
+                AddItemForm();
             }
             catch(Exception ex)
             {
@@ -107,6 +109,18 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
                 XtraMessageBox.Show("butConnect_Click: " + ex.ToString(), "iHIS - Bệnh viện điện tử", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

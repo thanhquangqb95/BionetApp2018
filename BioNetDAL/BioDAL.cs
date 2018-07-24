@@ -1475,20 +1475,120 @@ namespace BioNetDAL
         //    catch { return lstInfoPerson = new List<PsInfoPerson>(); }
         //}
 
-        public List<PSPatient> GetListBenhNhanSearch(string keyword)
+        public List<PSPatient> GetListBenhNhanSearch(string TenTre,string TenPH,int? GioiTinh,DateTime NgaySinh)
         {
             List<PSPatient> lstInfoPerson = new List<PSPatient>();
             try
-            {
-                if (string.IsNullOrEmpty(keyword))
+            {               
+                    lstInfoPerson = db.PSPatients.Where(x=>x.MaBenhNhan!=null).ToList();
+                if (string.IsNullOrEmpty(TenTre))
                 {
-                    lstInfoPerson = db.PSPatients.ToList();
+                    if (string.IsNullOrEmpty(TenPH))
+                    {
+                        if (GioiTinh == 3)
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date).ToList();
+                            }
+                        }
+                        else
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.GioiTinh==GioiTinh).ToList();
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.GioiTinh == GioiTinh).ToList();
+                            }
+                        }
+                       
+                    }
+                    else
+                    {
+                        if (GioiTinh == 3)
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH))).ToList();
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH))).ToList();
+                            }
+                        }
+                        else
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.GioiTinh == GioiTinh && (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH))).ToList();
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.GioiTinh == GioiTinh &&(x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH))).ToList();
+                            }
+                        }
+                    }
                 }
-                else { 
+                else
+                {
+                    if (string.IsNullOrEmpty(TenPH))
+                    {
+                        if (GioiTinh == 3)
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                        }
+                        else
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.GioiTinh == GioiTinh && x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.GioiTinh == GioiTinh && x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                        }
 
-                lstInfoPerson = db.PSPatients.Where(x => x.MotherName.Contains(keyword) || x.TenBenhNhan.Contains(keyword) || x.MaKhachHang.Contains(keyword)).ToList();
-            }
-
+                    }
+                    else
+                    {
+                        if (GioiTinh == 3)
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH)) && x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH)) && x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                        }
+                        else
+                        {
+                            if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.GioiTinh == GioiTinh && (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH)) && x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                            else
+                            {
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.GioiTinh == GioiTinh && (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH)) && x.TenBenhNhan.Contains(TenTre)).ToList();
+                            }
+                        }
+                    }
+                }                 
                 return lstInfoPerson;
             }
             catch { return lstInfoPerson; }
@@ -1916,6 +2016,47 @@ namespace BioNetDAL
                 db.Transaction.Rollback();
                 db.Connection.Close();
                 return false;
+            }
+        }
+        #endregion
+
+        #region DM Ngôn Ngữ
+        public PSMenuItem GetMenuItemById(long? id)
+        {
+            PSMenuItem lstitem = new PSMenuItem();
+            try
+            {
+                lstitem = db.PSMenuItems.FirstOrDefault(x=>x.IDItem==id);
+                return lstitem;
+            }
+            catch { return lstitem = new PSMenuItem(); }
+        }
+        public PsReponse UpdateMenuItemById(PSMenuTrans item)
+        {
+            PsReponse repo= new PsReponse();
+            repo.Result = false;
+            PSMenuItemCT lstitem = new PSMenuItemCT();
+            try
+            {
+                lstitem = db.PSMenuItemCTs.FirstOrDefault(x => x.IDItem == item.IDItem && x.IDLanguage==1);
+                if(lstitem !=null)
+                {
+                    lstitem.CaptionItemTrans = item.Trans;
+                    db.SubmitChanges();
+                    repo.Result = true;
+                    return repo ;
+                }
+                else
+                {
+                    repo.Result = false;
+                    return repo;
+                }
+               
+            }
+            catch (Exception  ex){
+                repo.StringError = ex.ToString();
+                repo.Result = false;
+                return repo;
             }
         }
         #endregion

@@ -23,7 +23,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void FrmViewTTPhieu_Load(object sender, EventArgs e)
         {
-            
+            AddItemForm();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -110,9 +110,19 @@ namespace BioNetSangLocSoSinh.Entry
             catch
             {
                 MessageBox.Show("Lỗi hiện thị thông tin phiếu", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            }
-           
+            }         
+        }
 
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
         }
     }
 }

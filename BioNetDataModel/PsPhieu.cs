@@ -16,15 +16,15 @@ namespace BioNetModel
         public string maDonViCoSo { get; set; }
         public string diaChi { get; set; }
         public DateTime ngayGioLayMau { get; set; }
-        public byte idViTriLayMau { get; set; }
+        public byte? idViTriLayMau { get; set; }
         public bool isLayMauLan2 { get; set; }
         public string maPhieuLan1 { get; set; }
-        public byte maTinhTrangLucLayMau { get; set; }
+        public byte? maTinhTrangLucLayMau { get; set; }
         public short? soLuongTruyenMau { get; set; }
         public DateTime? ngayTruyenMau { get; set; }
-        public byte maCheDoDinhDuong { get; set; }
+        public byte? maCheDoDinhDuong { get; set; }
         public bool trangThaiPhieu { get; set; }//đã gửi, chưa gửi
-        public byte trangThaiMau { get; set; }//chưa nhận, đã nhận, đang làm xét nghiệm, đã có kết quả
+        public byte? trangThaiMau { get; set; }//chưa nhận, đã nhận, đang làm xét nghiệm, đã có kết quả
         public bool? isKhongDat { get; set; }
         public DateTime ngayNhanMau { get; set; }
         public string maXetNghiem { get; set; }

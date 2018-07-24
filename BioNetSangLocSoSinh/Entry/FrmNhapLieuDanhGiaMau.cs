@@ -50,6 +50,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmNhapLieuDanhGiaMau_Load(object sender, EventArgs e)
         {
             this.LoadFrom();
+            AddItemForm();
         }
         private void LoadListDanhGiaSoBo()
         {
@@ -194,7 +195,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadDanhSachTiepNhanTheoDonVi(string maDonVi)
         {
             this.lstTiepNhan.Clear();
-            this.lstTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia(maDonVi, (DateTime)txtTuNgay_DsCho.EditValue, (DateTime)txtDenNgay_DsCho.EditValue);
+            this.lstTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia(maDonVi);
             this.LoadDanhSachTiepNhan();
         }
         private void LoadNew()
@@ -251,54 +252,12 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void ReadOnly(bool isreadonly)
         {
-            this.txtNgayLayMau.ReadOnly = isreadonly;
-            this.txtTuanTuoi.ReadOnly = isreadonly;
-            this.txtPARA.ReadOnly = isreadonly;
-            this.txtNgayLayMau.ReadOnly = isreadonly;
-            this.txtMaPhieuLan1.ReadOnly = isreadonly;
-            this.txtNoiSinh.ReadOnly = isreadonly;
-            this.txtDiaChiBN.ReadOnly = isreadonly;
-            this.txtMaTiepNhan.ReadOnly = isreadonly;
-            this.txtMaThongTinTre.ReadOnly = isreadonly;
-            this.txtMaBenhNhan.ReadOnly = isreadonly;
-            this.txtCanNang.ReadOnly = isreadonly;
-            this.txtGioiTinh.ReadOnly = isreadonly;
-            this.txtGioSinhBenhNhan.ReadOnly = isreadonly;
-            this.txtNamSinhBenhNhan.ReadOnly = isreadonly;
-            this.txtNamSinhCha.ReadOnly = isreadonly;
-            this.txtNamSinhMe.ReadOnly = isreadonly;
-            this.txtGhiChu.Enabled = !isreadonly;
-            this.txtGhiChu.ReadOnly = isreadonly;
-            this.lookupDonVi.ReadOnly = isreadonly;
-            this.txtSDTCha.ReadOnly = isreadonly;
-            this.txtSDTMe.ReadOnly = isreadonly;
-            this.txtTenBenhNhan.ReadOnly = isreadonly;
-            this.txtTenCha.ReadOnly = isreadonly;
-            this.txtTenMe.ReadOnly = isreadonly;
-            this.RadioCheDoDD.ReadOnly = isreadonly;
-            this.radioGroupGoiXN.ReadOnly = isreadonly;
-            this.radioGroupTinhTrangTre.ReadOnly = isreadonly;
-            this.radioGroupViTriLayMau.ReadOnly = isreadonly;
-            this.checkedListBoxLydoKhongDat.Enabled = !isreadonly;
-            this.txtGioiTinh.ReadOnly = isreadonly;
-            this.lookUpDanToc.ReadOnly = isreadonly;
-            this.lookupChuongTrinh.ReadOnly = isreadonly;
-            this.txtGioSinhBenhNhan.ReadOnly = isreadonly;
-            this.txtGioLayMau.ReadOnly = isreadonly;
-            this.txtDiaChiDonVi.ReadOnly = isreadonly;
-            this.txtNoiLayMau.ReadOnly = isreadonly;
-            this.txtSDTNguoiLayMau.ReadOnly = isreadonly;
-            this.txtNguoiLayMau.ReadOnly = isreadonly;
-            this.txtGioSinhBenhNhan.ReadOnly = isreadonly;
-            this.cboPhuongPhapSinh.ReadOnly = isreadonly;
-            this.txtLuuY.ReadOnly = isreadonly;
-
-            this.radioDanhGia.ReadOnly = isreadonly;
+            
             if (this.radioGroupGoiXN.SelectedIndex >= 0)
             {
-                if (this.radioGroupGoiXN.EditValue.Equals("DVGXN0001") && this.radioGroupGoiXN.ReadOnly == false)
+                if (this.radioGroupGoiXN.EditValue.Equals("DVGXN0001"))
                 {
-                    this.txtMaPhieuLan1.ReadOnly = false;
+                    this.txtMaPhieuLan1.Enabled = true;
                 }
             }
         }
@@ -2939,6 +2898,19 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 XtraMessageBox.Show("Lỗi khi lấy thông tin phiếu cũ. Lỗi chi tiết \r\n" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

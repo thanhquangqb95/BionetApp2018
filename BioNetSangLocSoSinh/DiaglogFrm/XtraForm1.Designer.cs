@@ -54,20 +54,21 @@
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.psLogo);
             this.panel1.Controls.Add(this.butOK);
-            this.panel1.Location = new System.Drawing.Point(9, 10);
+            this.panel1.Location = new System.Drawing.Point(8, 8);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(567, 261);
+            this.panel1.Size = new System.Drawing.Size(486, 212);
             this.panel1.TabIndex = 1;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl3.Location = new System.Drawing.Point(297, 4);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(255, 3);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(120, 35);
+            this.labelControl3.Size = new System.Drawing.Size(96, 28);
             this.labelControl3.TabIndex = 117;
             this.labelControl3.Text = "Cảnh báo";
             // 
@@ -75,14 +76,16 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Appearance.Options.UseTextOptions = true;
             this.labelControl1.Appearance.TextOptions.Trimming = DevExpress.Utils.Trimming.Word;
             this.labelControl1.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.labelControl1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Location = new System.Drawing.Point(157, 121);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl1.Location = new System.Drawing.Point(135, 98);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(404, 64);
+            this.labelControl1.Size = new System.Drawing.Size(346, 52);
             this.labelControl1.TabIndex = 115;
             this.labelControl1.Text = "Để chúng tôi biết người thực hiện thao tác này thì bạn vui lòng điền mật khẩu xác" +
     " nhận tài khoản ở bên dưới và chọn Đồng ý!  ";
@@ -91,56 +94,54 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Appearance.Options.UseTextOptions = true;
             this.labelControl4.Appearance.TextOptions.Trimming = DevExpress.Utils.Trimming.Word;
             this.labelControl4.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
             this.labelControl4.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.Location = new System.Drawing.Point(160, 52);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl4.Location = new System.Drawing.Point(137, 42);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(404, 60);
+            this.labelControl4.Size = new System.Drawing.Size(346, 49);
             this.labelControl4.TabIndex = 115;
             this.labelControl4.Text = "Thao tác này xóa hết dữ liệu của phiếu. Mọi dữ liệu hủy mẫu sẽ lưu lại để đối chi" +
     "ếu nếu có trường hợp sai sót hoặc thất thoát tài sản. ";
             // 
             // lbPassword
             // 
-            this.lbPassword.Location = new System.Drawing.Point(93, 191);
-            this.lbPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbPassword.Location = new System.Drawing.Point(80, 155);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Size = new System.Drawing.Size(65, 17);
+            this.lbPassword.Size = new System.Drawing.Size(51, 13);
             this.lbPassword.TabIndex = 115;
             this.lbPassword.Text = "Mật khẩu :";
             // 
             // butCANCEL
             // 
             this.butCANCEL.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.butCANCEL.Image = ((System.Drawing.Image)(resources.GetObject("butCANCEL.Image")));
-            this.butCANCEL.Location = new System.Drawing.Point(461, 219);
-            this.butCANCEL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.butCANCEL.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butCANCEL.ImageOptions.Image")));
+            this.butCANCEL.Location = new System.Drawing.Point(395, 178);
             this.butCANCEL.Name = "butCANCEL";
-            this.butCANCEL.Size = new System.Drawing.Size(103, 37);
+            this.butCANCEL.Size = new System.Drawing.Size(88, 30);
             this.butCANCEL.TabIndex = 112;
             this.butCANCEL.Text = "Hủy bỏ";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(160, 187);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Location = new System.Drawing.Point(137, 152);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.txtPassword.Properties.MaxLength = 50;
             this.txtPassword.Properties.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(404, 22);
+            this.txtPassword.Size = new System.Drawing.Size(346, 20);
             this.txtPassword.TabIndex = 110;
             // 
             // psLogo
             // 
             this.psLogo.Image = global::BioNetSangLocSoSinh.Properties.Resources.ico_authenticationserver;
-            this.psLogo.Location = new System.Drawing.Point(17, 14);
-            this.psLogo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.psLogo.Location = new System.Drawing.Point(15, 11);
             this.psLogo.Name = "psLogo";
-            this.psLogo.Size = new System.Drawing.Size(135, 146);
+            this.psLogo.Size = new System.Drawing.Size(116, 119);
             this.psLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.psLogo.TabIndex = 108;
             this.psLogo.TabStop = false;
@@ -148,24 +149,23 @@
             // butOK
             // 
             this.butOK.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.butOK.Image = ((System.Drawing.Image)(resources.GetObject("butOK.Image")));
-            this.butOK.Location = new System.Drawing.Point(349, 219);
-            this.butOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.butOK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butOK.ImageOptions.Image")));
+            this.butOK.Location = new System.Drawing.Point(299, 178);
             this.butOK.Name = "butOK";
-            this.butOK.Size = new System.Drawing.Size(110, 37);
+            this.butOK.Size = new System.Drawing.Size(94, 30);
             this.butOK.TabIndex = 111;
             this.butOK.Text = "Đồng ý";
             // 
             // XtraForm1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 273);
+            this.ClientSize = new System.Drawing.Size(495, 222);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "XtraForm1";
             this.Text = "XtraForm1";
+            this.Load += new System.EventHandler(this.XtraForm1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();

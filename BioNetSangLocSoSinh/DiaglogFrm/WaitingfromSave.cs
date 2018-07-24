@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using BioNetBLL;
+using BioNetModel.Data;
 using DevExpress.XtraSplashScreen;
 
 namespace BioNetSangLocSoSinh.DiaglogFrm
@@ -19,8 +21,8 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         {
             InitializeComponent();
             if (string.IsNullOrEmpty(noidung))
-                this.txtnoidung.Text = "Đang lưu dữ liệu, vui lòng đợi...";
-            else this.txtnoidung.Text = noidung;
+                this.txtNoiDung.Text = "Đang lưu dữ liệu, vui lòng đợi...";
+            else this.txtNoiDung.Text = noidung;
         }
 
         #region Overrides
@@ -34,6 +36,24 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
 
         public enum SplashScreenCommand
         {
+        }
+
+
+        private void WaitingfromSave_Load(object sender, EventArgs e)
+        {
+            AddItemForm();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

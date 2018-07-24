@@ -22,6 +22,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         private void FrmDiaglogChonGoiXetNghiem_Load(object sender, EventArgs e)
         {
             this.LoadListGoiXetNghiem();
+            AddItemForm();
         }
         private void LoadListGoiXetNghiem()
         {
@@ -57,6 +58,18 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         private void btnBoQua_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

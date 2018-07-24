@@ -23,6 +23,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmDMChuongTrinh_Load(object sender, EventArgs e)
         {
             gridControl_ChuongTrinh.DataSource = BioBLL.GetListChuongTrinh();
+            AddItemForm();
         }
 
         private void gridView_ChuongTrinh_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -128,6 +129,19 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                 }
             }
+        }
+
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            //CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

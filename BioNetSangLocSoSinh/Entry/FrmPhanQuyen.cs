@@ -17,7 +17,6 @@ namespace BioNetSangLocSoSinh.Entry
     {
         private string empLogin = string.Empty;
         private string empCode = string.Empty;
-        private int posLevel = 0;
         private int positionCode = 0;
         private List<string> lstMenu;
         private bool isGroup = false;
@@ -74,6 +73,7 @@ namespace BioNetSangLocSoSinh.Entry
         {
             this.LoadEmployeePosition();
             this.lblTotalMenu.Text = this.DisplayTotalMenu();
+            AddItemForm();
         }
 
         private void LoadEmployeePosition()
@@ -591,6 +591,18 @@ namespace BioNetSangLocSoSinh.Entry
                 else { return 0; }
             }
             catch { return -2; }
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            //CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

@@ -65,6 +65,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.txtChiCuc.EditValue = "all";
             this.bttGuiMail.Enabled = false;
             lblTongCheck.Text = "Tổng cộng phiếu được chọn: " + TongCheck.ToString() + " phiếu";
+            AddItemForm();
         }
 
         private void txtChiCuc_EditValueChanged(object sender, EventArgs e)
@@ -655,6 +656,18 @@ namespace BioNetSangLocSoSinh.FrmReports
         private void ckkTenTre_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            //CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

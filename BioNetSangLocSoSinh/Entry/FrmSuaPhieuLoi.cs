@@ -12,6 +12,7 @@ using BioNetBLL;
 using DevExpress.XtraSplashScreen;
 using BioNetModel;
 using DevExpress.XtraGrid.Views.Grid;
+using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -25,7 +26,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
 
-            this.GC_DSPhieu.DataSource = BioNet_Bus.GetTTPhieuCanSuaLoi(this.dateNgayBD.DateTime, this.dateNgayKetThuc.DateTime, this.txtDonVi.EditValue.ToString(), this.txtMaPhieu.Text.Trim());
+            this.GC_DSPhieu.DataSource = BioNet_Bus.GetTTPhieuCanSuaLoi(this.dateNgayBD.DateTime, this.dateNgayKetThuc.DateTime, this.txtDonVi.EditValue.ToString(),this.txtChiCuc.EditValue.ToString(), this.txtMaPhieu.Text.Trim());
             if (this.GV_DSPhieu.DataRowCount == 0)
             {
                 MessageBox.Show("Không có dữ liệu phiếu kết quả cần tìm", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
@@ -40,6 +41,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmSuaPhieuLoi_Load(object sender, EventArgs e)
         {
             this.FormLoad();
+            AddItemForm();
         }
         private void FormLoad()
         {
@@ -164,14 +166,11 @@ namespace BioNetSangLocSoSinh.Entry
                     }
 
                 }
-
-
             }
             catch
             {
 
-            }
-            
+            }          
         }
 
         private void txtChiCuc_EditValueChanged(object sender, EventArgs e)
@@ -183,6 +182,18 @@ namespace BioNetSangLocSoSinh.Entry
                 this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi(value.ToString());
             }
             catch { }
+        }
+
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
         }
     }
 }

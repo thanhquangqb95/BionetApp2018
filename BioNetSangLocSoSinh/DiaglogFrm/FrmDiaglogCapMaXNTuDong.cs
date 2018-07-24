@@ -66,6 +66,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             this.lookupDonVi.DataSource = this.lstDonVi.Select(p => new { p.MaDVCS, p.TenDVCS }).ToList();
             this.LoadDuLieuLstDataGC();
             this.GCCapMa.DataSource = this.lstDataGC;
+            AddItemForm();
         }
 
         private void GVCapMa_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
@@ -233,6 +234,18 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

@@ -14,4 +14,5 @@ namespace BioNetModel
         public string CAH { get; set; }
         public string CH { get; set; }
     }
+
 }

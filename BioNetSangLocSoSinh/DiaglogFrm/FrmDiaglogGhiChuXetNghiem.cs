@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BioNetBLL;
+using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.DiaglogFrm
 {
@@ -74,11 +75,24 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
                     this.btnThoat.Focus();
                 }
             }
+            AddItemForm();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
             this.LuuGhiChu();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

@@ -40,6 +40,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.ref_EmployeeGroup.ValueMember = "EmployeeGroupID";
 
             this.gridControl_Employee.DataSource = BioBLL.DTEmployee(string.Empty);
+            AddItemForm();
         }
 
         private void gridView_Employee_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
@@ -177,6 +178,17 @@ namespace BioNetSangLocSoSinh.Entry
                     catch { return; }
                 }
             }
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
         }
     }
 }

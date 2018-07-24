@@ -25,8 +25,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.repositoryItemLookUpEdit_Nhom.DataSource = BioBLL.GetListNhom();
             this.repositoryItemLookUpEdit_Nhom.ValueMember = "RowIDNhom";
             this.repositoryItemLookUpEdit_Nhom.DisplayMember = "TenNhom";
-
             this.gridControl_DMDichVu.DataSource = BioBLL.GetListDichVu();
+            AddItemForm();
         }
 
         private void gridView_DMDichVu_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -96,6 +96,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch(Exception ex) { }
         }
+
         private void gridControl_DMDichVu_ProcessGridKey(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && gridView_DMDichVu.State != DevExpress.XtraGrid.Views.Grid.GridState.Editing)
@@ -114,6 +115,19 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                 }
             }
+        }
+
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

@@ -65,6 +65,8 @@
             this.chartThongKePhieu = new DevExpress.XtraCharts.ChartControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.lblUocTinh = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblTenDonVi = new System.Windows.Forms.Label();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.txtDonVi = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -105,8 +107,6 @@
             this.chartPPSinh = new DevExpress.XtraCharts.ChartControl();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.lblUocTinh = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.chartPhieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
@@ -167,11 +167,13 @@
             // 
             // chartPhieu
             // 
+            this.chartPhieu.DataBindings = null;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartPhieu.Diagram = xyDiagram1;
             this.chartPhieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartPhieu.Legend.MarkerVisible = false;
+            this.chartPhieu.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.None;
+            this.chartPhieu.Legend.Name = "Default Legend";
             this.chartPhieu.Legend.TextVisible = false;
             this.chartPhieu.Location = new System.Drawing.Point(0, 0);
             this.chartPhieu.Name = "chartPhieu";
@@ -194,6 +196,7 @@
             // 
             // chartThongKePhieu
             // 
+            this.chartThongKePhieu.DataBindings = null;
             xyDiagram2.AxisX.GridLines.MinorVisible = true;
             xyDiagram2.AxisX.GridLines.Visible = true;
             xyDiagram2.AxisX.MinorCount = 1;
@@ -203,6 +206,7 @@
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
             this.chartThongKePhieu.Diagram = xyDiagram2;
             this.chartThongKePhieu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartThongKePhieu.Legend.Name = "Default Legend";
             this.chartThongKePhieu.Legend.TextVisible = false;
             this.chartThongKePhieu.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.chartThongKePhieu.Location = new System.Drawing.Point(0, 0);
@@ -247,10 +251,32 @@
             this.panelControl2.Controls.Add(this.dllNgay);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
+            this.panelControl2.LookAndFeel.SkinName = "Office 2007 Blue";
+            this.panelControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1362, 72);
             this.panelControl2.TabIndex = 5;
+            // 
+            // lblUocTinh
+            // 
+            this.lblUocTinh.Location = new System.Drawing.Point(895, 43);
+            this.lblUocTinh.Name = "lblUocTinh";
+            this.lblUocTinh.Size = new System.Drawing.Size(258, 13);
+            this.lblUocTinh.TabIndex = 1064;
+            this.lblUocTinh.Text = "1000 phiếu/ 1 ngày , 1000 phiếu/1 tháng, 10000/năm";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(640, 43);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(249, 13);
+            this.labelControl1.TabIndex = 1063;
+            this.labelControl1.Text = "Trung bình ước tính theo thời gian tìm kiếm :";
             // 
             // lblTenDonVi
             // 
@@ -368,7 +394,7 @@
             // butPrint
             // 
             this.butPrint.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.butPrint.Image = ((System.Drawing.Image)(resources.GetObject("butPrint.Image")));
+            this.butPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butPrint.ImageOptions.Image")));
             this.butPrint.Location = new System.Drawing.Point(537, 37);
             this.butPrint.Name = "butPrint";
             this.butPrint.Size = new System.Drawing.Size(80, 26);
@@ -379,7 +405,7 @@
             // butOK
             // 
             this.butOK.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.butOK.Image = ((System.Drawing.Image)(resources.GetObject("butOK.Image")));
+            this.butOK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butOK.ImageOptions.Image")));
             this.butOK.Location = new System.Drawing.Point(537, 5);
             this.butOK.Name = "butOK";
             this.butOK.Size = new System.Drawing.Size(80, 26);
@@ -407,11 +433,13 @@
             // 
             // chartGioiTinh
             // 
+            this.chartGioiTinh.DataBindings = null;
             xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
             this.chartGioiTinh.Diagram = xyDiagram3;
             this.chartGioiTinh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartGioiTinh.Legend.MarkerVisible = false;
+            this.chartGioiTinh.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.None;
+            this.chartGioiTinh.Legend.Name = "Default Legend";
             this.chartGioiTinh.Legend.TextVisible = false;
             this.chartGioiTinh.Location = new System.Drawing.Point(0, 0);
             this.chartGioiTinh.Name = "chartGioiTinh";
@@ -437,6 +465,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(1362, 0);
             // 
             // barDockControlBottom
@@ -444,6 +473,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 620);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1362, 0);
             // 
             // barDockControlLeft
@@ -451,6 +481,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 620);
             // 
             // barDockControlRight
@@ -458,6 +489,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1362, 0);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 620);
             // 
             // panel16
@@ -522,6 +554,7 @@
             // chartCTCLMau
             // 
             this.chartCTCLMau.AppearanceNameSerializable = "Pastel Kit";
+            this.chartCTCLMau.DataBindings = null;
             this.chartCTCLMau.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartCTCLMau.IndicatorsPaletteRepository.Add("Palette 1", new DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211))))), System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211)))))),
@@ -529,6 +562,7 @@
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105))))), System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))), System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))))}));
             this.chartCTCLMau.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
+            this.chartCTCLMau.Legend.Name = "Default Legend";
             this.chartCTCLMau.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartCTCLMau.Location = new System.Drawing.Point(0, 0);
             this.chartCTCLMau.Name = "chartCTCLMau";
@@ -567,6 +601,7 @@
             // chartCLMau
             // 
             this.chartCLMau.AppearanceNameSerializable = "The Trees";
+            this.chartCLMau.DataBindings = null;
             this.chartCLMau.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartCLMau.IndicatorsPaletteRepository.Add("Palette 1", new DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211))))), System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211)))))),
@@ -574,6 +609,7 @@
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105))))), System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))), System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))))}));
             this.chartCLMau.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
+            this.chartCLMau.Legend.Name = "Default Legend";
             this.chartCLMau.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartCLMau.Location = new System.Drawing.Point(0, 0);
             this.chartCLMau.Name = "chartCLMau";
@@ -630,6 +666,7 @@
             // chartGoiXN
             // 
             this.chartGoiXN.AppearanceNameSerializable = "Nature Colors";
+            this.chartGoiXN.DataBindings = null;
             this.chartGoiXN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartGoiXN.IndicatorsPaletteRepository.Add("Palette 1", new DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211))))), System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211)))))),
@@ -637,6 +674,7 @@
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105))))), System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))), System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))))}));
             this.chartGoiXN.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
+            this.chartGoiXN.Legend.Name = "Default Legend";
             this.chartGoiXN.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartGoiXN.Location = new System.Drawing.Point(0, 0);
             this.chartGoiXN.Name = "chartGoiXN";
@@ -672,6 +710,7 @@
             // chartChuongTrinh
             // 
             this.chartChuongTrinh.AppearanceNameSerializable = "Nature Colors";
+            this.chartChuongTrinh.DataBindings = null;
             this.chartChuongTrinh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartChuongTrinh.IndicatorsPaletteRepository.Add("Palette 1", new DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211))))), System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211)))))),
@@ -679,6 +718,7 @@
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105))))), System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))), System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))))}));
             this.chartChuongTrinh.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
+            this.chartChuongTrinh.Legend.Name = "Default Legend";
             this.chartChuongTrinh.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartChuongTrinh.Location = new System.Drawing.Point(0, 0);
             this.chartChuongTrinh.Name = "chartChuongTrinh";
@@ -718,6 +758,7 @@
             // 
             // chartPPSinh
             // 
+            this.chartPPSinh.DataBindings = null;
             this.chartPPSinh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartPPSinh.IndicatorsPaletteRepository.Add("Palette 1", new DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211))))), System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(153)))), ((int)(((byte)(211)))))),
@@ -725,6 +766,7 @@
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105))))), System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))), System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(250)))), ((int)(((byte)(135))))))}));
             this.chartPPSinh.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
+            this.chartPPSinh.Legend.Name = "Default Legend";
             this.chartPPSinh.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartPPSinh.Location = new System.Drawing.Point(0, 0);
             this.chartPPSinh.Name = "chartPPSinh";
@@ -767,24 +809,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(868, 191);
             this.panel7.TabIndex = 1;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.labelControl1.Location = new System.Drawing.Point(640, 43);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(249, 13);
-            this.labelControl1.TabIndex = 1063;
-            this.labelControl1.Text = "Trung bình ước tính theo thời gian tìm kiếm :";
-            // 
-            // lblUocTinh
-            // 
-            this.lblUocTinh.Location = new System.Drawing.Point(895, 43);
-            this.lblUocTinh.Name = "lblUocTinh";
-            this.lblUocTinh.Size = new System.Drawing.Size(258, 13);
-            this.lblUocTinh.TabIndex = 1064;
-            this.lblUocTinh.Text = "1000 phiếu/ 1 ngày , 1000 phiếu/1 tháng, 10000/năm";
             // 
             // FrmReportThongKeCoBan
             // 

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BioNetModel;
+using BioNetModel.Data;
+using BioNetBLL;
+
 namespace BioNetSangLocSoSinh.DiaglogFrm
 {
     public partial class FrmDiagLogShowPhieuLoi : DevExpress.XtraEditors.XtraForm
@@ -26,6 +29,19 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         private void FrmDiagLogShowPhieuLoi_Load(object sender, EventArgs e)
         {
             this.LoadDanhSach();
+            AddItemForm();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

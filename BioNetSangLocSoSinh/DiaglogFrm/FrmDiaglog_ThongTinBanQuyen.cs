@@ -77,7 +77,6 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         }
         private void LoadFrom()
         {
-
             this.LoadNgayServer();
             this.LoadGethongTinTrungTam();
             this.checkVersion();
@@ -118,6 +117,18 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             {
                 XtraMessageBox.Show("Cập nhật thông tin thành công! Vui lòng đăng nhập lại.", "BioNet Sàng Lọc Sơ Sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Bionet.API.Models;
 using BioNetModel;
 using BioNetModel.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,7 +88,7 @@ namespace DataSync.BioNetSync
                     string token = cn.GetToken(account.userName, account.passWord);
                     if (!String.IsNullOrEmpty(token))
                     {
-                        var datas = db.PSXN_TraKetQuas.Where(x => x.isDongBo != true && x.isTraKQ == true && x.isDaDuyetKQ == true && x.isXoa != true).OrderBy(x => x.RowIDXN_TraKetQua).ToList();
+                        var datas = db.PSXN_TraKetQuas.Where(x => x.isDongBo != true && x.isTraKQ == true && x.isDaDuyetKQ == true && x.isXoa!=true).OrderBy(x=>x.RowIDXN_TraKetQua ).ToList();
                         if (datas != null)
                         {
                             List<XN_TraKetQuaViewModel> de = new List<XN_TraKetQuaViewModel>();
@@ -109,13 +110,15 @@ namespace DataSync.BioNetSync
                             while (de.Count() > 200)
                             {
                                 var temp = de.Take(200);
-                                Nhom = new JavaScriptSerializer().Serialize(temp);
+                                Nhom = JsonConvert.SerializeObject(temp);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                                 de.RemoveRange(0, 200);
                             }
                             if (de.Count() <= 200 && de.Count() > 0)
                             {
-                                Nhom = new JavaScriptSerializer().Serialize(de);
+                                Nhom = JsonConvert.SerializeObject(de);
+                                //Nhom = new JavaScriptSerializer().Serialize(de);
                                 jsonstr.Add(Nhom);
                             }
                             if (jsonstr.Count() > 0)
@@ -133,70 +136,70 @@ namespace DataSync.BioNetSync
                                         data.ToList().ForEach(c => c.isDongBo = true);
                                         datact.ToList().ForEach(c => c.isDongBo = true);
                                         db.SubmitChanges();
-                                        string json = result.ErorrResult;
-                                        JavaScriptSerializer jss = new JavaScriptSerializer();
-                                        List<String> psl = jss.Deserialize<List<String>>(json);
-                                        string loi = json;
-                                        if (psl != null)
+                                        if (result.ErorrResult != "[]")
                                         {
-                                            if (psl.Count > 0)
+                                            string json = result.ErorrResult;
+                                            JavaScriptSerializer jss = new JavaScriptSerializer();
+                                            List<String> psl = jss.Deserialize<List<String>>(json);
+                                            if (psl != null)
                                             {
-                                                CTLoiDongBo.LoiDongBo(loi, "PSTraKetQua", true);
-                                                res.StringError = "Danh sách phiếu tiếp nhận lỗi: \r\n ";
-                                                foreach (var lst in psl)
+                                                if (psl.Count > 0)
                                                 {
-                                                    PSResposeSync sn = cn.CutString(lst);
-                                                    if (sn != null)
+                                                    res.StringError = "Danh sách phiếu tiếp nhận lỗi: \r\n ";
+                                                    foreach (var lst in psl)
                                                     {
-                                                        var ds = db.PSXN_TraKetQuas.FirstOrDefault(p => p.MaPhieu == sn.Code);
-                                                        if (ds != null)
+                                                        PSResposeSync sn = cn.CutString(lst);
+                                                        if (sn != null)
                                                         {
-                                                            ds.isDongBo = false;
-                                                            var ct = db.PSXN_TraKQ_ChiTiets.Where(p => p.MaPhieu == sn.Code).ToList();
-                                                            foreach (var c in ct)
+                                                            var ds = db.PSXN_TraKetQuas.FirstOrDefault(p => p.MaPhieu == sn.Code);
+                                                            if (ds != null)
                                                             {
-                                                                c.isDongBo = false;
+                                                                ds.isDongBo = false;
+                                                                var ct = db.PSXN_TraKQ_ChiTiets.Where(p => p.MaPhieu == sn.Code).ToList();
+                                                                foreach (var c in ct)
+                                                                {
+                                                                    c.isDongBo = false;
+                                                                }
+                                                                res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
                                                             }
-                                                            res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
-                                                            db.SubmitChanges();
-                                                        }
 
+                                                        }
                                                     }
+                                                    db.SubmitChanges();
+                                                    res.Result = false;
                                                 }
-                                                res.Result = false;
                                             }
                                             else
                                             {
-                                                CTLoiDongBo.LoiDongBo(loi, "PSTraKetQua", true);
+                                                res.Result = false;
+                                                res.StringError = "Đồng bộ phiếu trả kết quả - Kiểm tra kết nội mạng!\r\n";
                                             }
 
-                                        } 
+                                        }
+
                                     }
-                                    else
-                                    {
-                                        res.Result = false;
-                                        res.StringError = "Đồng bộ phiếu trả kết quả - Kiểm tra kết nội mạng!\r\n";
-                                    }
-                                    #endregion
-                                    if (String.IsNullOrEmpty(res.StringError))
-                                    {
-                                        res.Result = true;
-                                    }
-                                    else
-                                    {
-                                        res.Result = false;
-                                    }
+
+                                }
+                                #endregion
+                                if (String.IsNullOrEmpty(res.StringError))
+                                {
+                                    res.Result = true;
+                                }
+                                else
+                                {
+                                    res.Result = false;
                                 }
                             }
-
                         }
-                        else
-                        {
-                            res.Result = false;
-                            res.StringError = "Đồng bộ phiếu tiếp nhận - Kiểm tra kết nội mạng hoặc tài khoản đồng b!\r\n";
-                        }
+                        
+                    }
+                    else
+                    {
+                        res.Result = false;
+                        res.StringError = "Đồng bộ phiếu tiếp nhận - Kiểm tra kết nội mạng hoặc tài khoản đồng b!\r\n";
                     }
                 }
+              
             }
             catch (Exception ex)
             {

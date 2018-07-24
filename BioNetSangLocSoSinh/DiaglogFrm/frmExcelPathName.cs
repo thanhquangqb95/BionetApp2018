@@ -15,6 +15,8 @@ using DevExpress.XtraReports.UI;
 
 using DevExpress.XtraTab;
 using DevExpress.XtraGrid.Views.Grid;
+using BioNetModel.Data;
+using BioNetBLL;
 
 namespace BioNetSangLocSoSinh.DiaglogFrm
 {
@@ -25,6 +27,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         public frmExcelPathName()
         {
             InitializeComponent();
+            
         }
                 
         private void btAccept_Click(object sender, EventArgs e)
@@ -77,6 +80,22 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             }
             catch { }
         }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
+        }
 
+        private void frmExcelPathName_Load(object sender, EventArgs e)
+        {
+            AddItemForm();
+        }
     }
 }

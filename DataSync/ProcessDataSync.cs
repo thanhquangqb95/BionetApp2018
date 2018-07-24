@@ -24,10 +24,10 @@ namespace DataSync
 {
    public  class ProcessDataSync
     {
-        //private static string linkhost = "http://localhost:53112/";
+        private static string linkhost = "http://localhost:53112/";
        // private static string linkhost = "http://localhost:55570/";
 
-        private static string linkhost = "http://118.70.117.242:6788/";
+        //private static string linkhost = "http://118.70.117.242:6788/";
         private static string linkGetToken = "/oauth/token";
         private static string linkThongTinTrungTam = "api/trungtamsangloc/getall";        
         private static string linkGetDanhMucDanhGiaChatLuongMau = "api/danhgiachatluong/getall?keyword=&page=0&pagesize=20";

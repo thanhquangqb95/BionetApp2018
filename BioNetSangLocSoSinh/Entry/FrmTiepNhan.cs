@@ -13,9 +13,11 @@ using BioNetModel;
 using BioNetBLL;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Utils.Menu;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraSplashScreen;
 using System.Threading;
+using DevExpress.XtraLayout;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraGrid.Views.BandedGrid;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -35,7 +37,7 @@ namespace BioNetSangLocSoSinh.Entry
         private string maDonviFocusHandle = string.Empty;
         private List<PsDichVu> lstDichVu = new List<PsDichVu>();
         private List<PSTiepNhan> lstDaTiepNhan = new List<PSTiepNhan>();
-
+        
         private string MaNhanVienDangNhap = "MaNVTiepNhan";
         //Form Load
         private void FrmLoad_From()
@@ -53,14 +55,15 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
             this.ReadOnly(true);
             this.txtMaPhieuMoi.Focus();
+            AddItemForm();
         }
 
         private void FrmTiepNhan_Load(object sender, EventArgs e)
         {
-            FrmLoad_From();
-           
+            FrmLoad_From();                       
         }
-
+    
+        
         //Load dữ liệu cơ sở
         private void LoadGCPhieuCho()
         {
@@ -100,7 +103,7 @@ namespace BioNetSangLocSoSinh.Entry
             DateTime tu = this.txtTuNgay_ChuaKQ.EditValue == null ? DateTime.Now.Date : (DateTime)this.txtTuNgay_ChuaKQ.EditValue;
             DateTime den = this.txtDenNgay_ChuaKQ.EditValue == null ? DateTime.Now.Date : (DateTime)this.txtDenNgay_ChuaKQ.EditValue;
             string madv = this.searchLookUpDonViCoSo.EditValue == null ? string.Empty : this.searchLookUpDonViCoSo.EditValue.ToString(); ;
-            this.lstDaTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia(madv, tu, den);
+            //this.lstDaTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia(madv, tu, den);
             this.LoadGCDaTiepNhan();
         }
      
@@ -380,12 +383,7 @@ namespace BioNetSangLocSoSinh.Entry
                     else
                     {
                         this.checkedListBoxXN.DataSource = null;
-                    }
-
-
-         
-
-
+                    }         
                 }
                 catch (Exception ex)
                 {
@@ -684,7 +682,7 @@ namespace BioNetSangLocSoSinh.Entry
         }
 
         //GVPhieuNhan
-        private void GVDanhSachTiepNhan_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        private void GVDanhSachTiepNhan_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
             bool enable = false;
             if (e.HitInfo.HitTest == DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell)
@@ -883,7 +881,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         }
 
-        private void GVPhieuCho_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        private void GVPhieuCho_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
             bool enable = false;
             if (e.HitInfo.HitTest == DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell)
@@ -932,7 +930,18 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch { }
         }
-       
-        
+
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
+        }
     }
 }

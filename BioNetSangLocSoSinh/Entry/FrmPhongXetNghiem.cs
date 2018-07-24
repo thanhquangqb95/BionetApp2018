@@ -12,10 +12,10 @@ using BioNetModel;
 using BioNetModel.Data;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Columns;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using MsExcel = Microsoft.Office.Interop.Excel;
 using Excel;
 using System.IO;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -57,6 +57,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmPhongXetNghiem_Load(object sender, EventArgs e)
         {
             this.LoadFrm();
+            AddItemForm();
         }
 
         private void LoadFrm()
@@ -648,6 +649,208 @@ namespace BioNetSangLocSoSinh.Entry
                 }
             }
         }
+        private void ImportExcelNew()
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "Excel File|*.xls;*.xlsx";
+            if (of.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    DataTable tab = new DataTable();
+                    IExcelDataReader excelReader;
+                    List<PSEmportExcelKQ> lstkq = new List<PSEmportExcelKQ>();
+
+                    using (var stream = File.Open(of.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        using (var reader = ExcelReaderFactory.CreateOpenXmlReader(stream))
+                        {
+                            excelReader = reader;
+                            #region Đọc file excel
+                            try
+                            {
+                                excelReader.IsFirstRowAsColumnNames = true;
+                                var result = excelReader.AsDataSet();
+                                excelReader.Close();
+                                tab = result.Tables[0];
+                                int rows = tab.Rows.Count;
+                                int cols = tab.Columns.Count;
+                                cols = 3;
+                                foreach (DataRow row in tab.Rows)
+                                {
+                                    PSEmportExcelKQ data = new PSEmportExcelKQ();
+                                    List<PSCTEmportExcelKQ> Emkq = new List<PSCTEmportExcelKQ>();
+                                    string MaDichVu = string.Empty;
+                                    string MaXN = string.Empty;
+                                    foreach (DataColumn column in tab.Columns)
+                                    {                                      
+                                        string ColumnName = column.ColumnName.TrimEnd();
+                                        if (ColumnName == "MAXN")
+                                        {
+                                            string maxn = row[column].ToString();                                           
+                                            data.MaXN = maxn.Trim();
+                                            MaXN = data.MaXN;
+                                        }
+                                        else 
+                                        if(ColumnName=="MADV")
+                                        {                                          
+                                            string madv = row[column].ToString();
+                                           MaDichVu = madv.TrimEnd();
+                                        }
+                                        else if(ColumnName == "VALUE")
+                                        {
+                                            PSCTEmportExcelKQ ctkq = new PSCTEmportExcelKQ();
+                                            var tk = lstkq.FirstOrDefault(x => x.MaXN == MaXN);
+                                            string value = string.Empty;
+                                            try
+                                            {
+                                                value = string.IsNullOrEmpty(row[column].ToString()) ? string.Empty : row[column].ToString();
+                                                if (value.Contains("<"))
+                                                {
+                                                    value = value.Replace("<", "0");
+                                                }
+                                                if (value.Contains("-"))
+                                                {
+                                                    value = value.Replace("-", "");
+                                                }
+                                                float testvalue = float.Parse(value.Trim());
+                                            }
+                                            catch
+                                            {
+                                                value = string.Empty;
+                                            }
+                                            ctkq.MaDV = MaDichVu;
+                                            ctkq.VALUE = value;
+                                            if (tk!=null)
+                                            {
+                                                tk.PSCTEmportExcelKQ.Add(ctkq);
+                                                
+                                            }
+                                            else
+                                            {
+                                                Emkq.Add(ctkq);
+                                                data.PSCTEmportExcelKQ = Emkq;
+                                            }
+                                            
+                                        }
+
+                                    }
+                                    //
+                                    if (!string.IsNullOrEmpty(data.MaXN) )
+                                    {
+                                        if(data.PSCTEmportExcelKQ != null)
+                                        lstkq.Add(data);
+                                    }
+                                    else
+                                        break;
+
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                excelReader.Close();
+                                XtraMessageBox.Show("Lỗi khi đọc file! \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            #endregion Đọc file excel                         
+                        }
+                        #region Add dữ liệu vào DB
+                        if (this.lstMauChoKQ.Count > 0)
+                        {
+                            if (lstkq.Count > 0)
+                            {
+                                List<PsPhieuLoiKhiDanhGia> listphieuloi = new List<PsPhieuLoiKhiDanhGia>();
+                                foreach (var mau in this.lstMauChoKQ)
+                                {
+                                    var TsKQ = lstkq.FirstOrDefault(p => p.MaXN == mau.MaXetNghiem);
+                                    if (TsKQ != null)
+                                    {
+                                        KetQua_XetNghiem KQ = new KetQua_XetNghiem();
+                                        KQ.maPhieu = mau.MaPhieu;
+                                        KQ.maDonVi = mau.MaDonVi;
+                                        KQ.maTiepNhan = mau.MaTiepNhan;
+                                        KQ.maChiDinh = mau.MaChiDinh;
+                                        KQ.maGoiXetNghiem = mau.MaGoiXN;
+                                        KQ.maKetQua = mau.MaKetQua;
+                                        KQ.maXetNghiem = mau.MaXetNghiem;
+                                        KQ.ngayChiDinh = mau.NgayChiDinh ?? DateTime.Now;
+                                        KQ.ngayTiepNhan = mau.NgayTiepNhan ?? DateTime.Now;
+                                        KQ.ngayTraKQ = mau.NgayTraKQ ?? DateTime.Now;
+                                        KQ.ngayXetNghiem = mau.NgayLamXetNghiem ?? DateTime.Now;
+                                        KQ.GhiChu = BioNet_Bus.GetGhiChuXetNghiem(KQ.maKetQua);
+                                        var thongsoChiTiet = BioNet_Bus.GetDanhSachKetQuaChiTiet(mau.MaKetQua, mau.MaPhieu);
+                                        List<PsKetQua_ChiTiet> lstKQCT = new List<PsKetQua_ChiTiet>();
+                                        foreach (var ts in thongsoChiTiet)
+                                        {
+
+                                            bool nguyco = false;
+                                            string GiaTri = string.Empty;
+                                            var cttskq = TsKQ.PSCTEmportExcelKQ.FirstOrDefault(x => x.MaDV.Equals(ts.TenKyThuat));
+                                            if(cttskq!=null)
+                                            {
+                                                GiaTri = cttskq.VALUE;
+                                                try
+                                                {
+                                                    float Gt = float.Parse(GiaTri);
+                                                    if (Gt >= ts.GiaTriMin && Gt < ts.GiaTriMax)
+                                                        nguyco = false;
+                                                    else nguyco = true;
+                                                }
+                                                catch { }
+                                                PsKetQua_ChiTiet CTKQ = new PsKetQua_ChiTiet();
+                                                CTKQ.DonViTinh = ts.DonViTinh;
+                                                CTKQ.GiaTri = GiaTri;
+                                                CTKQ.GiaTriTrungBinh = ts.GiaTriTrungBinh;
+                                                CTKQ.isNguyCoCao = nguyco;
+                                                CTKQ.GiaTriMin = ts.GiaTriMin;
+                                                CTKQ.GiaTriMax = ts.GiaTriMax;
+                                                CTKQ.MaDichVu = ts.MaDichVu;
+                                                CTKQ.MaKQ = ts.MaKQ;
+                                                CTKQ.MaKyThuat = ts.MaKyThuat;
+                                                CTKQ.MaThongSo = ts.MaThongSo;
+                                                CTKQ.MaXN = mau.MaXetNghiem;
+                                                CTKQ.TenKyThuat = ts.TenKyThuat;
+                                                CTKQ.TenThongSo = ts.TenThongSo;
+                                                lstKQCT.Add(CTKQ);
+                                            }                                    
+                                        }
+                                        KQ.KetQuaChiTiet = lstKQCT;
+                                        var result = BioNet_Bus.LuuKetQuaXN(KQ);
+                                        if (!result.Result)
+                                        {
+                                            PsPhieuLoiKhiDanhGia phieu = new PsPhieuLoiKhiDanhGia();
+                                            phieu.MaPhieu = mau.MaPhieu;
+                                            phieu.ThongTinLoi = result.StringError;
+                                            listphieuloi.Add(phieu);
+                                        }
+                                    }
+                                }
+                                if (listphieuloi.Count < 1)
+                                {
+                                    XtraMessageBox.Show("Lưu thành công!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    XtraMessageBox.Show("Lưu phiếu thật bại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    DiaglogFrm.FrmDiagLogShowPhieuLoi frmloi = new DiaglogFrm.FrmDiagLogShowPhieuLoi(listphieuloi);
+                                    frmloi.ShowDialog();
+                                }
+                                this.LoadLstChuaKetQua();
+                                this.GCThongTinKQ.DataSource = null;
+                            }
+                            #endregion Add dữ liệu vào DB
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Không có mẫu nào trong danh sách chờ!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Lỗi khi đọc file! \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
         private bool KiemTraKQDaDuocSuaChua()
         {
             string MaPhieu = string.Empty;
@@ -840,9 +1043,9 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void btnImportChange_Click(object sender, EventArgs e)
         {
-            ImprortExcel(true);
+            ImportExcel(true);
         }
-        private void ImprortExcel(bool isSuaLoi)
+        private void ImportExcel(bool isSuaLoi)
         {
             OpenFileDialog of = new OpenFileDialog();
             of.Filter = "Excel File|*.xls;*.xlsx";
@@ -1148,6 +1351,23 @@ namespace BioNetSangLocSoSinh.Entry
                     XtraMessageBox.Show("Lỗi khi đọc file! \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void BtnImportExcelNew_Click(object sender, EventArgs e)
+        {
+            ImportExcelNew();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            //CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

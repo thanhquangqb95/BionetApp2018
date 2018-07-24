@@ -1,5 +1,6 @@
 ﻿using BioNetModel;
 using BioNetModel.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,13 +67,15 @@ namespace DataSync.BioNetSync
                             while (datas.Count() > 1000)
                             {
                                 var temp = datas.Take(1000);
-                                Nhom = new JavaScriptSerializer().Serialize(temp);
+                                Nhom = JsonConvert.SerializeObject(temp);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                                 datas.RemoveRange(0, 1000);
                             }
                             if (datas.Count() <= 1000 && datas.Count() > 0)
                             {
-                                Nhom = new JavaScriptSerializer().Serialize(datas);
+                                Nhom = JsonConvert.SerializeObject(datas);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                             }
                             if (jsonstr.Count() > 0)
@@ -110,15 +113,15 @@ namespace DataSync.BioNetSync
                                                             res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
                                                         }
                                                         res.Result = false;
-                                                        db.SubmitChanges();
                                                     }
+
 
                                                 }
                                                 if (res.Result == true)
                                                 {
                                                     res.StringError = String.Empty;
                                                 }
-                                            
+                                                db.SubmitChanges();
 
                                             }
                                         }

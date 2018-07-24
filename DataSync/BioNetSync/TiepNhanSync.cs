@@ -1,13 +1,11 @@
 ﻿using BioNetModel;
 using BioNetModel.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
-using System.Xml;
-using System.Xml.Serialization;
 
 
 namespace DataSync.BioNetSync
@@ -151,13 +149,15 @@ namespace DataSync.BioNetSync
                             while (datas.Count() > 1000)
                             {
                                 var temp = datas.Take(1000);
-                                Nhom = new JavaScriptSerializer().Serialize(temp);
+                                Nhom = JsonConvert.SerializeObject(temp);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                                 datas.RemoveRange(0, 1000);
                             }
                             if (datas.Count() <= 1000 && datas.Count() > 0)
                             {
-                                Nhom = new JavaScriptSerializer().Serialize(datas);
+                                Nhom = JsonConvert.SerializeObject(datas);
+                               // Nhom = new JavaScriptSerializer().Serialize(datas);
                                 jsonstr.Add(Nhom);
                             }
                             if (jsonstr.Count() > 0)
@@ -173,44 +173,31 @@ namespace DataSync.BioNetSync
                                         var data = db.PSTiepNhans.Where(s => (from d in datares select d.MaPhieu).Contains(s.MaPhieu));
                                         data.ToList().ForEach(c => c.isDongBo = true);
                                         db.SubmitChanges();
-                                        if (result.ErorrResult != "[]")
+                                        string json = result.ErorrResult;
+                                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                                        List<String> psl = jss.Deserialize<List<String>>(json);
+                                        if (psl != null)
                                         {
-                                            string json = result.ErorrResult;
-                                            JavaScriptSerializer jss = new JavaScriptSerializer();
-                                            List<String> psl = jss.Deserialize<List<String>>(json);
-                                            string loi = json;
-                                            if (psl != null)
+                                            if (psl.Count > 0)
                                             {
-                                                if (psl.Count > 0)
+                                                res.StringError = "Danh sách phiếu tiếp nhận lỗi: \r\n ";
+                                                foreach (var lst in psl)
                                                 {
-                                                    CTLoiDongBo.LoiDongBo(loi, "PSTiepNhan", false);
-                                                    res.StringError = "Danh sách phiếu tiếp nhận lỗi: \r\n ";
-                                                    foreach (var lst in psl)
+                                                    PSResposeSync sn = cn.CutString(lst.TrimEnd());
+                                                    if (sn != null)
                                                     {
-                                                        PSResposeSync sn = cn.CutString(lst.TrimEnd());
-                                                        if (sn != null)
+                                                        var ds = db.PSTiepNhans.FirstOrDefault(p => p.MaTiepNhan == sn.Code);
+                                                        if (ds != null)
                                                         {
-                                                            var ds = db.PSTiepNhans.FirstOrDefault(p => p.MaTiepNhan == sn.Code);
-                                                            if (ds != null)
-                                                            {
-                                                                ds.isDongBo = false;
-                                                                res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
-                                                                db.SubmitChanges();
-                                                            }
+                                                            ds.isDongBo = false;
+                                                            res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
                                                         }
                                                     }
-                                                    res.Result = false;
                                                 }
-                                                else
-                                                {
-                                                    CTLoiDongBo.LoiDongBo(loi, "PSTiepNhan", true);
-                                                }
-
                                             }
+                                            db.SubmitChanges();
+                                            res.Result = false;
                                         }
-
-                                            
-                                       
                                     }
                                     else
                                     {

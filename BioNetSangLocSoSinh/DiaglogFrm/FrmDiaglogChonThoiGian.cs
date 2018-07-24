@@ -66,5 +66,6 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
                 this.Close();
             }
         }
+       
     }
 }

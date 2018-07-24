@@ -14,6 +14,7 @@ using BioNetBLL;
 using DevExpress.XtraSplashScreen;
 using BioNetSangLocSoSinh.DiaglogFrm;
 using System.IO;
+using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.FrmReports
 {
@@ -37,6 +38,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.txtDonVi.EditValue = "all";
             this.txtChiCuc.EditValue = "all";
             this.LoadDuLieu();
+            AddItemForm();
         }
         private void LoadDuLieu()
         {
@@ -365,9 +367,17 @@ namespace BioNetSangLocSoSinh.FrmReports
             }
             return table;
         }
-        public static String CurrentPathApplication()
+        
+        private void AddItemForm()
         {
-            return Application.StartupPath;
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
         }
 
     }

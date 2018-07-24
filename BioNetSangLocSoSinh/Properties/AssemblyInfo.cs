@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("BioNetSangLocSoSinh")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BionetVietNam")]
+[assembly: AssemblyCompany("Bionet Việt Nam")]
 [assembly: AssemblyProduct("BioNetSangLocSoSinh")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Copyright ©2018 Bionet Việt Nam")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2017.01.20.01")]
-[assembly: AssemblyFileVersion("2018.05.16.01")]
+[assembly: AssemblyFileVersion("2018.06.12.01")]

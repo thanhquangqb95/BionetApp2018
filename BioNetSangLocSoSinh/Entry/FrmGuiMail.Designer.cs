@@ -204,7 +204,7 @@
             // bttGuiMail
             // 
             this.bttGuiMail.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.bttGuiMail.Image = global::BioNetSangLocSoSinh.Properties.Resources.email;
+            this.bttGuiMail.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.email;
             this.bttGuiMail.Location = new System.Drawing.Point(783, 48);
             this.bttGuiMail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttGuiMail.Name = "bttGuiMail";
@@ -266,7 +266,7 @@
             // butOK
             // 
             this.butOK.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.butOK.Image = ((System.Drawing.Image)(resources.GetObject("butOK.Image")));
+            this.butOK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butOK.ImageOptions.Image")));
             this.butOK.Location = new System.Drawing.Point(783, 11);
             this.butOK.Name = "butOK";
             this.butOK.Size = new System.Drawing.Size(152, 26);
@@ -550,6 +550,8 @@
             this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.LookAndFeel.SkinName = "Office 2007 Blue";
+            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmGuiMail";
             this.ShowIcon = false;

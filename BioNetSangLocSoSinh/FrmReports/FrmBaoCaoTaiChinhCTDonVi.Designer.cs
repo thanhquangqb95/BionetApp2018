@@ -51,6 +51,7 @@
             this.col_IDPhieu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.btnHoaDon = new DevExpress.XtraEditors.SimpleButton();
             this.btnGuiMail = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
@@ -96,7 +97,6 @@
             this.dllNgay = new UserControlDate.dllNgay();
             this.btnXuatExcel = new DevExpress.XtraEditors.SimpleButton();
             this.btnLayDuLieu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnHoaDon = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxTrangThaiMau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditMaGoi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -365,13 +365,27 @@
             this.panelControl3.TabIndex = 1;
             this.panelControl3.Visible = false;
             // 
+            // btnHoaDon
+            // 
+            this.btnHoaDon.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoaDon.Appearance.ForeColor = System.Drawing.Color.OrangeRed;
+            this.btnHoaDon.Appearance.Options.UseFont = true;
+            this.btnHoaDon.Appearance.Options.UseForeColor = true;
+            this.btnHoaDon.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf_icon1;
+            this.btnHoaDon.Location = new System.Drawing.Point(23, 250);
+            this.btnHoaDon.Name = "btnHoaDon";
+            this.btnHoaDon.Size = new System.Drawing.Size(312, 32);
+            this.btnHoaDon.TabIndex = 25;
+            this.btnHoaDon.Text = "Xuất Hóa Đơn Tổng Hợp";
+            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click);
+            // 
             // btnGuiMail
             // 
             this.btnGuiMail.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuiMail.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnGuiMail.Appearance.Options.UseFont = true;
             this.btnGuiMail.Appearance.Options.UseForeColor = true;
-            this.btnGuiMail.Image = global::BioNetSangLocSoSinh.Properties.Resources.email;
+            this.btnGuiMail.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.email;
             this.btnGuiMail.Location = new System.Drawing.Point(23, 288);
             this.btnGuiMail.Name = "btnGuiMail";
             this.btnGuiMail.Size = new System.Drawing.Size(312, 32);
@@ -385,7 +399,7 @@
             this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.Purple;
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.Appearance.Options.UseForeColor = true;
-            this.simpleButton2.Image = global::BioNetSangLocSoSinh.Properties.Resources.save;
+            this.simpleButton2.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.save;
             this.simpleButton2.Location = new System.Drawing.Point(23, 212);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(312, 32);
@@ -399,7 +413,7 @@
             this.btnHuy.Appearance.ForeColor = System.Drawing.Color.Red;
             this.btnHuy.Appearance.Options.UseFont = true;
             this.btnHuy.Appearance.Options.UseForeColor = true;
-            this.btnHuy.Image = global::BioNetSangLocSoSinh.Properties.Resources.exit;
+            this.btnHuy.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.exit;
             this.btnHuy.Location = new System.Drawing.Point(235, 175);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(100, 32);
@@ -413,7 +427,7 @@
             this.btnXacNhan.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnXacNhan.Appearance.Options.UseFont = true;
             this.btnXacNhan.Appearance.Options.UseForeColor = true;
-            this.btnXacNhan.Image = global::BioNetSangLocSoSinh.Properties.Resources.excel;
+            this.btnXacNhan.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.excel;
             this.btnXacNhan.Location = new System.Drawing.Point(23, 175);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(192, 32);
@@ -440,7 +454,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT5DenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT5DenNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT5DenNgay.Size = new System.Drawing.Size(111, 20);
             this.dateT5DenNgay.TabIndex = 19;
             // 
@@ -453,7 +466,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT5TuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT5TuNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT5TuNgay.Size = new System.Drawing.Size(100, 20);
             this.dateT5TuNgay.TabIndex = 18;
             // 
@@ -486,7 +498,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT4DenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT4DenNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT4DenNgay.Size = new System.Drawing.Size(111, 20);
             this.dateT4DenNgay.TabIndex = 15;
             // 
@@ -499,7 +510,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT4TuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT4TuNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT4TuNgay.Size = new System.Drawing.Size(100, 20);
             this.dateT4TuNgay.TabIndex = 14;
             // 
@@ -522,7 +532,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT3DenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT3DenNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT3DenNgay.Size = new System.Drawing.Size(111, 20);
             this.dateT3DenNgay.TabIndex = 12;
             // 
@@ -535,7 +544,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT3TuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT3TuNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT3TuNgay.Size = new System.Drawing.Size(100, 20);
             this.dateT3TuNgay.TabIndex = 11;
             // 
@@ -558,7 +566,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT2DenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT2DenNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT2DenNgay.Size = new System.Drawing.Size(111, 20);
             this.dateT2DenNgay.TabIndex = 9;
             // 
@@ -571,7 +578,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT2TuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT2TuNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT2TuNgay.Size = new System.Drawing.Size(100, 20);
             this.dateT2TuNgay.TabIndex = 8;
             // 
@@ -594,7 +600,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT1DenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT1DenNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT1DenNgay.Size = new System.Drawing.Size(111, 20);
             this.dateT1DenNgay.TabIndex = 6;
             // 
@@ -607,7 +612,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateT1TuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateT1TuNgay.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateT1TuNgay.Size = new System.Drawing.Size(100, 20);
             this.dateT1TuNgay.TabIndex = 5;
             // 
@@ -744,7 +748,7 @@
             // simpleButton1
             // 
             this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(552, 58);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(158, 23);
@@ -767,6 +771,7 @@
             // labelControl16
             // 
             this.labelControl16.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.labelControl16.Appearance.Options.UseForeColor = true;
             this.labelControl16.Location = new System.Drawing.Point(312, 31);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(38, 13);
@@ -818,6 +823,7 @@
             // labelControl9
             // 
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
             this.labelControl9.Location = new System.Drawing.Point(307, 5);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(41, 13);
@@ -879,7 +885,7 @@
             // btnXuatExcel
             // 
             this.btnXuatExcel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnXuatExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Image")));
+            this.btnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.ImageOptions.Image")));
             this.btnXuatExcel.Location = new System.Drawing.Point(552, 32);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(158, 23);
@@ -890,27 +896,13 @@
             // btnLayDuLieu
             // 
             this.btnLayDuLieu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnLayDuLieu.Image = ((System.Drawing.Image)(resources.GetObject("btnLayDuLieu.Image")));
+            this.btnLayDuLieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLayDuLieu.ImageOptions.Image")));
             this.btnLayDuLieu.Location = new System.Drawing.Point(552, 3);
             this.btnLayDuLieu.Name = "btnLayDuLieu";
             this.btnLayDuLieu.Size = new System.Drawing.Size(158, 23);
             this.btnLayDuLieu.TabIndex = 11;
             this.btnLayDuLieu.Text = "Lấy dữ liệu";
             this.btnLayDuLieu.Click += new System.EventHandler(this.btnLayDuLieu_Click);
-            // 
-            // btnHoaDon
-            // 
-            this.btnHoaDon.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoaDon.Appearance.ForeColor = System.Drawing.Color.OrangeRed;
-            this.btnHoaDon.Appearance.Options.UseFont = true;
-            this.btnHoaDon.Appearance.Options.UseForeColor = true;
-            this.btnHoaDon.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf_icon1;
-            this.btnHoaDon.Location = new System.Drawing.Point(23, 250);
-            this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Size = new System.Drawing.Size(312, 32);
-            this.btnHoaDon.TabIndex = 25;
-            this.btnHoaDon.Text = "Xuất Hóa Đơn Tổng Hợp";
-            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click);
             // 
             // FrmBaoCaoTaiChinhCTDonVi
             // 
@@ -921,6 +913,8 @@
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.LookAndFeel.SkinName = "Office 2007 Blue";
+            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "FrmBaoCaoTaiChinhCTDonVi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmBaoCaoTaiChinhCTDonVi_Load);

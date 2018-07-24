@@ -7,6 +7,7 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using BioNetBLL;
 using BioNetModel;
 using BioNetModel.Data;
@@ -22,24 +23,27 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private List<PSPatient> patientlst = new List<PSPatient>();
         private List<PSPatient> patientSearchlst = new List<PSPatient>();
+
         private void LoadDanhSachBenhNhan()
         {
             patientlst = BioBLL.GetDanhSachBenhNhan();
             this.gridControl_Info.DataSource = patientlst;
         }
+
         private void FrmInfoPerson_Load(object sender, EventArgs e)
         {
             this.LoadDanhSachBenhNhan();
+            this.txtSeachGioiTinh.SelectedIndex = 3;
             this.lookUpDanToc.Properties.DataSource = BioNet_Bus.GetDanhSachDanToc(-1);
-
             btnEdit.Enabled = btnCancel.Enabled = btnSave.Enabled = false;
             ReadOnlyText(true);
+            AddItemForm();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             this.gridControl_Info.DataSource = null;
-            this.gridControl_Info.DataSource = BioBLL.GetListPatient(this.txtSearch.Text.Trim()); 
+            this.gridControl_Info.DataSource = BioBLL.GetListPatient(this.txtSearchTenTre.Text.TrimEnd(),this.txtSearchChaMe.Text.TrimEnd(),int.Parse(this.txtSeachGioiTinh.Value.ToString()),this.txtSearchNgaySinh.DateTime); 
         }
 
         private void gridView_Info_DoubleClick(object sender, EventArgs e)
@@ -123,8 +127,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
-            {
-               
+            {              
              PSPatient   Patients = new BioNetModel.Data.PSPatient();
                 
                 if (string.IsNullOrEmpty(this.maBenhNhan))
@@ -215,5 +218,21 @@ namespace BioNetSangLocSoSinh.Entry
             btnCancel.Enabled = false;
             ReadOnlyText(true);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+        }        
     }
 }

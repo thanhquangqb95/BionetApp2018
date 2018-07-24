@@ -307,7 +307,7 @@
             this.GCPhieuCho.Name = "GCPhieuCho";
             this.GCPhieuCho.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryLookupDonviCoSo});
-            this.GCPhieuCho.Size = new System.Drawing.Size(364, 486);
+            this.GCPhieuCho.Size = new System.Drawing.Size(417, 750);
             this.GCPhieuCho.TabIndex = 0;
             this.GCPhieuCho.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVPhieuCho});
@@ -382,7 +382,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryLookupDonviCoSo.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaDVCS", "Mã cơ sở"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDVCS", "Tên cơ sở", 80, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDVCS", 80, "Tên cơ sở")});
             this.repositoryLookupDonviCoSo.DisplayMember = "TenDVCS";
             this.repositoryLookupDonviCoSo.Name = "repositoryLookupDonviCoSo";
             this.repositoryLookupDonviCoSo.NullText = "Đơn vị cơ sở";
@@ -501,7 +501,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(2, 2);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(287, 613);
+            this.groupControl2.Size = new System.Drawing.Size(287, 877);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Danh Sách Tiếp Nhận";
             // 
@@ -511,7 +511,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(2, 77);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(283, 502);
+            this.panelControl5.Size = new System.Drawing.Size(283, 766);
             this.panelControl5.TabIndex = 1;
             // 
             // GCDanhSachTiepNhan
@@ -520,7 +520,7 @@
             this.GCDanhSachTiepNhan.Location = new System.Drawing.Point(2, 2);
             this.GCDanhSachTiepNhan.MainView = this.GVDanhSachTiepNhan;
             this.GCDanhSachTiepNhan.Name = "GCDanhSachTiepNhan";
-            this.GCDanhSachTiepNhan.Size = new System.Drawing.Size(279, 498);
+            this.GCDanhSachTiepNhan.Size = new System.Drawing.Size(279, 762);
             this.GCDanhSachTiepNhan.TabIndex = 0;
             this.GCDanhSachTiepNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachTiepNhan});
@@ -609,7 +609,7 @@
             this.panelControl3.Controls.Add(this.btnTiepNhan);
             this.panelControl3.Controls.Add(this.txtMaPhieuMoi);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(2, 579);
+            this.panelControl3.Location = new System.Drawing.Point(2, 843);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(283, 32);
             this.panelControl3.TabIndex = 5;
@@ -673,8 +673,8 @@
             this.searchLookUpChiCuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpChiCuc.Properties.DisplayMember = "TenChiCuc";
-            this.searchLookUpChiCuc.Properties.PopupView = this.gridView2;
             this.searchLookUpChiCuc.Properties.ValueMember = "MaChiCuc";
+            this.searchLookUpChiCuc.Properties.View = this.gridView2;
             this.searchLookUpChiCuc.Size = new System.Drawing.Size(202, 20);
             this.searchLookUpChiCuc.TabIndex = 3;
             this.searchLookUpChiCuc.EditValueChanged += new System.EventHandler(this.searchLookUpChiCuc_EditValueChanged);
@@ -699,15 +699,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.BarMenuPopupRowGV;
-            this.barDockControlTop.Size = new System.Drawing.Size(1215, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1268, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 621);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 885);
             this.barDockControlBottom.Manager = this.BarMenuPopupRowGV;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1215, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1268, 0);
             // 
             // barDockControlLeft
             // 
@@ -715,15 +715,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.BarMenuPopupRowGV;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 621);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 885);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1215, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1268, 0);
             this.barDockControlRight.Manager = this.BarMenuPopupRowGV;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 621);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 885);
             // 
             // btnNewBarPopupMenuRowGV
             // 
@@ -800,8 +800,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpDonViCoSoTiepNhan.Properties.DisplayMember = "TenDVCS";
             this.searchLookUpDonViCoSoTiepNhan.Properties.NullText = "Chọn đơn vị cơ sở cần nhận mẫu ...";
-            this.searchLookUpDonViCoSoTiepNhan.Properties.PopupView = this.searchLookUpEdit1View;
             this.searchLookUpDonViCoSoTiepNhan.Properties.ValueMember = "MaDVCS";
+            this.searchLookUpDonViCoSoTiepNhan.Properties.View = this.searchLookUpEdit1View;
             this.searchLookUpDonViCoSoTiepNhan.Size = new System.Drawing.Size(202, 20);
             this.searchLookUpDonViCoSoTiepNhan.TabIndex = 1;
             this.searchLookUpDonViCoSoTiepNhan.TextChanged += new System.EventHandler(this.searchLookUpDonViCoSo_TextChanged);
@@ -849,7 +849,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(2, 2);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(833, 617);
+            this.groupControl3.Size = new System.Drawing.Size(833, 881);
             this.groupControl3.TabIndex = 1;
             this.groupControl3.Text = "Thông tin phiếu";
             // 
@@ -868,7 +868,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(833, 617);
+            this.panelControl4.Size = new System.Drawing.Size(833, 881);
             this.panelControl4.TabIndex = 1;
             // 
             // labelControl15
@@ -907,7 +907,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookupDonVi.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaDVCS", "Mã đơn vị"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDVCS", "Tên đơn vị", 80, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDVCS", 80, "Tên đơn vị")});
             this.lookupDonVi.Properties.DisplayMember = "TenDVCS";
             this.lookupDonVi.Properties.NullText = "Đơn vị ...";
             this.lookupDonVi.Properties.ValueMember = "MaDVCS";
@@ -965,7 +965,7 @@
             this.groupControl6.Controls.Add(this.labelControl2);
             this.groupControl6.Location = new System.Drawing.Point(9, 391);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(519, 222);
+            this.groupControl6.Size = new System.Drawing.Size(519, 486);
             this.groupControl6.TabIndex = 4;
             this.groupControl6.Text = "Thông tin đơn vị và gói xét nghiệm";
             // 
@@ -984,12 +984,13 @@
             this.checkedListBoxXN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBoxXN.CheckMember = "isChecked";
+            this.checkedListBoxXN.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkedListBoxXN.DisplayMember = "TenDichVu";
             this.checkedListBoxXN.Location = new System.Drawing.Point(398, 137);
             this.checkedListBoxXN.MultiColumn = true;
             this.checkedListBoxXN.Name = "checkedListBoxXN";
             this.checkedListBoxXN.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.checkedListBoxXN.Size = new System.Drawing.Size(116, 47);
+            this.checkedListBoxXN.Size = new System.Drawing.Size(116, 311);
             this.checkedListBoxXN.TabIndex = 5;
             this.checkedListBoxXN.ValueMember = "IDDichVu";
             this.checkedListBoxXN.Visible = false;
@@ -1000,7 +1001,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.radioGroupGoiXN.Location = new System.Drawing.Point(93, 137);
             this.radioGroupGoiXN.Name = "radioGroupGoiXN";
-            this.radioGroupGoiXN.Size = new System.Drawing.Size(409, 83);
+            this.radioGroupGoiXN.Size = new System.Drawing.Size(409, 347);
             this.radioGroupGoiXN.TabIndex = 29;
             this.radioGroupGoiXN.EditValueChanged += new System.EventHandler(this.radioGroupGoiXN_EditValueChanged);
             // 
@@ -1593,7 +1594,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 99);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(374, 518);
+            this.panelControl1.Size = new System.Drawing.Size(427, 782);
             this.panelControl1.TabIndex = 7;
             // 
             // panel2
@@ -1602,7 +1603,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(370, 514);
+            this.panel2.Size = new System.Drawing.Size(423, 778);
             this.panel2.TabIndex = 2;
             // 
             // xtraTabControl1
@@ -1612,7 +1613,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tabDanhSachChoTrenHeThong;
-            this.xtraTabControl1.Size = new System.Drawing.Size(370, 514);
+            this.xtraTabControl1.Size = new System.Drawing.Size(423, 778);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabDanhSachChoTrenHeThong,
@@ -1622,14 +1623,14 @@
             // 
             this.tabDanhSachChoTrenHeThong.Controls.Add(this.GCPhieuCho);
             this.tabDanhSachChoTrenHeThong.Name = "tabDanhSachChoTrenHeThong";
-            this.tabDanhSachChoTrenHeThong.Size = new System.Drawing.Size(364, 486);
+            this.tabDanhSachChoTrenHeThong.Size = new System.Drawing.Size(417, 750);
             this.tabDanhSachChoTrenHeThong.Text = "Các phiều chờ trên hệ thống";
             // 
             // tabDanhSachDaTiepNhanTrongNgay
             // 
             this.tabDanhSachDaTiepNhanTrongNgay.Controls.Add(this.GCDaTiepNhan);
             this.tabDanhSachDaTiepNhanTrongNgay.Name = "tabDanhSachDaTiepNhanTrongNgay";
-            this.tabDanhSachDaTiepNhanTrongNgay.Size = new System.Drawing.Size(364, 486);
+            this.tabDanhSachDaTiepNhanTrongNgay.Size = new System.Drawing.Size(417, 750);
             this.tabDanhSachDaTiepNhanTrongNgay.Text = "Danh sách đã tiếp nhận";
             // 
             // GCDaTiepNhan
@@ -1640,7 +1641,7 @@
             this.GCDaTiepNhan.Name = "GCDaTiepNhan";
             this.GCDaTiepNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.GCDaTiepNhan.Size = new System.Drawing.Size(364, 486);
+            this.GCDaTiepNhan.Size = new System.Drawing.Size(417, 750);
             this.GCDaTiepNhan.TabIndex = 1;
             this.GCDaTiepNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDaTiepNhan});
@@ -1695,7 +1696,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaDVCS", "Mã cơ sở"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDVCS", "Tên cơ sở", 80, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDVCS", 80, "Tên cơ sở")});
             this.repositoryItemLookUpEdit1.DisplayMember = "TenDVCS";
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             this.repositoryItemLookUpEdit1.NullText = "Đơn vị cơ sở";
@@ -1718,7 +1719,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(2, 2);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(374, 617);
+            this.groupControl1.Size = new System.Drawing.Size(427, 881);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Danh Sách  Phiếu";
             // 
@@ -1736,7 +1737,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(374, 99);
+            this.panelControl6.Size = new System.Drawing.Size(427, 99);
             this.panelControl6.TabIndex = 0;
             // 
             // searchLookUpChiCucPhieu
@@ -1751,9 +1752,9 @@
             this.searchLookUpChiCucPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpChiCucPhieu.Properties.DisplayMember = "TenChiCuc";
-            this.searchLookUpChiCucPhieu.Properties.PopupView = this.gridView3;
             this.searchLookUpChiCucPhieu.Properties.ValueMember = "MaChiCuc";
-            this.searchLookUpChiCucPhieu.Size = new System.Drawing.Size(311, 20);
+            this.searchLookUpChiCucPhieu.Properties.View = this.gridView3;
+            this.searchLookUpChiCucPhieu.Size = new System.Drawing.Size(364, 20);
             this.searchLookUpChiCucPhieu.TabIndex = 19;
             this.searchLookUpChiCucPhieu.EditValueChanged += new System.EventHandler(this.searchLookUpChiCucPhieu_EditValueChanged);
             // 
@@ -1798,7 +1799,7 @@
             this.btnRefesh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnRefesh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefesh.ImageOptions.Image")));
             this.btnRefesh.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnRefesh.Location = new System.Drawing.Point(326, 51);
+            this.btnRefesh.Location = new System.Drawing.Point(379, 51);
             this.btnRefesh.Name = "btnRefesh";
             this.btnRefesh.Size = new System.Drawing.Size(45, 42);
             this.btnRefesh.TabIndex = 17;
@@ -1823,7 +1824,7 @@
             this.txtTuNgay_ChuaKQ.Properties.NullDate = new System.DateTime(2016, 12, 15, 16, 49, 53, 0);
             this.txtTuNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 50, 0, 0);
             this.txtTuNgay_ChuaKQ.Properties.VistaCalendarInitialViewStyle = DevExpress.XtraEditors.VistaCalendarInitialViewStyle.YearView;
-            this.txtTuNgay_ChuaKQ.Size = new System.Drawing.Size(281, 20);
+            this.txtTuNgay_ChuaKQ.Size = new System.Drawing.Size(334, 20);
             this.txtTuNgay_ChuaKQ.TabIndex = 2;
             // 
             // labelControl33
@@ -1844,9 +1845,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpDonViCoSo.Properties.DisplayMember = "TenDVCS";
             this.searchLookUpDonViCoSo.Properties.NullText = "Chọn đơn vị cơ sở cần nhận mẫu ...";
-            this.searchLookUpDonViCoSo.Properties.PopupView = this.gridView1;
             this.searchLookUpDonViCoSo.Properties.ValueMember = "MaDVCS";
-            this.searchLookUpDonViCoSo.Size = new System.Drawing.Size(311, 20);
+            this.searchLookUpDonViCoSo.Properties.View = this.gridView1;
+            this.searchLookUpDonViCoSo.Size = new System.Drawing.Size(364, 20);
             this.searchLookUpDonViCoSo.TabIndex = 1;
             this.searchLookUpDonViCoSo.EditValueChanged += new System.EventHandler(this.searchLookUpDonViCoSo_EditValueChanged);
             // 
@@ -1910,7 +1911,7 @@
             this.txtDenNgay_ChuaKQ.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.txtDenNgay_ChuaKQ.Properties.NullDate = new System.DateTime(2016, 12, 15, 16, 49, 27, 0);
             this.txtDenNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 49, 40, 0);
-            this.txtDenNgay_ChuaKQ.Size = new System.Drawing.Size(281, 20);
+            this.txtDenNgay_ChuaKQ.Size = new System.Drawing.Size(334, 20);
             this.txtDenNgay_ChuaKQ.TabIndex = 3;
             // 
             // panelControl7
@@ -1918,10 +1919,10 @@
             this.panelControl7.Controls.Add(this.panelControl9);
             this.panelControl7.Controls.Add(this.groupControl3);
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl7.Location = new System.Drawing.Point(378, 0);
+            this.panelControl7.Location = new System.Drawing.Point(431, 0);
             this.panelControl7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(837, 621);
+            this.panelControl7.Size = new System.Drawing.Size(837, 885);
             this.panelControl7.TabIndex = 7;
             // 
             // panelControl9
@@ -1930,7 +1931,7 @@
             this.panelControl9.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelControl9.Location = new System.Drawing.Point(544, 2);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(291, 617);
+            this.panelControl9.Size = new System.Drawing.Size(291, 881);
             this.panelControl9.TabIndex = 2;
             // 
             // panelControl8
@@ -1940,7 +1941,7 @@
             this.panelControl8.Location = new System.Drawing.Point(0, 0);
             this.panelControl8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(378, 621);
+            this.panelControl8.Size = new System.Drawing.Size(431, 885);
             this.panelControl8.TabIndex = 8;
             // 
             // popupMenuRowChoHeThong
@@ -1954,7 +1955,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1215, 621);
+            this.ClientSize = new System.Drawing.Size(1268, 885);
             this.Controls.Add(this.panelControl8);
             this.Controls.Add(this.panelControl7);
             this.Controls.Add(this.barDockControlLeft);

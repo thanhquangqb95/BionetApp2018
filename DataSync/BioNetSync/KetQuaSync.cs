@@ -1,6 +1,7 @@
 ﻿using Bionet.API.Models;
 using BioNetModel;
 using BioNetModel.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +12,7 @@ using System.Net;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using System.Xml;
-using System.Xml.Serialization;
+
 namespace DataSync.BioNetSync
 {
     public class KetQuaSync
@@ -119,13 +118,15 @@ namespace DataSync.BioNetSync
                             while (de.Count() > 125)
                             {
                                 var temp = de.Take(125);
-                                Nhom = new JavaScriptSerializer().Serialize(temp);
+                                Nhom = JsonConvert.SerializeObject(temp);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                                 de.RemoveRange(0, 125);
                             }
                             if (de.Count() <= 125 && de.Count() > 0)
                             {
-                                Nhom = new JavaScriptSerializer().Serialize(de);
+                                Nhom = JsonConvert.SerializeObject(de);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                             }
                             if (jsonstr.Count() > 0)
@@ -167,12 +168,13 @@ namespace DataSync.BioNetSync
                                                             {
                                                                 c.isDongBo = false;
                                                             }
-                                                            db.SubmitChanges();
                                                             res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
                                                         }
                                                     }
+
                                                 }
-                                            }                                          
+                                            }
+                                            db.SubmitChanges();
                                             res.Result = false;
                                         }
                                     }

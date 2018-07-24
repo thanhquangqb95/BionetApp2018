@@ -38,9 +38,18 @@
             this.col_th_MotherName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_th_MaThongTin = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_maBenhNhan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_th_GioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.txtSearchChaMe = new DevExpress.XtraEditors.TextEdit();
+            this.txtSearchNgaySinh = new DevExpress.XtraEditors.DateEdit();
+            this.txtSeachGioiTinh = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
-            this.txtSearch = new DevExpress.XtraEditors.TextEdit();
+            this.txtSearchTenTre = new DevExpress.XtraEditors.TextEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtMaPhieu2 = new DevExpress.XtraEditors.TextEdit();
@@ -89,9 +98,14 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Info)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Info)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchChaMe.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSeachGioiTinh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchTenTre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu2.Properties)).BeginInit();
@@ -144,11 +158,15 @@
             // 
             this.gridControl_Info.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_Info.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl_Info.Location = new System.Drawing.Point(0, 36);
+            this.gridControl_Info.Location = new System.Drawing.Point(0, 77);
+            this.gridControl_Info.LookAndFeel.SkinName = "Office 2010 Blue";
+            this.gridControl_Info.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl_Info.MainView = this.gridView_Info;
             this.gridControl_Info.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl_Info.Name = "gridControl_Info";
-            this.gridControl_Info.Size = new System.Drawing.Size(754, 580);
+            this.gridControl_Info.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox1});
+            this.gridControl_Info.Size = new System.Drawing.Size(754, 539);
             this.gridControl_Info.TabIndex = 2;
             this.gridControl_Info.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Info});
@@ -161,7 +179,8 @@
             this.col_th_NgayGioSinh,
             this.col_th_MotherName,
             this.col_th_MaThongTin,
-            this.col_maBenhNhan});
+            this.col_maBenhNhan,
+            this.col_th_GioiTinh});
             this.gridView_Info.GridControl = this.gridControl_Info;
             this.gridView_Info.Name = "gridView_Info";
             this.gridView_Info.OptionsView.ShowGroupPanel = false;
@@ -246,43 +265,165 @@
             this.col_maBenhNhan.FieldName = "MaBenhNhan";
             this.col_maBenhNhan.Name = "col_maBenhNhan";
             // 
+            // col_th_GioiTinh
+            // 
+            this.col_th_GioiTinh.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.col_th_GioiTinh.AppearanceHeader.Options.UseFont = true;
+            this.col_th_GioiTinh.Caption = "Giới tính";
+            this.col_th_GioiTinh.ColumnEdit = this.repositoryItemImageComboBox1;
+            this.col_th_GioiTinh.FieldName = "GioiTinh";
+            this.col_th_GioiTinh.Name = "col_th_GioiTinh";
+            this.col_th_GioiTinh.OptionsColumn.AllowEdit = false;
+            this.col_th_GioiTinh.OptionsColumn.ReadOnly = true;
+            this.col_th_GioiTinh.Visible = true;
+            this.col_th_GioiTinh.VisibleIndex = 4;
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nam", "0", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", "1", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("N/A", "2", -1)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.ReadOnly = true;
+            // 
             // panelControl1
             // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.txtSearchChaMe);
+            this.panelControl1.Controls.Add(this.txtSearchNgaySinh);
+            this.panelControl1.Controls.Add(this.txtSeachGioiTinh);
+            this.panelControl1.Controls.Add(this.label4);
+            this.panelControl1.Controls.Add(this.label3);
+            this.panelControl1.Controls.Add(this.label2);
+            this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Controls.Add(this.btnSearch);
-            this.panelControl1.Controls.Add(this.txtSearch);
+            this.panelControl1.Controls.Add(this.txtSearchTenTre);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(754, 36);
+            this.panelControl1.Size = new System.Drawing.Size(754, 77);
             this.panelControl1.TabIndex = 0;
+            // 
+            // txtSearchChaMe
+            // 
+            this.txtSearchChaMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchChaMe.Location = new System.Drawing.Point(450, 11);
+            this.txtSearchChaMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearchChaMe.Name = "txtSearchChaMe";
+            this.txtSearchChaMe.Size = new System.Drawing.Size(224, 20);
+            this.txtSearchChaMe.TabIndex = 15;
+            // 
+            // txtSearchNgaySinh
+            // 
+            this.txtSearchNgaySinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchNgaySinh.EditValue = null;
+            this.txtSearchNgaySinh.Location = new System.Drawing.Point(241, 43);
+            this.txtSearchNgaySinh.Name = "txtSearchNgaySinh";
+            this.txtSearchNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtSearchNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtSearchNgaySinh.Size = new System.Drawing.Size(164, 20);
+            this.txtSearchNgaySinh.TabIndex = 14;
+            // 
+            // txtSeachGioiTinh
+            // 
+            this.txtSeachGioiTinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSeachGioiTinh.Location = new System.Drawing.Point(61, 43);
+            this.txtSeachGioiTinh.Name = "txtSeachGioiTinh";
+            this.txtSeachGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtSeachGioiTinh.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nam", 0, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", 1, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không xác định", 2, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tất cả", "3", -1)});
+            this.txtSeachGioiTinh.Size = new System.Drawing.Size(87, 20);
+            this.txtSeachGioiTinh.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(350, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Tên Cha hoặc mẹ:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Giới Tính:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(154, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Ngày Sinh Trẻ :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Tên Trẻ:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnSearch.Location = new System.Drawing.Point(571, 5);
+            this.btnSearch.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnSearch.Appearance.Options.UseFont = true;
+            this.btnSearch.Appearance.Options.UseForeColor = true;
+            this.btnSearch.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.EasyFind;
+            this.btnSearch.Location = new System.Drawing.Point(564, 36);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(64, 28);
+            this.btnSearch.Size = new System.Drawing.Size(144, 33);
             this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.Text = "Tìm Kiếm";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // txtSearch
+            // txtSearchTenTre
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSearchTenTre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(10, 10);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(555, 20);
-            this.txtSearch.TabIndex = 0;
+            this.txtSearchTenTre.Location = new System.Drawing.Point(61, 11);
+            this.txtSearchTenTre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearchTenTre.Name = "txtSearchTenTre";
+            this.txtSearchTenTre.Size = new System.Drawing.Size(268, 20);
+            this.txtSearchTenTre.TabIndex = 0;
             // 
             // groupControl5
             // 
+            this.groupControl5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.groupControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupControl5.Appearance.Options.UseBackColor = true;
+            this.groupControl5.Appearance.Options.UseForeColor = true;
             this.groupControl5.AppearanceCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.groupControl5.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl5.AppearanceCaption.Options.UseFont = true;
+            this.groupControl5.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl5.Controls.Add(this.labelControl2);
             this.groupControl5.Controls.Add(this.txtMaPhieu2);
             this.groupControl5.Controls.Add(this.labelControl1);
@@ -519,7 +660,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNamSinhBenhNhan.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhBenhNhan.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.txtNamSinhBenhNhan.Size = new System.Drawing.Size(229, 20);
             this.txtNamSinhBenhNhan.TabIndex = 13;
             // 
@@ -552,6 +692,8 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.AppearanceCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.groupControl4.AppearanceCaption.Options.UseFont = true;
             this.groupControl4.Controls.Add(this.txtAddress);
@@ -670,7 +812,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNamSinhCha.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhCha.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.txtNamSinhCha.Size = new System.Drawing.Size(250, 20);
             this.txtNamSinhCha.TabIndex = 7;
             // 
@@ -703,12 +844,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNamSinhMe.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhMe.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.txtNamSinhMe.Size = new System.Drawing.Size(250, 20);
             this.txtNamSinhMe.TabIndex = 4;
             // 
             // panelControl2
             // 
+            this.panelControl2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.panelControl2.Appearance.Options.UseBackColor = true;
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.btnCancel);
             this.panelControl2.Controls.Add(this.btnSave);
             this.panelControl2.Controls.Add(this.btnEdit);
@@ -721,36 +864,33 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(143, 4);
+            this.btnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.ImageOptions.Image")));
+            this.btnCancel.Location = new System.Drawing.Point(173, 3);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(64, 24);
+            this.btnCancel.Size = new System.Drawing.Size(81, 24);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Bỏ qua";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(74, 4);
+            this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
+            this.btnSave.Location = new System.Drawing.Point(90, 4);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(64, 24);
+            this.btnSave.Size = new System.Drawing.Size(77, 24);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Lưu";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Location = new System.Drawing.Point(4, 4);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(64, 24);
+            this.btnEdit.Size = new System.Drawing.Size(80, 24);
             this.btnEdit.TabIndex = 22;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -771,9 +911,15 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Info)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Info)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtSearch.Properties)).EndInit();
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchChaMe.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSeachGioiTinh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchTenTre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
@@ -815,7 +961,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_Info;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
-        private DevExpress.XtraEditors.TextEdit txtSearch;
+        private DevExpress.XtraEditors.TextEdit txtSearchTenTre;
         private DevExpress.XtraGrid.Columns.GridColumn col_th_MaKhachHang;
         private DevExpress.XtraGrid.Columns.GridColumn col_th_HoTen;
         private DevExpress.XtraGrid.Columns.GridColumn col_th_NgayGioSinh;
@@ -866,5 +1012,14 @@
         private DevExpress.XtraEditors.TextEdit txtMaPhieu1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtMaPhieu2;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.TextEdit txtSearchChaMe;
+        private DevExpress.XtraEditors.DateEdit txtSearchNgaySinh;
+        private DevExpress.XtraEditors.ImageComboBoxEdit txtSeachGioiTinh;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraGrid.Columns.GridColumn col_th_GioiTinh;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
     }
 }

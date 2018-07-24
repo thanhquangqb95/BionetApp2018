@@ -1,0 +1,5 @@
+D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\b\BioNetBLL\bin\Debug\BioNetBLL.dll
+D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetBLL\Debug\BioNetBLL.csprojAssemblyReference.cache
+D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetBLL\Debug\BioNetBLL.csproj.CoreCompileInputs.cache
+D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetBLL\Debug\BioNetBLL.csproj.CopyComplete
+D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetBLL\Debug\BioNetBLL.dll

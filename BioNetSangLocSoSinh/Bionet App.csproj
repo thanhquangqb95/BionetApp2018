@@ -54,59 +54,61 @@
     <ApplicationIcon>BioNet_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v17.2" />
-    <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.TreeMap.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeMap.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Dashboard.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Dashboard.v17.2.Win, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v17.2" />
-    <Reference Include="DevExpress.DataAccess.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.DataAccess.v17.2.UI, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.ExpressApp.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Map.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Pdf.v17.2.Drawing, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Persistent.Base.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v17.2.Export" />
-    <Reference Include="DevExpress.Printing.v17.2.Core" />
-    <Reference Include="DevExpress.RichEdit.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Snap.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Snap.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Snap.v17.2.Extensions, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v17.2" />
-    <Reference Include="DevExpress.Utils.v17.2.UI, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v17.2" />
-    <Reference Include="DevExpress.Sparkline.v17.2.Core" />
-    <Reference Include="DevExpress.XtraCharts.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v17.2.Extensions, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v17.2.UI, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v17.2.Wizard, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraEditors.v17.2" />
-    <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGauges.v17.2.Presets, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v17.2.Win, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraMap.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraNavBar.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPdfViewer.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPivotGrid.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.CodeParser.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraRichEdit.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraRichEdit.v17.2.Extensions, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraScheduler.v17.2.Reporting.Extensions, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraScheduler.v17.2.Reporting, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\..\..\..\Software\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v17.1" />
+    <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeMap.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v17.1.Win, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.1" />
+    <Reference Include="DevExpress.DataAccess.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v17.1.UI, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v17.1.Drawing, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Persistent.Base.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v17.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Snap.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Snap.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Snap.v17.1.Extensions, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.1" />
+    <Reference Include="DevExpress.Utils.v17.1.UI, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.1" />
+    <Reference Include="DevExpress.Sparkline.v17.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.1.Extensions, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.1.UI, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v17.1.Wizard, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v17.1" />
+    <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v17.1.Presets, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v17.1.Win, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraMap.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.1.Export, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.1.Extensions, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v17.1.Extensions, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1.Reporting.Extensions, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1.Reporting, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DLLLicensePS">
       <HintPath>LibDLL\DLLLicensePS.dll</HintPath>
     </Reference>
@@ -124,9 +126,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>C:\Users\mr\Desktop\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -135,6 +135,7 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomLayouts\CustomGridDropDownSearchLookup.cs" />
+    <Compile Include="CustomLayouts\TransLanguage.cs" />
     <Compile Include="DiaglogFrm\FrmChangePass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +243,30 @@
     </Compile>
     <Compile Include="DiaglogFrm\frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmLoginNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmLoginNew.Designer.cs">
+      <DependentUpon>FrmLoginNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmNotData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmNotData.Designer.cs">
+      <DependentUpon>FrmNotData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmOK.Designer.cs">
+      <DependentUpon>FrmOK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmWarning.Designer.cs">
+      <DependentUpon>FrmWarning.cs</DependentUpon>
     </Compile>
     <Compile Include="DiaglogFrm\FrmYeuCauMatKhauXacThuc.cs">
       <SubType>Form</SubType>
@@ -332,6 +358,12 @@
     <Compile Include="Entry\FrmDMGoiDichVuDonVi.Designer.cs">
       <DependentUpon>FrmDMGoiDichVuDonVi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmDMLanguage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmDMLanguage.Designer.cs">
+      <DependentUpon>FrmDMLanguage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entry\FrmDMNhomNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -356,12 +388,6 @@
     <Compile Include="Entry\FrmEmployee.designer.cs">
       <DependentUpon>FrmEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entry\FrmImportData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Entry\FrmImportData.Designer.cs">
-      <DependentUpon>FrmImportData.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entry\FrmInfoPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,12 +405,6 @@
     </Compile>
     <Compile Include="Entry\FrmKhoiPhucCTChatLuongMau.Designer.cs">
       <DependentUpon>FrmKhoiPhucCTChatLuongMau.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entry\FrmKhoiPhucDongBo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Entry\FrmKhoiPhucDongBo.Designer.cs">
-      <DependentUpon>FrmKhoiPhucDongBo.cs</DependentUpon>
     </Compile>
     <Compile Include="Entry\frmNhaCungCap.cs">
       <SubType>Form</SubType>
@@ -404,6 +424,12 @@
     <Compile Include="Entry\FrmNhapLieuDanhGiaMau.Designer.cs">
       <DependentUpon>FrmNhapLieuDanhGiaMau.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmNhapLieuDanhGiaMauNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmNhapLieuDanhGiaMauNew.Designer.cs">
+      <DependentUpon>FrmNhapLieuDanhGiaMauNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entry\FrmPhanQuyen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,12 +441,6 @@
     </Compile>
     <Compile Include="Entry\FrmPhongXetNghiem.Designer.cs">
       <DependentUpon>FrmPhongXetNghiem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entry\FrmShowSync.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Entry\FrmShowSync.Designer.cs">
-      <DependentUpon>FrmShowSync.cs</DependentUpon>
     </Compile>
     <Compile Include="Entry\FrmSuaPhieuLoi.cs">
       <SubType>Form</SubType>
@@ -440,6 +460,12 @@
     <Compile Include="Entry\FrmTiepNhan.Designer.cs">
       <DependentUpon>FrmTiepNhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmTiepNhanNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmTiepNhanNew.Designer.cs">
+      <DependentUpon>FrmTiepNhanNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entry\FrmTraKetQua.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -457,6 +483,12 @@
     </Compile>
     <Compile Include="DiaglogFrm\FrmDiaglogSuaPhieuDaTiepNhan.Designer.cs">
       <DependentUpon>FrmDiaglogSuaPhieuDaTiepNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entry\FrmTraKetQuaNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmTraKetQuaNew.Designer.cs">
+      <DependentUpon>FrmTraKetQuaNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Entry\FrmViewTTPhieu.cs">
       <SubType>Form</SubType>
@@ -500,12 +532,6 @@
     <Compile Include="Entry\FrmGuiMail.Designer.cs">
       <DependentUpon>FrmGuiMail.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmReports\FrmReportPhieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmReports\FrmReportPhieu.Designer.cs">
-      <DependentUpon>FrmReportPhieu.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmReports\FrmReportThongKeCoBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -529,6 +555,11 @@
     </Compile>
     <Compile Include="FrmStartup.designer.cs">
       <DependentUpon>FrmStartup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Language\AppBionetEN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppBionetEN.resx</DependentUpon>
     </Compile>
     <Compile Include="LibDLL\buttonEdit.cs">
       <SubType>Component</SubType>
@@ -636,6 +667,12 @@
     </Compile>
     <Compile Include="Reports\rptPhieuTraKetQua.Designer.cs">
       <DependentUpon>rptPhieuTraKetQua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptPhieuTraKetQuaNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPhieuTraKetQuaNew.Designer.cs">
+      <DependentUpon>rptPhieuTraKetQuaNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPhieuTraKetQua_TheoDonVi2.cs">
       <SubType>Component</SubType>
@@ -750,6 +787,18 @@
     <EmbeddedResource Include="DiaglogFrm\FrmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DiaglogFrm\FrmLoginNew.resx">
+      <DependentUpon>FrmLoginNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiaglogFrm\FrmNotData.resx">
+      <DependentUpon>FrmNotData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiaglogFrm\FrmOK.resx">
+      <DependentUpon>FrmOK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiaglogFrm\FrmWarning.resx">
+      <DependentUpon>FrmWarning.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DiaglogFrm\FrmYeuCauMatKhauXacThuc.resx">
       <DependentUpon>FrmYeuCauMatKhauXacThuc.cs</DependentUpon>
     </EmbeddedResource>
@@ -795,6 +844,9 @@
     <EmbeddedResource Include="Entry\FrmDMGoiDichVuDonVi.resx">
       <DependentUpon>FrmDMGoiDichVuDonVi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmDMLanguage.resx">
+      <DependentUpon>FrmDMLanguage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmDMNhomNhanVien.resx">
       <DependentUpon>FrmDMNhomNhanVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -807,9 +859,6 @@
     <EmbeddedResource Include="Entry\FrmEmployee.resx">
       <DependentUpon>FrmEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entry\FrmImportData.resx">
-      <DependentUpon>FrmImportData.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmInfoPerson.resx">
       <DependentUpon>FrmInfoPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -818,9 +867,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmKhoiPhucCTChatLuongMau.resx">
       <DependentUpon>FrmKhoiPhucCTChatLuongMau.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entry\FrmKhoiPhucDongBo.resx">
-      <DependentUpon>FrmKhoiPhucDongBo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\frmNhaCungCap.resx">
       <DependentUpon>frmNhaCungCap.cs</DependentUpon>
@@ -831,14 +877,14 @@
     <EmbeddedResource Include="Entry\FrmNhapLieuDanhGiaMau.resx">
       <DependentUpon>FrmNhapLieuDanhGiaMau.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmNhapLieuDanhGiaMauNew.resx">
+      <DependentUpon>FrmNhapLieuDanhGiaMauNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmPhanQuyen.resx">
       <DependentUpon>FrmPhanQuyen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmPhongXetNghiem.resx">
       <DependentUpon>FrmPhongXetNghiem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Entry\FrmShowSync.resx">
-      <DependentUpon>FrmShowSync.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmSuaPhieuLoi.resx">
       <DependentUpon>FrmSuaPhieuLoi.cs</DependentUpon>
@@ -849,6 +895,9 @@
     <EmbeddedResource Include="Entry\FrmTiepNhan.resx">
       <DependentUpon>FrmTiepNhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmTiepNhanNew.resx">
+      <DependentUpon>FrmTiepNhanNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmTraKetQua.resx">
       <DependentUpon>FrmTraKetQua.cs</DependentUpon>
     </EmbeddedResource>
@@ -857,6 +906,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DiaglogFrm\FrmDiaglogSuaPhieuDaTiepNhan.resx">
       <DependentUpon>FrmDiaglogSuaPhieuDaTiepNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmTraKetQuaNew.resx">
+      <DependentUpon>FrmTraKetQuaNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmViewTTPhieu.resx">
       <DependentUpon>FrmViewTTPhieu.cs</DependentUpon>
@@ -879,9 +931,6 @@
     <EmbeddedResource Include="Entry\FrmGuiMail.resx">
       <DependentUpon>FrmGuiMail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmReports\FrmReportPhieu.resx">
-      <DependentUpon>FrmReportPhieu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmReports\FrmReportThongKeCoBan.resx">
       <DependentUpon>FrmReportThongKeCoBan.cs</DependentUpon>
     </EmbeddedResource>
@@ -893,6 +942,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmStartup.resx">
       <DependentUpon>FrmStartup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\AppBionetEN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppBionetEN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintRibbonControllerResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -956,6 +1009,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPhieuTraKetQua.resx">
       <DependentUpon>rptPhieuTraKetQua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPhieuTraKetQuaNew.resx">
+      <DependentUpon>rptPhieuTraKetQuaNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPhieuTraKetQua_TheoDonVi2.resx">
       <DependentUpon>rptPhieuTraKetQua_TheoDonVi2.cs</DependentUpon>
@@ -1066,21 +1122,50 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BioNet_icon.ico" />
-    <None Include="Resources\reload3.png" />
+    <None Include="Resources\sad.png" />
+    <None Include="Resources\search %281%29.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\warning1.png" />
+    <None Include="Resources\refreshing.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\translation.png" />
+    <None Include="Resources\united-kingdom.png" />
+    <None Include="Resources\vietnam1.png" />
+    <None Include="Resources\vietnam.png" />
     <None Include="Resources\restore2x24.png" />
     <None Include="Resources\restore2.png" />
     <None Include="Resources\sign-check-icon2.png" />
     <None Include="Resources\uncheckicon.png" />
     <None Include="Resources\sign-check-icon1.png" />
     <None Include="Resources\EasyFind.png" />
+    <None Include="Resources\diskette.png" />
+    <None Include="Resources\add-page.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\btn.png" />
+    <None Include="Resources\computing-cloud.png" />
+    <None Include="Resources\checked.png" />
+    <None Include="Resources\2a2e8826686d3b6ef3f3ddc0abb9afd7.jpg" />
+    <None Include="Resources\057b2be2e40c928f071a47a50769cdf6.jpg" />
+    <None Include="Resources\0a0565a649bbdcb39c59061d3df01be0.jpg" />
+    <None Include="Resources\109d1cc9663456342d7fce96f8606b29.jpg" />
+    <None Include="Resources\8cda90f704c93bc4c3b4a0a9c188d061.jpg" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\Loading %282%29.gif" />
-    <None Include="Resources\if_back3_216570.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\images.jpg" />
+    <None Include="Resources\Group 1.png" />
+    <None Include="Resources\Group 11.png" />
+    <None Include="Resources\Group 12.png" />
+    <None Include="Resources\Group 123.png" />
+    <None Include="Resources\icon.png" />
+    <None Include="Resources\funnel.png" />
+    <None Include="Resources\filter.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
+    <None Include="Resources\password.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

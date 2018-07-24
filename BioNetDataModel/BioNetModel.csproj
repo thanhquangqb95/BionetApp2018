@@ -33,9 +33,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -79,9 +76,6 @@
     <Compile Include="APIViewModel\XN_TraKetQuaViewModel.cs" />
     <Compile Include="APIViewModel\XN_TraKQ_ChiTietViewModel.cs" />
     <Compile Include="ClassDieuKienLocBaoCao.cs" />
-    <Compile Include="Data\BioNetDBContext.cs">
-      <DependentUpon>BioNetDBContext.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Data\BioNetDBContext.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,6 +97,7 @@
     <Compile Include="PsBenhNhan.cs" />
     <Compile Include="PsChiDinhTrenPhieu.cs" />
     <Compile Include="PsCTDanhGiaChatLuong.cs" />
+    <Compile Include="PSCTEmportExcelKQ.cs" />
     <Compile Include="PsCTKQBaoCaoTuyChon.cs" />
     <Compile Include="PsDanhGiaMauSoBo.cs" />
     <Compile Include="PsDanhSachCapMa.cs" />
@@ -111,16 +106,16 @@
     <Compile Include="PsDuLieuThongSo_CAH.cs" />
     <Compile Include="PsDuLieuThongSo_CH.cs" />
     <Compile Include="PsDuLieuThongSo_G6PD_GAL_PUK.cs" />
+    <Compile Include="PsEmployeeLogin.cs" />
     <Compile Include="PsEmployeePosition.cs" />
-    <Compile Include="PsHoanDongBo.cs" />
+    <Compile Include="PSEmportExcelKQ.cs" />
     <Compile Include="PSKetLuanPhieu.cs" />
     <Compile Include="PSKetQuaXetNghiem.cs" />
     <Compile Include="PsKetQua_ChiTiet.cs" />
-    <Compile Include="PsLoiDongBocs.cs" />
+    <Compile Include="PSMenuTrans.cs" />
     <Compile Include="PsPhieuLoiKhiDanhGia.cs" />
     <Compile Include="PsNguoi.cs" />
     <Compile Include="PsPhieu.cs" />
-    <Compile Include="PsPhieuChiDinh.cs" />
     <Compile Include="PsReponse.cs" />
     <Compile Include="PSResposeSync.cs" />
     <Compile Include="PsRptBaoCaoHoaDon.cs" />
@@ -134,6 +129,7 @@
     <Compile Include="PsThongTinTrungTam.cs" />
     <Compile Include="PsTinhTrangPhieu.cs" />
     <Compile Include="PSTKKQPhieuMail.cs" />
+    <Compile Include="PSTTPhieu.cs" />
     <Compile Include="PSXN_TraKetQuaDuyetNhanh.cs" />
     <Compile Include="PSXN_TTTraKQ.cs" />
     <Compile Include="rptBaoCaoSLPhieu.cs" />
@@ -147,13 +143,18 @@
     <Compile Include="TTPhieuCB.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Data\BioNetDBContext.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>BioNetDBContext.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="Data\BioNetDBContext.dbml.layout">
+      <DependentUpon>BioNetDBContext.dbml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -161,11 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\BioNetDBContext.dbml.layout">
-      <DependentUpon>BioNetDBContext.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

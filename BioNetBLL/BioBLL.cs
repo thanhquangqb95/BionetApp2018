@@ -496,6 +496,11 @@ namespace BioNetBLL
             catch { dt = null; }
             return dt;
         }
+        public static List<PSDanhMucDichVu> GetListDichVuCT()
+        {
+            var db = new BioDAL();
+            return db.GetListDichVu();
+        }
 
         public static bool InsDichVu(PSDanhMucDichVu dichVu)
         {
@@ -649,10 +654,10 @@ namespace BioNetBLL
         #endregion
 
         #region Thông tin bệnh nhân
-        public static List<PSPatient> GetListPatient(string keyword)
+        public static List<PSPatient> GetListPatient(string tentre,string tenph,int gioitinh,DateTime ngaysinh)
         {
             var db = new BioDAL();
-            return db.GetListBenhNhanSearch(keyword);
+            return db.GetListBenhNhanSearch(tentre,tenph,gioitinh,ngaysinh);
         }
 
         public static PSPatient GetInfoPersonByMa(string maBenhNhan)
@@ -864,6 +869,22 @@ namespace BioNetBLL
             var db = new BioDAL();
             return db.DelThongSo(id);
         }
+        #endregion
+
+        #region DM Ngôn Ngữ
+
+        public static PSMenuItem GetMenuItemById(long? rowID)
+        {
+            var db = new BioDAL();
+            return db.GetMenuItemById(rowID);
+        }
+
+        public static PsReponse UpdateMenuItemById(PSMenuTrans item)
+        {
+            var db = new BioDAL();
+            return db.UpdateMenuItemById(item);
+        }
+
         #endregion
     }
 }

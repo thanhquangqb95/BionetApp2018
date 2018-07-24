@@ -29,9 +29,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.repositoryItemLookUpEdit_GoiDVChung.DataSource = BioBLL.GetListGoiDichVuChung();
             this.repositoryItemLookUpEdit_GoiDVChung.ValueMember = "IDGoiDichVuChung";
             this.repositoryItemLookUpEdit_GoiDVChung.DisplayMember = "TenGoiDichVuChung";
-
             //this.gridControl_GoiDVDonvi.DataSource = BioBLL.GetListGoiDichVuCoSo();
             this.gridControl_GoiDVDonvi.DataSource = BioBLL.GetListGoiDichVuTheoDonVi();
+            AddItemForm();
         }
 
         private void gridView_GoiDVDonvi_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -120,32 +120,17 @@ namespace BioNetSangLocSoSinh.Entry
 
             }
         }
-
-        //private void gridControl_GoiDVDonvi_ProcessGridKey(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Delete && gridView_GoiDVDonvi.State != DevExpress.XtraGrid.Views.Grid.GridState.Editing)
-        //    {
-        //        if (XtraMessageBox.Show("Bạn có muốn xóa danh mục này hay không?", "Bệnh viện điện tử .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.No)
-        //        {
-        //            try
-        //            {
-        //                if (BioBLL.DelGoiDichVuCoSo(Convert.ToInt32(gridView_GoiDVDonvi.GetRowCellValue(gridView_GoiDVDonvi.FocusedRowHandle, "RowIDGoiDichVuTrungTam").ToString())))
-        //                    this.gridControl_GoiDVDonvi.DataSource = BioBLL.GetListGoiDichVuCoSo();
-        //            }
-        //            catch
-        //            {
-        //                XtraMessageBox.Show("Xóa danh mục thất bại!", "Bệnh viện điện tử .NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                return;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //private void repositoryItemLookUpEdit_GoiDVChung_EditValueChanged(object sender, EventArgs e)
-        //{
-        //    //LookUpEdit view = sender as LookUpEdit;
-        //    //string tenGoi = view.Text;
-        //    //gridView_GoiDVDonvi.SetFocusedRowCellValue(col_th_TenGoiDichVuTrungTam, tenGoi);
-        //}
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
+        }
     }
 }

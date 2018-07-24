@@ -1,6 +1,7 @@
 ﻿using Bionet.API.Models;
 using BioNetModel;
 using BioNetModel.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,7 +93,7 @@ namespace DataSync.BioNetSync
                     if(!String.IsNullOrEmpty(token))
 
                     {
-                         var datas = db.PSChiDinhDichVus.Where(x => x.isDongBo == false).OrderBy(x=>x.RowIDChiDinh).ToList();
+                        var datas = db.PSChiDinhDichVus.Where(x => x.isDongBo == false).OrderBy(x=>x.RowIDChiDinh).ToList();
                         if(datas!=null)
                         {
                             List<ChiDinhDichVuViewModel> de = new List<ChiDinhDichVuViewModel>();
@@ -112,16 +113,18 @@ namespace DataSync.BioNetSync
                                 de.Add(chidinhVM);
                             }
 
-                            while (de.Count() > 125)
+                            while (de.Count() > 1000)
                             {
-                                var temp = de.Take(125);
-                                Nhom = new JavaScriptSerializer().Serialize(temp);
-                                de.RemoveRange(0, 125);
+                                var temp = de.Take(1000);
+                                Nhom = JsonConvert.SerializeObject(temp);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
+                                de.RemoveRange(0, 1000);
                                 jsonstr.Add(Nhom);
                             }
-                            if (de.Count() <= 125 && de.Count() > 0)
+                            if (de.Count() <= 1000 && de.Count() > 0)
                             {
-                                Nhom = new JavaScriptSerializer().Serialize(de);
+                                Nhom = JsonConvert.SerializeObject(de);
+                                //Nhom = new JavaScriptSerializer().Serialize(temp);
                                 jsonstr.Add(Nhom);
                             }
                             if (jsonstr.Count > 0)
@@ -166,15 +169,17 @@ namespace DataSync.BioNetSync
                                                             ds.isDongBo = false;
                                                             res.StringError = res.StringError + sn.Code + ": " + sn.Error + ".\r\n";
                                                             res.Result = false;
-                                                            db.SubmitChanges();
                                                         }
+
                                                     }
+
                                                 }
                                                 if (res.Result == true)
                                                 {
                                                     res.StringError = String.Empty;
                                                 }
                                             }
+                                            db.SubmitChanges();
                                             res.Result = false;
                                         }
                                     }

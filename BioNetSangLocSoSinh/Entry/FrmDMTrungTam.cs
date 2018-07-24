@@ -25,7 +25,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmDMTrungTam_Load(object sender, EventArgs e)
         {
             gridControl_Trungtam.DataSource = BioBLL.GetListTrungTam();
-
+            AddItemForm();
         }
 
         private void gridView_Trungtam_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -87,6 +87,17 @@ namespace BioNetSangLocSoSinh.Entry
             fileLogo.FileName = string.Empty;
             fileLogo.Filter = "Images (*.jpg)|*.jpg|All Files(*.*)|*.*";
             fileLogo.ShowDialog();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
         }
     }
 }

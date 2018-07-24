@@ -107,19 +107,46 @@ D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\Bi
 D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojResolveAssemblyReference.cache
 D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
 D:\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.dll
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.pdb
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.pdb
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll.config
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojResolveAssemblyReference.cache
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csproj.CoreCompileInputs.cache
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
-D:\BionetQuang\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb
-D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.dll
-D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.pdb
-D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll
-D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.pdb
-D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojResolveAssemblyReference.cache
-D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
-D:\BionetQuang\BionetApp server 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.dll
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.pdb
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.pdb
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll.config
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojResolveAssemblyReference.cache
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csproj.CoreCompileInputs.cache
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
+D:\CongTy\BionetQuang\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb
+D:\BionetQuang\BionetApp 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.dll
+D:\BionetQuang\BionetApp 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.pdb
+D:\BionetQuang\BionetApp 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll
+D:\BionetQuang\BionetApp 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetApp 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojResolveAssemblyReference.cache
+D:\BionetQuang\BionetApp 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
+D:\BionetQuang\BionetApp 6.2018\BionetApp 2018\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb
+D:\BionetQuang\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.dll
+D:\BionetQuang\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.pdb
+D:\BionetQuang\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll
+D:\BionetQuang\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.pdb
+D:\BionetQuang\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojResolveAssemblyReference.cache
+D:\BionetQuang\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
+D:\BionetQuang\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.dll
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.pdb
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.pdb
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll.config
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojAssemblyReference.cache
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csproj.CoreCompileInputs.cache
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csproj.CopyComplete
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
+D:\Source\BionetSangLocSoSinh\AppSLSS\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.dll
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetDAL.pdb
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.pdb
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\bin\Debug\BioNetModel.dll.config
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csprojAssemblyReference.cache
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csproj.CoreCompileInputs.cache
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.csproj.CopyComplete
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.dll
+D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDAL\obj\Debug\BioNetDAL.pdb

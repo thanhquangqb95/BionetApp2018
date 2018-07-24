@@ -57,8 +57,8 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void FrmTraKetQua_Load(object sender, EventArgs e)
         {
-
             this.LoadFrm();
+            AddItemForm();
         }
         private void LoadFrm()
         {
@@ -70,7 +70,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
             this.txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
             this.LoadDanhSachChoTraKetQua();
-
         }
 
         private void LoadSearchLookupDonVi()
@@ -289,7 +288,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtNgayLayMau.EditValue = phieu.ngayGioLayMau.Date;
                     this.txtNgayNhanMau.EditValue = phieu.ngayNhanMau;
                     this.txtTenDonVi.Text = phieu.DonVi.TenDVCS;
-                    this.cboTinhTrang.SelectedIndex = phieu.maTinhTrangLucLayMau;
+                   // this.cboTinhTrang.SelectedIndex = phieu.maTinhTrangLucLayMau;
                     this.txtMaPhieuLan1.Text = phieu.maPhieuLan1;
                     this.txtSDTDonVi.Text = phieu.DonVi.SDTCS;
                     if (phieu.isLayMauLan2 && !string.IsNullOrEmpty(phieu.maPhieuLan1))
@@ -513,7 +512,7 @@ namespace BioNetSangLocSoSinh.Entry
                         cT.GiaTri2 = valueGT2.ToString();
                         bool nguyCo = this.GVChiTietKQ.GetRowCellValue(i, this.col_isNguyCoCao) == null ? false : (bool)this.GVChiTietKQ.GetRowCellValue(i, this.col_isNguyCoCao);
                         bool xnLai = this.GVChiTietKQ.GetRowCellValue(i, this.col_isMauXNLai) == null ? false : (bool)this.GVChiTietKQ.GetRowCellValue(i, this.col_isMauXNLai);
-                        var ketLuan = this.GVChiTietKQ.GetRowCellValue(i, this.col_KetLuan) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_KetLuan).ToString();                      
+                        var ketLuan = this.GVChiTietKQ.GetRowCellValue(i, this.col_KetLuan) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_KetLuan).ToString();                     
                         cT.GiaTriCuoi = valueGTCuoi.ToString();                                               
                         cT.MaPhieu = this.txtMaPhieu.Text;
                         cT.IDThongSoXN = IDThongso.ToString();
@@ -974,6 +973,8 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMadonVi.Text.Trim());
                         Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
+                        // Reports.rptPhieuTraKetQuaNew datarp = new Reports.rptPhieuTraKetQuaNew();
+                       // Reports.rptPhieuTraKetQua_TheoDonVi datarp = new Reports.rptPhieuTraKetQua_TheoDonVi();
                         datarp.DataSource = data;
                         string name = data.MaPhieu.ToString();
                         string madvcs = data.ThongTinDonVi.MaDonVi.ToString();
@@ -2165,6 +2166,17 @@ namespace BioNetSangLocSoSinh.Entry
             document.Close();
         }
 
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
+        }
     }
-
 }

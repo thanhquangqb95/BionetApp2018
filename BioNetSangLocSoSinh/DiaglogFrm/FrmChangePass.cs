@@ -24,6 +24,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         private void FrmChangePass_Load(object sender, EventArgs e)
         {
             txtPassOld.Focus();
+            AddItemForm();
         }
 
         private void txtPassOld_KeyDown(object sender, KeyEventArgs e)
@@ -90,6 +91,18 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

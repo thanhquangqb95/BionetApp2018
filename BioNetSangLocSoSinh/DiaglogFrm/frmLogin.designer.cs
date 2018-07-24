@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.grMain = new DevExpress.XtraEditors.GroupControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.butCANCEL = new DevExpress.XtraEditors.SimpleButton();
             this.butOK = new DevExpress.XtraEditors.SimpleButton();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
@@ -41,6 +40,7 @@
             this.lbPassword = new DevExpress.XtraEditors.LabelControl();
             this.lbUsername = new DevExpress.XtraEditors.LabelControl();
             this.psLogo = new System.Windows.Forms.PictureBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.grMain)).BeginInit();
             this.grMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -60,7 +60,7 @@
             this.grMain.AppearanceCaption.Options.UseFont = true;
             this.grMain.AppearanceCaption.Options.UseForeColor = true;
             this.grMain.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.grMain.CaptionImage = ((System.Drawing.Image)(resources.GetObject("grMain.CaptionImage")));
+            this.grMain.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("grMain.CaptionImageOptions.Image")));
             this.grMain.Controls.Add(this.panel1);
             this.grMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grMain.Location = new System.Drawing.Point(0, 0);
@@ -90,20 +90,10 @@
             this.panel1.Size = new System.Drawing.Size(424, 152);
             this.panel1.TabIndex = 0;
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl1.Location = new System.Drawing.Point(227, 4);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(104, 25);
-            this.labelControl1.TabIndex = 117;
-            this.labelControl1.Text = "Đăng nhập";
-            // 
             // butCANCEL
             // 
             this.butCANCEL.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.butCANCEL.Image = ((System.Drawing.Image)(resources.GetObject("butCANCEL.Image")));
+            this.butCANCEL.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butCANCEL.ImageOptions.Image")));
             this.butCANCEL.Location = new System.Drawing.Point(320, 107);
             this.butCANCEL.Name = "butCANCEL";
             this.butCANCEL.Size = new System.Drawing.Size(88, 30);
@@ -114,7 +104,7 @@
             // butOK
             // 
             this.butOK.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.butOK.Image = ((System.Drawing.Image)(resources.GetObject("butOK.Image")));
+            this.butOK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butOK.ImageOptions.Image")));
             this.butOK.Location = new System.Drawing.Point(224, 107);
             this.butOK.Name = "butOK";
             this.butOK.Size = new System.Drawing.Size(94, 30);
@@ -146,6 +136,7 @@
             // lbVersion
             // 
             this.lbVersion.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lbVersion.Appearance.Options.UseForeColor = true;
             this.lbVersion.Location = new System.Drawing.Point(283, 33);
             this.lbVersion.Name = "lbVersion";
             this.lbVersion.Size = new System.Drawing.Size(35, 13);
@@ -155,6 +146,7 @@
             // lblNgayCapNhat
             // 
             this.lblNgayCapNhat.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lblNgayCapNhat.Appearance.Options.UseForeColor = true;
             this.lblNgayCapNhat.Location = new System.Drawing.Point(142, 32);
             this.lblNgayCapNhat.Name = "lblNgayCapNhat";
             this.lblNgayCapNhat.Size = new System.Drawing.Size(80, 13);
@@ -187,6 +179,18 @@
             this.psLogo.TabIndex = 108;
             this.psLogo.TabStop = false;
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(227, 4);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(104, 25);
+            this.labelControl1.TabIndex = 117;
+            this.labelControl1.Text = "Đăng nhập";
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,7 +218,6 @@
 
         private DevExpress.XtraEditors.GroupControl grMain;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton butCANCEL;
         private DevExpress.XtraEditors.SimpleButton butOK;
         private DevExpress.XtraEditors.TextEdit txtPassword;
@@ -224,5 +227,6 @@
         private DevExpress.XtraEditors.LabelControl lbPassword;
         private DevExpress.XtraEditors.LabelControl lbUsername;
         private System.Windows.Forms.PictureBox psLogo;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

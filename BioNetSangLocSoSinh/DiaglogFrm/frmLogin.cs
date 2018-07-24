@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using BioNetBLL;
 using System.Diagnostics;
 using System.Reflection;
+using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.DiaglogFrm
 {
@@ -97,10 +98,10 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
                 string versionCurrent = fileVersionInfo.ProductVersion;
-
-                lblNgayCapNhat.Text = "Ngày cập nhật: 07/05/2018";
-                //lbVersion.Text = "BionetApp."+versionCurrent;
-                lbVersion.Text = "BionetServer." + versionCurrent;
+                lblNgayCapNhat.Text = "Ngày cập nhật: 16/05/2018";
+                lbVersion.Text = "BionetApp."+versionCurrent;
+                AddItemForm();
+               // lbVersion.Text = "BionetServer." + versionCurrent;
                 // lbVersion.Text = "vsBionetServer2018.14.03.01";
                 //var firstInfo = ClinicInformationBLL.ObjInformation(1);
                 //string timeRuntime = Utils.TimeServer();
@@ -112,6 +113,19 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
                 //    this.cboxWorkShift.SelectedValue = this.dtimeServer.ToString("tt");
             }
             catch {  }
+        }
+        
+        private void AddItemForm()
+        {
+                PSMenuForm fo = new PSMenuForm
+                {
+                    NameForm = this.Name,
+                    Capiton = this.Text,
+                };
+                BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            //CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace BioNetSangLocSoSinh.Entry
 
            // this.gridControl_thongso.DataSource = BioBLL.GetListThongSoXN();
             this.gridControl_thongso.DataSource = BioNet_Bus.GetThongSoXN();
+            AddItemForm();
         }
 
         private void gridView_thongso_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -111,7 +112,17 @@ namespace BioNetSangLocSoSinh.Entry
             //    XtraMessageBox.Show("Danh mục không thể xóa!", "Bệnh viện điện tử .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //}
         }
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+        }
 
-        
     }
 }

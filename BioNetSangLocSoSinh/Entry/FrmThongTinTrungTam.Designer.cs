@@ -96,6 +96,7 @@
             // 
             // pictureEdit1
             // 
+            this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureEdit1.Location = new System.Drawing.Point(2, 2);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -313,7 +314,7 @@
             this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLuu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnLuu.Enabled = false;
-            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
             this.btnLuu.Location = new System.Drawing.Point(1019, 324);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
@@ -373,7 +374,7 @@
             // 
             this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSua.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnSua.Image = global::BioNetSangLocSoSinh.Properties.Resources.Edit;
+            this.btnSua.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.Edit;
             this.btnSua.Location = new System.Drawing.Point(929, 324);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
@@ -386,7 +387,7 @@
             this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHuy.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnHuy.Enabled = false;
-            this.btnHuy.Image = global::BioNetSangLocSoSinh.Properties.Resources.del;
+            this.btnHuy.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.del;
             this.btnHuy.Location = new System.Drawing.Point(1105, 324);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 23);
@@ -424,6 +425,7 @@
             // 
             // picHeader
             // 
+            this.picHeader.Cursor = System.Windows.Forms.Cursors.Default;
             this.picHeader.Enabled = false;
             this.picHeader.Location = new System.Drawing.Point(571, 245);
             this.picHeader.Name = "picHeader";

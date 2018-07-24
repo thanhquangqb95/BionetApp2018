@@ -8,7 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using BioNetBLL;
+using BioNetModel.Data;
+using BioNetModel;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -22,6 +25,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void btnKhoiPhucCTchatLuongMau_Click(object sender, EventArgs e)
         {
             SuaPhieu();
+            AddItemForm();
         }
         private void SuaPhieu()
         {
@@ -71,11 +75,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.dateNgayBD.EditValue = DateTime.Now;
             this.dateNgayKetThuc.EditValue = DateTime.Now;
             this.btnTimKiem.Enabled = true;
-
         }
-
       
-
         private void GVDSCTDanhGiaChatLuongMau_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
@@ -94,16 +95,25 @@ namespace BioNetSangLocSoSinh.Entry
                             phieu.lstLyDoKhongDat = BioNet_Bus.GetChiTietDanhGiaMạuKhongDatTrenPhieu(maPhieu, maTiepNhan);
                             this.checkedListBoxLydoKhongDat.DataSource = phieu.lstLyDoKhongDat;
                         }
-
-
                     }
                 }
             }
             catch
             {
 
-            }
-            
+            }           
+        }
+
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
         }
     }
 }

@@ -112,6 +112,7 @@ namespace DataSync.BioNetSync
                 db.Transaction = db.Connection.BeginTransaction();
 
                 var kyt = db.PSDanhMucGoiDichVuTheoDonVis.FirstOrDefault(p => p.IDGoiDichVuChung == cl.IDGoiDichVuChung.Trim() &&p.MaDVCS==cl.MaDVCS.Trim());
+              
                 if (kyt != null)
                 {
 

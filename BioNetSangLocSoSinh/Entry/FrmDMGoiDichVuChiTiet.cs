@@ -31,6 +31,7 @@ namespace BioNetSangLocSoSinh.Entry
             foreach (DataRow row in this.dtGoiDV.Rows)
                 row["Check"] = false;
             gridControl_DichVu.DataSource = this.dtGoiDV;
+            AddItemForm();
         }
 
         private void gridView_GoiDichVuChung_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -59,7 +60,6 @@ namespace BioNetSangLocSoSinh.Entry
                 XtraMessageBox.Show("Chưa chọn gói dịch vụ!", "Bệnh viện điện tử .NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             List<string> lstService = new List<string>();
             foreach (DataRow row in this.dtGoiDV.Rows)
             {
@@ -91,14 +91,22 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     XtraMessageBox.Show("Cập nhật số thứ tự thất bại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-
             }
             catch(Exception ex)
-            {
+            { }               
+        }
 
-            }
-               
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
     }
 }

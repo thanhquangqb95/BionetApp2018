@@ -21,6 +21,7 @@ using System.IO.Compression;
 using BioNetModel;
 using BioNetSangLocSoSinh.DiaglogFrm;
 using DataSync.BioNetSync;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace BioNetSangLocSoSinh
 {
@@ -34,13 +35,7 @@ namespace BioNetSangLocSoSinh
         //path nơi luuw file đã nén để đồng bộ
         public static string pathdongbo = Application.StartupPath + "\\DSNenDongBo";
         public static List<string> MaPhieuPDF=new List<string>();
-        public static List<PhieuDB> dsphieu = new List<PhieuDB>();
-        public class PhieuDB
-        {
-            public string MaPhieuPDF { get; set; }
-            public string IDCoSo { get; set; }
-
-        }
+        public static PsEmployeeLogin emp = new PsEmployeeLogin();
         public FrmStartup()
         {
             InitializeComponent();
@@ -51,11 +46,10 @@ namespace BioNetSangLocSoSinh
             if (BioBLL.CheckConnection())
             {
                 this.GetLogin();
-                Thread thread = new Thread(LoadDuLieu);
-                thread.Start();
-
-               timer1.Enabled = false;
-                timer1.Start();
+                //Thread thread = new Thread(LoadDuLieu);
+                //thread.Start();
+               //timer1.Enabled = false;
+               // timer1.Start();
             }
             else
             {
@@ -64,6 +58,8 @@ namespace BioNetSangLocSoSinh
                 if (frm.isConnected)
                     Application.Restart();
             }
+
+            AddItemForm();
 
         }
 
@@ -79,7 +75,9 @@ namespace BioNetSangLocSoSinh
             //    dl.GetDuLieuBanDau();
             //}
             //FrmStartupSync dl = new FrmStartupSync();
-           //dl.DongBoDuLieu();
+            //dl.DongBoDuLieu();
+           
+
         }
 
         private void GetLogin()
@@ -104,13 +102,13 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                     string mes = string.Format(str, res.TimeRemind);
                     XtraMessageBox.Show(mes, "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                DiaglogFrm.FrmLogin frm = new DiaglogFrm.FrmLogin();
+                DiaglogFrm.FrmLoginNew frm = new DiaglogFrm.FrmLoginNew();
                 frm.ShowDialog();
                 if (!frm.cancel)
                 {
-                    this.empCode = frm._EmployeeCode;
+                    emp = frm.emp;
                     List<PSMenuSecurity> lstMenuSecurity = new List<PSMenuSecurity>();
-                    lstMenuSecurity = BioBLL.ListMenuSecurity(empCode);
+                    lstMenuSecurity = BioBLL.ListMenuSecurity(emp.EmployeeCode);
                     foreach (var item in lstMenuSecurity)
                     {
                         this.SetMenu(item.MenuCode);
@@ -129,6 +127,22 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             {
                 TabControl.SelectedTabPage = TabControl.TabPages[Index];
                 TabControl.SelectedTabPage.Text = Text;
+                //List<PSMenuItem> ListItem = new List<PSMenuItem>();
+                //PSMenuItem it = new PSMenuItem
+                //{
+                //    ItemName = Text,
+                //    ItemType = TabControl.GetType().ToString(),
+                //    VN = Text.TrimEnd(),
+                //    IDForm = idfo
+                //};
+                //ListItem.Add(it);
+                //BioNet_Bus.AddMenuItem(ListItem, idfo);
+                //PSMenuTrans a = BioNet_Bus.TransItem(idfo, Text);
+                //if (a != null)
+                //{
+                //    TabControl.TabPages[Index].Text = a.Trans;
+                //}
+
             }
             else
             {
@@ -142,6 +156,23 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                 Form.Parent = TabPage;
                 Form.Dock = DockStyle.Fill;
                 Form.Show();
+                //int In = this.CheckExists(TabControl, Text);
+                //List<PSMenuItem> ListItem = new List<PSMenuItem>();
+                //PSMenuItem it = new PSMenuItem
+                //{
+                //    ItemName =Text,
+                //    ItemType = TabControl.GetType().ToString(),
+                //    VN = Text.TrimEnd(),
+                //    IDForm = idfo
+                //};
+                //ListItem.Add(it);
+                //BioNet_Bus.AddMenuItem(ListItem, idfo);
+                //PSMenuTrans a = BioNet_Bus.TransItem(idfo, Text);
+                //if (a != null)
+                //{
+                //    TabControl.TabPages[In].Text = a.Trans;
+                //}
+               
             }
         }
 
@@ -162,7 +193,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmTiepNhan frm = new Entry.FrmTiepNhan(this.empCode);
+            Entry.FrmTiepNhanNew frm = new Entry.FrmTiepNhanNew(emp);
             TabCreating(xTabMain, "Tiếp nhận", frm);
             SplashScreenManager.CloseForm();
         }
@@ -170,7 +201,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmNhapLieuDanhGiaMau frm = new Entry.FrmNhapLieuDanhGiaMau(this.empCode);
+            Entry.FrmNhapLieuDanhGiaMauNew frm = new Entry.FrmNhapLieuDanhGiaMauNew(emp);
             TabCreating(xTabMain, "Nhập liệu và đánh giá", frm);
             SplashScreenManager.CloseForm();
         }
@@ -637,7 +668,6 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             PsReponse res = new PsReponse();
             try
             {
-                dsphieu.Clear();
                 var phieuchuadb = BioNet_Bus.GetDanhSachPDFChuaDongBo();
                 if(phieuchuadb != null)
                 {
@@ -656,7 +686,6 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                         string zipPath = pathdongbo+"\\" + phieu.IDCoSo + ".zip";
                         try
                         {
-                            
                             Entry.FrmTraKetQua.LuuPDF(phieu.MaPhieu, phieu.IDCoSo, phieu.MaTiepNhan);
                             if (!File.Exists(zipPath))
                             {
@@ -664,13 +693,9 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                                 using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Create))
                                 {
                                     try
-                                    {                                       
+                                    {
                                         archive.CreateEntryFromFile(startPath, phieu.MaPhieu + ".pdf");
                                         MaPhieuPDF.Add(phieu.MaPhieu);
-                                        PhieuDB phieudb = new PhieuDB();
-                                        phieudb.MaPhieuPDF = phieu.MaPhieu;
-                                        phieudb.IDCoSo = phieu.IDCoSo;
-                                        dsphieu.Add(phieudb);
                                     }
                                     catch (Exception ex)
                                     {
@@ -679,16 +704,13 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                             }
                             else
                             {
+
                                 using (ZipArchive archive = ZipFile.Open(zipPath, ZipArchiveMode.Update))
                                 {
                                     try
                                     {
                                         archive.CreateEntryFromFile(startPath, phieu.MaPhieu + ".pdf");
                                         MaPhieuPDF.Add(phieu.MaPhieu);
-                                        PhieuDB phieudb = new PhieuDB();
-                                        phieudb.MaPhieuPDF = phieu.MaPhieu;
-                                        phieudb.IDCoSo = phieu.IDCoSo;
-                                        dsphieu.Add(phieudb);
                                     }
                                     catch (Exception ex)
                                     {
@@ -894,11 +916,9 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                 if (res.Result)
                 {
                     try
-                    {
-                        string loi = "[]";
-                        CTLoiDongBo.LoiDongBo(loi, "DSPhieuPDF", true);                                             
-                        resp.Result = true;
-                        PsReponse rese = BioNet_Bus.UpdateDanhSachPDFChuaDongBo(MaPhieuPDF);
+                    {                        
+                        PsReponse rese = BioNet_Bus.UpdateDanhSachPDFChuaDongBo(MaPhieuPDF);                          
+                        resp.Result = true;                      
                     }
                     catch (Exception ex)
                     {
@@ -908,29 +928,12 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                 }
                 else
                 {
-                    resp.Result = false;                    
-                    //string loi = string.Join(",", MaPhieuPDF);
-                    List<PhieuDB> dsphỉeuloi=dsphieu.Where(x => x.IDCoSo == resp.StringError).ToList();                                
-                    string[] dsdv = res.StringError.Split(',');
-                    foreach(var dv in dsdv)
-                    {
-                        List<string> MaPhieuPDFloi = dsphieu.Where(x => x.IDCoSo == dv).Select(y=>y.MaPhieuPDF).ToList();
-                        foreach(var ma in MaPhieuPDFloi)
-                        {
-                            MaPhieuPDF.Remove(ma);
-                        }                        
-                    }
-                    PsReponse rese = BioNet_Bus.UpdateDanhSachPDFChuaDongBo(MaPhieuPDF);
-                    string loi = string.Join(",", MaPhieuPDF);
-                    CTLoiDongBo.LoiDongBo(loi, "DSPhieuPDF", false);
-                    resp.StringError = " Danh sách phiếu PDF bị lỗi-" + res.StringError;
-                }            
+                    resp.Result = false;
+                    resp.StringError = " Đồng Bộ Phiếu PDF thất bại -" + res.StringError;
+                }
             }
             else 
             {
-                string loi = string.Join(",", MaPhieuPDF);
-                loi = "Danh sách PDF không thành thành công: " + loi;
-                CTLoiDongBo.LoiDongBo(loi, "DSPhieuPDF", false);
                 resp.Result = false;
                 resp.StringError = "Nén file PDF đồng bộ thất bại - Nén Dữ Liệu Thất Bại";               
             }
@@ -942,7 +945,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             return resp;
         }
-     
+
         private void barButtonItem43_ItemClick(object sender, ItemClickEventArgs e)
         {
             try
@@ -1423,24 +1426,79 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                 XtraMessageBox.Show("Lỗi Đồng Bộ Dữ Liệu Kết Quả - " + ex, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        
+      
 
-        private void barButtonItem62_ItemClick(object sender, ItemClickEventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
-            SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmKhoiPhucDongBo frm = new Entry.FrmKhoiPhucDongBo();
-            TabCreating(xTabMain, "Hoàn đồng bộ", frm);
-            SplashScreenManager.CloseForm();
+            List<PSMenuItem> MenuItem = BioNet_Bus.GetMenuItem("1");
+            foreach (Control control in this.Controls)
+            {
+                PSMenuItem ctmenu = new PSMenuItem();
+                ctmenu.ItemName = control.Name;
+                ctmenu.VN = control.Text;
+                ctmenu.IDForm = 1;
+                
+               
+                if (control.GetType() == typeof(Button))
+                {
+
+                }
+                if (control.GetType() == typeof(Label))
+                {
+                    
+                }
+                MenuItem.Add(ctmenu);
+            }
+            BioNet_Bus.AddMenuItem(MenuItem,1);
         }
 
         private void barButtonItem63_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-            SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmShowSync frm = new Entry.FrmShowSync();
-            TabCreating(xTabMain, "Lịch sử đồng bộ", frm);
-            SplashScreenManager.CloseForm();
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                Entry.FrmDMLanguage frm = new Entry.FrmDMLanguage();
+                TabCreating(xTabMain, "Danh mục từ điển", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
         }
-       
+        public static long? idfo;
+        private void AddItemForm()
+        {
+            PSMenuForm fo = new PSMenuForm
+            {
+                NameForm = this.Name,
+                Capiton = this.Text,
+            };
+            BioNet_Bus.AddMenuForm(fo);
+            idfo = BioNet_Bus.GetMenuIDForm(this.Name);
+            CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+            CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
+        }      
+        private void AddNameTabMain()
+        {
+
+        }
+        private void bttTiengViet_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            BioNet_Bus.SetLanguage(e.Item.ImageIndex);
+            System.Diagnostics.Process.Start(Application.ExecutablePath); 
+            this.Close();
+        }
+
+        private void bttTiengAnh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            BioNet_Bus.SetLanguage(e.Item.ImageIndex);
+            System.Diagnostics.Process.Start(Application.ExecutablePath);
+            this.Close();
+        }
+
+        private void ribbon_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-    
+
 }
