@@ -1,5 +1,0 @@
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\b\BioNetDAL\bin\Debug\BioNetDAL.dll
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetDAL\Debug\BioNetDAL.csprojAssemblyReference.cache
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetDAL\Debug\BioNetDAL.csproj.CoreCompileInputs.cache
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetDAL\Debug\BioNetDAL.csproj.CopyComplete
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\BioNetDAL\Debug\BioNetDAL.dll

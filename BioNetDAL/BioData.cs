@@ -586,9 +586,11 @@ namespace BioNetDAL
                         db.SubmitChanges();
                     }
                 }
+                reponse.Result = true;
             }
             catch
             {
+                reponse.Result = false;
             }
             return reponse;
         }

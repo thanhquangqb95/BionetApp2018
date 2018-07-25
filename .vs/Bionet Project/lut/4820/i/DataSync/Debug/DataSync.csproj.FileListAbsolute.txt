@@ -1,6 +1,0 @@
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\DataSync\Debug\DataSync.csprojAssemblyReference.cache
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\DataSync\Debug\DataSync.FrmStartupSync.resources
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\DataSync\Debug\DataSync.Properties.Resources.resources
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\DataSync\Debug\DataSync.csproj.GenerateResource.cache
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\DataSync\Debug\DataSync.exe.licenses
-D:\IHis\BionetApp2018\.vs\Bionet Project\lut\0\i\DataSync\Debug\DataSync.csproj.CoreCompileInputs.cache

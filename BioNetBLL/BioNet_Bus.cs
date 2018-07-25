@@ -1312,7 +1312,21 @@ namespace BioNetBLL
             return lst;
 
         }
-       
+        public static List<PSChiDinhDichVu> GetDanhSachPhieuDaDuyet(string maDonvi, DateTime tuNgay, DateTime denNgay)
+        {
+            List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
+            var db = new DataObjects();
+            if (maDonvi.Equals("all"))
+            {
+                lst = db.GetDanhSachPhieuDaDuyet(null, tuNgay,denNgay);
+            }
+            else
+            {
+                lst = db.GetDanhSachPhieuDaDuyet(maDonvi, tuNgay, denNgay);
+            }
+            return lst;
+
+        }
         public static string GetMaXN(string maTiepNhan)
         {
             var db = new DataObjects();

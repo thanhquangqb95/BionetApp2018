@@ -2302,6 +2302,26 @@ namespace BioNetDAL
             }
             return lst;
         }
+        public List<PSChiDinhDichVu> GetDanhSachPhieuDaDuyet(string maDonVi, DateTime tuNgay, DateTime denNgay)
+        {
+            List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
+            try
+            {
+                if (string.IsNullOrEmpty(maDonVi))
+                {
+                    lst = db.PSChiDinhDichVus.Where(p => p.isXoa != true && p.isLayMauLai!=true && p.NgayChiDinhLamViec.Value.Date>=tuNgay.Date && p.NgayChiDinhLamViec.Value.Date<=denNgay.Date).ToList();
+                }
+                else
+                {
+                    lst = db.PSChiDinhDichVus.Where(p =>p.MaDonVi==maDonVi && p.isXoa != true && p.isLayMauLai !=true && p.NgayChiDinhLamViec.Value.Date >= tuNgay.Date && p.NgayChiDinhLamViec.Value.Date <= denNgay.Date).ToList();
+                }
+            }
+            catch
+            {
+
+            }
+            return lst;
+        }
 
         public List<PSTiepNhan> GetDanhSachPhieuDaTiepNhan(string maDonVi, DateTime tuNgay, DateTime denNgay)
         {
