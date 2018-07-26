@@ -32,7 +32,7 @@ namespace BioNetSangLocSoSinh.Entry
         public List<PSChiDinhDichVu> lstDaDuyet = new List<PSChiDinhDichVu>();
         private List<PSDanhMucDanhGiaChatLuongMau> sourceListDanhGiaChatLuong = new List<PSDanhMucDanhGiaChatLuongMau>();
         private List<PSChiTietDanhGiaChatLuong> lstDanhGiaChatLuong = new List<PSChiTietDanhGiaChatLuong>();
-
+        private List<PSChiDinhTrenPhieu> listdvcanlamlai = new List<PSChiDinhTrenPhieu>();
 
         private List<PsDichVu> lstChiDinhDichVu = new List<PsDichVu>();
         public FrmNhapLieuDanhGiaMauNew(PsEmployeeLogin Employee)
@@ -53,6 +53,8 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void FrmNhapLieuDanhGiaMauNew_Load(object sender, EventArgs e)
         {
+            this.txtDenNgay.EditValue = DateTime.Now;
+            this.txtTuNgay.EditValue = DateTime.Now;
             this.LoadDataDanhMuc();
             this.LoadGoiDichVuXetNGhiem();
             this.LoadDanhSachDichVu();
@@ -74,6 +76,10 @@ namespace BioNetSangLocSoSinh.Entry
                 this.cbbChiCucTiepNhan.Properties.DataSource = lstChiCuc;
                 this.cbbChiCucTiepNhan.EditValue = "all";
                 this.cbbDonViTiepNhan.EditValue = "all";
+                this.cbbChiCucDaDuyet.Properties.DataSource = lstChiCuc;
+                this.cbbChiCucDaDuyet.EditValue = "all";
+                this.cbbDonViDaDuyet.EditValue = "all";
+                
                 this.LookUpEditDonVi.DataSource = lstDonVi;
                 this.LookUpEditDonViDaDuyet.DataSource = lstDonVi;
                 this.cbbDonViChon.Properties.DataSource = lstDonVi;
@@ -95,6 +101,7 @@ namespace BioNetSangLocSoSinh.Entry
                 this.lstgoiXN = BioNet_Bus.GetDanhsachGoiDichVuChung();
                 this.LookUpEditXetNghiem.DataSource = this.lstgoiXN;
                 this.lookupGoiXN.DataSource = this.lstgoiXN;
+                this.cbbGoiXNLoc.Properties.DataSource = this.lstgoiXN;
             }
             catch { }
         }
@@ -159,7 +166,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadDanhSachDaDuyet()
         {
             this.lstDaDuyet.Clear();
-           this.lstDaDuyet = BioNet_Bus.GetDanhSachPhieuDaDuyet("all",DateTime.Now,DateTime.Now);
+            this.lstDaDuyet = BioNet_Bus.GetDanhSachPhieuDaDuyet("all",txtTuNgay.DateTime.Date,txtDenNgay.DateTime.Date);
             this.LoadDanhSachDaDuyet(lstDaDuyet);
         }
 
@@ -287,6 +294,8 @@ namespace BioNetSangLocSoSinh.Entry
                     this.cbbDonViChon.Enabled = true;
                     this.radioGroupGoiXN.Enabled = true;
                 }
+                if (!string.IsNullOrEmpty(data.Phieu.IDPhieuLan1))
+                    this.txtMaPhieu1.Text = data.Phieu.IDPhieuLan1;
                 this.txtGhiChu.Text = data.Phieu.LuuYPhieu;
                 this.txtMaPhieuHienThi.Text = data.Phieu.IDPhieu;
                 this.txtNgayTruyenMau.EditValue = data.Phieu.NgayTruyenMau;
@@ -301,8 +310,6 @@ namespace BioNetSangLocSoSinh.Entry
                 this.txtDiaChiNoiLayMau.Text = data.Phieu.DiaChiLayMau;
                 this.txtNoiLayMau.Text = data.Phieu.NoiLayMau;
                 this.radioDanhGia.SelectedIndex = (data.Phieu.isKhongDat ?? false) == false ? 0 : 1;
-                if (!string.IsNullOrEmpty(data.Phieu.IDPhieuLan1))
-                    this.txtMaPhieu1.Text = data.Phieu.IDPhieuLan1;
                 this.txtSDTNguoiLayMau.Text = String.IsNullOrEmpty(data.Phieu.SDTNhanVienLayMau) ? this.txtSDTNguoiLayMau.Text : data.Phieu.SDTNhanVienLayMau;
 
                 if (data.Benhnhan != null)
@@ -499,11 +506,20 @@ namespace BioNetSangLocSoSinh.Entry
                 var ts = rd.EditValue;
                 if (ts.Equals("DVGXN0001"))
                 {
-                    this.checkedListBoxXN.Enabled = true;
+                    if(int.Parse(txtTrangThaiMau.EditValue.ToString())<2)
+                    {
+                        this.checkedListBoxXN.Enabled = true;
+                        this.txtMaPhieu1.Enabled = true;
+                    }
+                    else
+                    {
+                        this.checkedListBoxXN.Enabled = false;
+                        this.txtMaPhieu1.Enabled = false;
+                    }
+                    
                     this.lstChiDinhDichVu.Clear();
                     this.LoadGCChiDinhDichVu();
                     this.LoadDanhSachDichVu();
-                    this.txtMaPhieu1.Enabled = true;
                     this.txtGiaGoiXN.EditValue = 0;
 
                 }
@@ -531,18 +547,37 @@ namespace BioNetSangLocSoSinh.Entry
         {
             this.GCChiDinhDichVu.DataSource = null;
             this.GCChiDinhDichVu.DataSource = this.lstChiDinhDichVu;
-            foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
+            if(radioGroupGoiXN.EditValue.Equals("DVGXN0001"))
             {
-                try
+                foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
                 {
-                    PsDichVu dichvu = item.Value as PsDichVu;
-                    if (lstChiDinhDichVu.FirstOrDefault(x => x.IDDichVu.Equals(dichvu.IDDichVu)) != null)
+                    try
                     {
-                        item.CheckState = CheckState.Checked;
+                        PsDichVu dichvu = item.Value as PsDichVu;
+                        if (lstChiDinhDichVu.FirstOrDefault(x => x.IDDichVu.Equals(dichvu.IDDichVu)) != null)
+                        {
+                            item.CheckState = CheckState.Checked;
+                        }
                     }
+                    catch (Exception ex) { }
                 }
-                catch (Exception ex) { }
             }
+            else
+            {
+                foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
+                {
+                    try
+                    {
+                        PsDichVu dichvu = item.Value as PsDichVu;
+                        if (listdvcanlamlai.FirstOrDefault(x => x.MaDichVu.Equals(dichvu.IDDichVu)) != null)
+                        {
+                            item.CheckState = CheckState.Checked;
+                        }
+                    }
+                    catch (Exception ex) { }
+                }
+            }
+           
         }
 
         private void cbbTTTre_EditValueChanged(object sender, EventArgs e)
@@ -908,6 +943,7 @@ namespace BioNetSangLocSoSinh.Entry
 
                 #region Phiếu sàng lọc
                 PSPhieuSangLoc phieuSangLoc = new PSPhieuSangLoc();
+                phieuSangLoc.TrangThaiMau = byte.Parse(txtTrangThaiMau.EditValue.ToString());
                 phieuSangLoc.IDNhanVienTaoPhieu = emp.EmployeeCode;
                 phieuSangLoc.IDCoSo = this.cbbDonViChon.EditValue.ToString();
                 phieuSangLoc.IDViTriLayMau = byte.Parse(this.cbbViTriLayMau.EditValue.ToString());
@@ -1017,7 +1053,8 @@ namespace BioNetSangLocSoSinh.Entry
                         XtraMessageBox.Show("Đã lưu!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
                         this.LoadNew();
                         this.ReadOnly(false);
-                        this.LoadGCChiDinhDichVu();
+                        this.LoadDanhSachTiepNhan();
+                        this.LoadDanhSachDaDuyet();
                         this.btnDuyet.Enabled = false;
                         this.btnLuu.Enabled = false;
                         this.GVDanhSachTiepNhan.Focus();
@@ -1607,6 +1644,182 @@ namespace BioNetSangLocSoSinh.Entry
             else
             {
                 this.cbbViTriLayMau.BackColor = Color.White;
+            }
+        }
+
+        private void GVDanhSachDaTracking_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.GVDanhSachDaTracking.RowCount > 0)
+                {
+                    if (this.GVDanhSachDaTracking.GetFocusedRow() != null)
+                    {
+                        string maPhieu = this.GVDanhSachDaTracking.GetRowCellValue(this.GVDanhSachDaTracking.FocusedRowHandle, this.col_maPhieu_GCDaTracking).ToString();
+                        string maDonVi = this.GVDanhSachDaTracking.GetRowCellValue(this.GVDanhSachDaTracking.FocusedRowHandle, this.col_maDonVi_GCDaTracking).ToString();
+                        this.HienThiThongTinPhieu(maPhieu, maDonVi);
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void txtTuNgay_EditValueChanged(object sender, EventArgs e)
+        {
+            LoadDanhSachDaDuyet();
+        }
+
+        private void txtDenNgay_EditValueChanged(object sender, EventArgs e)
+        {
+            LoadDanhSachDaDuyet();
+        }
+
+        private void cbbChiCucDaDuyet_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SearchLookUpEdit sear = sender as SearchLookUpEdit;
+                var value = sear.EditValue.ToString();
+                this.cbbDonViDaDuyet.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi(value.ToString());
+                this.cbbDonViDaDuyet.EditValue = "all";
+                if (cbbChiCucDaDuyet.EditValue.ToString() != "all")
+                {
+                    FilterTiepNhanTheoDonViDaTiepNhan();
+                }
+                else
+                {
+                    GVDanhSachDaTracking.ClearColumnsFilter();
+                }
+            }
+            catch { }
+        }
+        private void FilterTiepNhanTheoDonViDaTiepNhan()
+        {
+            string machicuc = cbbChiCucDaDuyet.EditValue.ToString();
+            string madv = cbbDonViDaDuyet.EditValue.ToString();
+            if (!machicuc.Equals("all") && madv.Equals("all"))
+            {
+                madv = machicuc;
+            }
+            string filterMaDV = "Contains([MaDonVi], '" + madv + "')";
+            GVDanhSachDaTracking.Columns["MaDonVi"].FilterInfo = new ColumnFilterInfo(filterMaDV);
+
+        }
+
+        private void cbbGoiXNLoc_EditValueChanged(object sender, EventArgs e)
+        {
+            string filter = "Contains([MaGoiXN], '" + cbbGoiXNLoc.EditValue + "')";
+            GVDanhSachDaTracking.Columns["MaGoiXN"].FilterInfo = new ColumnFilterInfo(filter);
+        }
+
+        private void txtMaPhieu1_Validated(object sender, EventArgs e)
+        {
+            try
+            {             
+                if (!string.IsNullOrEmpty(txtMaPhieu1.Text) && string.IsNullOrEmpty(this.txtTenBenhNhan.Text))
+                {
+                        var phieu = BioNet_Bus.GetTTPhieu(txtMaPhieu1.Text, this.cbbDonViChon.EditValue.ToString());
+                        if (phieu.Phieu != null)
+                        {
+                            if (phieu.Phieu.TrangThaiMau == 6)
+                            {
+                                if (!BioNet_Bus.KiemTraPhieuThuMauLaiDaDuocChiDinhChua(txtMaPhieu1.Text, txtMaPhieu.Text.TrimEnd()))
+                                {
+                                    this.listdvcanlamlai.Clear();
+                                    this.listdvcanlamlai = BioNet_Bus.GetDichVuCanLamLaiCuaPhieu(phieu.Phieu.IDPhieu, phieu.Phieu.IDCoSo);
+                                    if (listdvcanlamlai.Count > 0)
+                                    HienThiTTPhieuLan1(phieu);
+                                    else
+                                        XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + "được chỉ định thu lại \r\n nhưng không tìm thấy danh sách thông số nguy cơ cao cần xét nghiệm lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                                }
+                                else
+                                {
+                                    XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + " đã được thu mẫu lại rồi", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    this.txtMaPhieu1.ResetText();
+                                }
+                            }
+                            else
+                                XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + " Không có được yêu cầu lấy mẫu lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                        else XtraMessageBox.Show("Không tìm thấy thông tin cũ của phiếu " + txtMaPhieu1.Text + " thuộc đơn vị " + this.cbbDonViChon.Text + ". Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                   
+                }
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Lỗi khi lấy thông tin phiếu cũ. Lỗi chi tiết \r\n" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void HienThiTTPhieuLan1(PSTTPhieu ph)
+        { 
+            if(string.IsNullOrEmpty(txtTenBenhNhan.Text))
+            {
+                txtTenBenhNhan.Text = ph.Benhnhan.TenBenhNhan;
+            }
+            if (string.IsNullOrEmpty(txtGioiTinh.Text))
+            {
+                txtGioiTinh.EditValue = ph.Benhnhan.GioiTinh.ToString();
+            }
+            if (string.IsNullOrEmpty(txtDiaChiGiaDinh.Text))
+            {
+                txtDiaChiGiaDinh.Text = ph.Benhnhan.DiaChi;
+            }
+            if (string.IsNullOrEmpty(txtDiaChiGiaDinh.Text))
+            {
+                txtDiaChiGiaDinh.Text = ph.Benhnhan.DiaChi;
+            }
+            if (string.IsNullOrEmpty(txtNamSinhBenhNhan.EditValue.ToString()))
+            {
+                txtNamSinhBenhNhan.EditValue = ph.Benhnhan.NgayGioSinh.Value;
+                txtGioSinhBenhNhan.EditValue = ph.Benhnhan.NgayGioSinh.Value;
+            }
+            if(string.IsNullOrEmpty(txtTenMe.Text))
+            {
+                txtTenMe.Text = ph.Benhnhan.MotherName;
+                txtNamSinhMe.EditValue = ph.Benhnhan.MotherBirthday;
+                txtSDTMe.Text = ph.Benhnhan.MotherPhoneNumber;
+            }
+            if (string.IsNullOrEmpty(txtTenCha.Text))
+            {
+                txtTenCha.Text = ph.Benhnhan.FatherName;
+                txtNamSinhCha.EditValue = ph.Benhnhan.FatherBirthday;
+                txtSDTCha.Text = ph.Benhnhan.FatherPhoneNumber;
+            }
+            if (string.IsNullOrEmpty(txtPara.Text))
+            {
+                txtPara.Text = ph.Benhnhan.Para;
+            }
+            cbbDanToc.EditValue= cbbDanToc.EditValue.ToString() != ph.Benhnhan.DanTocID.ToString() ? ph.Benhnhan.DanTocID:cbbDanToc.EditValue;
+            cboPhuongPhapSinh.EditValue = cboPhuongPhapSinh.EditValue.ToString() != ph.Benhnhan.PhuongPhapSinh.ToString() ? ph.Benhnhan.PhuongPhapSinh : cboPhuongPhapSinh.EditValue;
+            cbbCheDoDD.EditValue = cbbCheDoDD.EditValue.ToString() != ph.Phieu.CheDoDinhDuong.ToString() ? ph.Phieu.CheDoDinhDuong : cbbCheDoDD.EditValue;
+            cbbTTTre.EditValue = cbbTTTre.EditValue.ToString() != ph.Phieu.TinhTrangLucLayMau.ToString() ? ph.Phieu.TinhTrangLucLayMau : cbbTTTre.EditValue;
+
+        }
+
+        private void txtMaPhieuDaDuyetSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (!string.IsNullOrEmpty(txtMaPhieuDaDuyetSearch.Text))
+                {
+                    string filterMaPhieu = "[MaPhieu]='" + txtMaPhieuDaDuyetSearch.Text + "'";
+                    GVDanhSachDaTracking.Columns["MaPhieu"].FilterInfo = new ColumnFilterInfo(filterMaPhieu);
+                }
+            }
+        }
+
+        private void cbbDonViDaDuyet_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cbbChiCucTiepNhan.EditValue.ToString() != "all" || cbbDonViTiepNhan.EditValue.ToString() != "all")
+            {
+                FilterTiepNhanTheoDonViDaTiepNhan();
+            }
+            else
+            {
+                GVDanhSachDaTracking.ClearColumnsFilter();
             }
         }
     }

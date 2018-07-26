@@ -235,7 +235,8 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 bool isOK = true;
                 String Error = string.Empty;
-                foreach (var tiepnhan in lstChoTiepNhan)
+                List<PSTiepNhan> lst = lstChoTiepNhan.OrderBy(x=>x.MaPhieu).ToList();
+                foreach (var tiepnhan in lst)
                 {
                     var result = BioNet_Bus.InsertTiepNhan(tiepnhan);
                     if (!result.Result)
@@ -246,8 +247,6 @@ namespace BioNetSangLocSoSinh.Entry
                     else
                     {
                         this.lstChoTiepNhan.Remove(tiepnhan);
-                        if (this.lstChoTiepNhan.Count() == 0)
-                            break;
                     }
                 }
 

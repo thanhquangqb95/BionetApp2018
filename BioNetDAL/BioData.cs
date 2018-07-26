@@ -400,10 +400,9 @@ namespace BioNetDAL
                         }
                         else ph.isLayMauLan2 = false;
                         ph.MaGoiXN = ttphieu.Phieu.MaGoiXN;
-                        ph = ttphieu.Phieu;
-                        ph.TrangThaiMau = 2;
-                        ph.isXoa = false;
+                        ph.TrangThaiMau = 2; 
                     }
+                    ph.isXoa = false;
                     ph.isDongBo = false;
                     ph.TrangThaiPhieu = true;
                     db.SubmitChanges();

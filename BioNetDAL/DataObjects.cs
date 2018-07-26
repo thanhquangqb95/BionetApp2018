@@ -2309,11 +2309,11 @@ namespace BioNetDAL
             {
                 if (string.IsNullOrEmpty(maDonVi))
                 {
-                    lst = db.PSChiDinhDichVus.Where(p => p.isXoa != true && p.isLayMauLai!=true && p.NgayChiDinhLamViec.Value.Date>=tuNgay.Date && p.NgayChiDinhLamViec.Value.Date<=denNgay.Date).ToList();
+                    lst = db.PSChiDinhDichVus.Where(p => p.isXoa != true && p.isLayMauLai!=true && p.IDGoiDichVu != "DVGXNL2" && p.NgayChiDinhLamViec.Value.Date>=tuNgay.Date && p.NgayChiDinhLamViec.Value.Date<=denNgay.Date).ToList();
                 }
                 else
                 {
-                    lst = db.PSChiDinhDichVus.Where(p =>p.MaDonVi==maDonVi && p.isXoa != true && p.isLayMauLai !=true && p.NgayChiDinhLamViec.Value.Date >= tuNgay.Date && p.NgayChiDinhLamViec.Value.Date <= denNgay.Date).ToList();
+                    lst = db.PSChiDinhDichVus.Where(p =>p.MaDonVi==maDonVi && p.isXoa != true && p.IDGoiDichVu != "DVGXNL2" && p.isLayMauLai !=true && p.NgayChiDinhLamViec.Value.Date >= tuNgay.Date && p.NgayChiDinhLamViec.Value.Date <= denNgay.Date).ToList();
                 }
             }
             catch

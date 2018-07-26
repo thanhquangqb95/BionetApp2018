@@ -114,3 +114,10 @@ D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV
 D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
 D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.dll
 D:\Source\BionetAppMultiLanguage\BionetAppMultiLanguage\AppTaoLaoV2.0\AppTaoLaoV2.0\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\IHis\BionetApp2018\BioNetDataModel\bin\Debug\BioNetModel.dll.config
+D:\IHis\BionetApp2018\BioNetDataModel\bin\Debug\BioNetModel.dll
+D:\IHis\BionetApp2018\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\IHis\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csprojAssemblyReference.cache
+D:\IHis\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
+D:\IHis\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.dll
+D:\IHis\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.pdb
