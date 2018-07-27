@@ -785,6 +785,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_maPhieu_GCDaTracking.FieldName = "MaPhieu";
             this.col_maPhieu_GCDaTracking.Name = "col_maPhieu_GCDaTracking";
             this.col_maPhieu_GCDaTracking.OptionsColumn.AllowEdit = false;
+            this.col_maPhieu_GCDaTracking.OptionsColumn.ReadOnly = true;
             this.col_maPhieu_GCDaTracking.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaPhieu", "Tổng: {0} phiếu")});
             this.col_maPhieu_GCDaTracking.Visible = true;
@@ -855,6 +856,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_isDaNhapLieu_GCTracking.ColumnEdit = this.repositoryItemCheckEdit1;
             this.col_isDaNhapLieu_GCTracking.FieldName = "isDaNhapLieu";
             this.col_isDaNhapLieu_GCTracking.Name = "col_isDaNhapLieu_GCTracking";
+            this.col_isDaNhapLieu_GCTracking.OptionsColumn.AllowEdit = false;
             this.col_isDaNhapLieu_GCTracking.Visible = true;
             this.col_isDaNhapLieu_GCTracking.VisibleIndex = 3;
             // 
@@ -1112,8 +1114,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbGoiXNLoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbbGoiXNLoc.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IDGoiXN", "Mã Gói Xét Nghiệm"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenGoiXN", "Tên Gói Xét Nghiệm")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IDGoiDichVuChung", "Mã Gói Xét Nghiệm"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenGoiDichVuChung", "Tên Gói Xét Nghiệm")});
             this.cbbGoiXNLoc.Properties.DisplayMember = "TenGoiDichVuChung";
             this.cbbGoiXNLoc.Properties.NullText = "";
             this.cbbGoiXNLoc.Properties.ValueMember = "IDGoiDichVuChung";
@@ -1941,6 +1943,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtMaPhieu1.Name = "txtMaPhieu1";
             this.txtMaPhieu1.Size = new System.Drawing.Size(180, 20);
             this.txtMaPhieu1.TabIndex = 31;
+            this.txtMaPhieu1.EditValueChanged += new System.EventHandler(this.txtMaPhieu1_EditValueChanged);
             this.txtMaPhieu1.Validated += new System.EventHandler(this.txtMaPhieu1_Validated);
             // 
             // labelControl36

@@ -43,7 +43,6 @@
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_MaXetNghiem_searchLookup = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuaVaoXN = new DevExpress.XtraEditors.SimpleButton();
             this.pn2 = new DevExpress.XtraEditors.PanelControl();
             this.popUpMenuDanhSachCho = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -56,7 +55,8 @@
             this.btnHuyDanhSachDaCapMa = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenuDanhSachDaCapMa = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.GCDanhSachCho = new DevExpress.XtraGrid.GridControl();
             this.GVDanhSachCho = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_maPhieu_GCDanhSachCho = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,8 +66,9 @@
             this.col_MaTiepNhan_GCDanhSachCho = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_MaGoiXN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LookUpGoiXN = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.txtMaPhieu = new DevExpress.XtraEditors.TextEdit();
             this.searchLookUpChiCuc = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -85,7 +86,20 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.txtMaPhieu = new DevExpress.XtraEditors.TextEdit();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachDaCapMa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachDaCapMa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpDonVi_GCDaCapMau)).BeginInit();
@@ -101,16 +115,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuDanhSachDaCapMa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachCho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachCho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpDonVu_GCDanhSachCho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpGoiXN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpChiCuc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpDonViCoSo.Properties)).BeginInit();
@@ -121,7 +136,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTuNgay_ChuaKQ.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // GCDanhSachDaCapMa
@@ -154,6 +176,7 @@
             this.GVDanhSachDaCapMa.Name = "GVDanhSachDaCapMa";
             this.GVDanhSachDaCapMa.OptionsDetail.EnableMasterViewMode = false;
             this.GVDanhSachDaCapMa.OptionsView.ShowFooter = true;
+            this.GVDanhSachDaCapMa.OptionsView.ShowGroupPanel = false;
             this.GVDanhSachDaCapMa.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDanhSachDaCapMa_RowCellStyle);
             this.GVDanhSachDaCapMa.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.GVDanhSachDaCapMa_PopupMenuShowing);
             this.GVDanhSachDaCapMa.ShownEditor += new System.EventHandler(this.GVDanhSachDaCapMa_ShownEditor);
@@ -264,22 +287,6 @@
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Danh sách dự kiến được cấp mã";
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseTextOptions = true;
-            this.simpleButton1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.simpleButton1.AutoWidthInLayoutControl = true;
-            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(11, 5);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(211, 34);
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "Cấp mã tự động";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
             // btnDuaVaoXN
             // 
             this.btnDuaVaoXN.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -382,7 +389,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.groupControl1);
+            this.panelControl1.Controls.Add(this.xtraTabControl1);
             this.panelControl1.Controls.Add(this.panelControl6);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -390,29 +397,36 @@
             this.panelControl1.Size = new System.Drawing.Size(348, 870);
             this.panelControl1.TabIndex = 8;
             // 
-            // groupControl1
+            // xtraTabControl1
             // 
-            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupControl1.AppearanceCaption.Options.UseFont = true;
-            this.groupControl1.Controls.Add(this.GCDanhSachCho);
-            this.groupControl1.Controls.Add(this.panelControl2);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(2, 129);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(344, 739);
-            this.groupControl1.TabIndex = 6;
-            this.groupControl1.Text = "Danh sách chờ cấp mã";
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(2, 129);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.Size = new System.Drawing.Size(344, 739);
+            this.xtraTabControl1.TabIndex = 29;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1,
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.panelControl2);
+            this.xtraTabPage1.Controls.Add(this.GCDanhSachCho);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(339, 714);
+            this.xtraTabPage1.Text = "Danh sách phiếu chờ cấp mã";
             // 
             // GCDanhSachCho
             // 
-            this.GCDanhSachCho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GCDanhSachCho.Location = new System.Drawing.Point(2, 22);
+            this.GCDanhSachCho.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GCDanhSachCho.Location = new System.Drawing.Point(0, 0);
             this.GCDanhSachCho.MainView = this.GVDanhSachCho;
             this.GCDanhSachCho.Name = "GCDanhSachCho";
             this.GCDanhSachCho.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpDonVu_GCDanhSachCho,
             this.LookUpGoiXN});
-            this.GCDanhSachCho.Size = new System.Drawing.Size(340, 670);
+            this.GCDanhSachCho.Size = new System.Drawing.Size(339, 670);
             this.GCDanhSachCho.TabIndex = 2;
             this.GCDanhSachCho.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachCho});
@@ -442,6 +456,8 @@
             // 
             // col_maPhieu_GCDanhSachCho
             // 
+            this.col_maPhieu_GCDanhSachCho.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.col_maPhieu_GCDanhSachCho.AppearanceHeader.Options.UseFont = true;
             this.col_maPhieu_GCDanhSachCho.Caption = "Mã phiếu";
             this.col_maPhieu_GCDanhSachCho.FieldName = "MaPhieu";
             this.col_maPhieu_GCDanhSachCho.Name = "col_maPhieu_GCDanhSachCho";
@@ -509,14 +525,13 @@
             this.LookUpGoiXN.Name = "LookUpGoiXN";
             this.LookUpGoiXN.ValueMember = "IDGoiDichVuChung";
             // 
-            // panelControl2
+            // xtraTabPage2
             // 
-            this.panelControl2.Controls.Add(this.simpleButton1);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(2, 692);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(340, 45);
-            this.panelControl2.TabIndex = 1;
+            this.xtraTabPage2.Controls.Add(this.panelControl4);
+            this.xtraTabPage2.Controls.Add(this.gridControl1);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(339, 714);
+            this.xtraTabPage2.Text = "Danh sách phiếu đã cấp mã";
             // 
             // panelControl6
             // 
@@ -538,6 +553,14 @@
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Size = new System.Drawing.Size(344, 127);
             this.panelControl6.TabIndex = 5;
+            // 
+            // txtMaPhieu
+            // 
+            this.txtMaPhieu.Location = new System.Drawing.Point(63, 101);
+            this.txtMaPhieu.MenuManager = this.barManager1;
+            this.txtMaPhieu.Name = "txtMaPhieu";
+            this.txtMaPhieu.Size = new System.Drawing.Size(216, 20);
+            this.txtMaPhieu.TabIndex = 27;
             // 
             // searchLookUpChiCuc
             // 
@@ -718,13 +741,153 @@
             this.panelControl3.Size = new System.Drawing.Size(920, 870);
             this.panelControl3.TabIndex = 9;
             // 
-            // txtMaPhieu
+            // gridControl1
             // 
-            this.txtMaPhieu.Location = new System.Drawing.Point(63, 101);
-            this.txtMaPhieu.MenuManager = this.barManager1;
-            this.txtMaPhieu.Name = "txtMaPhieu";
-            this.txtMaPhieu.Size = new System.Drawing.Size(216, 20);
-            this.txtMaPhieu.TabIndex = 27;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView2;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemLookUpEdit2});
+            this.gridControl1.Size = new System.Drawing.Size(339, 670);
+            this.gridControl1.TabIndex = 3;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn1});
+            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.GroupCount = 2;
+            this.gridView2.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaPhieu", null, "(có {0} phiếu)")});
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsDetail.EnableMasterViewMode = false;
+            this.gridView2.OptionsSelection.MultiSelect = true;
+            this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView2.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView2.OptionsView.ShowFooter = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn7, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn10, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Mã phiếu";
+            this.gridColumn6.FieldName = "MaPhieu";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.OptionsColumn.ReadOnly = true;
+            this.gridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaPhieu", "Tổng: {0} phiếu")});
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.Width = 57;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Đơn vị";
+            this.gridColumn7.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.gridColumn7.FieldName = "MaDonVi";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.ReadOnly = true;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 2;
+            this.gridColumn7.Width = 90;
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.DisplayMember = "TenDVCS";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.NullText = "Đơn vị";
+            this.repositoryItemLookUpEdit1.ReadOnly = true;
+            this.repositoryItemLookUpEdit1.ValueMember = "MaDVCS";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Mã chỉ định";
+            this.gridColumn8.FieldName = "MaChiDinh";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Width = 229;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Mã tiếp nhận";
+            this.gridColumn9.FieldName = "MaTiepNhan";
+            this.gridColumn9.Name = "gridColumn9";
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Gói xét nghiệm";
+            this.gridColumn10.ColumnEdit = this.repositoryItemLookUpEdit2;
+            this.gridColumn10.FieldName = "IDGoiDichVu";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.ReadOnly = true;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 2;
+            // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.DisplayMember = "TenGoiDichVuChung";
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            this.repositoryItemLookUpEdit2.ValueMember = "IDGoiDichVuChung";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Mã xét nghiệm";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.simpleButton1);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 670);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(339, 44);
+            this.panelControl2.TabIndex = 3;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(59, 6);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(168, 32);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "Đưa vào danh sách cấp mã";
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.simpleButton2);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl4.Location = new System.Drawing.Point(0, 670);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(339, 44);
+            this.panelControl4.TabIndex = 4;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(85, 6);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(132, 32);
+            this.simpleButton2.TabIndex = 0;
+            this.simpleButton2.Text = "simpleButton2";
             // 
             // FrmDanhMaXetNghiem
             // 
@@ -760,17 +923,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenuDanhSachDaCapMa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachCho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachCho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpDonVu_GCDanhSachCho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpGoiXN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpChiCuc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpDonViCoSo.Properties)).EndInit();
@@ -781,7 +945,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTuNgay_ChuaKQ.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -797,7 +968,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Col_MaKQ_GCDaCapMau;
         private DevExpress.XtraGrid.Columns.GridColumn col_MaChiDinh_GCDaCapMau;
         private DevExpress.XtraGrid.Columns.GridColumn col_MaXetNghiem_GCDaCapMau;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton btnDuaVaoXN;
         public DevExpress.XtraEditors.PanelControl pn2;
         private DevExpress.XtraBars.PopupMenu popUpMenuDanhSachCho;
@@ -815,17 +985,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_MaXetNghiem_searchLookup;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraGrid.GridControl GCDanhSachCho;
-        private DevExpress.XtraGrid.Views.Grid.GridView GVDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_maPhieu_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_maDonVi__GCDanhSachCho;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpDonVu_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_MaChiDinh_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_MaTiepNhan_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_MaGoiXN;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpGoiXN;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpChiCuc;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
@@ -844,5 +1003,31 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private DevExpress.XtraEditors.TextEdit txtMaPhieu;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraGrid.GridControl GCDanhSachCho;
+        private DevExpress.XtraGrid.Views.Grid.GridView GVDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_maPhieu_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_maDonVi__GCDanhSachCho;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpDonVu_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_MaChiDinh_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_MaTiepNhan_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_MaGoiXN;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpGoiXN;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

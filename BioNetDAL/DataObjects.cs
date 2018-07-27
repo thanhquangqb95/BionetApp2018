@@ -2116,6 +2116,18 @@ namespace BioNetDAL
             }
             catch { return null; }
         }
+        public List<PSChiDinhDichVu> GetDanhSachChuaCapMaXN(int trangthai)
+        {
+            List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
+            try
+            {
+                    lst = db.PSChiDinhDichVus.OrderBy(p => p.MaPhieu).Where(p => p.isXoa == false && p.TrangThai ==trangthai ).ToList();
+            }
+            catch
+            {
+            }     
+            return lst;
+        }
         public List<PSChiDinhDichVu> GetDanhSachDichVuDaChiDinh(int Trangthai, string maDonVi, DateTime tuNgay, DateTime denNgay, bool isCanCapMa)
         {
             if (!isCanCapMa)
@@ -2309,11 +2321,20 @@ namespace BioNetDAL
             {
                 if (string.IsNullOrEmpty(maDonVi))
                 {
-                    lst = db.PSChiDinhDichVus.Where(p => p.isXoa != true && p.isLayMauLai!=true && p.IDGoiDichVu != "DVGXNL2" && p.NgayChiDinhLamViec.Value.Date>=tuNgay.Date && p.NgayChiDinhLamViec.Value.Date<=denNgay.Date).ToList();
+                    lst = (from cd in db.PSChiDinhDichVus
+                           join ph in db.PSPhieuSangLocs on cd.MaPhieu equals ph.IDPhieu
+                           where cd.isXoa != true && cd.isLayMauLai != true && cd.IDGoiDichVu != "DVGXNL2" && cd.NgayChiDinhLamViec.Value.Date >= tuNgay.Date && cd.NgayChiDinhLamViec.Value.Date <= denNgay.Date
+                           && ph.isXoa != true && (ph.TrangThaiMau < 4 || ph.TrangThaiMau == 5)
+                           select cd).ToList();
                 }
                 else
                 {
-                    lst = db.PSChiDinhDichVus.Where(p =>p.MaDonVi==maDonVi && p.isXoa != true && p.IDGoiDichVu != "DVGXNL2" && p.isLayMauLai !=true && p.NgayChiDinhLamViec.Value.Date >= tuNgay.Date && p.NgayChiDinhLamViec.Value.Date <= denNgay.Date).ToList();
+                    lst = (from cd in db.PSChiDinhDichVus
+                           join ph in db.PSPhieuSangLocs on cd.MaPhieu equals ph.IDPhieu
+                           where cd.isXoa != true && cd.isLayMauLai != true && cd.IDGoiDichVu != "DVGXNL2" && cd.NgayChiDinhLamViec.Value.Date >= tuNgay.Date && cd.NgayChiDinhLamViec.Value.Date <= denNgay.Date
+                           && ph.isXoa != true && cd.MaDonVi == maDonVi  && (ph.TrangThaiMau < 4 || ph.TrangThaiMau == 5)
+                           select cd).ToList();
+                   
                 }
             }
             catch
@@ -2584,16 +2605,30 @@ namespace BioNetDAL
         public List<PSChiTietGoiDichVuChung> GetDichVuTheoMaGoi(string maGoiDichVi)
         {
             List<PSChiTietGoiDichVuChung> lst = new List<PSChiTietGoiDichVuChung>();
-            if (!string.IsNullOrEmpty(maGoiDichVi))
+            try
             {
-                var results = db.PSChiTietGoiDichVuChungs.Where(p => p.IDGoiDichVuChung == maGoiDichVi).ToList();
-                if (results.Count > 0)
+                if (maGoiDichVi.Equals("DVGXN0001"))
                 {
-                    return results;
+                    var dv = db.PSDanhMucDichVus.ToList();
+                    int i = 1;
+                    foreach (var ctdv in dv)
+                    {
+                        PSChiTietGoiDichVuChung goi = new PSChiTietGoiDichVuChung();
+                        goi.IDDichVu = ctdv.IDDichVu;
+                        goi.IDGoiDichVuChung = "DVGXN0001";
+                        goi.RowIDChiTietGoiDichVuChung = i++;
+                        lst.Add(goi);
+                    }
                 }
-                else return lst;
+                else
+                {
+                    lst = db.PSChiTietGoiDichVuChungs.Where(p => p.IDGoiDichVuChung == maGoiDichVi).ToList();
+                }
             }
-            else return lst;
+            catch
+            {
+            }
+            return lst;
         }
         public PSDanhMucDichVu GetDichVuTheoDonVi(string maDichVu, string maDonVi)
         {
@@ -2602,9 +2637,6 @@ namespace BioNetDAL
                 return result;
             else return null;
         }
-
-
-
 
         public List<PSDanhMucGoiDichVuTheoDonVi> GetDanhMucGoiXetNghiemTrungTam(string maDonVi)
         {

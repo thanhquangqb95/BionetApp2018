@@ -71,7 +71,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.LoadsearchLookUpChiCuc();
             this.LoadLookupDonVi();
             this.LoadGoiDichVuXetNGhiem();
-            //this.searchLookUpDonViCoSo.EditValue = "ALL";
             this.txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
             this.txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
             this.LoadListDSCho();
@@ -82,8 +81,6 @@ namespace BioNetSangLocSoSinh.Entry
         {
             this.lstDonVi.Clear();
             this.lstDonVi = BioNet_Bus.GetDanhSachDonVi_Searchlookup();
-            //this.searchLookUpDonViCoSo.Properties.DataSource = null;
-            //this.searchLookUpDonViCoSo.Properties.DataSource = this.lstDonVi;
         }
         private void LoadGCDanhSachDaDanhMa()
         {
@@ -97,15 +94,7 @@ namespace BioNetSangLocSoSinh.Entry
             if (this.KiemTraDieuKienLamMoiDanhSach())
             {
                 this.lstCho.Clear();
-                DateTime tu = this.txtTuNgay_ChuaKQ.EditValue == null ? DateTime.Now.Date : (DateTime)this.txtTuNgay_ChuaKQ.EditValue;
-                DateTime den = this.txtDenNgay_ChuaKQ.EditValue == null ? DateTime.Now.Date : (DateTime)this.txtDenNgay_ChuaKQ.EditValue;
-                string machicuc = this.searchLookUpChiCuc.EditValue == null ? string.Empty : this.searchLookUpChiCuc.EditValue.ToString();
-                string madv = this.searchLookUpDonViCoSo.EditValue == null ? string.Empty : this.searchLookUpDonViCoSo.EditValue.ToString();
-                if (!machicuc.Equals("all") && madv.Equals("all"))
-                {
-                    madv = machicuc;
-                }
-                this.lstCho = BioNet_Bus.GetDanhSachChiDinhChuaDuocCapMa(madv, tu, den);
+                this.lstCho = BioNet_Bus.GetDanhSachChuaCapMa();
                 this.LoadGCDanhSachCho();
             }
             else
@@ -843,5 +832,7 @@ namespace BioNetSangLocSoSinh.Entry
             CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
             CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
+
+        
     }
 }

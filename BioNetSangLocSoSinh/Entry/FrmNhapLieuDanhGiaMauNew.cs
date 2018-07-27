@@ -516,10 +516,9 @@ namespace BioNetSangLocSoSinh.Entry
                         this.checkedListBoxXN.Enabled = false;
                         this.txtMaPhieu1.Enabled = false;
                     }
-                    
-                    this.lstChiDinhDichVu.Clear();
-                    this.LoadGCChiDinhDichVu();
+                    this.lstChiDinhDichVu = BioNet_Bus.GetDanhSachDichVuTheoMaGoi(radioGroupGoiXN.EditValue.ToString(), cbbDonViChon.EditValue.ToString());
                     this.LoadDanhSachDichVu();
+                    this.LoadGCChiDinhDichVu();
                     this.txtGiaGoiXN.EditValue = 0;
 
                 }
@@ -546,9 +545,10 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadGCChiDinhDichVu()
         {
             this.GCChiDinhDichVu.DataSource = null;
-            this.GCChiDinhDichVu.DataSource = this.lstChiDinhDichVu;
-            if(radioGroupGoiXN.EditValue.Equals("DVGXN0001"))
+           
+            if(!radioGroupGoiXN.EditValue.Equals("DVGXN0001"))
             {
+                this.GCChiDinhDichVu.DataSource = this.lstChiDinhDichVu;
                 foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
                 {
                     try
@@ -563,7 +563,15 @@ namespace BioNetSangLocSoSinh.Entry
                 }
             }
             else
+
             {
+                List<PsDichVu> lstdv = new List<PsDichVu>();
+                foreach (var lamlai in this.listdvcanlamlai)
+                {
+                    PsDichVu dv = lstChiDinhDichVu.FirstOrDefault(x => x.IDDichVu == lamlai.MaDichVu);
+                    lstdv.Add(dv);
+                }
+                this.GCChiDinhDichVu.DataSource = lstdv;
                 foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
                 {
                     try
@@ -1708,49 +1716,13 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void cbbGoiXNLoc_EditValueChanged(object sender, EventArgs e)
         {
-            string filter = "Contains([MaGoiXN], '" + cbbGoiXNLoc.EditValue + "')";
-            GVDanhSachDaTracking.Columns["MaGoiXN"].FilterInfo = new ColumnFilterInfo(filter);
+            string filter = "Contains([IDGoiDichVu], '" + cbbGoiXNLoc.EditValue + "')";
+            GVDanhSachDaTracking.Columns["IDGoiDichVu"].FilterInfo = new ColumnFilterInfo(filter);
         }
 
         private void txtMaPhieu1_Validated(object sender, EventArgs e)
         {
-            try
-            {             
-                if (!string.IsNullOrEmpty(txtMaPhieu1.Text) && string.IsNullOrEmpty(this.txtTenBenhNhan.Text))
-                {
-                        var phieu = BioNet_Bus.GetTTPhieu(txtMaPhieu1.Text, this.cbbDonViChon.EditValue.ToString());
-                        if (phieu.Phieu != null)
-                        {
-                            if (phieu.Phieu.TrangThaiMau == 6)
-                            {
-                                if (!BioNet_Bus.KiemTraPhieuThuMauLaiDaDuocChiDinhChua(txtMaPhieu1.Text, txtMaPhieu.Text.TrimEnd()))
-                                {
-                                    this.listdvcanlamlai.Clear();
-                                    this.listdvcanlamlai = BioNet_Bus.GetDichVuCanLamLaiCuaPhieu(phieu.Phieu.IDPhieu, phieu.Phieu.IDCoSo);
-                                    if (listdvcanlamlai.Count > 0)
-                                    HienThiTTPhieuLan1(phieu);
-                                    else
-                                        XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + "được chỉ định thu lại \r\n nhưng không tìm thấy danh sách thông số nguy cơ cao cần xét nghiệm lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
-                                }
-                                else
-                                {
-                                    XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + " đã được thu mẫu lại rồi", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    this.txtMaPhieu1.ResetText();
-                                }
-                            }
-                            else
-                                XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + " Không có được yêu cầu lấy mẫu lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
-                        else XtraMessageBox.Show("Không tìm thấy thông tin cũ của phiếu " + txtMaPhieu1.Text + " thuộc đơn vị " + this.cbbDonViChon.Text + ". Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                   
-                }
-
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show("Lỗi khi lấy thông tin phiếu cũ. Lỗi chi tiết \r\n" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            this.LoadTTPhieuLan1();
         }
 
         private void HienThiTTPhieuLan1(PSTTPhieu ph)
@@ -1820,6 +1792,59 @@ namespace BioNetSangLocSoSinh.Entry
             else
             {
                 GVDanhSachDaTracking.ClearColumnsFilter();
+            }
+        }
+
+        private void txtMaPhieu1_EditValueChanged(object sender, EventArgs e)
+        {
+            this.LoadTTPhieuLan1();
+        }
+        private void LoadTTPhieuLan1()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(txtMaPhieu1.Text) && string.IsNullOrEmpty(this.txtTenBenhNhan.Text))
+                {
+                    var phieu = BioNet_Bus.GetTTPhieu(txtMaPhieu1.Text, this.cbbDonViChon.EditValue.ToString());
+                    if (phieu.Phieu != null)
+                    {
+                        if (phieu.Phieu.TrangThaiMau > 5 )
+                        {
+                            this.listdvcanlamlai.Clear();
+                            this.listdvcanlamlai = BioNet_Bus.GetDichVuCanLamLaiCuaPhieu(phieu.Phieu.IDPhieu, phieu.Phieu.IDCoSo);
+                            if (listdvcanlamlai.Count < 0)
+                            {
+                                XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + "được chỉ định thu lại \r\n nhưng không tìm thấy danh sách thông số nguy cơ cao cần xét nghiệm lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                            }
+                            if(int.Parse(txtTrangThaiMau.EditValue.ToString())>2)
+                            {
+                                if (!BioNet_Bus.KiemTraPhieuThuMauLaiDaDuocChiDinhChua(txtMaPhieu1.Text, txtMaPhieu.Text.TrimEnd()))
+                                {
+                                    HienThiTTPhieuLan1(phieu);
+                                }
+                                else
+                                {
+                                    XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + " đã được thu mẫu lại rồi", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    this.txtMaPhieu1.ResetText();
+                                }
+                            }
+                        }
+                        else 
+                            XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + " Không có được yêu cầu lấy mẫu lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    else XtraMessageBox.Show("Không tìm thấy thông tin cũ của phiếu " + txtMaPhieu1.Text + " thuộc đơn vị " + this.cbbDonViChon.Text + ". Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Lỗi khi lấy thông tin phiếu cũ. Lỗi chi tiết \r\n" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

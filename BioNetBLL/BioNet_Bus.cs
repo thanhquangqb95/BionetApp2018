@@ -1121,6 +1121,20 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.XacThucNhanVien(maNV, pass);
         }
+        public static List<PSChiDinhDichVu>  GetDanhSachChuaCapMa()
+        {
+            List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
+            var db = new DataObjects();
+            lst = db.GetDanhSachChuaCapMaXN(1);
+            return lst;
+        }
+        public static List<PSChiDinhDichVu> GetDanhSachDaCapMa()
+        {
+            List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
+            var db = new DataObjects();
+            lst = db.GetDanhSachChuaCapMaXN( 2);
+            return lst;
+        }
         public static List<PSChiDinhDichVu> GetDanhSachChiDinhChuaDuocCapMa(string maDonVi,DateTime tuNgay, DateTime denNgay)
         {
             List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
