@@ -1132,7 +1132,7 @@ namespace BioNetBLL
         {
             List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
             var db = new DataObjects();
-            lst = db.GetDanhSachChuaCapMaXN( 2);
+            lst = db.GetDanhSachChuaCapMaXN(2);
             return lst;
         }
         public static List<PSChiDinhDichVu> GetDanhSachChiDinhChuaDuocCapMa(string maDonVi,DateTime tuNgay, DateTime denNgay)

@@ -63,19 +63,18 @@ namespace BioNetSangLocSoSinh.Entry
                 goi.ChietKhau = 0;
                 this.lstgoiXN.Add(goi);
                 this.LookUpGoiXN.DataSource = this.lstgoiXN;
+                this.LookUpEditGoiXN.DataSource = this.lstgoiXN;
             }
             catch { }
         }
         private void LoadFrm()
         {
-            this.LoadsearchLookUpChiCuc();
-            this.LoadLookupDonVi();
+            this.LoadDanhMuc();
             this.LoadGoiDichVuXetNGhiem();
             this.txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
             this.txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
             this.LoadListDSCho();
-            this.LoadGCDanhSachCho();
-            AddItemForm();
+            //AddItemForm();
         }
         private void LoadListDonViSearchLookup()
         {
@@ -108,23 +107,21 @@ namespace BioNetSangLocSoSinh.Entry
                 return false; // nếu danh sách đã cấp mã mà chưa đưa vào xn thì ko đc làm mới ds
             else return true;
         }
-        private void LoadLookupDonVi()
+        private void LoadDanhMuc()
         {
-            this.LoadListDonViSearchLookup();
-            this.LoadRepositoryLookupDonViCoSo();
+            this.cbbChiCuc_ChuaCapMa.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
+            this.cbbChiCuc_ChuaCapMa.EditValue = "all";
+            this.lstDonVi = BioNet_Bus.GetDanhSachDonViCoSo();
             this.repositoryItemLookUpDonVi_GCDaCapMau.DataSource = this.lstDonVi;
             this.repositoryItemLookUpDonVu_GCDanhSachCho.DataSource = this.lstDonVi;
         }
+       
         private void LoadGCDanhSachCho()
         {
-            if (!String.IsNullOrEmpty(txtMaPhieu.Text.Trim()))
-            {
-                this.lstCho = lstCho.Where(x => x.MaPhieu == txtMaPhieu.Text.Trim()).ToList();
-            }
-
             this.GCDanhSachCho.DataSource = null;
             this.GCDanhSachCho.DataSource = this.lstCho;
-            // this.GVDanhSachCho.ExpandAllGroups();
+            this.GVDanhSachCho.Columns["MaDonVi"].Group();
+            this.GVDanhSachCho.ExpandAllGroups();
         }
         private void LoadRepositoryLookupDonViCoSo()
         {
@@ -713,7 +710,7 @@ namespace BioNetSangLocSoSinh.Entry
             List<PsRptDanhSachDaCapMaXetNghiem> data = new List<PsRptDanhSachDaCapMaXetNghiem>();
             try
             {
-                data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, this.searchLookUpDonViCoSo.EditValue.ToString());
+                data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, this.cbbDonVi_ChuaCapMa.EditValue.ToString());
                 if (data.Count > 0)
                 {
                     Reports.rptDanhSachDaCapMaXetNghiem rp = new Reports.rptDanhSachDaCapMaXetNghiem();
@@ -780,31 +777,8 @@ namespace BioNetSangLocSoSinh.Entry
 
         }
 
-        private void searchLookUpChiCuc_EditValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SearchLookUpEdit sear = sender as SearchLookUpEdit;
-                var value = sear.EditValue.ToString();
-                this.searchLookUpDonViCoSo.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi(value.ToString());
-                this.searchLookUpDonViCoSo.EditValue = "all";
-            }
-            catch { }
-        }
-        private void LoadsearchLookUpChiCuc()
-        {
-            try
-            {
-                this.searchLookUpChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
-                this.searchLookUpChiCuc.EditValue = "all";
-                this.searchLookUpDonViCoSo.EditValue = "all";
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show("Lỗi khi load danh sách chi cục \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.searchLookUpChiCuc.Focus();
-            }
-        }
+    
+       
 
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -812,7 +786,7 @@ namespace BioNetSangLocSoSinh.Entry
             if (this.KiemTraDieuKienLamMoiDanhSach())
             {
                 this.lstCho.Clear();
-                this.lstCho = BioNet_Bus.GetDanhSachChiDinhChuaDuocCapMa(this.searchLookUpDonViCoSo.EditValue.ToString(), (DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue);
+                this.lstCho = BioNet_Bus.GetDanhSachChiDinhChuaDuocCapMa(this.cbbDonVi_ChuaCapMa.EditValue.ToString(), (DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue);
                 this.LoadGCDanhSachCho();
             }
             else
@@ -833,6 +807,83 @@ namespace BioNetSangLocSoSinh.Entry
             CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
 
-        
+        private void searchLookUpDonViCoSo_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                if (cbbChiCuc_ChuaCapMa.EditValue.ToString() != "all")
+                {
+                   // FilterTiepNhanTheoDonVi();
+                }
+                else
+                {
+                    //GVDanhSachTiepNhan.ClearColumnsFilter();
+                }
+            }
+            catch { }
+        }
+
+        private void cbbChiCuc_ChuaCapMa_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SearchLookUpEdit sear = sender as SearchLookUpEdit;
+                var value = sear.EditValue.ToString();
+                this.cbbDonVi_ChuaCapMa.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi(value.ToString());
+                this.cbbDonVi_ChuaCapMa.EditValue = "all";
+                if (cbbChiCuc_ChuaCapMa.EditValue.ToString() != "all")
+                {
+                    // FilterTiepNhanTheoDonVi();
+                }
+                else
+                {
+                    //GVDanhSachTiepNhan.ClearColumnsFilter();
+                }
+            }
+            catch { }
+        }
+
+        private void btnDuaVaoDanhSachCapMa_Click(object sender, EventArgs e)
+        {
+            if (this.KiemTraDieuKienLamMoiDanhSach())
+            {
+                if (this.GVDanhSachCho.SelectedRowsCount > 0)
+                {
+                    this.txtMaPhieu.ResetText();
+                    this.LayDanhSachCacPhieuCanCapMa();
+                    var tttrungtam = BioNet_Bus.GetThongTinTrungTam();
+                    if (tttrungtam.isCapMaXNTheoMaPhieu ?? true)
+                    {
+                        this.CapMaXNTheoMaPhieu();
+                    }
+                    else
+                    {
+                        // DiaglogFrm.FrmDiaglogCapMaTuDong frm = new DiaglogFrm.FrmDiaglogCapMaTuDong();
+                        DiaglogFrm.FrmDiaglogCapMaXNTuDong frm = new DiaglogFrm.FrmDiaglogCapMaXNTuDong();
+                        frm.lstCapMaTheoDonVi = this.lstCapMaTheoDonVi;
+
+                        frm.lstDonViCanCapMa = this.lstDonViCanCapMa;
+                        frm.ShowDialog();
+                        if (frm.DialogResult == DialogResult.OK)
+                        {
+                            this.lstCapMaTheoDonVi = frm.lstCapMaTheoDonVi;
+                            this.CapMa();
+                        }
+                        else
+                        {
+                            this.lstCapMaTheoDonVi.Clear();
+                            this.lstCanDanhMa.Clear();
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                XtraMessageBox.Show("Đưa danh sách đã cấp mã vào phòng xét nghiệm hoặc hủy danh sách đã cấp mã và làm lại từ đầu", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
     }
 }

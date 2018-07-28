@@ -2121,7 +2121,7 @@ namespace BioNetDAL
             List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
             try
             {
-                    lst = db.PSChiDinhDichVus.OrderBy(p => p.MaPhieu).Where(p => p.isXoa == false && p.TrangThai ==trangthai ).ToList();
+                    lst = db.PSChiDinhDichVus.OrderBy(p => p.MaPhieu).Where(p => p.isXoa == false && p.TrangThai ==trangthai ).OrderBy(x=>x.MaPhieu).ToList();
             }
             catch
             {
