@@ -60,8 +60,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.btnDuaVaoDanhSachCapMa = new DevExpress.XtraEditors.SimpleButton();
             this.GCDanhSachCho = new DevExpress.XtraGrid.GridControl();
             this.GVDanhSachCho = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_maPhieu_GCDanhSachCho = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,6 +69,8 @@
             this.col_MaTiepNhan_GCDanhSachCho = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_MaGoiXN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LookUpGoiXN = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnDuaVaoDanhSachCapMa = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -122,12 +122,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachCho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachCho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpDonVu_GCDanhSachCho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpGoiXN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
@@ -258,6 +258,8 @@
             this.col_MaGoiXetNghiem_DaCapMa.ColumnEdit = this.LookUpEditGoiXN;
             this.col_MaGoiXetNghiem_DaCapMa.FieldName = "MaGoiXN";
             this.col_MaGoiXetNghiem_DaCapMa.Name = "col_MaGoiXetNghiem_DaCapMa";
+            this.col_MaGoiXetNghiem_DaCapMa.OptionsColumn.AllowEdit = false;
+            this.col_MaGoiXetNghiem_DaCapMa.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem_DaCapMa.Visible = true;
             this.col_MaGoiXetNghiem_DaCapMa.VisibleIndex = 3;
             // 
@@ -343,6 +345,8 @@
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(168, 32);
             this.btnXuatExcel.TabIndex = 1;
+            this.btnXuatExcel.Text = "Xuất file Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // popUpMenuDanhSachCho
             // 
@@ -443,33 +447,15 @@
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.panelControl2);
             this.xtraTabPage1.Controls.Add(this.GCDanhSachCho);
+            this.xtraTabPage1.Controls.Add(this.panelControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(339, 714);
             this.xtraTabPage1.Text = "Danh sách phiếu chờ cấp mã";
             // 
-            // panelControl2
-            // 
-            this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelControl2.Controls.Add(this.btnDuaVaoDanhSachCapMa);
-            this.panelControl2.Location = new System.Drawing.Point(0, 670);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(339, 44);
-            this.panelControl2.TabIndex = 3;
-            // 
-            // btnDuaVaoDanhSachCapMa
-            // 
-            this.btnDuaVaoDanhSachCapMa.Location = new System.Drawing.Point(59, 6);
-            this.btnDuaVaoDanhSachCapMa.Name = "btnDuaVaoDanhSachCapMa";
-            this.btnDuaVaoDanhSachCapMa.Size = new System.Drawing.Size(168, 32);
-            this.btnDuaVaoDanhSachCapMa.TabIndex = 0;
-            this.btnDuaVaoDanhSachCapMa.Text = "Đưa vào danh sách cấp mã";
-            this.btnDuaVaoDanhSachCapMa.Click += new System.EventHandler(this.btnDuaVaoDanhSachCapMa_Click);
-            // 
             // GCDanhSachCho
             // 
-            this.GCDanhSachCho.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GCDanhSachCho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GCDanhSachCho.Location = new System.Drawing.Point(0, 0);
             this.GCDanhSachCho.MainView = this.GVDanhSachCho;
             this.GCDanhSachCho.Name = "GCDanhSachCho";
@@ -477,7 +463,7 @@
             this.repositoryItemLookUpDonVu_GCDanhSachCho,
             this.LookUpGoiXN});
             this.GCDanhSachCho.Size = new System.Drawing.Size(339, 670);
-            this.GCDanhSachCho.TabIndex = 2;
+            this.GCDanhSachCho.TabIndex = 4;
             this.GCDanhSachCho.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachCho});
             // 
@@ -574,6 +560,24 @@
             this.LookUpGoiXN.DisplayMember = "TenGoiDichVuChung";
             this.LookUpGoiXN.Name = "LookUpGoiXN";
             this.LookUpGoiXN.ValueMember = "IDGoiDichVuChung";
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.btnDuaVaoDanhSachCapMa);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl2.Location = new System.Drawing.Point(0, 670);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(339, 44);
+            this.panelControl2.TabIndex = 3;
+            // 
+            // btnDuaVaoDanhSachCapMa
+            // 
+            this.btnDuaVaoDanhSachCapMa.Location = new System.Drawing.Point(59, 6);
+            this.btnDuaVaoDanhSachCapMa.Name = "btnDuaVaoDanhSachCapMa";
+            this.btnDuaVaoDanhSachCapMa.Size = new System.Drawing.Size(168, 32);
+            this.btnDuaVaoDanhSachCapMa.TabIndex = 0;
+            this.btnDuaVaoDanhSachCapMa.Text = "Đưa vào danh sách cấp mã";
+            this.btnDuaVaoDanhSachCapMa.Click += new System.EventHandler(this.btnDuaVaoDanhSachCapMa_Click);
             // 
             // xtraTabPage2
             // 
@@ -962,12 +966,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachCho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachCho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpDonVu_GCDanhSachCho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpGoiXN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
@@ -1042,15 +1046,6 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraGrid.GridControl GCDanhSachCho;
-        private DevExpress.XtraGrid.Views.Grid.GridView GVDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_maPhieu_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_maDonVi__GCDanhSachCho;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpDonVu_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_MaChiDinh_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_MaTiepNhan_GCDanhSachCho;
-        private DevExpress.XtraGrid.Columns.GridColumn col_MaGoiXN;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpGoiXN;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
@@ -1068,5 +1063,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_MaGoiXetNghiem_DaCapMa;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditGoiXN;
         private DevExpress.XtraEditors.SimpleButton btnXuatExcel;
+        private DevExpress.XtraGrid.GridControl GCDanhSachCho;
+        private DevExpress.XtraGrid.Views.Grid.GridView GVDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_maPhieu_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_maDonVi__GCDanhSachCho;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpDonVu_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_MaChiDinh_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_MaTiepNhan_GCDanhSachCho;
+        private DevExpress.XtraGrid.Columns.GridColumn col_MaGoiXN;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpGoiXN;
     }
 }

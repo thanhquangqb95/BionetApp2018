@@ -176,12 +176,6 @@
         <elementListCompartment Id="12a612fc-4411-4f4a-94ce-5f3e952c2285" absoluteBounds="6.265, 12.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="88bc0e1a-87d6-42a5-9e2c-b5750a10db43" absoluteBounds="3.5, 12.5, 2, 4.6554182942708309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d907117c-3be9-4516-88ef-89a11ba1a806" absoluteBounds="3.515, 12.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="a48c7617-c461-41bb-83d8-4f382056abfe" absoluteBounds="15.75, 20.75, 2, 3.5016097005208309">
       <DataClassMoniker Name="/BioNetDBContextDataContext/PSTiepNhan" />
       <nestedChildShapes>
@@ -314,32 +308,18 @@
         <elementListCompartment Id="daa43d47-3810-43e1-b55c-d4216461296c" absoluteBounds="26.765, 1.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 10.9046541341146); (3.5 : 10.9046541341146)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 10.9046541341146); (3.5 : 10.9046541341146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVu/PSChiDinhDichVu_PSChiDinhDichVuChiTiet" />
       <nodes>
         <classShapeMoniker Id="b90cafcc-0b2d-434a-ad84-c436a7b55b74" />
         <classShapeMoniker Id="3264c2e7-957f-4a0f-91cc-86f2d714cd24" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(13.75 : 4.05846272786458); (14.5 : 4.05846272786458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13.75 : 4.05846272786458); (14.5 : 4.05846272786458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSXN_TraKetQua/PSXN_TraKetQua_PSXN_TraKQ_ChiTiet" />
       <nodes>
         <classShapeMoniker Id="5e9e1662-8817-4e6f-9b49-61a740a00d7f" />
         <classShapeMoniker Id="773511a7-d1a9-4304-8e23-ac23f8e89f9b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 14.8277091471354); (6.25 : 14.8277091471354)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua/PSXN_KetQua_PSXN_KetQua_ChiTiet" />
-      <nodes>
-        <classShapeMoniker Id="88bc0e1a-87d6-42a5-9e2c-b5750a10db43" />
-        <classShapeMoniker Id="d5c64ef5-e0b9-4f53-924d-80385cccc1ce" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 13.8950105794271); (3.5 : 13.8950105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVu/PSChiDinhDichVu_PSXN_KetQua" />
-      <nodes>
-        <classShapeMoniker Id="b90cafcc-0b2d-434a-ad84-c436a7b55b74" />
-        <classShapeMoniker Id="88bc0e1a-87d6-42a5-9e2c-b5750a10db43" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 4.31814697265625); (3.5 : 4.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
@@ -349,14 +329,14 @@
         <classShapeMoniker Id="dfa611ea-5636-4b1c-a609-b1c18e0a6c23" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 4.38544840494792); (9.25 : 4.38544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.5 : 4.38544840494792); (9.25 : 4.38544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployee/PSEmployee_PSMenuSecurity" />
       <nodes>
         <classShapeMoniker Id="2d2df42b-221e-44a1-ade8-4d071d58dae2" />
         <classShapeMoniker Id="949c7262-e743-4322-8fb5-fcb3c46bb870" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.75 : 1.34699625651042); (7.5 : 1.34699625651042); (7.5 : 2.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.75 : 1.34699625651042); (7.5 : 1.34699625651042); (7.5 : 2.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeeGroup/PSEmployeeGroup_PSEmployee" />
       <nodes>
         <classShapeMoniker Id="649d9a9a-6833-495f-beec-37a3a517ece8" />
@@ -370,11 +350,31 @@
         <classShapeMoniker Id="2d2df42b-221e-44a1-ade8-4d071d58dae2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 10.0296541341146); (11.5 : 10.0296541341146)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 10.0296541341146); (11.5 : 10.0296541341146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSBenhNhanNguyCoCao/PSBenhNhanNguyCoCao_PSDotChuanDoan" />
       <nodes>
         <classShapeMoniker Id="d9bfc92f-9698-4cc9-92cd-b48854762eef" />
         <classShapeMoniker Id="558d0794-812b-4959-ada1-f2788f2c6019" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c2660e0e-e1d2-4dd0-8bf8-5d2ae379fe47" absoluteBounds="3.5, 13.375, 2, 4.8477197265625">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aff90728-1db4-4050-a173-9a1a364354a5" absoluteBounds="3.5149999999999997, 13.835, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 15.3950105794271); (6.25 : 15.3950105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua/PSXN_KetQua_PSXN_KetQua_ChiTiet" />
+      <nodes>
+        <classShapeMoniker Id="c2660e0e-e1d2-4dd0-8bf8-5d2ae379fe47" />
+        <classShapeMoniker Id="d5c64ef5-e0b9-4f53-924d-80385cccc1ce" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 14.3325105794271); (3.5 : 14.3325105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVu/PSChiDinhDichVu_PSXN_KetQua" />
+      <nodes>
+        <classShapeMoniker Id="b90cafcc-0b2d-434a-ad84-c436a7b55b74" />
+        <classShapeMoniker Id="c2660e0e-e1d2-4dd0-8bf8-5d2ae379fe47" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

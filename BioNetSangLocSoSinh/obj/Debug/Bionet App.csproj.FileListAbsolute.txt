@@ -7412,6 +7412,7 @@ D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsBaoCao.rptBaoCaoTaiChinhDonViChiTiet.resources
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsBaoCao.rptBaoCaoTaiChinhHoaDon.resources
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsBaoCao.rptBaoCaoTaiChinhTongHop.resources
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan.resources
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptBaoCaoChiTietTrungTamTheoDonVi.resources
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptBaocaoDonviSoBo.resources
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptBaoCaoThongKeCoBan.resources

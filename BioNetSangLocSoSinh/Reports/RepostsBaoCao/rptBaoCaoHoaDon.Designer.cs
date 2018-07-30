@@ -200,7 +200,7 @@
             // xrTableCell22
             // 
             this.xrTableCell22.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "TenDVCS")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.objectDataSource1, "TenDVCS")});
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.Weight = 1.3750006175451106D;
             // 
@@ -804,7 +804,7 @@
             this.PaperKind = System.Drawing.Printing.PaperKind.A4Rotated;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.BCthang});
-            this.Version = "15.2";
+            this.Version = "17.1";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();

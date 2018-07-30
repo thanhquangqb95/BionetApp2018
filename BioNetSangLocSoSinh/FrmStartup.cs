@@ -209,7 +209,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmDanhMaXetNghiem frm = new Entry.FrmDanhMaXetNghiem(this.empCode);
+            Entry.FrmDanhMaXetNghiem frm = new Entry.FrmDanhMaXetNghiem(emp);
             TabCreating(xTabMain, "Cấp phát mã xét nghiệm", frm);
             SplashScreenManager.CloseForm();
         }

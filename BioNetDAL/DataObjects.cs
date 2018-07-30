@@ -2772,26 +2772,13 @@ namespace BioNetDAL
                 {
                     if (string.IsNullOrEmpty(maDonVi) || maDonVi.Equals("all"))
                     {
-                        var results = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa == false && p.isCoKQ == isCoKQ && p.NgayLamXetNghiem.Value.Date >= tuNgay.Date && p.NgayLamXetNghiem.Value.Date <= denNgay.Date).ToList();
-                        if (results.Count > 0)
-                        {
-                            foreach (var result in results)
-                            {
-                                lst.Add(result);
-                            }
-                        }
+                        lst = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa !=true && p.isCoKQ == isCoKQ && p.NgayLamXetNghiem.Value.Date >= tuNgay.Date && p.NgayLamXetNghiem.Value.Date <= denNgay.Date).ToList();
+                       
                     }
                     else
                     {
-                        var results = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa == false && p.isCoKQ == isCoKQ && p.NgayLamXetNghiem.Value.Date >= tuNgay.Date && p.NgayLamXetNghiem.Value.Date <= denNgay.Date && p.MaDonVi.Contains(maDonVi)).ToList();
-                        if (results.Count > 0)
-                        {
-                            foreach (var result in results)
-                            {
-                                lst.Add(result);
-                            }
-
-                        }
+                       lst = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa !=true && p.isCoKQ == isCoKQ && p.NgayLamXetNghiem.Value.Date >= tuNgay.Date && p.NgayLamXetNghiem.Value.Date <= denNgay.Date && p.MaDonVi.Contains(maDonVi)).ToList();
+                        
 
                     }
                 }
@@ -2799,26 +2786,13 @@ namespace BioNetDAL
                 {
                     if (string.IsNullOrEmpty(maDonVi) || maDonVi.Equals("all"))
                     {
-                        var results = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa == false && p.isCoKQ == isCoKQ && p.NgayTraKQ.Value.Date >= tuNgay.Date && p.NgayTraKQ.Value.Date <= denNgay.Date).ToList();
-                        if (results.Count > 0)
-                        {
-                            foreach (var result in results)
-                            {
-                                lst.Add(result);
-                            }
-                        }
+                        lst = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa == false && p.isCoKQ == isCoKQ && p.NgayTraKQ.Value.Date >= tuNgay.Date && p.NgayTraKQ.Value.Date <= denNgay.Date).ToList();
+                      
                     }
                     else
                     {
-                        var results = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa == false && p.isCoKQ == isCoKQ && p.NgayTraKQ.Value.Date >= tuNgay.Date && p.NgayTraKQ.Value.Date <= denNgay.Date && p.MaDonVi.Contains(maDonVi)).ToList();
-                        if (results.Count > 0)
-                        {
-                            foreach (var result in results)
-                            {
-                                lst.Add(result);
-                            }
-
-                        }
+                        lst = db.PSXN_KetQuas.OrderBy(p => p.MaXetNghiem).Where(p => p.isXoa == false && p.isCoKQ == isCoKQ && p.NgayTraKQ.Value.Date >= tuNgay.Date && p.NgayTraKQ.Value.Date <= denNgay.Date && p.MaDonVi.Contains(maDonVi)).ToList();
+                       
 
                     }
                 }

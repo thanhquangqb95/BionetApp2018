@@ -21,11 +21,13 @@ namespace BioNetSangLocSoSinh.Entry
 {
     public partial class FrmDanhMaXetNghiem : DevExpress.XtraEditors.XtraForm
     {
-        public FrmDanhMaXetNghiem(string manhanvien)
+        public FrmDanhMaXetNghiem(PsEmployeeLogin nv)
         {
-            MaNhanVien = manhanvien;
+            emp = nv;
             InitializeComponent();
         }
+
+        public static PsEmployeeLogin emp = new PsEmployeeLogin();
         private string MaNhanVien;
         private List<string> lstCDCanDanhMa = new List<string>();
         private List<PSChiDinhDichVu> lstCho = new List<PSChiDinhDichVu>();
@@ -435,6 +437,7 @@ namespace BioNetSangLocSoSinh.Entry
                         ds.NgayTiepNhan = mau.NgayTiepNhan;
                         ds.MaGoiXN = mau.IDGoiDichVu;
                         ds.MaXetNghiem = string.IsNullOrEmpty(BioNet_Bus.GetMaXN(mau.MaTiepNhan)) == true ? mau.MaPhieu + "_L2" : BioNet_Bus.GetMaXN(mau.MaTiepNhan) + "_L2";
+                        ds.IDNhanVienCapMa = emp.EmployeeCode;
                         this.lstDaDanhMaXN.Add(ds);
                     }
                     else
@@ -449,6 +452,7 @@ namespace BioNetSangLocSoSinh.Entry
                         ds.NgayTiepNhan = mau.NgayTiepNhan;
                         ds.MaXetNghiem = mau.MaPhieu;
                         ds.MaGoiXN = mau.IDGoiDichVu;
+                        ds.IDNhanVienCapMa = emp.EmployeeCode;
                         this.lstDaDanhMaXN.Add(ds);
                     }
                 }
@@ -884,6 +888,35 @@ namespace BioNetSangLocSoSinh.Entry
                 XtraMessageBox.Show("Đưa danh sách đã cấp mã vào phòng xét nghiệm hoặc hủy danh sách đã cấp mã và làm lại từ đầu", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void GCDanhSachCho_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            List<PsRptDanhSachDaCapMaXetNghiem> data = new List<PsRptDanhSachDaCapMaXetNghiem>();
+            try
+            {
+                data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, this.cbbDonVi_ChuaCapMa.EditValue.ToString());
+                if (data.Count > 0)
+                {
+                    Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan();
+                    rp.Parameters["NgayXuatDS"].Value =  DateTime.Now;
+                    rp.Parameters["NVXuatDS"].Value = emp.EmployeeName;
+                    rp.DataSource = data;
+                    Reports.frmDanhSachDaCapMa rpt = new Reports.frmDanhSachDaCapMa(rp);
+                    rpt.ShowDialog();
+                }
+                else
+                    XtraMessageBox.Show("Không có phiếu nào được cấp mã xét nghiệm trong khoảng thời gian bạn đã chọn!", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Data;
 using System.Linq;
 using System.Drawing;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace BioNetBLL
 {
@@ -959,7 +961,7 @@ namespace BioNetBLL
         {
             List<PsRptDanhSachDaCapMaXetNghiem> lst = new List<PsRptDanhSachDaCapMaXetNghiem>();
             var db = new DataObjects();
-            if (maDonVi.Equals("ALL"))
+            if (maDonVi.Equals("all"))
                 maDonVi = string.Empty;
             var res= db.GetDanhSachChoNhanKetQua(tuNgay, denNgay, maDonVi, false);
             if(res.Count>0)
@@ -973,19 +975,31 @@ namespace BioNetBLL
                         cm.MaDonVi = item.MaDonVi;
                         cm.MaPhieu = item.MaPhieu;
                         cm.MaXetNghiem = item.MaXetNghiem;
+                        
                         var goixn = db.GetDanhMucGoiXetNghiemChung(item.MaGoiXN);
                         if(goixn!=null)
                         {
                             foreach(var goi in goixn)
                             {
-                                cm.MaGoiXetNghiem = goi.TenGoiDichVuChung;
+                                cm.MaGoiXetNghiem = goi.IDGoiDichVuChung;
+                                cm.TenGoiXetNghiem = goi.TenGoiDichVuChung;
+                                cm.TenGoiXetNghiemKhongDau = Bodautiengviet(goi.TenGoiDichVuChung);
                             }                         
                         }
                         else
                         {
-                            cm.MaGoiXetNghiem = "Gói Xét nghiệm lần 2";
+                            cm.MaGoiXetNghiem = "XNLan2";
+                            cm.TenGoiXetNghiem = "XNL L2";
+                            cm.TenGoiXetNghiemKhongDau = "XNL L2";
                         }
                         cm.TenDonVi = dovi.TenDVCS;
+                      
+                            PSEmployee nv= GetThongTinNhanVien(item.IDNhanVienCapMa);
+                        if(nv!=null)
+                        {
+                            cm.NVCapMa = nv.EmployeeName;
+                        }
+                            
                         string GhiChu = string.Empty;
                         try
                         {
@@ -1028,7 +1042,7 @@ namespace BioNetBLL
                                     else GhiChu = "Ghi Chú:"+phieu.LuuYPhieu;
                                 }
                             }
-                            
+                   
                         }
                         catch { }
                         cm.GhiChu = GhiChu;
@@ -1038,7 +1052,12 @@ namespace BioNetBLL
             }
             return lst;
         }
-        
+        public static string Bodautiengviet(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
         public static List<PSXN_KetQua> GetDanhSachChoKetQuaXN(DateTime tuNgay,DateTime denNgay,string maDonVi)
         {
             var db = new DataObjects();

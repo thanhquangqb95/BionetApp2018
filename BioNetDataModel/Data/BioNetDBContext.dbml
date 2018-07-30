@@ -390,32 +390,6 @@
       <Association Name="PSXN_KetQua_PSXN_KetQua_ChiTiet" Member="PSXN_KetQua" ThisKey="MaKQ" OtherKey="MaKetQua" Type="PSXN_KetQua" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PSXN_KetQua" Member="PSXN_KetQuas">
-    <Type Name="PSXN_KetQua">
-      <Column Name="RowIDKetQua" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NgayTraKQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UserTraKQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NgayLamXetNghiem" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaChiDinh" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
-      <Column Name="MaDonVi" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="MaKetQua" Type="System.String" DbType="NVarChar(38) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaXetNghiem" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="MaTiepNhan" Type="System.String" DbType="NVarChar(38)" CanBeNull="true" />
-      <Column Name="isCoKQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="NgayChiDinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NgayTiepNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="isDongBo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="MaGoiXN" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="IDNhanVienXoa" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="NgayGioXoa" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LyDoXoa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="PSXN_KetQua_PSXN_KetQua_ChiTiet" Member="PSXN_KetQua_ChiTiets" ThisKey="MaKetQua" OtherKey="MaKQ" Type="PSXN_KetQua_ChiTiet" />
-      <Association Name="PSChiDinhDichVu_PSXN_KetQua" Member="PSChiDinhDichVu" ThisKey="MaChiDinh" OtherKey="MaChiDinh" Type="PSChiDinhDichVu" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PSTiepNhan" Member="PSTiepNhans">
     <Type Name="PSTiepNhan">
       <Column Name="RowIDTiepNhan" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -733,6 +707,33 @@
       <Column Name="GiaTri" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="isLocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="DonViTinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSXN_KetQua" Member="PSXN_KetQuas">
+    <Type Name="PSXN_KetQua">
+      <Column Name="RowIDKetQua" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NgayTraKQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserTraKQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayLamXetNghiem" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaChiDinh" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="MaDonVi" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="MaKetQua" Type="System.String" DbType="NVarChar(38) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaXetNghiem" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="MaTiepNhan" Type="System.String" DbType="NVarChar(38)" CanBeNull="true" />
+      <Column Name="isCoKQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NgayChiDinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayTiepNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="isDongBo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MaGoiXN" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="IDNhanVienXoa" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="NgayGioXoa" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LyDoXoa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IDNhanVienCapMa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PSXN_KetQua_PSXN_KetQua_ChiTiet" Member="PSXN_KetQua_ChiTiets" ThisKey="MaKetQua" OtherKey="MaKQ" Type="PSXN_KetQua_ChiTiet" />
+      <Association Name="PSChiDinhDichVu_PSXN_KetQua" Member="PSChiDinhDichVu" ThisKey="MaChiDinh" OtherKey="MaChiDinh" Type="PSChiDinhDichVu" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">

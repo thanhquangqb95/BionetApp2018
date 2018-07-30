@@ -620,6 +620,18 @@
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.Designer.cs">
       <DependentUpon>rptBaoCaoTaiChinhTongHop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMa3Benh.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMa3Benh.Designer.cs">
+      <DependentUpon>rptReportCapMa3Benh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.Designer.cs">
+      <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -985,6 +997,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.resx">
       <DependentUpon>rptBaoCaoTaiChinhTongHop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMa3Benh.resx">
+      <DependentUpon>rptReportCapMa3Benh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.resx">
+      <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.resx">
       <DependentUpon>rptBaoCaoChiTietTrungTamTheoDonVi.cs</DependentUpon>
