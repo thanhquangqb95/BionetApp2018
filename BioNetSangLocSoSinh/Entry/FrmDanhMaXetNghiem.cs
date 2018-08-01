@@ -903,9 +903,10 @@ namespace BioNetSangLocSoSinh.Entry
                 data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, this.cbbDonVi_ChuaCapMa.EditValue.ToString());
                 if (data.Count > 0)
                 {
-                    Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan();
-                    rp.Parameters["NgayXuatDS"].Value =  DateTime.Now;
-                    rp.Parameters["NVXuatDS"].Value = emp.EmployeeName;
+                    //Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan();
+                    //rp.Parameters["NgayXuatDS"].Value =  DateTime.Now;
+                    //rp.Parameters["NVXuatDS"].Value = emp.EmployeeName;
+                    Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh();
                     rp.DataSource = data;
                     Reports.frmDanhSachDaCapMa rpt = new Reports.frmDanhSachDaCapMa(rp);
                     rpt.ShowDialog();

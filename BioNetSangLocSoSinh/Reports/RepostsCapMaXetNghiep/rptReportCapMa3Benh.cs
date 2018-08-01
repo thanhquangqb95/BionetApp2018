@@ -13,5 +13,9 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
             InitializeComponent();
         }
 
+        private void xrTableCell5_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+
+        }
     }
 }
