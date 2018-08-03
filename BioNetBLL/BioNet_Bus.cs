@@ -1052,6 +1052,20 @@ namespace BioNetBLL
             }
             return lst;
         }
+        public static List<pro_ReportGanViTriMayXNResult> GanViTriMayXNResult(DateTime tungay,DateTime denngay)
+        {
+            List<pro_ReportGanViTriMayXNResult> lst = new List<pro_ReportGanViTriMayXNResult>();
+            try
+            {
+                var db = new DataObjects();
+                lst = db.GanViTriMayXNResult(tungay, denngay);
+            }
+            catch
+            {
+
+            }
+            return lst;
+        }
         public static string Bodautiengviet(string s)
         {
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");

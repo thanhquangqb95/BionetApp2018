@@ -15,7 +15,9 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 //using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.Spreadsheet;
 using System.IO;
+using System.Diagnostics;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -898,18 +900,56 @@ namespace BioNetSangLocSoSinh.Entry
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             List<PsRptDanhSachDaCapMaXetNghiem> data = new List<PsRptDanhSachDaCapMaXetNghiem>();
+            List<pro_ReportGanViTriMayXNResult> dataGanVT = new List<pro_ReportGanViTriMayXNResult>();
             try
             {
-                data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, this.cbbDonVi_ChuaCapMa.EditValue.ToString());
-                if (data.Count > 0)
+                string link =Application.StartupPath + @"\DSSoDoXetNghiem\";
+                //data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, "all");
+                dataGanVT = BioNet_Bus.GanViTriMayXNResult((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue);
+                if (dataGanVT.Count > 0)
                 {
+                    Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh();
+                    rp.CreateDocument();
+                    rp.DataSource = dataGanVT;
+                    var CountMay = dataGanVT.Select(x=>x.MayXN).Distinct().ToList();
+
+                    //rp.ExportToXlsx("test1.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "report1" });
+                    Workbook workbook = new DevExpress.Spreadsheet.Workbook();
+                    //workbook.LoadDocument("test1.xlsx");
+                    int i = 0;
+                    foreach (var may in CountMay)
+                    {
+                        Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh rp1 = new Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh();
+                        rp.CreateDocument();
+                        rp1.DataSource = dataGanVT.Where(x => x.MayXN.Equals(may.ToString())).ToList();
+                        rp1.PaperName = may.ToString();
+                      //  rp.Pages.AddRange(rp1.Pages);
+                        rp1.Parameters["TenMay"].Value = may.ToString();
+                        rp1.Parameters["TenNV"].Value = emp.EmployeeName;
+                        rp1.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
+                        rp1.Parameters["NgayCapMaXN"].Value = this.txtTuNgay_ChuaKQ.Text + "~" + this.txtDenNgay_ChuaKQ.Text;
+                        rp1.ExportToXlsx(may.ToString() + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = may.ToString() });
+                       
+                        Workbook workbook2 = new DevExpress.Spreadsheet.Workbook();
+                        using (FileStream stream = new FileStream(may.ToString() + ".xlsx", FileMode.Open))
+                        {
+                            workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                        }
+                      //  workbook2.LoadDocument("test" + may.ToString() + ".xlsx");
+                        workbook.Worksheets.Insert(i, may.ToString());
+                        workbook.Worksheets[i].CopyFrom(workbook2.Worksheets[0]);
+                        File.Delete(may.ToString() + ".xlsx");
+                        i++;
+                    }
                     //Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan();
                     //rp.Parameters["NgayXuatDS"].Value =  DateTime.Now;
                     //rp.Parameters["NVXuatDS"].Value = emp.EmployeeName;
-                    Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh();
-                    rp.DataSource = data;
-                    Reports.frmDanhSachDaCapMa rpt = new Reports.frmDanhSachDaCapMa(rp);
-                    rpt.ShowDialog();
+                    // Reports.frmDanhSachDaCapMa rpt = new Reports.frmDanhSachDaCapMa(rp);
+                    //rpt.ShowDialog();
+                    string l = link + "SodoXetNghiemNgay" + DateTime.Now.Day+ DateTime.Now.Month + DateTime.Now.Year+ ".xlsx";
+                    workbook.SaveDocument(l);
+                    Process.Start(l);
+
                 }
                 else
                     XtraMessageBox.Show("Không có phiếu nào được cấp mã xét nghiệm trong khoảng thời gian bạn đã chọn!", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

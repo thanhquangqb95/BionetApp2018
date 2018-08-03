@@ -1238,12 +1238,14 @@
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.pro_ReportGanViTriMayXN" Method="pro_ReportGanViTriMayXN">
-    <Parameter Name="NgayBD" Parameter="ngayBD" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="NgayKT" Parameter="ngayKT" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="NgayBD" Parameter="ngayBD" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="NgayKT" Parameter="ngayKT" Type="System.DateTime" DbType="Date" />
     <ElementType Name="pro_ReportGanViTriMayXNResult">
       <Column Name="MaXN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="ViTri" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="MayXN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="MaGoiXN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="isTest" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

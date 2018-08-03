@@ -469,6 +469,7 @@
             this.BtnImportExcelNew.Size = new System.Drawing.Size(134, 23);
             this.BtnImportExcelNew.TabIndex = 2;
             this.BtnImportExcelNew.Text = "Trả kết quả kiểu mới";
+            this.BtnImportExcelNew.Click += new System.EventHandler(this.BtnImportExcelNew_Click_1);
             // 
             // btnImport
             // 
@@ -676,7 +677,7 @@
             this.xTabDaCoKetQua.Controls.Add(this.panelControl8);
             this.xTabDaCoKetQua.Controls.Add(this.panelControl3);
             this.xTabDaCoKetQua.Name = "xTabDaCoKetQua";
-            this.xTabDaCoKetQua.Size = new System.Drawing.Size(335, 817);
+            this.xTabDaCoKetQua.Size = new System.Drawing.Size(335, 819);
             this.xTabDaCoKetQua.Text = "Đã có kết quả";
             // 
             // GCDaCoKetQua
@@ -688,7 +689,7 @@
             this.GCDaCoKetQua.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpDonVi,
             this.LookUpGoiXN_GCDaCoKQ});
-            this.GCDaCoKetQua.Size = new System.Drawing.Size(335, 668);
+            this.GCDaCoKetQua.Size = new System.Drawing.Size(335, 670);
             this.GCDaCoKetQua.TabIndex = 4;
             this.GCDaCoKetQua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDaCoKetQua});
@@ -1006,7 +1007,7 @@
             // 
             this.panelControl3.Controls.Add(this.btnImportChange);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(0, 773);
+            this.panelControl3.Location = new System.Drawing.Point(0, 775);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(335, 44);
             this.panelControl3.TabIndex = 1;

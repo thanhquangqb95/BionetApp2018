@@ -1369,5 +1369,10 @@ namespace BioNetSangLocSoSinh.Entry
             //CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
             CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
+
+        private void BtnImportExcelNew_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

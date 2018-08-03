@@ -7062,6 +7062,7 @@ D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Dashboard.v17.1.W
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Data.v17.1.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.DataAccess.v17.1.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.DataAccess.v17.1.UI.dll
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Docs.v17.1.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.ExpressApp.v17.1.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Map.v17.1.Core.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Office.v17.1.Core.dll
@@ -7076,6 +7077,7 @@ D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Snap.v17.1.Core.d
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Snap.v17.1.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Snap.v17.1.Extensions.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Sparkline.v17.1.Core.dll
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Spreadsheet.v17.1.Core.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.TreeMap.v17.1.Core.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Utils.v17.1.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Utils.v17.1.UI.dll
@@ -7118,6 +7120,8 @@ D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetModel.pdb
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetModel.dll.config
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DataSync.pdb
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DataSync.exe.config
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Docs.v17.1.xml
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Spreadsheet.v17.1.Core.xml
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.TreeMap.v17.1.Core.xml
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraTreeMap.v17.1.xml
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Dashboard.v17.1.Core.xml
@@ -7169,6 +7173,10 @@ D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetDAL.pdb
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Diagram.v17.1.Core.xml
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraDiagram.v17.1.xml
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraVerticalGrid.v17.1.xml
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\de\DevExpress.Spreadsheet.v17.1.Core.resources.dll
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\es\DevExpress.Spreadsheet.v17.1.Core.resources.dll
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ja\DevExpress.Spreadsheet.v17.1.Core.resources.dll
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ru\DevExpress.Spreadsheet.v17.1.Core.resources.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\de\DevExpress.Dashboard.v17.1.Core.resources.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\es\DevExpress.Dashboard.v17.1.Core.resources.dll
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ja\DevExpress.Dashboard.v17.1.Core.resources.dll
@@ -7440,3 +7448,4 @@ D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CoreCompil
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CopyComplete
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportSoDoCapMa.resources

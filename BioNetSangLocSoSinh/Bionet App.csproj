@@ -59,6 +59,8 @@
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v17.1" />
     <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Docs.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeMap.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dashboard.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -496,6 +498,12 @@
     <Compile Include="Entry\FrmViewTTPhieu.Designer.cs">
       <DependentUpon>FrmViewTTPhieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmGanViTriMayXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmGanViTriMayXN.Designer.cs">
+      <DependentUpon>FrmGanViTriMayXN.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReports\FrmBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -631,6 +639,12 @@
     </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.Designer.cs">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.Designer.cs">
+      <DependentUpon>rptReportSoDoCapMa.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.cs">
       <SubType>Component</SubType>
@@ -925,6 +939,9 @@
     <EmbeddedResource Include="Entry\FrmViewTTPhieu.resx">
       <DependentUpon>FrmViewTTPhieu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmGanViTriMayXN.resx">
+      <DependentUpon>FrmGanViTriMayXN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmReports\FrmBaoCao.resx">
       <DependentUpon>FrmBaoCao.cs</DependentUpon>
     </EmbeddedResource>
@@ -1003,6 +1020,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.resx">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.resx">
+      <DependentUpon>rptReportSoDoCapMa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.resx">
       <DependentUpon>rptBaoCaoChiTietTrungTamTheoDonVi.cs</DependentUpon>

@@ -2803,7 +2803,19 @@ namespace BioNetDAL
             }
             return lst;
         }
-
+        public List<pro_ReportGanViTriMayXNResult> GanViTriMayXNResult(DateTime tungay,DateTime denngay)
+        {
+            List<pro_ReportGanViTriMayXNResult> lst = new List<pro_ReportGanViTriMayXNResult>();
+            var data = db.pro_ReportGanViTriMayXN(tungay.Date,denngay.Date).ToList();
+           
+                foreach (var da in data)
+                {
+                    lst.Add(da);
+                
+                }
+            
+            return lst;
+        }
         public List<PSChiTietDanhGiaChatLuong> GetChiTietDanhGiaMạuKhongDatTrenPhieu(string maPhieu, string maTiepNhan)
         {
             List<PSChiTietDanhGiaChatLuong> lst = new List<PSChiTietDanhGiaChatLuong>();

@@ -781,7 +781,7 @@ namespace BioNetModel.Data
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.pro_ReportGanViTriMayXN")]
-		public ISingleResult<pro_ReportGanViTriMayXNResult> pro_ReportGanViTriMayXN([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NgayBD", DbType="DateTime")] System.Nullable<System.DateTime> ngayBD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NgayKT", DbType="DateTime")] System.Nullable<System.DateTime> ngayKT)
+		public ISingleResult<pro_ReportGanViTriMayXNResult> pro_ReportGanViTriMayXN([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NgayBD", DbType="Date")] System.Nullable<System.DateTime> ngayBD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NgayKT", DbType="Date")] System.Nullable<System.DateTime> ngayKT)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), ngayBD, ngayKT);
 			return ((ISingleResult<pro_ReportGanViTriMayXNResult>)(result.ReturnValue));
@@ -22993,6 +22993,10 @@ namespace BioNetModel.Data
 		
 		private string _MayXN;
 		
+		private string _MaGoiXN;
+		
+		private bool _isTest;
+		
 		public pro_ReportGanViTriMayXNResult()
 		{
 		}
@@ -23041,6 +23045,38 @@ namespace BioNetModel.Data
 				if ((this._MayXN != value))
 				{
 					this._MayXN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaGoiXN", DbType="NVarChar(20)")]
+		public string MaGoiXN
+		{
+			get
+			{
+				return this._MaGoiXN;
+			}
+			set
+			{
+				if ((this._MaGoiXN != value))
+				{
+					this._MaGoiXN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isTest", DbType="Bit NOT NULL")]
+		public bool isTest
+		{
+			get
+			{
+				return this._isTest;
+			}
+			set
+			{
+				if ((this._isTest != value))
+				{
+					this._isTest = value;
 				}
 			}
 		}
