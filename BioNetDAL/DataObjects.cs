@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Data.SqlClient;
 using System.Xml.Serialization;
 
@@ -2121,12 +2122,76 @@ namespace BioNetDAL
             List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
             try
             {
-                    lst = db.PSChiDinhDichVus.OrderBy(p => p.MaPhieu).Where(p => p.isXoa == false && p.TrangThai ==trangthai ).OrderBy(x=>x.MaPhieu).ToList();
+                    lst = db.PSChiDinhDichVus.Where(p => p.isXoa !=true && p.TrangThai ==trangthai ).OrderBy(x=>x.MaPhieu).ToList();
             }
             catch
             {
             }     
             return lst;
+        }
+        public List<PSXN_KetQua> GetDanhSachChuaGanViTriXN(int trangthai)
+        {
+            List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
+            try
+            {
+                lst = db.PSXN_KetQuas.Where(p => p.isXoa !=true && p.isCoKQ !=true).OrderBy(x => x.MaPhieu).ToList();
+            }
+            catch
+            {
+            }
+            return lst;
+        }
+        public PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu)
+        {
+            PSCMGanViTriChung vt = new PSCMGanViTriChung();
+            try
+            {              
+                PSXN_KetQua kq = db.PSXN_KetQuas.FirstOrDefault(p => p.isXoa != true && p.isCoKQ != true && p.MaPhieu == maphieu);
+                if (kq == null)
+                {
+
+                }
+                else
+                {
+                    PSCM_GanViTri vtc = db.PSCM_GanViTris.FirstOrDefault(p => p.MaXetNghiem == kq.MaXetNghiem && p.MaGoiXN == kq.MaGoiXN && p.MaPhieu == kq.MaPhieu);
+                    if (vtc == null)
+                    {
+                        vt.MaPhieu = kq.MaPhieu;
+                        vt.MaGoiXN = kq.MaGoiXN;
+                        vt.MaXetNghiem = kq.MaXetNghiem;
+                        var idmay = (from ct in kq.PSXN_KetQua_ChiTiets
+                                     join dv in db.PSMapsMayXN_DichVus on ct.MaDichVu equals dv.IDDichVu
+                                     join may in db.PSDanhMucMayXNs on dv.IDMayXN equals may.IDMayXN
+                                     select new { may }).ToList().Distinct();
+                        List<PSDanhMucMayXN> m = new List<PSDanhMucMayXN>();
+                        foreach (var mayct in idmay)
+                        {
+                            
+                            m.Add(mayct.may);
+                            
+                        }
+                        vt.may = m;
+
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+                
+            return vt;
+
+        }
+        public List<PSDanhMucMayXN> GetDSMayXN()
+        {
+            List<PSDanhMucMayXN> xn = db.PSDanhMucMayXNs.Where(x => x.isSuDung == true).ToList();
+            return xn;
+        }
+        public List<PSMapsViTriMayXN> GetDSMapViTriMayXN(string IDMayXN)
+        {
+            List<PSMapsViTriMayXN> xn = db.PSMapsViTriMayXNs.Where(x => x.IDMayXN == IDMayXN).ToList();
+            return xn;
         }
         public List<PSChiDinhDichVu> GetDanhSachDichVuDaChiDinh(int Trangthai, string maDonVi, DateTime tuNgay, DateTime denNgay, bool isCanCapMa)
         {

@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="PsBenhNhan.cs" />
     <Compile Include="PsChiDinhTrenPhieu.cs" />
+    <Compile Include="PSCMGanViTriChung.cs" />
     <Compile Include="PsCTDanhGiaChatLuong.cs" />
     <Compile Include="PSCTEmportExcelKQ.cs" />
     <Compile Include="PsCTKQBaoCaoTuyChon.cs" />

@@ -1190,6 +1190,25 @@ namespace BioNetBLL
                 lst = results;
             return lst;
         }
+        public static PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu)
+        {
+            PSCMGanViTriChung lst = new PSCMGanViTriChung();
+            var db = new DataObjects();
+            lst = db.GetPhieuChuaCoKQ(maphieu);
+            return lst;
+        }
+        public static List<PSDanhMucMayXN> GetDSMayXN()
+        {
+            var db = new DataObjects();
+            List<PSDanhMucMayXN>  lst = db.GetDSMayXN();
+            return lst;
+        }
+        public static List<PSMapsViTriMayXN> GetDSMapViTriMayXN(string IDMayXN)
+        {
+            var db = new DataObjects();
+            List<PSMapsViTriMayXN> lst = db.GetDSMapViTriMayXN(IDMayXN);
+            return lst;
+        }
         public static bool UpdateMaXNVaoBangGhi(string giaTri)
         {
             var db = new DataObjects();

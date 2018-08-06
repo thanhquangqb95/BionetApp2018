@@ -1499,6 +1499,18 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         {
 
         }
+
+        private void barButtonItem62_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                Entry.FrmGanViTriMayXN frm = new Entry.FrmGanViTriMayXN();
+                TabCreating(xTabMain, "Gắn vị trí xét nghiệm", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
     }
 
 }

@@ -7449,3 +7449,4 @@ D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CopyComple
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
 D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportSoDoCapMa.resources
+D:\IHis\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Entry.FrmGanViTriMayXN.resources

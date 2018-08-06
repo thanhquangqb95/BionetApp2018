@@ -162,6 +162,7 @@
             this.picBackgroun = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem62 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -270,9 +271,10 @@
             this.barEditItem1,
             this.barSubItem8,
             this.bttTiengViet,
-            this.bttTiengAnh});
+            this.bttTiengAnh,
+            this.barButtonItem62});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 27;
+            this.ribbon.MaxItemId = 28;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1,
@@ -1192,6 +1194,7 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2, true);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem62);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem5);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnChanDoan);
@@ -1405,6 +1408,13 @@
             this.imageCollection1.Images.SetKeyName(0, "vietnam.png");
             this.imageCollection1.Images.SetKeyName(1, "united-kingdom.png");
             // 
+            // barButtonItem62
+            // 
+            this.barButtonItem62.Caption = "Gắn vị trí máy xét nghiệm";
+            this.barButtonItem62.Id = 27;
+            this.barButtonItem62.Name = "barButtonItem62";
+            this.barButtonItem62.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem62_ItemClick);
+            // 
             // FrmStartup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1561,5 +1571,6 @@
         private DevExpress.XtraBars.BarButtonItem bttTiengAnh;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory1;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem62;
     }
 }

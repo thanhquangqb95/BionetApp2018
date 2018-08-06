@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 29, 30.125" name="BioNetDBContext">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 31.25, 30.125" name="BioNetDBContext">
   <DataContextMoniker Name="/BioNetDBContextDataContext" />
   <nestedChildShapes>
     <classShape Id="74004e3b-c5ec-41e5-8091-b75f899c94a1" absoluteBounds="11.75, 12.75, 2, 2.3478011067708344">
@@ -399,6 +399,18 @@
       <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuItemCT" />
       <nestedChildShapes>
         <elementListCompartment Id="bd978863-87c9-45d1-9ed1-a82ebe25357b" absoluteBounds="21.765, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4c9deeaa-9d1a-47a4-89cc-61e382085a96" absoluteBounds="26.375, 13.75, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri" />
+      <nestedChildShapes>
+        <elementListCompartment Id="341f942f-a559-4596-b53c-9ae2eea31eaf" absoluteBounds="26.39, 14.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ddf05570-8a41-4a4f-b5ea-2564694f545c" absoluteBounds="29, 22.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTriCT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e527c485-0190-46b7-95c9-8f1b02c17e2b" absoluteBounds="29.015, 22.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

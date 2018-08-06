@@ -771,6 +771,32 @@
       <Column Name="CaptionItemTrans" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PSCM_GanViTri" Member="PSCM_GanViTris">
+    <Type Name="PSCM_GanViTri">
+      <Column Name="IDRowGanXN" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDLanGanXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="STT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaXetNghiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaGoiXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChuChung" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isDaDuyet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSCM_GanViTriCT" Member="PSCM_GanViTriCTs">
+    <Type Name="PSCM_GanViTriCT">
+      <Column Name="IDRowGanCT" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDLanGanXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="STTDia" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MaXetNghiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ViTri" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDMayXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChuCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isDaDuyet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">
     <Parameter Name="MaPhieu" Parameter="maPhieu" Type="System.String" DbType="NVarChar(15)" />
     <Parameter Name="LuaChon" Parameter="luaChon" Type="System.Boolean" DbType="Bit" />
