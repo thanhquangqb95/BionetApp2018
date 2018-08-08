@@ -23,67 +23,32 @@ namespace BioNetSangLocSoSinh.Entry
         {
             InitializeComponent();
         }
-        public static List<PSCMGanViTriChung> vt = new List<PSCMGanViTriChung>();
-        public static List<PSDanhMucMayXN> dsmay = new List<PSDanhMucMayXN>();
-        public static List<PSMapsViTriMayXN> mapViTri = new List<PSMapsViTriMayXN>();
-
+        private List<PSCMGanViTriChung> vt = new List<PSCMGanViTriChung>();
+        private List<PSDanhMucMayXN> dsmay = new List<PSDanhMucMayXN>();
+        private List<PSMapsViTriMayXN> mapViTri = new List<PSMapsViTriMayXN>();
+        private List<ViTriXN> vtMayXN01 = new List<ViTriXN>();
+        private List<ViTriXN> vtMayXN01_Tam = new List<ViTriXN>();
+        private List<ViTriXN> vtMayXN02 = new List<ViTriXN>();
+        public class xn
+        {
+            public string ViTri { get; set; }
+        }
         private void FrmGanViTriMayXN_Load(object sender, EventArgs e)
         {
-            vt=new List<PSCMGanViTriChung>();
+            this.vt.Clear();
+            this.vtMayXN01.Clear();
+            this.vtMayXN02.Clear();
+            this.vtMayXN01_Tam.Clear();
             dsmay = BioNet_Bus.GetDSMayXN();
-            
+            mapViTri = new List<PSMapsViTriMayXN>();
             if (dsmay.Count > 0)
             {
                 foreach (var may in dsmay)
                 {
                     mapViTri.AddRange(BioNet_Bus.GetDSMapViTriMayXN(may.IDMayXN));
                     List<PSMapsViTriMayXN> a = BioNet_Bus.GetDSMapViTriMayXN(may.IDMayXN);
-                    switch (may.IDMayXN)
-                    {
-                        case "MAYXN01":
-                            {
-
-                                LookupMayXN01.DataSource = from res in a
-                                                           select new { res.STT, res.TenViTri,res.isTest };
-                                break;
-                            }
-                        case "MAYXN02":
-                            {
-                                LookupMayXN02.DataSource = from res in a
-                                                           select new { res.STT, res.TenViTri, res.isTest };
-                                break;
-                            }
-                        default:
-                            break;
-                    }
-                                
                 }
             }
-            //        GridBand band = new GridBand();
-            //        band.Name = may.IDMayXN;
-            //        band.Caption = may.TenMayXN;
-            //        band.RowCount = 1;
-            //        band.Visible = true;
-            //        gridBandViTri.Children.Add(band);    
-
-            //        DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            //        col2.Name = may.IDMayXN + "_ViTri";
-            //        col2.FieldName = may.IDMayXN + ".ViTri";
-            //        col2.Caption = "Vị Trí";
-            //        col2.OptionsColumn.AllowEdit = false;
-            //        col2.Visible = true;
-            //        band.Columns.Add(col2);
-
-
-            //        DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            //        col1.Name = may.IDMayXN + "_GhiChu";
-            //        col1.FieldName = may.IDMayXN + ".GhiChu";
-            //        col1.Caption = "Ghi chú";
-            //        col1.OptionsColumn.AllowEdit = false;
-            //        col1.Visible = true;
-            //        band.Columns.Add(col1);
-            //    }
-            //}
             LoadGoiDichVuXetNGhiem();
         }
 
@@ -107,6 +72,13 @@ namespace BioNetSangLocSoSinh.Entry
                 goi2.DonGia = 0;
                 goi2.ChietKhau = 0;
                 this.lstgoiXN.Add(goi2);
+                PSDanhMucGoiDichVuChung goi3 = new PSDanhMucGoiDichVuChung();
+                goi2.IDGoiDichVuChung = "DVKhac";
+                goi2.TenGoiDichVuChung = "Khac";
+                goi2.Stt = 8;
+                goi2.DonGia = 0;
+                goi2.ChietKhau = 0;
+                this.lstgoiXN.Add(goi3);
                 this.LookupGoiXN.DataSource = this.lstgoiXN;
             }
             catch { }
@@ -130,66 +102,73 @@ namespace BioNetSangLocSoSinh.Entry
                         {
                             foreach (var ctm in ph.may)
                             {
-
                                 do
                                 {
-                                    PSCM_GanViTriCT gvt = new PSCM_GanViTriCT();
-                                    gvt.MaPhieu = ph.MaPhieu;
-                                    gvt.MaXetNghiem = ph.MaXetNghiem;
-                                    gvt.isDaDuyet = false;
-                                    gvt.IDMayXN = ctm.IDMayXN;
+                                    long? SttCt = 1;
                                     switch (ctm.IDMayXN)
                                     {
                                         case "MAYXN01":
                                             {
-                                                gvt.STT = vt.Where(x => x.MAYXN01 != null).Count() + 1;
-
+                                                SttCt = vtMayXN01.Max(x => x.STT) == null ? 1 : vtMayXN01.Max(x => x.STT) + 1;
                                                 break;
                                             }
                                         case "MAYXN02":
                                             {
-                                                gvt.STT = vt.Where(x => x.MAYXN02 != null).Count() + 1;
+                                                SttCt = vtMayXN02.Max(x => x.STT) == null ? 1 : vtMayXN02.Max(x => x.STT) + 1;
                                                 break;
                                             }
                                         default:
                                             break;
                                     }
 
-                                    gvt.STTDia = 1;
-                                    long? Max = mapViTri.Where(x => x.IDMayXN == ctm.IDMayXN).Count();
-                                    long? STTGan = gvt.STT % Max == 0 ? Max : gvt.STT % Max;
-                                    var VitriGan = mapViTri.FirstOrDefault(x => x.IDMayXN == ctm.IDMayXN && x.STT == STTGan);
-                                    gvt.ViTri = mapViTri.FirstOrDefault(x => x.IDMayXN == ctm.IDMayXN && x.STT == gvt.STT).TenViTri;
-                                    ViTriXN vtxn = new ViTriXN();
-                                    vtxn.ViTri = gvt.ViTri;
+                                    long? MaxViTri = mapViTri.Where(x => x.IDMayXN == ctm.IDMayXN).Count();
+                                    long? STTVTGan = SttCt % MaxViTri == 0 ? MaxViTri : SttCt % MaxViTri;
+                                    long? STTDia = STTVTGan / MaxViTri + 1;
+                                    var VitriGan = mapViTri.FirstOrDefault(x => x.IDMayXN == ctm.IDMayXN && x.STT == STTVTGan);
+                                    ViTriXN vtxn = new ViTriXN
+                                    {
+                                        ViTri = STTDia + VitriGan.TenViTri,
+                                        STTDia = STTDia,
+                                        STT = SttCt,
+                                        STTVT = STTVTGan,
+                                        isTest = false
+                                    };
+                                    
                                     switch (ctm.IDMayXN)
                                     {
                                         case "MAYXN01":
                                             {
+                                                
+                                                if(VitriGan.isTest!=true)
+                                                {
+                                                    this.vtMayXN01.Add(vtxn);
+                                                    this.vtMayXN01_Tam.Add(vtxn);
+                                                }
                                                 ph.MAYXN01 = vtxn;
                                                 break;
                                             }
                                         case "MAYXN02":
-                                            {
+                                            {                          
+                                                if (VitriGan.isTest != true)
+                                                {
+                                                    this.vtMayXN02.Add(vtxn);
+                                                }
                                                 ph.MAYXN02 = vtxn;
                                                 break;
                                             }
                                         default:
                                             break;
                                     }
-                                } while (GanViTriTest(ctm.IDMayXN));
-                                
-
+                                    
+                                } while (GanViTriTest(ctm.IDMayXN));                               
                             }
                         }
                         ph.STT_bang = vt.Count + 1;
                         vt.Add(ph);
                     }
-                    GCDanhSachGanViTri.DataSource = null;
-                    GCDanhSachGanViTri.DataSource = vt;
-                }
-                                
-                
+                    
+                    LoadDanhSachGanVT();
+                }              
             }
             catch
             {
@@ -197,31 +176,32 @@ namespace BioNetSangLocSoSinh.Entry
             } 
         }
         private bool GanViTriTest(string IDMayXN)
+
         {
             bool result = false;
             try
             {
-                long? dem = 1;
+                long? SttCt = 1;
                 switch (IDMayXN)
                 {
                     case "MAYXN01":
                         {
-                            dem = vt.Where(x => x.MAYXN01 != null).Count() + 1;
-
+                            SttCt = vtMayXN01.Max(x => x.STT) == null ? 1 : vtMayXN01.Max(x => x.STT) + 1;
                             break;
                         }
                     case "MAYXN02":
                         {
-                            dem = vt.Where(x => x.MAYXN02 != null).Count() + 1;
-
+                            SttCt = vtMayXN02.Max(x => x.STT) == null ? 1 : vtMayXN02.Max(x => x.STT) + 1;
                             break;
                         }
                     default:
                         break;
                 }
-                long? Max = mapViTri.Where(x => x.IDMayXN == IDMayXN).Count();
-                long? STTGan = dem % Max == 0 ? Max : dem % Max;
-                var VitriGan = mapViTri.FirstOrDefault(x => x.IDMayXN == IDMayXN && x.STT == STTGan);
+
+                long? MaxViTri = mapViTri.Where(x => x.IDMayXN == IDMayXN).Count();
+                long? STTVTGan = SttCt % MaxViTri == 0 ? MaxViTri : SttCt % MaxViTri;
+                long? STTDia = STTVTGan / MaxViTri + 1;
+                var VitriGan = mapViTri.FirstOrDefault(x => x.IDMayXN == IDMayXN && x.STT == STTVTGan);
                 if (VitriGan.isTest == true)
                 {
                     result = true;
@@ -229,18 +209,26 @@ namespace BioNetSangLocSoSinh.Entry
                     test.MaXetNghiem = VitriGan.GiaTriTest;
                     test.STT_bang = vt.Count + 1;
                     test.MaGoiXN = "DVTest";
-                    ViTriXN vtxn = new ViTriXN();
-                    vtxn.ViTri = VitriGan.TenViTri;
+                    ViTriXN vtxn = new ViTriXN
+                    {ViTri = STTDia + VitriGan.TenViTri,
+                    STTDia = STTDia,
+                    STT = SttCt,
+                    STTVT = STTVTGan,
+                    isTest = true
+                };
                     switch (VitriGan.IDMayXN)
                     {
                         case "MAYXN01":
-                            {
+                            {                             
+                                this.vtMayXN01.Add(vtxn);
+                                this.vtMayXN01_Tam.Add(vtxn);
                                 test.MAYXN01 = vtxn;
                                 break;
                             }
                         case "MAYXN02":
-                            {
-                                test.MAYXN02=vtxn;
+                            {                          
+                                this.vtMayXN02.Add(vtxn);
+                                test.MAYXN02 = vtxn;
                                 break;
                             }
                         default:
@@ -248,53 +236,99 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     vt.Add(test);
                 }
-                GCDanhSachGanViTri.DataSource = null;
-                GCDanhSachGanViTri.DataSource = vt;
             }
             catch
-            {
-              
+            { 
             }
             return result;
         }
+        public  List<ViTriXN> vtc = new List<ViTriXN>();
+        private void LoadDanhSachGanVT()
+        {
 
-        private void GVDanhSachGanViTri_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+            this.LookupMayXN01.DataSource = null;
+            this.LookupMayXN01.DataSource =this.vtMayXN01;           
+            this.LookupMayXN02.DataSource = null;
+            this.LookupMayXN02.DataSource = this.vtMayXN02;
+            this.GCDanhSachGanViTri.DataSource = null;
+            this.GCDanhSachGanViTri.DataSource = vt;
+        }
+        
+
+
+        private void GVDanhSachGanViTri_RowStyle(object sender, RowStyleEventArgs e)
+        {
+
+        }
+
+        private void btnDuyetMaNgoai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LookupMayXN01_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GVDanhSachGanViTri_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
             GridView view = sender as GridView;
-            var columnHandle = e.Column.ColumnHandle;
-            var rowHandle = e.RowHandle;
-            var stt = view.GetRowCellValue(rowHandle, this.col_STT);
-            var idPhieu = view.GetRowCellValue(rowHandle, this.col_IDPhieu);
-            var maxn = view.GetRowCellValue(rowHandle, this.col_MaXetNghiem);
-            var tenvitri = view.GetRowCellValue(rowHandle, this.col_MayXN01_ViTri);
-            if (rowHandle < view.RowCount)
+            int rowfocus = e.RowHandle;
+            var stt = view.GetRowCellValue(rowfocus, this.col_STT);
+            var idPhieu = view.GetRowCellValue(rowfocus, this.col_IDPhieu);
+            var maxn = view.GetRowCellValue(rowfocus, this.col_MaXetNghiem);
+          if (e.Valid)
             {
-                if (columnHandle == this.col_MayXN01_ViTri.ColumnHandle)
+                var tenvitri = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_ViTri);
+                var STT = view.GetRowCellValue(rowfocus, this.col_MayXN01_STT);
+                var STTDia = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_STTDia);
+                List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN01 != null).ToList();
+                PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN01.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+
+                ViTriXN vtmoi = vtMayXN01.Where(p => p.ViTri == tenvitri.ToString()).FirstOrDefault();
+                var valueOld = view.ActiveEditor.OldEditValue;
+                ViTriXN vtcu = vtMayXN01.Where(p => p.ViTri == valueOld.ToString()).FirstOrDefault();
+                PSCMGanViTriChung rscu = rss.Where(p => p.MAYXN01.ViTri == valueOld.ToString() && p.MAYXN01.STT == long.Parse(stt.ToString())).FirstOrDefault();
+
+                if (vtcu != null && rsmoi != null)
                 {
-                    List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN01 != null).ToList();
-                    PSCMGanViTriChung rs = rss.Where(p => p.MAYXN01.ViTri==tenvitri.ToString()).FirstOrDefault();
-                    
-                    var valueOld = view.ActiveEditor.OldEditValue;
-                    if (rs != null)
+                    ViTriXN VTTam = new ViTriXN();
+                    long? gt = rscu.STT_bang;
+                    long? SttCtMax = vtMayXN01.Max(x => x.STT) == null ? 1 : vtMayXN01.Max(x => x.STT);
+                    var xn = vtMayXN01.FirstOrDefault(x => x.ViTri == valueOld.ToString());
+                    if (xn != null)
                     {
-                        if (!string.IsNullOrEmpty(valueOld.ToString()))
+                        VTTam = vtmoi;
+                        if (vtmoi.isTest)
                         {
-                            long? gt = rs.STT_bang;
-                            vt.Remove(rs);
-                           foreach(var v in vt)
+                            rsmoi.MAYXN01.isTest = false;
+                            vtMayXN01.Remove(vtcu);
+                            vt.Remove(rscu);
+                            foreach (var v in vt)
                             {
-                                if(v.STT_bang>gt)
+                                if (v.STT_bang > gt)
                                 {
                                     v.STT_bang = v.STT_bang - 1;
-                                }                  
+                                }
                             }
                         }
+                        else
+                        {
+                            rsmoi.MAYXN01.STT = rscu.MAYXN01.STT;
+                            rsmoi.MAYXN01.STTDia = rscu.MAYXN01.STTDia;
+                            rsmoi.MAYXN01.STTVT = rscu.MAYXN01.STTVT;
+                            rsmoi.MAYXN01.ViTri = rscu.MAYXN01.ViTri;
 
+                            rscu.MAYXN01.STT = VTTam.STT;
+                            rscu.MAYXN01.STTDia = VTTam.STTDia;
+                            rscu.MAYXN01.STTVT = VTTam.STTVT;
+                            rscu.MAYXN01.ViTri = VTTam.ViTri;
+                        }
                     }
                 }
             }
-            GCDanhSachGanViTri.DataSource = null;
-            GCDanhSachGanViTri.DataSource = vt;
+            LoadDanhSachGanVT();
         }
     }
 }

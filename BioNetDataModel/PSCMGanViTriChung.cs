@@ -16,13 +16,16 @@ namespace BioNetModel
         public ViTriXN MAYXN01 { get; set; }
         public ViTriXN MAYXN02 { get; set; }
         public List<PSDanhMucMayXN> may { get; set; }
-        public List<PSCM_GanViTriCT> PSCMGanViTriChungCT { get; set; }
 
 
     }
     public class ViTriXN
     {
+        public long? STT { get; set; }
+        public long? STTDia { get; set; }
+        public long? STTVT { get; set; }
         public string ViTri{get;set;}
         public string GhiChuCT { get; set; }
+        public bool isTest { get; set; }
     }
 }
