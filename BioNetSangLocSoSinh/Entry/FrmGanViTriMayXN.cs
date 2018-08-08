@@ -144,7 +144,8 @@ namespace BioNetSangLocSoSinh.Entry
                                                     this.vtMayXN01.Add(vtxn);
                                                     this.vtMayXN01_Tam.Add(vtxn);
                                                 }
-                                                ph.MAYXN01 = vtxn;
+                                                ph.MAYXN01 = new ViTriXN();
+                                                ph.MAYXN01.ViTri = vtxn.ViTri;
                                                 break;
                                             }
                                         case "MAYXN02":
@@ -219,10 +220,11 @@ namespace BioNetSangLocSoSinh.Entry
                     switch (VitriGan.IDMayXN)
                     {
                         case "MAYXN01":
-                            {                             
+                            {
+                                test.MAYXN01 = new ViTriXN();
                                 this.vtMayXN01.Add(vtxn);
                                 this.vtMayXN01_Tam.Add(vtxn);
-                                test.MAYXN01 = vtxn;
+                                test.MAYXN01.ViTri = vtxn.ViTri;
                                 break;
                             }
                         case "MAYXN02":
