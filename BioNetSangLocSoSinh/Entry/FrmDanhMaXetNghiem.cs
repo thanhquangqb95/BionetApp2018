@@ -908,7 +908,7 @@ namespace BioNetSangLocSoSinh.Entry
                 dataGanVT = BioNet_Bus.GanViTriMayXNResult((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue);
                 if (dataGanVT.Count > 0)
                 {
-                    Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh();
+                    Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
                     rp.CreateDocument();
                     rp.DataSource = dataGanVT;
                     var CountMay = dataGanVT.Select(x=>x.MayXN).Distinct().ToList();
@@ -919,7 +919,7 @@ namespace BioNetSangLocSoSinh.Entry
                     int i = 0;
                     foreach (var may in CountMay)
                     {
-                        Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh rp1 = new Reports.RepostsCapMaXetNghiep.rptReportCapMa3Benh();
+                        Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
                         rp.CreateDocument();
                         rp1.DataSource = dataGanVT.Where(x => x.MayXN.Equals(may.ToString())).ToList();
                         rp1.PaperName = may.ToString();

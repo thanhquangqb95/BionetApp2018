@@ -33,7 +33,7 @@
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cbbMayXN = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuyetMaNgoai = new DevExpress.XtraEditors.SimpleButton();
             this.txtMaNgoai = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -62,6 +62,7 @@
             this.col_MayXN02_GhiChu = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.col_GhiNhoChung = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
@@ -79,11 +80,12 @@
             // 
             this.panelControl6.Appearance.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.panelControl6.Appearance.Options.UseBackColor = true;
+            this.panelControl6.Controls.Add(this.simpleButton1);
             this.panelControl6.Controls.Add(this.label2);
             this.panelControl6.Controls.Add(this.comboBoxEdit1);
             this.panelControl6.Controls.Add(this.cbbMayXN);
             this.panelControl6.Controls.Add(this.label1);
-            this.panelControl6.Controls.Add(this.simpleButton3);
+            this.panelControl6.Controls.Add(this.btnXuatFile);
             this.panelControl6.Controls.Add(this.btnDuyetMaNgoai);
             this.panelControl6.Controls.Add(this.txtMaNgoai);
             this.panelControl6.Controls.Add(this.labelControl1);
@@ -118,7 +120,6 @@
             // 
             this.cbbMayXN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbMayXN.Enabled = false;
             this.cbbMayXN.Location = new System.Drawing.Point(486, 7);
             this.cbbMayXN.Name = "cbbMayXN";
             this.cbbMayXN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -140,13 +141,14 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "Máy";
             // 
-            // simpleButton3
+            // btnXuatFile
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(1145, 5);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(111, 22);
-            this.simpleButton3.TabIndex = 0;
-            this.simpleButton3.Text = "Xuất file danh sách";
+            this.btnXuatFile.Location = new System.Drawing.Point(1145, 5);
+            this.btnXuatFile.Name = "btnXuatFile";
+            this.btnXuatFile.Size = new System.Drawing.Size(111, 22);
+            this.btnXuatFile.TabIndex = 0;
+            this.btnXuatFile.Text = "Xuất file danh sách";
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
             // btnDuyetMaNgoai
             // 
@@ -202,9 +204,15 @@
             this.GCDanhSachGanViTri.TabIndex = 31;
             this.GCDanhSachGanViTri.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachGanViTri});
+            this.GCDanhSachGanViTri.Click += new System.EventHandler(this.GCDanhSachGanViTri_Click);
             // 
             // GVDanhSachGanViTri
             // 
+            this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GVDanhSachGanViTri.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black;
+            this.GVDanhSachGanViTri.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.GVDanhSachGanViTri.Appearance.SelectedRow.Options.UseForeColor = true;
             this.GVDanhSachGanViTri.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.tt,
             this.gridBandViTri,
@@ -229,7 +237,9 @@
             this.GVDanhSachGanViTri.OptionsView.ShowDetailButtons = false;
             this.GVDanhSachGanViTri.OptionsView.ShowGroupExpandCollapseButtons = false;
             this.GVDanhSachGanViTri.OptionsView.ShowGroupPanel = false;
+            this.GVDanhSachGanViTri.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDanhSachGanViTri_RowCellStyle);
             this.GVDanhSachGanViTri.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.GVDanhSachGanViTri_RowStyle);
+            this.GVDanhSachGanViTri.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.GVDanhSachGanViTri_CellValueChanged);
             this.GVDanhSachGanViTri.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.GVDanhSachGanViTri_ValidateRow);
             // 
             // tt
@@ -252,6 +262,8 @@
             this.col_STT.Caption = "STT";
             this.col_STT.FieldName = "STT_bang";
             this.col_STT.Name = "col_STT";
+            this.col_STT.OptionsColumn.AllowEdit = false;
+            this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
             this.col_STT.Width = 58;
             // 
@@ -262,6 +274,7 @@
             this.col_IDPhieu.Caption = "Mã Phiếu";
             this.col_IDPhieu.FieldName = "MaPhieu";
             this.col_IDPhieu.Name = "col_IDPhieu";
+            this.col_IDPhieu.OptionsColumn.AllowEdit = false;
             this.col_IDPhieu.Visible = true;
             this.col_IDPhieu.Width = 126;
             // 
@@ -272,6 +285,7 @@
             this.col_MaXetNghiem.Caption = "Mã Xét Nghiệm";
             this.col_MaXetNghiem.FieldName = "MaXetNghiem";
             this.col_MaXetNghiem.Name = "col_MaXetNghiem";
+            this.col_MaXetNghiem.OptionsColumn.AllowEdit = false;
             this.col_MaXetNghiem.Visible = true;
             this.col_MaXetNghiem.Width = 122;
             // 
@@ -325,6 +339,7 @@
             this.col_MayXN01_STT.Caption = "STTMayXN01";
             this.col_MayXN01_STT.FieldName = "MAYXN01.STT";
             this.col_MayXN01_STT.Name = "col_MayXN01_STT";
+            this.col_MayXN01_STT.OptionsColumn.AllowEdit = false;
             this.col_MayXN01_STT.Visible = true;
             // 
             // col_MayXN01_STTDia
@@ -334,6 +349,8 @@
             this.col_MayXN01_STTDia.Caption = "Đĩa";
             this.col_MayXN01_STTDia.FieldName = "MAYXN01.STTDia";
             this.col_MayXN01_STTDia.Name = "col_MayXN01_STTDia";
+            this.col_MayXN01_STTDia.OptionsColumn.AllowEdit = false;
+            this.col_MayXN01_STTDia.OptionsColumn.ReadOnly = true;
             this.col_MayXN01_STTDia.Visible = true;
             this.col_MayXN01_STTDia.Width = 50;
             // 
@@ -345,6 +362,7 @@
             this.col_MayXN01_ViTri.ColumnEdit = this.LookupMayXN01;
             this.col_MayXN01_ViTri.FieldName = "MAYXN01.ViTri";
             this.col_MayXN01_ViTri.Name = "col_MayXN01_ViTri";
+            this.col_MayXN01_ViTri.OptionsColumn.ReadOnly = true;
             this.col_MayXN01_ViTri.Visible = true;
             this.col_MayXN01_ViTri.Width = 65;
             // 
@@ -366,6 +384,7 @@
             this.col_MayXN01_GhiChu.Caption = "Ghi Chú";
             this.col_MayXN01_GhiChu.FieldName = "MAYXN01.GhiChu";
             this.col_MayXN01_GhiChu.Name = "col_MayXN01_GhiChu";
+            this.col_MayXN01_GhiChu.OptionsColumn.ReadOnly = true;
             this.col_MayXN01_GhiChu.Visible = true;
             this.col_MayXN01_GhiChu.Width = 115;
             // 
@@ -387,6 +406,7 @@
             this.col_MayXN02_STT.Caption = "STTMayXN02";
             this.col_MayXN02_STT.FieldName = "MAYXN02.STT";
             this.col_MayXN02_STT.Name = "col_MayXN02_STT";
+            this.col_MayXN02_STT.OptionsColumn.AllowEdit = false;
             this.col_MayXN02_STT.Visible = true;
             this.col_MayXN02_STT.Width = 72;
             // 
@@ -397,6 +417,7 @@
             this.col_MayXN02_STTDia.Caption = "Đĩa";
             this.col_MayXN02_STTDia.FieldName = "MAYXN02.STTDia";
             this.col_MayXN02_STTDia.Name = "col_MayXN02_STTDia";
+            this.col_MayXN02_STTDia.OptionsColumn.AllowEdit = false;
             this.col_MayXN02_STTDia.Visible = true;
             this.col_MayXN02_STTDia.Width = 51;
             // 
@@ -408,6 +429,7 @@
             this.col_MayXN02_ViTri.ColumnEdit = this.LookupMayXN02;
             this.col_MayXN02_ViTri.FieldName = "MAYXN02.ViTri";
             this.col_MayXN02_ViTri.Name = "col_MayXN02_ViTri";
+            this.col_MayXN02_ViTri.OptionsColumn.ReadOnly = true;
             this.col_MayXN02_ViTri.Visible = true;
             // 
             // LookupMayXN02
@@ -427,6 +449,7 @@
             this.col_MayXN02_GhiChu.Caption = "Ghi Chú";
             this.col_MayXN02_GhiChu.FieldName = "MAYXN02.GhiChu";
             this.col_MayXN02_GhiChu.Name = "col_MayXN02_GhiChu";
+            this.col_MayXN02_GhiChu.OptionsColumn.ReadOnly = true;
             this.col_MayXN02_GhiChu.Visible = true;
             this.col_MayXN02_GhiChu.Width = 115;
             // 
@@ -447,8 +470,18 @@
             this.col_GhiNhoChung.Caption = "Ghi chú chung";
             this.col_GhiNhoChung.FieldName = "GhiChuChung";
             this.col_GhiNhoChung.Name = "col_GhiNhoChung";
+            this.col_GhiNhoChung.OptionsColumn.ReadOnly = true;
             this.col_GhiNhoChung.Visible = true;
             this.col_GhiNhoChung.Width = 355;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(1062, 4);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(50, 23);
+            this.simpleButton1.TabIndex = 36;
+            this.simpleButton1.Text = "Test";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // FrmGanViTriMayXN
             // 
@@ -486,7 +519,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtMaNgoai;
         private DevExpress.XtraEditors.SimpleButton btnDuyetMaNgoai;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btnXuatFile;
         private DevExpress.XtraGrid.GridControl GCDanhSachGanViTri;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView GVDanhSachGanViTri;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_STT;
@@ -514,5 +547,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_STT;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

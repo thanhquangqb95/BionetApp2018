@@ -2166,9 +2166,7 @@ namespace BioNetDAL
                         List<PSDanhMucMayXN> m = new List<PSDanhMucMayXN>();
                         foreach (var mayct in idmay)
                         {
-                            
-                            m.Add(mayct.may);
-                            
+                            m.Add(mayct.may); 
                         }
                         vt.may = m;
 

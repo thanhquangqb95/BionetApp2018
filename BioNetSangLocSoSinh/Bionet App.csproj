@@ -628,17 +628,29 @@
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.Designer.cs">
       <DependentUpon>rptBaoCaoTaiChinhTongHop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMa3Benh.cs">
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportDSCapMa.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMa3Benh.Designer.cs">
-      <DependentUpon>rptReportCapMa3Benh.cs</DependentUpon>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportDSCapMa.Designer.cs">
+      <DependentUpon>rptReportDSCapMa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN01.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN01.Designer.cs">
+      <DependentUpon>rptReportGanViTriMAYXN01.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.Designer.cs">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.Designer.cs">
+      <DependentUpon>rptReportGanViTriMAYXN02.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.cs">
       <SubType>Component</SubType>
@@ -1015,11 +1027,17 @@
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.resx">
       <DependentUpon>rptBaoCaoTaiChinhTongHop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMa3Benh.resx">
-      <DependentUpon>rptReportCapMa3Benh.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportDSCapMa.resx">
+      <DependentUpon>rptReportDSCapMa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN01.resx">
+      <DependentUpon>rptReportGanViTriMAYXN01.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.resx">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.resx">
+      <DependentUpon>rptReportGanViTriMAYXN02.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.resx">
       <DependentUpon>rptReportSoDoCapMa.cs</DependentUpon>

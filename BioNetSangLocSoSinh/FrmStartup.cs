@@ -1505,7 +1505,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-                Entry.FrmGanViTriMayXN frm = new Entry.FrmGanViTriMayXN();
+                Entry.FrmGanViTriMayXN frm = new Entry.FrmGanViTriMayXN(emp);
                 TabCreating(xTabMain, "Gắn vị trí xét nghiệm", frm);
                 SplashScreenManager.CloseForm();
             }
