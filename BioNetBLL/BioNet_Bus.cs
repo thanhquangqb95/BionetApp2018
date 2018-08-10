@@ -353,7 +353,7 @@ namespace BioNetBLL
         {
             var db = new DataObjects();
             return db.LuuKetQuaXN(KQ);
-            }
+        }
         
         public static PsReponse LuuKetQuaSuaXN(KetQua_XetNghiem KQ)
         {
@@ -894,11 +894,11 @@ namespace BioNetBLL
             return db.GetDanhSachChoTraKetQuaAll(tuNgay, denNgay, maDonVi, false);
         }
        
-        public static List<PsKetQua_ChiTiet> GetDanhSachKetQuaChiTiet(string maKQ,string maPhieu)
+        public static List<PsKetQua_ChiTiet> GetDanhSachKetQuaChiTiet(string maKQ,string maPhieu,string MaXN)
         {
             var db = new DataObjects();
             List<PsKetQua_ChiTiet> lst = new List<PsKetQua_ChiTiet>();
-            var results = db.GetDanhSachChiTietKetQua(maKQ);
+            var results = db.GetDanhSachChiTietKetQua(maKQ, MaXN);
             if(results.Count>0)
             {
                 int gioitinh = 1;
@@ -912,15 +912,10 @@ namespace BioNetBLL
                     }
                 }
                 catch { }
-                if(gioitinh==1)
-                {
-                    foreach(var result in results)
+                foreach(var result in results)
                     {
                         PsKetQua_ChiTiet kq = new PsKetQua_ChiTiet();
                         kq.DonViTinh = result.DonViTinh;
-                        kq.GiaTriMax = result.GiaTriMaxNam??0;
-                        kq.GiaTriMin = result.GiaTriMinNam ?? 0;
-                        kq.GiaTriTrungBinh = result.GiaTriTrungBinhNam;
                         kq.MaDichVu = result.MaDichVu;
                         kq.MaKQ = result.MaKQ;
                         kq.isNguyCoCao = result.isNguyCo??false;
@@ -930,30 +925,20 @@ namespace BioNetBLL
                         kq.MaXN = result.MaXetNghiem;
                         kq.TenKyThuat = result.TenKyThuat;
                         kq.TenThongSo = result.TenThongSo;
-                        lst.Add(kq);
-                    }
-                }
-                else
-                {
-                    foreach (var result in results)
-                    {
-                        PsKetQua_ChiTiet kq = new PsKetQua_ChiTiet();
-                        kq.DonViTinh = result.DonViTinh;
-                        kq.GiaTriMax = result.GiaTriMaxNu ?? 0;
-                        kq.GiaTriMin = result.GiaTriMinNu ?? 0;
-                        kq.GiaTriTrungBinh = result.GiaTriTrungBinhNu;
-                        kq.MaDichVu = result.MaDichVu;
-                        kq.MaKQ = result.MaKQ;
-                        kq.isNguyCoCao = result.isNguyCo ?? false;
-                        kq.GiaTri = result.GiaTri;
-                        kq.MaKyThuat = result.MaKyThuat;
-                        kq.MaThongSo = result.MaThongSoXN;
-                        kq.MaXN = result.MaXetNghiem;
-                        kq.TenKyThuat = result.TenKyThuat;
-                        kq.TenThongSo = result.TenThongSo;
-                        lst.Add(kq);
-                    }
-                }
+                        if (gioitinh == 1)
+                        {
+                            kq.GiaTriMax = result.GiaTriMaxNam ?? 0;
+                            kq.GiaTriMin = result.GiaTriMinNam ?? 0;
+                            kq.GiaTriTrungBinh = result.GiaTriTrungBinhNam;
+                        }
+                        else
+                        {
+                            kq.GiaTriMax = result.GiaTriMaxNu ?? 0;
+                            kq.GiaTriMin = result.GiaTriMinNu ?? 0;
+                            kq.GiaTriTrungBinh = result.GiaTriTrungBinhNu;
+                        }
+                            lst.Add(kq);
+                    }            
             }
             return lst;
         }
@@ -1166,6 +1151,20 @@ namespace BioNetBLL
             List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
             var db = new DataObjects();
             lst = db.GetDanhSachChuaCapMaXN(2);
+            return lst;
+        }
+        public static List<PSXN_KetQua> GetDanhSachChuaCoKQ()
+        {
+            List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
+            var db = new DataObjects();
+            lst = db.GetDSPhongXN(false);
+            return lst;
+        }
+        public static List<PSXN_KetQua> GetDanhSachCoKQ()
+        {
+            List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
+            var db = new DataObjects();
+            lst = db.GetDSPhongXN(true);
             return lst;
         }
         public static List<PSChiDinhDichVu> GetDanhSachChiDinhChuaDuocCapMa(string maDonVi,DateTime tuNgay, DateTime denNgay)

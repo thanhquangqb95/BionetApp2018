@@ -104,7 +104,9 @@ namespace BioNetSangLocSoSinh.Entry
                     else
                     {
                         GanVaoDS(ph);
-                    }                   
+                    }
+                    txtMaNgoai.ResetText();
+                    txtMaNgoai.Focus();
                 }
             }
             catch
@@ -337,7 +339,15 @@ namespace BioNetSangLocSoSinh.Entry
                                 rsthay.MAYXN02.ViTri = vtcu.ViTri;
                         }
                     }
-                }
+                    if (columnHandle == this.col_MayXN01_GhiChu.ColumnHandle)
+                    {
+                        var tenvitri = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_ViTri);
+                        var ghichu = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_ViTri);
+                        List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN02 != null).ToList();
+                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN02.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+                        rsmoi.MAYXN01.GhiChuCT = ghichu.ToString();
+                    }
+                    }
                 LoadDanhSachGanVT();
             }
             catch
@@ -596,6 +606,45 @@ namespace BioNetSangLocSoSinh.Entry
                 }
             }
             catch { }
+        }
+
+        private void txtMaNgoai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            try
+            {
+                if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                {
+                    string MaXNNgoai = txtMaNgoai.Text.TrimEnd();
+
+                    string MaMayNgoai = cbbMayXN.EditValue.ToString();
+                    PSCMGanViTriChung ph = new PSCMGanViTriChung();
+                    ph.may = new List<PSDanhMucMayXN>();
+                    if (string.IsNullOrEmpty(MaMayNgoai))
+                    {
+
+                    }
+                    else
+                    {
+                        if (MaMayNgoai.Equals("MAYXN00"))
+                        {
+                            ph.may = dsmay;
+                        }
+                        else
+                        {
+                            ph.may = dsmay.Where(x => x.IDMayXN.Equals(MaMayNgoai)).ToList();
+                        }
+                        ph.MaXetNghiem = MaXNNgoai;
+                        ph.MaGoiXN = "DVKhac";
+                    }
+                    GanVaoDS(ph);
+                    txtMaNgoai.ResetText();
+                    txtMaNgoai.Focus();
+                }
+            }
+            catch
+            {
+            }
         }
     }
 }

@@ -750,7 +750,7 @@
             // cbbChiCuc_ChuaCapMa
             // 
             this.cbbChiCuc_ChuaCapMa.EditValue = "Chọn chi cục cần nhận mẫu";
-            this.cbbChiCuc_ChuaCapMa.Location = new System.Drawing.Point(60, 7);
+            this.cbbChiCuc_ChuaCapMa.Location = new System.Drawing.Point(65, 6);
             this.cbbChiCuc_ChuaCapMa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbChiCuc_ChuaCapMa.Name = "cbbChiCuc_ChuaCapMa";
             this.cbbChiCuc_ChuaCapMa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -758,7 +758,7 @@
             this.cbbChiCuc_ChuaCapMa.Properties.DisplayMember = "TenChiCuc";
             this.cbbChiCuc_ChuaCapMa.Properties.ValueMember = "MaChiCuc";
             this.cbbChiCuc_ChuaCapMa.Properties.View = this.gridView3;
-            this.cbbChiCuc_ChuaCapMa.Size = new System.Drawing.Size(275, 20);
+            this.cbbChiCuc_ChuaCapMa.Size = new System.Drawing.Size(270, 20);
             this.cbbChiCuc_ChuaCapMa.TabIndex = 25;
             this.cbbChiCuc_ChuaCapMa.EditValueChanged += new System.EventHandler(this.cbbChiCuc_ChuaCapMa_EditValueChanged);
             // 

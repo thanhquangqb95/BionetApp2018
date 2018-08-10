@@ -2141,6 +2141,18 @@ namespace BioNetDAL
             }
             return lst;
         }
+        public List<PSXN_KetQua> GetDSPhongXN(bool isDaCoKQ)
+        {
+            List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
+            try
+            {
+                lst = db.PSXN_KetQuas.Where(p => p.isXoa != true && p.isCoKQ == isDaCoKQ).OrderBy(x => x.MaPhieu).ToList();
+            }
+            catch
+            {
+            }
+            return lst;
+        }
         public PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu)
         {
             PSCMGanViTriChung vt = new PSCMGanViTriChung();
@@ -3199,19 +3211,20 @@ namespace BioNetDAL
             catch { k = true; }
             return k;
         }
-        public List<PSXN_KetQua_ChiTiet> GetDanhSachChiTietKetQua(string maKetQua)
+        public List<PSXN_KetQua_ChiTiet> GetDanhSachChiTietKetQua(string maKetQua,string MaXN)
         {
             List<PSXN_KetQua_ChiTiet> lst = new List<PSXN_KetQua_ChiTiet>();
             try
             {
-                var results = db.PSXN_KetQua_ChiTiets.Where(p => p.isXoa == false && p.MaKQ == maKetQua).ToList();
-                if (results.Count > 0)
+                if(string.IsNullOrEmpty(MaXN))
                 {
-                    foreach (var result in results)
-                    {
-                        lst.Add(result);
-                    }
+                    lst = db.PSXN_KetQua_ChiTiets.Where(p => p.isXoa != true && p.MaKQ == maKetQua ).ToList();
                 }
+                else
+                {
+                    lst = db.PSXN_KetQua_ChiTiets.Where(p => p.isXoa != true && p.MaKQ == maKetQua && p.MaXetNghiem == MaXN).ToList();
+                }
+                
             }
             catch
             {
@@ -3222,7 +3235,7 @@ namespace BioNetDAL
         {
             try
             {
-                var result = db.PSPhieuSangLocs.FirstOrDefault(p => p.isXoa == false && p.IDPhieu == maPhieu);
+                var result = db.PSPhieuSangLocs.FirstOrDefault(p => p.isXoa !=true && p.IDPhieu == maPhieu);
                 return result;
             }
             catch
@@ -5209,15 +5222,18 @@ namespace BioNetDAL
                     var KetQuaCT = db.PSXN_KetQua_ChiTiets.FirstOrDefault(x => x.MaKQ == item.MaKQ && x.MaThongSoXN == item.MaThongSo && x.MaXetNghiem == item.MaXN);
                     if (KetQuaCT != null)
                     {
-                        if (string.IsNullOrEmpty(item.GiaTri.ToString()))
+                        if (!string.IsNullOrEmpty(item.GiaTri.ToString()))
+                        {
+                            KetQuaCT.GiaTri = item.GiaTri;
+                            KetQuaCT.isNguyCo = item.isNguyCoCao;
+                            KetQuaCT.isDongBo = false;
+                            KetQuaCT.isXoa = false;
+                            db.SubmitChanges();
+                        }   
+                        if(string.IsNullOrEmpty(KetQuaCT.GiaTri))
                         {
                             isCoKQ = false;
                         }
-                        KetQuaCT.GiaTri = item.GiaTri;
-                        KetQuaCT.isNguyCo = item.isNguyCoCao;
-                        KetQuaCT.isDongBo = false;
-                        KetQuaCT.isXoa = false;
-                        db.SubmitChanges();
                     }
                     else
                     {
@@ -5362,18 +5378,17 @@ namespace BioNetDAL
                             phieu.isDongBo = false;
                         }
                     }
-                    db.Transaction.Commit();
-                    db.Connection.Close();
                 }
-
+                db.Transaction.Commit();
+                
             }
             catch (Exception ex)
             {
-                db.Transaction.Rollback();
-                db.Connection.Close();
                 res.Result = false;
                 res.StringError = ex.ToString();
+                db.Transaction.Rollback();
             }
+            db.Connection.Close();
             return res;
         }
         public PsReponse LuuKetQuaSuaXN(KetQua_XetNghiem KQ)
@@ -5471,17 +5486,16 @@ namespace BioNetDAL
                     }
                     TraKetQua.isNguyCoCao = isNC;
                     db.SubmitChanges();
-                    db.Transaction.Commit();
-                    db.Connection.Close();
                 }
             }
             catch (Exception ex)
             {
                 db.Transaction.Rollback();
-                db.Connection.Close();
                 res.Result = false;
                 res.StringError = ex.ToString();
             }
+            db.Transaction.Commit();
+            db.Connection.Close();
             return res;
         }
         public PsReponse UpdateTraKetQua(TraKetQua_XetNghiem KQ, bool isTraKQ)

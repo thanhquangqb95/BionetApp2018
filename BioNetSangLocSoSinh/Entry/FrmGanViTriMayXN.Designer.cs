@@ -118,8 +118,6 @@
             // 
             // cbbMayXN
             // 
-            this.cbbMayXN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbbMayXN.Location = new System.Drawing.Point(486, 7);
             this.cbbMayXN.Name = "cbbMayXN";
             this.cbbMayXN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -165,6 +163,7 @@
             this.txtMaNgoai.Name = "txtMaNgoai";
             this.txtMaNgoai.Size = new System.Drawing.Size(137, 20);
             this.txtMaNgoai.TabIndex = 29;
+            this.txtMaNgoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNgoai_KeyPress);
             // 
             // labelControl1
             // 
@@ -297,6 +296,8 @@
             this.col_MaGoiXetNghiem.ColumnEdit = this.LookupGoiXN;
             this.col_MaGoiXetNghiem.FieldName = "MaGoiXN";
             this.col_MaGoiXetNghiem.Name = "col_MaGoiXetNghiem";
+            this.col_MaGoiXetNghiem.OptionsColumn.AllowEdit = false;
+            this.col_MaGoiXetNghiem.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem.Visible = true;
             this.col_MaGoiXetNghiem.Width = 117;
             // 
@@ -362,7 +363,6 @@
             this.col_MayXN01_ViTri.ColumnEdit = this.LookupMayXN01;
             this.col_MayXN01_ViTri.FieldName = "MAYXN01.ViTri";
             this.col_MayXN01_ViTri.Name = "col_MayXN01_ViTri";
-            this.col_MayXN01_ViTri.OptionsColumn.ReadOnly = true;
             this.col_MayXN01_ViTri.Visible = true;
             this.col_MayXN01_ViTri.Width = 65;
             // 
@@ -384,7 +384,6 @@
             this.col_MayXN01_GhiChu.Caption = "Ghi Chú";
             this.col_MayXN01_GhiChu.FieldName = "MAYXN01.GhiChu";
             this.col_MayXN01_GhiChu.Name = "col_MayXN01_GhiChu";
-            this.col_MayXN01_GhiChu.OptionsColumn.ReadOnly = true;
             this.col_MayXN01_GhiChu.Visible = true;
             this.col_MayXN01_GhiChu.Width = 115;
             // 
@@ -429,7 +428,6 @@
             this.col_MayXN02_ViTri.ColumnEdit = this.LookupMayXN02;
             this.col_MayXN02_ViTri.FieldName = "MAYXN02.ViTri";
             this.col_MayXN02_ViTri.Name = "col_MayXN02_ViTri";
-            this.col_MayXN02_ViTri.OptionsColumn.ReadOnly = true;
             this.col_MayXN02_ViTri.Visible = true;
             // 
             // LookupMayXN02
@@ -449,7 +447,6 @@
             this.col_MayXN02_GhiChu.Caption = "Ghi Chú";
             this.col_MayXN02_GhiChu.FieldName = "MAYXN02.GhiChu";
             this.col_MayXN02_GhiChu.Name = "col_MayXN02_GhiChu";
-            this.col_MayXN02_GhiChu.OptionsColumn.ReadOnly = true;
             this.col_MayXN02_GhiChu.Visible = true;
             this.col_MayXN02_GhiChu.Width = 115;
             // 
@@ -470,7 +467,6 @@
             this.col_GhiNhoChung.Caption = "Ghi chú chung";
             this.col_GhiNhoChung.FieldName = "GhiChuChung";
             this.col_GhiNhoChung.Name = "col_GhiNhoChung";
-            this.col_GhiNhoChung.OptionsColumn.ReadOnly = true;
             this.col_GhiNhoChung.Visible = true;
             this.col_GhiNhoChung.Width = 355;
             // 

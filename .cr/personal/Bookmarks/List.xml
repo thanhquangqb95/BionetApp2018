@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Type="DevExpress.CodeRush.Foundation.Markers.SolutionBookmarksContainer">
+  <Options Language="Neutral">
+    <Items>
+      <Item Id="{9642490f-891a-4a8f-b8b6-7286ac29ed15}">
+        <Id>2</Id>
+        <File>BionetApp2018\BioNetSangLocSoSinh\Entry\FrmGanViTriMayXN.cs</File>
+        <Line>280</Line>
+        <Character>40</Character>
+        <ViewportTop>217</ViewportTop>
+        <ViewportTopMax>557</ViewportTopMax>
+        <TopLine>264</TopLine>
+      </Item>
+    </Items>
+  </Options>
+</Root>

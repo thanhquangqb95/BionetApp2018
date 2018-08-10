@@ -43,5 +43,10 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
             CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
