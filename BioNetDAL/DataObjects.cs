@@ -5,6 +5,7 @@ using BioNetModel.Data;
 using BioNetModel;
 using System.Data;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
@@ -2386,6 +2387,143 @@ namespace BioNetDAL
                 gvc.StringError = ex.ToString();
             }
             return gvc;
+        }
+        public PsReponse DuyetCapMaGanMayXN(List<PSCMGanViTriChung> gvc)
+        {
+            PsReponse reponse = new PsReponse();
+            try
+            {
+                foreach(var gv in gvc)
+                {
+                    var cm = db.PSCM_GanViTris.FirstOrDefault(x=>x.IDLanGanXN==gv.IDLanGanXN && x.IDRowGanXN==gv.IDRowGanXN && x.isDaDuyet!=true);
+                    if(cm!=null)
+                    {
+                        cm.isDaDuyet = true;
+                        var kq = db.PSXN_KetQuas.FirstOrDefault(x => x.MaPhieu == cm.MaPhieu && x.MaXetNghiem == cm.MaXetNghiem && x.isCoKQ != true && x.isXoa != true);
+                        if (kq != null)
+                        { 
+                                string viettatchung= GetViettatGhiChuXN(cm.GhiChuChung, "MaChung");
+
+                            foreach (var cmct in cm.PSCM_GanViTriCTs)
+                            {
+                                string viettatMay1 = GetViettatGhiChuXN(cmct.GhiChuCT, cmct.IDMayXN);
+                                if (!string.IsNullOrEmpty(viettatMay1))
+                                {
+                                    viettatchung = viettatchung+"\n" + viettatMay1;
+                                }
+                            }
+                            kq.GhiChu = viettatchung;
+                            db.SubmitChanges();
+                         }
+                        db.SubmitChanges();
+                    }
+                }          
+            }
+            catch
+            {
+
+            }
+            return reponse;
+        }
+        public String GetViettatGhiChuXN(string viettat,string MaGC)
+        {
+            string noidung = string.Empty;
+            if (!string.IsNullOrEmpty(viettat))
+            {
+                try
+                {
+                    List<string> gcchung = viettat.Split('-').ToList();
+                    if (gcchung.Count > 0)
+                    {
+                        foreach (var gcc in gcchung)
+                        {
+                            var dmgc = db.PSDanhMucGhiChuXNs.FirstOrDefault(x => x.VietTatGhiChu.Equals(gcc.Trim()) && x.isSuDung != false);
+                            string gc1 = string.Empty;
+                            if(dmgc!=null)
+                            {
+                                gc1 = dmgc.NoiDungGhiChuTruoc;
+                            }
+                            if (string.IsNullOrEmpty(gc1))
+                            {
+                                gc1 = gcc;
+                            }
+                            if (string.IsNullOrEmpty(noidung))
+                            {
+                                switch (MaGC)
+                                {
+                                    case "MaChung":
+                                        {
+                                            noidung = "+ Ghi chú chung: " + gc1 + " ";
+                                            break;
+                                        }
+                                    case "MAYXN01":
+                                        {
+                                            noidung = "+ Ghi chú máy 3 bệnh: " + gc1 + " ";
+                                            break;
+                                        }
+                                    case "MAYXN02":
+                                        {
+                                            noidung = "+ Ghi chú máy 2 bệnh: " + gc1 + " ";
+                                            break;
+                                        }
+                                }
+
+                            }
+                            else
+                            {
+                                noidung = noidung + gc1 + " ";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        switch (MaGC)
+                        {
+                            case "MaChung":
+                                {
+                                    noidung = "+ Ghi chú chung: " + viettat + " ";
+                                    break;
+                                }
+                            case "MAYXN01":
+                                {
+                                    noidung = "+ Ghi chú máy 3 bệnh: " + viettat + " ";
+                                    break;
+                                }
+                            case "MAYXN02":
+                                {
+                                    noidung = "+ Ghi chú máy 2 bệnh: " + viettat + " ";
+                                    break;
+                                }
+                        }
+                    }
+                }
+                catch
+                {
+                    switch (MaGC)
+                    {
+                        case "MaChung":
+                            {
+                                noidung = "+ Ghi chú chung: " + viettat + " ";
+                                break;
+                            }
+                        case "MAYXN01":
+                            {
+                                noidung = "+ Ghi chú máy 3 bệnh: " + viettat + " ";
+                                break;
+                            }
+                        case "MAYXN02":
+                            {
+                                noidung = "+ Ghi chú máy 2 bệnh: " + viettat + " ";
+                                break;
+                            }
+                    }
+                }
+            }
+            else
+            {
+
+            }
+            return noidung;
         }
         public List<PSCMGanViTriChung> GetDanhSachGanXNLuu()
         {

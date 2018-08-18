@@ -1179,6 +1179,8 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\settings-cog1.png" />
+    <None Include="Resources\recycle1.png" />
     <None Include="Resources\recycle.png" />
     <None Include="Resources\settings-cog.png" />
     <None Include="Resources\sad.png" />
@@ -1222,13 +1224,12 @@
     <None Include="Resources\icon.png" />
     <None Include="Resources\funnel.png" />
     <None Include="Resources\filter.png" />
-    <None Include="Resources\import.png" />
-    <None Include="Resources\import %282%29.png" />
     <None Include="Resources\eraser.png" />
+    <None Include="Resources\eraser1.png" />
+    <None Include="Resources\import %282%29.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />
-    <None Include="Resources\musica-searcher.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

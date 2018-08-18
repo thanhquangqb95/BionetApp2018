@@ -1223,7 +1223,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.DeleteDanhSachGanXNLuu(pm);
         }
-                public static List<PSCMGanViTriChung> GetDanhSachGanXNLuu()
+        public static PsReponse DuyetCapMaGanMayXN(List<PSCMGanViTriChung> pm)
+        {
+            var db = new DataObjects();
+            return db.DuyetCapMaGanMayXN(pm);
+        }
+        public static List<PSCMGanViTriChung> GetDanhSachGanXNLuu()
         {
             var db = new DataObjects();
             return db.GetDanhSachGanXNLuu();

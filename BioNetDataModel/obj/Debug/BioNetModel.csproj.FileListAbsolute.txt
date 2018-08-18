@@ -124,6 +124,7 @@ D:\IHis\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.pdb
 D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\BioNetModel.dll.config
 D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\BioNetModel.dll
 D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\BioNetModel.pdb
+D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csprojAssemblyReference.cache
 D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
 D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.dll
 D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.pdb

@@ -413,16 +413,6 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap import {
-            get {
-                object obj = ResourceManager.GetObject("import", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap import__2_ {
             get {
                 object obj = ResourceManager.GetObject("import (2)", resourceCulture);
@@ -506,16 +496,6 @@ namespace BioNetSangLocSoSinh.Properties {
         internal static System.Drawing.Bitmap mailSend {
             get {
                 object obj = ResourceManager.GetObject("mailSend", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap musica_searcher {
-            get {
-                object obj = ResourceManager.GetObject("musica-searcher", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

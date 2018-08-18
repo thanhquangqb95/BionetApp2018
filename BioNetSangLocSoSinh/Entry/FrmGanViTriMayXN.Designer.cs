@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -166,9 +166,9 @@
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pictureEdit1.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem3.Text = "Cài đặt";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.pictureEdit1.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Cài đặt";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.pictureEdit1.SuperTip = superToolTip1;
             this.pictureEdit1.TabIndex = 37;
             this.pictureEdit1.Visible = false;
             // 
@@ -776,9 +776,9 @@
             this.btnClear.Location = new System.Drawing.Point(237, 130);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(46, 23);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Bỏ lọc";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnClear.SuperTip = superToolTip2;
             this.btnClear.TabIndex = 33;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 

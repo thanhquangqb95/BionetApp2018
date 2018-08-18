@@ -89,8 +89,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.vt.Clear();
             vtMayXN01.Clear();
             vtMayXN02.Clear();
-            List<PSCMGanViTriChung> vtc = BioNet_Bus.GetDanhSachGanXNLuu();
-            var m1 = vtc.Where(x => x.MAYXN01 != null).Select(x => x.MAYXN01).ToList();
+            vt = BioNet_Bus.GetDanhSachGanXNLuu();
+            var m1 = vt.Where(x => x.MAYXN01 != null).Select(x => x.MAYXN01).ToList();
             foreach (var m in m1)
             {
                 ViTriXN v = new ViTriXN();
@@ -101,7 +101,7 @@ namespace BioNetSangLocSoSinh.Entry
                 v.ViTri = m.ViTri;
                 vtMayXN01.Add(v);
             }
-            var m2 = vtc.Where(x => x.MAYXN02 != null).Select(x => x.MAYXN02).ToList();
+            var m2 = vt.Where(x => x.MAYXN02 != null).Select(x => x.MAYXN02).ToList();
             foreach (var m in m2)
             {
                 ViTriXN v = new ViTriXN();
@@ -112,7 +112,6 @@ namespace BioNetSangLocSoSinh.Entry
                 v.ViTri = m.ViTri;
                 vtMayXN02.Add(v);
             }
-            vt = vtc;
             this.LoadDanhSachGanVT();
         }
         private void LoadDanhSachGanVT()
@@ -410,6 +409,7 @@ namespace BioNetSangLocSoSinh.Entry
             List<pro_ReportGanViTriMayXNResult> dataGanVT = new List<pro_ReportGanViTriMayXNResult>();
             try
             {
+                BioNet_Bus.DuyetCapMaGanMayXN(vt);
                 string link = Application.StartupPath + @"\DSSoDoXetNghiem\";
                 Workbook workbook = new DevExpress.Spreadsheet.Workbook();
                 Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
@@ -794,10 +794,26 @@ namespace BioNetSangLocSoSinh.Entry
                     if (columnHandle == this.col_MayXN01_GhiChu.ColumnHandle)
                     {
                         var tenvitri = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_ViTri);
-                        var ghichu = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_ViTri);
+                        var ghichu = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_GhiChu);
+                        List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN01 != null).ToList();
+                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN01.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+                        rsmoi.MAYXN01.GhiChuCT = ghichu.ToString();
+                        BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
+                    }
+                    if (columnHandle == this.col_MayXN02_GhiChu.ColumnHandle)
+                    {
+                        var tenvitri = view.GetRowCellDisplayText(rowfocus, this.col_MayXN02_ViTri);
+                        var ghichu = view.GetRowCellDisplayText(rowfocus, this.col_MayXN01_GhiChu);
                         List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN02 != null).ToList();
                         PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN02.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
                         rsmoi.MAYXN01.GhiChuCT = ghichu.ToString();
+                        BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
+                    }
+                    if (columnHandle == this.col_GhiNhoChung.ColumnHandle)
+                    {
+                        var ghichu = view.GetRowCellDisplayText(rowfocus, this.col_GhiNhoChung);
+                        PSCMGanViTriChung rsmoi = vt.Where(p => p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+                        rsmoi.GhiChuChung = ghichu.ToString();
                         BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
                     }
                 }

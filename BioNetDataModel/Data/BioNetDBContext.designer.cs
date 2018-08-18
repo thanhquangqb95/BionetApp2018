@@ -16818,9 +16818,13 @@ namespace BioNetModel.Data
 		
 		private string _VietTatGhiChu;
 		
-		private string _NoiDungGhiChu;
+		private string _NoiDungGhiChuTruoc;
 		
 		private System.Nullable<bool> _isSuDung;
+		
+		private string _NoiDungGhiChuSau;
+		
+		private System.Nullable<bool> _isGhiChuSau;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -16830,10 +16834,14 @@ namespace BioNetModel.Data
     partial void OnIDRowGhiChuXNChanged();
     partial void OnVietTatGhiChuChanging(string value);
     partial void OnVietTatGhiChuChanged();
-    partial void OnNoiDungGhiChuChanging(string value);
-    partial void OnNoiDungGhiChuChanged();
+    partial void OnNoiDungGhiChuTruocChanging(string value);
+    partial void OnNoiDungGhiChuTruocChanged();
     partial void OnisSuDungChanging(System.Nullable<bool> value);
     partial void OnisSuDungChanged();
+    partial void OnNoiDungGhiChuSauChanging(string value);
+    partial void OnNoiDungGhiChuSauChanged();
+    partial void OnisGhiChuSauChanging(System.Nullable<bool> value);
+    partial void OnisGhiChuSauChanged();
     #endregion
 		
 		public PSDanhMucGhiChuXN()
@@ -16881,22 +16889,22 @@ namespace BioNetModel.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungGhiChu", DbType="NVarChar(MAX)")]
-		public string NoiDungGhiChu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungGhiChuTruoc", DbType="NVarChar(MAX)")]
+		public string NoiDungGhiChuTruoc
 		{
 			get
 			{
-				return this._NoiDungGhiChu;
+				return this._NoiDungGhiChuTruoc;
 			}
 			set
 			{
-				if ((this._NoiDungGhiChu != value))
+				if ((this._NoiDungGhiChuTruoc != value))
 				{
-					this.OnNoiDungGhiChuChanging(value);
+					this.OnNoiDungGhiChuTruocChanging(value);
 					this.SendPropertyChanging();
-					this._NoiDungGhiChu = value;
-					this.SendPropertyChanged("NoiDungGhiChu");
-					this.OnNoiDungGhiChuChanged();
+					this._NoiDungGhiChuTruoc = value;
+					this.SendPropertyChanged("NoiDungGhiChuTruoc");
+					this.OnNoiDungGhiChuTruocChanged();
 				}
 			}
 		}
@@ -16917,6 +16925,46 @@ namespace BioNetModel.Data
 					this._isSuDung = value;
 					this.SendPropertyChanged("isSuDung");
 					this.OnisSuDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDungGhiChuSau", DbType="NVarChar(MAX)")]
+		public string NoiDungGhiChuSau
+		{
+			get
+			{
+				return this._NoiDungGhiChuSau;
+			}
+			set
+			{
+				if ((this._NoiDungGhiChuSau != value))
+				{
+					this.OnNoiDungGhiChuSauChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDungGhiChuSau = value;
+					this.SendPropertyChanged("NoiDungGhiChuSau");
+					this.OnNoiDungGhiChuSauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isGhiChuSau", DbType="Bit")]
+		public System.Nullable<bool> isGhiChuSau
+		{
+			get
+			{
+				return this._isGhiChuSau;
+			}
+			set
+			{
+				if ((this._isGhiChuSau != value))
+				{
+					this.OnisGhiChuSauChanging(value);
+					this.SendPropertyChanging();
+					this._isGhiChuSau = value;
+					this.SendPropertyChanged("isGhiChuSau");
+					this.OnisGhiChuSauChanged();
 				}
 			}
 		}
