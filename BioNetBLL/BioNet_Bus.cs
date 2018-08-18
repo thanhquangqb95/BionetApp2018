@@ -15,10 +15,10 @@ namespace BioNetBLL
     public class BioNet_Bus
     {
         #region SET
-      public static PsReponse HuyMauPhieu(string maPhieu, string maTiepnhan, string maDonVi, string maNV, string lydoXoa)
+        public static PsReponse HuyMauPhieu(string maPhieu, string maTiepnhan, string maDonVi, string maNV, string lydoXoa)
         {
             var db = new DataObjects();
-            return db.HuyMauPhieu(maPhieu,maTiepnhan,maDonVi,maNV,lydoXoa);
+            return db.HuyMauPhieu(maPhieu, maTiepnhan, maDonVi, maNV, lydoXoa);
         }
 
         public static List<PSNhaCungCap> GetDanhMucNhaCungCap()
@@ -43,16 +43,16 @@ namespace BioNetBLL
             var db = new DataObjects();
             try
             {
-              return db.UpdateThongTinTrungTam(trungtam);
+                return db.UpdateThongTinTrungTam(trungtam);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 resukt.Result = false;
                 resukt.StringError = ex.ToString();
             }
             return resukt;
         }
-        public static PsReponse  InsertTiepNhan(PSTiepNhan dotTiepNhan)
+        public static PsReponse InsertTiepNhan(PSTiepNhan dotTiepNhan)
         {
             var db = new DataObjects();
             return db.InsertTiepNhan(dotTiepNhan);
@@ -69,7 +69,7 @@ namespace BioNetBLL
             return db.CapNhatLisence(key);
         }
 
-        public static  int KiemTraTrangThaiPhieu(string maPhieu, string maDonVi)
+        public static int KiemTraTrangThaiPhieu(string maPhieu, string maDonVi)
         {
             var db = new DataObjects();
             return db.KiemTraTrangThaiPhieu(maPhieu, maDonVi);
@@ -87,20 +87,20 @@ namespace BioNetBLL
         public static PsReponse LuuDuyetTraKetQuaXetNghiem(TraKetQua_XetNghiem ketQua)
         {
             var db = new DataObjects();
-            return db.UpdateTraKetQua(ketQua,true);
+            return db.UpdateTraKetQua(ketQua, true);
         }
         public static PsReponse LuuTraKetQuaXetNghiem(TraKetQua_XetNghiem ketQua)
         {
             var db = new DataObjects();
-            return db.UpdateTraKetQua(ketQua,false);
+            return db.UpdateTraKetQua(ketQua, false);
         }
-        public static bool UpdateKetQuaLamLaiXetNghiemLan2(string maPhieu, string maTiepNhan,string maDonVi)
+        public static bool UpdateKetQuaLamLaiXetNghiemLan2(string maPhieu, string maTiepNhan, string maDonVi)
         {
             var db = new DataObjects();
             return db.UpdatePhieuTraKetQuaChoXNLan2(maPhieu, maTiepNhan, maDonVi);
         }
-        
-         public static List<PSXN_TraKetQua> GetDanhSachPDFChuaDongBo()
+
+        public static List<PSXN_TraKetQua> GetDanhSachPDFChuaDongBo()
         {
             var db = new DataObjects();
             return db.GetDanhSachPDFChuaDongBo();
@@ -120,7 +120,7 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.UpdateTrangThaiBenhNhanNguyCoCao(false, rowID);
         }
-        public static PsReponse UpdatePhieuThucHienThuMauLai(string maPhieu,string maDonvi)
+        public static PsReponse UpdatePhieuThucHienThuMauLai(string maPhieu, string maDonvi)
         {
             var db = new DataObjects();
             return db.UpdatePhieuThucHienThuMauLai(maPhieu, maDonvi);
@@ -144,9 +144,9 @@ namespace BioNetBLL
         public static PsReponse KoThuLaiMau(string maPhieu, string maTiepNhan)
         {
             var db = new DataObjects();
-            return db.KoThuLaiMau(maPhieu,maTiepNhan);
+            return db.KoThuLaiMau(maPhieu, maTiepNhan);
         }
-        public static bool InsertLamLaiXetNghiem(string maPhieu,string maTiepNhan, string maNVChiDinh, List<PsDichVu> lstDVLamLai)
+        public static bool InsertLamLaiXetNghiem(string maPhieu, string maTiepNhan, string maNVChiDinh, List<PsDichVu> lstDVLamLai)
         {
             var db = new DataObjects();
             try
@@ -176,7 +176,7 @@ namespace BioNetBLL
                     return false;
                 }
                 string maCD = db.InsertDotChiDinhDichVu(cd, true);
-               if(!string.IsNullOrEmpty(maCD))
+                if (!string.IsNullOrEmpty(maCD))
                 {
                     foreach (var item in lstDVLamLai)
                     {
@@ -216,7 +216,7 @@ namespace BioNetBLL
         //    var db = new DataObjects();
         //    return db.InsertChiDinhHangLoat(lstTiepNhan, MaNVChiDinh);
         //}
-        public static PsReponse InsertChiDinhTheoDanhSachHangLoat(PSTiepNhan dotTiepNhan, string MaNVChiDinh,string MaGoiXN)
+        public static PsReponse InsertChiDinhTheoDanhSachHangLoat(PSTiepNhan dotTiepNhan, string MaNVChiDinh, string MaGoiXN)
         {
             var db = new DataObjects();
             return db.InsertChiDinhTheoDanhSachHangLoat(dotTiepNhan, MaNVChiDinh, MaGoiXN);
@@ -251,7 +251,7 @@ namespace BioNetBLL
                         patient.DanTocID = Phieu.BenhNhan.DanTocID;
                         patient.CanNang = Phieu.BenhNhan.CanNang;
                         patient.Para = string.IsNullOrEmpty(Phieu.BenhNhan.Para) == true ? "0000" : Phieu.BenhNhan.Para;
-                        string mbn = db.InsertBenhNhan(patient,Phieu.maDonViCoSo);
+                        string mbn = db.InsertBenhNhan(patient, Phieu.maDonViCoSo);
                         if (!string.IsNullOrEmpty(mbn))
                         {
                             PSPhieuSangLoc p = new PSPhieuSangLoc();
@@ -272,9 +272,9 @@ namespace BioNetBLL
                             p.isTruoc24h = Phieu.isTruoc24h;
                             p.MaBenhNhan = mbn;
                             p.MaGoiXN = Phieu.maGoiXetNghiem;
-                         //   p.MaXetNghiem = Phieu.maXetNghiem;
+                            //   p.MaXetNghiem = Phieu.maXetNghiem;
                             p.NgayGioLayMau = Phieu.ngayGioLayMau;
-                          //  p.NgayNhanMau = Phieu.ngayNhanMau;
+                            //  p.NgayNhanMau = Phieu.ngayNhanMau;
                             p.NgayTaoPhieu = Phieu.ngayTaoPhieu;
                             p.NgayTruyenMau = Phieu.ngayTruyenMau;
                             p.NoiLayMau = Phieu.NoiLayMau;
@@ -295,7 +295,7 @@ namespace BioNetBLL
                             else
                             {
                                 result.Result = false;
-                                result.StringError = "Không thể cập nhật thông tin phiếu! \r\n Lỗi chi tiết :" +res.StringError;
+                                result.StringError = "Không thể cập nhật thông tin phiếu! \r\n Lỗi chi tiết :" + res.StringError;
                             }
                         }
                         else
@@ -323,7 +323,7 @@ namespace BioNetBLL
             }
             return result;
         }
-    
+
         public static PsReponse InsertDotChiDinhDichVu(PsChiDinhvsDanhGia dg)
         {
             var db = new DataObjects();
@@ -339,10 +339,10 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.InsertKetQuaXN(rowKQ);
         }
-        public static PsReponse HuyChiDinhDichVu(string maCD, string maNV, string lydoHuy, string maPhieu,string maTiepNhan)
+        public static PsReponse HuyChiDinhDichVu(string maCD, string maNV, string lydoHuy, string maPhieu, string maTiepNhan)
         {
             var db = new DataObjects();
-            return db.HuyChiDinhDichVu(maCD, maNV, lydoHuy, maPhieu,maTiepNhan);
+            return db.HuyChiDinhDichVu(maCD, maNV, lydoHuy, maPhieu, maTiepNhan);
         }
         public static PsReponse HuyPhieuDaTiepNhan(string maPhieu)
         {
@@ -354,18 +354,18 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.LuuKetQuaXN(KQ);
         }
-        
+
         public static PsReponse LuuKetQuaSuaXN(KetQua_XetNghiem KQ)
         {
             var db = new DataObjects();
             return db.LuuKetQuaSuaXN(KQ);
         }
-        public static PsReponse HuyDuyetKQ(string maTiepNhan,string maDonVi,string maPhieu)
+        public static PsReponse HuyDuyetKQ(string maTiepNhan, string maDonVi, string maPhieu)
         {
             var db = new DataObjects();
-            return db.UpdateDuyetKetQua(false, maTiepNhan,maDonVi,maPhieu);
+            return db.UpdateDuyetKetQua(false, maTiepNhan, maDonVi, maPhieu);
         }
-      
+
         #endregion SET
         #region GET
         public static List<PSDanhMucGhiChu> GetListCauHinhGhiChu()
@@ -383,10 +383,10 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetTinhTrangPhieu(startdate, enddate, maDonVi);
         }
-        public static List<PsTinhTrangPhieu> GetTTPhieuCanSuaLoi(DateTime startdate, DateTime enddate, string maDonVi,string maChiCuc,string maPhieu)
+        public static List<PsTinhTrangPhieu> GetTTPhieuCanSuaLoi(DateTime startdate, DateTime enddate, string maDonVi, string maChiCuc, string maPhieu)
         {
             var db = new DataObjects();
-            return db.GetTTPhieuCanSuaLoi(startdate, enddate, maDonVi,maChiCuc,maPhieu);
+            return db.GetTTPhieuCanSuaLoi(startdate, enddate, maDonVi, maChiCuc, maPhieu);
         }
         public static PsReponse UpdatePhieuSuaLoi(List<string> maPhieu)
         {
@@ -401,17 +401,17 @@ namespace BioNetBLL
         public static List<PsCTDanhGiaChatLuong> GetCTChatLuogMau(string MaPhieu, string IDCoSo, string IDChiCuc, DateTime NgayBD, DateTime NgayKT)
         {
             var db = new DataObjects();
-            return db.GetCTChatLuogMau(MaPhieu,IDCoSo,IDChiCuc,NgayBD,NgayKT);
+            return db.GetCTChatLuogMau(MaPhieu, IDCoSo, IDChiCuc, NgayBD, NgayKT);
         }
         public static PsReponse CapNhatGuiMail(List<string> maPhieu)
         {
             var db = new DataObjects();
-             return db.CapNhatGuiMail(maPhieu);
+            return db.CapNhatGuiMail(maPhieu);
         }
-        public static List<PsTinhTrangPhieu> GetTinhTrangPhieuMail(DateTime startdate, DateTime enddate, string maDonVi,string maChiCuc)
+        public static List<PsTinhTrangPhieu> GetTinhTrangPhieuMail(DateTime startdate, DateTime enddate, string maDonVi, string maChiCuc)
         {
             var db = new DataObjects();
-            return db.GetTinhTrangPhieuMail(startdate, enddate, maDonVi,maChiCuc);
+            return db.GetTinhTrangPhieuMail(startdate, enddate, maDonVi, maChiCuc);
         }
         public static PSTKKQPhieuMail GetThongKePhieuMail(string[] maphieu)
         {
@@ -419,7 +419,7 @@ namespace BioNetBLL
             return db.GetThongKePhieuMail(maphieu);
         }
 
-        public static List<PSDotChuanDoan> GetDanhSachDotChanDoanCuaBenhNhan(string MaBenhNhan )
+        public static List<PSDotChuanDoan> GetDanhSachDotChanDoanCuaBenhNhan(string MaBenhNhan)
         {
             var db = new DataObjects();
             return db.GetDanhSachDotChanDoanCuaBenhNhan(MaBenhNhan);
@@ -429,24 +429,24 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongTinDotChanDoan(rowID);
         }
-            public static bool KiemTraKetQuaDaDuocDuyetHayChua(string maPhieu,string maTiepNhan)
+        public static bool KiemTraKetQuaDaDuocDuyetHayChua(string maPhieu, string maTiepNhan)
         {
             var db = new DataObjects();
             return db.KiemTraPhieuDaDuyetHayChua(maPhieu, maTiepNhan);
         }
-            public static List<PSBenhNhanNguyCoCao> GetDanhSachBenhNhanNguyCoCao(string madonvi,DateTime tungay,DateTime denngay)
+        public static List<PSBenhNhanNguyCoCao> GetDanhSachBenhNhanNguyCoCao(string madonvi, DateTime tungay, DateTime denngay)
         {
             var db = new DataObjects();
             if (madonvi.Equals("all") || string.IsNullOrEmpty(madonvi))
                 madonvi = string.Empty;
-            return db.GetDanhSachBenhNhanNguyCoCao(madonvi, true,tungay,denngay);
+            return db.GetDanhSachBenhNhanNguyCoCao(madonvi, true, tungay, denngay);
         }
         public static List<PSBenhNhanNguyCoCao> GetDanhSachBenhNhanNguyCoGia(string madonvi, DateTime tungay, DateTime denngay)
         {
             var db = new DataObjects();
             if (madonvi.Equals("all") || string.IsNullOrEmpty(madonvi))
                 madonvi = string.Empty;
-            return db.GetDanhSachBenhNhanNguyCoCao(madonvi, false,tungay,denngay);
+            return db.GetDanhSachBenhNhanNguyCoCao(madonvi, false, tungay, denngay);
         }
         public static string GetMaXNBangGhi()
         {
@@ -463,7 +463,7 @@ namespace BioNetBLL
             var db = new DataObjects();
             var que = "MAXN" + SoBanDau();
             var res = db.GetDuLieuBangGhi(que);
-            if(string.IsNullOrEmpty(res))
+            if (string.IsNullOrEmpty(res))
             {
                 return (SoBanDau() + "0000");
             }
@@ -472,7 +472,7 @@ namespace BioNetBLL
         public static string GetMaXetNghiemTrongDB()
         {
             var db = new DataObjects();
-            var res=db.GetDuLieuXNBangGhi();
+            var res = db.GetDuLieuXNBangGhi();
             if (string.IsNullOrEmpty(res))
             {
                 return (SoBanDau() + "0000");
@@ -510,9 +510,9 @@ namespace BioNetBLL
         {
             var db = new DataObjects();
             PsReponse res = new PsReponse();
-            return res=db.KiemTraThongTinPhieuDaDuocTiepNhan(maPhieu);
+            return res = db.KiemTraThongTinPhieuDaDuocTiepNhan(maPhieu);
         }
-            public static PSXN_TraKetQua GetThongTinKetQuaXN(string maPhieu,string maTiepNhan)
+        public static PSXN_TraKetQua GetThongTinKetQuaXN(string maPhieu, string maTiepNhan)
         {
             var db = new DataObjects();
             return db.GetThongTinTraKetQua(maPhieu, maTiepNhan);
@@ -533,23 +533,23 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetBaoCaoTrungTamTongHopChiTietTheoChiCuc(tuNgay, denNgay);
         }
-        
+
         public static rptBaoCaoTongHop GetBaoCaoTongHopTrungTam(DateTime tuNgay, DateTime denNgay)
         {
             var db = new DataObjects();
             return db.GetBaoCaoTongHopTrungTam(tuNgay, denNgay);
-        }    
-        public static TTPhieuCB GetBaoCaoThongTinPhieuTheoTime(string MaDonVi,DateTime NgayBD,DateTime NgayKT)
+        }
+        public static TTPhieuCB GetBaoCaoThongTinPhieuTheoTime(string MaDonVi, DateTime NgayBD, DateTime NgayKT)
         {
             var db = new DataObjects();
-            return db.GetBaoCaoThongTinPhieuTheoTime(MaDonVi, NgayBD,NgayKT);
+            return db.GetBaoCaoThongTinPhieuTheoTime(MaDonVi, NgayBD, NgayKT);
         }
-        public static PsReponse DeletePhieu(List<String> MaPhieu,bool XoaPhieu,string MaNV,string LydoXoa)
+        public static PsReponse DeletePhieu(List<String> MaPhieu, bool XoaPhieu, string MaNV, string LydoXoa)
         {
             var db = new DataObjects();
-            return db.DeletePhieu(MaPhieu, XoaPhieu,MaNV,LydoXoa);
+            return db.DeletePhieu(MaPhieu, XoaPhieu, MaNV, LydoXoa);
         }
-        public static rptBaoCaoTongHop GetBaoCaoTongHopChiCuc(DateTime tuNgay, DateTime denNgay,string maChiCuc)
+        public static rptBaoCaoTongHop GetBaoCaoTongHopChiCuc(DateTime tuNgay, DateTime denNgay, string maChiCuc)
         {
             var db = new DataObjects();
             return db.GetBaoCaoTongHopChiCuc(tuNgay, denNgay, maChiCuc);
@@ -559,12 +559,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetBaoCaoTaiChinh(MaDonVi, NgayBD, NgayKT);
         }
-        public static PsRptTraKetQuaSangLoc GetDuLieuInKetQuaSangLoc(string maPhieu, string maTiepNhan,string maNV,string maDonVi)
+        public static PsRptTraKetQuaSangLoc GetDuLieuInKetQuaSangLoc(string maPhieu, string maTiepNhan, string maNV, string maDonVi)
         {
             PsRptTraKetQuaSangLoc rptKQ = new PsRptTraKetQuaSangLoc();
             List<PsRPTTraKetQuaSangLocChiTiet> lstrptKQCT = new List<PsRPTTraKetQuaSangLocChiTiet>();
             var db = new DataObjects();
-            var phieu = GetThongTinPhieu(maPhieu,maDonVi);
+            var phieu = GetThongTinPhieu(maPhieu, maDonVi);
             var ttKQ = db.GetThongTinTraKetQua(maPhieu, maTiepNhan);
             var ttKQCT = db.GetThongTinTraKetQuaChiTiet(maPhieu, maTiepNhan);
             var Nv = db.GetThongTinNhanVien(maNV);
@@ -574,53 +574,53 @@ namespace BioNetBLL
             PsThongTinDonVi DonVi = new PsThongTinDonVi();
             if (ttKQ != null)
             {
-                rptKQ.NgayNhanMau = (ttKQ.NgayTiepNhan??DateTime.Now).ToString("dd/MM/yyyy");
+                rptKQ.NgayNhanMau = (ttKQ.NgayTiepNhan ?? DateTime.Now).ToString("dd/MM/yyyy");
                 rptKQ.MaXetNghiem = ttKQ.MaXetNghiem;
                 rptKQ.NgayXetNghiem = (ttKQ.NgayLamXetNghiem ?? DateTime.Now).ToString("dd/MM/yyyy");
                 rptKQ.MaPhieu = ttKQ.MaPhieu;
-                rptKQ.MaDonVi = "Mã đơn vị: "+ttKQ.IDCoSo;
+                rptKQ.MaDonVi = "Mã đơn vị: " + ttKQ.IDCoSo;
                 rptKQ.KetLuanBinhThuong = ttKQ.KetLuanTongQuat.Split('.')[0];
                 try { rptKQ.KetLuanNguyCoCao = ttKQ.KetLuanTongQuat.Split('.')[1]; } catch { rptKQ.KetLuanNguyCoCao = string.Empty; }
                 rptKQ.GhiChu = ttKQ.GhiChu;
-                rptKQ.Ngay = ttKQ.NgayTraKQ.Value.Day.ToString().PadLeft(2,'0');
-                rptKQ.Thang = ttKQ.NgayTraKQ.Value.Month.ToString().PadLeft(2,'0');
+                rptKQ.Ngay = ttKQ.NgayTraKQ.Value.Day.ToString().PadLeft(2, '0');
+                rptKQ.Thang = ttKQ.NgayTraKQ.Value.Month.ToString().PadLeft(2, '0');
                 rptKQ.Nam = ttKQ.NgayTraKQ.Value.Year.ToString();
                 rptKQ.NgayCoKQ = (ttKQ.NgayCoKQ ?? DateTime.Now).ToString("dd/MM/yyyy");
             }
             else return null;
             if (phieu != null)
             {
-                if(phieu.BenhNhan!=null)
+                if (phieu.BenhNhan != null)
                 {
                     rptKQ.TenCha = phieu.BenhNhan.FatherName;
                     rptKQ.TenMe = phieu.BenhNhan.MotherName;
                     rptKQ.DienThoaiMe = phieu.BenhNhan.MotherPhoneNumber;
                     rptKQ.DienThoaiCha = phieu.BenhNhan.FatherPhoneNumber;
-                    rptKQ.DiaChiTre ="Địa chỉ gia đình: "+ phieu.BenhNhan.DiaChi;
+                    rptKQ.DiaChiTre = "Địa chỉ gia đình: " + phieu.BenhNhan.DiaChi;
                     rptKQ.MaKhachHang = phieu.BenhNhan.MaKhachHang;
                     rptKQ.TenTre = phieu.BenhNhan.TenBenhNhan;
                     rptKQ.NgaySinh = (phieu.BenhNhan.NgayGioSinh ?? DateTime.Now).ToString("dd/MM/yyyy");
                     // rptKQ.GioiTinh = phieu.BenhNhan.GioiTinh == true ? "Nam" : "Nữ";
-                   if (phieu.BenhNhan.GioiTinh == 0)
+                    if (phieu.BenhNhan.GioiTinh == 0)
                     {
                         rptKQ.GioiTinh = "Nam";
                     }
                     else if (phieu.BenhNhan.GioiTinh == 1)
                         rptKQ.GioiTinh = "Nữ";
                     else rptKQ.GioiTinh = "N/a";
-                        rptKQ.CanNang = phieu.BenhNhan.CanNang.ToString();
-                        rptKQ.TuoiThai = phieu.BenhNhan.TuanTuoiKhiSinh.ToString();
+                    rptKQ.CanNang = phieu.BenhNhan.CanNang.ToString();
+                    rptKQ.TuoiThai = phieu.BenhNhan.TuanTuoiKhiSinh.ToString();
                     rptKQ.NgayThuMau = phieu.ngayGioLayMau.ToString("dd/MM/yyyy");
-                    
+
                 }
-                if(phieu.DonVi!=null)
+                if (phieu.DonVi != null)
                 {
                     rptKQ.TenDonVi = "Tên đơn vị: " + phieu.DonVi.TenDVCS;
-                    rptKQ.DiaChiDonVi ="Địa chỉ đơn vị: "+ phieu.DonVi.DiaChiDVCS;
+                    rptKQ.DiaChiDonVi = "Địa chỉ đơn vị: " + phieu.DonVi.DiaChiDVCS;
                 }
-                if(ttKQCT!=null)
+                if (ttKQCT != null)
                 {
-                    foreach(var ct in ttKQCT)
+                    foreach (var ct in ttKQCT)
                     {
                         PsRPTTraKetQuaSangLocChiTiet c = new PsRPTTraKetQuaSangLocChiTiet();
                         c.DonViDo = ct.DonViTinh.TrimEnd();
@@ -632,7 +632,7 @@ namespace BioNetBLL
                         try
                         {
                             c.TenDichVu = string.IsNullOrEmpty(db.GetTenDichVuCuaKyThuat(ct.IDKyThuat)) == true ? ct.TenKyThuat : db.GetTenDichVuCuaKyThuat(ct.IDKyThuat);
-                        }catch { c.TenDichVu = ct.TenKyThuat; }
+                        } catch { c.TenDichVu = ct.TenKyThuat; }
 
                         c.TenThongSo = ct.TenThongSo;
                         lstrptKQCT.Add(c);
@@ -694,30 +694,30 @@ namespace BioNetBLL
                         catch { }
                     }
                 }
-                catch {  }
+                catch { }
                 try
                 {
                     DonVi.DiaChi = TTDonvi.DiaChiDVCS;
-                    DonVi.isLocked = TTDonvi.isLocked??false;
+                    DonVi.isLocked = TTDonvi.isLocked ?? false;
                     DonVi.KieuTraKetQua = TTDonvi.KieuTraKetQua ?? 1;
                     DonVi.MaChiCuc = TTDonvi.MaChiCuc;
                     DonVi.MaDonVi = TTDonvi.MaDVCS;
                     DonVi.SoDt = TTDonvi.SDTCS;
-                    DonVi.Stt = TTDonvi.Stt??0;
+                    DonVi.Stt = TTDonvi.Stt ?? 0;
                     DonVi.TenDonVi = TTDonvi.TenDVCS.ToUpper();
                     rptKQ.TenBacSi = TTDonvi.TenBacSiDaiDien;
                     try {
-                        if (TTDonvi.Logo.Length>0)
+                        if (TTDonvi.Logo.Length > 0)
                         {
                             byte[] b = TTDonvi.Logo.ToArray();
                             MemoryStream ms = new MemoryStream(b);
                             Image img = Image.FromStream(ms);
                             DonVi.LogoDonVi = img;
-                        }  }
+                        } }
                     catch { }
                     try
                     {
-                        if (TTDonvi.HeaderReport.Length>0)
+                        if (TTDonvi.HeaderReport.Length > 0)
                         {
                             byte[] b2 = TTDonvi.HeaderReport.ToArray();
                             MemoryStream ms2 = new MemoryStream(b2);
@@ -755,7 +755,7 @@ namespace BioNetBLL
             var ttphieu = GetThongTinTiepNhanTheoMaPhieu(maPhieu);
             PsThongTinTrungTam TrungTam = new PsThongTinTrungTam();
             PsThongTinDonVi DonVi = new PsThongTinDonVi();
-          
+
             if (ttphieu != null)
             {
                 var phieu = GetThongTinPhieu(maPhieu, ttphieu.MaDonVi);
@@ -763,7 +763,7 @@ namespace BioNetBLL
                 var ttKQCT = db.GetThongTinTraKetQuaChiTiet(maPhieu, ttphieu.MaTiepNhan);
                 var Nv = db.GetThongTinNhanVien(ttphieu.MaNVTiepNhan);
                 var TTDonvi = db.GetThongTinDonViCoSo(ttphieu.MaDonVi);
-                if(phieu!=null)
+                if (phieu != null)
                 {
                     if (ttKQ != null)
                     {
@@ -783,7 +783,7 @@ namespace BioNetBLL
                         rptKQ.TenMe = phieu.BenhNhan.MotherName;
                         rptKQ.DienThoaiMe = phieu.BenhNhan.MotherPhoneNumber;
                         rptKQ.DienThoaiCha = phieu.BenhNhan.FatherPhoneNumber;
-                        if(!string.IsNullOrEmpty(phieu.BenhNhan.FatherBirthday.ToString()))
+                        if (!string.IsNullOrEmpty(phieu.BenhNhan.FatherBirthday.ToString()))
                         {
                             rptKQ.NSCha = phieu.BenhNhan.FatherBirthday.Value.Year.ToString();
                         }
@@ -867,7 +867,7 @@ namespace BioNetBLL
                     }
                     rptKQ.chitietKetQua = lstrptKQCT;
                 }
-                                      
+
             }
             else return null;
             return rptKQ;
@@ -879,7 +879,7 @@ namespace BioNetBLL
             if (maDonVi.Equals("all")) maDonVi = string.Empty;
             return db.GetDanhSachChoTraKetQua(tuNgay, denNgay, maDonVi, false);
         }
-       
+
         public static List<PSXN_TraKetQua> GetDanhSachDaDuyetTraKetQua(DateTime tuNgay, DateTime denNgay, string maDonVi)
         {
             var db = new DataObjects();
@@ -893,13 +893,13 @@ namespace BioNetBLL
             if (maDonVi.Equals("all")) maDonVi = string.Empty;
             return db.GetDanhSachChoTraKetQuaAll(tuNgay, denNgay, maDonVi, false);
         }
-       
-        public static List<PsKetQua_ChiTiet> GetDanhSachKetQuaChiTiet(string maKQ,string maPhieu,string MaXN)
+
+        public static List<PsKetQua_ChiTiet> GetDanhSachKetQuaChiTiet(string maKQ, string maPhieu, string MaXN)
         {
             var db = new DataObjects();
             List<PsKetQua_ChiTiet> lst = new List<PsKetQua_ChiTiet>();
             var results = db.GetDanhSachChiTietKetQua(maKQ, MaXN);
-            if(results.Count>0)
+            if (results.Count > 0)
             {
                 int gioitinh = 1;
                 var Phieu = db.GetThongTinPhieu(maPhieu);
@@ -908,39 +908,44 @@ namespace BioNetBLL
                     if (Phieu != null)
                     {
                         PSPatient BenhNhan = GetThongTinBenhNhan(Phieu.MaBenhNhan);
-                        gioitinh = BenhNhan.GioiTinh ?? 1 ;
+                        gioitinh = BenhNhan.GioiTinh ?? 1;
                     }
                 }
                 catch { }
-                foreach(var result in results)
+                foreach (var result in results)
+                {
+                    PsKetQua_ChiTiet kq = new PsKetQua_ChiTiet();
+                    kq.DonViTinh = result.DonViTinh;
+                    kq.MaDichVu = result.MaDichVu;
+                    kq.MaKQ = result.MaKQ;
+                    kq.isNguyCoCao = result.isNguyCo ?? false;
+                    kq.GiaTri = result.GiaTri;
+                    kq.MaKyThuat = result.MaKyThuat;
+                    kq.MaThongSo = result.MaThongSoXN;
+                    kq.MaXN = result.MaXetNghiem;
+                    kq.TenKyThuat = result.TenKyThuat;
+                    kq.TenThongSo = result.TenThongSo;
+                    if (gioitinh == 1)
                     {
-                        PsKetQua_ChiTiet kq = new PsKetQua_ChiTiet();
-                        kq.DonViTinh = result.DonViTinh;
-                        kq.MaDichVu = result.MaDichVu;
-                        kq.MaKQ = result.MaKQ;
-                        kq.isNguyCoCao = result.isNguyCo??false;
-                        kq.GiaTri = result.GiaTri;
-                        kq.MaKyThuat = result.MaKyThuat;
-                        kq.MaThongSo = result.MaThongSoXN;
-                        kq.MaXN = result.MaXetNghiem;
-                        kq.TenKyThuat = result.TenKyThuat;
-                        kq.TenThongSo = result.TenThongSo;
-                        if (gioitinh == 1)
-                        {
-                            kq.GiaTriMax = result.GiaTriMaxNam ?? 0;
-                            kq.GiaTriMin = result.GiaTriMinNam ?? 0;
-                            kq.GiaTriTrungBinh = result.GiaTriTrungBinhNam;
-                        }
-                        else
-                        {
-                            kq.GiaTriMax = result.GiaTriMaxNu ?? 0;
-                            kq.GiaTriMin = result.GiaTriMinNu ?? 0;
-                            kq.GiaTriTrungBinh = result.GiaTriTrungBinhNu;
-                        }
-                            lst.Add(kq);
-                    }            
+                        kq.GiaTriMax = result.GiaTriMaxNam ?? 0;
+                        kq.GiaTriMin = result.GiaTriMinNam ?? 0;
+                        kq.GiaTriTrungBinh = result.GiaTriTrungBinhNam;
+                    }
+                    else
+                    {
+                        kq.GiaTriMax = result.GiaTriMaxNu ?? 0;
+                        kq.GiaTriMin = result.GiaTriMinNu ?? 0;
+                        kq.GiaTriTrungBinh = result.GiaTriTrungBinhNu;
+                    }
+                    lst.Add(kq);
+                }
             }
             return lst;
+        }
+        public static PSXN_KetQua GetPhieuXNKetQua (string MaPhieu,string MaXN,string MaGoiXN)
+        {
+            var db = new DataObjects();
+            return db.GetPhieuXNKetQua(MaPhieu, MaXN,MaGoiXN);
         }
         public static List<PsRptDanhSachDaCapMaXetNghiem> GetDanhSachDaCapMaXetNghiem(DateTime tuNgay, DateTime denNgay, string maDonVi)
         {
@@ -1160,6 +1165,12 @@ namespace BioNetBLL
             lst = db.GetDSPhongXN(false);
             return lst;
         }
+        public static List<PSXN_KetQua> GetDSChuaGanXN()
+        {
+            List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
+            var db = new DataObjects();
+            return lst= db.GetDSChuaGanXN();
+        }
         public static List<PSXN_KetQua> GetDanhSachCoKQ()
         {
             List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
@@ -1195,6 +1206,32 @@ namespace BioNetBLL
             var db = new DataObjects();
             lst = db.GetPhieuChuaCoKQ(maphieu);
             return lst;
+        }
+        
+        public static string GetMaRowIDLanGanXN()
+        {
+            var db = new DataObjects();
+            return db.GetMaRowIDLanGanXN();
+        }
+        public static PsReponse SuaDanhSachGanXNLuu(PSCMGanViTriChung pm)
+        {
+            var db = new DataObjects();
+            return db.SuaDanhSachGanXNLuu(pm);
+        }
+        public static PsReponse DeleteDanhSachGanXNLuu(PSCMGanViTriChung pm)
+        {
+            var db = new DataObjects();
+            return db.DeleteDanhSachGanXNLuu(pm);
+        }
+                public static List<PSCMGanViTriChung> GetDanhSachGanXNLuu()
+        {
+            var db = new DataObjects();
+            return db.GetDanhSachGanXNLuu();
+        }
+        public static PsReponse SaveGanXN(PSCMGanViTriChung pm)
+        {
+            var db = new DataObjects();
+            return db.SaveGanXN(pm);
         }
         public static List<PSDanhMucMayXN> GetDSMayXN()
         {

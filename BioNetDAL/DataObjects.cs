@@ -2153,6 +2153,27 @@ namespace BioNetDAL
             }
             return lst;
         }
+        public List<PSXN_KetQua> GetDSChuaGanXN()
+        {
+            List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
+            try
+            {
+                lst= db.PSXN_KetQuas.Where(p => p.isXoa != true && p.isCoKQ !=true).OrderBy(x => x.MaPhieu).ToList();
+                var gan = (from ls in db.PSCM_GanViTris
+                          join kq in db.PSXN_KetQuas on ls.MaXetNghiem equals kq.MaXetNghiem
+                          where ls.MaPhieu == kq.MaPhieu && kq.isCoKQ != true && kq.MaGoiXN == ls.MaGoiXN
+                          select new { kq }).ToList();
+                
+                foreach(var c in gan)
+                {
+                    lst.Remove(c.kq);
+                }
+            }
+            catch
+            {
+            }
+            return lst;
+        }
         public PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu)
         {
             PSCMGanViTriChung vt = new PSCMGanViTriChung();
@@ -2165,12 +2186,10 @@ namespace BioNetDAL
                 }
                 else
                 {
-                    PSCM_GanViTri vtc = db.PSCM_GanViTris.FirstOrDefault(p => p.MaXetNghiem == kq.MaXetNghiem && p.MaGoiXN == kq.MaGoiXN && p.MaPhieu == kq.MaPhieu);
-                    if (vtc == null)
-                    {
                         vt.MaPhieu = kq.MaPhieu;
                         vt.MaGoiXN = kq.MaGoiXN;
                         vt.MaXetNghiem = kq.MaXetNghiem;
+                    
                         var idmay = (from ct in kq.PSXN_KetQua_ChiTiets
                                      join dv in db.PSMapsMayXN_DichVus on ct.MaDichVu equals dv.IDDichVu
                                      join may in db.PSDanhMucMayXNs on dv.IDMayXN equals may.IDMayXN
@@ -2181,18 +2200,250 @@ namespace BioNetDAL
                             m.Add(mayct.may); 
                         }
                         vt.may = m;
-
-                    }
+                    
                 }
             }
             catch
             {
 
-            }
-                
+            }               
             return vt;
 
         }
+        public string GetMaRowIDLanGanXN()
+        {
+            string ma=  db.PSCM_GanViTris.OrderByDescending(x => x.IDLanGanXN).Where(x=>x.isDaDuyet!=true).Select(x => x.IDLanGanXN).Distinct().FirstOrDefault();
+            if(string.IsNullOrEmpty(ma))
+            {
+                string madc= db.PSCM_GanViTris.OrderByDescending(x => x.IDLanGanXN).Where(x => x.isDaDuyet == true).Select(x => x.IDLanGanXN).Distinct().FirstOrDefault();
+                if(string.IsNullOrEmpty(madc))
+                {
+                    ma = "1";
+                }
+                else
+                {
+                    ma = (int.Parse(madc) + 1).ToString();
+                }
+            }
+            return ma;
+        }
+        public PsReponse SaveGanXN(PSCMGanViTriChung pm)
+        {
+            PsReponse reponse = new PsReponse();
+            PSCM_GanViTri gan = new PSCM_GanViTri();
+            gan.IDLanGanXN = pm.IDLanGanXN;
+            gan.isDaDuyet = false;
+            gan.MaGoiXN = pm.MaGoiXN;
+            gan.MaXetNghiem = pm.MaXetNghiem;
+            gan.STT_bang = pm.STT_bang;
+            gan.GhiChuChung = pm.GhiChuChung;
+            gan.MaPhieu = pm.MaPhieu;
+            db.PSCM_GanViTris.InsertOnSubmit(gan);
+
+            db.SubmitChanges();
+            //PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.MaPhieu == pm.MaPhieu && x.MaXetNghiem == pm.MaXetNghiem && x.IDLanGanXN==pm.IDLanGanXN
+            //&& x.STT_bang == pm.STT_bang && x.MaGoiXN == pm.MaGoiXN && x.isDaDuyet != true);
+            PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(pm.IDLanGanXN)
+            && x.STT_bang == pm.STT_bang && x.isDaDuyet != true);
+            if (viTri != null)
+            {
+                if (pm.MAYXN01 != null)
+                {
+                    PSCM_GanViTriCT ganct = new PSCM_GanViTriCT();
+                    ganct.IDLanGanXN = viTri.IDLanGanXN;
+                    ganct.IDRowGanXN = viTri.IDRowGanXN;
+                    ganct.isDaDuyet = false;
+                    ganct.IDMayXN = "MAYXN01";
+                    ganct.STT = pm.MAYXN01.STT;
+                    ganct.STTDia = pm.MAYXN01.STTDia;
+                    ganct.STTVT = pm.MAYXN01.STTVT;
+                    ganct.isTest = pm.MAYXN01.isTest;
+                    ganct.GhiChuCT = pm.MAYXN01.GhiChuCT;
+                    ganct.ViTri = pm.MAYXN01.ViTri;
+                    db.PSCM_GanViTriCTs.InsertOnSubmit(ganct);
+                    db.SubmitChanges();
+                }
+                if (pm.MAYXN02 != null)
+                {
+                    PSCM_GanViTriCT ganct = new PSCM_GanViTriCT();
+                    ganct.IDLanGanXN = viTri.IDLanGanXN;
+                    ganct.IDRowGanXN = viTri.IDRowGanXN;
+                    ganct.isDaDuyet = false;
+                    ganct.IDMayXN = "MAYXN02";
+                    ganct.STT = pm.MAYXN02.STT;
+                    ganct.STTDia = pm.MAYXN02.STTDia;
+                    ganct.STTVT = pm.MAYXN02.STTVT;
+                    ganct.isTest = pm.MAYXN02.isTest;
+                    ganct.GhiChuCT = pm.MAYXN02.GhiChuCT;
+                    ganct.ViTri = pm.MAYXN02.ViTri;
+                    db.PSCM_GanViTriCTs.InsertOnSubmit(ganct);
+                    db.SubmitChanges();
+                }
+            }
+            return reponse;
+        }
+        public PsReponse SuaDanhSachGanXNLuu(PSCMGanViTriChung pm)
+        {
+            PsReponse gvc = new PsReponse();
+            try
+            {
+                PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(pm.IDLanGanXN) && x.IDRowGanXN==pm.IDRowGanXN
+                && x.isDaDuyet != true );
+                if (viTri != null)
+                {
+                    viTri.MaGoiXN = pm.MaGoiXN;
+                    viTri.MaPhieu = pm.MaPhieu;
+                    viTri.MaXetNghiem = pm.MaXetNghiem;
+                    viTri.STT_bang = pm.STT_bang;
+                    viTri.isDaDuyet = false;
+                    viTri.GhiChuChung = pm.GhiChuChung;
+                   if(viTri.PSCM_GanViTriCTs.Count()>0)
+                    {
+                        foreach(var vtc in viTri.PSCM_GanViTriCTs)
+                        {
+                            switch (vtc.IDMayXN)
+                            {
+                                case "MAYXN01":
+                                    {
+                                        vtc.GhiChuCT = pm.MAYXN01.GhiChuCT;
+                                        vtc.isTest = pm.MAYXN01.isTest;
+                                        vtc.STT = pm.MAYXN01.STT;
+                                        vtc.STTDia = pm.MAYXN01.STTDia;
+                                        vtc.STTVT = pm.MAYXN01.STTVT;
+                                        vtc.ViTri = pm.MAYXN01.ViTri;
+                                        db.SubmitChanges();
+                                        break;
+                                    }
+                                case "MAYXN02":
+                                    {
+                                        vtc.GhiChuCT = pm.MAYXN02.GhiChuCT;
+                                        vtc.isTest = pm.MAYXN02.isTest;
+                                        vtc.STT = pm.MAYXN02.STT;
+                                        vtc.STTDia = pm.MAYXN02.STTDia;
+                                        vtc.STTVT = pm.MAYXN02.STTVT;
+                                        vtc.ViTri = pm.MAYXN02.ViTri;
+                                        db.SubmitChanges();
+                                        break;
+                                    }
+                            }
+                        }
+                    }
+                    db.SubmitChanges();
+                    gvc.Result = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                gvc.Result = false;
+                gvc.StringError=ex.ToString();
+            }           
+            return gvc;
+        }
+        public PsReponse DeleteDanhSachGanXNLuu(PSCMGanViTriChung pm)
+        {
+            PsReponse gvc = new PsReponse();
+            try
+            {
+                PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(pm.IDLanGanXN) && x.IDRowGanXN == pm.IDRowGanXN
+                && x.isDaDuyet != true);
+                var ds = db.PSCM_GanViTris.Where(x => x.isDaDuyet != true && x.IDLanGanXN.Equals(pm.IDLanGanXN)).ToList();
+                if (viTri != null && ds.Count > 0)
+                {
+                    long? gt = viTri.STT_bang;
+                    if (ds.Count <= gt)
+                    {
+                        if (viTri.PSCM_GanViTriCTs.Count() > 0)
+                        {
+                            foreach (var vtc in viTri.PSCM_GanViTriCTs)
+                            {
+                                db.PSCM_GanViTriCTs.DeleteOnSubmit(vtc);
+                            }
+                            db.PSCM_GanViTris.DeleteOnSubmit(viTri);
+                            db.SubmitChanges();
+                        }
+                    }
+                    else
+                    {
+                        viTri.MaGoiXN = null;
+                        viTri.MaPhieu = null;
+                        viTri.MaXetNghiem = null;
+                        viTri.GhiChuChung = null;
+                        if(viTri.PSCM_GanViTriCTs.Count>0)
+                        {
+                            foreach(var c in viTri.PSCM_GanViTriCTs)
+                            {
+                                c.GhiChuCT = null;
+                                db.SubmitChanges();
+                            }
+                        }
+                        db.SubmitChanges();
+                    }                         
+                }
+            }
+            catch (Exception ex)
+            {
+                gvc.Result = false;
+                gvc.StringError = ex.ToString();
+            }
+            return gvc;
+        }
+        public List<PSCMGanViTriChung> GetDanhSachGanXNLuu()
+        {
+            List<PSCMGanViTriChung> gvc = new List<PSCMGanViTriChung>();
+            try
+            {
+                List<PSCM_GanViTri> lst = db.PSCM_GanViTris.Where(x => x.isDaDuyet != true).OrderBy(x => x.STT_bang).ToList();
+                foreach (var ls in lst)
+                {
+                    PSCMGanViTriChung gv = new PSCMGanViTriChung();
+                    gv.IDLanGanXN = ls.IDLanGanXN;
+                    gv.MaGoiXN = ls.MaGoiXN;
+                    gv.MaPhieu = ls.MaPhieu;
+                    gv.MaXetNghiem = ls.MaXetNghiem;
+                    gv.GhiChuChung = ls.GhiChuChung;
+                    gv.IDRowGanXN = ls.IDRowGanXN;
+                    gv.STT_bang = ls.STT_bang;
+                    if (ls.PSCM_GanViTriCTs.Count() > 0)
+                    {
+                        foreach (var ctg in ls.PSCM_GanViTriCTs)
+                        {
+                            switch (ctg.IDMayXN)
+                            {
+                                case "MAYXN01":
+                                    {
+                                        ViTriXN vt = new ViTriXN();
+                                        vt.GhiChuCT = ctg.GhiChuCT;
+                                        vt.isTest = ctg.isTest;
+                                        vt.STT = ctg.STT;
+                                        vt.STTDia = ctg.STTDia;
+                                        vt.STTVT = ctg.STTVT;
+                                        vt.ViTri = ctg.ViTri;
+                                        gv.MAYXN01 = vt;
+                                        break;
+                                    }
+                                case "MAYXN02":
+                                    {
+                                        ViTriXN vt = new ViTriXN();
+                                        vt.GhiChuCT = ctg.GhiChuCT;
+                                        vt.isTest = ctg.isTest;
+                                        vt.STT = ctg.STT;
+                                        vt.STTDia = ctg.STTDia;
+                                        vt.STTVT = ctg.STTVT;
+                                        vt.ViTri = ctg.ViTri;
+                                        gv.MAYXN02 = vt;
+                                        break;
+                                    }
+                            }
+                        }
+                    }
+                    gvc.Add(gv);
+                }
+            }
+            catch
+            { }
+            return gvc;
+        }
+        
         public List<PSDanhMucMayXN> GetDSMayXN()
         {
             List<PSDanhMucMayXN> xn = db.PSDanhMucMayXNs.Where(x => x.isSuDung == true).ToList();
@@ -2202,6 +2453,20 @@ namespace BioNetDAL
         {
             List<PSMapsViTriMayXN> xn = db.PSMapsViTriMayXNs.Where(x => x.IDMayXN == IDMayXN).ToList();
             return xn;
+        }
+        public PsReponse SaveDSMapViTri(PSCMGanViTriChung gvt)
+        {
+            PsReponse reponse = new PsReponse();
+            try
+            {
+                PSCM_GanViTri gan = db.PSCM_GanViTris.FirstOrDefault(x => x.MaGoiXN == gvt.MaGoiXN && x.MaPhieu == gvt.MaPhieu 
+                && x.MaXetNghiem == gvt.MaXetNghiem && x.IDLanGanXN == gvt.IDLanGanXN && x.STT_bang==gvt.STT_bang);
+            }
+            catch
+            {
+
+            }
+            return reponse;
         }
         public List<PSChiDinhDichVu> GetDanhSachDichVuDaChiDinh(int Trangthai, string maDonVi, DateTime tuNgay, DateTime denNgay, bool isCanCapMa)
         {
@@ -3223,8 +3488,19 @@ namespace BioNetDAL
                 else
                 {
                     lst = db.PSXN_KetQua_ChiTiets.Where(p => p.isXoa != true && p.MaKQ == maKetQua && p.MaXetNghiem == MaXN).ToList();
-                }
-                
+                }  
+            }
+            catch
+            {
+            }
+            return lst;
+        }
+        public PSXN_KetQua GetPhieuXNKetQua(string maKetQua, string MaXN,string MaGoiXN)
+        {
+            PSXN_KetQua lst = new PSXN_KetQua();
+            try
+            {
+                lst = db.PSXN_KetQuas.FirstOrDefault(p => p.isXoa != true && p.MaKetQua == maKetQua && p.MaXetNghiem == MaXN && p.MaGoiXN==MaGoiXN);
             }
             catch
             {
@@ -3578,9 +3854,7 @@ namespace BioNetDAL
 
                     #endregion Xử lý dữ liệu của đợt chỉ định
                     db.Transaction.Commit();
-                    db.Connection.Close();
-                
-
+                    db.Connection.Close();               
             }
             catch (Exception ex)
             {

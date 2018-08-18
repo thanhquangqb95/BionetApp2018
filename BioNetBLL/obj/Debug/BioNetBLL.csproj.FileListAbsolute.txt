@@ -202,3 +202,15 @@ D:\IHis\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CoreCompileInputs.cac
 D:\IHis\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CopyComplete
 D:\IHis\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.dll
 D:\IHis\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.pdb
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetBLL.dll
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetBLL.pdb
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetDAL.dll
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetModel.dll
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetDAL.pdb
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetModel.pdb
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetModel.dll.config
+D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csprojAssemblyReference.cache
+D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CoreCompileInputs.cache
+D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CopyComplete
+D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.dll
+D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.pdb

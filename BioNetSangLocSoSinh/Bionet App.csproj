@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>BioNet_icon.ico</ApplicationIcon>
+    <ApplicationIcon>bionetnew.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
@@ -1177,7 +1177,10 @@
     <None Include="Resources\excel.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\recycle.png" />
+    <None Include="Resources\settings-cog.png" />
     <None Include="Resources\sad.png" />
     <None Include="Resources\search %281%29.png" />
     <None Include="Resources\search.png" />
@@ -1219,9 +1222,13 @@
     <None Include="Resources\icon.png" />
     <None Include="Resources\funnel.png" />
     <None Include="Resources\filter.png" />
+    <None Include="Resources\import.png" />
+    <None Include="Resources\import %282%29.png" />
+    <None Include="Resources\eraser.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />
+    <None Include="Resources\musica-searcher.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />
