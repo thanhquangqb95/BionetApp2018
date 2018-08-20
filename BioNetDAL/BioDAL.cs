@@ -784,64 +784,7 @@ namespace BioNetDAL
                 return false;
             }
         }
-
-        public bool InsMultiGoiDichVuCoSo(List<PSDanhMucGoiDichVuTheoDonVi> lstGoiDichVuCoSo)
-        {
-            try
-            {
-                db.Connection.Open();
-                db.Transaction = db.Connection.BeginTransaction();
-                List< PSChiTietGoiDichVuChung >lstDichVuChung = new List<PSChiTietGoiDichVuChung>();
-                lstDichVuChung = db.PSChiTietGoiDichVuChungs.ToList();
-                foreach (var dichVu in lstGoiDichVuCoSo)
-                {
-                    if (CheckExistGoiTheoDonVi(dichVu.IDGoiDichVuChung, dichVu.MaDVCS))
-                    {
-                        db.PSDanhMucGoiDichVuTheoDonVis.InsertOnSubmit(dichVu);
-                        #region InserDichVuTheoDonvi 
-                        foreach (var dv in lstDichVuChung)
-                        {
-                            var donvidichvu = db.PSDanhMucDichVuTheoDonVis.FirstOrDefault(p => p.IDDichVu == dv.IDDichVu && p.MaDonVi == dichVu.MaDVCS);
-                            
-                            if (donvidichvu == null)
-                            {
-                                PSDanhMucDichVuTheoDonVi dvdv = new PSDanhMucDichVuTheoDonVi();
-                                PSDanhMucDichVu dmdv = new PSDanhMucDichVu();
-                                try
-                                {
-                                    dmdv = db.PSDanhMucDichVus.FirstOrDefault(p => p.IDDichVu == dv.IDDichVu);
-                                }
-                                catch { }
-                                dvdv.ChietKhau = 0;
-                                string ten = string.Empty;
-                                dvdv.DonGia = dmdv.GiaDichVu ?? 0;
-                                dvdv.IDDichVu = dv.IDDichVu;
-                                dvdv.isLocked = false;
-                                dvdv.MaDonVi = dichVu.MaDVCS;
-                                dvdv.TenDichVu = dmdv.TenDichVu ?? string.Empty;
-                                dvdv.TenHienThi = dmdv.TenHienThiDichVu ?? string.Empty;
-                                dvdv.MaNhom = dmdv.MaNhom.ToString();
-                                db.PSDanhMucDichVuTheoDonVis.InsertOnSubmit(dvdv);
-                                db.SubmitChanges();
-                            }
-                        }
-                        #endregion InserDichVuTheoDonvi
-                        db.SubmitChanges();
-                    }
-                }
-                db.Transaction.Commit();
-                db.Connection.Close();
-                return true;
-            }
-            catch
-            {
-                db.Transaction.Rollback();
-                db.Connection.Close();
-                return false;
-            }
-        }
-
-
+        
         public bool UpdGoiDichVuCoSo(PSDanhMucGoiDichVuTheoDonVi goiDichVuCoSo)
         {
             try

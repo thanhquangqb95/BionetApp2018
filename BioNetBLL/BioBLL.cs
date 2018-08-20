@@ -349,11 +349,7 @@ namespace BioNetBLL
             return db.InsDonViCS(donViCS);
         }
 
-        public static bool InsMultiGoiDichVuCoSo(List<PSDanhMucGoiDichVuTheoDonVi> lstGoiDichVuCoSo)
-        {
-            var db = new BioDAL();
-            return db.InsMultiGoiDichVuCoSo(lstGoiDichVuCoSo);
-        }
+        
 
         public static bool UpdDonViCS(PSDanhMucDonViCoSo donViCS)
         {

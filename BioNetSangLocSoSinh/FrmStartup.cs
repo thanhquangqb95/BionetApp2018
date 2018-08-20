@@ -230,7 +230,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmPhongXetNghiem frm = new Entry.FrmPhongXetNghiem(this.empCode);
+            Entry.FrmPhongXetNghiem frm = new Entry.FrmPhongXetNghiem(emp);
             TabCreating(xTabMain, "Phòng xét nghiệm", frm);
             SplashScreenManager.CloseForm();
         }

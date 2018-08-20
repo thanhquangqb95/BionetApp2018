@@ -63,7 +63,6 @@ namespace DataSync
             this.GetDanhMucChiCuc();          
             this.GetDanhMucDonViCoSo();
             this.GetDanhMucDichVu();
-            this.GetDanhMucDichVuDonVi();
             this.GetDMGoiDichVuTheoDVCS();
             this.GetDanhMucGoiDichVuChung();
             this.GetDanhMucGoiDichVuChung_ChiTiet();
@@ -452,24 +451,7 @@ namespace DataSync
             this.rtbStatus.ScrollToCaret();
 
         }
-        private void GetDanhMucDichVuDonVi()
-        {
-            this.rtbStatus.SelectionColor = Color.LightYellow;
-            this.rtbStatus.AppendText(string.Concat(new object[] { DateTime.Now + " :Đang lấy dữ liệu Danh mục dịch vụ cơ sở \r\n " }));
-            var res = DanhMucDichVuCoSoSync.GetDMDichVuCoSo();
-            if (res.Result)
-            {
-                this.rtbStatus.SelectionColor = Color.LightYellow;
-                this.rtbStatus.AppendText(string.Concat(new object[] { DateTime.Now + " :Lấy dữ liệu Danh mục dịch vụ cơ sở thành công \r\n " }));
-            }
-            else
-            {
-                this.rtbStatus.SelectionColor = Color.Red;
-                this.rtbStatus.AppendText(string.Concat(new object[] { DateTime.Now + " :Lấy dữ liệu Danh mục dịch vụ cơ sở KHÔNG thành công\r\n Lỗi chi tiết : \r\n" + res.StringError }));
-            }
-            this.rtbStatus.ScrollToCaret();
-
-        }
+       
 
 
         private void GetDMGoiDichVuTheoDVCS()

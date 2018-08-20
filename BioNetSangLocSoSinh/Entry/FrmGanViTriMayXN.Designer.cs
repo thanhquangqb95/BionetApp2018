@@ -101,6 +101,7 @@
             this.col_TenDv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.col_IDRow = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -292,7 +293,8 @@
             this.col_MayXN01_STTDia,
             this.col_MayXN02_STTDia,
             this.col_MayXN01_STT,
-            this.col_MayXN02_STT});
+            this.col_MayXN02_STT,
+            this.col_IDRow});
             this.GVDanhSachGanViTri.GridControl = this.GCDanhSachGanViTri;
             this.GVDanhSachGanViTri.Name = "GVDanhSachGanViTri";
             this.GVDanhSachGanViTri.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -1020,6 +1022,12 @@
             this.groupControl2.TabIndex = 33;
             this.groupControl2.Text = "Chức năng cấp mã";
             // 
+            // col_IDRow
+            // 
+            this.col_IDRow.Caption = "IDRow";
+            this.col_IDRow.FieldName = "IDRowGanXN";
+            this.col_IDRow.Name = "col_IDRow";
+            // 
             // FrmGanViTriMayXN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1140,5 +1148,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl41;
         private DevExpress.XtraEditors.LookUpEdit cbbGoiXNLoc;
         private DevExpress.XtraEditors.SimpleButton btnClear;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_IDRow;
     }
 }

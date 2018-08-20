@@ -163,6 +163,7 @@ namespace BioNetSangLocSoSinh.Entry
                                 ds.NgayTiepNhan = row.NgayTiepNhan;
                                 ds.MaXetNghiem = BioNet_Bus.GetMaXN(row.MaTiepNhan) + "_L2";
                                 ds.MaGoiXN = row.IDGoiDichVu;
+                                ds.IDNhanVienCapMa = emp.EmployeeCode;
                                 this.lstDaDanhMaXN.Add(ds);
                             }
                             else
@@ -176,7 +177,8 @@ namespace BioNetSangLocSoSinh.Entry
                                 ds.NgayChiDinh = row.NgayChiDinhLamViec;
                                 ds.NgayTiepNhan = row.NgayTiepNhan;
                                 ds.MaXetNghiem = maDB.ToString();
-                                ds.MaGoiXN = row.IDGoiDichVu; ;
+                                ds.MaGoiXN = row.IDGoiDichVu;
+                                ds.IDNhanVienCapMa = emp.EmployeeCode;
                                 this.lstDaDanhMaXN.Add(ds);
                                 maDB += 1;
                             }
@@ -197,7 +199,8 @@ namespace BioNetSangLocSoSinh.Entry
                                     ds.NgayChiDinh = row.NgayChiDinhLamViec;
                                     ds.NgayTiepNhan = row.NgayTiepNhan;
                                     ds.MaXetNghiem = BioNet_Bus.GetMaXN(row.MaTiepNhan) + "_L2";
-                                    ds.MaGoiXN = row.IDGoiDichVu; ;
+                                    ds.MaGoiXN = row.IDGoiDichVu;
+                                    ds.IDNhanVienCapMa = emp.EmployeeCode;
                                     this.lstDaDanhMaXN.Add(ds);
                                 }
                             }
@@ -225,6 +228,7 @@ namespace BioNetSangLocSoSinh.Entry
                             ds.NgayTiepNhan = row.NgayTiepNhan;
                             ds.MaXetNghiem = BioNet_Bus.GetMaXN(row.MaTiepNhan) + "_L2";
                             ds.MaGoiXN = row.IDGoiDichVu; ;
+                            ds.IDNhanVienCapMa = emp.EmployeeCode;
                             this.lstDaDanhMaXN.Add(ds);
                         }
                     }

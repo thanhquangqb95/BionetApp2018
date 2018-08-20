@@ -88,7 +88,6 @@
     <Compile Include="BioNetSync\DanhMucChuongTrinhSync.cs" />
     <Compile Include="BioNetSync\DanhMucDanhGiaChatLuongMauSync.cs" />
     <Compile Include="BioNetSync\DanhMucDanTocSync.cs" />
-    <Compile Include="BioNetSync\DanhMucDichVuCoSoSync.cs" />
     <Compile Include="BioNetSync\DanhMucDichVuSync.cs" />
     <Compile Include="BioNetSync\DanhMucDonViCoSoSync.cs" />
     <Compile Include="BioNetSync\DanhMucGoiDichVuChungSync.cs" />

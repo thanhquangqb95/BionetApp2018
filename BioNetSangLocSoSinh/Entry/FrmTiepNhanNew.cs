@@ -12,6 +12,7 @@ using BioNetModel;
 using BioNetModel.Data;
 using BioNetBLL;
 using DevExpress.XtraSplashScreen;
+using DevExpress.XtraEditors.Controls;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -78,6 +79,16 @@ namespace BioNetSangLocSoSinh.Entry
             }
             this.lstDaTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia(madv);
             LoadDanhSachDaTiepNhan();
+        }
+        private void LoadDanhSachDichVu()
+        {
+            this.lstDichVu.Clear();
+            this.lstDichVu = BioNet_Bus.GetDanhSachDichVu(false);
+            this.checkedListBoxXN.Items.Clear();
+            foreach (PsDichVu v in this.lstDichVu)
+            {
+                this.checkedListBoxXN.Items.Add(v, v.TenDichVu);
+            }
         }
 
         private void LoadDanhSachChoTrenHeThong()
@@ -380,25 +391,40 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtSDTNguoiLayMau.Text = phieu.SoDTNhanVienLayMau;
                     this.txtPara.Text = phieu.paRa;
                     this.LoadDanhSachDichVu();
-                    if (phieu.maGoiXetNghiem.Equals("DVGXN0001"))
+                    if(phieu.maGoiXetNghiem.Equals("DVGXN0001"))
                     {
-                        foreach (var item in this.lstDichVu)
+                        List<PSChiDinhTrenPhieu> listdvcanlamlai = BioNet_Bus.GetDichVuCanLamLaiCuaPhieu(phieu.maPhieu, phieu.maDonViCoSo);
+                        List<PsDichVu> lstdv = new List<PsDichVu>();
+                        foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
                         {
-                            foreach (var dv in phieu.lstChiDinh)
+                            try
                             {
-                                if (item.IDDichVu == dv.MaDichVu)
+                                PsDichVu dichvu = item.Value as PsDichVu;
+                                if (listdvcanlamlai.FirstOrDefault(x => x.MaDichVu.Equals(dichvu.IDDichVu)) != null)
                                 {
-                                    item.isChecked = true;
+                                    item.CheckState = CheckState.Checked;
                                 }
                             }
+                            catch (Exception ex) { }
                         }
-                        this.checkedListBoxXN.DataSource = null;
-                        this.checkedListBoxXN.DataSource = this.lstDichVu;
                     }
                     else
                     {
-                        this.checkedListBoxXN.DataSource = null;
+                        List <PsDichVu> lstChiDinhDichVu = BioNet_Bus.GetDanhSachDichVuTheoMaGoi(phieu.maGoiXetNghiem, phieu.maDonViCoSo);
+                        foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
+                        {
+                            try
+                            {
+                                PsDichVu dichvu = item.Value as PsDichVu;
+                                if (lstChiDinhDichVu.FirstOrDefault(x => x.IDDichVu.Equals(dichvu.IDDichVu)) != null)
+                                {
+                                    item.CheckState = CheckState.Checked;
+                                }
+                            }
+                            catch (Exception ex) { }
+                        }
                     }
+                                     
                 }
                 catch
                 {
@@ -454,11 +480,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.checkedListBoxXN.Enabled = false;
         }
 
-        private void LoadDanhSachDichVu()
-        {
-            this.lstDichVu.Clear();
-            this.lstDichVu = BioNet_Bus.GetDanhSachDichVu(false);
-        }
+       
         #endregion
 
     }   

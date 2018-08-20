@@ -12,7 +12,6 @@ namespace BioNetModel
         public PSPatient Benhnhan { get; set; }
         public PSTiepNhan TiepNhan { get; set; }
         public PSChiDinhDichVu ChiDinh { get; set; }
-        public List<PSChiDinhTrenPhieu> lstChiDinh { get; set; }
         public List<PSChiTietDanhGiaChatLuong> lstLyDoKhongDat { get; set; }
         public List<PsDichVu> lstChiDinhDichVu { get; set; }
     }

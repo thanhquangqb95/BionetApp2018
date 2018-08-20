@@ -21,17 +21,7 @@ namespace BioNetBLL
             return db.HuyMauPhieu(maPhieu, maTiepnhan, maDonVi, maNV, lydoXoa);
         }
 
-        public static List<PSNhaCungCap> GetDanhMucNhaCungCap()
-        {
-            var db = new DataObjects();
-            return db.GetDanhMucNhaCungCap();
-        }
-        public static List<PSDanhMucVatTu> GetDanhMucVatTu()
-        {
-            var db = new DataObjects();
-            return db.GetDanhMucVatTu();
-        }
-
+       
         public static PsReponse UpdateDanhMucGhiChu(PSDanhMucGhiChu ghichu)
         {
             var db = new DataObjects();
@@ -1612,21 +1602,21 @@ namespace BioNetBLL
                         phieu.BenhNhan = res;
                     }
                 }
-                var listChiDinh = db.GetChiDinhTrenPhieu(maPhieu);
-                List<PSChiDinhTrenPhieu> lst = new List<PSChiDinhTrenPhieu>();
-                if (listChiDinh!=null)
-                {
-                    foreach(var chiDinh in listChiDinh)
-                    {
-                        PSChiDinhTrenPhieu cd = new PSChiDinhTrenPhieu();
-                        cd.RowID = chiDinh.RowID;
-                        cd.MaPhieu = chiDinh.MaPhieu;
-                        cd.MaDonVi = chiDinh.MaDonVi;
-                        cd.MaDichVu = chiDinh.MaDichVu;
-                        lst.Add(cd);
-                    }
-                }
-                phieu.lstChiDinh = lst;
+                //var listChiDinh = db.GetChiDinhTrenPhieu(maPhieu);
+               // List<PSChiDinhTrenPhieu> lst = new List<PSChiDinhTrenPhieu>();
+                //if (listChiDinh!=null)
+                //{
+                //    foreach(var chiDinh in listChiDinh)
+                //    {
+                //        PSChiDinhTrenPhieu cd = new PSChiDinhTrenPhieu();
+                //        cd.RowID = chiDinh.RowID;
+                //        cd.MaPhieu = chiDinh.MaPhieu;
+                //        cd.MaDonVi = chiDinh.MaDonVi;
+                //        cd.MaDichVu = chiDinh.MaDichVu;
+                //        lst.Add(cd);
+                //    }
+                //}
+               // phieu.lstChiDinh = lst;
                 return phieu;
             }
             else

@@ -5,11 +5,14 @@ using System.Text;
 
 namespace BioNetModel
 {
-    public class PsChiDinhTrenPhieu
+    public class PSChiDinhTrenPhieu
     {
-        
-        public long rowID { get; set; }
-        public string maPhieu { get; set; }
-        public string maDichVu { get; set; }
+        public long RowID { get; set; }
+
+        public string MaPhieu { get; set; }
+
+        public string MaDichVu { get; set; }
+
+        public string MaDonVi { get; set; }
     }
 }
