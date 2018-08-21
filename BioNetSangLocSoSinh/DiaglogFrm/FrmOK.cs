@@ -23,5 +23,10 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         {
             this.Close();
         }
+
+        private void FrmOK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

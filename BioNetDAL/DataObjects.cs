@@ -2431,12 +2431,12 @@ namespace BioNetDAL
                                         }
                                     case "MAYXN01":
                                         {
-                                            noidung = "+ Ghi chú máy 3 bệnh: " + gc1 + " ";
+                                            noidung = " + Ghi chú máy 3 bệnh: " + gc1 + " ";
                                             break;
                                         }
                                     case "MAYXN02":
                                         {
-                                            noidung = "+ Ghi chú máy 2 bệnh: " + gc1 + " ";
+                                            noidung = " + Ghi chú máy 2 bệnh: " + gc1 + " ";
                                             break;
                                         }
                                 }
@@ -2459,12 +2459,12 @@ namespace BioNetDAL
                                 }
                             case "MAYXN01":
                                 {
-                                    noidung = "+ Ghi chú máy 3 bệnh: " + viettat + " ";
+                                    noidung = " + Ghi chú máy 3 bệnh: " + viettat + " ";
                                     break;
                                 }
                             case "MAYXN02":
                                 {
-                                    noidung = "+ Ghi chú máy 2 bệnh: " + viettat + " ";
+                                    noidung = " + Ghi chú máy 2 bệnh: " + viettat + " ";
                                     break;
                                 }
                         }
@@ -2481,12 +2481,12 @@ namespace BioNetDAL
                             }
                         case "MAYXN01":
                             {
-                                noidung = "+ Ghi chú máy 3 bệnh: " + viettat + " ";
+                                noidung = " + Ghi chú máy 3 bệnh: " + viettat + " ";
                                 break;
                             }
                         case "MAYXN02":
-                            {
-                                noidung = "+ Ghi chú máy 2 bệnh: " + viettat + " ";
+                            { 
+                                noidung = " + Ghi chú máy 2 bệnh: " + viettat + " ";
                                 break;
                             }
                     }
@@ -2497,6 +2497,68 @@ namespace BioNetDAL
 
             }
             return noidung;
+        }
+        public List<PSDanhMucGhiChuXN> GetDanhMucGhiXN()
+        {
+            List<PSDanhMucGhiChuXN> dm = new List<PSDanhMucGhiChuXN>();
+            dm = db.PSDanhMucGhiChuXNs.ToList();
+            return dm;
+        }
+        public Boolean UpdateDanhMucGC(PSDanhMucGhiChuXN ghichu)
+        {
+            PsReponse reponse = new PsReponse();
+            try
+            {
+                PSDanhMucGhiChuXN gc = db.PSDanhMucGhiChuXNs.FirstOrDefault(x => x.IDRowGhiChuXN == ghichu.IDRowGhiChuXN);
+
+                if (gc != null)
+                {
+                    gc.isSuDung = ghichu.isSuDung;
+                    gc.NoiDungGhiChuTruoc = ghichu.NoiDungGhiChuTruoc;
+                    gc.VietTatGhiChu = ghichu.VietTatGhiChu;
+                    db.SubmitChanges();
+                    reponse.Result = true;
+                }
+                else
+                {
+                    reponse.Result = false;
+                }
+            }
+            catch
+            {
+                reponse.Result = false;
+            }
+            return reponse.Result;
+        }
+        public Boolean AddNewDanhMucGC(PSDanhMucGhiChuXN ghichu)
+        {
+            PsReponse reponse = new PsReponse();
+            try
+            {
+                db.PSDanhMucGhiChuXNs.InsertOnSubmit(ghichu);
+                db.SubmitChanges();
+                reponse.Result = true;
+            }
+            catch
+            {
+                reponse.Result = false;
+            }
+            return reponse.Result;
+        }
+        public Boolean DeleteDanhMucGC(PSDanhMucGhiChuXN ghichu)
+        {
+            PsReponse reponse = new PsReponse();
+            try
+            {
+                db.PSDanhMucGhiChuXNs.DeleteOnSubmit(ghichu);
+                db.SubmitChanges();
+                reponse.Result = true;
+            }
+            catch
+            {
+                reponse.Result = false;
+            }
+            return reponse.Result;
         }
         public List<PSCMGanViTriChung> GetDanhSachGanXNLuu()
         {
@@ -5388,7 +5450,7 @@ namespace BioNetDAL
             try
             {
                 bool isOK = false;
-                var resKQ = db.PSXN_KetQuas.FirstOrDefault(p => p.isXoa == false && p.MaChiDinh == rowXN.MaChiDinh && p.MaTiepNhan == rowXN.MaTiepNhan);
+                var resKQ = db.PSXN_KetQuas.FirstOrDefault(p => p.isXoa !=true && p.MaChiDinh == rowXN.MaChiDinh && p.MaTiepNhan == rowXN.MaTiepNhan);
                 if (resKQ != null)
                 {
                     rowXN.MaKetQua = resKQ.MaKetQua;
@@ -5599,6 +5661,7 @@ namespace BioNetDAL
                     KetQua.isDongBo = false;
                     KetQua.IDNhanVienNhapKQ = KQ.maNhanVienTraKQ;
                     KetQua.NgayTraKQ = DateTime.Now;
+                    KetQua.GhiChu = KQ.GhiChu;
                     db.SubmitChanges();
                 }
                 if (isCoKQ)

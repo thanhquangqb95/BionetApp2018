@@ -318,10 +318,10 @@
     <Compile Include="Entry\FrmDanhMaXetNghiem.Designer.cs">
       <DependentUpon>FrmDanhMaXetNghiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entry\FrmDanhMucGhiChuXN.cs">
+    <Compile Include="DiaglogFrm\FrmDanhMucGhiChuXN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entry\FrmDanhMucGhiChuXN.Designer.cs">
+    <Compile Include="DiaglogFrm\FrmDanhMucGhiChuXN.Designer.cs">
       <DependentUpon>FrmDanhMucGhiChuXN.cs</DependentUpon>
     </Compile>
     <Compile Include="Entry\FrmDMChiCuc.cs">
@@ -491,6 +491,12 @@
     </Compile>
     <Compile Include="Entry\FrmTraKetQuaNew.Designer.cs">
       <DependentUpon>FrmTraKetQuaNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entry\FrmTTPhieuNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmTTPhieuNew.Designer.cs">
+      <DependentUpon>FrmTTPhieuNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Entry\FrmViewTTPhieu.cs">
       <SubType>Form</SubType>
@@ -861,7 +867,7 @@
     <EmbeddedResource Include="Entry\FrmDanhMaXetNghiem.resx">
       <DependentUpon>FrmDanhMaXetNghiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entry\FrmDanhMucGhiChuXN.resx">
+    <EmbeddedResource Include="DiaglogFrm\FrmDanhMucGhiChuXN.resx">
       <DependentUpon>FrmDanhMucGhiChuXN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmDMChiCuc.resx">
@@ -947,6 +953,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmTraKetQuaNew.resx">
       <DependentUpon>FrmTraKetQuaNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmTTPhieuNew.resx">
+      <DependentUpon>FrmTTPhieuNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmViewTTPhieu.resx">
       <DependentUpon>FrmViewTTPhieu.cs</DependentUpon>
@@ -1227,6 +1236,11 @@
     <None Include="Resources\eraser.png" />
     <None Include="Resources\eraser1.png" />
     <None Include="Resources\import %282%29.png" />
+    <None Include="Resources\import %282%291.png" />
+    <None Include="Resources\import %283%29.png" />
+    <None Include="Resources\import %283%291.png" />
+    <None Include="Resources\import %281%29.png" />
+    <None Include="Resources\information.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />

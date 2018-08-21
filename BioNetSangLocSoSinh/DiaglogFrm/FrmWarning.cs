@@ -21,7 +21,11 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
 
         private void lblTry_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void FrmWarning_KeyPress(object sender, KeyPressEventArgs e)
+        {
             this.Close();
         }
     }

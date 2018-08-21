@@ -1213,6 +1213,27 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.DeleteDanhSachGanXNLuu(pm);
         }
+        public static List<PSDanhMucGhiChuXN> GetDanhMucGhiXN()
+        {
+            var db = new DataObjects();
+            return db.GetDanhMucGhiXN();
+        }
+        
+        public static bool UpdateDanhMucGC(PSDanhMucGhiChuXN ghichu)
+        {
+            var db = new DataObjects();
+            return db.UpdateDanhMucGC(ghichu);
+        }
+        public static bool AddNewDanhMucGC(PSDanhMucGhiChuXN ghichu)
+        {
+            var db = new DataObjects();
+            return db.AddNewDanhMucGC(ghichu);
+        }
+        public static bool DeleteDanhMucGC(PSDanhMucGhiChuXN ghichu)
+        {
+            var db = new DataObjects();
+            return db.DeleteDanhMucGC(ghichu);
+        }
         public static PsReponse DuyetCapMaGanMayXN(List<PSCMGanViTriChung> pm)
         {
             var db = new DataObjects();

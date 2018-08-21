@@ -411,20 +411,24 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 BioNet_Bus.DuyetCapMaGanMayXN(vt);
                 string link = Application.StartupPath + @"\DSSoDoXetNghiem\";
+                if (!Directory.Exists(link))
+                {
+                    Directory.CreateDirectory(link);
+                }
                 Workbook workbook = new DevExpress.Spreadsheet.Workbook();
                 Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
                 string Idlangan = vt.Distinct().Select(x => x.IDLanGanXN).FirstOrDefault().ToString();
-                rp1.DataSource = vt.Where(y => y.MAYXN01 != null).OrderBy(x => x.MAYXN01.STT);
+                var vtmay1= vt.Where(y => y.MAYXN01 != null).OrderBy(x => x.MAYXN01.STT);
+                rp1.DataSource = vtmay1.Where(y => y.MAYXN01 != null).OrderBy(x => x.MAYXN01.STT);
                 rp1.PaperName = "May3Benh";
                 rp1.Parameters["TenNV"].Value = emp.EmployeeName;
                 rp1.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
-                rp1.Parameters["SLGoi5benh"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0004").Count();
-                rp1.Parameters["SLGoi3benh"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0003").Count();
-                rp1.Parameters["SLGoi2benh"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0002").Count();
-                rp1.Parameters["SLGoi2benh"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0002").Count();
+                rp1.Parameters["SLGoi5benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0004").Count();
+                rp1.Parameters["SLGoi3benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0003").Count();
+                rp1.Parameters["SLGoi2benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0002").Count();
                 rp1.Parameters["SLXNL"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0001").Count();
-                rp1.Parameters["SLXNL2benh"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXNL2").Count();
-                rp1.Parameters["SLXNKhac"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVKhac").Count();
+                rp1.Parameters["SLXNL2benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXNL2").Count();
+                rp1.Parameters["SLXNKhac"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVKhac").Count();
                 rp1.ExportToXlsx("May3Benh" + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "May3Benh" });
 
                 Workbook workbook2 = new DevExpress.Spreadsheet.Workbook();
@@ -435,15 +439,15 @@ namespace BioNetSangLocSoSinh.Entry
                 workbook.Worksheets.Insert(0, "May3Benh");
                 workbook.Worksheets[0].CopyFrom(workbook2.Worksheets[0]);
                 File.Delete("May3Benh" + ".xlsx");
-
+                var vtmay2= vt.Where(y => y.MAYXN02 != null).OrderBy(x => x.MAYXN02.STT);
                 Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02 rp2 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02();
-                rp2.DataSource = vt.Where(y => y.MAYXN02 != null).OrderBy(x => x.MAYXN02.STT);
-                rp2.Parameters["SLGoi5benh"].Value = vt.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0004").Count();
-                rp2.Parameters["SLGoi3benh"].Value = vt.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0003").Count();
-                rp2.Parameters["SLGoi2benh"].Value = vt.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0002").Count();
-                rp2.Parameters["SLXNL"].Value = vt.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0001").Count();
-                rp2.Parameters["SLXNL2benh"].Value = vt.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXNL2").Count();
-                rp2.Parameters["SLKhac"].Value = vt.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVKhac").Count();
+                rp2.DataSource = vtmay2.Where(y => y.MAYXN02 != null).OrderBy(x => x.MAYXN02.STT);
+                rp2.Parameters["SLGoi5benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0004").Count();
+                rp2.Parameters["SLGoi3benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0003").Count();
+                rp2.Parameters["SLGoi2benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0002").Count();
+                rp2.Parameters["SLXNL"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0001").Count();
+                rp2.Parameters["SLXNL2benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXNL2").Count();
+                rp2.Parameters["SLXNKhac"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVKhac").Count();
                 rp2.PaperName = "May2Benh";
                 rp2.Parameters["TenNV"].Value = emp.EmployeeName;
                 rp2.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
@@ -915,7 +919,7 @@ namespace BioNetSangLocSoSinh.Entry
         {
             cbbChiCucChuaCoKQ.EditValue = "all";
             cbbDonViChuaCoKQ.EditValue = "all";
-            cbbGoiXNLoc.EditValue = "All";
+            cbbGoiXNLoc.EditValue = "ALL";
             txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
             txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
             txtSearchMaPhieuChuaCoKQ.ResetText();
@@ -1041,6 +1045,38 @@ namespace BioNetSangLocSoSinh.Entry
             }
         }
 
-     
+        private void GVChuaKQ_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    string MaCD = View.GetRowCellValue(e.RowHandle, this.col_MaChiDinh_GCChuaCoKQ) == null ? string.Empty : View.GetRowCellValue(e.RowHandle, this.col_MaChiDinh_GCChuaCoKQ).ToString();
+                    if (!string.IsNullOrEmpty(MaCD))
+                    {
+                        if (MaCD.Substring(0, 2).Equals("XN"))
+                        {
+                            e.Appearance.BackColor = Color.Plum;
+                            e.Appearance.BackColor2 = Color.Pink;
+                        }
+                        else
+                        {
+                            e.Appearance.BackColor = Color.Aqua;
+                            e.Appearance.BackColor2 = Color.AliceBlue;
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
+
+       
+
+        private void btnViewGhiChu_Click(object sender, EventArgs e)
+        {
+            DiaglogFrm.FrmDanhMucGhiChuXN dmgc = new DiaglogFrm.FrmDanhMucGhiChuXN(emp);
+            dmgc.Show();
+        }
     }
 }

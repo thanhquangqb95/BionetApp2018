@@ -110,6 +110,7 @@
             this.Name = "FrmOK";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmOK";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmOK_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

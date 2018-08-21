@@ -148,8 +148,6 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 if (this.cbbDonViChoDuyet.EditValue.Equals("all"))
                 {
-                    this.txtMaPhieuTiepNhan.Enabled = false;
-                    this.txtMaPhieuTiepNhan.ResetText();
                 }
                 else
                 {
@@ -169,6 +167,8 @@ namespace BioNetSangLocSoSinh.Entry
                 if (!string.IsNullOrEmpty(txtMaPhieuTiepNhan.Text.Trim()))
                 {
                     this.CheckPhieuTiepNhan(txtMaPhieuTiepNhan.Text.Trim(), maDonVi);
+                    this.txtMaPhieuTiepNhan.Reset();
+                    this.txtMaPhieuTiepNhan.Focus();
                 }
                 else
                 {
@@ -241,9 +241,10 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtDuyetDanhSachTiepNhan_Click(object sender, EventArgs e)
         {
-            SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.WaitingfromSave), true, true, false);
+            
             if (lstChoTiepNhan.Count > 0)
             {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.WaitingfromSave), true, true, false);
                 bool isOK = true;
                 String Error = string.Empty;
                 List<PSTiepNhan> lst = lstChoTiepNhan.OrderBy(x=>x.MaPhieu).ToList();

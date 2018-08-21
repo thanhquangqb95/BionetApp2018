@@ -233,6 +233,85 @@ namespace BioNetSangLocSoSinh.Entry
             BioNet_Bus.AddMenuForm(fo);
             long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
             CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
-        }        
+        }
+
+        private void gridControl_Info_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+       private void btnChiTietKQ1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Reports.rptPhieuViewTT datarp = new Reports.rptPhieuViewTT();
+                if (!string.IsNullOrEmpty(txtMaPhieu1.Text))
+                {
+                    PsRptViewTT kq = BioNet_Bus.GetDuLieuViewTT(txtMaPhieu1.Text);
+                    if (kq == null)
+                    {
+                        MessageBox.Show("Mã phiếu không tồn tại", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        datarp.DataSource = kq.chitietKetQua;
+                        datarp.Parameters["TenTre"].Value = kq.TenTre;
+                        datarp.Parameters["CanNang"].Value = kq.CanNang;
+                        datarp.Parameters["NgaySinh"].Value = kq.NgaySinh;
+                        datarp.Parameters["GioiTinh"].Value = kq.GioiTinh;
+                        datarp.Parameters["CanNang"].Value = kq.CanNang;
+                        datarp.Parameters["TuoiThai"].Value = kq.TuoiThai;
+                        datarp.Parameters["TenMe"].Value = kq.TenMe;
+                        datarp.Parameters["DienThoaiMe"].Value = kq.DienThoaiMe;
+                        datarp.Parameters["TenCha"].Value = kq.TenCha;
+                        datarp.Parameters["DienThoaiCha"].Value = kq.DienThoaiCha;
+                        datarp.Parameters["TenDonVi"].Value = kq.TenDonVi;
+                        datarp.Parameters["MaDonVi"].Value = kq.MaDonVi;
+                        datarp.Parameters["DiaChiDonVi"].Value = kq.DiaChiDonVi;
+                        datarp.Parameters["DiaChiTre"].Value = kq.DiaChiTre;
+                        datarp.Parameters["MaPhieu"].Value = kq.MaPhieu;
+                        datarp.Parameters["MaKhachHang"].Value = kq.MaKhachHang;
+                        datarp.Parameters["MaXetNghiem"].Value = kq.MaXetNghiem;
+                        datarp.Parameters["NgayThuMau"].Value = kq.NgayThuMau;
+                        datarp.Parameters["NgayNhanMau"].Value = kq.NgayNhanMau;
+                        datarp.Parameters["NgayXetNghiem"].Value = kq.NgayXetNghiem;
+                        datarp.Parameters["NgayCoKQ"].Value = kq.NgayCoKQ;
+                        datarp.Parameters["PPSinh"].Value = kq.PPSinh;
+                        datarp.Parameters["Para"].Value = kq.Para;
+                        datarp.Parameters["GoiXN"].Value = kq.GoiXN;
+                        datarp.Parameters["CTSangLoc"].Value = kq.CTSangLoc;
+                        datarp.Parameters["NguoiLayMau"].Value = kq.NguoiLayMau;
+                        datarp.Parameters["LyDoKoDat"].Value = kq.LyDoKoDat;
+                        datarp.Parameters["CLuongMau"].Value = kq.CLuongMau;
+                        datarp.Parameters["GhiChu"].Value = kq.GhiChu;
+                        datarp.Parameters["KetLuanNguyCoCao"].Value = kq.KetLuanNguyCoCao;
+                        datarp.Parameters["KetLuanBinhThuong"].Value = kq.KetLuanBinhThuong;
+                        datarp.Parameters["NSCha"].Value = "NS Cha: " + kq.NSCha;
+                        datarp.Parameters["NSMe"].Value = "NS Mẹ: " + kq.NSMe;
+                        datarp.CreateDocument(true);
+                        Reports.frmDanhSachDaCapMa myForm = new Reports.frmDanhSachDaCapMa(datarp);
+                        myForm.Show();
+                        //myForm.TopLevel = false;
+                        //myForm.AutoScroll = true;
+                        //myForm.ShowIcon = false;
+                        //myForm.ControlBox = false;
+                        //myForm.Text = "";
+                        //myForm.ShowInTaskbar = false;
+                        //panelControl3.Controls.Add(myForm);
+                        //myForm.Dock = DockStyle.Fill;
+                        //myForm.Show();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nhập mã phiếu cần tra cứu", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
+                   
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi hiện thị thông tin phiếu", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

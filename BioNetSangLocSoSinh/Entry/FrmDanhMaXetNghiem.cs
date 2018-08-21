@@ -18,6 +18,7 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.Spreadsheet;
 using System.IO;
 using System.Diagnostics;
+using DevExpress.XtraGrid.Columns;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -39,7 +40,6 @@ namespace BioNetSangLocSoSinh.Entry
         private List<string> lstDonViCanCapMa = new List<string>();
         private List<PSXN_KetQua> lstDaDanhMaXN = new List<PSXN_KetQua>();
         private List<PSDanhMucDonViCoSo> lstDonVi = new List<PSDanhMucDonViCoSo>();
-        private List<PSDanhMucDonViCoSo> lstDonVireponsitory = new List<PSDanhMucDonViCoSo>();
 
         private long maKT;
         private string maGoiXNFocusHandle;
@@ -66,8 +66,17 @@ namespace BioNetSangLocSoSinh.Entry
                 goi.DonGia = 0;
                 goi.ChietKhau = 0;
                 this.lstgoiXN.Add(goi);
+                PSDanhMucGoiDichVuChung goi1= new PSDanhMucGoiDichVuChung();
+                goi.IDGoiDichVuChung = "ALL";
+                goi.TenGoiDichVuChung = "Tất cả";
+                goi.Stt = 7;
+                goi.DonGia = 0;
+                goi.ChietKhau = 0;
+                this.lstgoiXN.Add(goi1);
                 this.LookUpGoiXN.DataSource = this.lstgoiXN;
                 this.LookUpEditGoiXN.DataSource = this.lstgoiXN;
+                this.cbbGoiXNLocChuaCapma.Properties.DataSource = this.lstgoiXN;
+                this.cbbGoiXNLocChuaCapma.EditValue = "ALL";
             }
             catch { }
         }
@@ -75,8 +84,8 @@ namespace BioNetSangLocSoSinh.Entry
         {
             this.LoadDanhMuc();
             this.LoadGoiDichVuXetNGhiem();
-            this.txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
-            this.txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
+            this.txtTuNgay_ChuaCapMa.EditValue = DateTime.Now;
+            this.txtDenNgay_ChuaCapMa.EditValue = DateTime.Now;
             this.LoadListDSCho();
             //AddItemForm();
         }
@@ -127,17 +136,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.GVDanhSachCho.Columns["MaDonVi"].Group();
             this.GVDanhSachCho.ExpandAllGroups();
         }
-        private void LoadRepositoryLookupDonViCoSo()
-        {
-            try
-            {
-                this.lstDonVireponsitory = BioNet_Bus.GetDanhSachDonViCoSo();
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show("Lỗi khi lấy danh sách đơn vị cơ sở \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+       
         private void CapMa()
         {
             #region              
@@ -334,54 +333,47 @@ namespace BioNetSangLocSoSinh.Entry
             }
             while (String.IsNullOrEmpty(dem));
 
-
+            List<PsPhieuLoiKhiDanhGia> listphieuloi = new List<PsPhieuLoiKhiDanhGia>();
             foreach (var item in this.lstDaDanhMaXN)
             {
 
                 var res = BioNet_Bus.InsertMauDaDanhMaXN(item);
                 if (!res.Result)
                 {
-                    ok = false;
-                    XtraMessageBox.Show("Lỗi khi lưu phiếu :" + item.MaPhieu.ToString() + "\r\n Lỗi chi tiết :" + res.StringError, "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    PsPhieuLoiKhiDanhGia phieu = new PsPhieuLoiKhiDanhGia();
+                    phieu.MaPhieu = item.MaPhieu;
+                    phieu.ThongTinLoi = res.StringError;
+                    listphieuloi.Add(phieu);
                 }
 
             }
-            if (ok)
+            if (listphieuloi.Count < 1)
             {
                 if (!string.IsNullOrEmpty(dem))
                 {
                     BioNet_Bus.UpdateMaXetNghiemTrongDB(dem);
                 }
-                // BioNet_Bus.UpdateMaXNVaoBangGhi(this.maKT.ToString());
                 XtraMessageBox.Show("Lưu danh sách phiếu thành công", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                foreach (var phieu in this.lstDaDanhMaXN)
-                {
-                    var result = this.lstCho.FirstOrDefault(p => p.MaPhieu == phieu.MaPhieu && p.MaTiepNhan == phieu.MaTiepNhan);
-                    if (result != null)
-                    {
-                        try
-                        {
-                            this.lstCho.Remove(result);
-                        }
-                        catch (Exception ex)
-                        {
-                            XtraMessageBox.Show("Lỗi khi lấy cập nhật lại danh sách chờ! \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                }
                 this.lstDaDanhMaXN.Clear();
                 this.lstCanDanhMa.Clear();
-                this.LoadGCDanhSachCho();
+                this.LoadListDSCho();
                 this.LoadGCDanhSachDaDanhMa();
+            }
+            else
+            {
+                DiaglogFrm.FrmDiagLogShowPhieuLoi frmloi = new DiaglogFrm.FrmDiagLogShowPhieuLoi(listphieuloi);
+                frmloi.ShowDialog();
             }
         }
         private void btnCapToanBo_Click(object sender, EventArgs e)
         {
             if (this.GVDanhSachDaCapMa.RowCount > 0)
+            {
                 this.LuuDanhSachDaCapMa();
+            } 
             else
             {
-                XtraMessageBox.Show("Vui lòng chọn tính năng cấp mã tự động trước khi đưa mẫu vào phòng xét nghiệm!", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Không có danh đã cấp mã", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -390,7 +382,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 if (this.GVDanhSachCho.SelectedRowsCount > 0)
                 {
-                    this.txtMaPhieu.ResetText();
+                    this.txtMaPhieuChuaCoKQ.ResetText();
                     this.LayDanhSachCacPhieuCanCapMa();
                     var tttrungtam = BioNet_Bus.GetThongTinTrungTam();
                     if (tttrungtam.isCapMaXNTheoMaPhieu ?? true)
@@ -534,12 +526,12 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtTuNgay_ChuaKQ_EditValueChanged(object sender, EventArgs e)
         {
-            if (this.txtDenNgay_ChuaKQ.EditValue != null)
+            if (this.txtDenNgay_ChuaCapMa.EditValue != null)
                 this.LoadListDSCho();
         }
         private void txtDenNgay_ChuaKQ_EditValueChanged(object sender, EventArgs e)
         {
-            if (this.txtTuNgay_ChuaKQ.EditValue != null)
+            if (this.txtTuNgay_ChuaCapMa.EditValue != null)
                 this.LoadListDSCho();
         }
         private void CapMaXetNghiemCho1PhieuTuDong()
@@ -692,7 +684,7 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void btnRefesh_Click(object sender, EventArgs e)
         {
-            this.LoadListDSCho();
+            LoadListDSCho();
         }
         private void btnHuyDanhSachDaCapMa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -720,7 +712,7 @@ namespace BioNetSangLocSoSinh.Entry
             List<PsRptDanhSachDaCapMaXetNghiem> data = new List<PsRptDanhSachDaCapMaXetNghiem>();
             try
             {
-                data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, this.cbbDonVi_ChuaCapMa.EditValue.ToString());
+                data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaCapMa.EditValue, (DateTime)this.txtDenNgay_ChuaCapMa.EditValue, this.cbbDonVi_ChuaCapMa.EditValue.ToString());
                 if (data.Count > 0)
                 {
                     Reports.rptDanhSachDaCapMaXetNghiem rp = new Reports.rptDanhSachDaCapMaXetNghiem();
@@ -786,24 +778,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
 
         }
-
-    
-       
-
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (this.KiemTraDieuKienLamMoiDanhSach())
-            {
-                this.lstCho.Clear();
-                this.lstCho = BioNet_Bus.GetDanhSachChiDinhChuaDuocCapMa(this.cbbDonVi_ChuaCapMa.EditValue.ToString(), (DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue);
-                this.LoadGCDanhSachCho();
-            }
-            else
-            {
-                XtraMessageBox.Show("Đưa danh sách đã cấp mã vào phòng xét nghiệm hoặc hủy danh sách đã cấp mã và làm lại từ đầu", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+   
         private void AddItemForm()
         {
             PSMenuForm fo = new PSMenuForm
@@ -817,22 +792,6 @@ namespace BioNetSangLocSoSinh.Entry
             CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
         }
 
-        private void searchLookUpDonViCoSo_EditValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                
-                if (cbbChiCuc_ChuaCapMa.EditValue.ToString() != "all")
-                {
-                   // FilterTiepNhanTheoDonVi();
-                }
-                else
-                {
-                    //GVDanhSachTiepNhan.ClearColumnsFilter();
-                }
-            }
-            catch { }
-        }
 
         private void cbbChiCuc_ChuaCapMa_EditValueChanged(object sender, EventArgs e)
         {
@@ -844,23 +803,45 @@ namespace BioNetSangLocSoSinh.Entry
                 this.cbbDonVi_ChuaCapMa.EditValue = "all";
                 if (cbbChiCuc_ChuaCapMa.EditValue.ToString() != "all")
                 {
-                    // FilterTiepNhanTheoDonVi();
+                    FilterChuaCapMaTheoDonVi();
                 }
                 else
                 {
-                    //GVDanhSachTiepNhan.ClearColumnsFilter();
+                    GVDanhSachCho.ClearColumnsFilter();
                 }
             }
             catch { }
         }
+        private void cbbDonVi_ChuaCapMa_EditValueChanged(object sender, EventArgs e)
+        {
+            FilterChuaCapMaTheoDonVi();
+        }
+        private void FilterChuaCapMaTheoDonVi() //Lọc theo đơn vị
+        {
+            string machicuc = cbbChiCuc_ChuaCapMa.EditValue.ToString();
+            string madv = cbbDonVi_ChuaCapMa.EditValue.ToString();
+            if (!machicuc.Equals("all") && madv.Equals("all"))
+            {
+                madv = machicuc;
+            }
+            if (!madv.Equals("all"))
+            {
+                string filterMaDV = "Contains([MaDonVi], '" + madv + "')";
+                GVDanhSachCho.Columns["MaDonVi"].FilterInfo = new ColumnFilterInfo(filterMaDV);
+            }
+            else
+            {
+                GVDanhSachCho.Columns["MaDonVi"].ClearFilter();
+            }
 
+        }
         private void btnDuaVaoDanhSachCapMa_Click(object sender, EventArgs e)
         {
             if (this.KiemTraDieuKienLamMoiDanhSach())
             {
                 if (this.GVDanhSachCho.SelectedRowsCount > 0)
                 {
-                    this.txtMaPhieu.ResetText();
+                    this.txtMaPhieuChuaCoKQ.ResetText();
                     this.LayDanhSachCacPhieuCanCapMa();
                     var tttrungtam = BioNet_Bus.GetThongTinTrungTam();
                     if (tttrungtam.isCapMaXNTheoMaPhieu ?? true)
@@ -895,72 +876,53 @@ namespace BioNetSangLocSoSinh.Entry
             }
 
         }
+        
 
-        private void GCDanhSachCho_Click(object sender, EventArgs e)
+     
+
+        private void btnClear_Click(object sender, EventArgs e)
         {
-
+            cbbChiCuc_ChuaCapMa.EditValue = "all";
+            cbbDonVi_ChuaCapMa.EditValue = "all";
+            cbbGoiXNLocChuaCapma.EditValue = "ALL";
+            txtTuNgay_ChuaCapMa.EditValue = DateTime.Now;
+            txtDenNgay_ChuaCapMa.EditValue = DateTime.Now;
+            txtMaPhieuChuaCoKQ.ResetText();
+            GVDanhSachCho.ClearColumnsFilter();
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
+        private void cbbGoiXNLocChuaCapma_EditValueChanged(object sender, EventArgs e)
         {
-            List<PsRptDanhSachDaCapMaXetNghiem> data = new List<PsRptDanhSachDaCapMaXetNghiem>();
-            List<pro_ReportGanViTriMayXNResult> dataGanVT = new List<pro_ReportGanViTriMayXNResult>();
+            string MaGoiXN = cbbGoiXNLocChuaCapma.EditValue.ToString();
+            if (!MaGoiXN.Equals("ALL"))
+            {
+                string filterMaDV = "Contains([IDGoiDichVu], '" + MaGoiXN + "')";
+                GVDanhSachCho.Columns["IDGoiDichVu"].FilterInfo = new ColumnFilterInfo(filterMaDV);
+            }
+            else
+            {
+                GVDanhSachCho.Columns["IDGoiDichVu"].ClearFilter();
+            }
+        }
+
+        private void txtMaPhieuChuaCoKQ_EditValueChanged(object sender, EventArgs e)
+        {
             try
             {
-                string link =Application.StartupPath + @"\DSSoDoXetNghiem\";
-                //data = BioNet_Bus.GetDanhSachDaCapMaXetNghiem((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue, "all");
-                dataGanVT = BioNet_Bus.GanViTriMayXNResult((DateTime)this.txtTuNgay_ChuaKQ.EditValue, (DateTime)this.txtDenNgay_ChuaKQ.EditValue);
-                if (dataGanVT.Count > 0)
+                if (!string.IsNullOrEmpty(txtMaPhieuChuaCoKQ.EditValue.ToString()))
                 {
-                    Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
-                    rp.CreateDocument();
-                    rp.DataSource = dataGanVT;
-                    var CountMay = dataGanVT.Select(x=>x.MayXN).Distinct().ToList();
-
-                    //rp.ExportToXlsx("test1.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "report1" });
-                    Workbook workbook = new DevExpress.Spreadsheet.Workbook();
-                    //workbook.LoadDocument("test1.xlsx");
-                    int i = 0;
-                    foreach (var may in CountMay)
-                    {
-                        Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
-                        rp.CreateDocument();
-                        rp1.DataSource = dataGanVT.Where(x => x.MayXN.Equals(may.ToString())).ToList();
-                        rp1.PaperName = may.ToString();
-                      //  rp.Pages.AddRange(rp1.Pages);
-                        rp1.Parameters["TenMay"].Value = may.ToString();
-                        rp1.Parameters["TenNV"].Value = emp.EmployeeName;
-                        rp1.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
-                        rp1.Parameters["NgayCapMaXN"].Value = this.txtTuNgay_ChuaKQ.Text + "~" + this.txtDenNgay_ChuaKQ.Text;
-                        rp1.ExportToXlsx(may.ToString() + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = may.ToString() });
-                       
-                        Workbook workbook2 = new DevExpress.Spreadsheet.Workbook();
-                        using (FileStream stream = new FileStream(may.ToString() + ".xlsx", FileMode.Open))
-                        {
-                            workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
-                        }
-                      //  workbook2.LoadDocument("test" + may.ToString() + ".xlsx");
-                        workbook.Worksheets.Insert(i, may.ToString());
-                        workbook.Worksheets[i].CopyFrom(workbook2.Worksheets[0]);
-                        File.Delete(may.ToString() + ".xlsx");
-                        i++;
-                    }
-                    //Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan rp = new Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan();
-                    //rp.Parameters["NgayXuatDS"].Value =  DateTime.Now;
-                    //rp.Parameters["NVXuatDS"].Value = emp.EmployeeName;
-                    // Reports.frmDanhSachDaCapMa rpt = new Reports.frmDanhSachDaCapMa(rp);
-                    //rpt.ShowDialog();
-                    string l = link + "SodoXetNghiemNgay" + DateTime.Now.Day+ DateTime.Now.Month + DateTime.Now.Year+ ".xlsx";
-                    workbook.SaveDocument(l);
-                    Process.Start(l);
-
+                    string filterMaPhieu = "Contains([MaPhieu], '" + txtMaPhieuChuaCoKQ.EditValue + "')";
+                    GVDanhSachCho.Columns["MaPhieu"].FilterInfo = new ColumnFilterInfo(filterMaPhieu);
                 }
                 else
-                    XtraMessageBox.Show("Không có phiếu nào được cấp mã xét nghiệm trong khoảng thời gian bạn đã chọn!", "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                {
+                    GVDanhSachCho.Columns["MaPhieu"].ClearFilter();
+                }
+
             }
             catch
             {
-
+                GVDanhSachCho.Columns["MaPhieu"].FilterInfo = new ColumnFilterInfo();
             }
         }
     }

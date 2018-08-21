@@ -273,7 +273,6 @@
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.MinimumSize = new System.Drawing.Size(352, 870);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(352, 870);
             this.panelControl1.TabIndex = 0;
@@ -509,13 +508,10 @@
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Location = new System.Drawing.Point(352, 0);
-            this.splitContainerControl1.MinimumSize = new System.Drawing.Size(908, 866);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.xtraTabControl1);
-            this.splitContainerControl1.Panel1.MinSize = 352;
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl3);
-            this.splitContainerControl1.Panel2.MinSize = 500;
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(916, 870);
             this.splitContainerControl1.SplitterPosition = 352;
@@ -686,7 +682,6 @@
             // 
             this.txtMaPhieuTiepNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaPhieuTiepNhan.Enabled = false;
             this.txtMaPhieuTiepNhan.Location = new System.Drawing.Point(107, 59);
             this.txtMaPhieuTiepNhan.Name = "txtMaPhieuTiepNhan";
             this.txtMaPhieuTiepNhan.Size = new System.Drawing.Size(235, 20);

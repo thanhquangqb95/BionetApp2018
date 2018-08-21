@@ -34,14 +34,14 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             {
                 if (this.txtUsername.Text == string.Empty)
                 {
-                    lblError.Enabled = true;
+                    lblError.Visible = true;
                     lblError.Text = "Vui lòng nhập tên tài khoản!";
                     this.txtUsername.Focus();
                     return;
                 }
                 if (this.txtPassword.Text == string.Empty)
                 {
-                    lblError.Enabled = true;
+                    lblError.Visible = true;
                     lblError.Text = "Vui lòng nhập mật khẩu!";
                     this.txtPassword.Focus();
                     return;
@@ -49,18 +49,18 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
                 if (txtUsername.Text != string.Empty && txtPassword.Text != string.Empty)
                 {
                     string pass = BioBLL.GetMD5(txtPassword.Text);
-                    bool bCheckLogin = BioBLL.CheckLogin(txtUsername.Text, pass);
+                    bool bCheckLogin = BioBLL.CheckLogin(txtUsername.Text.Trim(), pass);
                     if (bCheckLogin)
                     {
 
-                        emp.EmployeeCode = BioBLL.GetEmployeeCode(txtUsername.Text.TrimEnd());
+                        emp.EmployeeCode = BioBLL.GetEmployeeCode(txtUsername.Text.Trim().TrimEnd());
                         emp.EmployeeName = txtUsername.Text.TrimEnd();
                         //FrmStartup.emp = emp;
                         this.Close();
                     }
                     else
                     {
-                        lblError.Enabled = true;
+                        lblError.Visible = true;
                         lblError.Text = "Vui lòng kiểm tra lại tài khoản hoặc mật khẩu!";
                         this.txtUsername.Focus();
                         return;
@@ -69,7 +69,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             }
             catch 
             {
-                lblError.Enabled = true;
+                lblError.Visible = true;
                 lblError.Text = "Vui lòng kiểm tra lại kết nối với Máy chủ!";
                 return;
             }
@@ -100,6 +100,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             NameCopany = fileVersionInfo.CompanyName;
             lblUpdate.Text = "Ngày cập nhật: 5/07/2018";
             lblVersion.Text = "SLSS.2.0." + versionCurrent;
+            this.lblError.Visible = false;
             AddItemForm();
         }
         private void AddItemForm()

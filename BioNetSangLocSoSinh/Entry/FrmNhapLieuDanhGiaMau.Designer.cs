@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhapLieuDanhGiaMau));
-            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator1 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
+            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator2 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpChiCuc = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -1617,7 +1617,7 @@
             this.barCodePhieu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barCodePhieu.ShowText = false;
             this.barCodePhieu.Size = new System.Drawing.Size(491, 40);
-            this.barCodePhieu.Symbology = code128Generator1;
+            this.barCodePhieu.Symbology = code128Generator2;
             this.barCodePhieu.TabIndex = 9;
             this.barCodePhieu.TabStop = false;
             this.barCodePhieu.VerticalAlignment = DevExpress.Utils.VertAlignment.Center;

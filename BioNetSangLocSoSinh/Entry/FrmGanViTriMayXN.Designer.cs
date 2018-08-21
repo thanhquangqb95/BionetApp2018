@@ -33,7 +33,7 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.btnViewGhiChu = new DevExpress.XtraEditors.PictureEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.cbbMayXN = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.col_MayXN02_GhiChu = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.col_GhiNhoChung = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.col_IDRow = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.GCChuaKQ = new DevExpress.XtraGrid.GridControl();
             this.GVChuaKQ = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -101,10 +102,9 @@
             this.col_TenDv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.col_IDRow = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnViewGhiChu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
@@ -139,7 +139,7 @@
             // 
             this.panelControl6.Appearance.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.panelControl6.Appearance.Options.UseBackColor = true;
-            this.panelControl6.Controls.Add(this.pictureEdit1);
+            this.panelControl6.Controls.Add(this.btnViewGhiChu);
             this.panelControl6.Controls.Add(this.simpleButton1);
             this.panelControl6.Controls.Add(this.cbbMayXN);
             this.panelControl6.Controls.Add(this.label1);
@@ -154,37 +154,38 @@
             this.panelControl6.Size = new System.Drawing.Size(973, 36);
             this.panelControl6.TabIndex = 6;
             // 
-            // pictureEdit1
+            // btnViewGhiChu
             // 
-            this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureEdit1.EditValue = global::BioNetSangLocSoSinh.Properties.Resources.settings_cog;
-            this.pictureEdit1.Location = new System.Drawing.Point(940, 6);
-            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem1.Text = "Cài đặt";
+            this.btnViewGhiChu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnViewGhiChu.EditValue = global::BioNetSangLocSoSinh.Properties.Resources.settings_cog;
+            this.btnViewGhiChu.Location = new System.Drawing.Point(798, 4);
+            this.btnViewGhiChu.Margin = new System.Windows.Forms.Padding(0);
+            this.btnViewGhiChu.Name = "btnViewGhiChu";
+            this.btnViewGhiChu.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.btnViewGhiChu.Properties.Appearance.Options.UseBackColor = true;
+            this.btnViewGhiChu.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnViewGhiChu.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.btnViewGhiChu.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.btnViewGhiChu.Size = new System.Drawing.Size(24, 24);
+            toolTipTitleItem1.Text = "Nội dung viết tắt";
             superToolTip1.Items.Add(toolTipTitleItem1);
-            this.pictureEdit1.SuperTip = superToolTip1;
-            this.pictureEdit1.TabIndex = 37;
-            this.pictureEdit1.Visible = false;
+            this.btnViewGhiChu.SuperTip = superToolTip1;
+            this.btnViewGhiChu.TabIndex = 37;
+            this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(660, 5);
+            this.simpleButton1.Location = new System.Drawing.Point(878, 5);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(50, 23);
             this.simpleButton1.TabIndex = 36;
             this.simpleButton1.Text = "Test";
+            this.simpleButton1.Visible = false;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // cbbMayXN
             // 
-            this.cbbMayXN.Location = new System.Drawing.Point(486, 8);
+            this.cbbMayXN.Location = new System.Drawing.Point(452, 10);
             this.cbbMayXN.Name = "cbbMayXN";
             this.cbbMayXN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -199,7 +200,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(453, 15);
+            this.label1.Location = new System.Drawing.Point(419, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 32;
@@ -215,7 +216,7 @@
             this.btnXuatFile.Appearance.Options.UseForeColor = true;
             this.btnXuatFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__2_;
             this.btnXuatFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnXuatFile.Location = new System.Drawing.Point(747, 6);
+            this.btnXuatFile.Location = new System.Drawing.Point(609, 7);
             this.btnXuatFile.Name = "btnXuatFile";
             this.btnXuatFile.Size = new System.Drawing.Size(173, 23);
             this.btnXuatFile.TabIndex = 0;
@@ -224,7 +225,7 @@
             // 
             // txtMaNgoai
             // 
-            this.txtMaNgoai.Location = new System.Drawing.Point(290, 8);
+            this.txtMaNgoai.Location = new System.Drawing.Point(267, 8);
             this.txtMaNgoai.Name = "txtMaNgoai";
             this.txtMaNgoai.Size = new System.Drawing.Size(137, 20);
             this.txtMaNgoai.TabIndex = 29;
@@ -232,7 +233,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(240, 15);
+            this.labelControl1.Location = new System.Drawing.Point(207, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(44, 13);
             this.labelControl1.TabIndex = 28;
@@ -568,6 +569,12 @@
             this.col_GhiNhoChung.Visible = true;
             this.col_GhiNhoChung.Width = 254;
             // 
+            // col_IDRow
+            // 
+            this.col_IDRow.Caption = "IDRow";
+            this.col_IDRow.FieldName = "IDRowGanXN";
+            this.col_IDRow.Name = "col_IDRow";
+            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.GCChuaKQ);
@@ -618,13 +625,14 @@
             this.GVChuaKQ.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaXetNghiem", null, "có {0} mẫu")});
             this.GVChuaKQ.Name = "GVChuaKQ";
+            this.GVChuaKQ.OptionsBehavior.ReadOnly = true;
             this.GVChuaKQ.OptionsDetail.EnableMasterViewMode = false;
-            this.GVChuaKQ.OptionsView.GroupDrawMode = DevExpress.XtraGrid.Views.Grid.GroupDrawMode.Office;
             this.GVChuaKQ.OptionsView.ShowFooter = true;
             this.GVChuaKQ.OptionsView.ShowGroupPanel = false;
             this.GVChuaKQ.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_MaDonVi_GCChuaCoKQ, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_MaGoiXN_GCChuaCoKQ, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.GVChuaKQ.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVChuaKQ_RowCellStyle);
             // 
             // col_MaDonVi_GCChuaCoKQ
             // 
@@ -720,7 +728,7 @@
             this.col_MaGoiXN_GCChuaCoKQ.Name = "col_MaGoiXN_GCChuaCoKQ";
             this.col_MaGoiXN_GCChuaCoKQ.OptionsColumn.AllowEdit = false;
             this.col_MaGoiXN_GCChuaCoKQ.Visible = true;
-            this.col_MaGoiXN_GCChuaCoKQ.VisibleIndex = 2;
+            this.col_MaGoiXN_GCChuaCoKQ.VisibleIndex = 3;
             // 
             // lookUpGoiXN_GCChuaCoKQ
             // 
@@ -1022,12 +1030,6 @@
             this.groupControl2.TabIndex = 33;
             this.groupControl2.Text = "Chức năng cấp mã";
             // 
-            // col_IDRow
-            // 
-            this.col_IDRow.Caption = "IDRow";
-            this.col_IDRow.FieldName = "IDRowGanXN";
-            this.col_IDRow.Name = "col_IDRow";
-            // 
             // FrmGanViTriMayXN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1044,7 +1046,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnViewGhiChu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
@@ -1144,7 +1146,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_MaDv;
         private DevExpress.XtraGrid.Columns.GridColumn col_TenDv;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.PictureEdit btnViewGhiChu;
         private DevExpress.XtraEditors.LabelControl labelControl41;
         private DevExpress.XtraEditors.LookUpEdit cbbGoiXNLoc;
         private DevExpress.XtraEditors.SimpleButton btnClear;

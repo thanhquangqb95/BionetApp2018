@@ -242,7 +242,6 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.BackColor = System.Drawing.Color.Transparent;
-            this.lblError.Enabled = false;
             this.lblError.ForeColor = System.Drawing.Color.Red;
             this.lblError.Location = new System.Drawing.Point(44, 282);
             this.lblError.Name = "lblError";
@@ -250,6 +249,7 @@
             this.lblError.TabIndex = 11;
             this.lblError.Text = "Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.";
             this.lblError.UseCompatibleTextRendering = true;
+            this.lblError.Visible = false;
             // 
             // FrmLoginNew
             // 
