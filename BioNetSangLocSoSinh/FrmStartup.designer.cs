@@ -320,7 +320,7 @@
             // 
             this.barButtonItem3.Caption = "Cấp mã xét nghiệm";
             this.barButtonItem3.Id = 3;
-            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.barButtonItem3.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.coding;
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -330,7 +330,7 @@
             // 
             this.barButtonItem4.Caption = "Phòng xét nghiệm";
             this.barButtonItem4.Id = 4;
-            this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
+            this.barButtonItem4.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.experiment;
             this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -1167,6 +1167,7 @@
             // 
             this.barButtonItem62.Caption = "Gắn vị trí máy xét nghiệm";
             this.barButtonItem62.Id = 27;
+            this.barButtonItem62.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.broken_link;
             this.barButtonItem62.Name = "barButtonItem62";
             this.barButtonItem62.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem62_ItemClick);
             // 

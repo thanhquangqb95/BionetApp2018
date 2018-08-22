@@ -2313,11 +2313,32 @@ namespace BioNetDAL
             }           
             return gvc;
         }
+        public bool GetMaPhieuDaCoDSCapVT(string MaPhieu)
+        {
+            try
+            {
+                PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.MaPhieu.Equals(MaPhieu)
+               && x.isDaDuyet != true);
+                if(viTri==null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return  false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public PsReponse DeleteDanhSachGanXNLuu(PSCMGanViTriChung pm)
         {
             PsReponse gvc = new PsReponse();
             try
             {
+
                 PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(pm.IDLanGanXN) && x.IDRowGanXN == pm.IDRowGanXN
                 && x.isDaDuyet != true);
                 var ds = db.PSCM_GanViTris.Where(x => x.isDaDuyet != true && x.IDLanGanXN.Equals(pm.IDLanGanXN)).ToList();
@@ -2353,6 +2374,37 @@ namespace BioNetDAL
                         db.SubmitChanges();
                     }                         
                 }
+            }
+            catch (Exception ex)
+            {
+                gvc.Result = false;
+                gvc.StringError = ex.ToString();
+            }
+            return gvc;
+        }
+        public PsReponse DeleteDanhSachAllGanXNLuu(List<PSCMGanViTriChung> pm)
+        {
+            PsReponse gvc = new PsReponse();
+            try
+            {
+                foreach(var gc in pm)
+                {
+                    PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(gc.IDLanGanXN) && x.IDRowGanXN == gc.IDRowGanXN
+                && x.isDaDuyet != true);
+                    var ds = db.PSCM_GanViTris.Where(x => x.isDaDuyet != true && x.IDLanGanXN.Equals(gc.IDLanGanXN)).ToList();
+                    if (viTri != null)
+                    {
+                        if (viTri.PSCM_GanViTriCTs.Count() > 0)
+                        {
+                            foreach (var vtc in viTri.PSCM_GanViTriCTs)
+                            {
+                                db.PSCM_GanViTriCTs.DeleteOnSubmit(vtc);
+                            }
+                        }
+                        db.PSCM_GanViTris.DeleteOnSubmit(viTri);
+                        db.SubmitChanges();
+                    }
+                } 
             }
             catch (Exception ex)
             {
@@ -2410,7 +2462,7 @@ namespace BioNetDAL
                     {
                         foreach (var gcc in gcchung)
                         {
-                            var dmgc = db.PSDanhMucGhiChuXNs.FirstOrDefault(x => x.VietTatGhiChu.Equals(gcc.Trim()) && x.isSuDung != false);
+                            var dmgc = db.PSDanhMucGhiChuXNs.FirstOrDefault(x => x.VietTatGhiChu.Equals(gcc.Trim().ToUpper()) && x.isSuDung != false);
                             string gc1 = string.Empty;
                             if(dmgc!=null)
                             {

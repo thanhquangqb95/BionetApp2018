@@ -1208,12 +1208,22 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.SuaDanhSachGanXNLuu(pm);
         }
-        public static PsReponse DeleteDanhSachGanXNLuu(PSCMGanViTriChung pm)
+        public static bool GetMaPhieuDaCoDSCapVT(string MaPhieu)
+        {
+            var db = new DataObjects();
+            return db.GetMaPhieuDaCoDSCapVT(MaPhieu);
+        }
+            public static PsReponse DeleteDanhSachGanXNLuu(PSCMGanViTriChung pm)
         {
             var db = new DataObjects();
             return db.DeleteDanhSachGanXNLuu(pm);
         }
-        public static List<PSDanhMucGhiChuXN> GetDanhMucGhiXN()
+        public static PsReponse DeleteDanhSachAllGanXNLuu(List<PSCMGanViTriChung> pm)
+        {
+            var db = new DataObjects();
+            return db.DeleteDanhSachAllGanXNLuu(pm);
+        }
+            public static List<PSDanhMucGhiChuXN> GetDanhMucGhiXN()
         {
             var db = new DataObjects();
             return db.GetDanhMucGhiXN();

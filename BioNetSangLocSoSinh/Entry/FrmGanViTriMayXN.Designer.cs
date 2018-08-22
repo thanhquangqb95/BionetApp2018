@@ -33,8 +33,8 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.btnHuyDanhSach = new DevExpress.XtraEditors.SimpleButton();
             this.btnViewGhiChu = new DevExpress.XtraEditors.PictureEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.cbbMayXN = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
@@ -139,8 +139,8 @@
             // 
             this.panelControl6.Appearance.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.panelControl6.Appearance.Options.UseBackColor = true;
+            this.panelControl6.Controls.Add(this.btnHuyDanhSach);
             this.panelControl6.Controls.Add(this.btnViewGhiChu);
-            this.panelControl6.Controls.Add(this.simpleButton1);
             this.panelControl6.Controls.Add(this.cbbMayXN);
             this.panelControl6.Controls.Add(this.label1);
             this.panelControl6.Controls.Add(this.btnXuatFile);
@@ -154,11 +154,21 @@
             this.panelControl6.Size = new System.Drawing.Size(973, 36);
             this.panelControl6.TabIndex = 6;
             // 
+            // btnHuyDanhSach
+            // 
+            this.btnHuyDanhSach.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.garbage;
+            this.btnHuyDanhSach.Location = new System.Drawing.Point(767, 4);
+            this.btnHuyDanhSach.Name = "btnHuyDanhSach";
+            this.btnHuyDanhSach.Size = new System.Drawing.Size(144, 26);
+            this.btnHuyDanhSach.TabIndex = 38;
+            this.btnHuyDanhSach.Text = "Hủy danh sách cấp mã";
+            this.btnHuyDanhSach.Click += new System.EventHandler(this.btnHuyDanhSach_Click);
+            // 
             // btnViewGhiChu
             // 
             this.btnViewGhiChu.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnViewGhiChu.EditValue = global::BioNetSangLocSoSinh.Properties.Resources.settings_cog;
-            this.btnViewGhiChu.Location = new System.Drawing.Point(798, 4);
+            this.btnViewGhiChu.Location = new System.Drawing.Point(942, 6);
             this.btnViewGhiChu.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewGhiChu.Name = "btnViewGhiChu";
             this.btnViewGhiChu.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -172,16 +182,6 @@
             this.btnViewGhiChu.SuperTip = superToolTip1;
             this.btnViewGhiChu.TabIndex = 37;
             this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(878, 5);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(50, 23);
-            this.simpleButton1.TabIndex = 36;
-            this.simpleButton1.Text = "Test";
-            this.simpleButton1.Visible = false;
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // cbbMayXN
             // 
@@ -218,7 +218,7 @@
             this.btnXuatFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnXuatFile.Location = new System.Drawing.Point(609, 7);
             this.btnXuatFile.Name = "btnXuatFile";
-            this.btnXuatFile.Size = new System.Drawing.Size(173, 23);
+            this.btnXuatFile.Size = new System.Drawing.Size(152, 23);
             this.btnXuatFile.TabIndex = 0;
             this.btnXuatFile.Text = "Xuất file danh sách";
             this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
@@ -1112,7 +1112,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_STT;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraGrid.GridControl GCChuaKQ;
@@ -1151,5 +1150,6 @@
         private DevExpress.XtraEditors.LookUpEdit cbbGoiXNLoc;
         private DevExpress.XtraEditors.SimpleButton btnClear;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_IDRow;
+        private DevExpress.XtraEditors.SimpleButton btnHuyDanhSach;
     }
 }

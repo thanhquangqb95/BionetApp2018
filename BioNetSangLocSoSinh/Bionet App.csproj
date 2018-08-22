@@ -1188,6 +1188,7 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\x-button.png" />
     <None Include="Resources\settings-cog1.png" />
     <None Include="Resources\recycle1.png" />
     <None Include="Resources\recycle.png" />
@@ -1219,6 +1220,10 @@
     <None Include="Resources\0a0565a649bbdcb39c59061d3df01be0.jpg" />
     <None Include="Resources\109d1cc9663456342d7fce96f8606b29.jpg" />
     <None Include="Resources\8cda90f704c93bc4c3b4a0a9c188d061.jpg" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\broken-link.png" />
+    <None Include="Resources\coding.png" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
@@ -1241,6 +1246,8 @@
     <None Include="Resources\import %283%291.png" />
     <None Include="Resources\import %281%29.png" />
     <None Include="Resources\information.png" />
+    <None Include="Resources\experiment.png" />
+    <None Include="Resources\garbage.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />
