@@ -164,12 +164,12 @@ namespace BioNetDAL
             }
             catch { return toEncrypt; }
         }
-        public List<PSPatient> getListBenhNhan()
+        public List<PSPatient> getListBenhNhan(int view)
         {
             List<PSPatient> lst = new List<PSPatient>();
             try
             {
-                lst = db.PSPatients.Where(x=>x.MaKhachHang!=null).ToList();
+                lst = db.PSPatients.Where(x=>x.MaKhachHang!=null).Take(view).ToList();
                 return lst;
             }
             catch { return lst; }
@@ -1418,12 +1418,11 @@ namespace BioNetDAL
         //    catch { return lstInfoPerson = new List<PsInfoPerson>(); }
         //}
 
-        public List<PSPatient> GetListBenhNhanSearch(string TenTre,string TenPH,int? GioiTinh,DateTime NgaySinh)
+        public List<PSPatient> GetListBenhNhanSearch(string TenTre,string TenPH,int? GioiTinh,DateTime NgaySinh,int view,int TTPhieu)
         {
             List<PSPatient> lstInfoPerson = new List<PSPatient>();
             try
-            {               
-                    lstInfoPerson = db.PSPatients.Where(x=>x.MaBenhNhan!=null).ToList();
+            {   lstInfoPerson = db.PSPatients.Where(x=>x.MaBenhNhan!=null).ToList();
                 if (string.IsNullOrEmpty(TenTre))
                 {
                     if (string.IsNullOrEmpty(TenPH))
@@ -1443,14 +1442,14 @@ namespace BioNetDAL
                         {
                             if (NgaySinh.Date == DateTime.Parse("01/01/0001"))
                             {
-                                lstInfoPerson = db.PSPatients.Where(x => x.GioiTinh==GioiTinh).ToList();
+                                lstInfoPerson = db.PSPatients.Where(x => x.GioiTinh == GioiTinh).ToList();
                             }
                             else
                             {
                                 lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.GioiTinh == GioiTinh).ToList();
                             }
                         }
-                       
+
                     }
                     else
                     {
@@ -1473,7 +1472,7 @@ namespace BioNetDAL
                             }
                             else
                             {
-                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.GioiTinh == GioiTinh &&(x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH))).ToList();
+                                lstInfoPerson = db.PSPatients.Where(x => x.NgayGioSinh.Value.Date == NgaySinh.Date && x.GioiTinh == GioiTinh && (x.MotherName.Contains(TenPH) || x.FatherName.Contains(TenPH))).ToList();
                             }
                         }
                     }
@@ -1531,10 +1530,43 @@ namespace BioNetDAL
                             }
                         }
                     }
-                }                 
-                return lstInfoPerson;
+                }
+                if(TTPhieu==1)
+                {
+                    var phieu = (from pe in lstInfoPerson 
+                                join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
+                                where ph.TrangThaiMau ==6 && ph.isXoa !=true
+                               select new { pe }).ToList();
+                    //var phieu = lstInfoPerson.Where(x => db.PSPhieuSangLocs.Where(y => y.MaBenhNhan != null && y.TrangThaiMau == 6 && y.isXoa!=true).Equals(x.MaBenhNhan)).ToList();
+                    if (phieu != null)
+                    {
+                        lstInfoPerson = phieu.Select(x=>x.pe).ToList();
+                    }
+                    else
+                    {
+                       lstInfoPerson = null;
+                    }
+                    
+                }
+                else if(TTPhieu==2)
+                {
+                    var phieu = (from pe in lstInfoPerson
+                                 join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
+                                 where ph.TrangThaiMau == 7 && ph.isXoa != true
+                                 select new { pe }).ToList();
+                    //var phieu = lstInfoPerson.Where(x => db.PSPhieuSangLocs.Where(y => y.MaBenhNhan != null && y.TrangThaiMau == 6 && y.isXoa!=true).Equals(x.MaBenhNhan)).ToList();
+                    if (phieu != null)
+                    {
+                        lstInfoPerson = phieu.Select(x => x.pe).ToList();
+                    }
+                    else
+                    {
+                        lstInfoPerson = null;
+                    }
+                }
             }
-            catch { return lstInfoPerson; }
+            catch { }
+            return lstInfoPerson.Take(view).ToList();
         }
 
         public PSPatient GetInfoPersonByMa(string maBenhNhan)

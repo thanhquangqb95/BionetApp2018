@@ -32,10 +32,10 @@ namespace BioNetBLL
             var db = new BioDAL();
             return db.MyServerName();
         }
-        public static List<PSPatient> GetDanhSachBenhNhan()
+        public static List<PSPatient> GetDanhSachBenhNhan(int view)
         {
             var db = new BioDAL();
-            return db.getListBenhNhan();
+            return db.getListBenhNhan(view);
         }
         public static DataTable TableServerName()
         {
@@ -650,10 +650,10 @@ namespace BioNetBLL
         #endregion
 
         #region Thông tin bệnh nhân
-        public static List<PSPatient> GetListPatient(string tentre,string tenph,int gioitinh,DateTime ngaysinh)
+        public static List<PSPatient> GetListPatient(string tentre,string tenph,int gioitinh,DateTime ngaysinh,int view,int TTPhieu)
         {
             var db = new BioDAL();
-            return db.GetListBenhNhanSearch(tentre,tenph,gioitinh,ngaysinh);
+            return db.GetListBenhNhanSearch(tentre,tenph,gioitinh,ngaysinh,view,TTPhieu);
         }
 
         public static PSPatient GetInfoPersonByMa(string maBenhNhan)

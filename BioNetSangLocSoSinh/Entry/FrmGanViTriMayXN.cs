@@ -462,9 +462,12 @@ namespace BioNetSangLocSoSinh.Entry
                 workbook.Worksheets[1].CopyFrom(workbook3.Worksheets[0]);
                 File.Delete("May2Benh" + ".xlsx");
 
-                string l = link + "SodoXetNghiemNgay" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + Idlangan+ ".xlsx";
-                workbook.SaveDocument(l);
-                Process.Start(l);
+                string l = link + "SodoXetNghiemNgay" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + Idlangan+ ".xlsx";  
+                    workbook.SaveDocument(l);
+                    System.Diagnostics.Process.Start(l);
+                    LoadLstChuaKetQua();
+                    LoadDSDaLuu();
+                
             }
             catch
             {

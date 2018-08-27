@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStartup));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -163,6 +163,7 @@
             this.picBackgroun = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem65 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -272,9 +273,10 @@
             this.barSubItem8,
             this.bttTiengViet,
             this.bttTiengAnh,
-            this.barButtonItem62});
+            this.barButtonItem62,
+            this.barButtonItem65});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 28;
+            this.ribbon.MaxItemId = 29;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1,
@@ -476,8 +478,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDMTrungTam),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDMChuongTrinh),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDMDanhGiaChatLuong),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDMThongSoXN),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnInforPerson)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDMThongSoXN)});
             this.btnDanhMuc.Name = "btnDanhMuc";
             this.btnDanhMuc.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
@@ -575,7 +576,7 @@
             // 
             this.btnInforPerson.Caption = "Thông tin bệnh nhân";
             this.btnInforPerson.Id = 10;
-            this.btnInforPerson.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInforPerson.ImageOptions.Image")));
+            this.btnInforPerson.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.info;
             this.btnInforPerson.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInforPerson.ImageOptions.LargeImage")));
             this.btnInforPerson.Name = "btnInforPerson";
             this.btnInforPerson.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -873,9 +874,9 @@
             this.barButtonItem39.Id = 55;
             this.barButtonItem39.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem39.Name = "barButtonItem39";
-            toolTipTitleItem1.Text = "Đồng Bộ Dữ Liệu Thông Tin Trung Tâm";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barButtonItem39.SuperTip = superToolTip1;
+            toolTipTitleItem5.Text = "Đồng Bộ Dữ Liệu Thông Tin Trung Tâm";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            this.barButtonItem39.SuperTip = superToolTip5;
             this.barButtonItem39.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem39.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem39_ItemClick);
             // 
@@ -885,9 +886,9 @@
             this.barButtonItem40.Id = 56;
             this.barButtonItem40.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem40.Name = "barButtonItem40";
-            toolTipTitleItem2.Text = "Đồng Bộ Dữ Liệu Danh Mục\r\n";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.barButtonItem40.SuperTip = superToolTip2;
+            toolTipTitleItem6.Text = "Đồng Bộ Dữ Liệu Danh Mục\r\n";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            this.barButtonItem40.SuperTip = superToolTip6;
             this.barButtonItem40.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem40_ItemClick);
             // 
             // barButtonItem41
@@ -896,9 +897,9 @@
             this.barButtonItem41.Id = 57;
             this.barButtonItem41.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem41.Name = "barButtonItem41";
-            toolTipTitleItem3.Text = "Đồng Bộ Dữ Liệu Phiếu Tiếp Nhận\r\n";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.barButtonItem41.SuperTip = superToolTip3;
+            toolTipTitleItem7.Text = "Đồng Bộ Dữ Liệu Phiếu Tiếp Nhận\r\n";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            this.barButtonItem41.SuperTip = superToolTip7;
             this.barButtonItem41.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem41.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem41_ItemClick);
             // 
@@ -908,9 +909,9 @@
             this.barButtonItem42.Id = 58;
             this.barButtonItem42.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem42.Name = "barButtonItem42";
-            toolTipTitleItem4.Text = "Đồng Bộ Dữ Liệu Kết Quả Phiếu";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.barButtonItem42.SuperTip = superToolTip4;
+            toolTipTitleItem8.Text = "Đồng Bộ Dữ Liệu Kết Quả Phiếu";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            this.barButtonItem42.SuperTip = superToolTip8;
             this.barButtonItem42.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem42.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem42_ItemClick);
             // 
@@ -968,7 +969,7 @@
             // 
             this.barButtonItem47.Caption = "Khôi phục chi tiết chất lượng mẫu";
             this.barButtonItem47.Id = 65;
-            this.barButtonItem47.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.restore2x24;
+            this.barButtonItem47.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.recycle__1_;
             this.barButtonItem47.Name = "barButtonItem47";
             this.barButtonItem47.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem47.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem47_ItemClick_1);
@@ -1291,7 +1292,7 @@
             this.ribbonPage7.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4});
             this.ribbonPage7.Name = "ribbonPage7";
-            this.ribbonPage7.Text = "Sửa lỗi";
+            this.ribbonPage7.Text = "Tiện ích";
             this.ribbonPage7.Visible = false;
             // 
             // ribbonPageGroup4
@@ -1299,6 +1300,8 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem43);
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem44);
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem47);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnInforPerson);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem65);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Sữa Lỗi Phiếu";
             // 
@@ -1415,6 +1418,13 @@
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.Images.SetKeyName(0, "vietnam.png");
             this.imageCollection1.Images.SetKeyName(1, "united-kingdom.png");
+            // 
+            // barButtonItem65
+            // 
+            this.barButtonItem65.Caption = "Gửi SMS";
+            this.barButtonItem65.Id = 28;
+            this.barButtonItem65.Name = "barButtonItem65";
+            this.barButtonItem65.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem65_ItemClick);
             // 
             // FrmStartup
             // 
@@ -1574,5 +1584,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory1;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem62;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem65;
     }
 }

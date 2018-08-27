@@ -43,15 +43,15 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             this.btnAddOk = new DevExpress.XtraEditors.SimpleButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtYNghia = new DevExpress.XtraEditors.TextEdit();
             this.txtVietTat = new DevExpress.XtraEditors.TextEdit();
+            this.txtYNghia = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.GCDMGhiChuXN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDMGhiChuXN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlAdd)).BeginInit();
             this.groupControlAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYNghia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVietTat.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYNghia.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // GCDMGhiChuXN
@@ -181,11 +181,11 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             this.groupControlAdd.Controls.Add(this.btnAddOk);
             this.groupControlAdd.Controls.Add(this.label2);
             this.groupControlAdd.Controls.Add(this.label1);
-            this.groupControlAdd.Controls.Add(this.txtYNghia);
             this.groupControlAdd.Controls.Add(this.txtVietTat);
-            this.groupControlAdd.Location = new System.Drawing.Point(289, 110);
+            this.groupControlAdd.Controls.Add(this.txtYNghia);
+            this.groupControlAdd.Location = new System.Drawing.Point(283, 110);
             this.groupControlAdd.Name = "groupControlAdd";
-            this.groupControlAdd.Size = new System.Drawing.Size(257, 137);
+            this.groupControlAdd.Size = new System.Drawing.Size(287, 177);
             this.groupControlAdd.TabIndex = 4;
             this.groupControlAdd.Text = "Thêm ghi chú";
             this.groupControlAdd.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
@@ -199,9 +199,9 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             this.btnCancel.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.x_button;
             this.btnCancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancel.ImageOptions.ImageToTextIndent = 5;
-            this.btnCancel.Location = new System.Drawing.Point(142, 98);
+            this.btnCancel.Location = new System.Drawing.Point(148, 145);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 23);
+            this.btnCancel.Size = new System.Drawing.Size(131, 23);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -215,9 +215,9 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             this.btnAddOk.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.add;
             this.btnAddOk.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnAddOk.ImageOptions.ImageToTextIndent = 5;
-            this.btnAddOk.Location = new System.Drawing.Point(8, 98);
+            this.btnAddOk.Location = new System.Drawing.Point(8, 145);
             this.btnAddOk.Name = "btnAddOk";
-            this.btnAddOk.Size = new System.Drawing.Size(113, 23);
+            this.btnAddOk.Size = new System.Drawing.Size(134, 23);
             this.btnAddOk.TabIndex = 4;
             this.btnAddOk.Text = "Thêm";
             this.btnAddOk.Click += new System.EventHandler(this.btnAddOk_Click);
@@ -240,21 +240,21 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             this.label1.TabIndex = 2;
             this.label1.Text = "Viết tắt";
             // 
+            // txtVietTat
+            // 
+            this.txtVietTat.Location = new System.Drawing.Point(53, 30);
+            this.txtVietTat.Name = "txtVietTat";
+            this.txtVietTat.Size = new System.Drawing.Size(226, 20);
+            this.txtVietTat.TabIndex = 0;
+            // 
             // txtYNghia
             // 
             this.txtYNghia.Location = new System.Drawing.Point(53, 62);
             this.txtYNghia.Name = "txtYNghia";
             this.txtYNghia.Properties.Appearance.Options.UseTextOptions = true;
             this.txtYNghia.Properties.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.txtYNghia.Size = new System.Drawing.Size(199, 20);
+            this.txtYNghia.Size = new System.Drawing.Size(226, 77);
             this.txtYNghia.TabIndex = 1;
-            // 
-            // txtVietTat
-            // 
-            this.txtVietTat.Location = new System.Drawing.Point(53, 30);
-            this.txtVietTat.Name = "txtVietTat";
-            this.txtVietTat.Size = new System.Drawing.Size(199, 20);
-            this.txtVietTat.TabIndex = 0;
             // 
             // FrmDanhMucGhiChuXN
             // 
@@ -277,8 +277,8 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             ((System.ComponentModel.ISupportInitialize)(this.groupControlAdd)).EndInit();
             this.groupControlAdd.ResumeLayout(false);
             this.groupControlAdd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYNghia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVietTat.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYNghia.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -297,7 +297,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         private DevExpress.XtraEditors.SimpleButton btnAddOk;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.TextEdit txtYNghia;
         private DevExpress.XtraEditors.TextEdit txtVietTat;
+        private DevExpress.XtraEditors.MemoEdit txtYNghia;
     }
 }

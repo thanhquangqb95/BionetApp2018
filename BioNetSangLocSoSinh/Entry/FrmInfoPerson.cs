@@ -22,52 +22,227 @@ namespace BioNetSangLocSoSinh.Entry
             InitializeComponent();
         }
         private List<PSPatient> patientlst = new List<PSPatient>();
-        private List<PSPatient> patientSearchlst = new List<PSPatient>();
 
         private void LoadDanhSachBenhNhan()
         {
-            patientlst = BioBLL.GetDanhSachBenhNhan();
+            patientlst = BioBLL.GetDanhSachBenhNhan(int.Parse(this.cbbSL.Text));
             this.gridControl_Info.DataSource = patientlst;
         }
-
+        public class CLGioiTinh
+        {
+            public string TenGioiTinh { get; set; }
+            public string GioiTinh { get; set; }
+        }
         private void FrmInfoPerson_Load(object sender, EventArgs e)
         {
-            this.LoadDanhSachBenhNhan();
-            this.txtSeachGioiTinh.SelectedIndex = 3;
+            List<CLGioiTinh> CLGioiTinhs = new List<CLGioiTinh>();
+            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "0", TenGioiTinh = "Nam" });
+            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "1", TenGioiTinh = "Nữ" });
+            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "2", TenGioiTinh = "N/A" });
+            this.LookUpEditGioiTinh.DataSource = CLGioiTinhs;
+            this.LookUpEditGioiTinh.DisplayMember = "TenGioiTinh";
+            this.LookUpEditGioiTinh.ValueMember = "GioiTinh";
+            this.LoadDanhmuc();
             this.lookUpDanToc.Properties.DataSource = BioNet_Bus.GetDanhSachDanToc(-1);
             btnEdit.Enabled = btnCancel.Enabled = btnSave.Enabled = false;
             ReadOnlyText(true);
             AddItemForm();
         }
+        private void LoadDanhmuc()
+        {
+            this.cbbSL.EditValue = 50;
+            this.cbbTTPhieu.EditValue = 1;
+            this.txtGioiTinh.EditValue = 3;
+            this.txtSeachGioiTinh.SelectedIndex = 3;
+            this.txtSearchNgaySinh.EditValue = null;
+            this.txtSearchChaMe.ResetText();
+            this.txtSearchTenTre.ResetText();
+            this.cbbTTPhieu.EditValue = 0;
+            this.btnSendEmail1.ImageOptions.ImageIndex = 0;
+            this.btnSendEmail2.ImageOptions.ImageIndex = 0;
+            this.btnSendEmail1.Enabled = false;
+            this.btnSendEmail2.Enabled = false;
+            this.btnChiTietKQ1.Enabled = false;
+            this.btnChiTietKQ2.Enabled = false;
+            LoadDanhSachBenhNhan();
 
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             this.gridControl_Info.DataSource = null;
-            this.gridControl_Info.DataSource = BioBLL.GetListPatient(this.txtSearchTenTre.Text.TrimEnd(),this.txtSearchChaMe.Text.TrimEnd(),int.Parse(this.txtSeachGioiTinh.Value.ToString()),this.txtSearchNgaySinh.DateTime); 
+            this.gridControl_Info.DataSource = BioBLL.GetListPatient(this.txtSearchTenTre.Text.TrimEnd(),this.txtSearchChaMe.Text.TrimEnd(),int.Parse(this.txtSeachGioiTinh.EditValue.ToString()),this.txtSearchNgaySinh.DateTime,int.Parse(this.cbbSL.Text),int.Parse(this.cbbTTPhieu.EditValue.ToString()));
+            this.CLearText();
         }
 
         private void gridView_Info_DoubleClick(object sender, EventArgs e)
         {
+            CLearText();
             this.maBenhNhan = gridView_Info.GetRowCellValue(gridView_Info.FocusedRowHandle, "MaBenhNhan").ToString();
             PSPatient infoPerson = BioBLL.GetInfoPersonByMa(maBenhNhan);
             txtTenMe.Text = infoPerson.MotherName;
             txtTenCha.Text = infoPerson.FatherName;
-            txtNamSinhMe.EditValue = !string.IsNullOrEmpty(infoPerson.MotherBirthday.ToString())? Convert.ToDateTime(infoPerson.MotherBirthday).ToString("dd/MM/yyyy") : string.Empty;
-            txtNamSinhCha.EditValue = !string.IsNullOrEmpty(infoPerson.FatherBirthday.ToString())? Convert.ToDateTime(infoPerson.FatherBirthday).ToString("dd/MM/yyyy") : string.Empty;
+            txtNamSinhMe.EditValue = !string.IsNullOrEmpty(infoPerson.MotherBirthday.ToString())? Convert.ToDateTime(infoPerson.MotherBirthday).ToString("yyyy") : string.Empty;
+            txtNamSinhCha.EditValue = !string.IsNullOrEmpty(infoPerson.FatherBirthday.ToString())? Convert.ToDateTime(infoPerson.FatherBirthday).ToString("yyyy") : string.Empty;
             txtSDTMe.Text = infoPerson.MotherPhoneNumber;
             txtSDTCha.Text = infoPerson.FatherPhoneNumber;
             txtAddress.Text = infoPerson.DiaChi;
             txtTenBenhNhan.Text = infoPerson.TenBenhNhan;
             txtGioiTinh.EditValue = infoPerson.GioiTinh;
-            txtGioSinhBenhNhan.EditValue = !string.IsNullOrEmpty(infoPerson.NgayGioSinh.ToString()) ? Convert.ToDateTime(infoPerson.NgayGioSinh).ToString("H:mm:ss") : string.Empty;
-            txtNamSinhBenhNhan.EditValue = !string.IsNullOrEmpty(infoPerson.NgayGioSinh.ToString()) ? Convert.ToDateTime(infoPerson.NgayGioSinh).ToString("dd/MM/yyyy") : string.Empty;
+            txtNamSinhBenhNhan.EditValue = !string.IsNullOrEmpty(infoPerson.NgayGioSinh.ToString()) ? Convert.ToDateTime(infoPerson.NgayGioSinh).ToString() : string.Empty;
             txtNoiSinh.Text = infoPerson.NoiSinh;
             lookUpDanToc.EditValue = infoPerson.DanTocID;
             txtTuan.Value = Convert.ToDecimal(infoPerson.TuanTuoiKhiSinh);
             txtNang.Text = infoPerson.CanNang.ToString();
             cboPhuongPhapSinh.EditValue = infoPerson.PhuongPhapSinh;
             txtMaPhieu1.Text = BioNet_Bus.GetMaPhieu1TheoMaBN(maBenhNhan);
+         
+            if(!string.IsNullOrEmpty(txtMaPhieu1.Text))
+            {
+                string MaDonVi = BioNet_Bus.GetThongTinTiepNhanTheoMaPhieu(txtMaPhieu1.Text).MaDonVi;
+                var Phieu = BioNet_Bus.GetThongTinPhieu(txtMaPhieu1.Text,MaDonVi);
+                string maTiepNhan = BioNet_Bus.GetThongTinMaTiepNhan(txtMaPhieu1.Text, MaDonVi);
+                
+                if(Phieu!=null)
+                {
+                    btnSendEmail1.Enabled = true;
+                    var kq = BioNet_Bus.GetThongTinKetQuaXN(txtMaPhieu1.Text, maTiepNhan);
+                    btnChiTietKQ1.Enabled = true;
+                    switch (Phieu.trangThaiMau)
+                    {
+                        case 1:
+                            {
+                                txtTrangThaiPhieu.Text = "Đã tiếp nhận";
+                                break;
+                            }
+                        case 2:
+                            {
+                                txtTrangThaiPhieu.Text = "Đã đánh giá";
+                                break;
+                            }
+                        case 3:
+                            {
+                                txtTrangThaiPhieu.Text = "Đã vào phòng xét nghiệm";
+                                break;
+                            }
+                        case 4:
+                            {
+                                txtTrangThaiPhieu.Text = "Đã có kết quả";
+                                break;
+                            }
+                        case 5:
+                            {
+                                txtTrangThaiPhieu.Text = "Đang làm xét nghiệm lại lần 2";
+                                break;
+                            }
+                        case 6:
+                            {
+                                txtTrangThaiPhieu.Text = "Cần thu lại mẫu";
+                                break;
+                            }
+                        case 7:
+                            {
+                                txtTrangThaiPhieu.Text = "Đã thu lại mẫu";
+                                break;
+                            }
+                        default:
+                            {
+                                txtTrangThaiPhieu.Text = "Không xác định";
+                                break;
+                            }
+                    }
+                    if (kq != null)
+                    {
+                       
+                        if(kq.isDaGuiMail!=true)
+                        {
+                            btnSendEmail1.ImageOptions.ImageIndex = 0;
+                        }
+                        else
+                        {
+                            btnSendEmail1.ImageOptions.ImageIndex = 1;
+                        }
+                    }
+                }
+            }
+            else{
+                btnChiTietKQ1.Enabled = false;
+                btnSendEmail1.Enabled = false;
+            }
             txtMaPhieu2.Text = BioNet_Bus.GetMaPhieu2TheoMaBN(maBenhNhan);
+
+            if (!string.IsNullOrEmpty(txtMaPhieu2.Text))
+            {
+                string MaDonVi = BioNet_Bus.GetThongTinTiepNhanTheoMaPhieu(txtMaPhieu2.Text).MaDonVi;
+                var Phieu = BioNet_Bus.GetThongTinPhieu(txtMaPhieu2.Text, MaDonVi);
+                string maTiepNhan = BioNet_Bus.GetThongTinMaTiepNhan(txtMaPhieu2.Text, MaDonVi);
+                btnSendEmail2.Enabled = true;
+                if (Phieu != null)
+                {
+                    var kq = BioNet_Bus.GetThongTinKetQuaXN(txtMaPhieu2.Text, maTiepNhan);
+                    btnChiTietKQ2.Enabled = true;
+                    switch (Phieu.trangThaiMau)
+                    {
+                        case 1:
+                            {
+                                txtTrangThaiPhieu2.Text = "Đã tiếp nhận";
+                                break;
+                            }
+                        case 2:
+                            {
+                                txtTrangThaiPhieu2.Text = "Đã đánh giá";
+                                break;
+                            }
+                        case 3:
+                            {
+                                txtTrangThaiPhieu2.Text = "Đã vào phòng xét nghiệm";
+                                break;
+                            }
+                        case 4:
+                            {
+                                txtTrangThaiPhieu2.Text = "Đã có kết quả";
+                                break;
+                            }
+                        case 5:
+                            {
+                                txtTrangThaiPhieu2.Text = "Đang làm xét nghiệm lại lần 2";
+                                break;
+                            }
+                        case 6:
+                            {
+                                txtTrangThaiPhieu.Text = "Cần thu lại mẫu";
+                                break;
+                            }
+                        case 7:
+                            {
+                                txtTrangThaiPhieu.Text = "Đã thu lại mẫu";
+                                break;
+                            }
+                        default:
+                            {
+                                txtTrangThaiPhieu2.Text = "Không xác định";
+                                break;
+                            }
+                    }
+                    if (kq != null)
+                    {
+                       
+                        if (kq.isDaGuiMail != true)
+                        {
+                            btnSendEmail2.ImageOptions.ImageIndex = 0;
+                        }
+                        else
+                        {
+                            btnSendEmail2.ImageOptions.ImageIndex = 1;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                btnChiTietKQ2.Enabled = false;
+                btnSendEmail1.Enabled = false;
+            }
+            
             btnEdit.Enabled = true;
             ReadOnlyText(true);
         }
@@ -83,14 +258,16 @@ namespace BioNetSangLocSoSinh.Entry
             txtAddress.Text = string.Empty;
             txtTenBenhNhan.Text = string.Empty;
             txtGioiTinh.Text = string.Empty;
-            txtGioSinhBenhNhan.Text = string.Empty;
             txtNamSinhBenhNhan.Text = string.Empty;
             txtNoiSinh.Text = string.Empty;
             lookUpDanToc.Text = string.Empty;
-            txtSDT.Text = string.Empty;
             txtTuan.Text = string.Empty;
             txtNang.Text = string.Empty;
             cboPhuongPhapSinh.Text = string.Empty;
+            txtMaPhieu1.ResetText();
+            txtMaPhieu2.ResetText();
+            txtTrangThaiPhieu.ResetText();
+            txtTrangThaiPhieu2.ResetText();
         }
 
         private void ReadOnlyText(bool en)
@@ -104,16 +281,12 @@ namespace BioNetSangLocSoSinh.Entry
             txtAddress.ReadOnly = en;
             txtTenBenhNhan.ReadOnly = en;
             txtGioiTinh.ReadOnly = en;
-            txtGioSinhBenhNhan.ReadOnly = en;
             txtNamSinhBenhNhan.ReadOnly = en;
             txtNoiSinh.ReadOnly = en;
             lookUpDanToc.ReadOnly = en;
-            txtSDT.ReadOnly = en;
             txtTuan.ReadOnly = en;
             txtNang.ReadOnly = en;
             cboPhuongPhapSinh.ReadOnly = en;
-            txtMaPhieu1.ReadOnly = en;
-            txtMaPhieu2.ReadOnly = en;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -122,6 +295,7 @@ namespace BioNetSangLocSoSinh.Entry
             btnSave.Enabled = true;
             btnCancel.Enabled = true;
             ReadOnlyText(false);
+            CLearText();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -151,7 +325,7 @@ namespace BioNetSangLocSoSinh.Entry
                     Patients.TenBenhNhan = txtTenBenhNhan.Text;
                     if (!string.IsNullOrEmpty(txtGioiTinh.EditValue.ToString()))
                         Patients.GioiTinh = int.Parse(txtGioiTinh.EditValue.ToString()??"2");
-                    string strNgayGio = Convert.ToDateTime(txtNamSinhBenhNhan.EditValue).ToString("dd/MM/yyyy") + " " + Convert.ToDateTime(txtGioSinhBenhNhan.EditValue).ToString("H:mm:ss");
+                    string strNgayGio = Convert.ToDateTime(txtNamSinhBenhNhan.EditValue).ToString();
                     Patients.NgayGioSinh = Convert.ToDateTime(strNgayGio);
                     Patients.NoiSinh = txtNoiSinh.Text;
                     if (!string.IsNullOrEmpty(lookUpDanToc.EditValue.ToString()))
@@ -198,8 +372,6 @@ namespace BioNetSangLocSoSinh.Entry
                 error += "Tên trẻ không được để trống \n";
             if (string.IsNullOrEmpty(txtGioiTinh.Text))
                 error += "Giới tính trẻ không được để trống \n";
-            if (string.IsNullOrEmpty(txtGioSinhBenhNhan.Text))
-                error += "Giờ sinh trẻ không được để trống \n";
             if (string.IsNullOrEmpty(txtNamSinhBenhNhan.Text))
                 error += "Năm sinh trẻ không được để trống \n";
             if (!string.IsNullOrEmpty(error))
@@ -242,12 +414,16 @@ namespace BioNetSangLocSoSinh.Entry
         
        private void btnChiTietKQ1_Click(object sender, EventArgs e)
         {
+            ViewTTCTPhieu(txtMaPhieu1.Text);
+        }
+        private void ViewTTCTPhieu(string MaPhieu)
+        {
             try
             {
                 Reports.rptPhieuViewTT datarp = new Reports.rptPhieuViewTT();
-                if (!string.IsNullOrEmpty(txtMaPhieu1.Text))
+                if (!string.IsNullOrEmpty(MaPhieu))
                 {
-                    PsRptViewTT kq = BioNet_Bus.GetDuLieuViewTT(txtMaPhieu1.Text);
+                    PsRptViewTT kq = BioNet_Bus.GetDuLieuViewTT(MaPhieu);
                     if (kq == null)
                     {
                         MessageBox.Show("Mã phiếu không tồn tại", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
@@ -290,28 +466,49 @@ namespace BioNetSangLocSoSinh.Entry
                         datarp.Parameters["NSMe"].Value = "NS Mẹ: " + kq.NSMe;
                         datarp.CreateDocument(true);
                         Reports.frmDanhSachDaCapMa myForm = new Reports.frmDanhSachDaCapMa(datarp);
-                        myForm.Show();
-                        //myForm.TopLevel = false;
-                        //myForm.AutoScroll = true;
-                        //myForm.ShowIcon = false;
-                        //myForm.ControlBox = false;
-                        //myForm.Text = "";
-                        //myForm.ShowInTaskbar = false;
-                        //panelControl3.Controls.Add(myForm);
-                        //myForm.Dock = DockStyle.Fill;
-                        //myForm.Show();
+                        myForm.ShowDialog();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Nhập mã phiếu cần tra cứu", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
-                   
+
                 }
             }
             catch
             {
                 MessageBox.Show("Lỗi hiện thị thông tin phiếu", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void labelControl18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenCha_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnChiTietKQ2_Click(object sender, EventArgs e)
+        {
+            ViewTTCTPhieu(txtMaPhieu2.Text);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.LoadDanhmuc();
+            this.CLearText();
+        }
+
+        private void btnSendEmail1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSendEmail2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

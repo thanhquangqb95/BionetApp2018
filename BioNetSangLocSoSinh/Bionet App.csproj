@@ -444,6 +444,12 @@
     <Compile Include="Entry\FrmPhongXetNghiem.Designer.cs">
       <DependentUpon>FrmPhongXetNghiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmSendSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmSendSMS.Designer.cs">
+      <DependentUpon>FrmSendSMS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entry\FrmSuaPhieuLoi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -930,6 +936,9 @@
     <EmbeddedResource Include="Entry\FrmPhongXetNghiem.resx">
       <DependentUpon>FrmPhongXetNghiem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmSendSMS.resx">
+      <DependentUpon>FrmSendSMS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmSuaPhieuLoi.resx">
       <DependentUpon>FrmSuaPhieuLoi.cs</DependentUpon>
     </EmbeddedResource>
@@ -1188,6 +1197,9 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\send-mail.png" />
+    <None Include="Resources\recycle %281%29.png" />
+    <None Include="Resources\search %282%29.png" />
     <None Include="Resources\x-button.png" />
     <None Include="Resources\settings-cog1.png" />
     <None Include="Resources\recycle1.png" />
@@ -1224,6 +1236,10 @@
     <None Include="Resources\cancel.png" />
     <None Include="Resources\broken-link.png" />
     <None Include="Resources\coding.png" />
+    <None Include="Resources\add %281%29.png" />
+    <None Include="Resources\check1.png" />
+    <None Include="Resources\delete %281%29.png" />
+    <None Include="Resources\edit %281%29.png" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
@@ -1248,6 +1264,7 @@
     <None Include="Resources\information.png" />
     <None Include="Resources\experiment.png" />
     <None Include="Resources\garbage.png" />
+    <None Include="Resources\info.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />

@@ -2135,7 +2135,7 @@ namespace BioNetDAL
                 lst= db.PSXN_KetQuas.Where(p => p.isXoa != true && p.isCoKQ !=true).OrderBy(x => x.MaPhieu).ToList();
                 var gan = (from ls in db.PSCM_GanViTris
                           join kq in db.PSXN_KetQuas on ls.MaXetNghiem equals kq.MaXetNghiem
-                          where ls.MaPhieu == kq.MaPhieu && kq.isCoKQ != true && kq.MaGoiXN == ls.MaGoiXN
+                          where ls.MaPhieu == kq.MaPhieu && kq.isCoKQ != true && kq.MaGoiXN == ls.MaGoiXN && ls.isDaDuyet!=true
                           select new { kq }).ToList();
                 
                 foreach(var c in gan)
@@ -2186,20 +2186,45 @@ namespace BioNetDAL
         }
         public string GetMaRowIDLanGanXN()
         {
-            string ma=  db.PSCM_GanViTris.OrderByDescending(x => x.IDLanGanXN).Where(x=>x.isDaDuyet!=true).Select(x => x.IDLanGanXN).Distinct().FirstOrDefault();
-            if(string.IsNullOrEmpty(ma))
+            string ma=string.Empty;
+            try
             {
-                string madc= db.PSCM_GanViTris.OrderByDescending(x => x.IDLanGanXN).Where(x => x.isDaDuyet == true).Select(x => x.IDLanGanXN).Distinct().FirstOrDefault();
-                if(string.IsNullOrEmpty(madc))
+               if(db.PSCM_GanViTris.ToList().Count>0)
                 {
-                    ma = "1";
+                    var makq = (from vt in db.PSCM_GanViTris
+                                where vt.isDaDuyet != true
+                                select new { vt.IDLanGanXN }).OrderByDescending(x => x.IDLanGanXN).FirstOrDefault();
+                    if (makq != null)
+                    {
+                        ma = makq.IDLanGanXN.ToString();
+                    }
+                    else
+                    {
+                        var madcc = (from vt in db.PSCM_GanViTris
+                                     where vt.isDaDuyet == true
+                                     select new { vt.IDLanGanXN }).OrderByDescending(x => x.IDLanGanXN).FirstOrDefault();
+                        if (madcc == null)
+                        {
+                            ma = "1";
+                        }
+                        else
+                        {
+                            ma = (int.Parse(madcc.IDLanGanXN.ToString()) + 1).ToString();
+                        }
+                    }
                 }
                 else
                 {
-                    ma = (int.Parse(madc) + 1).ToString();
+                    ma = "1";
                 }
+               
+            }
+            catch
+            {
+                ma = "1";
             }
             return ma;
+
         }
         public PsReponse SaveGanXN(PSCMGanViTriChung pm)
         {

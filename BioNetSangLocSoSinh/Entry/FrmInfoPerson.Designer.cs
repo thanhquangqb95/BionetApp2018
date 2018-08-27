@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInfoPerson));
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl_Info = new DevExpress.XtraGrid.GridControl();
             this.gridView_Info = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -43,8 +50,15 @@
             this.col_th_MaThongTin = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_maBenhNhan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_th_GioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.LookUpEditGioiTinh = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.col_th_FatherName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryGioiTinh = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.cbbSL = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbbTTPhieu = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.txtSearchChaMe = new DevExpress.XtraEditors.TextEdit();
             this.txtSearchNgaySinh = new DevExpress.XtraEditors.DateEdit();
             this.txtSeachGioiTinh = new DevExpress.XtraEditors.ImageComboBoxEdit();
@@ -55,6 +69,10 @@
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.txtSearchTenTre = new DevExpress.XtraEditors.TextEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.btnSendEmail2 = new DevExpress.XtraEditors.SimpleButton();
+            this.imageCollectionEmail = new DevExpress.Utils.ImageCollection(this.components);
+            this.btnSendEmail1 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtNoiSinh = new DevExpress.XtraEditors.MemoEdit();
             this.btnChiTietKQ2 = new DevExpress.XtraEditors.SimpleButton();
             this.btnChiTietKQ1 = new DevExpress.XtraEditors.SimpleButton();
             this.txtTrangThaiPhieu2 = new DevExpress.XtraEditors.TextEdit();
@@ -71,19 +89,16 @@
             this.cboPhuongPhapSinh = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.txtGioiTinh = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.lookUpDanToc = new DevExpress.XtraEditors.LookUpEdit();
-            this.txtGioSinhBenhNhan = new DevExpress.XtraEditors.TimeEdit();
             this.txtNamSinhBenhNhan = new DevExpress.XtraEditors.DateEdit();
-            this.txtNoiSinh = new DevExpress.XtraEditors.TextEdit();
-            this.txtSDT = new DevExpress.XtraEditors.TextEdit();
             this.txtTenBenhNhan = new DevExpress.XtraEditors.TextEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.txtNamSinhCha = new DevExpress.XtraEditors.TextEdit();
+            this.txtNamSinhMe = new DevExpress.XtraEditors.TextEdit();
             this.txtAddress = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
@@ -94,10 +109,8 @@
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.txtSDTMe = new DevExpress.XtraEditors.TextEdit();
             this.txtSDTCha = new DevExpress.XtraEditors.TextEdit();
-            this.txtNamSinhCha = new DevExpress.XtraEditors.DateEdit();
             this.txtTenCha = new DevExpress.XtraEditors.TextEdit();
             this.txtTenMe = new DevExpress.XtraEditors.TextEdit();
-            this.txtNamSinhMe = new DevExpress.XtraEditors.DateEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -106,9 +119,12 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Info)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Info)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditGioiTinh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryGioiTinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSL.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbTTPhieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchChaMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties)).BeginInit();
@@ -116,6 +132,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchTenTre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollectionEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrangThaiPhieu2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrangThaiPhieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu2.Properties)).BeginInit();
@@ -125,23 +143,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboPhuongPhapSinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGioiTinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpDanToc.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGioSinhBenhNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSDT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenBenhNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTCha.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.SuspendLayout();
@@ -168,19 +181,19 @@
             // 
             this.gridControl_Info.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_Info.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl_Info.Location = new System.Drawing.Point(0, 77);
+            this.gridControl_Info.Location = new System.Drawing.Point(0, 62);
             this.gridControl_Info.LookAndFeel.SkinName = "Office 2007 Blue";
             this.gridControl_Info.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl_Info.MainView = this.gridView_Info;
             this.gridControl_Info.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl_Info.Name = "gridControl_Info";
             this.gridControl_Info.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox1});
-            this.gridControl_Info.Size = new System.Drawing.Size(825, 601);
+            this.repositoryGioiTinh,
+            this.LookUpEditGioiTinh});
+            this.gridControl_Info.Size = new System.Drawing.Size(825, 616);
             this.gridControl_Info.TabIndex = 2;
             this.gridControl_Info.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Info});
-            this.gridControl_Info.Click += new System.EventHandler(this.gridControl_Info_Click);
             // 
             // gridView_Info
             // 
@@ -191,7 +204,8 @@
             this.col_th_MotherName,
             this.col_th_MaThongTin,
             this.col_maBenhNhan,
-            this.col_th_GioiTinh});
+            this.col_th_GioiTinh,
+            this.col_th_FatherName});
             this.gridView_Info.GridControl = this.gridControl_Info;
             this.gridView_Info.Name = "gridView_Info";
             this.gridView_Info.OptionsView.ShowGroupPanel = false;
@@ -211,6 +225,7 @@
             this.col_th_MaKhachHang.OptionsColumn.ReadOnly = true;
             this.col_th_MaKhachHang.Visible = true;
             this.col_th_MaKhachHang.VisibleIndex = 0;
+            this.col_th_MaKhachHang.Width = 118;
             // 
             // col_th_HoTen
             // 
@@ -226,6 +241,7 @@
             this.col_th_HoTen.OptionsColumn.ReadOnly = true;
             this.col_th_HoTen.Visible = true;
             this.col_th_HoTen.VisibleIndex = 1;
+            this.col_th_HoTen.Width = 160;
             // 
             // col_th_NgayGioSinh
             // 
@@ -240,7 +256,8 @@
             this.col_th_NgayGioSinh.OptionsColumn.AllowFocus = false;
             this.col_th_NgayGioSinh.OptionsColumn.ReadOnly = true;
             this.col_th_NgayGioSinh.Visible = true;
-            this.col_th_NgayGioSinh.VisibleIndex = 2;
+            this.col_th_NgayGioSinh.VisibleIndex = 3;
+            this.col_th_NgayGioSinh.Width = 96;
             // 
             // col_th_MotherName
             // 
@@ -255,7 +272,8 @@
             this.col_th_MotherName.OptionsColumn.AllowFocus = false;
             this.col_th_MotherName.OptionsColumn.ReadOnly = true;
             this.col_th_MotherName.Visible = true;
-            this.col_th_MotherName.VisibleIndex = 3;
+            this.col_th_MotherName.VisibleIndex = 4;
+            this.col_th_MotherName.Width = 181;
             // 
             // col_th_MaThongTin
             // 
@@ -281,31 +299,58 @@
             this.col_th_GioiTinh.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.col_th_GioiTinh.AppearanceHeader.Options.UseFont = true;
             this.col_th_GioiTinh.Caption = "Giới tính";
-            this.col_th_GioiTinh.ColumnEdit = this.repositoryItemImageComboBox1;
+            this.col_th_GioiTinh.ColumnEdit = this.LookUpEditGioiTinh;
             this.col_th_GioiTinh.FieldName = "GioiTinh";
             this.col_th_GioiTinh.Name = "col_th_GioiTinh";
             this.col_th_GioiTinh.OptionsColumn.AllowEdit = false;
             this.col_th_GioiTinh.OptionsColumn.ReadOnly = true;
             this.col_th_GioiTinh.Visible = true;
-            this.col_th_GioiTinh.VisibleIndex = 4;
+            this.col_th_GioiTinh.VisibleIndex = 2;
+            this.col_th_GioiTinh.Width = 59;
             // 
-            // repositoryItemImageComboBox1
+            // LookUpEditGioiTinh
             // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.LookUpEditGioiTinh.AutoHeight = false;
+            this.LookUpEditGioiTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            this.LookUpEditGioiTinh.DisplayMember = "GioiTinh";
+            this.LookUpEditGioiTinh.Name = "LookUpEditGioiTinh";
+            // 
+            // col_th_FatherName
+            // 
+            this.col_th_FatherName.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.col_th_FatherName.AppearanceHeader.Options.UseFont = true;
+            this.col_th_FatherName.Caption = "Tên cha";
+            this.col_th_FatherName.FieldName = "FatherName";
+            this.col_th_FatherName.Name = "col_th_FatherName";
+            this.col_th_FatherName.OptionsColumn.AllowEdit = false;
+            this.col_th_FatherName.OptionsColumn.ReadOnly = true;
+            this.col_th_FatherName.Visible = true;
+            this.col_th_FatherName.VisibleIndex = 5;
+            this.col_th_FatherName.Width = 192;
+            // 
+            // repositoryGioiTinh
+            // 
+            this.repositoryGioiTinh.AutoHeight = false;
+            this.repositoryGioiTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryGioiTinh.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nam", "0", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", "1", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("N/A", "2", -1)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.ReadOnly = true;
+            this.repositoryGioiTinh.Name = "repositoryGioiTinh";
+            this.repositoryGioiTinh.ReadOnly = true;
             // 
             // panelControl1
             // 
-            this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.labelControl7);
+            this.panelControl1.Controls.Add(this.cbbSL);
+            this.panelControl1.Controls.Add(this.btnClear);
+            this.panelControl1.Controls.Add(this.label5);
+            this.panelControl1.Controls.Add(this.cbbTTPhieu);
             this.panelControl1.Controls.Add(this.txtSearchChaMe);
             this.panelControl1.Controls.Add(this.txtSearchNgaySinh);
             this.panelControl1.Controls.Add(this.txtSeachGioiTinh);
@@ -319,14 +364,76 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(825, 77);
+            this.panelControl1.Size = new System.Drawing.Size(825, 62);
             this.panelControl1.TabIndex = 0;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(547, 35);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(80, 13);
+            this.labelControl7.TabIndex = 38;
+            this.labelControl7.Text = "Số lượng hiện thị";
+            // 
+            // cbbSL
+            // 
+            this.cbbSL.Location = new System.Drawing.Point(633, 32);
+            this.cbbSL.Name = "cbbSL";
+            this.cbbSL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbSL.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("50", 50, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("100", 100, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("200", "200", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("500", "500", -1)});
+            this.cbbSL.Size = new System.Drawing.Size(65, 20);
+            this.cbbSL.TabIndex = 37;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.btnClear.Appearance.Options.UseFont = true;
+            this.btnClear.Appearance.Options.UseForeColor = true;
+            this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
+            this.btnClear.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnClear.Location = new System.Drawing.Point(711, 30);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(106, 23);
+            toolTipTitleItem10.Text = "Bỏ lọc";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            this.btnClear.SuperTip = superToolTip10;
+            this.btnClear.TabIndex = 35;
+            this.btnClear.Text = "Bỏ lọc";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(357, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Loại phiếu";
+            // 
+            // cbbTTPhieu
+            // 
+            this.cbbTTPhieu.Location = new System.Drawing.Point(416, 31);
+            this.cbbTTPhieu.Name = "cbbTTPhieu";
+            this.cbbTTPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbTTPhieu.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tất cả", 0, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Cần thu lại mẫu", 1, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Đã thu mẫu lại", "2", -1)});
+            this.cbbTTPhieu.Size = new System.Drawing.Size(103, 20);
+            this.cbbTTPhieu.TabIndex = 16;
             // 
             // txtSearchChaMe
             // 
-            this.txtSearchChaMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchChaMe.Location = new System.Drawing.Point(450, 11);
+            this.txtSearchChaMe.Location = new System.Drawing.Point(403, 6);
             this.txtSearchChaMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchChaMe.Name = "txtSearchChaMe";
             this.txtSearchChaMe.Size = new System.Drawing.Size(295, 20);
@@ -334,23 +441,19 @@
             // 
             // txtSearchNgaySinh
             // 
-            this.txtSearchNgaySinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchNgaySinh.EditValue = null;
-            this.txtSearchNgaySinh.Location = new System.Drawing.Point(241, 43);
+            this.txtSearchNgaySinh.Location = new System.Drawing.Point(234, 31);
             this.txtSearchNgaySinh.Name = "txtSearchNgaySinh";
             this.txtSearchNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtSearchNgaySinh.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtSearchNgaySinh.Size = new System.Drawing.Size(235, 20);
+            this.txtSearchNgaySinh.Size = new System.Drawing.Size(111, 20);
             this.txtSearchNgaySinh.TabIndex = 14;
             // 
             // txtSeachGioiTinh
             // 
-            this.txtSeachGioiTinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSeachGioiTinh.Location = new System.Drawing.Point(61, 43);
+            this.txtSeachGioiTinh.Location = new System.Drawing.Point(61, 31);
             this.txtSeachGioiTinh.Name = "txtSeachGioiTinh";
             this.txtSeachGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -359,70 +462,69 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", 1, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không xác định", 2, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tất cả", "3", -1)});
-            this.txtSeachGioiTinh.Size = new System.Drawing.Size(158, 20);
+            this.txtSeachGioiTinh.Size = new System.Drawing.Size(87, 20);
             this.txtSeachGioiTinh.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(350, 15);
+            this.label4.Location = new System.Drawing.Point(307, 13);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Tên Cha hoặc mẹ:";
+            this.label4.Text = "Tên Cha hoặc mẹ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 46);
+            this.label3.Location = new System.Drawing.Point(10, 34);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Giới Tính:";
+            this.label3.Text = "Giới Tính";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(154, 46);
+            this.label2.Location = new System.Drawing.Point(154, 35);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Ngày Sinh Trẻ :";
+            this.label2.Text = "Ngày Sinh Trẻ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 15);
+            this.label1.Location = new System.Drawing.Point(10, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Tên Trẻ:";
+            this.label1.Text = "Tên Trẻ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnSearch.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnSearch.Appearance.Options.UseFont = true;
             this.btnSearch.Appearance.Options.UseForeColor = true;
-            this.btnSearch.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.EasyFind;
-            this.btnSearch.Location = new System.Drawing.Point(635, 36);
+            this.btnSearch.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.search__2_;
+            this.btnSearch.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnSearch.Location = new System.Drawing.Point(711, 4);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(144, 33);
+            this.btnSearch.Size = new System.Drawing.Size(106, 22);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Tìm Kiếm";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearchTenTre
             // 
-            this.txtSearchTenTre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchTenTre.Location = new System.Drawing.Point(61, 11);
+            this.txtSearchTenTre.Location = new System.Drawing.Point(60, 6);
             this.txtSearchTenTre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchTenTre.Name = "txtSearchTenTre";
-            this.txtSearchTenTre.Size = new System.Drawing.Size(339, 20);
+            this.txtSearchTenTre.Size = new System.Drawing.Size(230, 20);
             this.txtSearchTenTre.TabIndex = 0;
             // 
             // groupControl5
@@ -435,6 +537,9 @@
             this.groupControl5.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl5.AppearanceCaption.Options.UseFont = true;
             this.groupControl5.AppearanceCaption.Options.UseForeColor = true;
+            this.groupControl5.Controls.Add(this.btnSendEmail2);
+            this.groupControl5.Controls.Add(this.btnSendEmail1);
+            this.groupControl5.Controls.Add(this.txtNoiSinh);
             this.groupControl5.Controls.Add(this.btnChiTietKQ2);
             this.groupControl5.Controls.Add(this.btnChiTietKQ1);
             this.groupControl5.Controls.Add(this.txtTrangThaiPhieu2);
@@ -451,47 +556,91 @@
             this.groupControl5.Controls.Add(this.cboPhuongPhapSinh);
             this.groupControl5.Controls.Add(this.labelControl30);
             this.groupControl5.Controls.Add(this.labelControl29);
-            this.groupControl5.Controls.Add(this.labelControl28);
-            this.groupControl5.Controls.Add(this.labelControl27);
             this.groupControl5.Controls.Add(this.labelControl26);
             this.groupControl5.Controls.Add(this.labelControl25);
             this.groupControl5.Controls.Add(this.labelControl24);
             this.groupControl5.Controls.Add(this.txtGioiTinh);
             this.groupControl5.Controls.Add(this.lookUpDanToc);
-            this.groupControl5.Controls.Add(this.txtGioSinhBenhNhan);
             this.groupControl5.Controls.Add(this.txtNamSinhBenhNhan);
-            this.groupControl5.Controls.Add(this.txtNoiSinh);
-            this.groupControl5.Controls.Add(this.txtSDT);
             this.groupControl5.Controls.Add(this.txtTenBenhNhan);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl5.Location = new System.Drawing.Point(0, 239);
+            this.groupControl5.Location = new System.Drawing.Point(0, 175);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(434, 407);
+            this.groupControl5.Size = new System.Drawing.Size(434, 471);
             this.groupControl5.TabIndex = 6;
             this.groupControl5.Text = "Thông tin trẻ";
             // 
+            // btnSendEmail2
+            // 
+            this.btnSendEmail2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSendEmail2.ImageOptions.ImageIndex = 0;
+            this.btnSendEmail2.ImageOptions.ImageList = this.imageCollectionEmail;
+            this.btnSendEmail2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnSendEmail2.Location = new System.Drawing.Point(404, 196);
+            this.btnSendEmail2.Name = "btnSendEmail2";
+            this.btnSendEmail2.Size = new System.Drawing.Size(27, 20);
+            toolTipTitleItem6.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            this.btnSendEmail2.SuperTip = superToolTip6;
+            this.btnSendEmail2.TabIndex = 39;
+            this.btnSendEmail2.Click += new System.EventHandler(this.btnSendEmail2_Click);
+            // 
+            // imageCollectionEmail
+            // 
+            this.imageCollectionEmail.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollectionEmail.ImageStream")));
+            this.imageCollectionEmail.Images.SetKeyName(0, "send-mail.png");
+            this.imageCollectionEmail.Images.SetKeyName(1, "send-mail (1).png");
+            // 
+            // btnSendEmail1
+            // 
+            this.btnSendEmail1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSendEmail1.ImageOptions.ImageIndex = 0;
+            this.btnSendEmail1.ImageOptions.ImageList = this.imageCollectionEmail;
+            this.btnSendEmail1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnSendEmail1.Location = new System.Drawing.Point(404, 172);
+            this.btnSendEmail1.Name = "btnSendEmail1";
+            this.btnSendEmail1.Size = new System.Drawing.Size(27, 20);
+            toolTipTitleItem7.Text = "Gửi Mail";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            this.btnSendEmail1.SuperTip = superToolTip7;
+            this.btnSendEmail1.TabIndex = 38;
+            this.btnSendEmail1.Click += new System.EventHandler(this.btnSendEmail1_Click);
+            // 
+            // txtNoiSinh
+            // 
+            this.txtNoiSinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNoiSinh.Location = new System.Drawing.Point(65, 97);
+            this.txtNoiSinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNoiSinh.Name = "txtNoiSinh";
+            this.txtNoiSinh.Size = new System.Drawing.Size(362, 46);
+            this.txtNoiSinh.TabIndex = 28;
+            // 
             // btnChiTietKQ2
             // 
+            this.btnChiTietKQ2.Enabled = false;
             this.btnChiTietKQ2.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.information;
             this.btnChiTietKQ2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnChiTietKQ2.Location = new System.Drawing.Point(239, 282);
+            this.btnChiTietKQ2.Location = new System.Drawing.Point(224, 196);
             this.btnChiTietKQ2.Name = "btnChiTietKQ2";
             this.btnChiTietKQ2.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem1.Text = "Chi tiết phiếu kết quả 2";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnChiTietKQ2.SuperTip = superToolTip1;
+            toolTipTitleItem8.Text = "Chi tiết phiếu kết quả 2";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            this.btnChiTietKQ2.SuperTip = superToolTip8;
             this.btnChiTietKQ2.TabIndex = 37;
+            this.btnChiTietKQ2.Click += new System.EventHandler(this.btnChiTietKQ2_Click);
             // 
             // btnChiTietKQ1
             // 
+            this.btnChiTietKQ1.Enabled = false;
             this.btnChiTietKQ1.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.information;
             this.btnChiTietKQ1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnChiTietKQ1.Location = new System.Drawing.Point(239, 251);
+            this.btnChiTietKQ1.Location = new System.Drawing.Point(224, 172);
             this.btnChiTietKQ1.Name = "btnChiTietKQ1";
             this.btnChiTietKQ1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem2.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnChiTietKQ1.SuperTip = superToolTip2;
+            toolTipTitleItem9.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            this.btnChiTietKQ1.SuperTip = superToolTip9;
             this.btnChiTietKQ1.TabIndex = 36;
             this.btnChiTietKQ1.Click += new System.EventHandler(this.btnChiTietKQ1_Click);
             // 
@@ -500,9 +649,9 @@
             this.txtTrangThaiPhieu2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTrangThaiPhieu2.Enabled = false;
-            this.txtTrangThaiPhieu2.Location = new System.Drawing.Point(270, 282);
+            this.txtTrangThaiPhieu2.Location = new System.Drawing.Point(259, 196);
             this.txtTrangThaiPhieu2.Name = "txtTrangThaiPhieu2";
-            this.txtTrangThaiPhieu2.Size = new System.Drawing.Size(154, 20);
+            this.txtTrangThaiPhieu2.Size = new System.Drawing.Size(142, 20);
             this.txtTrangThaiPhieu2.TabIndex = 33;
             // 
             // txtTrangThaiPhieu
@@ -510,95 +659,87 @@
             this.txtTrangThaiPhieu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTrangThaiPhieu.Enabled = false;
-            this.txtTrangThaiPhieu.Location = new System.Drawing.Point(272, 251);
+            this.txtTrangThaiPhieu.Location = new System.Drawing.Point(259, 172);
             this.txtTrangThaiPhieu.Name = "txtTrangThaiPhieu";
-            this.txtTrangThaiPhieu.Size = new System.Drawing.Size(152, 20);
+            this.txtTrangThaiPhieu.Size = new System.Drawing.Size(142, 20);
             this.txtTrangThaiPhieu.TabIndex = 32;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(9, 289);
+            this.labelControl2.Location = new System.Drawing.Point(7, 203);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(56, 13);
+            this.labelControl2.Size = new System.Drawing.Size(52, 13);
             this.labelControl2.TabIndex = 31;
-            this.labelControl2.Text = "Mã phiếu 2:";
+            this.labelControl2.Text = "Mã phiếu 2";
             // 
             // txtMaPhieu2
             // 
-            this.txtMaPhieu2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaPhieu2.Enabled = false;
-            this.txtMaPhieu2.Location = new System.Drawing.Point(81, 282);
+            this.txtMaPhieu2.Location = new System.Drawing.Point(65, 196);
             this.txtMaPhieu2.Name = "txtMaPhieu2";
-            this.txtMaPhieu2.Size = new System.Drawing.Size(152, 20);
+            this.txtMaPhieu2.Size = new System.Drawing.Size(153, 20);
             this.txtMaPhieu2.TabIndex = 30;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(9, 258);
+            this.labelControl1.Location = new System.Drawing.Point(7, 179);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(56, 13);
+            this.labelControl1.Size = new System.Drawing.Size(52, 13);
             this.labelControl1.TabIndex = 29;
-            this.labelControl1.Text = "Mã phiếu 1:";
+            this.labelControl1.Text = "Mã phiếu 1";
             // 
             // txtMaPhieu1
             // 
-            this.txtMaPhieu1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaPhieu1.Enabled = false;
-            this.txtMaPhieu1.Location = new System.Drawing.Point(81, 251);
+            this.txtMaPhieu1.Location = new System.Drawing.Point(65, 172);
             this.txtMaPhieu1.Name = "txtMaPhieu1";
-            this.txtMaPhieu1.Size = new System.Drawing.Size(152, 20);
+            this.txtMaPhieu1.Size = new System.Drawing.Size(153, 20);
             this.txtMaPhieu1.TabIndex = 28;
             // 
             // txtTuan
             // 
-            this.txtTuan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTuan.Location = new System.Drawing.Point(81, 197);
+            this.txtTuan.Location = new System.Drawing.Point(65, 147);
             this.txtTuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTuan.Name = "txtTuan";
-            this.txtTuan.Size = new System.Drawing.Size(101, 21);
+            this.txtTuan.Size = new System.Drawing.Size(68, 21);
             this.txtTuan.TabIndex = 19;
             // 
             // labelControl22
             // 
-            this.labelControl22.Location = new System.Drawing.Point(13, 228);
+            this.labelControl22.Location = new System.Drawing.Point(238, 82);
             this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(42, 13);
+            this.labelControl22.Size = new System.Drawing.Size(35, 13);
             this.labelControl22.TabIndex = 17;
-            this.labelControl22.Text = "PP Sinh :";
+            this.labelControl22.Text = "PP Sinh";
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(13, 199);
+            this.labelControl4.Location = new System.Drawing.Point(7, 155);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(31, 13);
+            this.labelControl4.Size = new System.Drawing.Size(24, 13);
             this.labelControl4.TabIndex = 27;
-            this.labelControl4.Text = "Tuần :";
+            this.labelControl4.Text = "Tuần";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(246, 206);
+            this.labelControl3.Location = new System.Drawing.Point(142, 151);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(32, 13);
+            this.labelControl3.Size = new System.Drawing.Size(25, 13);
             this.labelControl3.TabIndex = 26;
-            this.labelControl3.Text = "Nặng :";
+            this.labelControl3.Text = "Nặng";
             // 
             // txtNang
             // 
-            this.txtNang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNang.Location = new System.Drawing.Point(304, 199);
+            this.txtNang.Location = new System.Drawing.Point(170, 146);
             this.txtNang.Name = "txtNang";
-            this.txtNang.Size = new System.Drawing.Size(120, 20);
+            this.txtNang.Size = new System.Drawing.Size(81, 20);
             this.txtNang.TabIndex = 20;
             // 
             // cboPhuongPhapSinh
             // 
             this.cboPhuongPhapSinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboPhuongPhapSinh.Location = new System.Drawing.Point(81, 225);
+            this.cboPhuongPhapSinh.Location = new System.Drawing.Point(285, 74);
             this.cboPhuongPhapSinh.Name = "cboPhuongPhapSinh";
             this.cboPhuongPhapSinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -606,70 +747,54 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Sinh Thường", 0, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Sinh Mổ", 1, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không xác định", 3, -1)});
-            this.cboPhuongPhapSinh.Size = new System.Drawing.Size(343, 20);
+            this.cboPhuongPhapSinh.Size = new System.Drawing.Size(142, 20);
             this.cboPhuongPhapSinh.TabIndex = 21;
             // 
             // labelControl30
             // 
-            this.labelControl30.Location = new System.Drawing.Point(13, 128);
+            this.labelControl30.Location = new System.Drawing.Point(7, 130);
             this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(44, 13);
+            this.labelControl30.Size = new System.Drawing.Size(37, 13);
             this.labelControl30.TabIndex = 18;
-            this.labelControl30.Text = "Nơi sinh :";
+            this.labelControl30.Text = "Nơi sinh";
             // 
             // labelControl29
             // 
-            this.labelControl29.Location = new System.Drawing.Point(13, 152);
+            this.labelControl29.Location = new System.Drawing.Point(10, 81);
             this.labelControl29.Name = "labelControl29";
-            this.labelControl29.Size = new System.Drawing.Size(44, 13);
+            this.labelControl29.Size = new System.Drawing.Size(37, 13);
             this.labelControl29.TabIndex = 17;
-            this.labelControl29.Text = "Dân tộc :";
-            // 
-            // labelControl28
-            // 
-            this.labelControl28.Location = new System.Drawing.Point(13, 176);
-            this.labelControl28.Name = "labelControl28";
-            this.labelControl28.Size = new System.Drawing.Size(32, 13);
-            this.labelControl28.TabIndex = 16;
-            this.labelControl28.Text = "Số đt :";
-            // 
-            // labelControl27
-            // 
-            this.labelControl27.Location = new System.Drawing.Point(13, 80);
-            this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(44, 13);
-            this.labelControl27.TabIndex = 15;
-            this.labelControl27.Text = "Giờ sinh :";
+            this.labelControl29.Text = "Dân tộc";
             // 
             // labelControl26
             // 
-            this.labelControl26.Location = new System.Drawing.Point(13, 104);
+            this.labelControl26.Location = new System.Drawing.Point(10, 56);
             this.labelControl26.Name = "labelControl26";
-            this.labelControl26.Size = new System.Drawing.Size(50, 13);
+            this.labelControl26.Size = new System.Drawing.Size(47, 13);
             this.labelControl26.TabIndex = 14;
-            this.labelControl26.Text = "Năm sinh :";
+            this.labelControl26.Text = "Ngày sinh";
             // 
             // labelControl25
             // 
-            this.labelControl25.Location = new System.Drawing.Point(13, 56);
+            this.labelControl25.Location = new System.Drawing.Point(232, 56);
             this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(24, 13);
+            this.labelControl25.Size = new System.Drawing.Size(41, 13);
             this.labelControl25.TabIndex = 13;
-            this.labelControl25.Text = "Giới :";
+            this.labelControl25.Text = "Giới  tính";
             // 
             // labelControl24
             // 
-            this.labelControl24.Location = new System.Drawing.Point(13, 32);
+            this.labelControl24.Location = new System.Drawing.Point(10, 34);
             this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(42, 13);
+            this.labelControl24.Size = new System.Drawing.Size(38, 13);
             this.labelControl24.TabIndex = 12;
-            this.labelControl24.Text = "Tên trẻ :";
+            this.labelControl24.Text = "Tên trẻ ";
             // 
             // txtGioiTinh
             // 
             this.txtGioiTinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGioiTinh.Location = new System.Drawing.Point(81, 54);
+            this.txtGioiTinh.Location = new System.Drawing.Point(285, 51);
             this.txtGioiTinh.Name = "txtGioiTinh";
             this.txtGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -677,14 +802,12 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nam", 0, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", 1, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không xác định", 3, -1)});
-            this.txtGioiTinh.Size = new System.Drawing.Size(86, 20);
+            this.txtGioiTinh.Size = new System.Drawing.Size(142, 20);
             this.txtGioiTinh.TabIndex = 11;
             // 
             // lookUpDanToc
             // 
-            this.lookUpDanToc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lookUpDanToc.Location = new System.Drawing.Point(81, 150);
+            this.lookUpDanToc.Location = new System.Drawing.Point(65, 74);
             this.lookUpDanToc.Name = "lookUpDanToc";
             this.lookUpDanToc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -694,60 +817,28 @@
             this.lookUpDanToc.Properties.DisplayMember = "TenDanToc";
             this.lookUpDanToc.Properties.NullText = "";
             this.lookUpDanToc.Properties.ValueMember = "IDDanToc";
-            this.lookUpDanToc.Size = new System.Drawing.Size(343, 20);
+            this.lookUpDanToc.Size = new System.Drawing.Size(158, 20);
             this.lookUpDanToc.TabIndex = 16;
-            // 
-            // txtGioSinhBenhNhan
-            // 
-            this.txtGioSinhBenhNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGioSinhBenhNhan.EditValue = new System.DateTime(2016, 11, 28, 0, 0, 0, 0);
-            this.txtGioSinhBenhNhan.Location = new System.Drawing.Point(81, 78);
-            this.txtGioSinhBenhNhan.Name = "txtGioSinhBenhNhan";
-            this.txtGioSinhBenhNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtGioSinhBenhNhan.Size = new System.Drawing.Size(343, 20);
-            this.txtGioSinhBenhNhan.TabIndex = 12;
             // 
             // txtNamSinhBenhNhan
             // 
-            this.txtNamSinhBenhNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNamSinhBenhNhan.EditValue = null;
-            this.txtNamSinhBenhNhan.Location = new System.Drawing.Point(81, 101);
+            this.txtNamSinhBenhNhan.Location = new System.Drawing.Point(65, 50);
             this.txtNamSinhBenhNhan.Name = "txtNamSinhBenhNhan";
             this.txtNamSinhBenhNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNamSinhBenhNhan.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhBenhNhan.Size = new System.Drawing.Size(343, 20);
+            this.txtNamSinhBenhNhan.Size = new System.Drawing.Size(158, 20);
             this.txtNamSinhBenhNhan.TabIndex = 13;
-            // 
-            // txtNoiSinh
-            // 
-            this.txtNoiSinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNoiSinh.Location = new System.Drawing.Point(81, 125);
-            this.txtNoiSinh.Name = "txtNoiSinh";
-            this.txtNoiSinh.Size = new System.Drawing.Size(343, 20);
-            this.txtNoiSinh.TabIndex = 14;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSDT.Location = new System.Drawing.Point(81, 173);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(343, 20);
-            this.txtSDT.TabIndex = 18;
             // 
             // txtTenBenhNhan
             // 
             this.txtTenBenhNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTenBenhNhan.Location = new System.Drawing.Point(81, 30);
+            this.txtTenBenhNhan.Location = new System.Drawing.Point(65, 27);
             this.txtTenBenhNhan.Name = "txtTenBenhNhan";
-            this.txtTenBenhNhan.Size = new System.Drawing.Size(343, 20);
+            this.txtTenBenhNhan.Size = new System.Drawing.Size(362, 20);
             this.txtTenBenhNhan.TabIndex = 10;
             // 
             // groupControl4
@@ -756,6 +847,8 @@
             this.groupControl4.Appearance.Options.UseBackColor = true;
             this.groupControl4.AppearanceCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.groupControl4.AppearanceCaption.Options.UseFont = true;
+            this.groupControl4.Controls.Add(this.txtNamSinhCha);
+            this.groupControl4.Controls.Add(this.txtNamSinhMe);
             this.groupControl4.Controls.Add(this.txtAddress);
             this.groupControl4.Controls.Add(this.labelControl5);
             this.groupControl4.Controls.Add(this.labelControl21);
@@ -766,22 +859,34 @@
             this.groupControl4.Controls.Add(this.labelControl16);
             this.groupControl4.Controls.Add(this.txtSDTMe);
             this.groupControl4.Controls.Add(this.txtSDTCha);
-            this.groupControl4.Controls.Add(this.txtNamSinhCha);
             this.groupControl4.Controls.Add(this.txtTenCha);
             this.groupControl4.Controls.Add(this.txtTenMe);
-            this.groupControl4.Controls.Add(this.txtNamSinhMe);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(434, 239);
+            this.groupControl4.Size = new System.Drawing.Size(434, 175);
             this.groupControl4.TabIndex = 7;
             this.groupControl4.Text = "Thông tin gia đình";
+            // 
+            // txtNamSinhCha
+            // 
+            this.txtNamSinhCha.Location = new System.Drawing.Point(65, 96);
+            this.txtNamSinhCha.Name = "txtNamSinhCha";
+            this.txtNamSinhCha.Size = new System.Drawing.Size(79, 20);
+            this.txtNamSinhCha.TabIndex = 27;
+            // 
+            // txtNamSinhMe
+            // 
+            this.txtNamSinhMe.Location = new System.Drawing.Point(65, 50);
+            this.txtNamSinhMe.Name = "txtNamSinhMe";
+            this.txtNamSinhMe.Size = new System.Drawing.Size(79, 20);
+            this.txtNamSinhMe.TabIndex = 26;
             // 
             // txtAddress
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.Location = new System.Drawing.Point(65, 172);
+            this.txtAddress.Location = new System.Drawing.Point(65, 119);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(364, 46);
@@ -789,100 +894,89 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(15, 174);
+            this.labelControl5.Location = new System.Drawing.Point(10, 122);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(39, 13);
+            this.labelControl5.Size = new System.Drawing.Size(32, 13);
             this.labelControl5.TabIndex = 25;
-            this.labelControl5.Text = "Địa chỉ :";
+            this.labelControl5.Text = "Địa chỉ";
             // 
             // labelControl21
             // 
-            this.labelControl21.Location = new System.Drawing.Point(15, 53);
+            this.labelControl21.Location = new System.Drawing.Point(10, 53);
             this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(50, 13);
+            this.labelControl21.Size = new System.Drawing.Size(43, 13);
             this.labelControl21.TabIndex = 16;
-            this.labelControl21.Text = "Năm sinh :";
+            this.labelControl21.Text = "Năm sinh";
             // 
             // labelControl20
             // 
-            this.labelControl20.Location = new System.Drawing.Point(15, 151);
+            this.labelControl20.Location = new System.Drawing.Point(157, 103);
             this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(36, 13);
+            this.labelControl20.Size = new System.Drawing.Size(49, 13);
             this.labelControl20.TabIndex = 15;
-            this.labelControl20.Text = "SĐT 1 :";
+            this.labelControl20.Text = "Điện thoại";
             // 
             // labelControl19
             // 
-            this.labelControl19.Location = new System.Drawing.Point(15, 29);
+            this.labelControl19.Location = new System.Drawing.Point(10, 34);
             this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(42, 13);
+            this.labelControl19.Size = new System.Drawing.Size(35, 13);
             this.labelControl19.TabIndex = 14;
-            this.labelControl19.Text = "Tên Mẹ :";
+            this.labelControl19.Text = "Tên Mẹ";
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(15, 78);
+            this.labelControl18.Location = new System.Drawing.Point(157, 57);
             this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(36, 13);
+            this.labelControl18.Size = new System.Drawing.Size(49, 13);
             this.labelControl18.TabIndex = 13;
-            this.labelControl18.Text = "SĐT 2 :";
+            this.labelControl18.Text = "Điện thoại";
+            this.labelControl18.Click += new System.EventHandler(this.labelControl18_Click);
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(15, 127);
+            this.labelControl17.Location = new System.Drawing.Point(10, 103);
             this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(50, 13);
+            this.labelControl17.Size = new System.Drawing.Size(43, 13);
             this.labelControl17.TabIndex = 12;
-            this.labelControl17.Text = "Năm sinh :";
+            this.labelControl17.Text = "Năm sinh";
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(15, 103);
+            this.labelControl16.Location = new System.Drawing.Point(12, 80);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(47, 13);
+            this.labelControl16.Size = new System.Drawing.Size(43, 13);
             this.labelControl16.TabIndex = 11;
-            this.labelControl16.Text = "Tên Cha :";
+            this.labelControl16.Text = "Tên Cha ";
             // 
             // txtSDTMe
             // 
             this.txtSDTMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSDTMe.Location = new System.Drawing.Point(65, 75);
+            this.txtSDTMe.Location = new System.Drawing.Point(221, 50);
             this.txtSDTMe.Name = "txtSDTMe";
-            this.txtSDTMe.Size = new System.Drawing.Size(364, 20);
+            this.txtSDTMe.Size = new System.Drawing.Size(208, 20);
             this.txtSDTMe.TabIndex = 5;
             // 
             // txtSDTCha
             // 
             this.txtSDTCha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSDTCha.Location = new System.Drawing.Point(65, 148);
+            this.txtSDTCha.Location = new System.Drawing.Point(221, 96);
             this.txtSDTCha.Name = "txtSDTCha";
-            this.txtSDTCha.Size = new System.Drawing.Size(364, 20);
+            this.txtSDTCha.Size = new System.Drawing.Size(208, 20);
             this.txtSDTCha.TabIndex = 8;
-            // 
-            // txtNamSinhCha
-            // 
-            this.txtNamSinhCha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNamSinhCha.EditValue = null;
-            this.txtNamSinhCha.Location = new System.Drawing.Point(65, 124);
-            this.txtNamSinhCha.Name = "txtNamSinhCha";
-            this.txtNamSinhCha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhCha.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhCha.Size = new System.Drawing.Size(364, 20);
-            this.txtNamSinhCha.TabIndex = 7;
             // 
             // txtTenCha
             // 
             this.txtTenCha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTenCha.Location = new System.Drawing.Point(65, 100);
+            this.txtTenCha.EditValue = "";
+            this.txtTenCha.Location = new System.Drawing.Point(65, 73);
             this.txtTenCha.Name = "txtTenCha";
             this.txtTenCha.Size = new System.Drawing.Size(364, 20);
             this.txtTenCha.TabIndex = 6;
+            this.txtTenCha.EditValueChanged += new System.EventHandler(this.txtTenCha_EditValueChanged);
             // 
             // txtTenMe
             // 
@@ -892,20 +986,6 @@
             this.txtTenMe.Name = "txtTenMe";
             this.txtTenMe.Size = new System.Drawing.Size(364, 20);
             this.txtTenMe.TabIndex = 3;
-            // 
-            // txtNamSinhMe
-            // 
-            this.txtNamSinhMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNamSinhMe.EditValue = null;
-            this.txtNamSinhMe.Location = new System.Drawing.Point(65, 51);
-            this.txtNamSinhMe.Name = "txtNamSinhMe";
-            this.txtNamSinhMe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhMe.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNamSinhMe.Size = new System.Drawing.Size(364, 20);
-            this.txtNamSinhMe.TabIndex = 4;
             // 
             // panelControl2
             // 
@@ -973,10 +1053,13 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Info)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Info)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditGioiTinh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryGioiTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSL.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbTTPhieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchChaMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchNgaySinh.Properties)).EndInit();
@@ -985,6 +1068,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollectionEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrangThaiPhieu2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrangThaiPhieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu2.Properties)).EndInit();
@@ -994,24 +1079,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboPhuongPhapSinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGioiTinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpDanToc.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGioSinhBenhNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSDT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenBenhNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTCha.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1038,17 +1118,12 @@
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.LabelControl labelControl30;
         private DevExpress.XtraEditors.LabelControl labelControl29;
-        private DevExpress.XtraEditors.LabelControl labelControl28;
-        private DevExpress.XtraEditors.LabelControl labelControl27;
         private DevExpress.XtraEditors.LabelControl labelControl26;
         private DevExpress.XtraEditors.LabelControl labelControl25;
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.ImageComboBoxEdit txtGioiTinh;
         private DevExpress.XtraEditors.LookUpEdit lookUpDanToc;
-        private DevExpress.XtraEditors.TimeEdit txtGioSinhBenhNhan;
         private DevExpress.XtraEditors.DateEdit txtNamSinhBenhNhan;
-        private DevExpress.XtraEditors.TextEdit txtNoiSinh;
-        private DevExpress.XtraEditors.TextEdit txtSDT;
         private DevExpress.XtraEditors.TextEdit txtTenBenhNhan;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.LabelControl labelControl22;
@@ -1061,10 +1136,8 @@
         private DevExpress.XtraEditors.ImageComboBoxEdit cboPhuongPhapSinh;
         private DevExpress.XtraEditors.TextEdit txtSDTMe;
         private DevExpress.XtraEditors.TextEdit txtSDTCha;
-        private DevExpress.XtraEditors.DateEdit txtNamSinhCha;
         private DevExpress.XtraEditors.TextEdit txtTenCha;
         private DevExpress.XtraEditors.TextEdit txtTenMe;
-        private DevExpress.XtraEditors.DateEdit txtNamSinhMe;
         private System.Windows.Forms.NumericUpDown txtTuan;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
@@ -1084,10 +1157,23 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraGrid.Columns.GridColumn col_th_GioiTinh;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryGioiTinh;
         private DevExpress.XtraEditors.SimpleButton btnChiTietKQ1;
         private DevExpress.XtraEditors.TextEdit txtTrangThaiPhieu2;
         private DevExpress.XtraEditors.TextEdit txtTrangThaiPhieu;
         private DevExpress.XtraEditors.SimpleButton btnChiTietKQ2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditGioiTinh;
+        private System.Windows.Forms.Label label5;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cbbTTPhieu;
+        private DevExpress.XtraEditors.SimpleButton btnClear;
+        private DevExpress.XtraEditors.TextEdit txtNamSinhMe;
+        private DevExpress.XtraEditors.TextEdit txtNamSinhCha;
+        private DevExpress.XtraEditors.MemoEdit txtNoiSinh;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cbbSL;
+        private DevExpress.XtraEditors.SimpleButton btnSendEmail2;
+        private DevExpress.XtraEditors.SimpleButton btnSendEmail1;
+        private DevExpress.Utils.ImageCollection imageCollectionEmail;
+        private DevExpress.XtraGrid.Columns.GridColumn col_th_FatherName;
     }
 }

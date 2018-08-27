@@ -1511,6 +1511,18 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             catch { }
         }
+
+        private void barButtonItem65_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                Entry.FrmSendSMS frm = new Entry.FrmSendSMS(emp);
+                TabCreating(xTabMain, "Gửi SMS", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
     }
 
 }
