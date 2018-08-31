@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace BioNetDAL
 {
@@ -1704,7 +1705,230 @@ namespace BioNetDAL
             catch { }
             return tt;
         }
+        public List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay,DateTime DenNgay,int TrangThaiPhieu,int nguyco,string MaDV,string NoiDung,int HinhThuc,bool KieuKiTu)
+        {
+            List<PSDanhSachGuiSMS> lst = new List<PSDanhSachGuiSMS>();
+            try
+            {
+                List<PSPhieuSangLoc> phieu = new List<PSPhieuSangLoc>();
+                if (MaDV.Equals("all"))
+                {
+                   
+                    phieu = db.PSPhieuSangLocs.Where(p =>
+                 p.NgayNhanMau.Value.Date <= DenNgay && p.NgayNhanMau.Value.Date >= TuNgay.Date && p.isXoa != true).ToList();
+                }
+                else
+                {
+                    phieu = db.PSPhieuSangLocs.Where(p =>p.IDCoSo.Equals(MaDV) &&
+                 p.NgayNhanMau.Value.Date <= DenNgay && p.NgayNhanMau.Value.Date >= TuNgay.Date && p.isXoa != true).ToList();
+                }
+                if(phieu.Count>0)
+                {
+                    switch(TrangThaiPhieu)
+                    {
+                        case 1:
+                            {
+                                phieu = phieu.Where(p => p.TrangThaiMau <=2 && p.isXoa != true ).ToList();
+                                break;
+                            }
+                        case 2:
+                            {
+                                phieu = phieu.Where(p => (p.TrangThaiMau ==3 || p.TrangThaiMau==5)   ).ToList();
+                                break;
+                            }
+                        case 3:
+                            {
+                                if(nguyco==3)
+                                {
+                                    phieu = phieu.Where(p => p.TrangThaiMau == 4).ToList();
+                                }
+                                else
+                                {
+                                    phieu = phieu.Where(p => p.TrangThaiMau == 4 && p.isNguyCoCao == bool.Parse(nguyco.ToString())).ToList();
+                                }
+                                break;
+                            }
+                        case 4:
+                            {
+                                phieu = phieu.Where(p => p.TrangThaiMau == 6).ToList();
+                                break;
+                            }
+                        case 5:
+                            {
+                                phieu = phieu.Where(p => p.TrangThaiMau == 7).ToList();
+                                break;
+                            }
+                    }
+                }
+                if(phieu.Count()>0)
+                {
+                    foreach (var ph in phieu)
+                    {
+                        if(HinhThuc==0)
+                        {
+                            PSPatient pa = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan == ph.MaBenhNhan && x.isXoa != true);
+                            if (pa != null)
+                            {
+                                PSDanhSachGuiSMS dsms = new PSDanhSachGuiSMS();
+                                dsms.MaPhieu = ph.IDPhieu;
+                                dsms.TenTre = pa.TenBenhNhan;
+                                if (!string.IsNullOrEmpty(pa.MotherPhoneNumber))
+                                {
+                                    dsms.TenNguoiNhan = "chị "+ pa.MotherName;
+                                    if (pa.MotherPhoneNumber.StartsWith("0") == true)
+                                    {
+                                        dsms.SDTNguoiNhan = "84" + pa.MotherPhoneNumber.Substring(1);
+                                    }
+                                }
+                                else if (!string.IsNullOrEmpty(pa.FatherPhoneNumber))
+                                {
+                                    dsms.TenNguoiNhan ="anh " +pa.FatherName;
+                                    if (pa.FatherPhoneNumber.StartsWith("0") == true)
+                                    {
+                                        dsms.SDTNguoiNhan = "84" + pa.FatherPhoneNumber.Substring(1);
+                                    }
+                                }
+                                dsms.NoiDungTinNhan = NoiDungVietTatSMS(NoiDung,ph.IDPhieu,pa.TenBenhNhan,dsms.TenNguoiNhan, KieuKiTu, int.Parse(ph.TrangThaiMau.ToString()),pa.NgayGioSinh.Value);
+                                dsms.HinhThucGui = HinhThuc;
+                                dsms.SoKiTu = dsms.NoiDungTinNhan.Length;
+                                lst.Add(dsms);
+                            }
+                        }  
+                        else if(HinhThuc==1)
+                        {
+                            PSDanhMucDonViCoSo dv = db.PSDanhMucDonViCoSos.FirstOrDefault(x => x.MaDVCS.Equals(MaDV));
+                        }
+                    }
+                }              
+            }
+            catch
+            {
+            }
+            return lst;
+        }
+        public string GetTenTrangThaiPhieu(int TrangThaiPhieu)
+        {
+            string TenTrangThai = "không xác định";
+           if(TrangThaiPhieu<=2)
+            {
+                TenTrangThai = "tiếp nhận và đánh giá mẫu";
+            }
+           else if(TrangThaiPhieu==3|| TrangThaiPhieu==5)
+            {
+                TenTrangThai = "đang xét nghiệm";
+            }
+           else if(TrangThaiPhieu==4)
+            {
+                TenTrangThai = "đã có kết quả";
+            }
+            else if (TrangThaiPhieu ==6)
+            {
+                TenTrangThai = "đã có kết quả- cần thu lại mẫu";
+            }
+            else if (TrangThaiPhieu == 7)
+            {
+                TenTrangThai = "đã có kết quả- đã thu lại mẫu";
+            }
+            return TenTrangThai;
+        }
+        public string[] GetKetQua(string MaPhieu)
+        {
+            string[] lst=new string[2];
+            string KQ = "chưa có kết quả";
+            string KQNCC = "Nguy cơ cao(";
+            string KQNCT = "Nguy cơ thấp(";
+            string KetLuan = "";
+            bool ncc = false;
+            var XNKQ=db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu == MaPhieu && x.isXoa != true);
+            if (XNKQ != null)
+            {
+                switch(XNKQ.isNguyCoCao)
+                {
+                    case true:
+                        {
+                            KetLuan = "nguy cơ cao";
+                            break;
+                        }
+                    default:
+                        {
+                            KetLuan = "nguy cơ thấp";
+                            break;
+                        }
+                }
+                foreach(var ctkq in XNKQ.PSXN_TraKQ_ChiTiets)
+                {
+                    string ten= GetTenDichVuVietTatCuaKyThuat(ctkq.IDKyThuat);
+                    if(ctkq.isNguyCo)
+                    {
+                        if(KQNCC.Equals("Nguy cơ cao("))
+                        {
+                            KQNCC = KQNCC + ten;
+                        }
+                        else
+                        {
+                            KQNCC = KQNCC +","+ ten;
+                        }
+                        ncc = true;
+                        
+                    }
+                    else
+                    {
+                        if (KQNCT.Equals("Nguy cơ thấp("))
+                        {
+                            KQNCT = KQNCT + ten;
+                        }
+                        else
+                        {
+                            KQNCT = KQNCT + "," + ten;
+                        }
+                    }
+                }              
+            }
+            if(ncc)
+            {
+                KQ = KQNCT + ")," + KQNCC + ")";
+            }
+            else
+            {
+                KQ = KQNCT + ")";
+            }
+            lst[0]=KQ;
+            lst[1]=KetLuan;
+            return lst;
+        }
+        public string NoiDungVietTatSMS(string NoiDung,string maPhieu,string TenTre,string TenNguoiNhan,bool isCoDau,int Trangthaiphieu,DateTime ngaysinh)
+        {
+            string tam = string.Empty;
+            try
+            {
+                string Trangthai = GetTenTrangThaiPhieu(Trangthaiphieu);
+                string[] KQKL = new string[2];
+                KQKL = GetKetQua(maPhieu);
+                tam = NoiDung.Replace("#maphieu", maPhieu);
+                tam = tam.Replace("#tentre", TenTre);
+                tam = tam.Replace("#tennguoinhan", TenNguoiNhan);
+                tam = tam.Replace("#trangthaiphieu", Trangthai);
+                tam = tam.Replace("#ketqua", KQKL[0]);
+                tam = tam.Replace("#ketluan", KQKL[1]);
+                tam = tam.Replace("#ngaysinh", ngaysinh.Day.ToString());
+                if (!isCoDau)
+                {
+                    Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+                    tam = tam.Normalize(NormalizationForm.FormD);
+                    tam = regex.Replace(tam, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+                    return tam;
+                }
+                else
+                {
+                    return tam;
+                }                              
+            }
+            catch
+            {
 
+            }
+            return tam;
+        }
         public bool KiemTraGioiHan()
         {
             try
@@ -3400,6 +3624,15 @@ namespace BioNetDAL
             try
             {
                 var result = db.PSDanhMucDichVus.FirstOrDefault(p => p.IDDichVu == db.PSMapsXN_DichVus.FirstOrDefault(o => o.IDKyThuatXN == maKyThuat).IDDichVu).TenHienThiDichVu;
+                return result;
+            }
+            catch { return string.Empty; }
+        }
+        public string GetTenDichVuVietTatCuaKyThuat(string maKyThuat)
+        {
+            try
+            {
+                var result = db.PSDanhMucDichVus.FirstOrDefault(p => p.IDDichVu == db.PSMapsXN_DichVus.FirstOrDefault(o => o.IDKyThuatXN == maKyThuat).IDDichVu).TenDichVu;
                 return result;
             }
             catch { return string.Empty; }

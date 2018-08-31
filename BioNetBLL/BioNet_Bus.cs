@@ -20,7 +20,6 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.HuyMauPhieu(maPhieu, maTiepnhan, maDonVi, maNV, lydoXoa);
         }
-
        
         public static PsReponse UpdateDanhMucGhiChu(PSDanhMucGhiChu ghichu)
         {
@@ -408,7 +407,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongKePhieuMail(maphieu);
         }
-
+        public static List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV,  string NoiDung, int HinhThuc,bool KieuKiTu)
+        {
+            var db = new DataObjects();
+            return db.GetDanhSachGuiSMS(TuNgay,DenNgay,TrangThaiPhieu,nguyco,MaDV,NoiDung,HinhThuc,KieuKiTu);
+        }
         public static List<PSDotChuanDoan> GetDanhSachDotChanDoanCuaBenhNhan(string MaBenhNhan)
         {
             var db = new DataObjects();

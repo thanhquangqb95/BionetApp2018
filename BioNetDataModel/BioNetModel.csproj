@@ -102,6 +102,7 @@
     <Compile Include="PsCTKQBaoCaoTuyChon.cs" />
     <Compile Include="PsDanhGiaMauSoBo.cs" />
     <Compile Include="PsDanhSachCapMa.cs" />
+    <Compile Include="PSDanhSachGuiSMS.cs" />
     <Compile Include="PsDichVu.cs" />
     <Compile Include="PsDsDaTiepNhan.cs" />
     <Compile Include="PsDuLieuThongSo_CAH.cs" />

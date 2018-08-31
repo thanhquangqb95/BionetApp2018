@@ -107,6 +107,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                 if (!frm.cancel)
                 {
                     emp = frm.emp;
+                    empCode = emp.EmployeeCode;
                     List<PSMenuSecurity> lstMenuSecurity = new List<PSMenuSecurity>();
                     lstMenuSecurity = BioBLL.ListMenuSecurity(emp.EmployeeCode);
                     foreach (var item in lstMenuSecurity)

@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStartup));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -134,6 +134,7 @@
             this.bttTiengViet = new DevExpress.XtraBars.BarButtonItem();
             this.bttTiengAnh = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem62 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem65 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCategory2 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -163,7 +164,6 @@
             this.picBackgroun = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.barButtonItem65 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -874,9 +874,9 @@
             this.barButtonItem39.Id = 55;
             this.barButtonItem39.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem39.Name = "barButtonItem39";
-            toolTipTitleItem5.Text = "Đồng Bộ Dữ Liệu Thông Tin Trung Tâm";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            this.barButtonItem39.SuperTip = superToolTip5;
+            toolTipTitleItem1.Text = "Đồng Bộ Dữ Liệu Thông Tin Trung Tâm";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barButtonItem39.SuperTip = superToolTip1;
             this.barButtonItem39.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem39.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem39_ItemClick);
             // 
@@ -886,9 +886,9 @@
             this.barButtonItem40.Id = 56;
             this.barButtonItem40.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem40.Name = "barButtonItem40";
-            toolTipTitleItem6.Text = "Đồng Bộ Dữ Liệu Danh Mục\r\n";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.barButtonItem40.SuperTip = superToolTip6;
+            toolTipTitleItem2.Text = "Đồng Bộ Dữ Liệu Danh Mục\r\n";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barButtonItem40.SuperTip = superToolTip2;
             this.barButtonItem40.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem40_ItemClick);
             // 
             // barButtonItem41
@@ -897,9 +897,9 @@
             this.barButtonItem41.Id = 57;
             this.barButtonItem41.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem41.Name = "barButtonItem41";
-            toolTipTitleItem7.Text = "Đồng Bộ Dữ Liệu Phiếu Tiếp Nhận\r\n";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            this.barButtonItem41.SuperTip = superToolTip7;
+            toolTipTitleItem3.Text = "Đồng Bộ Dữ Liệu Phiếu Tiếp Nhận\r\n";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.barButtonItem41.SuperTip = superToolTip3;
             this.barButtonItem41.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem41.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem41_ItemClick);
             // 
@@ -909,9 +909,9 @@
             this.barButtonItem42.Id = 58;
             this.barButtonItem42.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.sync;
             this.barButtonItem42.Name = "barButtonItem42";
-            toolTipTitleItem8.Text = "Đồng Bộ Dữ Liệu Kết Quả Phiếu";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            this.barButtonItem42.SuperTip = superToolTip8;
+            toolTipTitleItem4.Text = "Đồng Bộ Dữ Liệu Kết Quả Phiếu";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.barButtonItem42.SuperTip = superToolTip4;
             this.barButtonItem42.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem42.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem42_ItemClick);
             // 
@@ -1170,7 +1170,18 @@
             this.barButtonItem62.Id = 27;
             this.barButtonItem62.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.broken_link;
             this.barButtonItem62.Name = "barButtonItem62";
+            this.barButtonItem62.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem62.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem62_ItemClick);
+            // 
+            // barButtonItem65
+            // 
+            this.barButtonItem65.Caption = "Gửi SMS";
+            this.barButtonItem65.Id = 28;
+            this.barButtonItem65.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.text;
+            this.barButtonItem65.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.text;
+            this.barButtonItem65.Name = "barButtonItem65";
+            this.barButtonItem65.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.barButtonItem65.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem65_ItemClick);
             // 
             // ribbonPageCategory1
             // 
@@ -1418,13 +1429,6 @@
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.Images.SetKeyName(0, "vietnam.png");
             this.imageCollection1.Images.SetKeyName(1, "united-kingdom.png");
-            // 
-            // barButtonItem65
-            // 
-            this.barButtonItem65.Caption = "Gửi SMS";
-            this.barButtonItem65.Id = 28;
-            this.barButtonItem65.Name = "barButtonItem65";
-            this.barButtonItem65.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem65_ItemClick);
             // 
             // FrmStartup
             // 

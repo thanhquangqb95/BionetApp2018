@@ -240,7 +240,7 @@ namespace BioNetSangLocSoSinh.Entry
             else
             {
                 btnChiTietKQ2.Enabled = false;
-                btnSendEmail1.Enabled = false;
+                btnSendEmail2.Enabled = false;
             }
             
             btnEdit.Enabled = true;

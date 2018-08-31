@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelControl19.Text" xml:space="preserve">
+    <value>Kí tự viết tắt:                      #maphieu=mã phiếu #trangthaiphieu=trạng thái phiếu #tentre=Tên trẻ                   #tennguoinhan=tên người nhận #ngaysinh=ngày sinh trẻ #ketqua=kết quả #ketluan=kết luận</value>
+  </data>
 </root>

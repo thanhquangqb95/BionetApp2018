@@ -1197,6 +1197,7 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\text.png" />
     <None Include="Resources\send-mail.png" />
     <None Include="Resources\recycle %281%29.png" />
     <None Include="Resources\search %282%29.png" />
