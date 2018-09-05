@@ -18,6 +18,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Spreadsheet;
 using System.IO;
 using System.Diagnostics;
+using DevExpress.XtraSplashScreen;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -34,7 +35,7 @@ namespace BioNetSangLocSoSinh.Entry
         private List<PSMapsViTriMayXN> mapViTri = new List<PSMapsViTriMayXN>();
         private static List<ViTriXN> vtMayXN01 = new List<ViTriXN>();
         private static List<ViTriXN> vtMayXN02 = new List<ViTriXN>();
-        private List<PSXN_KetQua> lstMauChoKQ = new List<PSXN_KetQua>();
+        private List<PSGanViTriXNKQ> lstMauChoKQ = new List<PSGanViTriXNKQ>();
         private List<PSDanhMucDonViCoSo> lstDonVi = new List<PSDanhMucDonViCoSo>();
         private List<PSDanhMucChiCuc> lstChiCuc = new List<PSDanhMucChiCuc>();
         private List<PSDanhMucDonViCoSo> lstDonViResponsitory = new List<PSDanhMucDonViCoSo>();
@@ -55,6 +56,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
             LoadGoiDichVuXetNGhiem();
             cbbMayXN.EditValue = "MAYXN00";
+            cbbGanVT.EditValue = 0;
             this.LoadDSDaLuu();
             this.LOadDanhMuc();
             this.LoadLstChuaKetQua();
@@ -72,7 +74,6 @@ namespace BioNetSangLocSoSinh.Entry
                 this.cbbChiCucChuaCoKQ.Properties.DataSource = null;
                 this.cbbChiCucChuaCoKQ.Properties.DataSource = this.lstChiCuc;
                 this.cbbChiCucChuaCoKQ.EditValue = "all";
-
                 this.lstDonViResponsitory.Clear();
                 this.lstDonVi.Clear();
                 this.lstDonVi = BioNet_Bus.GetDanhSachDonViCoSo();
@@ -117,9 +118,9 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadDanhSachGanVT()
         {
             this.LookupMayXN01.DataSource = null;
-            this.LookupMayXN01.DataSource = vtMayXN01.ToList();
+            this.LookupMayXN01.DataSource = vtMayXN01.ToList().OrderBy(x=>x.STT);
             this.LookupMayXN02.DataSource = null;
-            this.LookupMayXN02.DataSource = vtMayXN02.ToList();
+            this.LookupMayXN02.DataSource = vtMayXN02.ToList().OrderBy(x => x.STT);
             this.GCDanhSachGanViTri.DataSource = null;
             this.GCDanhSachGanViTri.DataSource = vt;
         }
@@ -132,8 +133,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.GCChuaKQ.DataSource = this.lstMauChoKQ;
             this.GVChuaKQ.ExpandAllGroups();
         }
-
-
         private void LoadGoiDichVuXetNGhiem()
         {
             try
@@ -181,17 +180,17 @@ namespace BioNetSangLocSoSinh.Entry
         #region Chỉnh sửa danh sách
         private void GanVaoDS(PSCMGanViTriChung ph)
         {
+            
             PSCMGanViTriChung kq = new PSCMGanViTriChung();
             bool gg = true;
             List<PSCMGanViTriChung> vtN = vt.Where(x => x.MaXetNghiem != null).ToList();
             kq = vtN.FirstOrDefault(x => x.MaXetNghiem.Equals(ph.MaXetNghiem));
             if (kq == null)
             {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
                 if (ph.may.Count() > 0)
                 {
                     PSCMGanViTriChung vtNull = vt.FirstOrDefault(x => x.MaXetNghiem == null && x.MaGoiXN == null);
-                    
-                   
                     if (vtNull != null)
                     {
                         int countMay = (from pscm in vtNull.may
@@ -313,6 +312,7 @@ namespace BioNetSangLocSoSinh.Entry
                 }
                 LoadLstChuaKetQua();
                 LoadDSDaLuu();
+                SplashScreenManager.CloseForm();
             }
             else
             {
@@ -475,6 +475,76 @@ namespace BioNetSangLocSoSinh.Entry
                 warning.ShowDialog();
             }
         }
+        private void btnExportReview_Click(object sender, EventArgs e)
+        {
+            List<PsRptDanhSachDaCapMaXetNghiem> data = new List<PsRptDanhSachDaCapMaXetNghiem>();
+            List<pro_ReportGanViTriMayXNResult> dataGanVT = new List<pro_ReportGanViTriMayXNResult>();
+            try
+            {
+                string link = Application.StartupPath + @"\DSSoDoXetNghiem\";
+                if (!Directory.Exists(link))
+                {
+                    Directory.CreateDirectory(link);
+                }
+                Workbook workbook = new DevExpress.Spreadsheet.Workbook();
+                Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
+                string Idlangan = vt.Distinct().Select(x => x.IDLanGanXN).FirstOrDefault().ToString();
+                var vtmay1 = vt.Where(y => y.MAYXN01 != null).OrderBy(x => x.MAYXN01.STT);
+                rp1.DataSource = vtmay1.Where(y => y.MAYXN01 != null).OrderBy(x => x.MAYXN01.STT);
+                rp1.PaperName = "May3Benh";
+                rp1.Parameters["TenNV"].Value = emp.EmployeeName;
+                rp1.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
+                rp1.Parameters["SLGoi5benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0004").Count();
+                rp1.Parameters["SLGoi3benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0003").Count();
+                rp1.Parameters["SLGoi2benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0002").Count();
+                rp1.Parameters["SLXNL"].Value = vt.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXN0001").Count();
+                rp1.Parameters["SLXNL2benh"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVGXNL2").Count();
+                rp1.Parameters["SLXNKhac"].Value = vtmay1.Where(y => y.MAYXN01 != null && y.MaGoiXN == "DVKhac").Count();
+                rp1.ExportToXlsx("May3Benh" + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "May3Benh" });
+
+                Workbook workbook2 = new DevExpress.Spreadsheet.Workbook();
+                using (FileStream stream = new FileStream("May3Benh" + ".xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(0, "May3Benh");
+                workbook.Worksheets[0].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("May3Benh" + ".xlsx");
+                var vtmay2 = vt.Where(y => y.MAYXN02 != null).OrderBy(x => x.MAYXN02.STT);
+                Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02 rp2 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02();
+                rp2.DataSource = vtmay2.Where(y => y.MAYXN02 != null).OrderBy(x => x.MAYXN02.STT);
+                rp2.Parameters["SLGoi5benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0004").Count();
+                rp2.Parameters["SLGoi3benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0003").Count();
+                rp2.Parameters["SLGoi2benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0002").Count();
+                rp2.Parameters["SLXNL"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXN0001").Count();
+                rp2.Parameters["SLXNL2benh"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVGXNL2").Count();
+                rp2.Parameters["SLXNKhac"].Value = vtmay2.Where(y => y.MAYXN02 != null && y.MaGoiXN == "DVKhac").Count();
+                rp2.PaperName = "May2Benh";
+                rp2.Parameters["TenNV"].Value = emp.EmployeeName;
+                rp2.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
+                rp2.ExportToXlsx("May2Benh" + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "May2Benh" });
+                Workbook workbook3 = new DevExpress.Spreadsheet.Workbook();
+                using (FileStream stream = new FileStream("May2Benh" + ".xlsx", FileMode.Open))
+                {
+                    workbook3.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(1, "May2Benh");
+                workbook.Worksheets[1].CopyFrom(workbook3.Worksheets[0]);
+                File.Delete("May2Benh" + ".xlsx");
+
+                string l = link + "SodoXetNghiemReviewNgay" + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + Idlangan + DateTime.Now.Hour + DateTime.Now.Minute + ".xlsx";
+                workbook.SaveDocument(l);
+                System.Diagnostics.Process.Start(l);
+                LoadLstChuaKetQua();
+                LoadDSDaLuu();
+
+            }
+            catch
+            {
+                DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Xuất file lỗi.");
+                warning.ShowDialog();
+            }
+        }
         #endregion
 
         #region Style 
@@ -610,7 +680,38 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch { }
         }
-
+        private void GVChuaKQ_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    string daganVT = View.GetRowCellValue(e.RowHandle, this.col_isDaDuyet).ToString();
+                    switch(daganVT)
+                    {
+                        case ("True"):
+                            {
+                                e.Appearance.BackColor = Color.BurlyWood;
+                                e.Appearance.BackColor2 = Color.Bisque;
+                                break;
+                            }
+                        case ("False"):
+                            {
+                                e.Appearance.BackColor = Color.Salmon;
+                                e.Appearance.BackColor2 = Color.SeaShell;
+                                break;
+                            }
+                         default:
+                            {
+                                e.Appearance.BackColor = Color.Transparent;
+                                break;
+                            }
+                    }
+                }
+            }
+            catch { }
+        }
         #endregion
 
         #region Sụ kiện phím
@@ -660,7 +761,6 @@ namespace BioNetSangLocSoSinh.Entry
                     else
                     {
                         GanVaoDS(ph);
-                        this.LoadLstChuaKetQua();
                     }
                     txtMaPhieu.ResetText();
                     txtMaPhieu.Focus();
@@ -738,30 +838,16 @@ namespace BioNetSangLocSoSinh.Entry
                             rsmoi.MAYXN01.STTDia = vtmoi.STTDia;
                             rsmoi.MAYXN01.STTVT = vtmoi.STTVT;
                             rsmoi.MAYXN01.ViTri = vtmoi.ViTri;
-                            if (vtmoi.isTest == true)
-                            {
-                                rsmoi.MAYXN01.isTest = false;
-                                vtmoi.isTest = false;
-                                //vt.Remove(rsthay);
-                                BioNet_Bus.DeleteDanhSachGanXNLuu(rsthay);
-                                if (vtcu.STT == vtMayXN01.Count())
-                                {
-                                    vtMayXN01.Remove(vtcu);
-                                }
-                                foreach (var v in vt)
-                                {
-                                    if (v.STT_bang > gt)
-                                    {
-                                        v.STT_bang = v.STT_bang - 1;
-                                    }
-                                }
-                                rsthay.MAYXN01.isTest = true;
-
-                            }
                             rsthay.MAYXN01.STT = vtcu.STT;
                             rsthay.MAYXN01.STTDia = vtcu.STTDia;
                             rsthay.MAYXN01.STTVT = vtcu.STTVT;
                             rsthay.MAYXN01.ViTri = vtcu.ViTri;
+                            if (vtmoi.isTest == true)
+                            {
+                                rsmoi.MAYXN01.isTest = false;
+                                vtmoi.isTest = false;
+                                rsthay.MAYXN01.isTest = true;
+                            }
                             BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
                             BioNet_Bus.SuaDanhSachGanXNLuu(rsthay);
                             this.LoadDSDaLuu();
@@ -779,34 +865,24 @@ namespace BioNetSangLocSoSinh.Entry
                         if (vtcu != null && rsmoi != null && rsthay != null)
                         {
                             long? gt = rsthay.STT_bang;
-                            long? SttCtMax = vtMayXN02.Count();
+                            long? SttCtMax = vtMayXN01.Count();
                             rsmoi.MAYXN02.STT = vtmoi.STT;
                             rsmoi.MAYXN02.STTDia = vtmoi.STTDia;
                             rsmoi.MAYXN02.STTVT = vtmoi.STTVT;
                             rsmoi.MAYXN02.ViTri = vtmoi.ViTri;
-                            if (vtmoi.isTest == true)
-                            {
-                                rsmoi.MAYXN02.isTest = false;
-                                vtmoi.isTest = false;
-                                //vt.Remove(rsthay);
-                                if (vtcu.STT == vtMayXN02.Count())
-                                {
-                                    vtMayXN02.Remove(vtcu);
-                                }
-                                foreach (var v in vt)
-                                {
-                                    if (v.STT_bang > gt)
-                                    {
-                                        v.STT_bang = v.STT_bang - 1;
-                                    }
-                                }
-                                rsthay.MAYXN02.isTest = true;
-                            }
                             rsthay.MAYXN02.STT = vtcu.STT;
                             rsthay.MAYXN02.STTDia = vtcu.STTDia;
                             rsthay.MAYXN02.STTVT = vtcu.STTVT;
                             rsthay.MAYXN02.ViTri = vtcu.ViTri;
+                            if (vtmoi.isTest == true)
+                            {
+                                rsmoi.MAYXN02.isTest = false;
+                                vtmoi.isTest = false;
+                                rsthay.MAYXN02.isTest = true;
+                            }
+                            BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
                             BioNet_Bus.SuaDanhSachGanXNLuu(rsthay);
+                            this.LoadDSDaLuu();
                         }
                     }
                     if (columnHandle == this.col_IDPhieu.ColumnHandle)
@@ -888,6 +964,15 @@ namespace BioNetSangLocSoSinh.Entry
                         rsmoi.MAYXN01.GhiChuCT = ghichu.ToString();
                         BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
                     }
+                    if (columnHandle == this.col_MayXN02_GhiChu.ColumnHandle)
+                    {
+                        var tenvitri = view.GetRowCellDisplayText(rowfocus, this.col_MayXN02_ViTri);
+                        var ghichu = view.GetRowCellDisplayText(rowfocus, this.col_MayXN02_GhiChu);
+                        List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN02 != null).ToList();
+                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN02.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+                        rsmoi.MAYXN02.GhiChuCT = ghichu.ToString();
+                        BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
+                    }
                 }
                 LoadLstChuaKetQua();
                 LoadDSDaLuu();
@@ -911,6 +996,7 @@ namespace BioNetSangLocSoSinh.Entry
             cbbChiCucChuaCoKQ.EditValue = "all";
             cbbDonViChuaCoKQ.EditValue = "all";
             cbbGoiXNLoc.EditValue = "ALL";
+            cbbGanVT.EditValue = 2;
             txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
             txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
             txtSearchMaPhieuChuaCoKQ.ResetText();
@@ -936,7 +1022,47 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch { }
         }
+        private void cbbGanVT_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string filterisDaDuyet = string.Empty;
+                switch (cbbGanVT.EditValue)
+                {
+                    case 3:
+                        {
+                            filterisDaDuyet = "[isDaDuyet]=true";
+                            break;
+                        }
+                    case 1:
+                        {
+                            filterisDaDuyet = "[isDaDuyet]=null";
+                            break;
+                        }
+                    case 2:
+                        {
+                            filterisDaDuyet = "[isDaDuyet]=false";
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
 
+                }
+                if(string.IsNullOrEmpty(filterisDaDuyet))
+                {
+                    GVChuaKQ.Columns["isDaDuyet"].ClearFilter();
+                }
+                else
+                {
+                    GVChuaKQ.Columns["isDaDuyet"].FilterInfo = new ColumnFilterInfo(filterisDaDuyet);
+                    
+                }
+                this.GVChuaKQ.ExpandAllGroups();
+            }
+            catch { }
+        }
         private void FilterDSChuaCoKQTheoDonVi() //Lọc theo đơn vị
         {
             string machicuc = cbbChiCucChuaCoKQ.EditValue.ToString();
@@ -953,7 +1079,7 @@ namespace BioNetSangLocSoSinh.Entry
             else {
                 GVChuaKQ.Columns["MaDonVi"].ClearFilter();
             }
-            
+            this.GVChuaKQ.ExpandAllGroups();
         }
 
         private void cbbDonViChuaCoKQ_EditValueChanged(object sender, EventArgs e)
@@ -961,6 +1087,7 @@ namespace BioNetSangLocSoSinh.Entry
             try
             {
                     FilterDSChuaCoKQTheoDonVi();
+                this.GVChuaKQ.ExpandAllGroups();
             }
             catch { }
         }
@@ -976,6 +1103,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 GVChuaKQ.Columns["MaGoiXN"].ClearFilter(); 
             }
+            this.GVChuaKQ.ExpandAllGroups();
         }
         private void txtSearchMaPhieuChuaCoKQ_EditValueChanged(object sender, EventArgs e)
         {
@@ -996,6 +1124,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 GVChuaKQ.Columns["MaPhieu"].FilterInfo = new ColumnFilterInfo();
             }
+            this.GVChuaKQ.ExpandAllGroups();
         }
         private void txtTuNgay_ChuaKQ_EditValueChanged(object sender, EventArgs e)
         {
@@ -1036,34 +1165,6 @@ namespace BioNetSangLocSoSinh.Entry
             }
         }
 
-        private void GVChuaKQ_RowCellStyle(object sender, RowCellStyleEventArgs e)
-        {
-            try
-            {
-                GridView View = sender as GridView;
-                if (e.RowHandle >= 0)
-                {
-                    string MaCD = View.GetRowCellValue(e.RowHandle, this.col_MaChiDinh_GCChuaCoKQ) == null ? string.Empty : View.GetRowCellValue(e.RowHandle, this.col_MaChiDinh_GCChuaCoKQ).ToString();
-                    if (!string.IsNullOrEmpty(MaCD))
-                    {
-                        if (MaCD.Substring(0, 2).Equals("XN"))
-                        {
-                            e.Appearance.BackColor = Color.Plum;
-                            e.Appearance.BackColor2 = Color.Pink;
-                        }
-                        else
-                        {
-                            e.Appearance.BackColor = Color.Aqua;
-                            e.Appearance.BackColor2 = Color.AliceBlue;
-                        }
-                    }
-                }
-            }
-            catch { }
-        }
-
-       
-
         private void btnViewGhiChu_Click(object sender, EventArgs e)
         {
             DiaglogFrm.FrmDanhMucGhiChuXN dmgc = new DiaglogFrm.FrmDanhMucGhiChuXN(emp);
@@ -1084,16 +1185,18 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Không có danh sách cần hủy.");
                     warning.ShowDialog();
-                }
-                    
+                }              
             }
             catch
             {
-
             }
             LoadLstChuaKetQua();
             LoadDSDaLuu();
-
         }
+
+        private void GCDanhSachGanViTri_Click(object sender, EventArgs e)
+        {
+        }
+        
     }
 }

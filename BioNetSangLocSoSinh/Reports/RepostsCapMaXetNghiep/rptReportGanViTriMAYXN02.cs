@@ -16,6 +16,8 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
         {
             InitializeComponent();
         }
+        Color mau1 = System.Drawing.Color.SkyBlue;
+        Color mau2 = System.Drawing.Color.Thistle;
         private List<PSMapsViTriMayXN> mapViTri = new List<PSMapsViTriMayXN>();
         private void xrTable2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
@@ -34,7 +36,15 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
             }
             else
             {
-                this.xrTable2.BackColor = System.Drawing.Color.White;
+                if(int.Parse(col_ViTriThat.Text.Substring(1))%2==0)
+                {
+                    this.xrTable2.BackColor = System.Drawing.Color.SkyBlue;
+                }
+                else
+                {
+                    this.xrTable2.BackColor = System.Drawing.Color.Thistle;
+                }
+                
             }
 
             switch (col_MaGoiXN.Text.ToString())

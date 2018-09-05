@@ -58,4 +58,17 @@ namespace BioNetModel
         public bool? isNguyCoCao { get; set; }
         public bool? isDaNhapLieu { get; set; }
     }
+    public class PSGanViTriXNKQ
+    {
+        public long RowIDXN_TraKetQua { get; set; }
+        public string MaDonVi { get; set; }
+        public string MaXetNghiem { get; set; }
+        public string MaChiDinh { get; set; }
+        public string MaKetQua { get; set; }
+        public DateTime? NgayChiDinh { get; set; }
+        public DateTime? NgayTiepNhan { get; set; }
+        public string MaGoiXN { get; set; }
+        public string MaPhieu { get; set; }
+        public Boolean? isDaDuyet { get; set; }
+    }
 }

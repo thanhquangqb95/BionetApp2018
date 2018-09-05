@@ -69,26 +69,32 @@
             this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell21 = new DevExpress.XtraReports.UI.XRTableCell();
             this.col_XN5 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SLGoi5benh = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrTableRow6 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell24 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
             this.col_XN = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SLGoi3benh = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell28 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell29 = new DevExpress.XtraReports.UI.XRTableCell();
             this.col_XNB = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SLGoi2benh = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
             this.col_XNH = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SLXNL2benh = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
             this.col_XNL = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SLXNL = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
             this.col_Khac = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SLXNKhac = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.NgayTaoDS = new DevExpress.XtraReports.Parameters.Parameter();
@@ -102,12 +108,6 @@
             this.NgayCapMaXN = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrControlStyle1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.objectDataSource3 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
-            this.SLGoi5benh = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SLGoi3benh = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SLGoi2benh = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SLXNL = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SLXNL2benh = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SLXNKhac = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -218,7 +218,7 @@
             // 
             this.col_GhiChu.BorderColor = System.Drawing.Color.Black;
             this.col_GhiChu.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GhiChu")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GhiChuChung")});
             this.col_GhiChu.Name = "col_GhiChu";
             this.col_GhiChu.StylePriority.UseBorderColor = false;
             this.col_GhiChu.Weight = 0.86008137780149863D;
@@ -327,7 +327,6 @@
             // 
             // xrTableCell6
             // 
-            this.xrTableCell6.Multiline = true;
             this.xrTableCell6.Name = "xrTableCell6";
             this.xrTableCell6.Text = "Vị Trí Thật\r\n";
             this.xrTableCell6.Weight = 0.97916687011718739D;
@@ -452,6 +451,11 @@
             this.col_XN5.Name = "col_XN5";
             this.col_XN5.Weight = 1D;
             // 
+            // SLGoi5benh
+            // 
+            this.SLGoi5benh.Name = "SLGoi5benh";
+            this.SLGoi5benh.Visible = false;
+            // 
             // xrTableRow6
             // 
             this.xrTableRow6.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
@@ -479,6 +483,11 @@
             new DevExpress.XtraReports.UI.XRBinding(this.SLGoi3benh, "Text", "")});
             this.col_XN.Name = "col_XN";
             this.col_XN.Weight = 1D;
+            // 
+            // SLGoi3benh
+            // 
+            this.SLGoi3benh.Name = "SLGoi3benh";
+            this.SLGoi3benh.Visible = false;
             // 
             // xrTableRow7
             // 
@@ -508,6 +517,11 @@
             this.col_XNB.Name = "col_XNB";
             this.col_XNB.Weight = 1D;
             // 
+            // SLGoi2benh
+            // 
+            this.SLGoi2benh.Name = "SLGoi2benh";
+            this.SLGoi2benh.Visible = false;
+            // 
             // xrTableRow4
             // 
             this.xrTableRow4.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
@@ -535,6 +549,11 @@
             new DevExpress.XtraReports.UI.XRBinding(this.SLXNL2benh, "Text", "")});
             this.col_XNH.Name = "col_XNH";
             this.col_XNH.Weight = 1D;
+            // 
+            // SLXNL2benh
+            // 
+            this.SLXNL2benh.Name = "SLXNL2benh";
+            this.SLXNL2benh.Visible = false;
             // 
             // xrTableRow8
             // 
@@ -564,6 +583,11 @@
             this.col_XNL.Name = "col_XNL";
             this.col_XNL.Weight = 1D;
             // 
+            // SLXNL
+            // 
+            this.SLXNL.Name = "SLXNL";
+            this.SLXNL.Visible = false;
+            // 
             // xrTableRow9
             // 
             this.xrTableRow9.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
@@ -581,7 +605,6 @@
             // 
             // xrTableCell22
             // 
-            this.xrTableCell22.Multiline = true;
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.Text = "Khac\r\n";
             this.xrTableCell22.Weight = 1.5104166793823244D;
@@ -592,6 +615,11 @@
             new DevExpress.XtraReports.UI.XRBinding(this.SLXNKhac, "Text", "")});
             this.col_Khac.Name = "col_Khac";
             this.col_Khac.Weight = 1D;
+            // 
+            // SLXNKhac
+            // 
+            this.SLXNKhac.Name = "SLXNKhac";
+            this.SLXNKhac.Visible = false;
             // 
             // xrLabel8
             // 
@@ -703,36 +731,6 @@
             // 
             this.objectDataSource3.DataSource = typeof(BioNetModel.PSCMGanViTriChung);
             this.objectDataSource3.Name = "objectDataSource3";
-            // 
-            // SLGoi5benh
-            // 
-            this.SLGoi5benh.Name = "SLGoi5benh";
-            this.SLGoi5benh.Visible = false;
-            // 
-            // SLGoi3benh
-            // 
-            this.SLGoi3benh.Name = "SLGoi3benh";
-            this.SLGoi3benh.Visible = false;
-            // 
-            // SLGoi2benh
-            // 
-            this.SLGoi2benh.Name = "SLGoi2benh";
-            this.SLGoi2benh.Visible = false;
-            // 
-            // SLXNL
-            // 
-            this.SLXNL.Name = "SLXNL";
-            this.SLXNL.Visible = false;
-            // 
-            // SLXNL2benh
-            // 
-            this.SLXNL2benh.Name = "SLXNL2benh";
-            this.SLXNL2benh.Visible = false;
-            // 
-            // SLXNKhac
-            // 
-            this.SLXNKhac.Name = "SLXNKhac";
-            this.SLXNKhac.Visible = false;
             // 
             // rptReportGanViTriMAYXN01
             // 

@@ -1158,9 +1158,9 @@ namespace BioNetBLL
             lst = db.GetDSPhongXN(false);
             return lst;
         }
-        public static List<PSXN_KetQua> GetDSChuaGanXN()
+        public static List<PSGanViTriXNKQ> GetDSChuaGanXN()
         {
-            List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
+            List<PSGanViTriXNKQ> lst = new List<PSGanViTriXNKQ>();
             var db = new DataObjects();
             return lst= db.GetDSChuaGanXN();
         }
@@ -1221,7 +1221,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.DeleteDanhSachGanXNLuu(pm);
         }
-        public static PsReponse DeleteDanhSachAllGanXNLuu(List<PSCMGanViTriChung> pm)
+        public static PsReponse DeleteCTGanXNLuu(PSCM_GanViTriCT gan)
+        {
+            var db = new DataObjects();
+            return db.DeleteCTGanXNLuu(gan);
+        }
+            public static PsReponse DeleteDanhSachAllGanXNLuu(List<PSCMGanViTriChung> pm)
         {
             var db = new DataObjects();
             return db.DeleteDanhSachAllGanXNLuu(pm);

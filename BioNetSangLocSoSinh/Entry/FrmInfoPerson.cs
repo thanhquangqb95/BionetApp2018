@@ -107,6 +107,17 @@ namespace BioNetSangLocSoSinh.Entry
                     btnSendEmail1.Enabled = true;
                     var kq = BioNet_Bus.GetThongTinKetQuaXN(txtMaPhieu1.Text, maTiepNhan);
                     btnChiTietKQ1.Enabled = true;
+                    string CTNguyCoCao=string.Empty;
+                    if (kq.PSXN_TraKQ_ChiTiets != null)
+                    {
+                        foreach (var kqct in kq.PSXN_TraKQ_ChiTiets)
+                        {
+                            if (kqct.isNguyCo)
+                            {
+                                CTNguyCoCao= CTNguyCoCao+" " +kqct.TenThongSo;
+                            }
+                        }
+                    }
                     switch (Phieu.trangThaiMau)
                     {
                         case 1:
@@ -136,12 +147,13 @@ namespace BioNetSangLocSoSinh.Entry
                             }
                         case 6:
                             {
-                                txtTrangThaiPhieu.Text = "Cần thu lại mẫu";
+                                txtTrangThaiPhieu.Text = "Cần thu lại mẫu"+ CTNguyCoCao;
                                 break;
                             }
                         case 7:
                             {
-                                txtTrangThaiPhieu.Text = "Đã thu lại mẫu";
+                                txtTrangThaiPhieu.Text = "Đã thu lại mẫu"+ CTNguyCoCao;
+                              
                                 break;
                             }
                         default:
@@ -321,7 +333,6 @@ namespace BioNetSangLocSoSinh.Entry
                     Patients.MotherPhoneNumber = txtSDTMe.Text;
                     Patients.FatherPhoneNumber = txtSDTCha.Text;
                     Patients.DiaChi = txtAddress.Text;
-
                     Patients.TenBenhNhan = txtTenBenhNhan.Text;
                     if (!string.IsNullOrEmpty(txtGioiTinh.EditValue.ToString()))
                         Patients.GioiTinh = int.Parse(txtGioiTinh.EditValue.ToString()??"2");

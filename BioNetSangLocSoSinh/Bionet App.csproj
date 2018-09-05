@@ -1241,6 +1241,7 @@
     <None Include="Resources\check1.png" />
     <None Include="Resources\delete %281%29.png" />
     <None Include="Resources\edit %281%29.png" />
+    <None Include="Resources\delete %281%291.png" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
@@ -1266,6 +1267,7 @@
     <None Include="Resources\experiment.png" />
     <None Include="Resources\garbage.png" />
     <None Include="Resources\info.png" />
+    <None Include="Resources\folder.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />

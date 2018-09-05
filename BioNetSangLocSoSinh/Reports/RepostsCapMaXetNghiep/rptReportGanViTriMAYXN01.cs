@@ -13,6 +13,10 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
     public partial class rptReportGanViTriMAYXN01 : DevExpress.XtraReports.UI.XtraReport
     {
         int i = 1;
+        string a = "0";
+        Color mau1= System.Drawing.Color.SkyBlue;
+        Color mau2 = System.Drawing.Color.Thistle;
+        Color mauuse= System.Drawing.Color.White;
         public rptReportGanViTriMAYXN01()
         {
             InitializeComponent();
@@ -40,7 +44,15 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
             }
             else
             {
-                this.xrTable2.BackColor = System.Drawing.Color.White;
+                
+                if(!col_ViTriThat.Text.Substring(0,1).Equals(a))
+                {
+                    a = col_ViTriThat.Text.Substring(0, 1);
+                    mauuse = mau2;
+                    mau2 = mau1;
+                    mau1 = mauuse;
+                }
+                this.xrTable2.BackColor = mau1;
             }
 
             switch(col_MaGoiXN.Text.ToString())
