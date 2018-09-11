@@ -10,4 +10,10 @@ namespace BioNetModel
         public bool Result { get; set; }
         public string StringError { get; set; }
     }
+    public class PsReponseSMS
+    {
+        public bool Result { get; set; }
+        public string MobileNumber { get; set; }
+        public string StringError { get; set; }
+    }
 }

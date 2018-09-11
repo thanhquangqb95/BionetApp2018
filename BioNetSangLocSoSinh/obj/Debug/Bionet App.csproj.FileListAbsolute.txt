@@ -7859,3 +7859,7 @@ D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CopyComp
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Entry.FrmSendSMS.resources
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetDAL.dll.config
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\nunit.framework.dll
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\nunit.framework.pdb
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\nunit.framework.xml

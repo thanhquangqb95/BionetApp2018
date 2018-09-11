@@ -686,6 +686,7 @@
             this.txtMaPhieuTiepNhan.Name = "txtMaPhieuTiepNhan";
             this.txtMaPhieuTiepNhan.Size = new System.Drawing.Size(235, 20);
             this.txtMaPhieuTiepNhan.TabIndex = 24;
+            this.txtMaPhieuTiepNhan.EditValueChanged += new System.EventHandler(this.txtMaPhieuTiepNhan_EditValueChanged);
             this.txtMaPhieuTiepNhan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhieuTiepNhan_KeyPress);
             // 
             // labelControl1
@@ -804,7 +805,7 @@
             this.tabDanhSachDaTiepNhanTrongNgay.Controls.Add(this.panelControl2);
             this.tabDanhSachDaTiepNhanTrongNgay.Controls.Add(this.panelControl5);
             this.tabDanhSachDaTiepNhanTrongNgay.Name = "tabDanhSachDaTiepNhanTrongNgay";
-            this.tabDanhSachDaTiepNhanTrongNgay.Size = new System.Drawing.Size(347, 845);
+            this.tabDanhSachDaTiepNhanTrongNgay.Size = new System.Drawing.Size(347, 656);
             this.tabDanhSachDaTiepNhanTrongNgay.Text = "Danh sách đã tiếp nhận";
             // 
             // GCDaTiepNhan
@@ -815,7 +816,7 @@
             this.GCDaTiepNhan.Name = "GCDaTiepNhan";
             this.GCDaTiepNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lookupDVCS});
-            this.GCDaTiepNhan.Size = new System.Drawing.Size(347, 722);
+            this.GCDaTiepNhan.Size = new System.Drawing.Size(347, 533);
             this.GCDaTiepNhan.TabIndex = 6;
             this.GCDaTiepNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDaTiepNhan});
@@ -1036,7 +1037,7 @@
             // 
             this.panelControl5.Controls.Add(this.simpleButton6);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl5.Location = new System.Drawing.Point(0, 806);
+            this.panelControl5.Location = new System.Drawing.Point(0, 617);
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(347, 39);
             this.panelControl5.TabIndex = 2;

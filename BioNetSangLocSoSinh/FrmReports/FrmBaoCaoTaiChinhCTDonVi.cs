@@ -476,7 +476,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             SplashScreenManager.CloseForm();
                 if (String.IsNullOrEmpty(Error))
                 {
-                    XtraMessageBox.Show("Danh sách gửi mail tài chính lỗi: \r\n" + Error, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Gửi mail tài chính thành công", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

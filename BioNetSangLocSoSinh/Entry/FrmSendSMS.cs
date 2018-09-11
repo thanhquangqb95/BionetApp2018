@@ -280,5 +280,23 @@ namespace BioNetSangLocSoSinh.Entry
         {
            
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BioNet_Bus.SMS(this.cbbCTNoiDungDemo.Text,txtSDT.Text, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        private void labelControl20_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

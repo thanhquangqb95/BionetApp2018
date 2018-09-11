@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bionet App", "BioNetSangLocSoSinh\Bionet App.csproj", "{00597C1C-6B26-4103-8448-1E57BDC669D5}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioNetBLL", "BioNetBLL\BioNetBLL.csproj", "{F0DF1FE9-42B8-430D-9362-735A29E8DE28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSync", "DataSync\DataSync.csproj", "{67B2B6BE-7B98-4568-BC08-48A8CC510E2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProjectBionet", "UnitTestProjectBionet\UnitTestProjectBionet.csproj", "{CAFCD0A8-B074-46BE-BD15-3F2753E49939}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,11 +41,16 @@ Global
 		{67B2B6BE-7B98-4568-BC08-48A8CC510E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67B2B6BE-7B98-4568-BC08-48A8CC510E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67B2B6BE-7B98-4568-BC08-48A8CC510E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAFCD0A8-B074-46BE-BD15-3F2753E49939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAFCD0A8-B074-46BE-BD15-3F2753E49939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAFCD0A8-B074-46BE-BD15-3F2753E49939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAFCD0A8-B074-46BE-BD15-3F2753E49939}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = ..\..
+		SolutionGuid = {CEDE1E0F-9897-4C14-BCE1-7C88D642C876}
 	EndGlobalSection
 EndGlobal

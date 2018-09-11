@@ -224,6 +224,8 @@
             this.GVChuaKQ.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_MaDonVi_GCChuaCoKQ, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_MaGoiXN_GCChuaCoKQ, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.GVChuaKQ.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVChuaKQ_RowCellStyle);
+            this.GVChuaKQ.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.GVChuaKQ_RowStyle);
             // 
             // col_MaDonVi_GCChuaCoKQ
             // 
@@ -404,19 +406,20 @@
             // 
             this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear.Location = new System.Drawing.Point(208, 154);
+            this.btnClear.Location = new System.Drawing.Point(211, 154);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
             toolTipTitleItem1.Text = "Bỏ lọc";
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 33;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnViewGhiChu
             // 
             this.btnViewGhiChu.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnViewGhiChu.EditValue = global::BioNetSangLocSoSinh.Properties.Resources.settings_cog;
-            this.btnViewGhiChu.Location = new System.Drawing.Point(274, 154);
+            this.btnViewGhiChu.Location = new System.Drawing.Point(275, 153);
             this.btnViewGhiChu.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewGhiChu.Name = "btnViewGhiChu";
             this.btnViewGhiChu.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -429,6 +432,7 @@
             superToolTip2.Items.Add(toolTipTitleItem2);
             this.btnViewGhiChu.SuperTip = superToolTip2;
             this.btnViewGhiChu.TabIndex = 37;
+            this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
             // labelControl41
             // 
@@ -454,6 +458,7 @@
             this.cbbGoiXNLoc.Properties.ValueMember = "IDGoiDichVuChung";
             this.cbbGoiXNLoc.Size = new System.Drawing.Size(221, 20);
             this.cbbGoiXNLoc.TabIndex = 32;
+            this.cbbGoiXNLoc.EditValueChanged += new System.EventHandler(this.cbbGoiXNLoc_EditValueChanged);
             // 
             // btnCapNhatDSChuaCoKQ
             // 
@@ -461,9 +466,10 @@
             this.btnCapNhatDSChuaCoKQ.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCapNhatDSChuaCoKQ.Location = new System.Drawing.Point(7, 154);
             this.btnCapNhatDSChuaCoKQ.Name = "btnCapNhatDSChuaCoKQ";
-            this.btnCapNhatDSChuaCoKQ.Size = new System.Drawing.Size(196, 23);
+            this.btnCapNhatDSChuaCoKQ.Size = new System.Drawing.Size(198, 23);
             this.btnCapNhatDSChuaCoKQ.TabIndex = 30;
             this.btnCapNhatDSChuaCoKQ.Text = "Cập nhật danh sách";
+            this.btnCapNhatDSChuaCoKQ.Click += new System.EventHandler(this.btnCapNhatDSChuaCoKQ_Click);
             // 
             // txtSearchMaPhieuChuaCoKQ
             // 
@@ -473,6 +479,7 @@
             this.txtSearchMaPhieuChuaCoKQ.Name = "txtSearchMaPhieuChuaCoKQ";
             this.txtSearchMaPhieuChuaCoKQ.Size = new System.Drawing.Size(221, 20);
             this.txtSearchMaPhieuChuaCoKQ.TabIndex = 29;
+            this.txtSearchMaPhieuChuaCoKQ.EditValueChanged += new System.EventHandler(this.txtSearchMaPhieuChuaCoKQ_EditValueChanged);
             // 
             // labelControl14
             // 
@@ -497,6 +504,7 @@
             this.cbbChiCucChuaCoKQ.Properties.View = this.gridView3;
             this.cbbChiCucChuaCoKQ.Size = new System.Drawing.Size(236, 20);
             this.cbbChiCucChuaCoKQ.TabIndex = 21;
+            this.cbbChiCucChuaCoKQ.EditValueChanged += new System.EventHandler(this.cbbChiCucChuaCoKQ_EditValueChanged);
             // 
             // gridView3
             // 
@@ -613,6 +621,7 @@
             this.cbbDonViChuaCoKQ.Properties.View = this.searchLookUpEdit1View;
             this.cbbDonViChuaCoKQ.Size = new System.Drawing.Size(236, 20);
             this.cbbDonViChuaCoKQ.TabIndex = 0;
+            this.cbbDonViChuaCoKQ.EditValueChanged += new System.EventHandler(this.cbbDonViChuaCoKQ_EditValueChanged);
             // 
             // searchLookUpEdit1View
             // 
@@ -664,6 +673,7 @@
             this.cbbGanVT.Properties.PopupSizeable = true;
             this.cbbGanVT.Size = new System.Drawing.Size(194, 20);
             this.cbbGanVT.TabIndex = 39;
+            this.cbbGanVT.EditValueChanged += new System.EventHandler(this.cbbGanVT_EditValueChanged);
             // 
             // groupControl2
             // 
@@ -690,6 +700,7 @@
             this.GCDanhSachGanViTri.TabIndex = 31;
             this.GCDanhSachGanViTri.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachGanViTri});
+            this.GCDanhSachGanViTri.Click += new System.EventHandler(this.GCDanhSachGanViTri_Click);
             // 
             // GVDanhSachGanViTri
             // 
@@ -717,12 +728,16 @@
             this.col_MayXN01_STT,
             this.col_MayXN02_STT,
             this.col_IDRow});
+            this.GVDanhSachGanViTri.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.GVDanhSachGanViTri.GridControl = this.GCDanhSachGanViTri;
             this.GVDanhSachGanViTri.Name = "GVDanhSachGanViTri";
             this.GVDanhSachGanViTri.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
             this.GVDanhSachGanViTri.OptionsView.ShowDetailButtons = false;
             this.GVDanhSachGanViTri.OptionsView.ShowGroupExpandCollapseButtons = false;
             this.GVDanhSachGanViTri.OptionsView.ShowGroupPanel = false;
+            this.GVDanhSachGanViTri.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDanhSachGanViTri_RowCellStyle);
+            this.GVDanhSachGanViTri.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.GVDanhSachGanViTri_CellValueChanged);
+            this.GVDanhSachGanViTri.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GVDanhSachGanViTri_KeyDown);
             // 
             // tt
             // 
@@ -1031,6 +1046,7 @@
             this.btnExportReview.Size = new System.Drawing.Size(148, 23);
             this.btnExportReview.TabIndex = 39;
             this.btnExportReview.Text = "Xem trước danh sách";
+            this.btnExportReview.Click += new System.EventHandler(this.btnExportReview_Click);
             // 
             // btnHuyDanhSach
             // 
@@ -1080,6 +1096,7 @@
             this.btnXuatFile.Size = new System.Drawing.Size(138, 23);
             this.btnXuatFile.TabIndex = 0;
             this.btnXuatFile.Text = "Duyệt danh sách";
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
             // txtMaNgoai
             // 
@@ -1087,6 +1104,7 @@
             this.txtMaNgoai.Name = "txtMaNgoai";
             this.txtMaNgoai.Size = new System.Drawing.Size(137, 20);
             this.txtMaNgoai.TabIndex = 29;
+            this.txtMaNgoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaNgoai_KeyPress);
             // 
             // labelControl1
             // 
@@ -1102,6 +1120,7 @@
             this.txtMaPhieu.Name = "txtMaPhieu";
             this.txtMaPhieu.Size = new System.Drawing.Size(121, 20);
             this.txtMaPhieu.TabIndex = 27;
+            this.txtMaPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhieu_KeyPress);
             // 
             // labelControl2
             // 

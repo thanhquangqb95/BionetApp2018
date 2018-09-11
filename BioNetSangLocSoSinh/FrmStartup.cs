@@ -239,13 +239,12 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmTraKetQua frm = new Entry.FrmTraKetQua(this.empCode);
+            Entry.FrmTraKetQuaNew frm = new Entry.FrmTraKetQuaNew(emp);
             int frmsize = this.xTabMain.Width;
             int pnsize = 222;
             if (frmsize - 800 > 280)
             { pnsize = frmsize - 800; }
-
-            frm.PanelDanhSach.Width = pnsize;
+            //frm.PanelDanhSach.Width = pnsize;
             TabCreating(xTabMain, "Trả kết quả xét nghiệm", frm);
             SplashScreenManager.CloseForm();
         }

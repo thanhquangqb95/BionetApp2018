@@ -481,8 +481,12 @@ namespace BioNetSangLocSoSinh.Entry
             this.checkedListBoxXN.Enabled = false;
         }
 
-       
+
         #endregion
 
+        private void txtMaPhieuTiepNhan_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }   
 }

@@ -214,3 +214,4 @@ D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CoreCompileInputs.c
 D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CopyComplete
 D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.dll
 D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.pdb
+D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetDAL.dll.config

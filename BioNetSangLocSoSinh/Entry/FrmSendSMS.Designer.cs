@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSendSMS));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSendSMS));
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cbbHinhThuc = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tabSetup = new DevExpress.XtraTab.XtraTabControl();
             this.tabSMS = new DevExpress.XtraTab.XtraTabPage();
+            this.txtSDT = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.lblSKTDemo = new System.Windows.Forms.Label();
             this.lblSKT = new System.Windows.Forms.Label();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -116,13 +119,14 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cbbHinhThuc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabSetup)).BeginInit();
             this.tabSetup.SuspendLayout();
             this.tabSMS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSDT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCTNoiDungDemo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbKieukitu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCTNoiDung.Properties)).BeginInit();
@@ -210,6 +214,9 @@
             // 
             // tabSMS
             // 
+            this.tabSMS.Controls.Add(this.labelControl20);
+            this.tabSMS.Controls.Add(this.txtSDT);
+            this.tabSMS.Controls.Add(this.simpleButton1);
             this.tabSMS.Controls.Add(this.labelControl19);
             this.tabSMS.Controls.Add(this.lblSKTDemo);
             this.tabSMS.Controls.Add(this.lblSKT);
@@ -227,6 +234,36 @@
             this.tabSMS.Name = "tabSMS";
             this.tabSMS.Size = new System.Drawing.Size(281, 530);
             this.tabSMS.Text = "Gửi SMS";
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(95, 448);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(173, 20);
+            this.txtSDT.TabIndex = 1074;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.message;
+            this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.simpleButton1.ImageOptions.ImageToTextIndent = 5;
+            this.simpleButton1.Location = new System.Drawing.Point(105, 474);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(118, 27);
+            this.simpleButton1.TabIndex = 1073;
+            this.simpleButton1.Text = "Test gửi tin nhắn";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Appearance.Options.UseTextOptions = true;
+            this.labelControl19.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.labelControl19.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl19.Location = new System.Drawing.Point(11, 343);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(186, 102);
+            this.labelControl19.TabIndex = 1072;
+            this.labelControl19.Text = resources.GetString("labelControl19.Text");
             // 
             // lblSKTDemo
             // 
@@ -1014,16 +1051,14 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
             // 
-            // labelControl19
+            // labelControl20
             // 
-            this.labelControl19.Appearance.Options.UseTextOptions = true;
-            this.labelControl19.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.labelControl19.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl19.Location = new System.Drawing.Point(11, 343);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(186, 102);
-            this.labelControl19.TabIndex = 1072;
-            this.labelControl19.Text = resources.GetString("labelControl19.Text");
+            this.labelControl20.Location = new System.Drawing.Point(4, 451);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(85, 13);
+            this.labelControl20.TabIndex = 1075;
+            this.labelControl20.Text = "Sdt nhận tin nhắn";
+            this.labelControl20.Click += new System.EventHandler(this.labelControl20_Click);
             // 
             // FrmSendSMS
             // 
@@ -1048,6 +1083,7 @@
             this.tabSetup.ResumeLayout(false);
             this.tabSMS.ResumeLayout(false);
             this.tabSMS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSDT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCTNoiDungDemo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbKieukitu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCTNoiDung.Properties)).EndInit();
@@ -1173,5 +1209,8 @@
         private DevExpress.XtraEditors.LookUpEdit cbbMauTinNhan;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.TextEdit txtSDT;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
     }
 }

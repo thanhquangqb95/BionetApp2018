@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BioNetDAL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BioNetDAL_vn_viettel_apismsbrand_CcApi" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://apismsbrand.viettel.vn:8998/bulkapi</Value>
+    </Setting>
+    <Setting Name="BioNetDAL_WebReference_CcApi" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://125.235.4.202:8998/bulkapi</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

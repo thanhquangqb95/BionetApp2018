@@ -1907,3 +1907,4 @@ D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CoreCompileInputs.cac
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CopyComplete
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.exe
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.pdb
+D:\Github\BionetApp2018\DataSync\bin\Debug\BioNetDAL.dll.config

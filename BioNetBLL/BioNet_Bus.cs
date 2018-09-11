@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Text;
+using BioNetDAL.WebReference;
 
 namespace BioNetBLL
 {
@@ -886,7 +887,11 @@ namespace BioNetBLL
             if (maDonVi.Equals("all")) maDonVi = string.Empty;
             return db.GetDanhSachChoTraKetQuaAll(tuNgay, denNgay, maDonVi, false);
         }
-
+        public static List<PSXN_TTTraKQ> GetDanhSachChoTraKetQuaAll()
+        {
+            var db = new DataObjects();
+            return db.GetDanhSachChoTraKetQuaAll();
+        }
         public static List<PsKetQua_ChiTiet> GetDanhSachKetQuaChiTiet(string maKQ, string maPhieu, string MaXN)
         {
             var db = new DataObjects();
@@ -2171,6 +2176,32 @@ namespace BioNetBLL
             return db.DuyetPhieuBT(phieu);
         }
         #endregion
+        public static PsReponseSMS  SMS(string content,string sdt,bool codau)
+        {
+            PsReponseSMS reponse = new PsReponseSMS();
+            BioNetDAL.WebReference.CcApi api = new BioNetDAL.WebReference.CcApi();
+            api.Timeout = 6000;
+            string iscodau;
+            if(codau)
+            {
+                iscodau = "T";
+            }
+            else
+            {
+                iscodau = "F";
+            }
+            
+            result r = api.wsCpMt("smsbrand_bionet", "123456a@", "BIONET", "1",sdt , sdt, "BIONET", "bulksms", content,iscodau);
+            if (r.result1 == 1)
+            {
+                reponse.Result = true;
+            }
+            else
+            {
+                reponse.Result = false;
+            }
+            return reponse;
+        }
     }
 
 

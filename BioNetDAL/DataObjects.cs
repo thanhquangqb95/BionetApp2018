@@ -2479,7 +2479,6 @@ namespace BioNetDAL
             gan.GhiChuChung = pm.GhiChuChung;
             gan.MaPhieu = pm.MaPhieu;
             db.PSCM_GanViTris.InsertOnSubmit(gan);
-
             db.SubmitChanges();
             //PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.MaPhieu == pm.MaPhieu && x.MaXetNghiem == pm.MaXetNghiem && x.IDLanGanXN==pm.IDLanGanXN
             //&& x.STT_bang == pm.STT_bang && x.MaGoiXN == pm.MaGoiXN && x.isDaDuyet != true);
@@ -2571,7 +2570,7 @@ namespace BioNetDAL
                                 case "MAYXN02":
                                     {
                                         int co = db.PSCM_GanViTriCTs.Where(x => x.IDLanGanXN.Equals(pm.IDLanGanXN) && x.isDaDuyet != true && x.IDMayXN.Equals("MAYXN02")).ToList().Count();
-                                        if (pm.MAYXN01.isTest == true && pm.MAYXN02.STT >= co)
+                                        if (pm.MAYXN02.isTest == true && pm.MAYXN02.STT >= co)
                                         {
                                             db.PSCM_GanViTriCTs.DeleteOnSubmit(vtc);
                                             db.PSCM_GanViTris.DeleteOnSubmit(viTri);
@@ -3835,6 +3834,30 @@ namespace BioNetDAL
                     }
                 }
 
+            }
+            catch (Exception ex)
+            {
+            }
+            return lst;
+        }
+        public List<PSXN_TTTraKQ> GetDanhSachChoTraKetQuaAll()
+        {
+
+            List<PSXN_TTTraKQ> lst = new List<PSXN_TTTraKQ>();
+            try
+            {
+               var results = db.PSXN_TraKetQuas.Where(p => p.isXoa == false && p.isDaDuyetKQ !=true).OrderBy(p => p.MaPhieu).ToList();
+               if (results.Count > 0)
+                {
+                   foreach (var result in results)
+                      {
+                          PSXN_TTTraKQ ls = new PSXN_TTTraKQ();
+                          var NhapLieu = db.PSChiDinhDichVus.FirstOrDefault(x => x.MaPhieu == result.MaPhieu && x.isXoa != true && x.IDGoiDichVu != "DVGXNL2").isDaNhapLieu;
+                          ConvertObjectToObject(result, ls);
+                          ls.isDaNhapLieu = NhapLieu != null ? NhapLieu : false;
+                          lst.Add(ls);
+                      }
+                }
             }
             catch (Exception ex)
             {
