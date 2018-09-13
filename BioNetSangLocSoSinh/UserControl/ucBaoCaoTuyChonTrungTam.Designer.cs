@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucBaoCaoTuyChonTrungTam));
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.lblTenDonVi = new System.Windows.Forms.Label();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.txtDonVi = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -139,7 +140,6 @@
             this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Loopup_IDGioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Loopup_TenGioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lblTenDonVi = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
@@ -193,6 +193,18 @@
             this.splitContainerControl1.SplitterPosition = 89;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // lblTenDonVi
+            // 
+            this.lblTenDonVi.AutoSize = true;
+            this.lblTenDonVi.BackColor = System.Drawing.Color.Transparent;
+            this.lblTenDonVi.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenDonVi.ForeColor = System.Drawing.Color.BlueViolet;
+            this.lblTenDonVi.Location = new System.Drawing.Point(341, 62);
+            this.lblTenDonVi.Name = "lblTenDonVi";
+            this.lblTenDonVi.Size = new System.Drawing.Size(67, 25);
+            this.lblTenDonVi.TabIndex = 1066;
+            this.lblTenDonVi.Text = "label3";
             // 
             // labelControl16
             // 
@@ -308,7 +320,7 @@
             // 
             this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThoat.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
+            this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
             this.btnThoat.Location = new System.Drawing.Point(1135, 95);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(94, 23);
@@ -320,7 +332,7 @@
             // 
             this.btnXuatExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXuatExcel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnXuatExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.Image")));
+            this.btnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.ImageOptions.Image")));
             this.btnXuatExcel.Location = new System.Drawing.Point(891, 37);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(94, 23);
@@ -332,7 +344,7 @@
             // 
             this.btnLayDuLieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLayDuLieu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnLayDuLieu.Image = ((System.Drawing.Image)(resources.GetObject("btnLayDuLieu.Image")));
+            this.btnLayDuLieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLayDuLieu.ImageOptions.Image")));
             this.btnLayDuLieu.Location = new System.Drawing.Point(891, 6);
             this.btnLayDuLieu.Name = "btnLayDuLieu";
             this.btnLayDuLieu.Size = new System.Drawing.Size(94, 23);
@@ -1291,18 +1303,6 @@
             this.Loopup_TenGioiTinh.Name = "Loopup_TenGioiTinh";
             this.Loopup_TenGioiTinh.Visible = true;
             this.Loopup_TenGioiTinh.VisibleIndex = 0;
-            // 
-            // lblTenDonVi
-            // 
-            this.lblTenDonVi.AutoSize = true;
-            this.lblTenDonVi.BackColor = System.Drawing.Color.Transparent;
-            this.lblTenDonVi.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenDonVi.ForeColor = System.Drawing.Color.BlueViolet;
-            this.lblTenDonVi.Location = new System.Drawing.Point(341, 62);
-            this.lblTenDonVi.Name = "lblTenDonVi";
-            this.lblTenDonVi.Size = new System.Drawing.Size(67, 25);
-            this.lblTenDonVi.TabIndex = 1066;
-            this.lblTenDonVi.Text = "label3";
             // 
             // ucBaoCaoTuyChonTrungTam
             // 

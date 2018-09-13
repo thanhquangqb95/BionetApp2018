@@ -7382,7 +7382,151 @@ namespace BioNetDAL
             }
             return lst;
         }
-        public List<PsBaoCaoTuyChon> GetBaoCaoTuyChon(DateTime NgayBD, DateTime NgayKT)
+        public List<PsBaoCaoTuyChon> GetBaoCaoTuyChonTrangThai(DateTime NgayBD, DateTime NgayKT,int TrangThai)
+        {
+            List<PsBaoCaoTuyChon> lst = new List<PsBaoCaoTuyChon>();
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction();
+            try
+            {
+                var data = db.PSTiepNhans.Where(x => x.isXoa != true && x.NgayTiepNhan.Value.Date >= NgayBD.Date && x.NgayTiepNhan.Value.Date <= NgayKT.Date).ToList();
+                if (data != null)
+                {
+                    foreach (var dat in data)
+                    {                        
+                        PSPhieuSangLoc phieu = db.PSPhieuSangLocs.FirstOrDefault(x => x.IDPhieu == dat.MaPhieu && x.IDCoSo == dat.MaDonVi && x.isXoa != true && x.TrangThaiMau == TrangThai);
+                        if (phieu != null)
+                        {
+                            PsBaoCaoTuyChon bc = new PsBaoCaoTuyChon();
+                            bc.IDPhieu = dat.MaPhieu;
+                            bc.MaDVCS = dat.MaDonVi;
+                            bc.GoiXN = phieu.MaGoiXN;
+                            bc.NoiLayMau = phieu.NoiLayMau;
+                            bc.DiaChiLayMau = phieu.DiaChiLayMau;
+                            bc.NguoiLayMau = phieu.TenNhanVienLayMau;
+                            bc.SdtNguoiLayMau = phieu.SDTNhanVienLayMau;
+                            bc.IDViTriLayMau = phieu.IDViTriLayMau;
+                            bc.MaXetNghiem = phieu.MaXetNghiem;
+                            bc.NgayTruyenMau = phieu.NgayTruyenMau;
+                            bc.IDCheDoDinhDuong = phieu.CheDoDinhDuong.ToString();
+                            bc.IDTinhTrangTre = phieu.TinhTrangLucLayMau.ToString();
+                            bc.IDChuongTrinh = phieu.IDChuongTrinh;
+                            bc.NgayNhanMau = phieu.NgayNhanMau;
+                            bc.NgayLayMau = phieu.NgayGioLayMau;
+                            bc.TinhTrangMau = phieu.isLayMauLan2;
+                            bc.DanhGiaMau = phieu.isKhongDat;
+                            bc.IDPhieuLan1 = phieu.IDPhieuLan1;
+                            bc.SLTruyenMau = phieu.SLTruyenMau!=null?phieu.SLTruyenMau.ToString():string.Empty;
+                            bc.LyDoMauKDat = phieu.LyDoKhongDat;
+                            bc.IDGoiDichVuChung = phieu.MaGoiXN;
+                            PSPatient pa = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(phieu.MaBenhNhan) && x.isXoa != true);
+                            if (pa != null)
+                            {
+                                bc.MaKhachHang = pa.MaKhachHang;
+                                bc.TenMe = pa.MotherName;
+                                bc.NamSinhMe = pa.MotherBirthday != null? pa.MotherBirthday.Value.Year.ToString():null;
+                                bc.SDTMe = pa.MotherPhoneNumber;
+                                if (!string.IsNullOrEmpty(pa.FatherName))
+                                {
+                                    bc.TenCha = pa.FatherName;
+                                    bc.NamSinhCha = pa.FatherBirthday != null ? pa.FatherBirthday.Value.Year.ToString():null;
+                                    bc.SDTCha = pa.FatherPhoneNumber;
+                                }
+                                bc.DiaChiGiaDinh = pa.DiaChi;
+                                bc.Para = pa.Para;
+                                bc.PPSinh = pa.PhuongPhapSinh.ToString();
+                                bc.TenTre = pa.TenBenhNhan;
+                                bc.TuoiThai = pa.TuanTuoiKhiSinh.ToString();
+                                bc.GioiTinh = pa.GioiTinh.ToString();
+                                bc.NoiSinh = pa.NoiSinh;
+                                bc.NgaySinh = pa.NgayGioSinh;
+                                bc.CanNang = pa.CanNang.ToString();
+                                bc.IDDanToc = pa.DanTocID.ToString();
+                            }
+                            PSXN_TraKetQua TraKQ = db.PSXN_TraKetQuas.FirstOrDefault(x => x.isXoa != true && x.MaGoiXN == bc.GoiXN && x.MaPhieu == x.MaPhieu);
+                            if (TraKQ != null)
+                            {
+                                bc.NgayXetNghiem = TraKQ.NgayLamXetNghiem;
+                                bc.NgayTraKQ = TraKQ.NgayCoKQ;
+                                bc.LuuY = phieu.LuuYPhieu + "\r\n" + TraKQ.GhiChuPhongXetNghiem;
+                                bc.GhiChu = TraKQ.GhiChu;
+                                try { bc.KLNguyCoCao = TraKQ.KetLuanTongQuat.Split('.')[1]; }
+                                catch { bc.KLNguyCoCao = string.Empty; }
+                                bc.KLBinhThuong = TraKQ.KetLuanTongQuat.Split('.')[0];
+                                PsCTKQBaoCaoTuyChon kq1 = new PsCTKQBaoCaoTuyChon();
+                                PsCTKQBaoCaoTuyChon kq2 = new PsCTKQBaoCaoTuyChon();
+                                PsCTKQBaoCaoTuyChon kqcuoi = new PsCTKQBaoCaoTuyChon();
+                                PsCTKQBaoCaoTuyChon klcuoi = new PsCTKQBaoCaoTuyChon();
+
+                                foreach (var ct in TraKQ.PSXN_TraKQ_ChiTiets)
+                                {
+                                    if (ct.IDThongSoXN.TrimEnd().Equals("CH"))
+                                    {
+                                        kq1.CH = ct.GiaTri1;
+                                        kq2.CH = ct.GiaTri2;
+                                        kqcuoi.CH = ct.GiaTriCuoi;
+                                        klcuoi.CH = ct.KetLuan;
+                                    }
+                                    else if (ct.IDThongSoXN.TrimEnd().Equals("CAH"))
+                                    {
+                                        kq1.CAH = ct.GiaTri1;
+                                        kq2.CAH = ct.GiaTri2;
+                                        kqcuoi.CAH = ct.GiaTriCuoi;
+                                        klcuoi.CAH = ct.KetLuan;
+                                    }
+                                    else if (ct.IDThongSoXN.TrimEnd().Equals("GAL"))
+                                    {
+                                        kq1.GAL = ct.GiaTri1;
+                                        kq2.GAL = ct.GiaTri2;
+                                        kqcuoi.GAL = ct.GiaTriCuoi;
+                                        klcuoi.GAL = ct.KetLuan;
+                                    }
+                                    else if (ct.IDThongSoXN.TrimEnd().Equals("G6PD"))
+                                    {
+                                        kq1.G6PD = ct.GiaTri1;
+                                        kq2.G6PD = ct.GiaTri2;
+                                        kqcuoi.G6PD = ct.GiaTriCuoi;
+                                        klcuoi.G6PD = ct.KetLuan;
+                                    }
+                                    else if (ct.IDThongSoXN.TrimEnd().Equals("PKU"))
+                                    {
+                                        kq1.PKU = ct.GiaTri1;
+                                        kq2.PKU = ct.GiaTri2;
+                                        kqcuoi.PKU = ct.GiaTriCuoi;
+                                        klcuoi.PKU = ct.KetLuan;
+                                    }
+                                    if (phieu.MaGoiXN.Equals("DVGXN0001"))
+                                    {
+                                        if (string.IsNullOrEmpty(bc.ChiSoXNLai))
+                                        {
+                                            bc.ChiSoXNLai = ct.TenThongSo;
+                                        }
+                                        else
+                                        {
+                                            bc.ChiSoXNLai = bc.ChiSoXNLai + ", " + ct.TenThongSo;
+                                        }
+
+                                    }
+                                }
+                                bc.ctkqL1 = kq1;
+                                bc.ctkqL2 = kq2;
+                                bc.ctkqCuoi = kqcuoi;
+                                bc.ctklCuoi = klcuoi;
+                            }
+                            lst.Add(bc);
+                        }
+                    }
+                }
+            
+            }
+            catch
+            {
+                db.Transaction.Rollback();
+                db.Connection.Close();
+            }
+            return lst;
+        }
+            public List<PsBaoCaoTuyChon> GetBaoCaoTuyChon(DateTime NgayBD, DateTime NgayKT)
         {
             List<PsBaoCaoTuyChon> lst = new List<PsBaoCaoTuyChon>();
             db.Connection.Open();

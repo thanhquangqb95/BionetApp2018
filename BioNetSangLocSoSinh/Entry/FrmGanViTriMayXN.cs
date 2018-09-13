@@ -187,159 +187,165 @@ namespace BioNetSangLocSoSinh.Entry
         #region Chỉnh sửa danh sách
         private void GanVaoDS(PSCMGanViTriChung ph)
         {
-            
-            PSCMGanViTriChung kq = new PSCMGanViTriChung();
-            bool gg = true;
-            List<PSCMGanViTriChung> vtN = vt.Where(x => x.MaXetNghiem != null).ToList();
-            kq = vtN.FirstOrDefault(x => x.MaXetNghiem.Equals(ph.MaXetNghiem));
-            if (kq == null)
+            try
             {
-                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-                if (ph.may.Count() > 0)
+                PSCMGanViTriChung kq = new PSCMGanViTriChung();
+                bool gg = true;
+                List<PSCMGanViTriChung> vtN = vt.Where(x => x.MaXetNghiem != null).ToList();
+                kq = vtN.FirstOrDefault(x => x.MaXetNghiem.Equals(ph.MaXetNghiem));
+                if (kq == null)
                 {
-                    PSCMGanViTriChung vtNull = vt.FirstOrDefault(x => x.MaXetNghiem == null && x.MaGoiXN == null);
-                    if (vtNull != null)
+                    SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                    if (ph.may.Count() > 0)
                     {
-                        int countMay = (from pscm in vtNull.may
-                                        join phcm in ph.may on pscm.IDMayXN equals phcm.IDMayXN
-                                        where pscm.IDMayXN == phcm.IDMayXN
-                                        select new { phcm }).Count();
-                        if (countMay == vtNull.may.Count())
+                        PSCMGanViTriChung vtNull = vt.FirstOrDefault(x => x.MaXetNghiem == null && x.MaGoiXN == null);
+                        if (vtNull != null)
                         {
-                            ph.STT_bang = vtNull.STT_bang;
-                            ph.IDRowGanXN = vtNull.IDRowGanXN;
-                            ph.IDLanGanXN = vtNull.IDLanGanXN;
-                            foreach(var pm in ph.may)
+                            int countMay = (from pscm in vtNull.may
+                                            join phcm in ph.may on pscm.IDMayXN equals phcm.IDMayXN
+                                            where pscm.IDMayXN == phcm.IDMayXN
+                                            select new { phcm }).Count();
+                            if (countMay == vtNull.may.Count())
                             {
-                                switch(pm.IDMayXN)
+                                ph.STT_bang = vtNull.STT_bang;
+                                ph.IDRowGanXN = vtNull.IDRowGanXN;
+                                ph.IDLanGanXN = vtNull.IDLanGanXN;
+                                foreach (var pm in ph.may)
                                 {
-                                    case "MAYXN01":
-                                        {
-                                            ph.MAYXN01 = vtNull.MAYXN01;
-                                            break;
-                                        }
-                                    case "MAYXN02":
-                                        {
-                                            ph.MAYXN02 = vtNull.MAYXN02;
-                                            break;
-                                        }
+                                    switch (pm.IDMayXN)
+                                    {
+                                        case "MAYXN01":
+                                            {
+                                                ph.MAYXN01 = vtNull.MAYXN01;
+                                                break;
+                                            }
+                                        case "MAYXN02":
+                                            {
+                                                ph.MAYXN02 = vtNull.MAYXN02;
+                                                break;
+                                            }
+                                    }
                                 }
+                                BioNet_Bus.SuaDanhSachGanXNLuu(ph);
+                                gg = true;
                             }
-                            BioNet_Bus.SuaDanhSachGanXNLuu(ph);
-                            gg = true;
+                            else
+                            {
+                                gg = false;
+                            }
                         }
                         else
                         {
                             gg = false;
                         }
-                    }
-                    else
-                    {
-                        gg = false;
-                    }
-                    if (gg != true)
-                    {
-                        string MaLanGan = BioNet_Bus.GetMaRowIDLanGanXN();
-                        ph.IDLanGanXN = MaLanGan;
-                        foreach (var ctm in ph.may)
+                        if (gg != true)
                         {
-                            do
+                            string MaLanGan = BioNet_Bus.GetMaRowIDLanGanXN();
+                            ph.IDLanGanXN = MaLanGan;
+                            foreach (var ctm in ph.may)
                             {
-                                long? SttCt = 1;
-                                switch (ctm.IDMayXN)
+                                do
                                 {
-                                    case "MAYXN01":
-                                        {
-                                            SttCt = vtMayXN01.Count() + 1;
-                                            break;
-                                        }
-                                    case "MAYXN02":
-                                        {
-                                            SttCt = vtMayXN02.Count() + 1;
-                                            break;
-                                        }
-                                    default:
-                                        break;
-                                }
-                                long? MaxViTri = mapViTri.Where(x => x.IDMayXN == ctm.IDMayXN).Count();
-                                long? STTVTGan = SttCt % MaxViTri == 0 ? MaxViTri : SttCt % MaxViTri;
-                                long? STTDia = 1;
-                                if (SttCt % MaxViTri == 0)
-                                {
-                                    STTDia = SttCt / MaxViTri ;
-                                }
-                                else
-                                {
-                                    STTDia = SttCt / MaxViTri + 1;
-                                }
-                                var VitriGan = mapViTri.FirstOrDefault(x => x.IDMayXN == ctm.IDMayXN && x.STT == STTVTGan);
-                                ViTriXN vtxn = new ViTriXN
-                                {
-                                    ViTri = STTDia + VitriGan.TenViTri,
-                                    STTDia = STTDia,
-                                    STT = SttCt,
-                                    STTVT = STTVTGan,
-                                    isTest = false
-                                };
-                                switch (ctm.IDMayXN)
-                                {
-                                    case "MAYXN01":
-                                        {
-
-                                            if (VitriGan.isTest != true)
+                                    long? SttCt = 1;
+                                    switch (ctm.IDMayXN)
+                                    {
+                                        case "MAYXN01":
                                             {
-                                                //vtMayXN01.Add(vtxn);
-                                                ph.MAYXN01 = new ViTriXN();
-                                                ph.MAYXN01.STTVT = vtxn.STTVT;
-                                                ph.MAYXN01.STTDia = vtxn.STTDia;
-                                                ph.MAYXN01.ViTri = vtxn.ViTri;
-                                                ph.MAYXN01.isTest = vtxn.isTest;
-                                                ph.MAYXN01.STT = vtxn.STT;
+                                                SttCt = vtMayXN01.Count() + 1;
+                                                break;
                                             }
-                                            break;
-                                        }
-                                    case "MAYXN02":
-                                        {
-                                            if (VitriGan.isTest != true)
+                                        case "MAYXN02":
                                             {
-                                                //vtMayXN02.Add(vtxn);
-                                                ph.MAYXN02 = new ViTriXN();
-                                                ph.MAYXN02.STTVT = vtxn.STTVT;
-                                                ph.MAYXN02.STTDia = vtxn.STTDia;
-                                                ph.MAYXN02.ViTri = vtxn.ViTri;
-                                                ph.MAYXN02.isTest = vtxn.isTest;
-                                                ph.MAYXN02.STT = vtxn.STT;
+                                                SttCt = vtMayXN02.Count() + 1;
+                                                break;
                                             }
-                                           
+                                        default:
                                             break;
-                                        }
-                                    default:
-                                        break;
-                                }
+                                    }
+                                    long? MaxViTri = mapViTri.Where(x => x.IDMayXN == ctm.IDMayXN).Count();
+                                    long? STTVTGan = SttCt % MaxViTri == 0 ? MaxViTri : SttCt % MaxViTri;
+                                    long? STTDia = 1;
+                                    if (SttCt % MaxViTri == 0)
+                                    {
+                                        STTDia = SttCt / MaxViTri;
+                                    }
+                                    else
+                                    {
+                                        STTDia = SttCt / MaxViTri + 1;
+                                    }
+                                    var VitriGan = mapViTri.FirstOrDefault(x => x.IDMayXN == ctm.IDMayXN && x.STT == STTVTGan);
+                                    ViTriXN vtxn = new ViTriXN
+                                    {
+                                        ViTri = STTDia + VitriGan.TenViTri,
+                                        STTDia = STTDia,
+                                        STT = SttCt,
+                                        STTVT = STTVTGan,
+                                        isTest = false
+                                    };
+                                    switch (ctm.IDMayXN)
+                                    {
+                                        case "MAYXN01":
+                                            {
 
-                            } while (GanViTriTest(ctm.IDMayXN));
-                        }
-                        ph.STT_bang = vt.Count + 1;
-                        PsReponse rs = BioNet_Bus.SaveGanXN(ph);
-                        var ganthaydoi=lstMauChoKQ.FirstOrDefault(x => x.MaPhieu == ph.MaPhieu && x.MaXetNghiem == ph.MaXetNghiem);
-                        if(ganthaydoi.isDaDuyet!=true)
-                        {
-                            ganthaydoi.isDaDuyet = false;
+                                                if (VitriGan.isTest != true)
+                                                {
+                                                    //vtMayXN01.Add(vtxn);
+                                                    ph.MAYXN01 = new ViTriXN();
+                                                    ph.MAYXN01.STTVT = vtxn.STTVT;
+                                                    ph.MAYXN01.STTDia = vtxn.STTDia;
+                                                    ph.MAYXN01.ViTri = vtxn.ViTri;
+                                                    ph.MAYXN01.isTest = vtxn.isTest;
+                                                    ph.MAYXN01.STT = vtxn.STT;
+                                                }
+                                                break;
+                                            }
+                                        case "MAYXN02":
+                                            {
+                                                if (VitriGan.isTest != true)
+                                                {
+                                                    //vtMayXN02.Add(vtxn);
+                                                    ph.MAYXN02 = new ViTriXN();
+                                                    ph.MAYXN02.STTVT = vtxn.STTVT;
+                                                    ph.MAYXN02.STTDia = vtxn.STTDia;
+                                                    ph.MAYXN02.ViTri = vtxn.ViTri;
+                                                    ph.MAYXN02.isTest = vtxn.isTest;
+                                                    ph.MAYXN02.STT = vtxn.STT;
+                                                }
+
+                                                break;
+                                            }
+                                        default:
+                                            break;
+                                    }
+
+                                } while (GanViTriTest(ctm.IDMayXN));
+                            }
+                            ph.STT_bang = vt.Count + 1;
+                            PsReponse rs = BioNet_Bus.SaveGanXN(ph);
+                            if (ph.MaPhieu != null)
+                            {
+                                var ganthaydoi = lstMauChoKQ.FirstOrDefault(x => x.MaPhieu == ph.MaPhieu && x.MaXetNghiem == ph.MaXetNghiem);
+                                if (ganthaydoi.isDaDuyet != true)
+                                {
+                                    ganthaydoi.isDaDuyet = false;
+                                }
+                            }
                         }
                     }
-
+                    // LoadLstChuaKetQua();
+                    LoadDSDaLuu();
+                    SplashScreenManager.CloseForm();
                 }
-               // LoadLstChuaKetQua();
-                LoadDSDaLuu();
-                SplashScreenManager.CloseForm();
+                else
+                {
+                    DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã xét nghiệm đã tồn tại trong danh sách.");
+                    warning.ShowDialog();
+                }
             }
-            else
+            catch
             {
-                DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã xét nghiệm đã tồn tại trong danh sách.");
-                warning.ShowDialog();
-            }
 
-
+            }           
         }
         private bool GanViTriTest(string IDMayXN)
 

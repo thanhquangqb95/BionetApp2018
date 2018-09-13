@@ -285,18 +285,71 @@ namespace BioNetSangLocSoSinh.Entry
         {
             try
             {
-                BioNet_Bus.SMS(this.cbbCTNoiDungDemo.Text,txtSDT.Text, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                PsReponseSMS res = BioNet_Bus.SMS(this.cbbCTNoiDungDemo.Text,txtSDT.Text, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                if(res.Result)
+                {
+                    XtraMessageBox.Show("Gửi tin nhắn thàng công.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    XtraMessageBox.Show("Gửi tin nhắn lỗi "+res.StringError, "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
 
             }
-
         }
 
         private void labelControl20_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDanhSachKiTu_Click(object sender, EventArgs e)
+        {
+            PanelDanhSachKiTu.Visible = true;
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            PanelDanhSachKiTu.Visible = false;
+        }
+
+        private void btnSendSMS_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<PsReponseSMS> resct = new List<PsReponseSMS>();
+                List<PSDanhSachGuiSMS> lisok = new List<PSDanhSachGuiSMS>();
+                foreach (var ls in lstsms)
+                {
+                    string sdt = string.IsNullOrEmpty(ls.SDTNguoiNhan) ? "" : ls.SDTNguoiNhan;
+                    PsReponseSMS res = BioNet_Bus.SMS(ls.NoiDungTinNhan, sdt, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                    if (res.Result)
+                    {
+                        lisok.Add(ls);
+                    }
+                    else
+                    {
+                        
+                        
+                    }
+                }
+                if(lisok.Count>0)
+                {
+                    foreach (var ls in lisok)
+                    {
+                        lstsms.Remove(ls);
+                        GCCTDSGuiTinNhan.DataSource = null;
+                        GCCTDSGuiTinNhan.DataSource = lstsms;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            XtraMessageBox.Show("Gửi tin nhắn lỗi ", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              }
         }
     }
 }

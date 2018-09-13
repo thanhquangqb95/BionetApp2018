@@ -391,6 +391,7 @@ namespace BioNetDAL
                     ph.SLTruyenMau = ttphieu.Phieu.SLTruyenMau;
                     ph.TenNhanVienLayMau = ttphieu.Phieu.TenNhanVienLayMau;
                     ph.TinhTrangLucLayMau = ttphieu.Phieu.TinhTrangLucLayMau;
+                    MaBN = ph.MaBenhNhan;
                     if (ph.TrangThaiMau < 2)
                     {
                         ph.IDPhieuLan1 = ttphieu.Phieu.IDPhieuLan1;
@@ -429,9 +430,9 @@ namespace BioNetDAL
                     db.SubmitChanges();
                 }
 
-                if (!string.IsNullOrEmpty(ttphieu.Phieu.MaBenhNhan))
+                if (!string.IsNullOrEmpty(MaBN))
                 {
-                    var bn = db.PSPatients.FirstOrDefault(p => p.MaBenhNhan == ttphieu.Phieu.MaBenhNhan && p.isXoa != true);
+                    var bn = db.PSPatients.FirstOrDefault(p => p.MaBenhNhan == MaBN && p.isXoa != true);
                     if (bn != null)
                     {
                         bn.FatherName = ttphieu.Benhnhan.FatherName;
@@ -821,6 +822,20 @@ namespace BioNetDAL
 
             }
             catch { return false; }
+        }
+        public static PsReponse InsertSMSNumber(PSDanhSachGuiSMS sms )
+        {
+            PsReponse psReponse = new PsReponse();
+            try
+            {
+                PSSMS pSSMS = new PSSMS();
+
+            }
+            catch
+            {
+                
+            }
+            return psReponse;
         }
         #endregion
     }

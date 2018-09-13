@@ -307,7 +307,7 @@ namespace BioNetSangLocSoSinh.Entry
                 this.radioGroupGoiXN.EditValue = data.Phieu.MaGoiXN;
                 this.txtGioLayMau.EditValue = Convert.ToDateTime(data.Phieu.NgayGioLayMau.Value.ToString("HH:mm"));
                 this.txtNgayLayMau.EditValue = data.Phieu.NgayGioLayMau.Value.Date;
-                this.txtNguoiLayMau.Text = data.Phieu.TenNhanVienLayMau;
+                this.txtNguoiLayMau.Text = String.IsNullOrEmpty(data.Phieu.TenNhanVienLayMau) ? this.txtNguoiLayMau.Text : data.Phieu.TenNhanVienLayMau; 
                 this.txtDiaChiNoiLayMau.Text = data.Phieu.DiaChiLayMau;
                 this.txtNoiLayMau.Text = data.Phieu.NoiLayMau;
                 this.radioDanhGia.SelectedIndex = (data.Phieu.isKhongDat ?? false) == false ? 0 : 1;
@@ -320,8 +320,8 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtTenCha.Text = data.Benhnhan.FatherName;
                     this.txtSDTMe.Text = data.Benhnhan.MotherPhoneNumber;
                     this.txtSDTCha.Text = data.Benhnhan.FatherPhoneNumber;
-                    this.txtNamSinhMe.EditValue = data.Benhnhan.MotherBirthday.Value;
-                    this.txtNamSinhCha.EditValue = data.Benhnhan.FatherBirthday.Value;
+                    this.txtNamSinhMe.EditValue = data.Benhnhan.MotherBirthday;
+                    this.txtNamSinhCha.EditValue = data.Benhnhan.FatherBirthday;
                     this.txtMaBenhNhan.Text = data.Benhnhan.MaBenhNhan;
                     this.txtMaKhachHang.Text = data.Benhnhan.MaKhachHang;
                     this.txtDiaChiGiaDinh.Text = data.Benhnhan.DiaChi;
@@ -647,21 +647,29 @@ namespace BioNetSangLocSoSinh.Entry
 
         #region Duyệt phiếu
         private void btnDuyet_Click(object sender, EventArgs e)
-        {    
-            if(this.radioGroupGoiXN.EditValue!=null)
+        {
+            try
             {
-                if (this.KiemTraCacTruongDuLieuTruocKhiLuu())
+                if (this.radioGroupGoiXN.EditValue != null)
                 {
-                    if(int.Parse(txtTrangThaiMau.EditValue.ToString())<2)
+                    if (this.KiemTraCacTruongDuLieuTruocKhiLuu())
                     {
-                        this.LuuThongTinPhieu(true);
+                        if (int.Parse(txtTrangThaiMau.EditValue.ToString()) < 2)
+                        {
+                            this.LuuThongTinPhieu(true);
+                        }
                     }
                 }
+                else
+                {
+                    DiaglogFrm.FrmNotData notData = new DiaglogFrm.FrmNotData("Yêu cầu chọn gói xét nghiệm");
+                }
             }
-            else
+            catch
             {
-                DiaglogFrm.FrmNotData notData = new DiaglogFrm.FrmNotData("Yêu cầu chọn gói xét nghiệm");
+
             }
+            
         }
 
         private bool KiemTraCacTruongDuLieuTruocKhiLuu()
@@ -695,15 +703,15 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 this.txtGioLayMau.BackColor = Color.White;
             }
-            if (string.IsNullOrEmpty(this.txtTenCha.Text.Trim()))
-            {
-                this.txtTenCha.BackColor = Color.PapayaWhip;
-                kq = false;
-            }
-            else
-            {
-                this.txtTenCha.BackColor = Color.White;
-            }
+            //if (string.IsNullOrEmpty(this.txtTenCha.Text.Trim()))
+            //{
+            //    this.txtTenCha.BackColor = Color.PapayaWhip;
+            //    kq = false;
+            //}
+            //else
+            //{
+            //    this.txtTenCha.BackColor = Color.White;
+            //}
 
             if (string.IsNullOrEmpty(this.txtNamSinhMe.Text))
             {
@@ -722,24 +730,26 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtNamSinhMe.BackColor = Color.White;
                 }
             }
-
-            if (string.IsNullOrEmpty(this.txtNamSinhCha.Text))
+            if(!string.IsNullOrEmpty(this.txtTenCha.Text))
             {
-                this.txtNamSinhCha.BackColor = Color.PapayaWhip;
-                kq = false;
-            }
-            else
-            {
-                if (int.Parse(this.txtNamSinhCha.Text.ToString()) < 1945)
+                if (string.IsNullOrEmpty(this.txtNamSinhCha.Text))
                 {
                     this.txtNamSinhCha.BackColor = Color.PapayaWhip;
                     kq = false;
                 }
                 else
                 {
-                    this.txtNamSinhMe.BackColor = Color.White;
+                    if (int.Parse(this.txtNamSinhCha.Text.ToString()) < 1945)
+                    {
+                        this.txtNamSinhCha.BackColor = Color.PapayaWhip;
+                        kq = false;
+                    }
+                    else
+                    {
+                        this.txtNamSinhMe.BackColor = Color.White;
+                    }
                 }
-            }
+            }          
 
             if (string.IsNullOrEmpty(this.txtDiaChiGiaDinh.Text.Trim()))
             {
@@ -838,8 +848,6 @@ namespace BioNetSangLocSoSinh.Entry
 
             }
 
-
-
             if (!string.IsNullOrEmpty(this.txtCanNang.Text))
             {
                 if (int.Parse(this.txtCanNang.Text.ToString()) < 500)
@@ -864,8 +872,7 @@ namespace BioNetSangLocSoSinh.Entry
             else
             {
                 this.txtTuanTuoi.BackColor = Color.PapayaWhip;
-            }
-            
+            }           
 
             if (!this.txtSoLuongTruyenMau.ReadOnly && int.Parse(this.cbbTTTre.EditValue.ToString() ?? "0") > 3)
             {
@@ -926,7 +933,6 @@ namespace BioNetSangLocSoSinh.Entry
             {
 
                 PSTTPhieu phieu = new PSTTPhieu();
-
                 string lydokhongdat = string.Empty;
                 #region TT bệnh nhân
                 PSPatient benhNhan = new PSPatient();
@@ -2074,6 +2080,33 @@ namespace BioNetSangLocSoSinh.Entry
         private void btnCapNhatDanhSachDaDuyet_Click(object sender, EventArgs e)
         {
             LoadDanhSachDaDuyet();
+        }
+
+        private void txtGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.radioGroupGoiXN.EditValue != null)
+                {
+                    if (this.KiemTraCacTruongDuLieuTruocKhiLuu())
+                    {
+                            this.LuuThongTinPhieu(true);
+                    }
+                }
+                else
+                {
+                    DiaglogFrm.FrmNotData notData = new DiaglogFrm.FrmNotData("Yêu cầu chọn gói xét nghiệm");
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

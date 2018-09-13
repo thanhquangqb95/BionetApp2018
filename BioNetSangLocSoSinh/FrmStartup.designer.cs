@@ -164,6 +164,7 @@
             this.picBackgroun = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem66 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -274,9 +275,10 @@
             this.bttTiengViet,
             this.bttTiengAnh,
             this.barButtonItem62,
-            this.barButtonItem65});
+            this.barButtonItem65,
+            this.barButtonItem66});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 29;
+            this.ribbon.MaxItemId = 30;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1,
@@ -1260,6 +1262,7 @@
             this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem49);
             this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem50);
             this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem51);
+            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem66);
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             this.ribbonPageGroup12.Text = "Báo Cáo Đơn Vị";
             this.ribbonPageGroup12.Visible = false;
@@ -1430,6 +1433,13 @@
             this.imageCollection1.Images.SetKeyName(0, "vietnam.png");
             this.imageCollection1.Images.SetKeyName(1, "united-kingdom.png");
             // 
+            // barButtonItem66
+            // 
+            this.barButtonItem66.Caption = "Báo cáo trạng thái";
+            this.barButtonItem66.Id = 29;
+            this.barButtonItem66.Name = "barButtonItem66";
+            this.barButtonItem66.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem66_ItemClick);
+            // 
             // FrmStartup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1589,5 +1599,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem62;
         private DevExpress.XtraBars.BarButtonItem barButtonItem65;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem66;
     }
 }

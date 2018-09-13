@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSendSMS));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSendSMS));
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cbbHinhThuc = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tabSetup = new DevExpress.XtraTab.XtraTabControl();
             this.tabSMS = new DevExpress.XtraTab.XtraTabPage();
+            this.btnDanhSachKiTu = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.txtSDT = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.lblSKTDemo = new System.Windows.Forms.Label();
             this.lblSKT = new System.Windows.Forms.Label();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -75,9 +78,16 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cbbDoiTuong = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnSendSMS = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.PanelDanhSachKiTu = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.imageComboBoxEdit10 = new DevExpress.XtraEditors.ImageComboBoxEdit();
@@ -95,11 +105,24 @@
             this.GCCTDSGuiTinNhan = new DevExpress.XtraGrid.GridControl();
             this.GVCTDSGuiTinNhan = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
@@ -119,7 +142,6 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cbbHinhThuc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -141,10 +163,17 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbNoiDung.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDoiTuong.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PanelDanhSachKiTu)).BeginInit();
+            this.PanelDanhSachKiTu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit12.Properties)).BeginInit();
@@ -153,6 +182,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCCTDSGuiTinNhan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVCTDSGuiTinNhan)).BeginInit();
+            this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CbbNguyCo.Properties)).BeginInit();
@@ -192,7 +228,7 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.tabSetup);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl4);
+            this.splitContainerControl1.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl3);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1319, 666);
@@ -214,10 +250,10 @@
             // 
             // tabSMS
             // 
+            this.tabSMS.Controls.Add(this.btnDanhSachKiTu);
             this.tabSMS.Controls.Add(this.labelControl20);
             this.tabSMS.Controls.Add(this.txtSDT);
             this.tabSMS.Controls.Add(this.simpleButton1);
-            this.tabSMS.Controls.Add(this.labelControl19);
             this.tabSMS.Controls.Add(this.lblSKTDemo);
             this.tabSMS.Controls.Add(this.lblSKT);
             this.tabSMS.Controls.Add(this.labelControl8);
@@ -235,9 +271,31 @@
             this.tabSMS.Size = new System.Drawing.Size(281, 530);
             this.tabSMS.Text = "Gửi SMS";
             // 
+            // btnDanhSachKiTu
+            // 
+            this.btnDanhSachKiTu.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.add__1_;
+            this.btnDanhSachKiTu.Location = new System.Drawing.Point(239, 187);
+            this.btnDanhSachKiTu.Name = "btnDanhSachKiTu";
+            this.btnDanhSachKiTu.Size = new System.Drawing.Size(23, 23);
+            toolTipTitleItem1.Text = "Thêm mẫu tin nhắn";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnDanhSachKiTu.SuperTip = superToolTip1;
+            this.btnDanhSachKiTu.TabIndex = 1076;
+            this.btnDanhSachKiTu.Text = "Chi tiết kí tự viết tắt";
+            this.btnDanhSachKiTu.Click += new System.EventHandler(this.btnDanhSachKiTu_Click);
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(11, 343);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(85, 13);
+            this.labelControl20.TabIndex = 1075;
+            this.labelControl20.Text = "Sdt nhận tin nhắn";
+            this.labelControl20.Click += new System.EventHandler(this.labelControl20_Click);
+            // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(95, 448);
+            this.txtSDT.Location = new System.Drawing.Point(101, 343);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(173, 20);
             this.txtSDT.TabIndex = 1074;
@@ -247,23 +305,12 @@
             this.simpleButton1.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.message;
             this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.simpleButton1.ImageOptions.ImageToTextIndent = 5;
-            this.simpleButton1.Location = new System.Drawing.Point(105, 474);
+            this.simpleButton1.Location = new System.Drawing.Point(101, 370);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(118, 27);
             this.simpleButton1.TabIndex = 1073;
             this.simpleButton1.Text = "Test gửi tin nhắn";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // labelControl19
-            // 
-            this.labelControl19.Appearance.Options.UseTextOptions = true;
-            this.labelControl19.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.labelControl19.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl19.Location = new System.Drawing.Point(11, 343);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(186, 102);
-            this.labelControl19.TabIndex = 1072;
-            this.labelControl19.Text = resources.GetString("labelControl19.Text");
             // 
             // lblSKTDemo
             // 
@@ -334,9 +381,9 @@
             this.btnCancel.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.edit__1_;
             this.btnCancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCancel.ImageOptions.ImageToTextIndent = 5;
-            this.btnCancel.Location = new System.Drawing.Point(146, 184);
+            this.btnCancel.Location = new System.Drawing.Point(134, 184);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(118, 27);
+            this.btnCancel.Size = new System.Drawing.Size(99, 27);
             this.btnCancel.TabIndex = 15;
             this.btnCancel.Text = "Sửa";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -347,9 +394,9 @@
             this.btnAdd.Location = new System.Drawing.Point(251, 8);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(23, 23);
-            toolTipTitleItem1.Text = "Thêm mẫu tin nhắn";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnAdd.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Thêm mẫu tin nhắn";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnAdd.SuperTip = superToolTip2;
             this.btnAdd.TabIndex = 16;
             // 
             // btnOK
@@ -488,9 +535,9 @@
             this.simpleButton3.Location = new System.Drawing.Point(244, 7);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(23, 23);
-            toolTipTitleItem2.Text = "Thêm mẫu tin nhắn";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.simpleButton3.SuperTip = superToolTip2;
+            toolTipTitleItem3.Text = "Thêm mẫu tin nhắn";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.simpleButton3.SuperTip = superToolTip3;
             this.simpleButton3.TabIndex = 1080;
             // 
             // simpleButton4
@@ -592,20 +639,62 @@
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Đối tượng nhận tin nhắn";
             // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 99);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.Size = new System.Drawing.Size(1029, 567);
+            this.xtraTabControl1.TabIndex = 4;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage1,
+            this.xtraTabPage2});
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.panelControl2);
+            this.xtraTabPage1.Controls.Add(this.groupControl4);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1024, 542);
+            this.xtraTabPage1.Text = "Danh sách gửi";
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.btnSendSMS);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 508);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(1024, 34);
+            this.panelControl2.TabIndex = 3;
+            // 
+            // btnSendSMS
+            // 
+            this.btnSendSMS.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.message;
+            this.btnSendSMS.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnSendSMS.ImageOptions.ImageToTextIndent = 5;
+            this.btnSendSMS.Location = new System.Drawing.Point(347, 4);
+            this.btnSendSMS.Name = "btnSendSMS";
+            this.btnSendSMS.Size = new System.Drawing.Size(118, 24);
+            this.btnSendSMS.TabIndex = 1077;
+            this.btnSendSMS.Text = "Test gửi tin nhắn";
+            this.btnSendSMS.Click += new System.EventHandler(this.btnSendSMS_Click);
+            // 
             // groupControl4
             // 
             this.groupControl4.Controls.Add(this.groupControl5);
             this.groupControl4.Controls.Add(this.GCCTDSGuiTinNhan);
-            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(0, 99);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1029, 567);
+            this.groupControl4.Size = new System.Drawing.Size(1024, 508);
             this.groupControl4.TabIndex = 2;
             this.groupControl4.Text = "Chi tiết danh sách gửi tin nhắn";
             // 
             // groupControl5
             // 
             this.groupControl5.Controls.Add(this.simpleButton8);
+            this.groupControl5.Controls.Add(this.PanelDanhSachKiTu);
             this.groupControl5.Controls.Add(this.simpleButton6);
             this.groupControl5.Controls.Add(this.simpleButton7);
             this.groupControl5.Controls.Add(this.imageComboBoxEdit10);
@@ -620,7 +709,7 @@
             this.groupControl5.Controls.Add(this.memoEdit5);
             this.groupControl5.Controls.Add(this.labelControl12);
             this.groupControl5.Controls.Add(this.imageComboBoxEdit9);
-            this.groupControl5.Location = new System.Drawing.Point(206, 93);
+            this.groupControl5.Location = new System.Drawing.Point(258, 108);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Size = new System.Drawing.Size(303, 375);
             this.groupControl5.TabIndex = 2;
@@ -637,6 +726,40 @@
             this.simpleButton8.Size = new System.Drawing.Size(87, 22);
             this.simpleButton8.TabIndex = 30;
             this.simpleButton8.Text = "Sửa";
+            // 
+            // PanelDanhSachKiTu
+            // 
+            this.PanelDanhSachKiTu.Controls.Add(this.simpleButton5);
+            this.PanelDanhSachKiTu.Controls.Add(this.labelControl19);
+            this.PanelDanhSachKiTu.Location = new System.Drawing.Point(23, 104);
+            this.PanelDanhSachKiTu.Name = "PanelDanhSachKiTu";
+            this.PanelDanhSachKiTu.Size = new System.Drawing.Size(254, 156);
+            this.PanelDanhSachKiTu.TabIndex = 3;
+            this.PanelDanhSachKiTu.Text = "Danh sách kí tự";
+            this.PanelDanhSachKiTu.Visible = false;
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.simpleButton5.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
+            this.simpleButton5.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.simpleButton5.ImageOptions.ImageToTextIndent = 0;
+            this.simpleButton5.Location = new System.Drawing.Point(223, 0);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(26, 22);
+            this.simpleButton5.TabIndex = 1073;
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Appearance.Options.UseTextOptions = true;
+            this.labelControl19.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.labelControl19.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl19.Location = new System.Drawing.Point(18, 26);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(186, 102);
+            this.labelControl19.TabIndex = 1072;
+            this.labelControl19.Text = resources.GetString("labelControl19.Text");
             // 
             // simpleButton6
             // 
@@ -776,7 +899,7 @@
             this.GCCTDSGuiTinNhan.Location = new System.Drawing.Point(2, 22);
             this.GCCTDSGuiTinNhan.MainView = this.GVCTDSGuiTinNhan;
             this.GCCTDSGuiTinNhan.Name = "GCCTDSGuiTinNhan";
-            this.GCCTDSGuiTinNhan.Size = new System.Drawing.Size(1025, 543);
+            this.GCCTDSGuiTinNhan.Size = new System.Drawing.Size(1020, 484);
             this.GCCTDSGuiTinNhan.TabIndex = 1;
             this.GCCTDSGuiTinNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVCTDSGuiTinNhan});
@@ -785,13 +908,20 @@
             // 
             this.GVCTDSGuiTinNhan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.gridColumn2,
             this.gridColumn3,
+            this.gridColumn2,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn10});
             this.GVCTDSGuiTinNhan.GridControl = this.GCCTDSGuiTinNhan;
             this.GVCTDSGuiTinNhan.Name = "GVCTDSGuiTinNhan";
+            this.GVCTDSGuiTinNhan.OptionsSelection.MultiSelect = true;
+            this.GVCTDSGuiTinNhan.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.GVCTDSGuiTinNhan.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
+            this.GVCTDSGuiTinNhan.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.GVCTDSGuiTinNhan.OptionsSelection.ShowCheckBoxSelectorInPrintExport = DevExpress.Utils.DefaultBoolean.True;
+            this.GVCTDSGuiTinNhan.OptionsView.ShowFooter = true;
+            this.GVCTDSGuiTinNhan.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
@@ -799,17 +929,8 @@
             this.gridColumn1.FieldName = "TenTre";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 147;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Sđt gửi";
-            this.gridColumn2.FieldName = "SDTNguoiNhan";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 116;
             // 
             // gridColumn3
             // 
@@ -817,8 +938,17 @@
             this.gridColumn3.FieldName = "MaPhieu";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 3;
             this.gridColumn3.Width = 100;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Sđt gửi";
+            this.gridColumn2.FieldName = "SDTNguoiNhan";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.Width = 116;
             // 
             // gridColumn4
             // 
@@ -826,7 +956,7 @@
             this.gridColumn4.FieldName = "TenNguoiNhan";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             this.gridColumn4.Width = 163;
             // 
             // gridColumn5
@@ -835,7 +965,7 @@
             this.gridColumn5.FieldName = "NoiDungTinNhan";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 5;
             this.gridColumn5.Width = 1095;
             // 
             // gridColumn10
@@ -844,7 +974,132 @@
             this.gridColumn10.FieldName = "SoKiTu";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 5;
+            this.gridColumn10.VisibleIndex = 6;
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.groupControl2);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1024, 542);
+            this.xtraTabPage2.Text = "Danh sách gửi thành công";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.panelControl1);
+            this.groupControl2.Controls.Add(this.gridControl1);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(1024, 542);
+            this.groupControl2.TabIndex = 3;
+            this.groupControl2.Text = "Chi tiết danh sách gửi tin nhắn";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.simpleButton9);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(2, 509);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1020, 31);
+            this.panelControl1.TabIndex = 2;
+            // 
+            // simpleButton9
+            // 
+            this.simpleButton9.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.message;
+            this.simpleButton9.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.simpleButton9.ImageOptions.ImageToTextIndent = 5;
+            this.simpleButton9.Location = new System.Drawing.Point(347, 4);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(118, 24);
+            this.simpleButton9.TabIndex = 1077;
+            this.simpleButton9.Text = "Test gửi tin nhắn";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gridControl1.Location = new System.Drawing.Point(2, 22);
+            this.gridControl1.MainView = this.gridView2;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1020, 487);
+            this.gridControl1.TabIndex = 1;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17});
+            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.ShowFooter = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Tên trẻ";
+            this.gridColumn11.FieldName = "TenTre";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 0;
+            this.gridColumn11.Width = 147;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Sđt gửi";
+            this.gridColumn12.FieldName = "SDTNguoiNhan";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 116;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Mã phiếu";
+            this.gridColumn13.FieldName = "MaPhieu";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 2;
+            this.gridColumn13.Width = 100;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Tên người nhận";
+            this.gridColumn14.FieldName = "TenNguoiNhan";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 3;
+            this.gridColumn14.Width = 163;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Nội dung gửi";
+            this.gridColumn15.FieldName = "NoiDungTinNhan";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 4;
+            this.gridColumn15.Width = 1095;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "Số kí tự";
+            this.gridColumn16.FieldName = "SoKiTu";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 5;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Tình Trạng gửi";
+            this.gridColumn17.FieldName = "isResult";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 6;
             // 
             // groupControl3
             // 
@@ -874,9 +1129,9 @@
             this.btnClear.Location = new System.Drawing.Point(963, 28);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(46, 24);
-            toolTipTitleItem3.Text = "Bỏ lọc";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.btnClear.SuperTip = superToolTip3;
+            toolTipTitleItem4.Text = "Bỏ lọc";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.btnClear.SuperTip = superToolTip4;
             this.btnClear.TabIndex = 1065;
             // 
             // btnExport
@@ -1051,15 +1306,6 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
             // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(4, 451);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(85, 13);
-            this.labelControl20.TabIndex = 1075;
-            this.labelControl20.Text = "Sdt nhận tin nhắn";
-            this.labelControl20.Click += new System.EventHandler(this.labelControl20_Click);
-            // 
             // FrmSendSMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1100,11 +1346,18 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbNoiDung.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDoiTuong.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PanelDanhSachKiTu)).EndInit();
+            this.PanelDanhSachKiTu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit12.Properties)).EndInit();
@@ -1113,6 +1366,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCCTDSGuiTinNhan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVCTDSGuiTinNhan)).EndInit();
+            this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
@@ -1212,5 +1472,25 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.TextEdit txtSDT;
         private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.SimpleButton btnDanhSachKiTu;
+        private DevExpress.XtraEditors.GroupControl PanelDanhSachKiTu;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnSendSMS;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton9;
     }
 }

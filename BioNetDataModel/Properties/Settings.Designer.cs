@@ -182,5 +182,16 @@ namespace BioNetModel.Properties {
                 return ((string)(this["Bio_TestSyncConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=BIONET_LETHANHQ\\SQLEXPRESS;Initial Catalog=Bio_TestSync_Cu;Integrated" +
+            " Security=True")]
+        public string Bio_TestSync_CuConnectionString {
+            get {
+                return ((string)(this["Bio_TestSync_CuConnectionString"]));
+            }
+        }
     }
 }

@@ -1709,7 +1709,19 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongTinTiepNhanTheoMaPhieu(maPhieu);
         }
-        public static List<PsBaoCaoTuyChon> GetBaoCaoTuyChon(DateTime NgayBD,DateTime NgayKT,string MaDonVi)
+        public static List<PsBaoCaoTuyChon> GetBaoCaoTuyChonTrangThai(DateTime NgayBD, DateTime NgayKT,string MaDonVi, int TrangThai)
+        {
+            var db = new DataObjects();
+            if (MaDonVi == "all")
+            {
+                return db.GetBaoCaoTuyChonTrangThai(NgayBD, NgayKT,TrangThai);
+            }
+            else
+            {
+                return db.GetBaoCaoTuyChonTrangThai(NgayBD, NgayKT, TrangThai);
+            }
+        }
+            public static List<PsBaoCaoTuyChon> GetBaoCaoTuyChon(DateTime NgayBD,DateTime NgayKT,string MaDonVi)
         {
             var db = new DataObjects();
             if(MaDonVi=="all")
@@ -2184,21 +2196,23 @@ namespace BioNetBLL
             string iscodau;
             if(codau)
             {
-                iscodau = "T";
+                iscodau = "1";
             }
             else
             {
-                iscodau = "F";
+                iscodau = "0";
             }
             
             result r = api.wsCpMt("smsbrand_bionet", "123456a@", "BIONET", "1",sdt , sdt, "BIONET", "bulksms", content,iscodau);
             if (r.result1 == 1)
             {
                 reponse.Result = true;
+                
             }
             else
             {
                 reponse.Result = false;
+                reponse.StringError = r.message;
             }
             return reponse;
         }

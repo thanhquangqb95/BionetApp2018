@@ -61,10 +61,7 @@ namespace BioNetSangLocSoSinh.UserControl
             public string TenGioiTinh { get; set; }
             public string GioiTinh { get; set; }
         }
-
-
-
-
+        
         private void LoadDuLieuDieuKienLoc()
         {
             var DMThongSo = BioNet_Bus.GetThongSoXN();

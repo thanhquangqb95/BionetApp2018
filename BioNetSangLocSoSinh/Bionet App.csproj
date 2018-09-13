@@ -540,6 +540,12 @@
     <Compile Include="FrmReports\FrmBaoCaoTaiChinhCTDonVi.Designer.cs">
       <DependentUpon>FrmBaoCaoTaiChinhCTDonVi.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReports\FrmBaoCaoTuyChonCT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReports\FrmBaoCaoTuyChonCT.Designer.cs">
+      <DependentUpon>FrmBaoCaoTuyChonCT.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReports\FrmBaoCaoTuyChon_TrungTam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -986,6 +992,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReports\FrmBaoCaoTaiChinhCTDonVi.resx">
       <DependentUpon>FrmBaoCaoTaiChinhCTDonVi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReports\FrmBaoCaoTuyChonCT.resx">
+      <DependentUpon>FrmBaoCaoTuyChonCT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReports\FrmBaoCaoTuyChon_TrungTam.resx">
       <DependentUpon>FrmBaoCaoTuyChon_TrungTam.cs</DependentUpon>
