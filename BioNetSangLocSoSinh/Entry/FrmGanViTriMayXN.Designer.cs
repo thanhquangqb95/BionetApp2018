@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -409,9 +409,9 @@
             this.btnClear.Location = new System.Drawing.Point(211, 154);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Bỏ lọc";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnClear.SuperTip = superToolTip2;
             this.btnClear.TabIndex = 33;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -428,9 +428,9 @@
             this.btnViewGhiChu.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.btnViewGhiChu.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.btnViewGhiChu.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem2.Text = "Nội dung viết tắt";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnViewGhiChu.SuperTip = superToolTip2;
+            toolTipTitleItem5.Text = "Nội dung viết tắt";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            this.btnViewGhiChu.SuperTip = superToolTip5;
             this.btnViewGhiChu.TabIndex = 37;
             this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
@@ -689,6 +689,7 @@
             // GCDanhSachGanViTri
             // 
             this.GCDanhSachGanViTri.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GCDanhSachGanViTri.Font = new System.Drawing.Font("Tahoma", 12F);
             this.GCDanhSachGanViTri.Location = new System.Drawing.Point(2, 54);
             this.GCDanhSachGanViTri.MainView = this.GVDanhSachGanViTri;
             this.GCDanhSachGanViTri.Name = "GCDanhSachGanViTri";
@@ -704,6 +705,8 @@
             // 
             // GVDanhSachGanViTri
             // 
+            this.GVDanhSachGanViTri.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GVDanhSachGanViTri.Appearance.Row.Options.UseFont = true;
             this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GVDanhSachGanViTri.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black;

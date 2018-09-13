@@ -1283,10 +1283,12 @@
     <None Include="Resources\garbage.png" />
     <None Include="Resources\info.png" />
     <None Include="Resources\folder.png" />
+    <None Include="Resources\mail %281%29.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />
     <None Include="Resources\message.png" />
+    <None Include="Resources\no-phone.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

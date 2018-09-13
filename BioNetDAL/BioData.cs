@@ -823,20 +823,7 @@ namespace BioNetDAL
             }
             catch { return false; }
         }
-        public static PsReponse InsertSMSNumber(PSDanhSachGuiSMS sms )
-        {
-            PsReponse psReponse = new PsReponse();
-            try
-            {
-                PSSMS pSSMS = new PSSMS();
-
-            }
-            catch
-            {
-                
-            }
-            return psReponse;
-        }
+        
         #endregion
     }
 }

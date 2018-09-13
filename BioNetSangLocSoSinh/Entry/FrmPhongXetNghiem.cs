@@ -284,7 +284,6 @@ namespace BioNetSangLocSoSinh.Entry
                         //string MaKetQ = this.GVThongTinKQ.GetRowCellValue(i, this.col_MaKQ).ToString();
                         //string MaXN = this.GVThongTinKQ.GetRowCellValue(i, this.col_maXN).ToString();
                         string TenKyThuat = this.GVThongTinKQ.GetRowCellValue(i, this.col_TenKyThuat).ToString();
-
                         CTKQ.DonViTinh = DonviTinh;
                         CTKQ.GiaTri = GiaTri;
                         CTKQ.GiaTriTrungBinh = GiaTriTB;
@@ -1076,23 +1075,31 @@ namespace BioNetSangLocSoSinh.Entry
                 try
                 {
                     DataTable tab = new DataTable();
-                    IExcelDataReader excelReader;
+                    IExcelDataReader excelReader=null;
                     List<PSEmportExcelKQ> lstkq = new List<PSEmportExcelKQ>();
-
                     using (var stream = File.Open(of.FileName, FileMode.Open, FileAccess.Read))
-                    {
-
-                        using (var reader = ExcelReaderFactory.CreateOpenXmlReader(stream))
+                    
+                        if (of.FileName.EndsWith(".xls"))
                         {
-                            excelReader = reader;
-
+                            excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+                        }
+                        else if (of.FileName.EndsWith(".xlsx"))
+                        {
+                            excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                        }
+                        else
+                        {
+                            throw new Exception("File format is not supported");
+                        }
+                        using (excelReader)
+                        {
                             try
                             {
                                 excelReader.IsFirstRowAsColumnNames = true;
                                 var result = excelReader.AsDataSet();
-                                var workSheet = reader.AsDataSet().Tables[1];
+                                var workSheet = excelReader.AsDataSet().Tables[1];
                                 DataTable tabstt = new DataTable();
-                                tabstt = result.Tables[1];
+                                tabstt = workSheet;
                                 int rowstt = tabstt.Rows.Count;
                                 int colstt = tabstt.Columns.Count;
                                 List<PSDuLieuThongSoViTri> ssstv = new List<PSDuLieuThongSoViTri>();
@@ -1136,7 +1143,7 @@ namespace BioNetSangLocSoSinh.Entry
                                                     case "TSH (CH)":
                                                         {
                                                             string gt = string.Empty;
-                                                            gt = tab.Rows[r][tab.Columns[2]].ToString();
+                                                            gt = tab.Rows[r][tab.Columns[3]].ToString();
                                                             switch (gt.TrimEnd())
                                                             {
                                                                 case "<":
@@ -1156,7 +1163,7 @@ namespace BioNetSangLocSoSinh.Entry
                                                     case "17 OHP (CAH)":
                                                         {
                                                             string gt = string.Empty;
-                                                            gt = tab.Rows[r][tab.Columns[2]].ToString();
+                                                            gt = tab.Rows[r][tab.Columns[3]].ToString();
                                                             switch (gt.TrimEnd())
                                                             {
                                                                 case "<":
@@ -1285,9 +1292,6 @@ namespace BioNetSangLocSoSinh.Entry
                                 XtraMessageBox.Show("Lỗi khi đọc file! \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
-
-
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -1309,7 +1313,20 @@ namespace BioNetSangLocSoSinh.Entry
 
                     using (var stream = File.Open(of.FileName, FileMode.Open, FileAccess.Read))
                     {
-                        using (var reader = ExcelReaderFactory.CreateOpenXmlReader(stream))
+                        IExcelDataReader reader = null;
+                        if (of.FileName.EndsWith(".xls"))
+                        {
+                            reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                        }
+                        else if (of.FileName.EndsWith(".xlsx"))
+                        {
+                            reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                        }
+                        else
+                        {
+                            throw new Exception("File format is not supported");
+                        }
+                        using (reader)
                         {
                             excelReader = reader;
 
@@ -1362,7 +1379,7 @@ namespace BioNetSangLocSoSinh.Entry
                                                 }
                                                 b3ct.GAL = value1;
                                                 string value2 = string.Empty;
-                                                value2 = tab.Rows[r][tab.Columns[12]].ToString();
+                                                value2 = tab.Rows[r][tab.Columns[11]].ToString();
                                                 if (value2.Equals("???"))
                                                 {
                                                     value2 = string.Empty;
@@ -1497,7 +1514,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (this.validateData)
+           // if (this.validateData)
                 this.LuuKetQua();
         }
       

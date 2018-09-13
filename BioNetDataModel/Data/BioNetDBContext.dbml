@@ -691,6 +691,16 @@
       <Association Name="PSXN_TraKetQua_PSXN_TraKQ_ChiTiet" Member="PSXN_TraKetQua" ThisKey="MaPhieu" OtherKey="MaPhieu" Type="PSXN_TraKetQua" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PSSMS" Member="PSSMS">
+    <Type Name="PSSMS">
+      <Column Name="RowIDNumber" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaKhachHang" Type="System.String" DbType="NChar(16)" CanBeNull="true" />
+      <Column Name="isDaGui" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GroupSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="PSSM_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
+    </Type>
+  </Table>
   <Table Name="dbo.PSSMSLog" Member="PSSMSLogs">
     <Type Name="PSSMSLog">
       <Column Name="RowIDSMSlog" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -701,17 +711,8 @@
       <Column Name="SMSError" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="IDNhanVienSend" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NumberMobile" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
       <Association Name="PSSM_PSSMSLog" Member="PSSMS" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMS" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PSSMS" Member="PSSMS">
-    <Type Name="PSSMS">
-      <Column Name="RowIDNumber" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaKhachHang" Type="System.String" DbType="NChar(16)" CanBeNull="true" />
-      <Column Name="NumberMobile" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="isSuDung" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="GroupSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="PSSM_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
     </Type>
   </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">

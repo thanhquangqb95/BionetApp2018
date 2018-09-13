@@ -110,6 +110,8 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -182,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCCTDSGuiTinNhan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVCTDSGuiTinNhan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -899,6 +902,8 @@
             this.GCCTDSGuiTinNhan.Location = new System.Drawing.Point(2, 22);
             this.GCCTDSGuiTinNhan.MainView = this.GVCTDSGuiTinNhan;
             this.GCCTDSGuiTinNhan.Name = "GCCTDSGuiTinNhan";
+            this.GCCTDSGuiTinNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
             this.GCCTDSGuiTinNhan.Size = new System.Drawing.Size(1020, 484);
             this.GCCTDSGuiTinNhan.TabIndex = 1;
             this.GCCTDSGuiTinNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -912,7 +917,8 @@
             this.gridColumn2,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumn10});
+            this.gridColumn10,
+            this.gridColumn18});
             this.GVCTDSGuiTinNhan.GridControl = this.GCCTDSGuiTinNhan;
             this.GVCTDSGuiTinNhan.Name = "GVCTDSGuiTinNhan";
             this.GVCTDSGuiTinNhan.OptionsSelection.MultiSelect = true;
@@ -930,7 +936,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 147;
+            this.gridColumn1.Width = 77;
             // 
             // gridColumn3
             // 
@@ -939,7 +945,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 100;
+            this.gridColumn3.Width = 52;
             // 
             // gridColumn2
             // 
@@ -948,7 +954,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 116;
+            this.gridColumn2.Width = 60;
             // 
             // gridColumn4
             // 
@@ -957,7 +963,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 163;
+            this.gridColumn4.Width = 85;
             // 
             // gridColumn5
             // 
@@ -966,7 +972,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 1095;
+            this.gridColumn5.Width = 450;
             // 
             // gridColumn10
             // 
@@ -974,7 +980,25 @@
             this.gridColumn10.FieldName = "SoKiTu";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 6;
+            this.gridColumn10.VisibleIndex = 7;
+            this.gridColumn10.Width = 109;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Tình trạng gửi";
+            this.gridColumn18.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn18.FieldName = "isDaGui";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 6;
+            this.gridColumn18.Width = 95;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.PictureChecked = global::BioNetSangLocSoSinh.Properties.Resources.mail__1_;
+            this.repositoryItemCheckEdit1.PictureUnchecked = global::BioNetSangLocSoSinh.Properties.Resources.no_phone;
             // 
             // xtraTabPage2
             // 
@@ -1366,6 +1390,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageComboBoxEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCCTDSGuiTinNhan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVCTDSGuiTinNhan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -1492,5 +1517,7 @@
         private DevExpress.XtraEditors.SimpleButton btnSendSMS;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
     }
 }

@@ -325,16 +325,17 @@ namespace BioNetSangLocSoSinh.Entry
                 foreach (var ls in lstsms)
                 {
                     string sdt = string.IsNullOrEmpty(ls.SDTNguoiNhan) ? "" : ls.SDTNguoiNhan;
-                    PsReponseSMS res = BioNet_Bus.SMS(ls.NoiDungTinNhan, sdt, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
-                    if (res.Result)
+                    if(!string.IsNullOrEmpty(sdt))
                     {
-                        lisok.Add(ls);
+                        PsReponseSMS res = BioNet_Bus.SMS(ls.NoiDungTinNhan, sdt, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                        if (res.Result)
+                        {
+                            lisok.Add(ls);
+                          
+                        }
+                        BioNet_Bus.InsertSMSNumber(ls, res, emp.EmployeeCode);
                     }
-                    else
-                    {
-                        
-                        
-                    }
+                   
                 }
                 if(lisok.Count>0)
                 {

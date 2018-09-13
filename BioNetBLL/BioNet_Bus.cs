@@ -2216,6 +2216,11 @@ namespace BioNetBLL
             }
             return reponse;
         }
+        public static PsReponse InsertSMSNumber(PSDanhSachGuiSMS sms,PsReponseSMS kq,string MaNV)
+        {
+            var db = new DataObjects();
+            return db.InsertSMSNumber(sms,kq,MaNV);
+        }
     }
 
 

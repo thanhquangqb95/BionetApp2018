@@ -174,12 +174,12 @@ namespace BioNetModel.Data
     partial void InsertPSXN_TraKQ_ChiTiet(PSXN_TraKQ_ChiTiet instance);
     partial void UpdatePSXN_TraKQ_ChiTiet(PSXN_TraKQ_ChiTiet instance);
     partial void DeletePSXN_TraKQ_ChiTiet(PSXN_TraKQ_ChiTiet instance);
-    partial void InsertPSSMSLog(PSSMSLog instance);
-    partial void UpdatePSSMSLog(PSSMSLog instance);
-    partial void DeletePSSMSLog(PSSMSLog instance);
     partial void InsertPSSMS(PSSMS instance);
     partial void UpdatePSSMS(PSSMS instance);
     partial void DeletePSSMS(PSSMS instance);
+    partial void InsertPSSMSLog(PSSMSLog instance);
+    partial void UpdatePSSMSLog(PSSMSLog instance);
+    partial void DeletePSSMSLog(PSSMSLog instance);
     #endregion
 		
 		public BioNetDBContextDataContext() : 
@@ -596,19 +596,19 @@ namespace BioNetModel.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<PSSMSLog> PSSMSLogs
-		{
-			get
-			{
-				return this.GetTable<PSSMSLog>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PSSMS> PSSMS
 		{
 			get
 			{
 				return this.GetTable<PSSMS>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PSSMSLog> PSSMSLogs
+		{
+			get
+			{
+				return this.GetTable<PSSMSLog>();
 			}
 		}
 		
@@ -14735,6 +14735,192 @@ namespace BioNetModel.Data
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSSMS")]
+	public partial class PSSMS : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _RowIDNumber;
+		
+		private string _MaKhachHang;
+		
+		private System.Nullable<bool> _isDaGui;
+		
+		private string _GroupSMS;
+		
+		private System.Nullable<long> _IDMauSend;
+		
+		private EntitySet<PSSMSLog> _PSSMSLogs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRowIDNumberChanging(long value);
+    partial void OnRowIDNumberChanged();
+    partial void OnMaKhachHangChanging(string value);
+    partial void OnMaKhachHangChanged();
+    partial void OnisDaGuiChanging(System.Nullable<bool> value);
+    partial void OnisDaGuiChanged();
+    partial void OnGroupSMSChanging(string value);
+    partial void OnGroupSMSChanged();
+    partial void OnIDMauSendChanging(System.Nullable<long> value);
+    partial void OnIDMauSendChanged();
+    #endregion
+		
+		public PSSMS()
+		{
+			this._PSSMSLogs = new EntitySet<PSSMSLog>(new Action<PSSMSLog>(this.attach_PSSMSLogs), new Action<PSSMSLog>(this.detach_PSSMSLogs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowIDNumber", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long RowIDNumber
+		{
+			get
+			{
+				return this._RowIDNumber;
+			}
+			set
+			{
+				if ((this._RowIDNumber != value))
+				{
+					this.OnRowIDNumberChanging(value);
+					this.SendPropertyChanging();
+					this._RowIDNumber = value;
+					this.SendPropertyChanged("RowIDNumber");
+					this.OnRowIDNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKhachHang", DbType="NChar(16)")]
+		public string MaKhachHang
+		{
+			get
+			{
+				return this._MaKhachHang;
+			}
+			set
+			{
+				if ((this._MaKhachHang != value))
+				{
+					this.OnMaKhachHangChanging(value);
+					this.SendPropertyChanging();
+					this._MaKhachHang = value;
+					this.SendPropertyChanged("MaKhachHang");
+					this.OnMaKhachHangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDaGui", DbType="Bit")]
+		public System.Nullable<bool> isDaGui
+		{
+			get
+			{
+				return this._isDaGui;
+			}
+			set
+			{
+				if ((this._isDaGui != value))
+				{
+					this.OnisDaGuiChanging(value);
+					this.SendPropertyChanging();
+					this._isDaGui = value;
+					this.SendPropertyChanged("isDaGui");
+					this.OnisDaGuiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupSMS", DbType="NVarChar(50)")]
+		public string GroupSMS
+		{
+			get
+			{
+				return this._GroupSMS;
+			}
+			set
+			{
+				if ((this._GroupSMS != value))
+				{
+					this.OnGroupSMSChanging(value);
+					this.SendPropertyChanging();
+					this._GroupSMS = value;
+					this.SendPropertyChanged("GroupSMS");
+					this.OnGroupSMSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMauSend", DbType="BigInt")]
+		public System.Nullable<long> IDMauSend
+		{
+			get
+			{
+				return this._IDMauSend;
+			}
+			set
+			{
+				if ((this._IDMauSend != value))
+				{
+					this.OnIDMauSendChanging(value);
+					this.SendPropertyChanging();
+					this._IDMauSend = value;
+					this.SendPropertyChanged("IDMauSend");
+					this.OnIDMauSendChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PSSM_PSSMSLog", Storage="_PSSMSLogs", ThisKey="RowIDNumber", OtherKey="RowIDNumber")]
+		public EntitySet<PSSMSLog> PSSMSLogs
+		{
+			get
+			{
+				return this._PSSMSLogs;
+			}
+			set
+			{
+				this._PSSMSLogs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PSSMSLogs(PSSMSLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.PSSMS = this;
+		}
+		
+		private void detach_PSSMSLogs(PSSMSLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.PSSMS = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSSMSLog")]
 	public partial class PSSMSLog : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -14756,6 +14942,8 @@ namespace BioNetModel.Data
 		private string _IDNhanVienSend;
 		
 		private System.Nullable<long> _IDMauSend;
+		
+		private string _NumberMobile;
 		
 		private EntityRef<PSSMS> _PSSMS;
 		
@@ -14779,6 +14967,8 @@ namespace BioNetModel.Data
     partial void OnIDNhanVienSendChanged();
     partial void OnIDMauSendChanging(System.Nullable<long> value);
     partial void OnIDMauSendChanged();
+    partial void OnNumberMobileChanging(string value);
+    partial void OnNumberMobileChanged();
     #endregion
 		
 		public PSSMSLog()
@@ -14951,6 +15141,26 @@ namespace BioNetModel.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberMobile", DbType="NChar(15)")]
+		public string NumberMobile
+		{
+			get
+			{
+				return this._NumberMobile;
+			}
+			set
+			{
+				if ((this._NumberMobile != value))
+				{
+					this.OnNumberMobileChanging(value);
+					this.SendPropertyChanging();
+					this._NumberMobile = value;
+					this.SendPropertyChanged("NumberMobile");
+					this.OnNumberMobileChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PSSM_PSSMSLog", Storage="_PSSMS", ThisKey="RowIDNumber", OtherKey="RowIDNumber", IsForeignKey=true)]
 		public PSSMS PSSMS
 		{
@@ -15003,192 +15213,6 @@ namespace BioNetModel.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSSMS")]
-	public partial class PSSMS : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _RowIDNumber;
-		
-		private string _MaKhachHang;
-		
-		private System.Nullable<int> _NumberMobile;
-		
-		private System.Nullable<bool> _isSuDung;
-		
-		private string _GroupSMS;
-		
-		private EntitySet<PSSMSLog> _PSSMSLogs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRowIDNumberChanging(long value);
-    partial void OnRowIDNumberChanged();
-    partial void OnMaKhachHangChanging(string value);
-    partial void OnMaKhachHangChanged();
-    partial void OnNumberMobileChanging(System.Nullable<int> value);
-    partial void OnNumberMobileChanged();
-    partial void OnisSuDungChanging(System.Nullable<bool> value);
-    partial void OnisSuDungChanged();
-    partial void OnGroupSMSChanging(string value);
-    partial void OnGroupSMSChanged();
-    #endregion
-		
-		public PSSMS()
-		{
-			this._PSSMSLogs = new EntitySet<PSSMSLog>(new Action<PSSMSLog>(this.attach_PSSMSLogs), new Action<PSSMSLog>(this.detach_PSSMSLogs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowIDNumber", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long RowIDNumber
-		{
-			get
-			{
-				return this._RowIDNumber;
-			}
-			set
-			{
-				if ((this._RowIDNumber != value))
-				{
-					this.OnRowIDNumberChanging(value);
-					this.SendPropertyChanging();
-					this._RowIDNumber = value;
-					this.SendPropertyChanged("RowIDNumber");
-					this.OnRowIDNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKhachHang", DbType="NChar(16)")]
-		public string MaKhachHang
-		{
-			get
-			{
-				return this._MaKhachHang;
-			}
-			set
-			{
-				if ((this._MaKhachHang != value))
-				{
-					this.OnMaKhachHangChanging(value);
-					this.SendPropertyChanging();
-					this._MaKhachHang = value;
-					this.SendPropertyChanged("MaKhachHang");
-					this.OnMaKhachHangChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberMobile", DbType="Int")]
-		public System.Nullable<int> NumberMobile
-		{
-			get
-			{
-				return this._NumberMobile;
-			}
-			set
-			{
-				if ((this._NumberMobile != value))
-				{
-					this.OnNumberMobileChanging(value);
-					this.SendPropertyChanging();
-					this._NumberMobile = value;
-					this.SendPropertyChanged("NumberMobile");
-					this.OnNumberMobileChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isSuDung", DbType="Bit")]
-		public System.Nullable<bool> isSuDung
-		{
-			get
-			{
-				return this._isSuDung;
-			}
-			set
-			{
-				if ((this._isSuDung != value))
-				{
-					this.OnisSuDungChanging(value);
-					this.SendPropertyChanging();
-					this._isSuDung = value;
-					this.SendPropertyChanged("isSuDung");
-					this.OnisSuDungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupSMS", DbType="NVarChar(50)")]
-		public string GroupSMS
-		{
-			get
-			{
-				return this._GroupSMS;
-			}
-			set
-			{
-				if ((this._GroupSMS != value))
-				{
-					this.OnGroupSMSChanging(value);
-					this.SendPropertyChanging();
-					this._GroupSMS = value;
-					this.SendPropertyChanged("GroupSMS");
-					this.OnGroupSMSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PSSM_PSSMSLog", Storage="_PSSMSLogs", ThisKey="RowIDNumber", OtherKey="RowIDNumber")]
-		public EntitySet<PSSMSLog> PSSMSLogs
-		{
-			get
-			{
-				return this._PSSMSLogs;
-			}
-			set
-			{
-				this._PSSMSLogs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_PSSMSLogs(PSSMSLog entity)
-		{
-			this.SendPropertyChanging();
-			entity.PSSMS = this;
-		}
-		
-		private void detach_PSSMSLogs(PSSMSLog entity)
-		{
-			this.SendPropertyChanging();
-			entity.PSSMS = null;
 		}
 	}
 	

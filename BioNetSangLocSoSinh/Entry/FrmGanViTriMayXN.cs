@@ -589,6 +589,11 @@ namespace BioNetSangLocSoSinh.Entry
                 GridView View = sender as GridView;
                 if (e.RowHandle >= 0)
                 {
+                    int max = vt.Count();
+                    if(e.RowHandle==max-1)
+                    {
+                        e.Appearance.Font=  new Font(e.Appearance.Font, FontStyle.Bold);
+                    }
                     string Stt = View.GetRowCellDisplayText(e.RowHandle, col_STT);
                     if (e.Column.FieldName == col_MaGoiXetNghiem.FieldName)
                     {
