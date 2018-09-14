@@ -408,10 +408,10 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongKePhieuMail(maphieu);
         }
-        public static List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV,  string NoiDung, int HinhThuc,bool KieuKiTu)
+        public static List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV,  string NoiDung, int HinhThuc,bool KieuKiTu,int TrangThaiGui,bool SDT)
         {
             var db = new DataObjects();
-            return db.GetDanhSachGuiSMS(TuNgay,DenNgay,TrangThaiPhieu,nguyco,MaDV,NoiDung,HinhThuc,KieuKiTu);
+            return db.GetDanhSachGuiSMS(TuNgay,DenNgay,TrangThaiPhieu,nguyco,MaDV,NoiDung,HinhThuc,KieuKiTu,TrangThaiGui,SDT);
         }
         public static List<PSDotChuanDoan> GetDanhSachDotChanDoanCuaBenhNhan(string MaBenhNhan)
         {

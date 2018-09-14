@@ -682,6 +682,12 @@
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.Designer.cs">
       <DependentUpon>rptReportSoDoCapMa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepostsSMS\FrmDSSMS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsSMS\FrmDSSMS.Designer.cs">
+      <DependentUpon>FrmDSSMS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1075,6 +1081,9 @@
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.resx">
       <DependentUpon>rptReportSoDoCapMa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsSMS\FrmDSSMS.resx">
+      <DependentUpon>FrmDSSMS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.resx">
       <DependentUpon>rptBaoCaoChiTietTrungTamTheoDonVi.cs</DependentUpon>
     </EmbeddedResource>
@@ -1212,6 +1221,7 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\text %281%29.png" />
     <None Include="Resources\text.png" />
     <None Include="Resources\send-mail.png" />
     <None Include="Resources\recycle %281%29.png" />

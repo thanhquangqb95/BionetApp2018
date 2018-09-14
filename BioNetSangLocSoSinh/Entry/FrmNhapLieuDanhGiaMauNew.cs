@@ -259,7 +259,6 @@ namespace BioNetSangLocSoSinh.Entry
             PSTTPhieu data = BioNet_Bus.GetTTPhieu(maPhieu, maDonVi);
             this.LoadGoiXetNghiem(maDonVi);
             this.LoadDanhSachDichVu();
-            this.btnDuyet.Enabled = true;
             this.txtMaPhieuHienThi.Text = maPhieu;
             this.txtMaPhieu.Text = maPhieu;
             this.cbbDonViChon.EditValue = maDonVi;
@@ -350,14 +349,18 @@ namespace BioNetSangLocSoSinh.Entry
             else
             { 
                 this.txtDiaChiNoiLayMau.Text = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonVi)).DiaChiDVCS.ToString();
-                this.txtNoiLayMau.Text = cbbDonViChon.Text.ToString();              
+                this.txtNoiLayMau.Text = cbbDonViChon.Text.ToString();  
+                this.btnDuyet.Enabled = true;
+                this.btnDuyet.Visible = true;
+                this.btnLuu.Enabled = false;
+                this.btnLuu.Visible = false;
+
             }
             KiemTraIsDaNhapLieu();
             ValidateNheCan();
             ValidateSinhNon();
             ValidateGuiMauTre(string.Empty, string.Empty);
             ValidateThuMauSom(string.Empty, string.Empty);
-
         }
 
         private void LoadGoiXetNghiem(string maDonVi)
@@ -654,10 +657,7 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     if (this.KiemTraCacTruongDuLieuTruocKhiLuu())
                     {
-                        if (int.Parse(txtTrangThaiMau.EditValue.ToString()) < 2)
-                        {
                             this.LuuThongTinPhieu(true);
-                        }
                     }
                 }
                 else
@@ -746,7 +746,7 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     else
                     {
-                        this.txtNamSinhMe.BackColor = Color.White;
+                        this.txtNamSinhCha.BackColor = Color.White;
                     }
                 }
             }          
@@ -788,10 +788,10 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 try
                 {
-                    if (((DateTime)this.txtNgayLayMau.EditValue).Date > ((DateTime)this.txtNgayTiepNhan.EditValue).Date)
+                    if (((DateTime)this.txtNgayLayMau.EditValue) > ((DateTime)this.txtNgayTiepNhan.EditValue))
                     {
                         XtraMessageBox.Show("Ngày lấy mẫu không được lớn hơn ngày nhận mẫu!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
+                        kq= false;
                     }
                 }
                 catch

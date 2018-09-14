@@ -20,7 +20,7 @@ namespace BioNetModel
         public int MauGui { get; set; }
         public int SoKiTu { get; set; }
         public string MaKhachHang { get; set; }
-        public bool isDaGui { get; set; }
+        public bool? isDaGui { get; set; }
 
     }
 }

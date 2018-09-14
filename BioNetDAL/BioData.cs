@@ -463,8 +463,8 @@ namespace BioNetDAL
                         PSPatient bnh = new PSPatient();
                         bnh = ttphieu.Benhnhan;
                         if (string.IsNullOrEmpty(bnh.MaKhachHang))
-                            bn.MaKhachHang = GetNewMaKhachHang(ttphieu.Phieu.IDCoSo, SoBanDau());
-                        bn.isDongBo = false;
+                            bnh.MaKhachHang = GetNewMaKhachHang(ttphieu.Phieu.IDCoSo, SoBanDau());
+                        bnh.isDongBo = false;
                         bnh.isXoa = false;
                         db.PSPatients.InsertOnSubmit(bnh);
                         db.SubmitChanges();

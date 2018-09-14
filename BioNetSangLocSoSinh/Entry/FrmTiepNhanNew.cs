@@ -166,16 +166,23 @@ namespace BioNetSangLocSoSinh.Entry
                 string maDonVi = this.cbbDonViChoDuyet.EditValue.ToString();
                 if (!string.IsNullOrEmpty(txtMaPhieuTiepNhan.Text.Trim()))
                 {
-                    this.CheckPhieuTiepNhan(txtMaPhieuTiepNhan.Text.Trim(), maDonVi);
-                    this.txtMaPhieuTiepNhan.Reset();
-                    this.txtMaPhieuTiepNhan.Focus();
+                    if(!maDonVi.Equals("all"))
+                    {
+                        this.CheckPhieuTiepNhan(txtMaPhieuTiepNhan.Text.Trim(), maDonVi);
+                        this.txtMaPhieuTiepNhan.Reset();
+                        this.txtMaPhieuTiepNhan.Focus();
+                    }
+                    else
+                    {
+                        DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Yêu cầu chọn đơn vị.");
+                        notData.ShowDialog();
+                    }                 
                 }
                 else
                 {
                     DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Yêu cầu nhập mã phiếu tiếp nhận.");
                     notData.ShowDialog();
                 }
-
             }
         }
 

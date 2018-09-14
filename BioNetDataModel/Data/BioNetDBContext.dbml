@@ -698,7 +698,7 @@
       <Column Name="isDaGui" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="GroupSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="PSSM_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
+      <Association Name="PSSMS_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
     </Type>
   </Table>
   <Table Name="dbo.PSSMSLog" Member="PSSMSLogs">
@@ -712,7 +712,18 @@
       <Column Name="IDNhanVienSend" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="NumberMobile" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
-      <Association Name="PSSM_PSSMSLog" Member="PSSMS" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMS" IsForeignKey="true" />
+      <Association Name="PSSMS_PSSMSLog" Member="PSSMS" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSDanhMucMauSMS" Member="PSDanhMucMauSMS">
+    <Type Name="PSDanhMucMauSMS">
+      <Column Name="RowIDMauSMS" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NameMauSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HinhThucGuiTN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DoiTuongNhanTN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoidungGui" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MauNoiDungGui" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TieudeNoiDungGui" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">

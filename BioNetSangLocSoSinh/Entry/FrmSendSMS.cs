@@ -98,7 +98,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbDoiTuong.SelectedIndex = 0;
             this.cbbNoiDung.SelectedIndex = 1;
             this.cbbTrangThaiPhieu.SelectedIndex = 0;
+            this.cbbTrangThaiGui.SelectedIndex = 0;
             this.CbbNguyCo.SelectedIndex = 0;
+            this.cbbSDT.EditValue = true;
             this.dllNgay.tungay.Value = DateTime.Now;
             this.dllNgay.denngay.Value = DateTime.Now;
             this.lstChiCuc.Clear();
@@ -124,7 +126,8 @@ namespace BioNetSangLocSoSinh.Entry
             if(cbbHinhThuc.EditValue.ToString().Equals("0"))
             {
                 lstsms = BioNet_Bus.GetDanhSachGuiSMS(this.dllNgay.tungay.Value.Date, this.dllNgay.denngay.Value.Date, int.Parse(cbbTrangThaiPhieu.EditValue.ToString()),
-                int.Parse(this.CbbNguyCo.EditValue.ToString()), madv, cbbCTNoiDung.Text, int.Parse(cbbDoiTuong.EditValue.ToString()),bool.Parse(cbbKieukitu.EditValue.ToString()));
+                int.Parse(this.CbbNguyCo.EditValue.ToString()), madv, cbbCTNoiDung.Text, int.Parse(cbbDoiTuong.EditValue.ToString()),bool.Parse(cbbKieukitu.EditValue.ToString()),
+                int.Parse(cbbTrangThaiGui.EditValue.ToString()),bool.Parse(cbbSDT.EditValue.ToString()));
             }
             else
             {
@@ -171,7 +174,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void cbbTrangThaiPhieu_EditValueChanged(object sender, EventArgs e)
         {
-            if (int.Parse(cbbTrangThaiPhieu.EditValue.ToString()) > 3)
+            if (int.Parse(cbbTrangThaiPhieu.EditValue.ToString())==3)
             {
                 CbbNguyCo.Enabled = true;
             }
@@ -351,6 +354,53 @@ namespace BioNetSangLocSoSinh.Entry
             {
             XtraMessageBox.Show("Gửi tin nhắn lỗi ", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
               }
+        }
+
+        private void labelControl21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void imageComboBoxEdit1_Toggled(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXuatSMS_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog ofd = new SaveFileDialog();
+            ofd.Filter = "Excel File(*.xlsx)|*.xlsx";
+            ofd.FileName = "DSMauGuiTinNhanSMS" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".xlsx";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                if (ofd.FileName.Length > 0)
+                {
+                    try
+                    {
+                        Reports.RepostsSMS.FrmDSSMS rp1 = new Reports.RepostsSMS.FrmDSSMS();
+                        rp1.DataSource = GVCTDSGuiTinNhan.DataSource;
+                        rp1.ExportToXlsx(ofd.FileName);
+                        System.Diagnostics.Process.Start(ofd.FileName);
+                    }
+                    catch
+                    {
+                        XtraMessageBox.Show("Không thể lưu file này! Vui lòng chọn đường dẫn khác.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            PSDanhMucMauSMS sms = new PSDanhMucMauSMS();
+            sms.RowIDMauSMS = int.Parse(CbbIDRowMau.EditValue.ToString());
+            sms.NameMauSMS = txtNameMau.Text;
+            sms.DoiTuongNhanTN = cbbDoiTuongSMS.EditValue.ToString();
+            sms.HinhThucGuiTN = cbbHinhThucSMS.EditValue.ToString();
+            sms.TieudeNoiDungGui = txtTieuDeSMS.Text;
+            sms.NoidungGui =cbbNoiDungSMS.EditValue.ToString();
+            sms.MauNoiDungGui = txtCTNoiDungSMS.Text;
+
         }
     }
 }

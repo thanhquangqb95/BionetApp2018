@@ -318,7 +318,7 @@
         <classShapeMoniker Id="c7f3d55e-24d6-45d8-9f90-6877a717c71b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 5.0112939453125); (1.75 : 5.7973046875); (6.5 : 5.7973046875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.75 : 5.0112939453125); (1.75 : 5.7973046875); (6.5 : 5.7973046875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition/PSEmployeePosition_PSEmployee" />
       <nodes>
         <classShapeMoniker Id="60dd871e-68d6-4b61-a0d9-4f1df00d958d" />
@@ -332,7 +332,7 @@
         <classShapeMoniker Id="c899f563-00ad-4f42-bf34-269d4efa9426" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.31814697265625); (3.5 : 4.31814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 4.67714680989583); (3.5 : 4.67714680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition/PSEmployeePosition_PSMenuSecurityPosition" />
       <nodes>
         <classShapeMoniker Id="60dd871e-68d6-4b61-a0d9-4f1df00d958d" />
@@ -373,11 +373,17 @@
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(26.375 : 18.2604484049479); (27.125 : 18.2604484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BioNetDBContextDataContext/PSSMS/PSSM_PSSMSLog" />
+      <AssociationMoniker Name="/BioNetDBContextDataContext/PSSMS/PSSMS_PSSMSLog" />
       <nodes>
         <classShapeMoniker Id="535f82a3-4a63-4873-9951-c2fc48a6e4c1" />
         <classShapeMoniker Id="bf7bbdc9-7818-41f0-b053-9bda56d860b8" />
       </nodes>
     </associationConnector>
+    <classShape Id="d370f98a-dfc7-44ae-b9bf-f258b9c12680" absoluteBounds="0.5, 0.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMauSMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d32af8be-5a16-4024-a3c6-918c8baf7a77" absoluteBounds="0.51500000000000012, 1.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
