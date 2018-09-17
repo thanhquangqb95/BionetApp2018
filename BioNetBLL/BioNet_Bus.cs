@@ -408,10 +408,20 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongKePhieuMail(maphieu);
         }
-        public static List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV,  string NoiDung, int HinhThuc,bool KieuKiTu,int TrangThaiGui,bool SDT)
+        public static List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV,  string NoiDung, string HinhThuc,bool KieuKiTu,int TrangThaiGui,int SDT)
         {
             var db = new DataObjects();
             return db.GetDanhSachGuiSMS(TuNgay,DenNgay,TrangThaiPhieu,nguyco,MaDV,NoiDung,HinhThuc,KieuKiTu,TrangThaiGui,SDT);
+        }
+        public static PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
+        {
+            var db = new DataObjects();
+            return db.InsertMauSMS(sms);
+        }
+        public static List<PSDanhMucMauSMS> LoadMauSMS(string HinhThucGuiTN, string DoituongNhanTinNhan, string Noidunggui)
+        {
+            var db = new DataObjects();
+            return db.LoadMauSMS(HinhThucGuiTN, DoituongNhanTinNhan,Noidunggui);
         }
         public static List<PSDotChuanDoan> GetDanhSachDotChanDoanCuaBenhNhan(string MaBenhNhan)
         {
@@ -1849,13 +1859,21 @@ namespace BioNetBLL
             lstcc.Add(dv);
             var db = new DataObjects();
             var listcc = db.GetDanhSachDonVi(maChiCuc);
-            foreach (var ccc in listcc)
-            {
-                lstcc.Add(ccc);
-            }
+            lstcc.AddRange(listcc);
             return lstcc;
         }
-      
+        public static List<PSDanhMucDonViCoSo> GetDanhSachDonViSMS(string maChiCuc)
+        {
+            List<PSDanhMucDonViCoSo> lstcc = new List<PSDanhMucDonViCoSo>();
+            PSDanhMucDonViCoSo dv = new PSDanhMucDonViCoSo();
+            dv.MaDVCS = "all";
+            dv.TenDVCS = "Tất cả";
+            lstcc.Add(dv);
+            var db = new DataObjects();
+            var listcc = db.GetDanhSachDonViSMS(maChiCuc);
+            lstcc.AddRange(listcc);
+            return lstcc;
+        }
 
         public static List<PSDanhMucChiCuc> GetDieuKienLocBaoCao_ChiCuc()
         {

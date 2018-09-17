@@ -239,7 +239,8 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            Entry.FrmTraKetQuaNew frm = new Entry.FrmTraKetQuaNew(emp);
+            //Entry.FrmTraKetQuaNew frm = new Entry.FrmTraKetQuaNew(emp);
+            Entry.FrmTraKetQua frm = new Entry.FrmTraKetQua(emp.EmployeeCode);
             int frmsize = this.xTabMain.Width;
             int pnsize = 222;
             if (frmsize - 800 > 280)

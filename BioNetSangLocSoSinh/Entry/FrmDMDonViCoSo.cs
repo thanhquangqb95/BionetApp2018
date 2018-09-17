@@ -123,6 +123,10 @@ namespace BioNetSangLocSoSinh.Entry
                         donVi.isGuiMailTC = false;
                     else
                         donVi.isGuiMailTC = Convert.ToBoolean(gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "isGuiMailTC").ToString());
+                    if (gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "isChoPhepGuiSMS") == null)
+                        donVi.isChoPhepGuiSMS = false;
+                    else
+                        donVi.isChoPhepGuiSMS = Convert.ToBoolean(gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "isChoPhepGuiSMS").ToString());
 
                     donVi.MaChiCuc = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "MaChiCuc").ToString();
                     if (gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "KieuTraKetQua")==null)
