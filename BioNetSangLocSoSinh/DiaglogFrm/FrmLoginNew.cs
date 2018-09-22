@@ -52,7 +52,6 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
                     bool bCheckLogin = BioBLL.CheckLogin(txtUsername.Text.Trim(), pass);
                     if (bCheckLogin)
                     {
-
                         emp.EmployeeCode = BioBLL.GetEmployeeCode(txtUsername.Text.Trim().TrimEnd());
                         emp.EmployeeName = txtUsername.Text.TrimEnd();
                         //FrmStartup.emp = emp;
@@ -98,7 +97,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             string versionCurrent = fileVersionInfo.ProductVersion;
             NameCopany = fileVersionInfo.CompanyName;
-            lblUpdate.Text = "Ngày cập nhật: 17/09/2018 V1";
+            lblUpdate.Text = "Ngày cập nhật: 20/09/2018 V1";
             lblVersion.Text = "SLSS.2.0." + versionCurrent;
             this.lblError.Visible = false;
             AddItemForm();

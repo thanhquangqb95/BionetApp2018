@@ -410,32 +410,6 @@ namespace BioNetSangLocSoSinh.Entry
             catch { }
         }
 
-        private void GVChuaKQ_RowCellStyle(object sender, RowCellStyleEventArgs e)
-        {
-            try
-            {
-                GridView View = sender as GridView;
-                if (e.RowHandle >= 0)
-                {
-                    string MaCD = View.GetRowCellValue(e.RowHandle, this.col_MaChiDinh_GCChuaCoKQ) == null ? string.Empty : View.GetRowCellValue(e.RowHandle, this.col_MaChiDinh_GCChuaCoKQ).ToString();
-                    if (!string.IsNullOrEmpty(MaCD))
-                    {
-                        if (MaCD.Substring(0, 2).Equals("XN"))
-                        {
-                            e.Appearance.BackColor = Color.Plum;
-                            e.Appearance.BackColor2 = Color.Pink;
-                        }
-                        else
-                        {
-                            e.Appearance.BackColor = Color.Aqua;
-                            e.Appearance.BackColor2 = Color.AliceBlue;
-                        }
-                    }
-                }
-            }
-            catch { }
-        }
-
         private void btnRefesh_Click(object sender, EventArgs e)
         {
             this.LoadLstChuaKetQua();
@@ -2025,6 +1999,11 @@ namespace BioNetSangLocSoSinh.Entry
                 }
             }
             catch { }
+        }
+
+        private void GVChuaKQ_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+
         }
     }
 }

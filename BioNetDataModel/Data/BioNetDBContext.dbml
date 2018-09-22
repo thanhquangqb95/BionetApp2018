@@ -670,41 +670,6 @@
       <Association Name="PSXN_TraKetQua_PSXN_TraKQ_ChiTiet" Member="PSXN_TraKetQua" ThisKey="MaPhieu" OtherKey="MaPhieu" Type="PSXN_TraKetQua" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PSSMS" Member="PSSMS">
-    <Type Name="PSSMS">
-      <Column Name="RowIDNumber" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaKhachHang" Type="System.String" DbType="NChar(16)" CanBeNull="true" />
-      <Column Name="isDaGui" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="GroupSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="PSSMS_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PSSMSLog" Member="PSSMSLogs">
-    <Type Name="PSSMSLog">
-      <Column Name="RowIDSMSlog" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RowIDNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="SMSContent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="isResult" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="TimeSend" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SMSError" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="IDNhanVienSend" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NumberMobile" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
-      <Association Name="PSSMS_PSSMSLog" Member="PSSMS" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMS" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PSDanhMucMauSMS" Member="PSDanhMucMauSMS">
-    <Type Name="PSDanhMucMauSMS">
-      <Column Name="RowIDMauSMS" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NameMauSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="HinhThucGuiTN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="DoiTuongNhanTN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="NoidungGui" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MauNoiDungGui" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TieudeNoiDungGui" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PSDanhMucDonViCoSo" Member="PSDanhMucDonViCoSos">
     <Type Name="PSDanhMucDonViCoSo">
       <Column Name="RowIDDVCS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -725,6 +690,43 @@
       <Column Name="EmailTC" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="isGuiMailTC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="isChoPhepGuiSMS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSSMSLog" Member="PSSMSLogs">
+    <Type Name="PSSMSLog">
+      <Column Name="RowIDSMSlog" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RowIDNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SMSContent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="isResult" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TimeSend" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SMSError" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IDNhanVienSend" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NumberMobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PSSMSC_PSSMSLog" Member="PSSMSC" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSC" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSSMSC" Member="PSSMSCs">
+    <Type Name="PSSMSC">
+      <Column Name="RowIDNumber" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaKhachHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isDaGui" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GroupSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NoiDungGui" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PSSMSC_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSDanhMucMauSMS" Member="PSDanhMucMauSMS">
+    <Type Name="PSDanhMucMauSMS">
+      <Column Name="RowIDMauSMS" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NameMauSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HinhThucGuiTN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DoiTuongNhanTN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoidungGui" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MauNoiDungGui" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TieudeNoiDungGui" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">

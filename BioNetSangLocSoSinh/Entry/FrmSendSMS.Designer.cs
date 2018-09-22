@@ -81,44 +81,24 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.panelAddSMS = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.txtNameMauSMS = new DevExpress.XtraEditors.TextEdit();
-            this.lblSKTDemoSMS = new System.Windows.Forms.Label();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.txtAdDemo = new DevExpress.XtraEditors.MemoEdit();
-            this.lblSKTSMS = new System.Windows.Forms.Label();
-            this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
-            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.cbbNoiDungSMS = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.cbbDoiTuongSMS = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.cbbHinhThucSMS = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.txtCTNoiDungSMS = new DevExpress.XtraEditors.MemoEdit();
             this.PanelDanhSachKiTu = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.GCCTDSGuiTinNhan = new DevExpress.XtraGrid.GridControl();
             this.GVCTDSGuiTinNhan = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_IDPhieu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_SDTGui = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_NoiDungTN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_TinhTrangGui = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEditSMS = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.col_MaKhachHang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnXuatSMS = new DevExpress.XtraEditors.SimpleButton();
             this.btnSendSMS = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -128,7 +108,11 @@
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.cbbTrangThaiGui = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
@@ -151,6 +135,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cbbSDT1 = new DevExpress.XtraEditors.ToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.cbbHinhThuc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -177,16 +162,6 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            this.groupControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelAddSMS)).BeginInit();
-            this.panelAddSMS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameMauSMS.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAdDemo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbNoiDungSMS.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbDoiTuongSMS.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbHinhThucSMS.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCTNoiDungSMS.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PanelDanhSachKiTu)).BeginInit();
             this.PanelDanhSachKiTu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GCCTDSGuiTinNhan)).BeginInit();
@@ -195,12 +170,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbTrangThaiGui.Properties)).BeginInit();
@@ -211,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbSDT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSDT1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -449,7 +423,7 @@
             this.cbbMauTinNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbbMauTinNhan.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RowIDMauSMS", "ID Mẫu SMS"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RowIDMauSMS", 10, "ID Mẫu SMS"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NameMauSMS", "Tên Mâu SMS")});
             this.cbbMauTinNhan.Properties.DisplayMember = "NameMauSMS";
             this.cbbMauTinNhan.Properties.NullText = "";
@@ -656,6 +630,8 @@
             // 
             // xtraTabControl1
             // 
+            this.xtraTabControl1.AppearancePage.Header.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.xtraTabControl1.AppearancePage.Header.Options.UseFont = true;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 111);
             this.xtraTabControl1.Name = "xtraTabControl1";
@@ -664,223 +640,33 @@
             this.xtraTabControl1.TabIndex = 4;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
+            this.xtraTabControl1.Click += new System.EventHandler(this.xtraTabControl1_Click);
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.panelControl3);
-            this.xtraTabPage1.Controls.Add(this.panelControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1024, 530);
             this.xtraTabPage1.Text = "Danh sách gửi";
             // 
             // panelControl3
             // 
-            this.panelControl3.Controls.Add(this.groupControl4);
+            this.panelControl3.Controls.Add(this.PanelDanhSachKiTu);
+            this.panelControl3.Controls.Add(this.GCCTDSGuiTinNhan);
+            this.panelControl3.Controls.Add(this.panelControl2);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1024, 496);
+            this.panelControl3.Size = new System.Drawing.Size(1024, 530);
             this.panelControl3.TabIndex = 6;
-            // 
-            // groupControl4
-            // 
-            this.groupControl4.Controls.Add(this.panelAddSMS);
-            this.groupControl4.Controls.Add(this.PanelDanhSachKiTu);
-            this.groupControl4.Controls.Add(this.GCCTDSGuiTinNhan);
-            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl4.Location = new System.Drawing.Point(2, 2);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1020, 492);
-            this.groupControl4.TabIndex = 2;
-            this.groupControl4.Text = "Chi tiết danh sách gửi tin nhắn";
-            // 
-            // panelAddSMS
-            // 
-            this.panelAddSMS.AppearanceCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.panelAddSMS.AppearanceCaption.ForeColor = System.Drawing.Color.Maroon;
-            this.panelAddSMS.AppearanceCaption.Options.UseFont = true;
-            this.panelAddSMS.AppearanceCaption.Options.UseForeColor = true;
-            this.panelAddSMS.AppearanceCaption.Options.UseTextOptions = true;
-            this.panelAddSMS.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.panelAddSMS.Controls.Add(this.labelControl12);
-            this.panelAddSMS.Controls.Add(this.txtNameMauSMS);
-            this.panelAddSMS.Controls.Add(this.lblSKTDemoSMS);
-            this.panelAddSMS.Controls.Add(this.labelControl14);
-            this.panelAddSMS.Controls.Add(this.txtAdDemo);
-            this.panelAddSMS.Controls.Add(this.lblSKTSMS);
-            this.panelAddSMS.Controls.Add(this.btnHuy);
-            this.panelAddSMS.Controls.Add(this.btnLuu);
-            this.panelAddSMS.Controls.Add(this.cbbNoiDungSMS);
-            this.panelAddSMS.Controls.Add(this.labelControl15);
-            this.panelAddSMS.Controls.Add(this.cbbDoiTuongSMS);
-            this.panelAddSMS.Controls.Add(this.labelControl16);
-            this.panelAddSMS.Controls.Add(this.cbbHinhThucSMS);
-            this.panelAddSMS.Controls.Add(this.labelControl17);
-            this.panelAddSMS.Controls.Add(this.labelControl13);
-            this.panelAddSMS.Controls.Add(this.txtCTNoiDungSMS);
-            this.panelAddSMS.Location = new System.Drawing.Point(258, 34);
-            this.panelAddSMS.Name = "panelAddSMS";
-            this.panelAddSMS.Size = new System.Drawing.Size(291, 410);
-            this.panelAddSMS.TabIndex = 2;
-            this.panelAddSMS.Text = "Thêm mẫu tin nhắn";
-            this.panelAddSMS.Visible = false;
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Location = new System.Drawing.Point(9, 31);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(64, 13);
-            this.labelControl12.TabIndex = 1082;
-            this.labelControl12.Text = "Tên mẫu SMS";
-            // 
-            // txtNameMauSMS
-            // 
-            this.txtNameMauSMS.Location = new System.Drawing.Point(79, 27);
-            this.txtNameMauSMS.Name = "txtNameMauSMS";
-            this.txtNameMauSMS.Size = new System.Drawing.Size(205, 20);
-            this.txtNameMauSMS.TabIndex = 1081;
-            // 
-            // lblSKTDemoSMS
-            // 
-            this.lblSKTDemoSMS.AutoSize = true;
-            this.lblSKTDemoSMS.ForeColor = System.Drawing.Color.Maroon;
-            this.lblSKTDemoSMS.Location = new System.Drawing.Point(243, 252);
-            this.lblSKTDemoSMS.Name = "lblSKTDemoSMS";
-            this.lblSKTDemoSMS.Size = new System.Drawing.Size(35, 13);
-            this.lblSKTDemoSMS.TabIndex = 1080;
-            this.lblSKTDemoSMS.Text = "0/160";
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Location = new System.Drawing.Point(10, 252);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(177, 13);
-            this.labelControl14.TabIndex = 1079;
-            this.labelControl14.Text = "Demo chi tiết nội dung tin nhắn gửi đi";
-            // 
-            // txtAdDemo
-            // 
-            this.txtAdDemo.Location = new System.Drawing.Point(9, 271);
-            this.txtAdDemo.Name = "txtAdDemo";
-            this.txtAdDemo.Size = new System.Drawing.Size(275, 98);
-            this.txtAdDemo.TabIndex = 1078;
-            // 
-            // lblSKTSMS
-            // 
-            this.lblSKTSMS.AutoSize = true;
-            this.lblSKTSMS.ForeColor = System.Drawing.Color.Maroon;
-            this.lblSKTSMS.Location = new System.Drawing.Point(243, 130);
-            this.lblSKTSMS.Name = "lblSKTSMS";
-            this.lblSKTSMS.Size = new System.Drawing.Size(35, 13);
-            this.lblSKTSMS.TabIndex = 1077;
-            this.lblSKTSMS.Text = "0/160";
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
-            this.btnHuy.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnHuy.ImageOptions.ImageToTextIndent = 5;
-            this.btnHuy.Location = new System.Drawing.Point(147, 375);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(78, 22);
-            this.btnHuy.TabIndex = 29;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.save;
-            this.btnLuu.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnLuu.ImageOptions.ImageToTextIndent = 5;
-            this.btnLuu.Location = new System.Drawing.Point(43, 375);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(87, 22);
-            this.btnLuu.TabIndex = 28;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.Click += new System.EventHandler(this.simpleButton7_Click);
-            // 
-            // cbbNoiDungSMS
-            // 
-            this.cbbNoiDungSMS.Location = new System.Drawing.Point(133, 102);
-            this.cbbNoiDungSMS.Name = "cbbNoiDungSMS";
-            this.cbbNoiDungSMS.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbbNoiDungSMS.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Kết quả XN", "result", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Trạng thái phiếu", "status", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Công nợ", "money", -1)});
-            this.cbbNoiDungSMS.Size = new System.Drawing.Size(151, 20);
-            this.cbbNoiDungSMS.TabIndex = 27;
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Location = new System.Drawing.Point(9, 109);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(102, 13);
-            this.labelControl15.TabIndex = 26;
-            this.labelControl15.Text = "Nội dung gửi tin nhắn";
-            // 
-            // cbbDoiTuongSMS
-            // 
-            this.cbbDoiTuongSMS.Location = new System.Drawing.Point(133, 76);
-            this.cbbDoiTuongSMS.Name = "cbbDoiTuongSMS";
-            this.cbbDoiTuongSMS.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbbDoiTuongSMS.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Bệnh nhân", "patient", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Đơn vị cơ sở", "unit", -1)});
-            this.cbbDoiTuongSMS.Size = new System.Drawing.Size(151, 20);
-            this.cbbDoiTuongSMS.TabIndex = 25;
-            // 
-            // labelControl16
-            // 
-            this.labelControl16.Location = new System.Drawing.Point(9, 83);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(117, 13);
-            this.labelControl16.TabIndex = 24;
-            this.labelControl16.Text = "Đối tượng nhận tin nhắn";
-            // 
-            // cbbHinhThucSMS
-            // 
-            this.cbbHinhThucSMS.Location = new System.Drawing.Point(133, 51);
-            this.cbbHinhThucSMS.Name = "cbbHinhThucSMS";
-            this.cbbHinhThucSMS.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbbHinhThucSMS.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tin nhắn SMS", "sms", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tin nhắn Email", "email", -1)});
-            this.cbbHinhThucSMS.Size = new System.Drawing.Size(151, 20);
-            this.cbbHinhThucSMS.TabIndex = 23;
-            // 
-            // labelControl17
-            // 
-            this.labelControl17.Location = new System.Drawing.Point(9, 58);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(106, 13);
-            this.labelControl17.TabIndex = 22;
-            this.labelControl17.Text = "Hình thức gửi tin nhắn";
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Location = new System.Drawing.Point(9, 128);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(120, 13);
-            this.labelControl13.TabIndex = 21;
-            this.labelControl13.Text = "Chi tiết nội dung tin nhắn";
-            // 
-            // txtCTNoiDungSMS
-            // 
-            this.txtCTNoiDungSMS.Location = new System.Drawing.Point(9, 148);
-            this.txtCTNoiDungSMS.Name = "txtCTNoiDungSMS";
-            this.txtCTNoiDungSMS.Size = new System.Drawing.Size(275, 98);
-            this.txtCTNoiDungSMS.TabIndex = 20;
             // 
             // PanelDanhSachKiTu
             // 
             this.PanelDanhSachKiTu.Controls.Add(this.simpleButton5);
             this.PanelDanhSachKiTu.Controls.Add(this.labelControl19);
-            this.PanelDanhSachKiTu.Location = new System.Drawing.Point(577, 140);
+            this.PanelDanhSachKiTu.Location = new System.Drawing.Point(89, 112);
             this.PanelDanhSachKiTu.Name = "PanelDanhSachKiTu";
             this.PanelDanhSachKiTu.Size = new System.Drawing.Size(254, 156);
             this.PanelDanhSachKiTu.TabIndex = 3;
@@ -913,13 +699,13 @@
             // GCCTDSGuiTinNhan
             // 
             this.GCCTDSGuiTinNhan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GCCTDSGuiTinNhan.Location = new System.Drawing.Point(2, 22);
+            this.GCCTDSGuiTinNhan.Location = new System.Drawing.Point(2, 2);
             this.GCCTDSGuiTinNhan.MainView = this.GVCTDSGuiTinNhan;
             this.GCCTDSGuiTinNhan.Name = "GCCTDSGuiTinNhan";
             this.GCCTDSGuiTinNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEditSMS});
-            this.GCCTDSGuiTinNhan.Size = new System.Drawing.Size(1016, 468);
-            this.GCCTDSGuiTinNhan.TabIndex = 1;
+            this.GCCTDSGuiTinNhan.Size = new System.Drawing.Size(1020, 492);
+            this.GCCTDSGuiTinNhan.TabIndex = 6;
             this.GCCTDSGuiTinNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVCTDSGuiTinNhan});
             // 
@@ -927,12 +713,13 @@
             // 
             this.GVCTDSGuiTinNhan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.gridColumn3,
-            this.gridColumn2,
+            this.col_IDPhieu,
+            this.col_SDTGui,
             this.gridColumn4,
-            this.gridColumn5,
+            this.col_NoiDungTN,
             this.gridColumn10,
-            this.gridColumn18});
+            this.col_TinhTrangGui,
+            this.col_MaKhachHang});
             this.GVCTDSGuiTinNhan.GridControl = this.GCCTDSGuiTinNhan;
             this.GVCTDSGuiTinNhan.Name = "GVCTDSGuiTinNhan";
             this.GVCTDSGuiTinNhan.OptionsSelection.MultiSelect = true;
@@ -942,72 +729,82 @@
             this.GVCTDSGuiTinNhan.OptionsSelection.ShowCheckBoxSelectorInPrintExport = DevExpress.Utils.DefaultBoolean.True;
             this.GVCTDSGuiTinNhan.OptionsView.ShowFooter = true;
             this.GVCTDSGuiTinNhan.OptionsView.ShowGroupPanel = false;
+            this.GVCTDSGuiTinNhan.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVCTDSGuiTinNhan_RowCellStyle);
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Tên trẻ";
             this.gridColumn1.FieldName = "TenTre";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "TenTre", "{0}")});
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 77;
             // 
-            // gridColumn3
+            // col_IDPhieu
             // 
-            this.gridColumn3.Caption = "Mã phiếu";
-            this.gridColumn3.FieldName = "MaPhieu";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 52;
+            this.col_IDPhieu.Caption = "Mã phiếu";
+            this.col_IDPhieu.FieldName = "MaPhieu";
+            this.col_IDPhieu.Name = "col_IDPhieu";
+            this.col_IDPhieu.OptionsColumn.AllowEdit = false;
+            this.col_IDPhieu.OptionsColumn.ReadOnly = true;
+            this.col_IDPhieu.Visible = true;
+            this.col_IDPhieu.VisibleIndex = 3;
+            this.col_IDPhieu.Width = 52;
             // 
-            // gridColumn2
+            // col_SDTGui
             // 
-            this.gridColumn2.Caption = "Sđt gửi";
-            this.gridColumn2.FieldName = "SDTNguoiNhan";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 60;
+            this.col_SDTGui.Caption = "Sđt gửi";
+            this.col_SDTGui.FieldName = "SDTNguoiNhan";
+            this.col_SDTGui.Name = "col_SDTGui";
+            this.col_SDTGui.Visible = true;
+            this.col_SDTGui.VisibleIndex = 2;
+            this.col_SDTGui.Width = 60;
             // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Tên người nhận";
             this.gridColumn4.FieldName = "TenNguoiNhan";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
             this.gridColumn4.Width = 85;
             // 
-            // gridColumn5
+            // col_NoiDungTN
             // 
-            this.gridColumn5.Caption = "Nội dung gửi";
-            this.gridColumn5.FieldName = "NoiDungTinNhan";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 450;
+            this.col_NoiDungTN.Caption = "Nội dung gửi";
+            this.col_NoiDungTN.FieldName = "NoiDungTinNhan";
+            this.col_NoiDungTN.Name = "col_NoiDungTN";
+            this.col_NoiDungTN.Visible = true;
+            this.col_NoiDungTN.VisibleIndex = 5;
+            this.col_NoiDungTN.Width = 450;
             // 
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Số kí tự";
             this.gridColumn10.FieldName = "SoKiTu";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 7;
             this.gridColumn10.Width = 109;
             // 
-            // gridColumn18
+            // col_TinhTrangGui
             // 
-            this.gridColumn18.Caption = "Tình trạng gửi";
-            this.gridColumn18.ColumnEdit = this.repositoryItemCheckEditSMS;
-            this.gridColumn18.FieldName = "isDaGui";
-            this.gridColumn18.Name = "gridColumn18";
-            this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 6;
-            this.gridColumn18.Width = 95;
+            this.col_TinhTrangGui.Caption = "Tình trạng gửi";
+            this.col_TinhTrangGui.ColumnEdit = this.repositoryItemCheckEditSMS;
+            this.col_TinhTrangGui.FieldName = "isDaGui";
+            this.col_TinhTrangGui.Name = "col_TinhTrangGui";
+            this.col_TinhTrangGui.OptionsColumn.AllowEdit = false;
+            this.col_TinhTrangGui.Visible = true;
+            this.col_TinhTrangGui.VisibleIndex = 6;
+            this.col_TinhTrangGui.Width = 95;
             // 
             // repositoryItemCheckEditSMS
             // 
@@ -1018,14 +815,21 @@
             this.repositoryItemCheckEditSMS.PictureGrayed = global::BioNetSangLocSoSinh.Properties.Resources.text__1_;
             this.repositoryItemCheckEditSMS.PictureUnchecked = global::BioNetSangLocSoSinh.Properties.Resources.no_phone;
             // 
+            // col_MaKhachHang
+            // 
+            this.col_MaKhachHang.Caption = "gridColumn2";
+            this.col_MaKhachHang.FieldName = "MaKhachHang";
+            this.col_MaKhachHang.Name = "col_MaKhachHang";
+            this.col_MaKhachHang.Tag = "";
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.btnXuatSMS);
             this.panelControl2.Controls.Add(this.btnSendSMS);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 496);
+            this.panelControl2.Location = new System.Drawing.Point(2, 494);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1024, 34);
+            this.panelControl2.Size = new System.Drawing.Size(1020, 34);
             this.panelControl2.TabIndex = 5;
             // 
             // btnXuatSMS
@@ -1054,50 +858,21 @@
             // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Controls.Add(this.groupControl2);
+            this.xtraTabPage2.Controls.Add(this.gridControl1);
+            this.xtraTabPage2.Controls.Add(this.panelControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.PageVisible = false;
             this.xtraTabPage2.Size = new System.Drawing.Size(1024, 530);
             this.xtraTabPage2.Text = "Danh sách gửi thành công";
             // 
-            // groupControl2
-            // 
-            this.groupControl2.Controls.Add(this.panelControl1);
-            this.groupControl2.Controls.Add(this.gridControl1);
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 0);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1024, 530);
-            this.groupControl2.TabIndex = 3;
-            this.groupControl2.Text = "Chi tiết danh sách gửi tin nhắn";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.simpleButton9);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(2, 509);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1020, 19);
-            this.panelControl1.TabIndex = 2;
-            // 
-            // simpleButton9
-            // 
-            this.simpleButton9.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.message;
-            this.simpleButton9.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.simpleButton9.ImageOptions.ImageToTextIndent = 5;
-            this.simpleButton9.Location = new System.Drawing.Point(347, 4);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(118, 24);
-            this.simpleButton9.TabIndex = 1077;
-            this.simpleButton9.Text = "Test gửi tin nhắn";
-            // 
             // gridControl1
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControl1.Location = new System.Drawing.Point(2, 22);
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView2;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1020, 487);
-            this.gridControl1.TabIndex = 1;
+            this.gridControl1.Size = new System.Drawing.Size(1024, 494);
+            this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             // 
@@ -1177,8 +952,36 @@
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 6;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.simpleButton9);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 494);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1024, 36);
+            this.panelControl1.TabIndex = 5;
+            // 
+            // simpleButton9
+            // 
+            this.simpleButton9.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.message;
+            this.simpleButton9.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.simpleButton9.ImageOptions.ImageToTextIndent = 5;
+            this.simpleButton9.Location = new System.Drawing.Point(347, 4);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(118, 24);
+            this.simpleButton9.TabIndex = 1077;
+            this.simpleButton9.Text = "Test gửi tin nhắn";
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.PageVisible = false;
+            this.xtraTabPage3.Size = new System.Drawing.Size(1024, 530);
+            this.xtraTabPage3.Text = "Danh sách gửi thất bại";
+            // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.labelControl12);
             this.groupControl3.Controls.Add(this.labelControl23);
             this.groupControl3.Controls.Add(this.cbbTrangThaiGui);
             this.groupControl3.Controls.Add(this.labelControl21);
@@ -1195,12 +998,20 @@
             this.groupControl3.Controls.Add(this.cbbChiCuc);
             this.groupControl3.Controls.Add(this.cbbSDT);
             this.groupControl3.Controls.Add(this.cbbDonVi);
+            this.groupControl3.Controls.Add(this.cbbSDT1);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(1029, 111);
             this.groupControl3.TabIndex = 1;
             this.groupControl3.Text = "Danh sách gửi tin nhắn";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(555, 82);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(0, 13);
+            this.labelControl12.TabIndex = 1073;
             // 
             // labelControl23
             // 
@@ -1223,6 +1034,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Gửi thành công", "3", -1)});
             this.cbbTrangThaiGui.Size = new System.Drawing.Size(151, 20);
             this.cbbTrangThaiGui.TabIndex = 1070;
+            this.cbbTrangThaiGui.EditValueChanged += new System.EventHandler(this.cbbTrangThaiGui_EditValueChanged);
             // 
             // labelControl21
             // 
@@ -1305,6 +1117,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nguy cơ cao", "1", -1)});
             this.CbbNguyCo.Size = new System.Drawing.Size(151, 20);
             this.CbbNguyCo.TabIndex = 9;
+            this.CbbNguyCo.EditValueChanged += new System.EventHandler(this.CbbNguyCo_EditValueChanged);
             // 
             // labelControl9
             // 
@@ -1325,8 +1138,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tiếp nhận và đánh giá", "1", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Xét nghiệm", "2", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Đã có kết quả", "3", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Có KQ L1", "", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Có KQ L2", "6", -1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Có KQ mẫu mới", "4", -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Có KQ mẫu thu lại", "6", -1)});
             this.cbbTrangThaiPhieu.Size = new System.Drawing.Size(151, 20);
             this.cbbTrangThaiPhieu.TabIndex = 8;
             this.cbbTrangThaiPhieu.EditValueChanged += new System.EventHandler(this.cbbTrangThaiPhieu_EditValueChanged);
@@ -1431,6 +1244,18 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
             // 
+            // cbbSDT1
+            // 
+            this.cbbSDT1.EditValue = null;
+            this.cbbSDT1.Location = new System.Drawing.Point(555, 77);
+            this.cbbSDT1.Name = "cbbSDT1";
+            this.cbbSDT1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.cbbSDT1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.cbbSDT1.Properties.OffText = "Số điện thoại 1";
+            this.cbbSDT1.Properties.OnText = "Số điện thoại 2";
+            this.cbbSDT1.Size = new System.Drawing.Size(156, 24);
+            this.cbbSDT1.TabIndex = 1074;
+            // 
             // FrmSendSMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1476,17 +1301,6 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            this.groupControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelAddSMS)).EndInit();
-            this.panelAddSMS.ResumeLayout(false);
-            this.panelAddSMS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameMauSMS.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAdDemo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbNoiDungSMS.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbDoiTuongSMS.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbHinhThucSMS.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCTNoiDungSMS.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PanelDanhSachKiTu)).EndInit();
             this.PanelDanhSachKiTu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GCCTDSGuiTinNhan)).EndInit();
@@ -1495,12 +1309,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
@@ -1512,6 +1324,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbSDT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbSDT1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1533,7 +1346,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.ImageComboBoxEdit cbbDoiTuong;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.ImageComboBoxEdit CbbNguyCo;
@@ -1544,25 +1356,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private UserControlDate.dllNgay dllNgay;
         private DevExpress.XtraEditors.SimpleButton btnSearch;
-        private DevExpress.XtraEditors.GroupControl panelAddSMS;
-        private DevExpress.XtraEditors.SimpleButton btnHuy;
-        private DevExpress.XtraEditors.SimpleButton btnLuu;
-        private DevExpress.XtraEditors.ImageComboBoxEdit cbbNoiDungSMS;
-        private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.ImageComboBoxEdit cbbDoiTuongSMS;
-        private DevExpress.XtraEditors.LabelControl labelControl16;
-        private DevExpress.XtraEditors.ImageComboBoxEdit cbbHinhThucSMS;
-        private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.MemoEdit txtCTNoiDungSMS;
-        private DevExpress.XtraGrid.GridControl GCCTDSGuiTinNhan;
-        private DevExpress.XtraGrid.Views.Grid.GridView GVCTDSGuiTinNhan;
         private DevExpress.XtraEditors.SimpleButton btnClear;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.SearchLookUpEdit cbbChiCuc;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
@@ -1588,7 +1382,6 @@
         private DevExpress.XtraEditors.ImageComboBoxEdit imageComboBoxEdit2;
         private System.Windows.Forms.Label lblSKTDemo;
         private DevExpress.XtraEditors.LookUpEdit cbbMauTinNhan;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.LabelControl labelControl19;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.TextEdit txtSDT;
@@ -1599,7 +1392,29 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnSendSMS;
+        private DevExpress.XtraEditors.SimpleButton btnXuatSMS;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cbbTrangThaiGui;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.LabelControl labelControl23;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cbbSDT;
+        private DevExpress.XtraEditors.SearchLookUpEdit cbbDonVi;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraGrid.GridControl GCCTDSGuiTinNhan;
+        private DevExpress.XtraGrid.Views.Grid.GridView GVCTDSGuiTinNhan;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_IDPhieu;
+        private DevExpress.XtraGrid.Columns.GridColumn col_SDTGui;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn col_NoiDungTN;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn col_TinhTrangGui;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEditSMS;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
@@ -1611,25 +1426,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEditSMS;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton btnSendSMS;
-        private DevExpress.XtraEditors.SimpleButton btnXuatSMS;
-        private DevExpress.XtraEditors.ImageComboBoxEdit cbbTrangThaiGui;
-        private DevExpress.XtraEditors.LabelControl labelControl21;
-        private System.Windows.Forms.Label lblSKTDemoSMS;
-        private DevExpress.XtraEditors.LabelControl labelControl14;
-        private DevExpress.XtraEditors.MemoEdit txtAdDemo;
-        private System.Windows.Forms.Label lblSKTSMS;
         private DevExpress.XtraEditors.LabelControl labelControl12;
-        private DevExpress.XtraEditors.TextEdit txtNameMauSMS;
-        private DevExpress.XtraEditors.LabelControl labelControl23;
-        private DevExpress.XtraEditors.ImageComboBoxEdit cbbSDT;
-        private DevExpress.XtraEditors.SearchLookUpEdit cbbDonVi;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraEditors.ToggleSwitch cbbSDT1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_MaKhachHang;
     }
 }

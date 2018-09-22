@@ -408,10 +408,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongKePhieuMail(maphieu);
         }
-        public static List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV,  string NoiDung, string HinhThuc,bool KieuKiTu,int TrangThaiGui,int SDT)
+        public static List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV,  string NoiDung, string DoiTuong,bool KieuKiTu,int TrangThaiGui,
+            int SDT,string NoiDungGui,string MauGui,string HinhThuc,bool isSDT1)
         {
             var db = new DataObjects();
-            return db.GetDanhSachGuiSMS(TuNgay,DenNgay,TrangThaiPhieu,nguyco,MaDV,NoiDung,HinhThuc,KieuKiTu,TrangThaiGui,SDT);
+            return db.GetDanhSachGuiSMS(TuNgay,DenNgay,TrangThaiPhieu,nguyco,MaDV,NoiDung, DoiTuong, KieuKiTu,TrangThaiGui,SDT,NoiDungGui,MauGui, HinhThuc,isSDT1);
         }
         public static PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
         {
@@ -1522,6 +1523,54 @@ namespace BioNetBLL
             }
             return lst;
         }
+        public static List<PsHoanDongBo> GetFullPhieuSangLoc(DateTime NgayBD, DateTime NgayKT, string maDonVi, string maChiCuc, bool dongbo, bool kq)
+        {
+            List<PsHoanDongBo> lst = new List<PsHoanDongBo>();
+            var db = new DataObjects();
+            string donvi = "";
+            try
+            {
+                if (maDonVi != null && !maDonVi.Equals("all"))
+                {
+                    donvi = maDonVi;
+
+                }
+                else
+                {
+                    if (maChiCuc == null || maChiCuc.Equals("all"))
+                    {
+                        donvi = "all";
+                    }
+                    else
+                    {
+                        donvi = maChiCuc;
+                    }
+                }
+                lst = db.GetFullPhieuSangLoc(NgayBD, NgayKT, donvi, dongbo, kq);
+            }
+            catch
+            {
+
+            }
+
+            return lst;
+        }
+
+        public static PsReponse HoanDongBo(string IDPhieu, string IDCoSo, string MaBenhNhan)
+        {
+            PsReponse lst = new PsReponse();
+            var db = new DataObjects();
+
+            lst = db.HoanDongBo(IDPhieu, IDCoSo, MaBenhNhan);
+            return lst;
+        }
+        public static PsReponse HoanDongBoPhieu(string IDPhieu)
+        {
+            PsReponse lst = new PsReponse();
+            var db = new DataObjects();
+            lst = db.HoanDongBoPhieu(IDPhieu);
+            return lst;
+        }
         public static PsReponse DelPhieuTiepNhan(string MaPhieu,string MaBenhNhan)
         {
             var db = new DataObjects();
@@ -2206,6 +2255,13 @@ namespace BioNetBLL
             return db.DuyetPhieuBT(phieu);
         }
         #endregion
+        #region Sửa lỗi
+        public static PsReponse UpdateMaKhachHang()
+        {
+                var db = new DataObjects();
+                return db.UpdateMaKhachHang();
+        }
+        #endregion
         public static PsReponseSMS  SMS(string content,string sdt,bool codau)
         {
             PsReponseSMS reponse = new PsReponseSMS();
@@ -2240,6 +2296,4 @@ namespace BioNetBLL
             return db.InsertSMSNumber(sms,kq,MaNV);
         }
     }
-
-
 }

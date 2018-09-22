@@ -118,15 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="barButtonItem1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACt0RVh0VGl0
-        bGUAQ3VzdG9tZXJFbXBsb3llZXM7Q3VzdG9tZXI7RW1wbG95ZWVzOwu+pY4AAABzSURBVDhPvZLBCYAw
-        DEWzk3O4lGQor53Du3cniP5AQEJojREfPJDW/5tCSURKhosZiZmloha85duC1lpoj38n2PZD5mVV8Q1S
-        E1jYBKkJhgUjSlewsHEv0YKewE72gvB9e6MwxF4Y8F4/Tz6MNeyFgecKnVHSPiuyqk3TAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
   <data name="barButtonItem2.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

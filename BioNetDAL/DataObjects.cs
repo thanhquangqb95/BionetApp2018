@@ -1705,18 +1705,17 @@ namespace BioNetDAL
             catch { }
             return tt;
         }
-        public List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV, string NoiDung, string hinhthuc, bool KieuKiTu, int TrangThaiGui, int SDT)
+        public List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV, string NoiDung, string DoiTuong, bool KieuKiTu, int TrangThaiGui, 
+            int SDT,string NoiDungGUi,string MauGui,string HinhThuc,bool SDT1)
         {
             List<PSDanhSachGuiSMS> lst = new List<PSDanhSachGuiSMS>();
             try
             {
                 List<PSPhieuSangLoc> phieu = new List<PSPhieuSangLoc>();
-
                 switch (TrangThaiPhieu)
                 {
                     case 1:
                         {
-
                             phieu = db.PSPhieuSangLocs.Where(p => p.TrangThaiMau <= 2 &&
                             p.NgayNhanMau.Value.Date <= DenNgay && p.NgayNhanMau.Value.Date >= TuNgay.Date && p.isXoa != true).ToList();
                             break;
@@ -1729,7 +1728,6 @@ namespace BioNetDAL
                         }
                     case 3:
                         {
-
                             if (nguyco == 1)
                             {
                                 phieu = db.PSPhieuSangLocs.Where(p => p.TrangThaiMau >= 4 && p.TrangThaiMau != 5 &&
@@ -1791,16 +1789,13 @@ namespace BioNetDAL
                             p.NgayNhanMau.Value.Date <= DenNgay && p.NgayNhanMau.Value.Date >= TuNgay.Date && p.isXoa != true).ToList();
                             break;
                         }
-
                 }
                 if (phieu.Count() > 0)
                 {
                     if (!MaDV.Equals("all"))
                     {
                         phieu = phieu.Where(p => p.IDCoSo.Equals(MaDV)).ToList();
-
                     }
-
                     var dsdv = GetDanhSachDonViSMS(MaDV);
                     if (dsdv.Count > 0)
                     {
@@ -1827,7 +1822,7 @@ namespace BioNetDAL
                             dsms.MaPhieu = ph.IDPhieu;
                             dsms.TenTre = pa.TenBenhNhan;
                             dsms.MaKhachHang = pa.MaKhachHang;
-                            var dsdaGuiSMS = db.PSSMS.FirstOrDefault(x => x.MaKhachHang.Equals(pa.MaKhachHang) && x.GroupSMS == hinhthuc);
+                            var dsdaGuiSMS = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(pa.MaKhachHang) && x.GroupSMS == HinhThuc && x.NoiDungGui.Equals(NoiDungGUi) && x.IDPhieu==ph.IDPhieu);
                             if (dsdaGuiSMS != null)
                             {
                                 if (dsdaGuiSMS.isDaGui == true)
@@ -1839,7 +1834,7 @@ namespace BioNetDAL
                                     dsms.isDaGui = false;
                                 }
                             }
-                            if (!string.IsNullOrEmpty(pa.MotherPhoneNumber))
+                            if (!string.IsNullOrEmpty(pa.MotherPhoneNumber) && SDT1==false)
                             {
                                 dsms.TenNguoiNhan = "chị " + pa.MotherName;
                                 if (pa.MotherPhoneNumber.StartsWith("0") == true)
@@ -1847,7 +1842,7 @@ namespace BioNetDAL
                                     dsms.SDTNguoiNhan = "84" + pa.MotherPhoneNumber.Substring(1);
                                 }
                             }
-                            else if (!string.IsNullOrEmpty(pa.FatherPhoneNumber))
+                            else if (!string.IsNullOrEmpty(pa.FatherPhoneNumber) && SDT1==true)
                             {
                                 dsms.TenNguoiNhan = "anh " + pa.FatherName;
                                 if (pa.FatherPhoneNumber.StartsWith("0") == true)
@@ -1856,7 +1851,9 @@ namespace BioNetDAL
                                 }
                             }
                             dsms.NoiDungTinNhan = NoiDungVietTatSMS(NoiDung, ph.IDPhieu, pa.TenBenhNhan, dsms.TenNguoiNhan, KieuKiTu, int.Parse(ph.TrangThaiMau.ToString()), pa.NgayGioSinh.Value);
-                            dsms.HinhThucGui = "sms";
+                            dsms.HinhThucGui = HinhThuc;
+                            dsms.NoiDungGui = NoiDungGUi;
+                            dsms.MauGui = string.IsNullOrEmpty(MauGui)?0:int.Parse(MauGui);
                             dsms.SoKiTu = dsms.NoiDungTinNhan.Length;
                             lst.Add(dsms);
                         }
@@ -1865,7 +1862,7 @@ namespace BioNetDAL
                     {
                         lst = lst.Where(x => x.SDTNguoiNhan != null).ToList();
                     }
-                    else if (SDT == 1)
+                    else if (SDT == 0)
                     {
                         lst = lst.Where(x => x.SDTNguoiNhan == null).ToList();
                     }
@@ -1890,8 +1887,7 @@ namespace BioNetDAL
                 }
             }
             catch
-            {
-            }
+            {}
             return lst;
         }
         public string GetTenTrangThaiPhieu(int TrangThaiPhieu)
@@ -2014,7 +2010,7 @@ namespace BioNetDAL
             List<PSDanhMucMauSMS> danhmucsms = new List<PSDanhMucMauSMS>();
             try
             {
-                danhmucsms = db.PSDanhMucMauSMS.Where(x => x.HinhThucGuiTN == HinhThucGuiTN && x.DoiTuongNhanTN == DoituongNhanTinNhan && x.NoidungGui == Noidunggui).ToList();
+                danhmucsms = db.PSDanhMucMauSMS.OrderBy(y=>y.STT).Where(x => x.HinhThucGuiTN == HinhThucGuiTN && x.DoiTuongNhanTN == DoituongNhanTinNhan && x.NoidungGui == Noidunggui).ToList();
             }
             catch
             {
@@ -2060,33 +2056,53 @@ namespace BioNetDAL
             PsReponse psReponse = new PsReponse();
             try
             {
-                PSSMS pSSMS = new PSSMS();
-                pSSMS.MaKhachHang = sms.MaKhachHang;
-                pSSMS.IDMauSend = sms.MauGui;
-                pSSMS.GroupSMS = sms.HinhThucGui;
-                pSSMS.isDaGui = true;
-                pSSMS.RowIDNumber = 0;
-                db.PSSMS.InsertOnSubmit(pSSMS);
-                db.SubmitChanges();
-                var t = db.PSSMS.FirstOrDefault(x => x.MaKhachHang.Equals(sms.MaKhachHang) && x.IDMauSend.Equals(sms.MauGui) && x.GroupSMS.Equals(sms.HinhThucGui));
-                if (t != null)
+                var smsC = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(sms.MaKhachHang) && x.NoiDungGui.Equals(sms.NoiDungGui) && x.GroupSMS.Equals(sms.HinhThucGui) && x.IDPhieu==sms.MaPhieu);
+                if(smsC!=null)
                 {
                     PSSMSLog log = new PSSMSLog();
-                    log.RowIDNumber = t.RowIDNumber;
+                    log.RowIDNumber = smsC.RowIDNumber;
                     log.SMSContent = sms.NoiDungTinNhan;
                     log.TimeSend = DateTime.Now;
                     log.IDNhanVienSend = MaNV;
                     log.NumberMobile = sms.SDTNguoiNhan;
                     log.SMSError = kq.StringError;
                     log.isResult = kq.Result;
+                    log.IDMauSend = sms.MauGui;
+                    log.RowIDSMSlog = 0;
                     db.PSSMSLogs.InsertOnSubmit(log);
                     db.SubmitChanges();
                 }
-
+                else
+                {
+                    PSSMSC pSSMS = new PSSMSC();
+                    pSSMS.MaKhachHang = sms.MaKhachHang;
+                    pSSMS.NoiDungGui = sms.NoiDungGui;
+                    pSSMS.GroupSMS = sms.HinhThucGui;
+                    pSSMS.isDaGui = kq.Result;
+                    pSSMS.RowIDNumber = 0;
+                    pSSMS.IDPhieu = sms.MaPhieu;
+                    db.PSSMSCs.InsertOnSubmit(pSSMS);
+                    db.SubmitChanges();
+                    var t = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(sms.MaKhachHang) && x.NoiDungGui.Equals(sms.NoiDungGui) && x.GroupSMS.Equals(sms.HinhThucGui));
+                    if (t != null)
+                    {
+                        PSSMSLog log = new PSSMSLog();
+                        log.RowIDNumber = t.RowIDNumber;
+                        log.SMSContent = sms.NoiDungTinNhan;
+                        log.TimeSend = DateTime.Now;
+                        log.IDNhanVienSend = MaNV;
+                        log.NumberMobile = sms.SDTNguoiNhan;
+                        log.SMSError = kq.StringError;
+                        log.isResult = kq.Result;
+                        log.IDMauSend = sms.MauGui;                        
+                        log.RowIDSMSlog = 0;
+                        db.PSSMSLogs.InsertOnSubmit(log);
+                        db.SubmitChanges();
+                    }
+                }                                       
             }
             catch
             {
-
             }
             return psReponse;
         }
@@ -2236,7 +2252,7 @@ namespace BioNetDAL
             string startStr = maDonVi + chuoiNamThang;
             try
             {
-                var res = db.PSPatients.Where(p => p.MaKhachHang.StartsWith(maDonVi + chuoiNamThang) && p.isXoa == false).ToList();
+                var res = db.PSPatients.Where(p => p.MaKhachHang.StartsWith(maDonVi + chuoiNamThang) && p.isXoa !=true).ToList();
                 if (res != null)
                 {
                     if (res.Count > 0)
@@ -3488,6 +3504,76 @@ namespace BioNetDAL
             }
             catch (Exception ex) { return null; }
 
+        }
+        public List<PsHoanDongBo> GetFullPhieuSangLoc(DateTime NgayBD, DateTime NgayKT, string madv, bool dongbo, bool kq)
+        {
+            List<PsHoanDongBo> lst = new List<PsHoanDongBo>();
+            List<PSPhieuSangLoc> lph = new List<PSPhieuSangLoc>();
+            try
+            {
+                if (kq == true)
+                {
+                    if (madv.Equals("all"))
+                    {
+                        lph = db.PSPhieuSangLocs.OrderBy(p => p.IDPhieu).Where(p => p.isDongBo == dongbo && p.isXoa != true && p.NgayTaoPhieu.Value.Date >= NgayBD.Date && p.NgayTaoPhieu.Value.Date <= NgayKT.Date && p.TrangThaiMau >= 4 && p.TrangThaiMau != 5).ToList();
+                    }
+                    else
+                    {
+                        lph = db.PSPhieuSangLocs.OrderBy(p => p.IDPhieu).Where(p => p.IDCoSo.Contains(madv) && p.isDongBo == dongbo && p.isXoa != true && p.NgayTaoPhieu.Value.Date >= NgayBD.Date && p.NgayTaoPhieu.Value.Date <= NgayKT.Date && p.TrangThaiMau >= 4 && p.TrangThaiMau != 5).ToList();
+                    }
+                }
+                else
+                {
+                    if (madv.Equals("all"))
+                    {
+                        lph = db.PSPhieuSangLocs.OrderBy(p => p.IDPhieu).Where(p => p.isDongBo == dongbo && p.isXoa != true && p.NgayTaoPhieu.Value.Date >= NgayBD.Date && p.NgayTaoPhieu.Value.Date <= NgayKT.Date).ToList();
+                    }
+                    else
+                    {
+                        lph = db.PSPhieuSangLocs.OrderBy(p => p.IDPhieu).Where(p => p.IDCoSo.Contains(madv) && p.isDongBo == dongbo && p.isXoa != true && p.NgayTaoPhieu.Value.Date >= NgayBD.Date && p.NgayTaoPhieu.Value.Date <= NgayKT.Date).ToList();
+                    }
+                }
+
+                foreach (var lp in lph)
+                {
+                    PsHoanDongBo db = new PsHoanDongBo();
+                    db.IDCoSo = lp.IDCoSo;
+                    db.IDPhieu = lp.IDPhieu;
+                    db.MaBenhNhan = lp.MaBenhNhan;
+                    lst.Add(db);
+                }
+
+            }
+            catch (Exception ex) { }
+            return lst;
+        }
+        public PsReponse HoanDongBo(string IDPhieu, string IDCoSo, string MaBN)
+        {
+            PsReponse lst = new PsReponse();
+            try
+            {
+                db.pro_HoanDongBoPhieu(IDPhieu, MaBN);
+                lst.Result = true;
+            }
+            catch
+            {
+                lst.Result = false;
+            }
+            return lst;
+        }
+        public PsReponse HoanDongBoPhieu(string IDPhieu)
+        {
+            PsReponse lst = new PsReponse();
+            try
+            {
+                db.pro_HoanDongBoPhieuLe(IDPhieu);
+                lst.Result = true;
+            }
+            catch
+            {
+                lst.Result = false;
+            }
+            return lst;
         }
         public PSTTPhieu GetTTPhieu(string maPhieu, string maDonVi)
         {
@@ -8118,6 +8204,76 @@ namespace BioNetDAL
             return kq;
         }
 
+        #endregion
+        #region Sửa lỗi
+        public PsReponse UpdateMaKhachHang()
+        {
+            PsReponse reponse = new PsReponse();
+            try
+            {
+                var patient = (from pa in db.PSPatients
+                               join ph in db.PSPhieuSangLocs on pa.MaBenhNhan equals ph.MaBenhNhan
+                               where ph.TrangThaiMau >= 2 && ph.isXoa != true && pa.MaKhachHang==null
+                               select new { pa,ph }).ToList();
+                if (patient.Count > 0)
+                {
+                    foreach (var pat in patient)
+                    {
+                        if (string.IsNullOrEmpty(pat.pa.MaKhachHang))
+                        {
+                            pat.pa.MaKhachHang = GetNewMaKhachHang(pat.ph.IDCoSo, SoBanDau());
+                            pat.pa.isDongBo = false;
+                            db.SubmitChanges();
+                            var dcd = db.PSDotChuanDoans.Where(x => x.MaBenhNhan.Equals(pat.pa.MaBenhNhan)).ToList();
+                            if(dcd.Count>0)
+                            {
+                                foreach(var dc in dcd)
+                                {
+                                    dc.MaKhachHang = pat.pa.MaKhachHang;
+                                    dc.isDongBo = false;
+                                    db.SubmitChanges();
+                                }
+                            }
+                            var dcdc = db.PSDotChuanDoans.Where(x => x.MaBenhNhan.Equals(pat.pa.MaBenhNhan)).ToList();
+                            if (dcdc.Count > 0)
+                            {
+                                foreach (var dc in dcdc)
+                                {
+                                    dc.MaKhachHang = pat.pa.MaKhachHang;
+                                    dc.isDongBo = false;
+                                    db.SubmitChanges();
+                                }
+                            }
+                            var bnncc = db.PSBenhNhanNguyCoCaos.Where(x => x.MaBenhNhan.Equals(pat.pa.MaBenhNhan)).ToList();
+                            if (bnncc.Count > 0)
+                            {
+                                foreach (var dc in bnncc)
+                                {
+                                    dc.MaKhachHang = pat.pa.MaKhachHang;
+                                    dc.isDongBo = false;
+                                    db.SubmitChanges();
+                                }
+                            }
+                            var sms = db.PSSMSCs.Where(x => x.IDPhieu.Equals(pat.ph.IDPhieu)).ToList();
+                            if (sms.Count > 0)
+                            {
+                                foreach (var dc in sms)
+                                {
+                                    dc.MaKhachHang = pat.pa.MaKhachHang;
+                                    db.SubmitChanges();
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
+            return reponse;
+        }
         #endregion
     }
 }

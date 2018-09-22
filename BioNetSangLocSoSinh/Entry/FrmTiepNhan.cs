@@ -100,10 +100,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadDanhSachDaTiepNhan()
         {
             this.lstDaTiepNhan.Clear();
-            DateTime tu = this.txtTuNgay_ChuaKQ.EditValue == null ? DateTime.Now.Date : (DateTime)this.txtTuNgay_ChuaKQ.EditValue;
-            DateTime den = this.txtDenNgay_ChuaKQ.EditValue == null ? DateTime.Now.Date : (DateTime)this.txtDenNgay_ChuaKQ.EditValue;
-            string madv = this.searchLookUpDonViCoSo.EditValue == null ? string.Empty : this.searchLookUpDonViCoSo.EditValue.ToString(); ;
-            //this.lstDaTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia(madv, tu, den);
+            this.lstDaTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia("all");
             this.LoadGCDaTiepNhan();
         }
      

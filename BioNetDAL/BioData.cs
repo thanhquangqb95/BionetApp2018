@@ -768,7 +768,7 @@ namespace BioNetDAL
                 return false;
             }
         }
-        public static bool InsertLamLaiXetNghiem(string maPhieu, string maTiepNhan, string maNVChiDinh, List<PsDichVu> lstDVLamLai)
+        public bool InsertLamLaiXetNghiem(string maPhieu, string maTiepNhan, string maNVChiDinh, List<PsDichVu> lstDVLamLai)
         {
             var db = new DataObjects();
             try
@@ -823,7 +823,8 @@ namespace BioNetDAL
             }
             catch { return false; }
         }
-        
+
         #endregion
+       
     }
 }

@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPhongXetNghiem));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -344,6 +344,17 @@
             // 
             // GVChuaKQ
             // 
+            this.GVChuaKQ.Appearance.GroupRow.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.GVChuaKQ.Appearance.GroupRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.GVChuaKQ.Appearance.GroupRow.Options.UseFont = true;
+            this.GVChuaKQ.Appearance.GroupRow.Options.UseForeColor = true;
+            this.GVChuaKQ.Appearance.Row.ForeColor = System.Drawing.Color.Maroon;
+            this.GVChuaKQ.Appearance.Row.Options.UseForeColor = true;
+            this.GVChuaKQ.Appearance.SelectedRow.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.GVChuaKQ.Appearance.SelectedRow.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.GVChuaKQ.Appearance.SelectedRow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.GVChuaKQ.Appearance.SelectedRow.Options.UseFont = true;
+            this.GVChuaKQ.Appearance.SelectedRow.Options.UseForeColor = true;
             this.GVChuaKQ.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.col_MaDonVi_GCChuaCoKQ,
             this.col_MaChiDinh_GCChuaCoKQ,
@@ -360,6 +371,8 @@
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaXetNghiem", null, "có {0} mẫu")});
             this.GVChuaKQ.Name = "GVChuaKQ";
             this.GVChuaKQ.OptionsDetail.EnableMasterViewMode = false;
+            this.GVChuaKQ.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.GVChuaKQ.OptionsView.EnableAppearanceOddRow = true;
             this.GVChuaKQ.OptionsView.ShowFooter = true;
             this.GVChuaKQ.OptionsView.ShowGroupPanel = false;
             this.GVChuaKQ.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -404,6 +417,8 @@
             // 
             // col_MaXN_GCChuaCoKQ
             // 
+            this.col_MaXN_GCChuaCoKQ.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.col_MaXN_GCChuaCoKQ.AppearanceHeader.Options.UseFont = true;
             this.col_MaXN_GCChuaCoKQ.Caption = "Mã Xét Nghiệm";
             this.col_MaXN_GCChuaCoKQ.FieldName = "MaXetNghiem";
             this.col_MaXN_GCChuaCoKQ.Name = "col_MaXN_GCChuaCoKQ";
@@ -465,6 +480,8 @@
             // 
             // col_MaPhieu_GCChuaCoKQ
             // 
+            this.col_MaPhieu_GCChuaCoKQ.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.col_MaPhieu_GCChuaCoKQ.AppearanceHeader.Options.UseFont = true;
             this.col_MaPhieu_GCChuaCoKQ.Caption = "Mã phiếu";
             this.col_MaPhieu_GCChuaCoKQ.FieldName = "MaPhieu";
             this.col_MaPhieu_GCChuaCoKQ.Name = "col_MaPhieu_GCChuaCoKQ";
@@ -535,9 +552,9 @@
             this.btnClear.Location = new System.Drawing.Point(241, 130);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(60, 23);
-            toolTipTitleItem5.Text = "Bỏ lọc";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            this.btnClear.SuperTip = superToolTip5;
+            toolTipTitleItem3.Text = "Bỏ lọc";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.btnClear.SuperTip = superToolTip3;
             this.btnClear.TabIndex = 35;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -762,7 +779,7 @@
             this.xTabDaCoKetQua.Controls.Add(this.panelControl8);
             this.xTabDaCoKetQua.Controls.Add(this.panelControl3);
             this.xTabDaCoKetQua.Name = "xTabDaCoKetQua";
-            this.xTabDaCoKetQua.Size = new System.Drawing.Size(306, 821);
+            this.xTabDaCoKetQua.Size = new System.Drawing.Size(306, 823);
             this.xTabDaCoKetQua.Text = "Đã có kết quả";
             // 
             // GCDaCoKetQua
@@ -774,7 +791,7 @@
             this.GCDaCoKetQua.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpDonVi,
             this.LookUpGoiXN_GCDaCoKQ});
-            this.GCDaCoKetQua.Size = new System.Drawing.Size(306, 621);
+            this.GCDaCoKetQua.Size = new System.Drawing.Size(306, 623);
             this.GCDaCoKetQua.TabIndex = 4;
             this.GCDaCoKetQua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDaCoKetQua});
@@ -945,9 +962,9 @@
             this.btnClearCoKQ.Location = new System.Drawing.Point(240, 132);
             this.btnClearCoKQ.Name = "btnClearCoKQ";
             this.btnClearCoKQ.Size = new System.Drawing.Size(60, 23);
-            toolTipTitleItem6.Text = "Bỏ lọc";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.btnClearCoKQ.SuperTip = superToolTip6;
+            toolTipTitleItem4.Text = "Bỏ lọc";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.btnClearCoKQ.SuperTip = superToolTip4;
             this.btnClearCoKQ.TabIndex = 49;
             // 
             // labelControl10
@@ -1171,7 +1188,7 @@
             // 
             this.panelControl3.Controls.Add(this.btnImportChange);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(0, 783);
+            this.panelControl3.Location = new System.Drawing.Point(0, 785);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(306, 38);
             this.panelControl3.TabIndex = 1;

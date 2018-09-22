@@ -263,6 +263,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap debit_card {
+            get {
+                object obj = ResourceManager.GetObject("debit-card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap del {
             get {
                 object obj = ResourceManager.GetObject("del", resourceCulture);
@@ -523,6 +533,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_back3_216570 {
+            get {
+                object obj = ResourceManager.GetObject("if_back3_216570", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
@@ -596,6 +616,16 @@ namespace BioNetSangLocSoSinh.Properties {
         internal static System.Drawing.Bitmap information {
             get {
                 object obj = ResourceManager.GetObject("information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information__1_ {
+            get {
+                object obj = ResourceManager.GetObject("information (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -703,6 +733,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap news_paper {
+            get {
+                object obj = ResourceManager.GetObject("news-paper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap no_phone {
             get {
                 object obj = ResourceManager.GetObject("no-phone", resourceCulture);
@@ -783,6 +823,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reload3 {
+            get {
+                object obj = ResourceManager.GetObject("reload3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap restore2 {
             get {
                 object obj = ResourceManager.GetObject("restore2", resourceCulture);
@@ -796,6 +846,16 @@ namespace BioNetSangLocSoSinh.Properties {
         internal static System.Drawing.Bitmap restore2x24 {
             get {
                 object obj = ResourceManager.GetObject("restore2x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rotation {
+            get {
+                object obj = ResourceManager.GetObject("rotation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -963,6 +1023,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tools {
+            get {
+                object obj = ResourceManager.GetObject("tools", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap translation {
             get {
                 object obj = ResourceManager.GetObject("translation", resourceCulture);
@@ -1033,6 +1103,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap warning__1_ {
+            get {
+                object obj = ResourceManager.GetObject("warning (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap warning1 {
             get {
                 object obj = ResourceManager.GetObject("warning1", resourceCulture);
@@ -1046,6 +1126,26 @@ namespace BioNetSangLocSoSinh.Properties {
         internal static System.Drawing.Bitmap x_button {
             get {
                 object obj = ResourceManager.GetObject("x-button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x_button__1_ {
+            get {
+                object obj = ResourceManager.GetObject("x-button (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x_button__2_ {
+            get {
+                object obj = ResourceManager.GetObject("x-button (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -7865,3 +7865,6 @@ D:\Github\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\nunit.framework.pdb
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\nunit.framework.xml
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTuyChonCT.resources
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsSMS.FrmDSSMS.resources
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.DiaglogFrm.FrmThemMauTinNhan.resources
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Entry.FrmKhoiPhucDongBo.resources
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.DiaglogFrm.FrmYesNo.resources

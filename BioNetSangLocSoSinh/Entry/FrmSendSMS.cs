@@ -13,6 +13,7 @@ using BioNetModel.Data;
 using BioNetBLL;
 using UserControlDate;
 using System.Text.RegularExpressions;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -86,7 +87,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbKieukitu.EditValue = true;
             this.cbbHinhThuc.SelectedIndex = 0;
             this.cbbDoiTuong.SelectedIndex = 0;
-            this.cbbNoiDung.SelectedIndex = 1;
+            this.cbbNoiDung.SelectedIndex = 0;
             this.cbbTrangThaiPhieu.SelectedIndex = 0;
             this.cbbTrangThaiGui.SelectedIndex = 0;
             this.CbbNguyCo.SelectedIndex = 0;
@@ -109,27 +110,29 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            this.LoadDS();
+        }
+        private void LoadDS()
+        {
             string madv = this.cbbDonVi.EditValue == null ? string.Empty : this.cbbDonVi.EditValue.ToString();
             string machicuc = this.cbbChiCuc.EditValue == null ? string.Empty : this.cbbChiCuc.EditValue.ToString();
             if (!machicuc.Equals("all") && madv.Equals("all"))
             {
                 madv = machicuc;
             }
-            if(cbbHinhThuc.EditValue.ToString().Equals("sms"))
+            if (cbbHinhThuc.EditValue.ToString().Equals("sms"))
             {
                 lstsms = BioNet_Bus.GetDanhSachGuiSMS(this.dllNgay.tungay.Value.Date, this.dllNgay.denngay.Value.Date, int.Parse(cbbTrangThaiPhieu.EditValue.ToString()),
-                int.Parse(this.CbbNguyCo.EditValue.ToString()), madv, txtCTNoiDung.Text, cbbDoiTuong.EditValue.ToString(),bool.Parse(cbbKieukitu.EditValue.ToString()),
-                int.Parse(cbbTrangThaiGui.EditValue.ToString()),int.Parse(cbbSDT.EditValue.ToString()));
+                int.Parse(this.CbbNguyCo.EditValue.ToString()), madv, txtCTNoiDung.Text, cbbDoiTuong.EditValue.ToString(), bool.Parse(cbbKieukitu.EditValue.ToString()),
+                int.Parse(cbbTrangThaiGui.EditValue.ToString()), int.Parse(cbbSDT.EditValue.ToString()), cbbNoiDung.EditValue.ToString(), cbbMauTinNhan.EditValue.ToString(), cbbHinhThuc.EditValue.ToString(),bool.Parse(cbbSDT1.IsOn.ToString()));
             }
             else
             {
                 MessageBox.Show("Chức năng gửi email đang hoàn thiện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
             GCCTDSGuiTinNhan.DataSource = null;
             GCCTDSGuiTinNhan.DataSource = lstsms;
         }
-
         private void cbbChiCuc_EditValueChanged(object sender, EventArgs e)
         {
             try
@@ -342,35 +345,29 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 List<PsReponseSMS> resct = new List<PsReponseSMS>();
                 List<PSDanhSachGuiSMS> lisok = new List<PSDanhSachGuiSMS>();
-                foreach (var ls in lstsms)
+                var lstChecked = this.GVCTDSGuiTinNhan.GetSelectedRows();
+                foreach (var index in lstChecked)
                 {
-                    string sdt = string.IsNullOrEmpty(ls.SDTNguoiNhan) ? "" : ls.SDTNguoiNhan;
-                    if(!string.IsNullOrEmpty(sdt))
+                    string MaPhieu = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_IDPhieu).ToString();
+                    string sdt1 = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_SDTGui)!=null ? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_SDTGui).ToString():string.Empty;
+                    string NoidungTN = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_NoiDungTN) != null? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_NoiDungTN).ToString():string.Empty;
+                    string MaKH = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang) != null? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang).ToString() : string.Empty; 
+                    if (!string.IsNullOrEmpty(sdt1))
                     {
-                        PsReponseSMS res = BioNet_Bus.SMS(ls.NoiDungTinNhan, sdt, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
-                        if (res.Result)
-                        {
-                            lisok.Add(ls);
-                          
-                        }
+                        PsReponseSMS res = BioNet_Bus.SMS(NoidungTN, sdt1, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                        var ls = lstsms.FirstOrDefault(x => x.MaPhieu.Equals(MaPhieu) && x.MaKhachHang.Equals(MaKH));
                         BioNet_Bus.InsertSMSNumber(ls, res, emp.EmployeeCode);
                     }
                    
                 }
-                if(lisok.Count>0)
-                {
-                    foreach (var ls in lisok)
-                    {
-                        lstsms.Remove(ls);
-                        GCCTDSGuiTinNhan.DataSource = null;
-                        GCCTDSGuiTinNhan.DataSource = lstsms;
-                    }
-                }
+              
             }
             catch (Exception ex)
             {
-            XtraMessageBox.Show("Gửi tin nhắn lỗi ", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-              }
+                XtraMessageBox.Show("Gửi tin nhắn lỗi ", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            this.LoadDS();
+
         }
 
         private void labelControl21_Click(object sender, EventArgs e)
@@ -405,72 +402,107 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                 }
             }
-        }
-
-        private void simpleButton7_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                PSDanhMucMauSMS sms = new PSDanhMucMauSMS();
-                sms.RowIDMauSMS = 0;
-                sms.NameMauSMS = txtNameMauSMS.Text;
-                sms.DoiTuongNhanTN = cbbDoiTuongSMS.EditValue.ToString();
-                sms.HinhThucGuiTN = cbbHinhThucSMS.EditValue.ToString();
-                sms.NoidungGui = cbbNoiDungSMS.EditValue.ToString();
-                sms.MauNoiDungGui = txtCTNoiDungSMS.Text;
-                PsReponse reponse = BioNet_Bus.InsertMauSMS(sms);
-                if (reponse.Result)
-                {
-                    XtraMessageBox.Show("Lưu thành công.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    XtraMessageBox.Show("Thêm mẫu tin thất bại.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-
-            }
-            catch
-            {
-                XtraMessageBox.Show("Thêm mẫu tin thất bại.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           
-        }
+        }     
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            panelAddSMS.Visible = true;
-            txtNameMauSMS.ResetText();
-            txtCTNoiDungSMS.ResetText();
-            cbbDoiTuongSMS.ResetText();
-            cbbHinhThucSMS.ResetText();
-        }
-        private void NoiDungDemoSMS()
-        {
-            string tam = txtCTNoiDungSMS.Text.Replace("#maphieu", "1234567");
-            tam = tam.Replace("#tentre", " TÊN TRẺ A");
-            tam = tam.Replace("#tennguoinhan", " MẸ NGUYỄN THỊ B");
-            tam = tam.Replace("#trangthaiphieu", "đã có kết quả");
-            tam = tam.Replace("#ngaysinh", "01/01/2018");
-            tam = tam.Replace("#ketqua", " Nguy co thap(CH,CAH,GAL,PKU), Nguy co cao(G6PD)");
-            tam = tam.Replace("#ketluan", "Nguy cơ cao");
-            if (!bool.Parse(cbbKieukitu.EditValue.ToString()))
-            {
-                Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
-                tam = tam.Normalize(NormalizationForm.FormD);
-                tam = regex.Replace(tam, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
-            }
-            txtAdDemo.Text = tam;
-            lblSKTSMS.Text = txtCTNoiDungSMS.Text.Length.ToString() + "/160";
-            lblSKTDemoSMS.Text = txtAdDemo.Text.Length.ToString() + "/160";
-        }
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            panelAddSMS.Visible = false;
+            DiaglogFrm.FrmThemMauTinNhan frmThemMau = new DiaglogFrm.FrmThemMauTinNhan();
+            frmThemMau.ShowDialog();
         }
 
         private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
+        }      
+
+        private void xtraTabControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GVCTDSGuiTinNhan_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    string nguyCo = View.GetRowCellValue(e.RowHandle, this.col_TinhTrangGui) == null ? string.Empty : View.GetRowCellValue(e.RowHandle, this.col_TinhTrangGui).ToString();
+                    if (nguyCo=="True")
+                    {
+                        e.Appearance.BackColor = Color.Salmon;
+                        e.Appearance.BackColor2 = Color.SeaShell;
+                    }
+                    else if(nguyCo =="False")
+                    {
+                        e.Appearance.BackColor = Color.Gainsboro;
+                        e.Appearance.BackColor2 = Color.LightGray;
+                    }
+                    else
+                    {
+                        e.Appearance.BackColor = Color.SkyBlue;
+                        e.Appearance.BackColor2 = Color.LightSkyBlue;
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void cbbTrangThaiGui_EditValueChanged(object sender, EventArgs e)
+        {          
+             
+        }
+
+        private void CbbNguyCo_EditValueChanged(object sender, EventArgs e)
+        {
+            this.LocSMS();
+        }
+        private void LocSMS()
+        {
+            PSDanhMucMauSMS kq = new PSDanhMucMauSMS();
+            try
+            {
+                switch (CbbNguyCo.EditValue.ToString())
+                {
+                    case "1":
+                        {
+                            if (cbbTrangThaiPhieu.EditValue.ToString() == "4")
+                            {
+                                kq = lstmausms.FirstOrDefault(x => x.RowIDMauSMS == 3);
+
+                            }
+                            else if (cbbTrangThaiPhieu.EditValue.ToString() == "6")
+                            {
+                                kq = lstmausms.FirstOrDefault(x => x.RowIDMauSMS == 4);
+                            }
+                            break;
+                        }
+                    case "0":
+                        {
+                            if (cbbTrangThaiPhieu.EditValue.ToString() == "4")
+                            {
+                                kq = lstmausms.FirstOrDefault(x => x.RowIDMauSMS == 6);
+
+                            }
+                            else if (cbbTrangThaiPhieu.EditValue.ToString() == "6")
+                            {
+                                kq = lstmausms.FirstOrDefault(x => x.RowIDMauSMS == 5);
+                            }
+                            break;
+                        }
+                }
+                if (kq.RowIDMauSMS != 0)
+                {
+                    cbbMauTinNhan.EditValue = kq.RowIDMauSMS;
+                }
+                else
+                {
+                    cbbMauTinNhan.EditValue = lstmausms.First().RowIDMauSMS;
+                }
+            }
+            catch
+            {
+
+            }
 
         }
     }

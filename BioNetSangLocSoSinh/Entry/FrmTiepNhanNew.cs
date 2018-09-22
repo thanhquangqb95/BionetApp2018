@@ -13,6 +13,9 @@ using BioNetModel.Data;
 using BioNetBLL;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Columns;
+using System.Threading;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -37,7 +40,8 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmTiepNhanNew_Load(object sender, EventArgs e)
         {
             LoadDataDanhMuc();
-            GetDanhSachChoTrenHT();
+            Thread t = new Thread(new ThreadStart(GetDanhSachChoTrenHT));
+            t.Start();
             GetDanhSachDaTiepNhan();
         }
 
@@ -53,6 +57,8 @@ namespace BioNetSangLocSoSinh.Entry
                 this.cbbChiCucDaTiepNhan.EditValue = "all";
                 this.lookupDVCS.DataSource = lstDonVi;
                 this.lookupDVCSDuyetTiepNhan.DataSource = lstDonVi;
+                this.txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
+                this.txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
                 this.lookupDVCSChoTrenHT.DataSource = lstDonVi;
                 this.lstDanToc = BioNet_Bus.GetDanhSachDanToc(-1);//get all dân tộc
                 this.lstChuongTrinh = BioNet_Bus.GetDanhSachChuongTrinh(false);
@@ -138,26 +144,39 @@ namespace BioNetSangLocSoSinh.Entry
                 var value = sear.EditValue.ToString();
                 this.cbbDonViDaTiepNhan.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi(value.ToString());
                 this.cbbDonViDaTiepNhan.EditValue = "all";
+                if (cbbChiCucDaTiepNhan.EditValue.ToString() != "all")
+                {
+                    FilterTiepNhanTheoDonViChuaCoKQ();
+                }
+                else
+                {
+                    GVDaTiepNhan.ClearColumnsFilter();
+                }
             }
             catch { }
         }
 
-        private void cbbDonViChoDuyet_EditValueChanged(object sender, EventArgs e)
+       
+        private void FilterTiepNhanTheoDonViChuaCoKQ()
         {
-            try
+            string machicuc = cbbChiCucDaTiepNhan.EditValue.ToString();
+            string madv = cbbDonViDaTiepNhan.EditValue.ToString();
+            if (!machicuc.Equals("all") && madv.Equals("all"))
             {
-                if (this.cbbDonViChoDuyet.EditValue.Equals("all"))
-                {
-                }
-                else
-                {
-                    this.txtMaPhieuTiepNhan.Enabled = true;
-                }
+                madv = machicuc;
             }
-            catch
-            { }
+            if (!madv.Equals("all"))
+            {
+                string filterMaDV = "Contains([MaDonVi], '" + madv + "')";
+                GVDaTiepNhan.Columns["MaDonVi"].FilterInfo = new ColumnFilterInfo(filterMaDV);
+            }
+            else
+            {
+                GVDaTiepNhan.Columns["MaDonVi"].ClearFilter();
+            }
+            this.GVDaTiepNhan.ExpandAllGroups();
+            this.GVDaTiepNhan.OptionsDetail.ShowDetailTabs = false;
         }
-
         #region Tiếp nhận phiếu
         private void txtMaPhieuTiepNhan_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -166,7 +185,8 @@ namespace BioNetSangLocSoSinh.Entry
                 string maDonVi = this.cbbDonViChoDuyet.EditValue.ToString();
                 if (!string.IsNullOrEmpty(txtMaPhieuTiepNhan.Text.Trim()))
                 {
-                    if(!maDonVi.Equals("all"))
+                    var ph = lstChoTiepNhan.FirstOrDefault(x => x.MaPhieu.Equals(txtMaPhieuTiepNhan.Text.Trim()));
+                    if (!maDonVi.Equals("all")|| ph!=null)
                     {
                         this.CheckPhieuTiepNhan(txtMaPhieuTiepNhan.Text.Trim(), maDonVi);
                         this.txtMaPhieuTiepNhan.Reset();
@@ -176,7 +196,7 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Yêu cầu chọn đơn vị.");
                         notData.ShowDialog();
-                    }                 
+                    }
                 }
                 else
                 {
@@ -248,13 +268,13 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtDuyetDanhSachTiepNhan_Click(object sender, EventArgs e)
         {
-            
+
             if (lstChoTiepNhan.Count > 0)
             {
                 SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.WaitingfromSave), true, true, false);
                 bool isOK = true;
                 String Error = string.Empty;
-                List<PSTiepNhan> lst = lstChoTiepNhan.OrderBy(x=>x.MaPhieu).ToList();
+                List<PSTiepNhan> lst = lstChoTiepNhan.OrderBy(x => x.MaPhieu).ToList();
                 foreach (var tiepnhan in lst)
                 {
                     var result = BioNet_Bus.InsertTiepNhan(tiepnhan);
@@ -334,20 +354,7 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void GVDaTiepNhan_DoubleClick(object sender, EventArgs e)
         {
-            try
-            {
-                if (this.GVDaTiepNhan.RowCount > 0)
-                {
-                    if (this.GVDaTiepNhan.GetFocusedRow() != null)
-                    {
-                        string maPhieu = this.GVDaTiepNhan.GetRowCellValue(this.GVDaTiepNhan.FocusedRowHandle, this.col_MaPhieuDatiepNhan).ToString();
-                        string maDonVi = this.GVDaTiepNhan.GetRowCellValue(this.GVDaTiepNhan.FocusedRowHandle, this.col_donViCoSoDaTiepNhan).ToString();
-                        string tenDonVi = this.GVDaTiepNhan.GetRowCellDisplayText(this.GVDaTiepNhan.FocusedRowHandle, this.col_donViCoSoDaTiepNhan).ToString();
-                        this.HienThiThongTinPhieu(maPhieu, maDonVi, tenDonVi);
-                    }
-                }
-            }
-            catch { }
+           
         }
 
         #region //hiện thị phiếu
@@ -367,9 +374,13 @@ namespace BioNetSangLocSoSinh.Entry
                             this.txtTenMe.Text = phieu.BenhNhan.MotherName;
                             this.txtTenCha.Text = phieu.BenhNhan.FatherName;
                             this.txtSDTMe.Text = phieu.BenhNhan.MotherPhoneNumber;
-                            this.txtSDTCha.Text = phieu.BenhNhan.FatherPhoneNumber;
-                            this.txtNamSinhMe.Text = phieu.BenhNhan.MotherBirthday.Value.Year.ToString();
-                            this.txtNamSinhCha.Text = phieu.BenhNhan.FatherBirthday.Value.Year.ToString();
+                            this.txtNamSinhMe.Text = phieu.BenhNhan.MotherBirthday!=null?phieu.BenhNhan.MotherBirthday.Value.Year.ToString():null;
+                            if(!string.IsNullOrEmpty(phieu.BenhNhan.FatherName))
+                            {
+                                this.txtNamSinhCha.Text = phieu.BenhNhan.FatherBirthday!=null?phieu.BenhNhan.FatherBirthday.Value.Year.ToString():null;
+                                this.txtSDTCha.Text = phieu.BenhNhan.FatherPhoneNumber;
+                            }
+                           
                             this.txtTuanTuoi.Text = phieu.BenhNhan.TuanTuoiKhiSinh.ToString();
                             this.txtTenBenhNhan.Text = phieu.BenhNhan.TenBenhNhan;
                             this.txtCanNang.Text = phieu.BenhNhan.CanNang.ToString();
@@ -377,12 +388,16 @@ namespace BioNetSangLocSoSinh.Entry
                             this.cboPhuongPhapSinh.SelectedIndex = Convert.ToInt16(phieu.BenhNhan.PhuongPhapSinh);
                             this.lookUpDanToc.EditValue = phieu.BenhNhan.DanTocID;
                             this.txtNoiSinh.Text = phieu.BenhNhan.NoiSinh;
-                            this.txtGioSinhBenhNhan.EditValue = phieu.BenhNhan.NgayGioSinh.Value.TimeOfDay;
-                            this.txtNamSinhBenhNhan.EditValue = phieu.BenhNhan.NgayGioSinh.Value.ToShortDateString();
+                            if (phieu.BenhNhan.NgayGioSinh!=null)
+                            {
+                                this.txtGioSinhBenhNhan.EditValue = phieu.BenhNhan.NgayGioSinh.Value.TimeOfDay;
+                                this.txtNamSinhBenhNhan.EditValue = phieu.BenhNhan.NgayGioSinh.Value.ToShortDateString();
+                            }
                         }
                     }
                     catch { }
                     this.barCodePhieu.Text = phieu.maPhieu;
+                    this.txtDiaChiNoiLayMau.Text = phieu.DiaChiLayMau;
                     this.txtNgayTruyenMau.EditValue = phieu.ngayTruyenMau;
                     this.txtSoLuongTruyenMau.Text = phieu.soLuongTruyenMau.ToString();
                     this.cbbCheDoDD.EditValue = phieu.maCheDoDinhDuong.ToString();
@@ -391,15 +406,18 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtChuongTrinh.EditValue = lstChuongTrinh.FirstOrDefault(x => x.IDChuongTrinh == phieu.maChuongTrinh).TenChuongTrinh;
                     this.txtDonVi.EditValue = tenDonVi;
                     this.radioGroupGoiXN.EditValue = phieu.maGoiXetNghiem;
-                    this.txtGioLayMau.EditValue = phieu.ngayGioLayMau.TimeOfDay;
-                    this.txtNgayLayMau.EditValue = phieu.ngayGioLayMau.Date;
+                    if(phieu.ngayGioLayMau!=null)
+                    {
+                        this.txtGioLayMau.EditValue = phieu.ngayGioLayMau.TimeOfDay;
+                        this.txtNgayLayMau.EditValue = phieu.ngayGioLayMau.Date;
+                    }
                     this.txtNguoiLayMau.Text = phieu.tenNVLayMau;
                     this.txtDiaChiDonVi.Text = phieu.DonVi.DiaChiDVCS;
                     this.txtNoiLayMau.Text = phieu.NoiLayMau;
                     this.txtSDTNguoiLayMau.Text = phieu.SoDTNhanVienLayMau;
                     this.txtPara.Text = phieu.paRa;
                     this.LoadDanhSachDichVu();
-                    if(phieu.maGoiXetNghiem.Equals("DVGXN0001"))
+                    if (phieu.maGoiXetNghiem.Equals("DVGXN0001"))
                     {
                         List<PSChiDinhTrenPhieu> listdvcanlamlai = BioNet_Bus.GetDichVuCanLamLaiCuaPhieu(phieu.maPhieu, phieu.maDonViCoSo);
                         List<PsDichVu> lstdv = new List<PsDichVu>();
@@ -418,7 +436,7 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     else
                     {
-                        List <PsDichVu> lstChiDinhDichVu = BioNet_Bus.GetDanhSachDichVuTheoMaGoi(phieu.maGoiXetNghiem, phieu.maDonViCoSo);
+                        List<PsDichVu> lstChiDinhDichVu = BioNet_Bus.GetDanhSachDichVuTheoMaGoi(phieu.maGoiXetNghiem, phieu.maDonViCoSo);
                         foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
                         {
                             try
@@ -432,7 +450,7 @@ namespace BioNetSangLocSoSinh.Entry
                             catch (Exception ex) { }
                         }
                     }
-                                     
+
                 }
                 catch
                 {
@@ -491,9 +509,199 @@ namespace BioNetSangLocSoSinh.Entry
 
         #endregion
 
-        private void txtMaPhieuTiepNhan_EditValueChanged(object sender, EventArgs e)
-        {
+       
 
+        private void GVPhieuCho_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.GVPhieuCho.RowCount > 0)
+                {
+                    if (this.GVPhieuCho.GetFocusedRow() != null)
+                    {
+                        string maPhieu = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDPhieu_GCPhieuCho).ToString();
+                        string maDonVi = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
+                        string tenDonVi = this.GVPhieuCho.GetRowCellDisplayText(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
+                        this.HienThiThongTinPhieu(maPhieu, maDonVi, tenDonVi); }
+                }
+            }
+            catch { }
+        }
+        private void cbbTTTre_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(cbbTTTre.EditValue.ToString()=="4")
+                {
+                    txtNgayTruyenMau.Visible = true;
+                    txtSoLuongTruyenMau.Visible = true;
+                    lblNgayTruyen.Visible = true;
+                    lblSoLuong.Visible = true;
+                    lblTruyenMau.Visible = true;
+                }
+                else
+                {
+                    txtNgayTruyenMau.Visible = false;
+                    txtSoLuongTruyenMau.Visible = false;
+                    lblNgayTruyen.Visible = false;
+                    lblSoLuong.Visible = false;
+                    lblTruyenMau.Visible = false;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void GVDaTiepNhan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.GVDaTiepNhan.RowCount > 0)
+                {
+                    if (this.GVDaTiepNhan.GetFocusedRow() != null)
+                    {
+                        string maPhieu = this.GVDaTiepNhan.GetRowCellValue(this.GVDaTiepNhan.FocusedRowHandle, this.col_MaPhieuDatiepNhan).ToString();
+                        string maDonVi = this.GVDaTiepNhan.GetRowCellValue(this.GVDaTiepNhan.FocusedRowHandle, this.col_donViCoSoDaTiepNhan).ToString();
+                        string tenDonVi = this.GVDaTiepNhan.GetRowCellDisplayText(this.GVDaTiepNhan.FocusedRowHandle, this.col_donViCoSoDaTiepNhan).ToString();
+                        this.HienThiThongTinPhieu(maPhieu, maDonVi, tenDonVi);
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void btnRefesh_Click(object sender, EventArgs e)
+        {
+            this.LoadDanhSachDaTiepNhan();
+        }
+
+        private void GVPhieuCho_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    string RowPatientID = View.GetRowCellDisplayText(e.RowHandle, View.Columns["maBenhNhan"]);
+                    string NgayTaoPhieu = View.GetRowCellDisplayText(e.RowHandle, col_NgayTaoPhieu_GCPhieuCho);
+                    var TimeS = DateTime.Now.Date - Convert.ToDateTime(NgayTaoPhieu).Date;
+                    if (string.IsNullOrEmpty(RowPatientID))
+                    {
+                        e.Appearance.BackColor = Color.Goldenrod;
+                        e.Appearance.BackColor2 = Color.Gold;
+                    }
+                    else
+                    {
+                        e.Appearance.BackColor = Color.Aqua;
+                        e.Appearance.BackColor2 = Color.AliceBlue;
+                    }
+                    if (TimeS.Days > 7)
+                    {
+                        e.Appearance.BackColor = Color.Goldenrod;
+                        e.Appearance.BackColor2 = Color.Gold;
+                    }
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void GVDanhSachTiepNhan_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    bool isDaNhapLieu = View.GetRowCellDisplayText(e.RowHandle, View.Columns["isDaNhapLieu"]) == null ? false : (bool)View.GetRowCellValue(e.RowHandle, this.col_isDaNhapLieu);
+                    if (!isDaNhapLieu)
+                    {
+                        e.Appearance.BackColor = Color.Salmon;
+                        e.Appearance.BackColor2 = Color.SeaShell;
+                    }
+                    else
+                    {
+                        e.Appearance.BackColor = Color.Aqua;
+                        e.Appearance.BackColor2 = Color.AliceBlue;
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void txtXoaPhieuCho_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void GVDaTiepNhan_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    string GoiXN = View.GetRowCellDisplayText(e.RowHandle, col_GoiXN);
+                    string NgayTaoPhieu = View.GetRowCellDisplayText(e.RowHandle, col_NgayTaoPhieu_GCPhieuCho);
+                    var TimeS = DateTime.Now.Date - Convert.ToDateTime(NgayTaoPhieu).Date;
+                    if (string.IsNullOrEmpty(GoiXN))
+                    {
+                        e.Appearance.BackColor = Color.Goldenrod;
+                        e.Appearance.BackColor2 = Color.Gold;
+                    }
+                    else
+                    {
+                        e.Appearance.BackColor = Color.Aqua;
+                        e.Appearance.BackColor2 = Color.AliceBlue;
+                    }
+                    if (TimeS.Days > 7)
+                    {
+                        e.Appearance.BackColor = Color.Goldenrod;
+                        e.Appearance.BackColor2 = Color.Gold;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtMaPhieuSearch_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(txtMaPhieuSearch.EditValue.ToString()))
+                {
+                    string filterMaPhieu = "Contains([MaPhieu], '" + txtMaPhieuSearch.EditValue + "')";
+                    GVDaTiepNhan.Columns["MaPhieu"].FilterInfo = new ColumnFilterInfo(filterMaPhieu);
+                }
+                else
+                {
+                    GVDaTiepNhan.Columns["MaPhieu"].ClearFilter();
+                }
+
+            }
+            catch
+            {
+                GVDaTiepNhan.Columns["MaPhieu"].FilterInfo = new ColumnFilterInfo();
+            }
+            this.GVDaTiepNhan.ExpandAllGroups();
+        }
+
+        private void cbbDonViDaTiepNhan_EditValueChanged(object sender, EventArgs e)
+        {
+            FilterTiepNhanTheoDonViChuaCoKQ();
         }
     }   
 }

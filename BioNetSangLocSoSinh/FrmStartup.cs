@@ -1536,6 +1536,18 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             catch { }
         }
+
+        private void barButtonItem67_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                Entry.FrmKhoiPhucDongBo frm = new Entry.FrmKhoiPhucDongBo();
+                TabCreating(xTabMain, "Hoàn đồng bộ", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
     }
 
 }

@@ -962,6 +962,7 @@ namespace BioNetSangLocSoSinh.Entry
                 benhNhan.MotherName = this.ChuyenSangChuHoa(this.txtTenMe.Text);
                 benhNhan.DiaChi = this.txtDiaChiGiaDinh.Text;
                 benhNhan.Para = this.txtPara.Text.TrimEnd();
+                benhNhan.MaKhachHang = this.txtMaKhachHang.Text.TrimEnd();
                 phieu.Benhnhan = benhNhan;
                 #endregion
 
@@ -1001,6 +1002,7 @@ namespace BioNetSangLocSoSinh.Entry
                 phieuSangLoc.DiaChiLayMau = this.txtDiaChiNoiLayMau.Text;
                 phieuSangLoc.Para = this.txtPara.Text.TrimEnd();
                 phieuSangLoc.NgayTaoPhieu = DateTime.Now;
+                
                 // this.ValidateFrom();
 
                 foreach (var item in this.lstDanhGiaSoBo)

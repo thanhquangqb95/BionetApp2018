@@ -128,3 +128,16 @@ D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csprojAssemblyRefe
 D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
 D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.dll
 D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.pdb
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\DevExpress.Data.v17.1.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\DevExpress.Xpo.v17.1.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\DevExpress.Data.v17.1.xml
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\DevExpress.Xpo.v17.1.xml
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\de\DevExpress.Data.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\es\DevExpress.Data.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\ja\DevExpress.Data.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\ru\DevExpress.Data.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\de\DevExpress.Xpo.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\es\DevExpress.Xpo.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\ja\DevExpress.Xpo.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\bin\Debug\ru\DevExpress.Xpo.v17.1.resources.dll
+D:\Github\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csproj.CopyComplete
