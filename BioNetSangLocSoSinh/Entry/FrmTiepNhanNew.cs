@@ -29,6 +29,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         public List<PSTiepNhan> lstChoTiepNhan = new List<PSTiepNhan>();
         public List<PsPhieu> lstPhieuChoHT = new List<PsPhieu>();
+        public List<PsPhieu> lstPhieuChoHTMD = new List<PsPhieu>();
         public List<PSTiepNhan> lstDaTiepNhan = new List<PSTiepNhan>();
         private List<PsDichVu> lstDichVu = new List<PsDichVu>();
         public FrmTiepNhanNew(PsEmployeeLogin employee)
@@ -39,10 +40,9 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void FrmTiepNhanNew_Load(object sender, EventArgs e)
         {
-            LoadDataDanhMuc();
-            Thread t = new Thread(new ThreadStart(GetDanhSachChoTrenHT));
-            t.Start();
-            GetDanhSachDaTiepNhan();
+            this.LoadDataDanhMuc();
+            this.GetDanhSachChoTrenHT();
+            this.GetDanhSachDaTiepNhan();
         }
 
         private void LoadDataDanhMuc()
@@ -72,18 +72,13 @@ namespace BioNetSangLocSoSinh.Entry
         private void GetDanhSachChoTrenHT()
         {
             this.lstPhieuChoHT = BioNet_Bus.GetDanhSachPhieuChoTiepNhan();
+            this.lstPhieuChoHTMD = BioNet_Bus.GetDanhSachPhieuChoTiepNhan();
             LoadDanhSachChoTrenHeThong();
         }
 
         private void GetDanhSachDaTiepNhan()
         {
-            string machicuc = cbbChiCucDaTiepNhan.EditValue.ToString();
-            string madv = cbbDonViDaTiepNhan.EditValue.ToString();
-            if (!machicuc.Equals("all") && madv.Equals("all"))
-            {
-                madv = machicuc;
-            }
-            this.lstDaTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia(madv);
+            this.lstDaTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia("all");
             LoadDanhSachDaTiepNhan();
         }
         private void LoadDanhSachDichVu()
@@ -290,7 +285,7 @@ namespace BioNetSangLocSoSinh.Entry
                 }
 
                 this.LoadDanhSachChoDuyetTiepNhan();
-                this.LoadDanhSachDaTiepNhan();
+                this.GetDanhSachDaTiepNhan();
                 SplashScreenManager.CloseForm();
                 if (isOK)
                 {
@@ -315,20 +310,47 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtHuyVeDanhSachCho_Click(object sender, EventArgs e)
         {
+            PsReponse res = new PsReponse();
             try
             {
-                if (this.GVPhieuCho.RowCount > 0)
+                int[] lstChecked = this.GVDanhSachTiepNhan.GetSelectedRows();
+                if (XtraMessageBox.Show("Bạn chắn chắn muốn hủy danh sách phiếu chờ  khỏi danh sách tiếp nhận chứ?", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if (this.GVPhieuCho.GetFocusedRow() != null)
+                    List<PSTiepNhan> lstTemp = new List<PSTiepNhan>();
+                    foreach (var index in lstChecked)
                     {
-                        string maPhieu = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDPhieu_GCPhieuCho).ToString();
-                        string maDonVi = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
-                        string tenDonVi = this.GVPhieuCho.GetRowCellDisplayText(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
-                        this.HienThiThongTinPhieu(maPhieu, maDonVi, tenDonVi);
+                        if (index >= 0)
+                        {
+                            string maPhieuXoa = this.GVDanhSachTiepNhan.GetRowCellValue(index, this.col_MaPhieu_GCTiepNhan).ToString();
+                            var ph = this.lstChoTiepNhan.FirstOrDefault(p => p.MaPhieu == maPhieuXoa);
+                            if (ph != null)
+                            {
+                                lstTemp.Add(ph);
+                                 var phTontai = this.lstPhieuChoHTMD.FirstOrDefault(p => p.maPhieu == maPhieuXoa);
+                                if (phTontai != null)
+                                {
+                                    this.lstPhieuChoHT.Add(phTontai);     
+                                }
+                                
+                            }
+                        }
                     }
+                    if(lstTemp.Count()>0)
+                    {
+                        foreach(var lst in lstTemp)
+                        {
+                            lstChoTiepNhan.Remove(lst);
+                        }
+                    }
+                    this.LoadDanhSachChoTrenHeThong();
+                    this.LoadDanhSachChoDuyetTiepNhan();
                 }
+
             }
-            catch { }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Lỗi xóa phiếu khỏi danh sách tiếp nhận " + ex, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void GVPhieuCho_DoubleClick(object sender, EventArgs e)
@@ -506,11 +528,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.checkedListBoxXN.Enabled = false;
         }
 
-
-        #endregion
-
-       
-
+        #endregion      
         private void GVPhieuCho_Click(object sender, EventArgs e)
         {
             try
@@ -550,7 +568,6 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch
             {
-
             }
         }
 
@@ -574,7 +591,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void btnRefesh_Click(object sender, EventArgs e)
         {
-            this.LoadDanhSachDaTiepNhan();
+            this.GetDanhSachDaTiepNhan();
         }
 
         private void GVPhieuCho_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -702,6 +719,50 @@ namespace BioNetSangLocSoSinh.Entry
         private void cbbDonViDaTiepNhan_EditValueChanged(object sender, EventArgs e)
         {
             FilterTiepNhanTheoDonViChuaCoKQ();
+        }
+
+        private void btnHuyDuyetTiepNhan_Click(object sender, EventArgs e)
+        {
+            PsReponse res = new PsReponse();
+            res.Result = true;
+            try
+            {
+                int[] lstChecked = this.GVDaTiepNhan.GetSelectedRows();
+                if (XtraMessageBox.Show("Bạn chắn chắn muốn hủy danh sách phiếu chờ  khỏi danh sách tiếp nhận chứ?", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    List<PSTiepNhan> lstTemp = new List<PSTiepNhan>();
+                    foreach (var index in lstChecked)
+                    {
+                        if (index >= 0)
+                        {
+                            string maPhieuXoa = this.GVDaTiepNhan.GetRowCellValue(index, this.col_MaPhieuDatiepNhan).ToString();
+                           var kq= BioNet_Bus.HuyPhieuDaTiepNhan(maPhieuXoa);
+                            if(!kq.Result)
+                            {
+                                res.Result = false;
+                            }
+                        }
+                    }
+                    if (lstTemp.Count() > 0)
+                    {
+                        foreach (var lst in lstTemp)
+                        {
+                            lstChoTiepNhan.Remove(lst);
+                        }
+                    }
+                    if(!res.Result)
+                    {
+                        XtraMessageBox.Show("Lỗi hủy phiếu tiết nhận.", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    this.GetDanhSachDaTiepNhan();
+                    this.GetDanhSachChoTrenHT();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Lỗi xóa phiếu khỏi danh sách tiếp nhận " + ex, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }   
 }

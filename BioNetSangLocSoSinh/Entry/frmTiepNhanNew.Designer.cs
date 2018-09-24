@@ -114,7 +114,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnHuyDuyetTiepNhan = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.txtNamSinhBenhNhan = new DevExpress.XtraEditors.TextEdit();
@@ -674,6 +674,7 @@
             // 
             // txtHuyVeDanhSachCho
             // 
+            this.txtHuyVeDanhSachCho.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
             this.txtHuyVeDanhSachCho.Location = new System.Drawing.Point(192, 9);
             this.txtHuyVeDanhSachCho.Name = "txtHuyVeDanhSachCho";
             this.txtHuyVeDanhSachCho.Size = new System.Drawing.Size(141, 22);
@@ -683,9 +684,10 @@
             // 
             // txtDuyetDanhSachTiepNhan
             // 
-            this.txtDuyetDanhSachTiepNhan.Location = new System.Drawing.Point(20, 9);
+            this.txtDuyetDanhSachTiepNhan.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.check1;
+            this.txtDuyetDanhSachTiepNhan.Location = new System.Drawing.Point(10, 9);
             this.txtDuyetDanhSachTiepNhan.Name = "txtDuyetDanhSachTiepNhan";
-            this.txtDuyetDanhSachTiepNhan.Size = new System.Drawing.Size(142, 22);
+            this.txtDuyetDanhSachTiepNhan.Size = new System.Drawing.Size(166, 22);
             this.txtDuyetDanhSachTiepNhan.TabIndex = 0;
             this.txtDuyetDanhSachTiepNhan.Text = "Duyệt danh sách tiếp nhận";
             this.txtDuyetDanhSachTiepNhan.Click += new System.EventHandler(this.txtDuyetDanhSachTiepNhan_Click);
@@ -842,7 +844,7 @@
             this.GCDaTiepNhan.Name = "GCDaTiepNhan";
             this.GCDaTiepNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lookupDVCS});
-            this.GCDaTiepNhan.Size = new System.Drawing.Size(347, 481);
+            this.GCDaTiepNhan.Size = new System.Drawing.Size(347, 487);
             this.GCDaTiepNhan.TabIndex = 6;
             this.GCDaTiepNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDaTiepNhan});
@@ -864,7 +866,6 @@
             this.GVDaTiepNhan.OptionsView.ShowGroupPanel = false;
             this.GVDaTiepNhan.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDaTiepNhan_RowCellStyle);
             this.GVDaTiepNhan.Click += new System.EventHandler(this.GVDaTiepNhan_Click);
-            this.GVDaTiepNhan.DoubleClick += new System.EventHandler(this.GVDaTiepNhan_DoubleClick);
             // 
             // col_MaPhieuDatiepNhan
             // 
@@ -1160,20 +1161,22 @@
             // 
             // panelControl5
             // 
-            this.panelControl5.Controls.Add(this.simpleButton6);
+            this.panelControl5.Controls.Add(this.btnHuyDuyetTiepNhan);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl5.Location = new System.Drawing.Point(0, 617);
+            this.panelControl5.Location = new System.Drawing.Point(0, 623);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(347, 39);
+            this.panelControl5.Size = new System.Drawing.Size(347, 33);
             this.panelControl5.TabIndex = 2;
             // 
-            // simpleButton6
+            // btnHuyDuyetTiepNhan
             // 
-            this.simpleButton6.Location = new System.Drawing.Point(157, 6);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(141, 22);
-            this.simpleButton6.TabIndex = 1;
-            this.simpleButton6.Text = "Hủy duyệt tiếp nhận";
+            this.btnHuyDuyetTiepNhan.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
+            this.btnHuyDuyetTiepNhan.Location = new System.Drawing.Point(104, 5);
+            this.btnHuyDuyetTiepNhan.Name = "btnHuyDuyetTiepNhan";
+            this.btnHuyDuyetTiepNhan.Size = new System.Drawing.Size(141, 22);
+            this.btnHuyDuyetTiepNhan.TabIndex = 1;
+            this.btnHuyDuyetTiepNhan.Text = "Hủy duyệt tiếp nhận";
+            this.btnHuyDuyetTiepNhan.Click += new System.EventHandler(this.btnHuyDuyetTiepNhan_Click);
             // 
             // groupControl3
             // 
@@ -2186,7 +2189,7 @@
         private DevExpress.XtraEditors.SimpleButton txtDuyetDanhSachTiepNhan;
         private DevExpress.XtraTab.XtraTabPage tabDanhSachDaTiepNhanTrongNgay;
         private DevExpress.XtraEditors.PanelControl panelControl5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private DevExpress.XtraEditors.SimpleButton btnHuyDuyetTiepNhan;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.PanelControl Panel;
