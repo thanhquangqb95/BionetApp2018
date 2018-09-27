@@ -591,6 +591,7 @@ namespace BioNetBLL
                 rptKQ.Thang = ttKQ.NgayTraKQ.Value.Month.ToString().PadLeft(2, '0');
                 rptKQ.Nam = ttKQ.NgayTraKQ.Value.Year.ToString();
                 rptKQ.NgayCoKQ = (ttKQ.NgayCoKQ ?? DateTime.Now).ToString("dd/MM/yyyy");
+                rptKQ.NgayTraKQ =ttKQ.isTraKQ==true?(ttKQ.NgayTraKQ ?? DateTime.Now).ToString("dd/MM/yyyy"):string.Empty;
             }
             else return null;
             if (phieu != null)

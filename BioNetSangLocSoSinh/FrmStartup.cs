@@ -239,12 +239,12 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-            //Entry.FrmTraKetQuaNew frm = new Entry.FrmTraKetQuaNew(emp);
-            Entry.FrmTraKetQua frm = new Entry.FrmTraKetQua(emp.EmployeeCode);
-            int frmsize = this.xTabMain.Width;
-            int pnsize = 222;
-            if (frmsize - 800 > 280)
-            { pnsize = frmsize - 800; }
+            Entry.FrmTraKetQuaNew frm = new Entry.FrmTraKetQuaNew(emp);
+            //Entry.FrmTraKetQua frm = new Entry.FrmTraKetQua(emp.EmployeeCode);
+            //int frmsize = this.xTabMain.Width;
+            //int pnsize = 222;
+            //if (frmsize - 800 > 280)
+           // { pnsize = frmsize - 800; }
             //frm.PanelDanhSach.Width = pnsize;
             TabCreating(xTabMain, "Trả kết quả xét nghiệm", frm);
             SplashScreenManager.CloseForm();
@@ -1496,10 +1496,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             this.Close();
         }
 
-        private void ribbon_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void barButtonItem62_ItemClick(object sender, ItemClickEventArgs e)
         {

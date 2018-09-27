@@ -24,8 +24,6 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         private string maPhieu = string.Empty;
         private string maDonVi = string.Empty;
 
-
-
         private void butOK_Click(object sender, EventArgs e)
         {
             if(string.IsNullOrEmpty(this.txtPassword.Text.Trim()))

@@ -4119,7 +4119,30 @@ namespace BioNetDAL
                     {
                         PSXN_TTTraKQ ls = new PSXN_TTTraKQ();
                         var NhapLieu = db.PSChiDinhDichVus.FirstOrDefault(x => x.MaPhieu == result.MaPhieu && x.isXoa != true && x.IDGoiDichVu != "DVGXNL2").isDaNhapLieu;
-                        ConvertObjectToObject(result, ls);
+                        ls.UserTraKQ = result.UserTraKQ;
+                        ls.RowIDXN_TraKetQua = result.RowIDXN_TraKetQua;
+                        ls.NgayTraKQ = result.NgayTraKQ;
+                        ls.NgayTiepNhan = result.NgayTiepNhan;
+                        ls.NgayLamXetNghiem = result.NgayLamXetNghiem;
+                        ls.NgayGioXoa = result.NgayGioXoa;
+                        ls.NgayCoKQ = result.NgayCoKQ;
+                        ls.NgayChiDinh = result.NgayChiDinh;
+                        ls.MaXetNghiem = result.MaXetNghiem;
+                        ls.MaTiepNhan = result.MaTiepNhan;
+                        ls.MaPhieuCu = result.MaPhieuCu;
+                        ls.MaPhieu = result.MaPhieu;
+                        ls.MaGoiXN = result.MaGoiXN;
+                        ls.LyDoXoa = result.LyDoXoa;
+                        ls.KetLuanTongQuat = result.KetLuanTongQuat;
+                        ls.isXoa = result.isXoa;
+                        ls.isTraKQ = result.isTraKQ;
+                        ls.isNguyCoCao = result.isNguyCoCao;
+                        ls.isDongBo = result.isDongBo;
+                        ls.isDaDuyetKQ = result.isDaDuyetKQ;
+                        ls.IDCoSo = result.IDCoSo;
+                        ls.GhiChuPhongXetNghiem = result.GhiChuPhongXetNghiem;
+                        ls.GhiChu = result.GhiChu;
+                        //ConvertObjectToObject(result, ls);
                         ls.isDaNhapLieu = NhapLieu != null ? NhapLieu : false;
                         lst.Add(ls);
                     }

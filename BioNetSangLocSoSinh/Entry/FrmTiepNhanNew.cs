@@ -62,6 +62,7 @@ namespace BioNetSangLocSoSinh.Entry
                 this.lookupDVCSChoTrenHT.DataSource = lstDonVi;
                 this.lstDanToc = BioNet_Bus.GetDanhSachDanToc(-1);//get all dân tộc
                 this.lstChuongTrinh = BioNet_Bus.GetDanhSachChuongTrinh(false);
+                this.lookUpDanToc.Properties.DataSource = this.lstDanToc;
             }
             catch (Exception ex)
             {
@@ -303,11 +304,6 @@ namespace BioNetSangLocSoSinh.Entry
 
         #endregion
 
-        private void GVPhieuCho_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-
-        }
-
         private void txtHuyVeDanhSachCho_Click(object sender, EventArgs e)
         {
             PsReponse res = new PsReponse();
@@ -363,8 +359,7 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         string maPhieu = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDPhieu_GCPhieuCho).ToString();
                         string maDonVi = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
-                        string tenDonVi = this.GVPhieuCho.GetRowCellDisplayText(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
-                        this.HienThiThongTinPhieu(maPhieu, maDonVi, tenDonVi);
+                        this.HienThiThongTinPhieu(maPhieu, maDonVi);
                         if (!string.IsNullOrEmpty(maPhieu))
                         {
                             this.CheckPhieuTiepNhan(maPhieu, maDonVi);
@@ -374,13 +369,9 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch { }
         }
-        private void GVDaTiepNhan_DoubleClick(object sender, EventArgs e)
-        {
-           
-        }
 
         #region //hiện thị phiếu
-        private void HienThiThongTinPhieu(string maPhieu, string maDonvi, string tenDonVi)
+        private void HienThiThongTinPhieu(string maPhieu, string maDonvi)
         {
             PsPhieu phieu = BioNet_Bus.GetThongTinPhieu(maPhieu, maDonvi);
             this.LoadGoiXetNghiem(maDonvi);
@@ -426,7 +417,11 @@ namespace BioNetSangLocSoSinh.Entry
                     this.cbbTTTre.EditValue = phieu.maTinhTrangLucLayMau.ToString();
                     this.cbbViTriLayMau.EditValue = phieu.idViTriLayMau.ToString();
                     this.txtChuongTrinh.EditValue = lstChuongTrinh.FirstOrDefault(x => x.IDChuongTrinh == phieu.maChuongTrinh).TenChuongTrinh;
-                    this.txtDonVi.EditValue = tenDonVi;
+                    var tendv = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonvi));
+                    if(tendv!=null)
+                    {
+                        this.txtDonVi.EditValue = tendv.TenDVCS;
+                    }
                     this.radioGroupGoiXN.EditValue = phieu.maGoiXetNghiem;
                     if(phieu.ngayGioLayMau!=null)
                     {
@@ -539,8 +534,8 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         string maPhieu = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDPhieu_GCPhieuCho).ToString();
                         string maDonVi = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
-                        string tenDonVi = this.GVPhieuCho.GetRowCellDisplayText(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
-                        this.HienThiThongTinPhieu(maPhieu, maDonVi, tenDonVi); }
+                        this.HienThiThongTinPhieu(maPhieu, maDonVi);
+                    }
                 }
             }
             catch { }
@@ -573,6 +568,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void GVDaTiepNhan_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (this.GVDaTiepNhan.RowCount > 0)
@@ -581,8 +577,7 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         string maPhieu = this.GVDaTiepNhan.GetRowCellValue(this.GVDaTiepNhan.FocusedRowHandle, this.col_MaPhieuDatiepNhan).ToString();
                         string maDonVi = this.GVDaTiepNhan.GetRowCellValue(this.GVDaTiepNhan.FocusedRowHandle, this.col_donViCoSoDaTiepNhan).ToString();
-                        string tenDonVi = this.GVDaTiepNhan.GetRowCellDisplayText(this.GVDaTiepNhan.FocusedRowHandle, this.col_donViCoSoDaTiepNhan).ToString();
-                        this.HienThiThongTinPhieu(maPhieu, maDonVi, tenDonVi);
+                        this.HienThiThongTinPhieu(maPhieu, maDonVi);
                     }
                 }
             }
@@ -649,17 +644,6 @@ namespace BioNetSangLocSoSinh.Entry
             catch { }
         }
 
-        private void txtXoaPhieuCho_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                
-            }
-            catch
-            {
-
-            }
-        }
 
         private void GVDaTiepNhan_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
@@ -757,12 +741,101 @@ namespace BioNetSangLocSoSinh.Entry
                     this.GetDanhSachDaTiepNhan();
                     this.GetDanhSachChoTrenHT();
                 }
-
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show("Lỗi xóa phiếu khỏi danh sách tiếp nhận " + ex, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void GVDanhSachTiepNhan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.GVDanhSachTiepNhan.RowCount > 0)
+                {
+                    if (this.GVDanhSachTiepNhan.GetFocusedRow() != null)
+                    {
+                        string maPhieu = this.GVDanhSachTiepNhan.GetRowCellValue(this.GVDanhSachTiepNhan.FocusedRowHandle, this.col_MaPhieu_GCTiepNhan).ToString();
+                        string maDonVi = this.GVDanhSachTiepNhan.GetRowCellValue(this.GVDanhSachTiepNhan.FocusedRowHandle, this.col_DonViCoSo_GCTiepNhan).ToString();
+                        this.HienThiThongTinPhieu(maPhieu, maDonVi);
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void btnXoaPhieuCho_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnHuyPhieuCho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                if (XtraMessageBox.Show("Bạn chắn chắn muốn hủy mã phiếu ra khỏi danh sách tiếp nhận chứ ?", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (this.GVPhieuCho.RowCount > 0)
+                    {
+                        if (this.GVPhieuCho.GetFocusedRow() != null)
+                        {
+                            string maPhieuXoa = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDPhieu_GCPhieuCho).ToString();
+                            string maBenhNhanXoa = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_MaBenhNhan_GCPhieuCho).ToString();
+                            string maDVXoa = this.GVPhieuCho.GetRowCellValue(this.GVPhieuCho.FocusedRowHandle, this.col_IDCoSo_GCPhieuCho).ToString();
+                            DiaglogFrm.FrmYeuCauMatKhauXacThuc frm = new DiaglogFrm.FrmYeuCauMatKhauXacThuc(maPhieuXoa, maDVXoa, emp.EmployeeCode);
+                            frm.ShowDialog();
+                            if (frm.DialogResult == DialogResult.OK)
+                            {
+                                this.GetDanhSachChoTrenHT();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Lỗi hủy phiếu tiếp nhận " + ex, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void GVPhieuCho_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            bool enable = false;
+            if (e.HitInfo.HitTest == DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell)
+            {
+                e.Allow = false;
+                enable = true;
+                popupGCPhieuCho.ItemLinks[0].Visible = enable;
+                popupGCPhieuCho.ShowPopup(GCPhieuCho.PointToScreen(e.Point));
+            }
+            else
+            {
+                e.Allow = false;
+                enable = false;
+                popupGCPhieuCho.ItemLinks[0].Visible = enable;
+                popupGCPhieuCho.ShowPopup(GCPhieuCho.PointToScreen(e.Point));
+            }
+        }
+
+        private void txtLayDanhSachCho_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lstChoTiepNhan.Count()==0)
+                {
+                    this.GetDanhSachChoTrenHT();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Danh sách chờ tiếp nhận còn phiếu - Không thể cập nhật danh sách chờ hệ thống", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }             
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show("Lỗi danh sách chờ "+ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
         }
     }   
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnGanMaKhachHang = new DevExpress.XtraEditors.SimpleButton();
             this.txtDonVi = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,7 +74,6 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnGanMaKhachHang = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
@@ -127,8 +127,22 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1051, 71);
+            this.panelControl1.Size = new System.Drawing.Size(1182, 71);
             this.panelControl1.TabIndex = 0;
+            // 
+            // btnGanMaKhachHang
+            // 
+            this.btnGanMaKhachHang.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnGanMaKhachHang.Appearance.Options.UseFont = true;
+            this.btnGanMaKhachHang.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.tools;
+            this.btnGanMaKhachHang.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnGanMaKhachHang.ImageOptions.ImageToTextIndent = 10;
+            this.btnGanMaKhachHang.Location = new System.Drawing.Point(980, 8);
+            this.btnGanMaKhachHang.Name = "btnGanMaKhachHang";
+            this.btnGanMaKhachHang.Size = new System.Drawing.Size(171, 27);
+            this.btnGanMaKhachHang.TabIndex = 1095;
+            this.btnGanMaKhachHang.Text = "Sửa lỗi mã khách hàng";
+            this.btnGanMaKhachHang.Click += new System.EventHandler(this.btnGanMaKhachHang_Click);
             // 
             // txtDonVi
             // 
@@ -262,8 +276,12 @@
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.reload3;
-            this.btnTimKiem.Location = new System.Drawing.Point(840, 11);
+            this.btnTimKiem.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnTimKiem.Appearance.Options.UseFont = true;
+            this.btnTimKiem.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.search__2_;
+            this.btnTimKiem.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnTimKiem.ImageOptions.ImageToTextIndent = 10;
+            this.btnTimKiem.Location = new System.Drawing.Point(840, 8);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(125, 27);
             this.btnTimKiem.TabIndex = 1086;
@@ -361,7 +379,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 71);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1051, 418);
+            this.panelControl2.Size = new System.Drawing.Size(1182, 613);
             this.panelControl2.TabIndex = 1;
             // 
             // panelControl4
@@ -371,7 +389,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(484, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(567, 418);
+            this.panelControl4.Size = new System.Drawing.Size(698, 613);
             this.panelControl4.TabIndex = 1;
             // 
             // panelControl6
@@ -380,7 +398,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl6.Location = new System.Drawing.Point(111, 2);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(454, 414);
+            this.panelControl6.Size = new System.Drawing.Size(585, 609);
             this.panelControl6.TabIndex = 3;
             // 
             // groupControl2
@@ -393,7 +411,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(2, 2);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(450, 410);
+            this.groupControl2.Size = new System.Drawing.Size(581, 605);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "Danh sách phiếu đã đồng bộ";
             // 
@@ -406,7 +424,7 @@
             this.GCDanhSachDaDongBo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpDonVu_GCDanhSachCho,
             this.LookUpGoiXN});
-            this.GCDanhSachDaDongBo.Size = new System.Drawing.Size(446, 388);
+            this.GCDanhSachDaDongBo.Size = new System.Drawing.Size(577, 583);
             this.GCDanhSachDaDongBo.TabIndex = 1;
             this.GCDanhSachDaDongBo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachDaDongBo});
@@ -493,7 +511,7 @@
             this.panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel.Location = new System.Drawing.Point(2, 2);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(109, 414);
+            this.panel.Size = new System.Drawing.Size(109, 609);
             this.panel.TabIndex = 2;
             // 
             // btnHoanDongBo
@@ -520,7 +538,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(484, 418);
+            this.panelControl3.Size = new System.Drawing.Size(484, 613);
             this.panelControl3.TabIndex = 0;
             // 
             // groupControl1
@@ -533,7 +551,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(484, 418);
+            this.groupControl1.Size = new System.Drawing.Size(484, 613);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Danh sách phiếu chưa đồng bộ";
             // 
@@ -545,7 +563,7 @@
             this.GCDanhSachChuaDongBo.Name = "GCDanhSachChuaDongBo";
             this.GCDanhSachChuaDongBo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.GCDanhSachChuaDongBo.Size = new System.Drawing.Size(480, 396);
+            this.GCDanhSachChuaDongBo.Size = new System.Drawing.Size(480, 591);
             this.GCDanhSachChuaDongBo.TabIndex = 1;
             this.GCDanhSachChuaDongBo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachChuaDongBo});
@@ -616,22 +634,11 @@
             this.gridColumn1.FieldName = "MaBenhNhan";
             this.gridColumn1.Name = "gridColumn1";
             // 
-            // btnGanMaKhachHang
-            // 
-            this.btnGanMaKhachHang.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.reload3;
-            this.btnGanMaKhachHang.Location = new System.Drawing.Point(565, 34);
-            this.btnGanMaKhachHang.Name = "btnGanMaKhachHang";
-            this.btnGanMaKhachHang.Size = new System.Drawing.Size(125, 27);
-            this.btnGanMaKhachHang.TabIndex = 1095;
-            this.btnGanMaKhachHang.Text = "Tìm Kiếm";
-            this.btnGanMaKhachHang.Visible = false;
-            this.btnGanMaKhachHang.Click += new System.EventHandler(this.btnGanMaKhachHang_Click);
-            // 
             // FrmKhoiPhucDongBo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 489);
+            this.ClientSize = new System.Drawing.Size(1182, 684);
             this.ControlBox = false;
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -642,6 +649,7 @@
             this.Name = "FrmKhoiPhucDongBo";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmKhoiPhucDongBo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

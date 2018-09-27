@@ -33,6 +33,7 @@ namespace BioNetModel
         public string KetLuanNguyCoCao { get; set; }
         public string GhiChu { get; set; }
         public string NgayCoKQ { get; set; }
+        public string NgayTraKQ { get; set; }
         public string Ngay { get; set; }
         public string Thang { get; set; }
         public string Nam { get; set; }

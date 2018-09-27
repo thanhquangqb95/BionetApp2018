@@ -255,7 +255,6 @@ namespace BioNetSangLocSoSinh.Entry
         private void HienThiThongTinPhieu(string maPhieu, string maDonVi, string maTiepNhan, string maXetNghiem)
         {
             PsPhieu phieu = BioNet_Bus.GetThongTinPhieu(maPhieu, maDonVi);
-
             this.lstKetLuan.Clear();
             this.LoadNew();
             PSXN_TraKetQua TTTraKQ = BioNet_Bus.GetThongTinKetQuaXN(maPhieu, maTiepNhan);
@@ -348,12 +347,12 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void LoadGCKetQuaChiTietCu()
         {
-            //this.GCChiTietKQCu.DataSource = null;
+            this.GCChiTietKQCu.DataSource = null;
             this.GCChiTietKQCu.DataSource = this.lstChiTietKQCu;
         }
         private void loadGCKetQuaChiTiet()
         {
-            //this.GCChiTietKetQua.DataSource = null;
+            this.GCChiTietKetQua.DataSource = null;
             this.GCChiTietKetQua.DataSource = this.lstChiTietKQ;
         }
 
