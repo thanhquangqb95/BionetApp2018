@@ -8,6 +8,7 @@ namespace BioNetModel
     public  class PsRPTTraKetQuaSangLocChiTiet
     {
         public string TenDichVu { get; set; }
+        public string MaDiChVu { get; set; }
         public  string TenThongSo { get; set; }
         public string MaThongSo { get; set; }
         public string GiaTri { get; set; }

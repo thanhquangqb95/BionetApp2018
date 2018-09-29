@@ -142,6 +142,7 @@ namespace BioNetSangLocSoSinh.Reports
             Directory.CreateDirectory(pathpdf);
             //Đường dẫn file pdf
             string path = Application.StartupPath + "\\PhieuKetQua\\" + madvcs + @"\" + name + ".pdf";
+
             try
             {
                 //Lưu file pdf phiếu kết quả theo tên mã phiếu

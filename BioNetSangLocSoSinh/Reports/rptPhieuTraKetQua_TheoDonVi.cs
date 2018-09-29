@@ -42,6 +42,19 @@ namespace BioNetSangLocSoSinh.Reports
                 this.txtKetLuan.ForeColor = System.Drawing.Color.Black;
                 this.txtGiaTri.Font = new Font("Times New Roman", 10f);
             }
+            if(txtMaDV.Text.Equals("DVXN00006"))
+            {
+                txtGiaTri.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+                txtGiaTri.Text = string.Empty;
+                txtDVDo.Text = string.Empty;
+                txtNguongBT.Text = string.Empty;
+                txtDVDo.Borders= DevExpress.XtraPrinting.BorderSide.Bottom;
+                txtKetLuan.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            }
+            else
+            {
+
+            }
         }
     }
 }

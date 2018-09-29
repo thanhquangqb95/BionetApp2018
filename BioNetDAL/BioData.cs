@@ -372,7 +372,9 @@ namespace BioNetDAL
                 string MaPhieu = ttphieu.Phieu.IDPhieu;
                 string MaTiepNhan = ttphieu.TiepNhan.MaTiepNhan;
                 string MaGoiXN = ttphieu.Phieu.MaGoiXN;
-
+                bool isNhapLieu = false;
+                if (!string.IsNullOrEmpty(ttphieu.Benhnhan.MotherName) && !string.IsNullOrEmpty(ttphieu.Benhnhan.MotherPhoneNumber) && !string.IsNullOrEmpty(ttphieu.Benhnhan.TenBenhNhan) && !string.IsNullOrEmpty(ttphieu.Benhnhan.DiaChi) && ttphieu.Phieu.NgayGioLayMau != null)
+                    isNhapLieu = true;
                 bool isMaulaylai = false;
                 var ph = db.PSPhieuSangLocs.FirstOrDefault(p => p.isXoa == false && p.IDPhieu == ttphieu.Phieu.IDPhieu);
                 if (ph != null)
@@ -435,6 +437,7 @@ namespace BioNetDAL
                     var bn = db.PSPatients.FirstOrDefault(p => p.MaBenhNhan == MaBN && p.isXoa != true);
                     if (bn != null)
                     {
+                       
                         bn.FatherName = ttphieu.Benhnhan.FatherName;
                         bn.MotherName = ttphieu.Benhnhan.MotherName;
                         bn.FatherPhoneNumber = ttphieu.Benhnhan.FatherPhoneNumber;
@@ -505,8 +508,18 @@ namespace BioNetDAL
                         cd.TrangThai = ttphieu.ChiDinh.TrangThai;
                         cd.isDongBo = false;
                         cd.isXoa = false;
+                        cd.isDaNhapLieu = isNhapLieu;
                         MaCD = cd.MaChiDinh;
                         db.PSChiDinhDichVus.InsertOnSubmit(cd);
+                        db.SubmitChanges();
+                    }
+                    else
+                    {
+                        dvv.TrangThai = ttphieu.ChiDinh.TrangThai;
+                        dvv.isDongBo = false;
+                        dvv.isXoa = false;
+                        dvv.isDaNhapLieu = isNhapLieu;
+                        MaCD = dvv.MaChiDinh;
                         db.SubmitChanges();
                     }
                 }
@@ -525,7 +538,7 @@ namespace BioNetDAL
                     {
                         cd.MaChiDinh = "CD" + GetID();
                     }
-                        
+                    cd.isDaNhapLieu = isNhapLieu;
                     cd.MaDonVi = ttphieu.ChiDinh.MaDonVi;
                     cd.MaNVChiDinh = ttphieu.ChiDinh.MaNVChiDinh;
                     cd.MaTiepNhan = ttphieu.ChiDinh.MaTiepNhan;
@@ -583,6 +596,7 @@ namespace BioNetDAL
                     {
                         result.isDongBo = false;
                         result.isDaDanhGia = true;
+                        result.isDaNhapLieu = isNhapLieu;
                         db.SubmitChanges();
                     }
                 }

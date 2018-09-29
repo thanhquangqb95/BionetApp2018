@@ -61,9 +61,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.LoadDanhSachDichVu();
             this.LoadListDanhGiaSoBo();
             this.lstCLMau = BioNet_Bus.GetDanhMucDanhGiaChatLuong();
-            LoadDanhSachTiepNhan();
-            LoadDanhSachDaDuyet();
-            LoadNew();
+            this.LoadDanhSachTiepNhan();
+            this.LoadDanhSachDaDuyet();
+            this.LoadNew();
             this.sourceListDanhGiaChatLuong = BioNet_Bus.GetDanhMucDanhGiaChatLuong();
 
         }
@@ -167,7 +167,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadDanhSachDaDuyet()
         {
             this.lstDaDuyet.Clear();
-            this.lstDaDuyet = BioNet_Bus.GetDanhSachPhieuDaDuyet("all",txtTuNgay.DateTime.Date,txtDenNgay.DateTime.Date);
+            this.lstDaDuyet = BioNet_Bus.GetDanhSachPhieuDaDuyet("all");
             this.LoadDanhSachDaDuyet(lstDaDuyet);
         }
 

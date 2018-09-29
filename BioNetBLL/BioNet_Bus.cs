@@ -635,6 +635,7 @@ namespace BioNetBLL
                         c.KetLuan = ct.KetLuan;
                         c.MaThongSo = ct.IDThongSoXN;
                         c.isNguyCoCao = ct.isNguyCo;
+                        c.MaDiChVu = ct.MaDichVu;
                         try
                         {
                             c.TenDichVu = string.IsNullOrEmpty(db.GetTenDichVuCuaKyThuat(ct.IDKyThuat)) == true ? ct.TenKyThuat : db.GetTenDichVuCuaKyThuat(ct.IDKyThuat);
@@ -1478,8 +1479,22 @@ namespace BioNetBLL
                 lst = db.GetDanhSachPhieuDaDuyet(maDonvi, tuNgay, denNgay);
             }
             return lst;
-
         }
+        public static List<PSChiDinhDichVu> GetDanhSachPhieuDaDuyet(string maDonvi)
+        {
+            List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
+            var db = new DataObjects();
+            if (maDonvi.Equals("all"))
+            {
+                lst = db.GetDanhSachPhieuDaDuyet(null);
+            }
+            else
+            {
+                lst = db.GetDanhSachPhieuDaDuyet(maDonvi);
+            }
+            return lst;
+        }
+
         public static string GetMaXN(string maTiepNhan)
         {
             var db = new DataObjects();

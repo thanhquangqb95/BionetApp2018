@@ -31,6 +31,8 @@ namespace BioNetSangLocSoSinh.Entry
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhapLieuDanhGiaMauNew));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabDanhSachCho = new DevExpress.XtraTab.XtraTabPage();
@@ -223,6 +225,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_MaDichVu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LookUpDichVu_GCDichVuChiDinh = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_TenDichVu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnClear_DaDuyet = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -355,7 +358,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(356, 684);
+            this.panelControl1.Size = new System.Drawing.Size(338, 684);
             this.panelControl1.TabIndex = 0;
             // 
             // xtraTabControl1
@@ -366,7 +369,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.xtraTabControl1.LookAndFeel.SkinName = "Office 2010 Blue";
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabDanhSachCho;
-            this.xtraTabControl1.Size = new System.Drawing.Size(352, 680);
+            this.xtraTabControl1.Size = new System.Drawing.Size(334, 680);
             this.xtraTabControl1.TabIndex = 6;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabDanhSachCho,
@@ -714,7 +717,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.xtraTabDanhSachDaDuyet.Controls.Add(this.panelControl6);
             this.xtraTabDanhSachDaDuyet.Image = global::BioNetSangLocSoSinh.Properties.Resources.checklist;
             this.xtraTabDanhSachDaDuyet.Name = "xtraTabDanhSachDaDuyet";
-            this.xtraTabDanhSachDaDuyet.Size = new System.Drawing.Size(347, 652);
+            this.xtraTabDanhSachDaDuyet.Size = new System.Drawing.Size(329, 652);
             this.xtraTabDanhSachDaDuyet.Text = "Danh sách đã duyệt";
             // 
             // GCDanhSachDaTracking
@@ -727,7 +730,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.LookUpEditDonViDaDuyet,
             this.lookupGoiXN,
             this.repositoryItemCheckEdit1});
-            this.GCDanhSachDaTracking.Size = new System.Drawing.Size(347, 441);
+            this.GCDanhSachDaTracking.Size = new System.Drawing.Size(329, 441);
             this.GCDanhSachDaTracking.TabIndex = 3;
             this.GCDanhSachDaTracking.TabStop = false;
             this.GCDanhSachDaTracking.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -879,7 +882,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl8.Location = new System.Drawing.Point(0, 609);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(347, 43);
+            this.panelControl8.Size = new System.Drawing.Size(329, 43);
             this.panelControl8.TabIndex = 2;
             // 
             // simpleButton2
@@ -897,6 +900,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // panelControl6
             // 
+            this.panelControl6.Controls.Add(this.btnClear_DaDuyet);
             this.panelControl6.Controls.Add(this.btnCapNhatDanhSachDaDuyet);
             this.panelControl6.Controls.Add(this.CheckisNhapLieu);
             this.panelControl6.Controls.Add(this.labelControl46);
@@ -914,7 +918,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(347, 168);
+            this.panelControl6.Size = new System.Drawing.Size(329, 168);
             this.panelControl6.TabIndex = 1;
             // 
             // btnCapNhatDanhSachDaDuyet
@@ -923,14 +927,14 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnCapNhatDanhSachDaDuyet.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCapNhatDanhSachDaDuyet.Location = new System.Drawing.Point(8, 137);
             this.btnCapNhatDanhSachDaDuyet.Name = "btnCapNhatDanhSachDaDuyet";
-            this.btnCapNhatDanhSachDaDuyet.Size = new System.Drawing.Size(330, 23);
+            this.btnCapNhatDanhSachDaDuyet.Size = new System.Drawing.Size(238, 23);
             this.btnCapNhatDanhSachDaDuyet.TabIndex = 35;
             this.btnCapNhatDanhSachDaDuyet.Text = "Cập nhật danh sách";
             this.btnCapNhatDanhSachDaDuyet.Click += new System.EventHandler(this.btnCapNhatDanhSachDaDuyet_Click);
             // 
             // CheckisNhapLieu
             // 
-            this.CheckisNhapLieu.Location = new System.Drawing.Point(245, 112);
+            this.CheckisNhapLieu.Location = new System.Drawing.Point(227, 112);
             this.CheckisNhapLieu.Name = "CheckisNhapLieu";
             this.CheckisNhapLieu.Properties.Caption = "Chưa nhập liệu";
             this.CheckisNhapLieu.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -974,7 +978,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbChiCucDaDuyet.Properties.DisplayMember = "TenChiCuc";
             this.cbbChiCucDaDuyet.Properties.ValueMember = "MaChiCuc";
             this.cbbChiCucDaDuyet.Properties.View = this.gridView4;
-            this.cbbChiCucDaDuyet.Size = new System.Drawing.Size(268, 20);
+            this.cbbChiCucDaDuyet.Size = new System.Drawing.Size(250, 20);
             this.cbbChiCucDaDuyet.TabIndex = 31;
             this.cbbChiCucDaDuyet.EditValueChanged += new System.EventHandler(this.cbbChiCucDaDuyet_EditValueChanged);
             // 
@@ -1006,6 +1010,8 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // txtDenNgay
             // 
+            this.txtDenNgay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDenNgay.EditValue = new System.DateTime(2018, 7, 10, 15, 50, 15, 150);
             this.txtDenNgay.Location = new System.Drawing.Point(207, 58);
             this.txtDenNgay.Name = "txtDenNgay";
@@ -1018,7 +1024,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtDenNgay.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.txtDenNgay.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtDenNgay.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.txtDenNgay.Size = new System.Drawing.Size(131, 20);
+            this.txtDenNgay.Size = new System.Drawing.Size(113, 20);
             this.txtDenNgay.TabIndex = 28;
             this.txtDenNgay.TabStop = false;
             this.txtDenNgay.EditValueChanged += new System.EventHandler(this.txtDenNgay_EditValueChanged);
@@ -1062,7 +1068,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbDonViDaDuyet.Properties.NullText = "Chọn đơn vị cơ sở cần nhận mẫu ...";
             this.cbbDonViDaDuyet.Properties.ValueMember = "MaDVCS";
             this.cbbDonViDaDuyet.Properties.View = this.gridView5;
-            this.cbbDonViDaDuyet.Size = new System.Drawing.Size(268, 20);
+            this.cbbDonViDaDuyet.Size = new System.Drawing.Size(250, 20);
             this.cbbDonViDaDuyet.TabIndex = 24;
             this.cbbDonViDaDuyet.TabStop = false;
             this.cbbDonViDaDuyet.EditValueChanged += new System.EventHandler(this.cbbDonViDaDuyet_EditValueChanged);
@@ -1107,7 +1113,7 @@ namespace BioNetSangLocSoSinh.Entry
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaPhieuDaDuyetSearch.Location = new System.Drawing.Point(59, 111);
             this.txtMaPhieuDaDuyetSearch.Name = "txtMaPhieuDaDuyetSearch";
-            this.txtMaPhieuDaDuyetSearch.Size = new System.Drawing.Size(180, 20);
+            this.txtMaPhieuDaDuyetSearch.Size = new System.Drawing.Size(162, 20);
             this.txtMaPhieuDaDuyetSearch.TabIndex = 23;
             this.txtMaPhieuDaDuyetSearch.TabStop = false;
             this.txtMaPhieuDaDuyetSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhieuDaDuyetSearch_KeyPress);
@@ -1134,7 +1140,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbGoiXNLoc.Properties.DisplayMember = "TenGoiDichVuChung";
             this.cbbGoiXNLoc.Properties.NullText = "";
             this.cbbGoiXNLoc.Properties.ValueMember = "IDGoiDichVuChung";
-            this.cbbGoiXNLoc.Size = new System.Drawing.Size(251, 20);
+            this.cbbGoiXNLoc.Size = new System.Drawing.Size(233, 20);
             this.cbbGoiXNLoc.TabIndex = 19;
             this.cbbGoiXNLoc.EditValueChanged += new System.EventHandler(this.cbbGoiXNLoc_EditValueChanged);
             // 
@@ -1151,9 +1157,9 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             this.panelControl2.Controls.Add(this.splitContainerControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(356, 0);
+            this.panelControl2.Location = new System.Drawing.Point(338, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(943, 684);
+            this.panelControl2.Size = new System.Drawing.Size(961, 684);
             this.panelControl2.TabIndex = 1;
             // 
             // splitContainerControl1
@@ -1165,7 +1171,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl9);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(939, 680);
+            this.splitContainerControl1.Size = new System.Drawing.Size(957, 680);
             this.splitContainerControl1.SplitterPosition = 596;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -2354,7 +2360,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl9.Location = new System.Drawing.Point(0, 0);
             this.groupControl9.Name = "groupControl9";
-            this.groupControl9.Size = new System.Drawing.Size(339, 680);
+            this.groupControl9.Size = new System.Drawing.Size(357, 680);
             this.groupControl9.TabIndex = 2;
             this.groupControl9.Text = "Thông tin phiếu";
             // 
@@ -2368,7 +2374,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl8.Controls.Add(this.txtGhiChu);
             this.groupControl8.Location = new System.Drawing.Point(11, 531);
             this.groupControl8.Name = "groupControl8";
-            this.groupControl8.Size = new System.Drawing.Size(320, 107);
+            this.groupControl8.Size = new System.Drawing.Size(338, 107);
             this.groupControl8.TabIndex = 7;
             this.groupControl8.Text = "Ghi Chú";
             // 
@@ -2381,7 +2387,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtGhiChu.Location = new System.Drawing.Point(2, 22);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.ReadOnly = true;
-            this.txtGhiChu.Size = new System.Drawing.Size(316, 83);
+            this.txtGhiChu.Size = new System.Drawing.Size(334, 83);
             this.txtGhiChu.TabIndex = 32;
             // 
             // groupControl2
@@ -2393,7 +2399,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl2.Controls.Add(this.txtLuuY);
             this.groupControl2.Location = new System.Drawing.Point(9, 427);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(319, 96);
+            this.groupControl2.Size = new System.Drawing.Size(337, 96);
             this.groupControl2.TabIndex = 6;
             this.groupControl2.Text = "Lưu ý mẫu";
             // 
@@ -2405,7 +2411,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtLuuY.Location = new System.Drawing.Point(2, 22);
             this.txtLuuY.Name = "txtLuuY";
             this.txtLuuY.ReadOnly = true;
-            this.txtLuuY.Size = new System.Drawing.Size(315, 72);
+            this.txtLuuY.Size = new System.Drawing.Size(333, 72);
             this.txtLuuY.TabIndex = 33;
             this.txtLuuY.Text = "Lưu ý";
             // 
@@ -2419,7 +2425,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl7.Controls.Add(this.panelControl7);
             this.groupControl7.Location = new System.Drawing.Point(9, 215);
             this.groupControl7.Name = "groupControl7";
-            this.groupControl7.Size = new System.Drawing.Size(320, 206);
+            this.groupControl7.Size = new System.Drawing.Size(338, 206);
             this.groupControl7.TabIndex = 5;
             this.groupControl7.Text = "Đánh giá mẫu";
             // 
@@ -2436,7 +2442,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.checkedListBoxLydoKhongDat.MultiColumn = true;
             this.checkedListBoxLydoKhongDat.Name = "checkedListBoxLydoKhongDat";
             this.checkedListBoxLydoKhongDat.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.checkedListBoxLydoKhongDat.Size = new System.Drawing.Size(316, 156);
+            this.checkedListBoxLydoKhongDat.Size = new System.Drawing.Size(334, 156);
             this.checkedListBoxLydoKhongDat.TabIndex = 32;
             this.checkedListBoxLydoKhongDat.TabStop = false;
             this.checkedListBoxLydoKhongDat.ValueMember = "IDDanhGiaChatLuongMau";
@@ -2448,7 +2454,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl7.Location = new System.Drawing.Point(2, 22);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(316, 26);
+            this.panelControl7.Size = new System.Drawing.Size(334, 26);
             this.panelControl7.TabIndex = 2;
             // 
             // label18
@@ -2470,7 +2476,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.radioDanhGia.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("1", "Đạt"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("0", "Không đạt")});
-            this.radioDanhGia.Size = new System.Drawing.Size(215, 22);
+            this.radioDanhGia.Size = new System.Drawing.Size(233, 22);
             this.radioDanhGia.TabIndex = 30;
             this.radioDanhGia.EditValueChanged += new System.EventHandler(this.radioDanhGia_EditValueChanged);
             // 
@@ -2483,7 +2489,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelButton.Location = new System.Drawing.Point(2, 644);
             this.panelButton.Name = "panelButton";
-            this.panelButton.Size = new System.Drawing.Size(335, 34);
+            this.panelButton.Size = new System.Drawing.Size(353, 34);
             this.panelButton.TabIndex = 8;
             // 
             // btnLuu
@@ -2492,7 +2498,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnLuu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnLuu.Enabled = false;
             this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
-            this.btnLuu.Location = new System.Drawing.Point(166, 6);
+            this.btnLuu.Location = new System.Drawing.Point(184, 6);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(78, 23);
             this.btnLuu.TabIndex = 0;
@@ -2519,7 +2525,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnDuyet.Enabled = false;
             this.btnDuyet.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDuyet.ImageOptions.Image")));
-            this.btnDuyet.Location = new System.Drawing.Point(250, 6);
+            this.btnDuyet.Location = new System.Drawing.Point(268, 6);
             this.btnDuyet.Name = "btnDuyet";
             this.btnDuyet.Size = new System.Drawing.Size(75, 23);
             this.btnDuyet.TabIndex = 33;
@@ -2536,7 +2542,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl1.Controls.Add(this.GCChiDinhDichVu);
             this.groupControl1.Location = new System.Drawing.Point(9, 26);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(321, 183);
+            this.groupControl1.Size = new System.Drawing.Size(339, 183);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Danh sách dịch vụ";
             // 
@@ -2548,7 +2554,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.GCChiDinhDichVu.Name = "GCChiDinhDichVu";
             this.GCChiDinhDichVu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.LookUpDichVu_GCDichVuChiDinh});
-            this.GCChiDinhDichVu.Size = new System.Drawing.Size(317, 159);
+            this.GCChiDinhDichVu.Size = new System.Drawing.Size(335, 159);
             this.GCChiDinhDichVu.TabIndex = 0;
             this.GCChiDinhDichVu.TabStop = false;
             this.GCChiDinhDichVu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2600,6 +2606,18 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_TenDichVu.Visible = true;
             this.col_TenDichVu.VisibleIndex = 1;
             this.col_TenDichVu.Width = 179;
+            // 
+            // btnClear_DaDuyet
+            // 
+            this.btnClear_DaDuyet.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
+            this.btnClear_DaDuyet.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnClear_DaDuyet.Location = new System.Drawing.Point(252, 137);
+            this.btnClear_DaDuyet.Name = "btnClear_DaDuyet";
+            this.btnClear_DaDuyet.Size = new System.Drawing.Size(68, 23);
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnClear_DaDuyet.SuperTip = superToolTip1;
+            this.btnClear_DaDuyet.TabIndex = 36;
             // 
             // FrmNhapLieuDanhGiaMauNew
             // 
@@ -2944,5 +2962,6 @@ namespace BioNetSangLocSoSinh.Entry
         private DevExpress.XtraEditors.LabelControl labelControl52;
         private DevExpress.XtraEditors.LabelControl txtMaPhieu;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatDanhSachDaDuyet;
+        private DevExpress.XtraEditors.SimpleButton btnClear_DaDuyet;
     }
 }

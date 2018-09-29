@@ -3423,10 +3423,10 @@ namespace BioNetDAL
             }
             catch
             {
-
             }
             return lst;
         }
+
         public List<PSChiDinhDichVu> GetDanhSachPhieuDaDuyet(string maDonVi, DateTime tuNgay, DateTime denNgay)
         {
             List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
@@ -3447,12 +3447,38 @@ namespace BioNetDAL
                            where cd.isXoa != true && cd.isLayMauLai != true && cd.IDGoiDichVu != "DVGXNL2" && cd.NgayChiDinhLamViec.Value.Date >= tuNgay.Date && cd.NgayChiDinhLamViec.Value.Date <= denNgay.Date
                            && ph.isXoa != true && cd.MaDonVi == maDonVi && (ph.TrangThaiMau < 4 || ph.TrangThaiMau == 5)
                            select cd).ToList();
-
                 }
             }
             catch
             {
+            }
+            return lst;
+        }
 
+        public List<PSChiDinhDichVu> GetDanhSachPhieuDaDuyet(string maDonVi)
+        {
+            List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
+            try
+            {
+                if (string.IsNullOrEmpty(maDonVi))
+                {
+                    lst = (from cd in db.PSChiDinhDichVus
+                           join ph in db.PSPhieuSangLocs on cd.MaPhieu equals ph.IDPhieu
+                           where cd.isXoa != true && cd.isLayMauLai != true && cd.IDGoiDichVu != "DVGXNL2" 
+                           && ph.isXoa != true && (ph.TrangThaiMau < 4 || ph.TrangThaiMau == 5)
+                           select cd).ToList();
+                }
+                else
+                {
+                    lst = (from cd in db.PSChiDinhDichVus
+                           join ph in db.PSPhieuSangLocs on cd.MaPhieu equals ph.IDPhieu
+                           where cd.isXoa != true && cd.isLayMauLai != true && cd.IDGoiDichVu != "DVGXNL2" 
+                           && ph.isXoa != true && cd.MaDonVi == maDonVi && (ph.TrangThaiMau < 4 || ph.TrangThaiMau == 5)
+                           select cd).ToList();
+                }
+            }
+            catch
+            {
             }
             return lst;
         }

@@ -12,6 +12,7 @@ using BioNetModel;
 using BioNetModel.Data;
 using BioNetBLL;
 using DevExpress.XtraGrid.Views.Grid;
+using BioNetSangLocSoSinh.Reports;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -30,6 +31,7 @@ namespace BioNetSangLocSoSinh.Entry
         private List<PSXN_TraKQ_ChiTiet> lstChiTietKQ = new List<PSXN_TraKQ_ChiTiet>();
         private List<PSXN_TraKQ_ChiTiet> lstChiTietKQCu = new List<PSXN_TraKQ_ChiTiet>();
         private List<KetLuan> lstKetLuan = new List<KetLuan>();
+        bool isDaNhapLieu = true;
         public FrmTraKetQuaNew(PsEmployeeLogin Employee)
         {
             InitializeComponent();
@@ -114,19 +116,32 @@ namespace BioNetSangLocSoSinh.Entry
 
         }
         #region Hiện thị kết quả
-        private void GVChuaKQ_Click(object sender, EventArgs e)
+        private void GVChuaKQ_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             try
             {
-                if (this.GVChuaKQ.RowCount > 0)
+                if (e.Button == MouseButtons.Left)
                 {
-                    if (this.GVChuaKQ.GetFocusedRow() != null)
+                    if (e.Column == this.col_MaPhieu_GCChuaCoKQ)
                     {
-                        string maPhieu = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_MaPhieu_GCChuaCoKQ).ToString();
-                        string maDonVi = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_MaDonVi_GCChuaCoKQ).ToString();
-                        string maTiepNhan = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_MaTiepNhan_GCChuaTraKQ).ToString();
-                        string maXetNghiem = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_maXn_GCChuaKQ).ToString();
-                        this.HienThiThongTinPhieu(maPhieu, maDonVi,maTiepNhan,maXetNghiem);
+
+                        if (this.GVChuaKQ.RowCount > 0)
+                        {
+
+                            if (this.GVChuaKQ.GetFocusedRow() != null)
+                            {
+                                string maPhieu = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_MaPhieu_GCChuaCoKQ).ToString();
+                                string maDonVi = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_MaDonVi_GCChuaCoKQ).ToString();
+                                string maTiepNhan = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_MaTiepNhan_GCChuaTraKQ).ToString();
+                                isDaNhapLieu = (bool)(this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_isDaNhapLieu) ?? false);
+                                string maXetNghiem = this.GVChuaKQ.GetRowCellValue(this.GVChuaKQ.FocusedRowHandle, this.col_maXn_GCChuaKQ).ToString();
+                                this.btnDuyetPhieu.Enabled = true;
+                                this.btnHuyMau.Enabled = true;
+                                this.btnInKQ.Enabled = false;
+                                this.HienThiThongTinPhieu(maPhieu, maDonVi, maTiepNhan, maXetNghiem);
+                                //this.HienThiKetLuanvaGhiChuAuto();
+                            }
+                        }
                     }
                 }
             }
@@ -181,6 +196,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.cbbViTriLayMau.EditValue = phieu.idViTriLayMau.ToString();
                     this.cbbGoiXN.EditValue = phieu.maGoiXetNghiem;
                     // this.cboTinhTrang.SelectedIndex = phieu.maTinhTrangLucLayMau;
+                    this.txtMaTiepNhan.Text = maTiepNhan;
                     this.txtMaPhieuLan1.Text = phieu.maPhieuLan1;
                     this.txtSDTNguoiLayMau.Text = phieu.DonVi.SDTCS;
                     var kq= BioNet_Bus.GetDuLieuInKetQuaSangLoc(phieu.maPhieu, maTiepNhan,emp.EmployeeCode, maDonVi);
@@ -241,7 +257,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.CheckLaiKetLuan();
                 }
 
-                btnDuyetKQ.Enabled = !TTTraKQ.isDaDuyetKQ ?? false;
+                btnDuyetPhieu.Enabled = !TTTraKQ.isDaDuyetKQ ?? false;
             }
 
         }
@@ -341,7 +357,6 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     result.isNguyCo = nguyCo;
                     result.isThuLai = isThuLai;
-
                 }
                 else
                 {
@@ -356,7 +371,6 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     ln1 = true;
                 }
-
             }
             if (ln1)
             {
@@ -484,8 +498,6 @@ namespace BioNetSangLocSoSinh.Entry
                             noidung = " : Cần làm xét nghiệm lần 2.";
                         strGhiChu = strnghingo + noidung;
                     }
-
-
                 }
 
                 if (!string.IsNullOrEmpty(strnguycocao))//Kết luận nguy cơ cao
@@ -688,11 +700,11 @@ namespace BioNetSangLocSoSinh.Entry
                 if (donvi != null)
                 {
                     var kieuTraKQ = donvi.KieuTraKetQua ?? 1;
+                    data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMaDonVi.Text.Trim());
                     if (kieuTraKQ == 1) // Cần sửa chỗ này, cho chọn động loat report theo cấu hình của đơn vị
                     {
-                        data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMaDonVi.Text.Trim());
-                        Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
-                        // Reports.rptPhieuTraKetQuaNew datarp = new Reports.rptPhieuTraKetQuaNew();
+                       Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
+                        // Reports.rptPhieuTraKetQua_TheoDonVi datarp = new Reports.rptPhieuTraKetQua_TheoDonVi();
                         // Reports.rptPhieuTraKetQua_TheoDonVi datarp = new Reports.rptPhieuTraKetQua_TheoDonVi();
                         datarp.DataSource = data;
                         string name = data.MaPhieu.ToString();
@@ -703,7 +715,6 @@ namespace BioNetSangLocSoSinh.Entry
                     else
                     if (kieuTraKQ == 2)
                     {
-                        data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMaDonVi.Text.Trim());
                         Reports.rptPhieuTraKetQua_TheoTT2 datarp = new Reports.rptPhieuTraKetQua_TheoTT2();
                         datarp.DataSource = data;
                         string madvcs = data.ThongTinDonVi.MaDonVi.ToString();
@@ -713,7 +724,6 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     else if (kieuTraKQ == 3)
                     {
-                        data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMaDonVi.Text.Trim());
                         Reports.rptPhieuTraKetQua_TheoDonVi datarp = new Reports.rptPhieuTraKetQua_TheoDonVi();
                         datarp.DataSource = data;
                         string madvcs = data.ThongTinDonVi.MaDonVi.ToString();
@@ -723,7 +733,6 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     else if (kieuTraKQ == 4)
                     {
-                        data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMaDonVi.Text.Trim());
                         Reports.rptPhieuTraKetQua_TheoDonVi2 datarp = new Reports.rptPhieuTraKetQua_TheoDonVi2();
                         datarp.DataSource = data;
                         string madvcs = data.ThongTinDonVi.MaDonVi.ToString();
@@ -733,7 +742,6 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     else if (kieuTraKQ == 5)
                     {
-                        data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMaDonVi.Text.Trim());
                         Reports.rptPhieuTraKetQua_TheoDonVi3 datarp = new Reports.rptPhieuTraKetQua_TheoDonVi3();
                         datarp.DataSource = data;
                         string madvcs = data.ThongTinDonVi.MaDonVi.ToString();
@@ -745,7 +753,6 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         try
                         {
-                            data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(txtMaPhieu.Text.Trim(), txtMaTiepNhan.Text.Trim(), "MaBsi", this.txtMaDonVi.Text.Trim());
                             Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
                             datarp.DataSource = data;
                             string name = data.MaPhieu.ToString();
@@ -777,7 +784,259 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void btnDuyetPhieu_Click(object sender, EventArgs e)
         {
+            LuuKetQua(true);
+        }
+        private void LuuKetQua(bool isDuyet)
+        {
 
+            if (!isDaNhapLieu)
+            {
+                XtraMessageBox.Show("Phiếu :" + this.txtMaPhieu.Text + " Chưa có đầy đủ thông tin trẻ. Vui lòng nhập liệu trước khi duyệt kết quả!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+            else
+            {
+                bool _isLamLai = false;
+                bool _isNguyCo = false;
+                TraKetQua_XetNghiem KQ = new TraKetQua_XetNghiem();
+                List<PSXN_TraKQ_ChiTiet> lstKQCT = new List<PSXN_TraKQ_ChiTiet>();
+                KQ.ghiChu = this.txtGhiChu.Text.Trim();
+                KQ.ketLuan = this.txtKLBinhThuong.Text.Trim() + "." + this.txtKLBatThuong.Text.Trim();
+                KQ.maDonVi = this.txtMaDonVi.Text;
+                KQ.maPhieu = this.txtMaPhieu.Text;
+                KQ.maTiepNhan = this.txtMaTiepNhan.Text;
+                KQ.ngayDuyetKQ = DateTime.Now;
+                KQ.userTraKQ = emp.EmployeeCode;
+                KQ.MaPhieuLan1 = this.txtMaPhieuLan1.Text.Trim();
+                #region Kết quả chi tiết
+                if (this.GVChiTietKQ.RowCount > 0)
+                {
+                    for (int i = 0; i < this.GVChiTietKQ.RowCount; i++)
+                    {
+                        PSXN_TraKQ_ChiTiet cT = new PSXN_TraKQ_ChiTiet();
+                        var IDThongso = this.GVChiTietKQ.GetRowCellValue(i, this.col_MaThongSo) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_MaThongSo);
+                        var valueGTCuoi = this.GVChiTietKQ.GetRowCellValue(i, this.col_KQCuoi) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_KQCuoi);
+                        var valueGT1 = this.GVChiTietKQ.GetRowCellValue(i, this.col_KQ1) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_KQ1);
+                        cT.GiaTri1 = valueGT1.ToString();
+                        var valueGT2 = this.GVChiTietKQ.GetRowCellValue(i, this.col_KQ2) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_KQ2);
+                        cT.GiaTri2 = valueGT2.ToString();
+                        bool nguyCo = this.GVChiTietKQ.GetRowCellValue(i, this.col_isNguyCoCao) == null ? false : (bool)this.GVChiTietKQ.GetRowCellValue(i, this.col_isNguyCoCao);
+                        bool xnLai = this.GVChiTietKQ.GetRowCellValue(i, this.col_isMauXNLai) == null ? false : (bool)this.GVChiTietKQ.GetRowCellValue(i, this.col_isMauXNLai);
+                        var ketLuan = this.GVChiTietKQ.GetRowCellValue(i, this.col_KetLuan) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_KetLuan).ToString();
+                        cT.GiaTriCuoi = valueGTCuoi.ToString();
+                        cT.MaPhieu = this.txtMaPhieu.Text;
+                        cT.IDThongSoXN = IDThongso.ToString();
+                        cT.MaTiepNhan = this.txtMaTiepNhan.Text;
+                        cT.KetLuan = ketLuan;
+                        cT.isMauXNLai = xnLai;
+                        cT.isNguyCo = nguyCo;
+                        lstKQCT.Add(cT);
+                        if (nguyCo) _isNguyCo = true;
+                        if (xnLai) _isLamLai = true;
+                    }
+                }
+                #endregion
+                KQ.chiTietKQ = lstKQCT;
+                KQ.isNguyCo = _isNguyCo;
+                KQ.isDaDuyet = true;
+                KQ.ngayTraKQ = DateTime.Now;
+                if (_isNguyCo && _isLamLai || !_isNguyCo)
+                {
+                    KQ.isTraKQ = true;
+                }
+                else
+                {
+                    KQ.isTraKQ = false;
+                }
+                PsReponse luuOK = new PsReponse();
+                if (KQ.isTraKQ)
+                {
+                    luuOK = BioNet_Bus.LuuDuyetTraKetQuaXetNghiem(KQ);
+                }
+                else luuOK = BioNet_Bus.LuuTraKetQuaXetNghiem(KQ);
+                #region Yêu cầu xét nghiệm lần 2 hoặc thu mẫu lại
+                if (luuOK.Result)
+                {
+                    if (KQ.isTraKQ)
+                    {
+                        if (string.IsNullOrEmpty(KQ.MaPhieuLan1))
+                        {
+                            if (_isLamLai && _isNguyCo)
+                            {
+                                if (BioNet_Bus.KiemTraChoPhepThuMauLan2())
+                                {
+                                    this.ThuMauLai();
+                                }
+
+                            }
+                        }
+                        this.btnDuyetPhieu.Enabled = false;
+                        this.btnInKQ.Enabled = true;
+                        LuuPDF(KQ.maPhieu, KQ.maDonVi, KQ.maTiepNhan);
+                        XtraMessageBox.Show("Đã trả kết quả của phiếu :" + this.txtMaPhieu.Text, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Đã duyệt kết quả hiện tại của phiếu :" + this.txtMaPhieu.Text, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (_isNguyCo && !_isLamLai)
+                        {
+                            if (BioNet_Bus.KiemTraChoPhepLamLaiXetNghiemLan2())
+                            {
+                                if (!BioNet_Bus.KiemTraMauDaLamLaiXetNghiemLan2(this.txtMaPhieu.Text.Trim()))
+                                {
+                                    this.LamLaiXN();
+                                }
+                            }
+                            else
+                            {
+                                BioNet_Bus.KoThuLaiMau(this.txtMaPhieu.Text.Trim(), this.txtMaTiepNhan.Text.Trim());
+                            }
+                        }
+                    }
+                    this.LoadDanhSachDaTraKetQua();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Không thể lưu kết quả của phiếu " + this.txtMaPhieu.Text + " vì :" + luuOK.StringError.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                #endregion                
+            }
+        }
+        private void ThuMauLai()
+        {
+            if (BioNet_Bus.KiemTraMauDaLamLaiXetNghiemLan2(this.txtMaPhieu.Text.Trim()))
+            {
+                var res = BioNet_Bus.UpdatePhieuThucHienThuMauLai(this.txtMaPhieu.Text.Trim(), this.txtMaDonVi.EditValue.ToString());
+                if (!res.Result)
+                {
+                    MessageBox.Show(res.StringError, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+        private void LamLaiXN()
+        {
+            List<PsDichVu> lstdvlamlai = new List<PsDichVu>();
+            if (GVChiTietKQ.RowCount > 0)
+            {
+                for (int i = 0; i < GVChiTietKQ.RowCount; i++)
+                {
+                    try
+                    {
+                        string maDV = this.GVChiTietKQ.GetRowCellValue(i, this.col_MaDichVu).ToString();
+                        bool isnguyco = this.GVChiTietKQ.GetRowCellValue(i, this.col_isNguyCoCao) == null ? false : (bool)this.GVChiTietKQ.GetRowCellValue(i, this.col_isNguyCoCao);
+                        string KQ2 = this.GVChiTietKQ.GetRowCellValue(i, this.col_KQ2) == null ? string.Empty : this.GVChiTietKQ.GetRowCellValue(i, this.col_KQ2).ToString();
+                        if (isnguyco && !string.IsNullOrEmpty(maDV))
+                        {
+                            PsDichVu dv = BioNet_Bus.GetThongTinDichVu(maDV, this.txtMaDonVi.Text.Trim());
+                            if (dv != null && string.IsNullOrEmpty(KQ2))
+                            {
+                                lstdvlamlai.Add(dv);
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(KQ2))
+                                    XtraMessageBox.Show("Mã dịch vụ " + maDV + " Đã làm lại xét nghiệm rồi.", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                else
+                                    XtraMessageBox.Show("Mã dịch vụ " + maDV + " không đủ thông tin để thực hiện làm lại xét nghiệm.", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show("Lỗi khi lấy danh sách dịch vụ để làm xét nghiệm lại \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            if (lstdvlamlai.Count > 0)
+            {
+                if (BioNet_Bus.InsertLamLaiXetNghiem(this.txtMaPhieu.Text.Trim(), this.txtMaTiepNhan.Text.Trim(), emp.EmployeeCode, lstdvlamlai))
+                {
+                    BioNet_Bus.UpdateKetQuaLamLaiXetNghiemLan2(this.txtMaPhieu.Text.Trim(), this.txtMaTiepNhan.Text.Trim(), this.txtMaDonVi.Text.Trim());
+                    XtraMessageBox.Show("Chỉ định làm lại xét nghiệm thành công.", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    XtraMessageBox.Show("Chỉ định làm lại xét nghiệm KHÔNG thành công.", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+        //Lưu File PDF
+        public static void LuuPDF(string MaPhieu, string MaDonVi, string MaTiepNhan)
+        {
+            PsRptTraKetQuaSangLoc data = new PsRptTraKetQuaSangLoc();
+            try
+            {
+                var donvi = BioNet_Bus.GetThongTinDonViCoSo(MaDonVi);
+                if (donvi != null)
+                {
+                    var kieuTraKQ = donvi.KieuTraKetQua ?? 1;
+                    data = BioNet_Bus.GetDuLieuInKetQuaSangLoc(MaPhieu, MaTiepNhan, "MaBsi", MaDonVi);
+                    if (kieuTraKQ == 1) // Cần sửa chỗ này, cho chọn động loat report theo cấu hình của đơn vị
+                    {
+                        Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
+                        frmReportEditGeneral.FileLuuPDF(datarp, data);
+                    }
+                    else
+                    if (kieuTraKQ == 2)
+                    {
+                        Reports.rptPhieuTraKetQua_TheoTT2 datarp = new Reports.rptPhieuTraKetQua_TheoTT2();
+                        frmReportEditGeneral.FileLuuPDF(datarp, data);
+                    }
+                    else
+                    if (kieuTraKQ == 3)
+                    {
+                        Reports.rptPhieuTraKetQua_TheoDonVi datarp = new Reports.rptPhieuTraKetQua_TheoDonVi();
+                        frmReportEditGeneral.FileLuuPDF(datarp, data);
+                    }
+                    else
+                    if (kieuTraKQ == 4)
+                    {
+                        Reports.rptPhieuTraKetQua_TheoDonVi2 datarp = new Reports.rptPhieuTraKetQua_TheoDonVi2();
+                        frmReportEditGeneral.FileLuuPDF(datarp, data);
+                    }
+                    else
+                    if (kieuTraKQ == 5)
+                    {
+                        Reports.rptPhieuTraKetQua_TheoDonVi3 datarp = new Reports.rptPhieuTraKetQua_TheoDonVi3();
+                        frmReportEditGeneral.FileLuuPDF(datarp, data);
+                    }
+                    else
+                    {
+                        Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
+                        frmReportEditGeneral.FileLuuPDF(datarp, data);
+                    }
+                }
+                else
+                {
+                    Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
+                    frmReportEditGeneral.FileLuuPDF(datarp, data);
+                }
+            }
+            catch (Exception ex) { XtraMessageBox.Show("Lỗi phát sinh khi lấy dữ liệu in \r\n Lỗi chi tiết :" + ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+
+        }
+
+        private void GVChuaKQ_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    bool danhaplieu = View.GetRowCellDisplayText(e.RowHandle, col_isDaNhapLieu) == null ? false : (bool)View.GetRowCellValue(e.RowHandle, this.col_isDaNhapLieu);
+                    if (!danhaplieu)
+                    {
+                        e.Appearance.BackColor = Color.Salmon;
+                        e.Appearance.BackColor2 = Color.SeaShell;
+                    }
+                    else
+                    {
+                        e.Appearance.BackColor = Color.Aqua;
+                        e.Appearance.BackColor2 = Color.AliceBlue;
+                    }
+                }
+            }
+            catch { }
         }
     }
 }

@@ -1248,6 +1248,9 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\shield1.png" />
+    <None Include="Resources\shield.png" />
+    <None Include="Resources\shield %281%29.png" />
     <None Include="Resources\x-button %282%29.png" />
     <None Include="Resources\warning %281%29.png" />
     <None Include="Resources\x-button %281%29.png" />

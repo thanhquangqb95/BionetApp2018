@@ -31,14 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptPhieuTraKetQua_TheoDonVi2));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.txtGiaTri = new DevExpress.XtraReports.UI.XRTableCell();
-            this.txtKetLuan = new DevExpress.XtraReports.UI.XRTableCell();
-            this.txtNguyCo = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
@@ -118,11 +110,20 @@
             this.xrLabel30 = new DevExpress.XtraReports.UI.XRLabel();
             this.TenDonViUpper = new DevExpress.XtraReports.UI.CalculatedField();
             this.objectDataSource2 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
+            this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.txtTenDichVu = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtNguongBT = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtDVDo = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtGiaTri = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtKetLuan = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtNguyCo = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtMaDV = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -133,100 +134,6 @@
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTable3
-            // 
-            this.xrTable3.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.xrTable3.Name = "xrTable3";
-            this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow2});
-            this.xrTable3.SizeF = new System.Drawing.SizeF(797F, 25F);
-            this.xrTable3.StylePriority.UseFont = false;
-            this.xrTable3.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTable3_BeforePrint);
-            // 
-            // xrTableRow2
-            // 
-            this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell6,
-            this.xrTableCell7,
-            this.xrTableCell8,
-            this.txtGiaTri,
-            this.txtKetLuan,
-            this.txtNguyCo});
-            this.xrTableRow2.Name = "xrTableRow2";
-            this.xrTableRow2.Weight = 1D;
-            // 
-            // xrTableCell6
-            // 
-            this.xrTableCell6.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell6.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.TenDichVu")});
-            this.xrTableCell6.Name = "xrTableCell6";
-            this.xrTableCell6.Padding = new DevExpress.XtraPrinting.PaddingInfo(15, 0, 0, 0, 100F);
-            this.xrTableCell6.StylePriority.UseBorders = false;
-            this.xrTableCell6.StylePriority.UsePadding = false;
-            this.xrTableCell6.StylePriority.UseTextAlignment = false;
-            this.xrTableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell6.Weight = 2.0786865874291D;
-            // 
-            // xrTableCell7
-            // 
-            this.xrTableCell7.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell7.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.GiaTriTrungBinh")});
-            this.xrTableCell7.Name = "xrTableCell7";
-            this.xrTableCell7.StylePriority.UseBorders = false;
-            this.xrTableCell7.StylePriority.UseTextAlignment = false;
-            this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell7.Weight = 0.720463991924232D;
-            // 
-            // xrTableCell8
-            // 
-            this.xrTableCell8.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.DonViDo")});
-            this.xrTableCell8.Name = "xrTableCell8";
-            this.xrTableCell8.StylePriority.UseBorders = false;
-            this.xrTableCell8.StylePriority.UseTextAlignment = false;
-            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell8.Weight = 0.681407365238797D;
-            // 
-            // txtGiaTri
-            // 
-            this.txtGiaTri.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtGiaTri.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.GiaTri")});
-            this.txtGiaTri.Name = "txtGiaTri";
-            this.txtGiaTri.StylePriority.UseBorders = false;
-            this.txtGiaTri.StylePriority.UseTextAlignment = false;
-            this.txtGiaTri.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.txtGiaTri.Weight = 0.612435093369044D;
-            // 
-            // txtKetLuan
-            // 
-            this.txtKetLuan.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtKetLuan.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.KetLuan")});
-            this.txtKetLuan.Name = "txtKetLuan";
-            this.txtKetLuan.StylePriority.UseBorders = false;
-            this.txtKetLuan.StylePriority.UseTextAlignment = false;
-            this.txtKetLuan.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.txtKetLuan.Weight = 0.907006836277615D;
-            // 
-            // txtNguyCo
-            // 
-            this.txtNguyCo.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.txtNguyCo.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.isNguyCoCao")});
-            this.txtNguyCo.Name = "txtNguyCo";
-            this.txtNguyCo.StylePriority.UseBorders = false;
-            this.txtNguyCo.StylePriority.UseTextAlignment = false;
-            this.txtNguyCo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.txtNguyCo.Visible = false;
-            this.txtNguyCo.Weight = 0.20235050931244D;
             // 
             // TopMargin
             // 
@@ -939,7 +846,7 @@
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow6});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(765.9998F, 48.95837F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(765.9997F, 48.95837F);
             this.xrTable2.StylePriority.UseBackColor = false;
             this.xrTable2.StylePriority.UseFont = false;
             this.xrTable2.StylePriority.UseForeColor = false;
@@ -964,7 +871,7 @@
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.StylePriority.UseBorders = false;
             this.xrTableCell1.Text = "Xét nghiệm";
-            this.xrTableCell1.Weight = 2.07868622862017D;
+            this.xrTableCell1.Weight = 2.1206150303932811D;
             // 
             // xrTableCell4
             // 
@@ -975,7 +882,7 @@
             this.xrTableCell4.StylePriority.UseBorders = false;
             this.xrTableCell4.Text = "Ngưỡng       bình thường";
             this.xrTableCell4.TextTrimming = System.Drawing.StringTrimming.Word;
-            this.xrTableCell4.Weight = 0.720463864797089D;
+            this.xrTableCell4.Weight = 0.7310450182882362D;
             // 
             // xrTableCell10
             // 
@@ -984,7 +891,7 @@
             this.xrTableCell10.Name = "xrTableCell10";
             this.xrTableCell10.StylePriority.UseBorders = false;
             this.xrTableCell10.Text = "Đơn vị đo";
-            this.xrTableCell10.Weight = 0.681407141623236D;
+            this.xrTableCell10.Weight = 0.69141439731687582D;
             // 
             // xrTableCell21
             // 
@@ -995,7 +902,7 @@
             this.xrTableCell21.StylePriority.UseBorders = false;
             this.xrTableCell21.Text = "Giá trị       đo được";
             this.xrTableCell21.TextTrimming = System.Drawing.StringTrimming.Word;
-            this.xrTableCell21.Weight = 0.612435223850818D;
+            this.xrTableCell21.Weight = 0.63044298535538723D;
             // 
             // xrTableCell22
             // 
@@ -1005,7 +912,7 @@
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.StylePriority.UseBorders = false;
             this.xrTableCell22.Text = "Kết luận";
-            this.xrTableCell22.Weight = 0.907006345903282D;
+            this.xrTableCell22.Weight = 0.82648057663720809D;
             // 
             // xrLabel2
             // 
@@ -1319,6 +1226,111 @@
             this.objectDataSource2.DataSource = typeof(BioNetModel.PsRptTraKetQuaSangLoc);
             this.objectDataSource2.Name = "objectDataSource2";
             // 
+            // xrTable3
+            // 
+            this.xrTable3.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(1.746392F, 0F);
+            this.xrTable3.Name = "xrTable3";
+            this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow2});
+            this.xrTable3.SizeF = new System.Drawing.SizeF(796.9999F, 25F);
+            this.xrTable3.StylePriority.UseFont = false;
+            // 
+            // xrTableRow2
+            // 
+            this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.txtTenDichVu,
+            this.txtNguongBT,
+            this.txtDVDo,
+            this.txtGiaTri,
+            this.txtKetLuan,
+            this.txtNguyCo,
+            this.txtMaDV});
+            this.xrTableRow2.Name = "xrTableRow2";
+            this.xrTableRow2.Weight = 1D;
+            // 
+            // txtTenDichVu
+            // 
+            this.txtTenDichVu.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.txtTenDichVu.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.TenDichVu")});
+            this.txtTenDichVu.Name = "txtTenDichVu";
+            this.txtTenDichVu.Padding = new DevExpress.XtraPrinting.PaddingInfo(15, 0, 0, 0, 100F);
+            this.txtTenDichVu.StylePriority.UseBorders = false;
+            this.txtTenDichVu.StylePriority.UsePadding = false;
+            this.txtTenDichVu.StylePriority.UseTextAlignment = false;
+            this.txtTenDichVu.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.txtTenDichVu.Weight = 2.1236742414179606D;
+            // 
+            // txtNguongBT
+            // 
+            this.txtNguongBT.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.txtNguongBT.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.GiaTriTrungBinh")});
+            this.txtNguongBT.Name = "txtNguongBT";
+            this.txtNguongBT.StylePriority.UseBorders = false;
+            this.txtNguongBT.StylePriority.UseTextAlignment = false;
+            this.txtNguongBT.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtNguongBT.Weight = 0.73605677902381106D;
+            // 
+            // txtDVDo
+            // 
+            this.txtDVDo.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.txtDVDo.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.DonViDo")});
+            this.txtDVDo.Name = "txtDVDo";
+            this.txtDVDo.StylePriority.UseBorders = false;
+            this.txtDVDo.StylePriority.UseTextAlignment = false;
+            this.txtDVDo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtDVDo.Weight = 0.6961538622486042D;
+            // 
+            // txtGiaTri
+            // 
+            this.txtGiaTri.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.txtGiaTri.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.GiaTri")});
+            this.txtGiaTri.Name = "txtGiaTri";
+            this.txtGiaTri.StylePriority.UseBorders = false;
+            this.txtGiaTri.StylePriority.UseTextAlignment = false;
+            this.txtGiaTri.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtGiaTri.Weight = 0.63476470659146556D;
+            // 
+            // txtKetLuan
+            // 
+            this.txtKetLuan.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.txtKetLuan.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.KetLuan")});
+            this.txtKetLuan.Name = "txtKetLuan";
+            this.txtKetLuan.StylePriority.UseBorders = false;
+            this.txtKetLuan.StylePriority.UseTextAlignment = false;
+            this.txtKetLuan.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtKetLuan.Weight = 0.83215017618880482D;
+            // 
+            // txtNguyCo
+            // 
+            this.txtNguyCo.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.txtNguyCo.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.isNguyCoCao")});
+            this.txtNguyCo.Name = "txtNguyCo";
+            this.txtNguyCo.StylePriority.UseBorders = false;
+            this.txtNguyCo.StylePriority.UseTextAlignment = false;
+            this.txtNguyCo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtNguyCo.Visible = false;
+            this.txtNguyCo.Weight = 0.14949018671736541D;
+            // 
+            // txtMaDV
+            // 
+            this.txtMaDV.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.txtMaDV.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.MaDiChVu")});
+            this.txtMaDV.Name = "txtMaDV";
+            this.txtMaDV.StylePriority.UseBorders = false;
+            this.txtMaDV.StylePriority.UseTextAlignment = false;
+            this.txtMaDV.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtMaDV.Visible = false;
+            this.txtMaDV.Weight = 0.065721632686116055D;
+            // 
             // rptPhieuTraKetQua_TheoDonVi2
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1335,13 +1347,13 @@
             this.DataMember = "chitietKetQua";
             this.DataSource = this.objectDataSource2;
             this.Margins = new System.Drawing.Printing.Margins(39, 8, 13, 15);
-            this.Version = "15.2";
+            this.Version = "17.1";
             this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.rptPhieuTraKetQua_TheoDonVi2_BeforePrint);
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1427,14 +1439,15 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel19;
         private DevExpress.XtraReports.UI.XRLabel xrLabel17;
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel2;
         private DevExpress.XtraReports.UI.XRTable xrTable3;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell6;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
+        private DevExpress.XtraReports.UI.XRTableCell txtTenDichVu;
+        private DevExpress.XtraReports.UI.XRTableCell txtNguongBT;
+        private DevExpress.XtraReports.UI.XRTableCell txtDVDo;
         private DevExpress.XtraReports.UI.XRTableCell txtGiaTri;
         private DevExpress.XtraReports.UI.XRTableCell txtKetLuan;
         private DevExpress.XtraReports.UI.XRTableCell txtNguyCo;
-        private DevExpress.XtraReports.UI.XRPanel xrPanel2;
+        private DevExpress.XtraReports.UI.XRTableCell txtMaDV;
     }
 }
