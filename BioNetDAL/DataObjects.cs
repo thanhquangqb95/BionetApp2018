@@ -2551,6 +2551,7 @@ namespace BioNetDAL
                     gan.MaXetNghiem = c.MaXetNghiem;
                     gan.NgayChiDinh = c.NgayChiDinh;
                     gan.NgayTiepNhan = c.NgayTiepNhan;
+                    gan.NgayLamXetNghiem = c.NgayLamXetNghiem;
                     var duyet = db.PSCM_GanViTris.FirstOrDefault(x => x.MaPhieu.Equals(gan.MaPhieu) && x.MaGoiXN.Equals(gan.MaGoiXN) && x.MaXetNghiem.Equals(gan.MaXetNghiem));
                     if (duyet != null)
                     {
@@ -2766,6 +2767,48 @@ namespace BioNetDAL
                                             vtc.ViTri = pm.MAYXN02.ViTri;
                                             db.SubmitChanges();
                                         }
+                                        break;
+                                    }
+                            }
+                        }
+                    }
+                    db.SubmitChanges();
+                    gvc.Result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                gvc.Result = false;
+                gvc.StringError = ex.ToString();
+            }
+            return gvc;
+        }
+        public PsReponse ThemGhiChuGanVT(PSCMGanViTriChung pm)
+        {
+            PsReponse gvc = new PsReponse();
+            try
+            {
+                PSCM_GanViTri viTri = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(pm.IDLanGanXN) && x.IDRowGanXN == pm.IDRowGanXN
+                && x.isDaDuyet != true);
+                if (viTri != null)
+                {
+                    viTri.GhiChuChung = pm.GhiChuChung;
+                    if (viTri.PSCM_GanViTriCTs.Count() > 0)
+                    {
+                        foreach (var vtc in viTri.PSCM_GanViTriCTs)
+                        {
+                            switch (vtc.IDMayXN)
+                            {
+                                case "MAYXN01":
+                                    {
+                                        vtc.GhiChuCT = pm.MAYXN01.GhiChuCT;
+                                        db.SubmitChanges();
+                                        break;
+                                    }
+                                case "MAYXN02":
+                                    {
+                                        vtc.GhiChuCT = pm.MAYXN02.GhiChuCT;
+                                        db.SubmitChanges();
                                         break;
                                     }
                             }
@@ -7752,7 +7795,8 @@ namespace BioNetDAL
                                 bc.CanNang = pa.CanNang.ToString();
                                 bc.IDDanToc = pa.DanTocID.ToString();
                             }
-                            PSXN_TraKetQua TraKQ = db.PSXN_TraKetQuas.FirstOrDefault(x => x.isXoa != true && x.MaGoiXN == bc.GoiXN && x.MaPhieu == x.MaPhieu);
+                            PSXN_TraKetQua TraKQ = new PSXN_TraKetQua();
+                              TraKQ=  db.PSXN_TraKetQuas.FirstOrDefault(x => x.isXoa != true && x.MaGoiXN == bc.GoiXN && x.MaPhieu == x.MaPhieu );
                             if (TraKQ != null)
                             {
                                 bc.NgayXetNghiem = TraKQ.NgayLamXetNghiem;

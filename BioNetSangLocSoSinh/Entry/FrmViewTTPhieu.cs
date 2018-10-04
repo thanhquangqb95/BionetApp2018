@@ -35,7 +35,7 @@ namespace BioNetSangLocSoSinh.Entry
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                TimKiem(txtMaPhieu.Text.TrimEnd());
+                TimKiem(txtMaPhieu.Text.Trim());
             }
         }
         private void TimKiem(string MaPhieu)
@@ -49,7 +49,7 @@ namespace BioNetSangLocSoSinh.Entry
                     if (kq == null)
                     {
                         MessageBox.Show("Mã phiếu không tồn tại", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
-                        panelControl3.Controls.Clear();
+                       // panelControl3.Controls.Clear();
                     }
                     else
                     {

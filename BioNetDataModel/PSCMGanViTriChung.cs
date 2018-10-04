@@ -21,6 +21,23 @@ namespace BioNetModel
 
 
     }
+    public class PSCMGanViTriChungReport
+    {
+        public string MaPhieu { get; set; }
+        public string MaXetNghiem { get; set; }
+        public string MaGoiXN { get; set; }
+        public string GhiChuChung { get; set; }
+        public string TenGoiXN { get; set; }
+        public long? STT { get; set; }
+        public long? STTDia { get; set; }
+        public long? STTVT { get; set; }
+        public string ViTri { get; set; }
+        public string GhiChuCT { get; set; }
+        public bool? isTest { get; set; }
+        public bool? isMoi { get; set; }
+
+
+    }
     public class ViTriXN
     {
         public long? STT { get; set; }

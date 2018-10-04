@@ -1428,7 +1428,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItem9);
             this.ribbonStatusBar.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
             this.ribbonStatusBar.ItemLinks.Add(this.barSubItem8);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 992);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 756);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1274, 31);
@@ -1441,7 +1441,7 @@
             this.xTabMain.Location = new System.Drawing.Point(0, 79);
             this.xTabMain.Name = "xTabMain";
             this.xTabMain.SelectedTabPage = this.Start;
-            this.xTabMain.Size = new System.Drawing.Size(1274, 913);
+            this.xTabMain.Size = new System.Drawing.Size(1274, 677);
             this.xTabMain.TabIndex = 2;
             this.xTabMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.Start});
@@ -1453,7 +1453,7 @@
             this.Start.InvertTouchScroll = true;
             this.Start.Name = "Start";
             this.Start.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.Start.Size = new System.Drawing.Size(1268, 885);
+            this.Start.Size = new System.Drawing.Size(1268, 649);
             this.Start.Text = "Trang chủ";
             // 
             // picBackgroun
@@ -1462,7 +1462,7 @@
             this.picBackgroun.Image = ((System.Drawing.Image)(resources.GetObject("picBackgroun.Image")));
             this.picBackgroun.Location = new System.Drawing.Point(0, 0);
             this.picBackgroun.Name = "picBackgroun";
-            this.picBackgroun.Size = new System.Drawing.Size(1268, 885);
+            this.picBackgroun.Size = new System.Drawing.Size(1268, 649);
             this.picBackgroun.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBackgroun.TabIndex = 0;
             this.picBackgroun.TabStop = false;
@@ -1481,12 +1481,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 1023);
+            this.ClientSize = new System.Drawing.Size(1274, 787);
             this.Controls.Add(this.xTabMain);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1280, 1024);
+            this.MinimumSize = new System.Drawing.Size(1280, 726);
             this.Name = "FrmStartup";
             this.Ribbon = this.ribbon;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

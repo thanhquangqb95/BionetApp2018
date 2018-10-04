@@ -97,8 +97,8 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             string versionCurrent = fileVersionInfo.ProductVersion;
             NameCopany = fileVersionInfo.CompanyName;
-            lblUpdate.Text = "Ngày cập nhật: 25/09/2018 V1";
-            lblVersion.Text = "SLSS.2.0." + versionCurrent;
+            lblUpdate.Text = "Ngày cập nhật: 03/10/2018 V1";
+            lblVersion.Text = "SLSS.2.0. Demo" + versionCurrent;
             this.lblError.Visible = false;
             AddItemForm();
         }

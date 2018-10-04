@@ -17,4 +17,17 @@ namespace BioNetModel
         public string TenGoiXetNghiemKhongDau { get; set; }
         public string NVCapMa { get; set; }
     }
+    public class PSRptDanhSachGanVTXN
+    {
+        public List<PSCMGanViTriChungReport> PSCMGanViTriChung { get; set; }
+        public List<PSDanhSachXN> PSDanhSachXN { get; set; }
+    }
+    public class PSDanhSachXN
+    {
+        public string STT { get; set; }
+        public string MaGoiXN { get; set; }
+        public string TenGoiXN { get; set; }
+        public string SL { get; set; }
+
+    }
 }

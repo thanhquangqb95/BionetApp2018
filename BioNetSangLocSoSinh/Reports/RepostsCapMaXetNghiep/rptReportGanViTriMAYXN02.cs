@@ -16,8 +16,10 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
         {
             InitializeComponent();
         }
+        string a = "0";
         Color mau1 = System.Drawing.Color.SkyBlue;
         Color mau2 = System.Drawing.Color.Thistle;
+        Color mauuse = System.Drawing.Color.Transparent;
         private List<PSMapsViTriMayXN> mapViTri = new List<PSMapsViTriMayXN>();
         private void xrTable2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
@@ -33,43 +35,36 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
             if (col_isTest.Text.ToLower().Equals("true"))
             {
                 this.xrTable2.BackColor = System.Drawing.Color.PeachPuff;
+                this.col_ViTriThat.BackColor = System.Drawing.Color.PeachPuff;
+                this.col_ViTri.BackColor = System.Drawing.Color.PeachPuff;
+                this.col_MaGoiXNTV.Text = "";
             }
             else
             {
-                if(int.Parse(col_ViTriThat.Text.Substring(1))%2==0)
+                this.xrTable2.BackColor = System.Drawing.Color.Transparent;
+
+                if (int.Parse(col_ViTriThat.Text.Substring(1)) % 2 == 0)
                 {
-                    this.xrTable2.BackColor = System.Drawing.Color.SkyBlue;
+                    this.col_ViTriThat.BackColor = mau1;
+                    this.col_ViTri.BackColor = mau1;
                 }
                 else
                 {
-                    this.xrTable2.BackColor = System.Drawing.Color.Thistle;
+                    this.col_ViTriThat.BackColor = mau2;
+                    this.col_ViTri.BackColor = mau2;
                 }
-                
-            }
-
-            switch (col_MaGoiXN.Text.ToString())
-            {
-                case "DVGXN0004":
-                    col_MaGoiXNTV.Text = "5Benh";
-                    break;
-                case "DVGXN0003":
-                    col_MaGoiXNTV.Text = "3Benh";
-                    break;
-                case "DVGXN0002":
-                    col_MaGoiXNTV.Text = "2Benh";
-                    break;
-                case "DVGXN0001":
-                    col_MaGoiXNTV.Text = "XNL";
-                    break;
-                case "DVGXNL2":
-                    col_MaGoiXNTV.Text = "XNL2";
-                    break;
-                case "DVTest":
-                    col_MaGoiXNTV.Text = "Test";
-                    break;
-                default:
-                    col_MaGoiXNTV.Text = "KXD";
-                    break;
+                if (!col_MaGoiXN.Text.Equals("DVGXN0004"))
+                {
+                    this.col_MaGoiXNTV.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    this.col_MaGoiXNTV.ForeColor = System.Drawing.Color.Black;
+                }
+                if (col_MaGoiXN.Text.Equals("DVTest"))
+                {
+                    col_MaGoiXNTV.Text = "";
+                }
             }
         }
 

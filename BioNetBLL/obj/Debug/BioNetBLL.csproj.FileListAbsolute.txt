@@ -215,3 +215,15 @@ D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CopyComplete
 D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.dll
 D:\Github\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.pdb
 D:\Github\BionetApp2018\BioNetBLL\bin\Debug\BioNetDAL.dll.config
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetBLL.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetBLL.pdb
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetDAL.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetModel.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetDAL.pdb
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetDAL.dll.config
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetModel.pdb
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\bin\Debug\BioNetModel.dll.config
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csprojResolveAssemblyReference.cache
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.csproj.CoreCompileInputs.cache
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetBLL\obj\Debug\BioNetBLL.pdb

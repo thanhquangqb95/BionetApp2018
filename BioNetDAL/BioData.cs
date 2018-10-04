@@ -393,6 +393,7 @@ namespace BioNetDAL
                     ph.SLTruyenMau = ttphieu.Phieu.SLTruyenMau;
                     ph.TenNhanVienLayMau = ttphieu.Phieu.TenNhanVienLayMau;
                     ph.TinhTrangLucLayMau = ttphieu.Phieu.TinhTrangLucLayMau;
+                    ph.MaBenhNhan = ttphieu.Phieu.MaBenhNhan;
                     MaBN = ph.MaBenhNhan;
                     if (ph.TrangThaiMau < 2)
                     {
@@ -505,7 +506,7 @@ namespace BioNetDAL
                         cd.SoLuong = ttphieu.ChiDinh.SoLuong;
                         cd.NgayTiepNhan = ttphieu.ChiDinh.NgayTiepNhan;
                         cd.DonGia = ttphieu.ChiDinh.DonGia;
-                        cd.TrangThai = ttphieu.ChiDinh.TrangThai;
+                        cd.TrangThai = ttphieu.ChiDinh.TrangThai==null?1: ttphieu.ChiDinh.TrangThai;
                         cd.isDongBo = false;
                         cd.isXoa = false;
                         cd.isDaNhapLieu = isNhapLieu;
@@ -515,7 +516,7 @@ namespace BioNetDAL
                     }
                     else
                     {
-                        dvv.TrangThai = ttphieu.ChiDinh.TrangThai;
+                        dvv.TrangThai = ttphieu.ChiDinh.TrangThai == null ? 1 : ttphieu.ChiDinh.TrangThai;
                         dvv.isDongBo = false;
                         dvv.isXoa = false;
                         dvv.isDaNhapLieu = isNhapLieu;
@@ -547,7 +548,7 @@ namespace BioNetDAL
                     cd.NgayChiDinhHienTai = ttphieu.ChiDinh.NgayChiDinhHienTai;
                     cd.NgayChiDinhLamViec = ttphieu.ChiDinh.NgayChiDinhLamViec;
                     cd.SoLuong = ttphieu.ChiDinh.SoLuong;
-                    cd.TrangThai = ttphieu.ChiDinh.TrangThai;
+                    cd.TrangThai =1;
                     cd.NgayTiepNhan = ttphieu.ChiDinh.NgayTiepNhan;
                     cd.DonGia = ttphieu.ChiDinh.DonGia;
                     cd.isXoa = false;

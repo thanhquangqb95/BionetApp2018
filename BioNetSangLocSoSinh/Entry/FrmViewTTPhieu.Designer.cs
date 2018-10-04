@@ -30,10 +30,10 @@
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.documentView = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.button1 = new System.Windows.Forms.Button();
             this.txtMaPhieu = new System.Windows.Forms.TextBox();
-            this.documentView = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -60,6 +60,16 @@
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(892, 736);
             this.panelControl3.TabIndex = 1;
+            // 
+            // documentView
+            // 
+            this.documentView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.documentView.DocumentSource = typeof(BioNetSangLocSoSinh.Reports.rptPhieuViewTT);
+            this.documentView.Location = new System.Drawing.Point(2, 2);
+            this.documentView.Margin = new System.Windows.Forms.Padding(1);
+            this.documentView.Name = "documentView";
+            this.documentView.Size = new System.Drawing.Size(888, 732);
+            this.documentView.TabIndex = 5;
             // 
             // panelControl2
             // 
@@ -89,17 +99,6 @@
             this.txtMaPhieu.Size = new System.Drawing.Size(168, 21);
             this.txtMaPhieu.TabIndex = 0;
             this.txtMaPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhieu_KeyPress);
-            // 
-            // documentView
-            // 
-            this.documentView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.documentView.DocumentSource = typeof(BioNetSangLocSoSinh.Reports.rptPhieuViewTT);
-            this.documentView.IsMetric = true;
-            this.documentView.Location = new System.Drawing.Point(2, 2);
-            this.documentView.Margin = new System.Windows.Forms.Padding(1);
-            this.documentView.Name = "documentView";
-            this.documentView.Size = new System.Drawing.Size(888, 732);
-            this.documentView.TabIndex = 5;
             // 
             // FrmViewTTPhieu
             // 

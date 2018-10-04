@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -50,6 +50,7 @@
             this.col_MaPhieu_GCChuaCoKQ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_isDaDuyet = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.col_NgayLamXN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
@@ -201,6 +202,14 @@
             this.GVChuaKQ.Appearance.GroupRow.ForeColor = System.Drawing.Color.Maroon;
             this.GVChuaKQ.Appearance.GroupRow.Options.UseFont = true;
             this.GVChuaKQ.Appearance.GroupRow.Options.UseForeColor = true;
+            this.GVChuaKQ.Appearance.RowSeparator.BackColor = System.Drawing.Color.RoyalBlue;
+            this.GVChuaKQ.Appearance.RowSeparator.ForeColor = System.Drawing.Color.Black;
+            this.GVChuaKQ.Appearance.RowSeparator.Options.UseBackColor = true;
+            this.GVChuaKQ.Appearance.RowSeparator.Options.UseForeColor = true;
+            this.GVChuaKQ.Appearance.SelectedRow.BackColor = System.Drawing.Color.RoyalBlue;
+            this.GVChuaKQ.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black;
+            this.GVChuaKQ.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.GVChuaKQ.Appearance.SelectedRow.Options.UseForeColor = true;
             this.GVChuaKQ.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.col_MaDonVi_GCChuaCoKQ,
             this.col_MaChiDinh_GCChuaCoKQ,
@@ -211,7 +220,8 @@
             this.col_NgayTiepNhan,
             this.col_MaGoiXN_GCChuaCoKQ,
             this.col_MaPhieu_GCChuaCoKQ,
-            this.col_isDaDuyet});
+            this.col_isDaDuyet,
+            this.col_NgayLamXN});
             this.GVChuaKQ.GridControl = this.GCChuaKQ;
             this.GVChuaKQ.GroupCount = 2;
             this.GVChuaKQ.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -367,6 +377,18 @@
             this.repositoryItemCheckEdit1.PictureGrayed = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
             this.repositoryItemCheckEdit1.PictureUnchecked = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
             // 
+            // col_NgayLamXN
+            // 
+            this.col_NgayLamXN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.col_NgayLamXN.AppearanceHeader.ForeColor = System.Drawing.Color.Maroon;
+            this.col_NgayLamXN.AppearanceHeader.Options.UseFont = true;
+            this.col_NgayLamXN.AppearanceHeader.Options.UseForeColor = true;
+            this.col_NgayLamXN.Caption = "Ngày cấp mã XN";
+            this.col_NgayLamXN.FieldName = "NgayLamXetNghiem";
+            this.col_NgayLamXN.Name = "col_NgayLamXN";
+            this.col_NgayLamXN.Visible = true;
+            this.col_NgayLamXN.VisibleIndex = 2;
+            // 
             // panelControl1
             // 
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -409,9 +431,9 @@
             this.btnClear.Location = new System.Drawing.Point(211, 154);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem2.Text = "Bỏ lọc";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnClear.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Bỏ lọc";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.btnClear.SuperTip = superToolTip4;
             this.btnClear.TabIndex = 33;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -428,9 +450,9 @@
             this.btnViewGhiChu.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.btnViewGhiChu.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.btnViewGhiChu.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem5.Text = "Nội dung viết tắt";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            this.btnViewGhiChu.SuperTip = superToolTip5;
+            toolTipTitleItem6.Text = "Nội dung viết tắt";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            this.btnViewGhiChu.SuperTip = superToolTip6;
             this.btnViewGhiChu.TabIndex = 37;
             this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
@@ -573,6 +595,7 @@
             this.txtDenNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 49, 40, 0);
             this.txtDenNgay_ChuaKQ.Size = new System.Drawing.Size(109, 20);
             this.txtDenNgay_ChuaKQ.TabIndex = 6;
+            this.txtDenNgay_ChuaKQ.EditValueChanged += new System.EventHandler(this.txtDenNgay_ChuaKQ_EditValueChanged_1);
             // 
             // txtTuNgay_ChuaKQ
             // 
@@ -595,6 +618,7 @@
             this.txtTuNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 50, 0, 0);
             this.txtTuNgay_ChuaKQ.Size = new System.Drawing.Size(92, 20);
             this.txtTuNgay_ChuaKQ.TabIndex = 7;
+            this.txtTuNgay_ChuaKQ.EditValueChanged += new System.EventHandler(this.txtTuNgay_ChuaKQ_EditValueChanged);
             // 
             // labelControl19
             // 
@@ -705,10 +729,30 @@
             // 
             // GVDanhSachGanViTri
             // 
-            this.GVDanhSachGanViTri.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GVDanhSachGanViTri.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black;
+            this.GVDanhSachGanViTri.Appearance.EvenRow.Options.UseForeColor = true;
+            this.GVDanhSachGanViTri.Appearance.FocusedCell.BackColor = System.Drawing.Color.LightBlue;
+            this.GVDanhSachGanViTri.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black;
+            this.GVDanhSachGanViTri.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.GVDanhSachGanViTri.Appearance.FocusedCell.Options.UseForeColor = true;
+            this.GVDanhSachGanViTri.Appearance.FocusedRow.BackColor = System.Drawing.Color.LightBlue;
+            this.GVDanhSachGanViTri.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
+            this.GVDanhSachGanViTri.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.GVDanhSachGanViTri.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.GVDanhSachGanViTri.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.LightBlue;
+            this.GVDanhSachGanViTri.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.Black;
+            this.GVDanhSachGanViTri.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.GVDanhSachGanViTri.Appearance.HideSelectionRow.Options.UseForeColor = true;
+            this.GVDanhSachGanViTri.Appearance.Preview.ForeColor = System.Drawing.Color.Black;
+            this.GVDanhSachGanViTri.Appearance.Preview.Options.UseForeColor = true;
+            this.GVDanhSachGanViTri.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.GVDanhSachGanViTri.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.GVDanhSachGanViTri.Appearance.Row.ForeColor = System.Drawing.Color.Black;
+            this.GVDanhSachGanViTri.Appearance.Row.Options.UseBackColor = true;
             this.GVDanhSachGanViTri.Appearance.Row.Options.UseFont = true;
-            this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GVDanhSachGanViTri.Appearance.Row.Options.UseForeColor = true;
+            this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor = System.Drawing.Color.Silver;
+            this.GVDanhSachGanViTri.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.Transparent;
             this.GVDanhSachGanViTri.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black;
             this.GVDanhSachGanViTri.Appearance.SelectedRow.Options.UseBackColor = true;
             this.GVDanhSachGanViTri.Appearance.SelectedRow.Options.UseForeColor = true;
@@ -731,11 +775,12 @@
             this.col_MayXN01_STT,
             this.col_MayXN02_STT,
             this.col_IDRow});
-            this.GVDanhSachGanViTri.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.GVDanhSachGanViTri.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.GVDanhSachGanViTri.GridControl = this.GCDanhSachGanViTri;
             this.GVDanhSachGanViTri.Name = "GVDanhSachGanViTri";
             this.GVDanhSachGanViTri.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
             this.GVDanhSachGanViTri.OptionsView.ShowDetailButtons = false;
+            this.GVDanhSachGanViTri.OptionsView.ShowFooter = true;
             this.GVDanhSachGanViTri.OptionsView.ShowGroupExpandCollapseButtons = false;
             this.GVDanhSachGanViTri.OptionsView.ShowGroupPanel = false;
             this.GVDanhSachGanViTri.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDanhSachGanViTri_RowCellStyle);
@@ -784,7 +829,6 @@
             this.col_MaXetNghiem.Caption = "Mã Xét Nghiệm";
             this.col_MaXetNghiem.FieldName = "MaXetNghiem";
             this.col_MaXetNghiem.Name = "col_MaXetNghiem";
-            this.col_MaXetNghiem.OptionsColumn.AllowEdit = false;
             this.col_MaXetNghiem.Visible = true;
             this.col_MaXetNghiem.Width = 73;
             // 
@@ -1266,5 +1310,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtMaPhieu;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraGrid.Columns.GridColumn col_NgayLamXN;
     }
 }

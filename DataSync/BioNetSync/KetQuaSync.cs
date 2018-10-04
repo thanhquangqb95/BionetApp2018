@@ -19,7 +19,7 @@ namespace DataSync.BioNetSync
     {
         private static BioNetDBContextDataContext db = null;
         private static string linkPost = "/api/xnketqua/AddUpFromApp";
-        private static string linkPDF = "/api/patient/pushlistfilekq";
+       // private static string linkPDF = "/api/patient/pushlistfilekq";
 
 
         public static PsReponse UpdateKetQua(PSXN_KetQua ketqua)

@@ -70,5 +70,6 @@ namespace BioNetModel
         public string MaGoiXN { get; set; }
         public string MaPhieu { get; set; }
         public Boolean? isDaDuyet { get; set; }
+        public DateTime? NgayLamXetNghiem { get; set; }
     }
 }

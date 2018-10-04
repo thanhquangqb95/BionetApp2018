@@ -1320,10 +1320,10 @@
             this.xrLabel17.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top)));
             this.xrLabel17.BorderWidth = 1F;
             this.xrLabel17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel17.LocationFloat = new DevExpress.Utils.PointFloat(0.00281083F, 566.267F);
+            this.xrLabel17.LocationFloat = new DevExpress.Utils.PointFloat(0.002805392F, 566.267F);
             this.xrLabel17.Name = "xrLabel17";
             this.xrLabel17.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel17.SizeF = new System.Drawing.SizeF(52.08335F, 59.99997F);
+            this.xrLabel17.SizeF = new System.Drawing.SizeF(52.07721F, 59.99994F);
             this.xrLabel17.StylePriority.UseBorderColor = false;
             this.xrLabel17.StylePriority.UseBorders = false;
             this.xrLabel17.StylePriority.UseBorderWidth = false;
@@ -2833,10 +2833,10 @@
             this.xrLabel119.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top)));
             this.xrLabel119.BorderWidth = 1F;
             this.xrLabel119.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel119.LocationFloat = new DevExpress.Utils.PointFloat(52.083F, 931.267F);
+            this.xrLabel119.LocationFloat = new DevExpress.Utils.PointFloat(52.09069F, 931.267F);
             this.xrLabel119.Name = "xrLabel119";
             this.xrLabel119.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel119.SizeF = new System.Drawing.SizeF(334.6661F, 35F);
+            this.xrLabel119.SizeF = new System.Drawing.SizeF(334.6584F, 35F);
             this.xrLabel119.StylePriority.UseBackColor = false;
             this.xrLabel119.StylePriority.UseBorderColor = false;
             this.xrLabel119.StylePriority.UseBorders = false;
@@ -3163,7 +3163,7 @@
             this.NCT2GAL,
             this.NCT2PKU});
             this.ShowPrintMarginsWarning = false;
-            this.Version = "15.2";
+            this.Version = "17.1";
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

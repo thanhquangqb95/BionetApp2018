@@ -58,7 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\..\..\..\Software\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>D:\PhanMem\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v17.1" />
     <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -114,17 +114,18 @@
     <Reference Include="DevExpress.XtraScheduler.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v17.1.Reporting, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraWizard.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DLLLicensePS">
-      <HintPath>LibDLL\DLLLicensePS.dll</HintPath>
+      <HintPath>..\packages\DLLLicensePS.dll</HintPath>
     </Reference>
     <Reference Include="Excel.4.5">
-      <HintPath>..\..\..\..\Downloads\output\output\net45\Excel.4.5.dll</HintPath>
+      <HintPath>..\packages\Excel.4.5.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\Downloads\output\output\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\packages\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Downloads\itextsharp-all-5.5.10\itextsharp.xfaworker-dll-5.5.10\itextsharp.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -156,7 +157,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UserControlDate">
-      <HintPath>LibDLL\UserControlDate.dll</HintPath>
+      <HintPath>..\packages\UserControlDate.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -688,11 +689,23 @@
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.Designer.cs">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMayXN01New.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMayXN01New.Designer.cs">
+      <DependentUpon>rptReportGanViTriMayXN01New.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.Designer.cs">
       <DependentUpon>rptReportGanViTriMAYXN02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanVTMAY01.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanVTMAY01.Designer.cs">
+      <DependentUpon>rptReportGanVTMAY01.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.cs">
       <SubType>Component</SubType>
@@ -723,12 +736,6 @@
     </Compile>
     <Compile Include="Reports\rptBaoCaoThongKeCoBan.Designer.cs">
       <DependentUpon>rptBaoCaoThongKeCoBan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\rptBaoCaoThongKeCoBan_CoDinh.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\rptBaoCaoThongKeCoBan_CoDinh.Designer.cs">
-      <DependentUpon>rptBaoCaoThongKeCoBan_CoDinh.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptBaocaoTrungTamSoBo.cs">
       <SubType>Component</SubType>
@@ -821,12 +828,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>XRDesignRibbonControllerResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="XtraForm2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="XtraForm2.Designer.cs">
-      <DependentUpon>XtraForm2.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DiaglogFrm\FrmChangePass.resx">
       <DependentUpon>FrmChangePass.cs</DependentUpon>
@@ -1102,8 +1103,14 @@
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.resx">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMayXN01New.resx">
+      <DependentUpon>rptReportGanViTriMayXN01New.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.resx">
       <DependentUpon>rptReportGanViTriMAYXN02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportGanVTMAY01.resx">
+      <DependentUpon>rptReportGanVTMAY01.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportSoDoCapMa.resx">
       <DependentUpon>rptReportSoDoCapMa.cs</DependentUpon>
@@ -1119,9 +1126,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBaoCaoThongKeCoBan.resx">
       <DependentUpon>rptBaoCaoThongKeCoBan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptBaoCaoThongKeCoBan_CoDinh.resx">
-      <DependentUpon>rptBaoCaoThongKeCoBan_CoDinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBaocaoTrungTamSoBo.resx">
       <DependentUpon>rptBaocaoTrungTamSoBo.cs</DependentUpon>
@@ -1168,9 +1172,6 @@
     <EmbeddedResource Include="XRDesignRibbonControllerResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>XRDesignRibbonControllerResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraForm2.resx">
-      <DependentUpon>XtraForm2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

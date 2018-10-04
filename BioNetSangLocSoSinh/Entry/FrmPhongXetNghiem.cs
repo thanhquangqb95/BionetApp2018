@@ -1154,7 +1154,27 @@ namespace BioNetSangLocSoSinh.Entry
                                                             b3ct.CAH = gt;
                                                             break;
                                                         }
-                                                }
+                                                case "17 OHP":
+                                                    {
+                                                        string gt = string.Empty;
+                                                        gt = tab.Rows[r][tab.Columns[3]].ToString();
+                                                        switch (gt.TrimEnd())
+                                                        {
+                                                            case "<":
+                                                                {
+                                                                    gt = "0";
+                                                                    break;
+                                                                }
+                                                            case "-":
+                                                                {
+                                                                    gt = gt.Replace("-", "");
+                                                                    break;
+                                                                }
+                                                        }
+                                                        b3ct.CAH = gt;
+                                                        break;
+                                                    }
+                                            }
                                                 lst3b.Add(b3ct);
                                             }
                                         }
@@ -1167,7 +1187,7 @@ namespace BioNetSangLocSoSinh.Entry
 
 
                                 #region Add dữ liệu vào DB
-                                if (this.lstMauChoKQ.Count > 0)
+                              if (this.lstMauChoKQ.Count > 0)
                                 {
                                     if (lst3b.Count > 0)
                                     {

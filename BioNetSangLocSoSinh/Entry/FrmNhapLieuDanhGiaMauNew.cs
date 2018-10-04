@@ -275,7 +275,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtNgayChiDinh.EditValue = data.ChiDinh.NgayChiDinhLamViec.Value.Date;
                 }
                 //Thông tin đơn vị
-                this.txtTrangThaiMau.EditValue = data.Phieu.TrangThaiMau != null ? data.Phieu.TrangThaiMau.ToString() : "0";
+                this.txtTrangThaiMau.EditValue = data.Phieu.TrangThaiMau != null ? data.Phieu.TrangThaiMau.ToString() : "1";
                 if(int.Parse(this.txtTrangThaiMau.EditValue.ToString())>1)
                 {
                     this.btnDuyet.Enabled = false;
@@ -306,8 +306,17 @@ namespace BioNetSangLocSoSinh.Entry
                 this.radioGroupGoiXN.EditValue = data.Phieu.MaGoiXN;
                 this.txtGioLayMau.EditValue = Convert.ToDateTime(data.Phieu.NgayGioLayMau.Value.ToString("HH:mm"));
                 this.txtNgayLayMau.EditValue = data.Phieu.NgayGioLayMau.Value.Date;
-                this.txtNguoiLayMau.Text = String.IsNullOrEmpty(data.Phieu.TenNhanVienLayMau) ? this.txtNguoiLayMau.Text : data.Phieu.TenNhanVienLayMau; 
-                this.txtDiaChiNoiLayMau.Text = data.Phieu.DiaChiLayMau;
+                this.txtNguoiLayMau.Text = String.IsNullOrEmpty(data.Phieu.TenNhanVienLayMau) ? this.txtNguoiLayMau.Text : data.Phieu.TenNhanVienLayMau;
+                if(string.IsNullOrEmpty(data.Phieu.DiaChiLayMau))
+                {
+                    this.txtDiaChiNoiLayMau.Text = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonVi)).DiaChiDVCS.ToString();
+                }
+                else
+                {
+                    this.txtDiaChiNoiLayMau.Text = data.Phieu.DiaChiLayMau;
+                }
+               
+
                 this.txtNoiLayMau.Text = data.Phieu.NoiLayMau;
                 this.radioDanhGia.SelectedIndex = (data.Phieu.isKhongDat ?? false) == false ? 0 : 1;
                 this.txtSDTNguoiLayMau.Text = String.IsNullOrEmpty(data.Phieu.SDTNhanVienLayMau) ? this.txtSDTNguoiLayMau.Text : data.Phieu.SDTNhanVienLayMau;
@@ -330,7 +339,14 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtGioiTinh.SelectedIndex = data.Benhnhan.GioiTinh ?? 2;
                     this.cboPhuongPhapSinh.SelectedIndex = data.Benhnhan.PhuongPhapSinh ?? 2;
                     this.cbbDanToc.EditValue = data.Benhnhan.DanTocID;
-                    this.txtNoiSinh.Text = data.Benhnhan.NoiSinh;
+                    if (string.IsNullOrEmpty(data.Benhnhan.NoiSinh))
+                    {
+                        this.txtNoiSinh.Text = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonVi)).TenDVCS.ToString();
+                    }
+                    else
+                    {
+                        this.txtNoiSinh.Text = data.Benhnhan.NoiSinh;
+                    }
                     if (data.Benhnhan.NgayGioSinh != null)
                     {
                         this.txtGioSinhBenhNhan.EditValue = Convert.ToDateTime(data.Benhnhan.NgayGioSinh.Value.ToString("HH:mm"));
@@ -347,7 +363,8 @@ namespace BioNetSangLocSoSinh.Entry
                 }
             }
             else
-            { 
+            {
+                this.txtTrangThaiMau.EditValue = "1";
                 this.txtDiaChiNoiLayMau.Text = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonVi)).DiaChiDVCS.ToString();
                 this.txtNoiLayMau.Text = cbbDonViChon.Text.ToString();  
                 this.btnDuyet.Enabled = true;
@@ -391,6 +408,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtNVTiepNhan.ResetText();
             this.txtMaPhieu1.ResetText();
             this.txtNoiSinh.ResetText();
+            this.txtMaBenhNhan.ResetText();
+            this.txtMaPhieuHienThi.ResetText();
+            this.txtMaPhieu.ResetText();
             this.txtPara.ResetText();
             this.cboPhuongPhapSinh.EditValue = "0";
             this.txtCanNang.EditValue = "0";
@@ -398,7 +418,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbDanToc.ItemIndex = 0;
             this.txtGioLayMau.ResetText();
             this.txtGioSinhBenhNhan.EditValue = null;
-            this.txtMaPhieu1.ResetText();
             this.txtGhiChu.ResetText();
             this.txtDiaChiGiaDinh.ResetText();
             this.txtDiaChiGiaDinh.ResetText();
@@ -408,7 +427,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtNamSinhCha.ResetText();
             this.txtNamSinhMe.ResetText();
             this.txtNgayTruyenMau.ResetText();
-            this.txtNoiSinh.ResetText();
             this.txtSDTCha.ResetText();
             this.txtSDTMe.ResetText();
             this.txtSoLuongTruyenMau.ResetText();
@@ -431,6 +449,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.LoadListDanhGiaSoBo();
             this.txtLuuY.ResetText();
             this.radioDanhGia.SelectedIndex = 0;
+            this.txtMaPhieuHienThi.Focus();
         }
 
         private void ReadOnly(bool isreadonly)
@@ -600,7 +619,7 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     lblNgayTruyen.Enabled = true;
                     lblSLTruyenMau.Enabled = true;
-                    lblTruyenMau.Enabled = true;
+                    //lblTruyenMau.Enabled = true;
                     txtSoLuongTruyenMau.Enabled = true;
                     txtNgayTruyenMau.Enabled = true;
                 }
@@ -608,7 +627,7 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     lblNgayTruyen.Enabled = false;
                     lblSLTruyenMau.Enabled = false;
-                    lblTruyenMau.Enabled = false;
+                   // lblTruyenMau.Enabled = false;
                     txtSoLuongTruyenMau.Enabled = false;
                     txtNgayTruyenMau.Enabled = false;
                 }
@@ -1505,22 +1524,10 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtMaPhieuHienThi_Validated(object sender, EventArgs e)
         {
-            var phieu = BioNet_Bus.GetThongTinTiepNhanTheoMaPhieu(txtMaPhieuHienThi.Text);
-            if(phieu!=null)
-            {
-                HienThiThongTinPhieu(phieu.MaPhieu, phieu.MaDonVi);
-            }
-            else
-            {
-                DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Mã phiếu không tồn tại.");
-                notData.ShowDialog();
-            }
+           
         }
 
-        private void txtMaPhieuHienThi_Enter(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void txtTenMe_Validated(object sender, EventArgs e)
         {
@@ -1740,7 +1747,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtMaPhieu1_Validated(object sender, EventArgs e)
         {
-            this.LoadTTPhieuLan1();
+            
         }
 
         private void HienThiTTPhieuLan1(PSTTPhieu ph)
@@ -1786,6 +1793,14 @@ namespace BioNetSangLocSoSinh.Entry
             cboPhuongPhapSinh.EditValue = cboPhuongPhapSinh.EditValue.ToString() != ph.Benhnhan.PhuongPhapSinh.ToString() ? ph.Benhnhan.PhuongPhapSinh : cboPhuongPhapSinh.EditValue;
             cbbCheDoDD.EditValue = cbbCheDoDD.EditValue.ToString() != ph.Phieu.CheDoDinhDuong.ToString() ? ph.Phieu.CheDoDinhDuong : cbbCheDoDD.EditValue;
             cbbTTTre.EditValue = cbbTTTre.EditValue.ToString() != ph.Phieu.TinhTrangLucLayMau.ToString() ? ph.Phieu.TinhTrangLucLayMau : cbbTTTre.EditValue;
+            txtPara.Text = ph.Phieu.Para;
+            txtNoiLayMau.Text = ph.Phieu.NoiLayMau;
+            txtCanNang.EditValue = ph.Benhnhan.CanNang;
+            txtTuanTuoi.EditValue = ph.Benhnhan.TuanTuoiKhiSinh;
+            txtNoiSinh.Text = ph.Benhnhan.NoiSinh;
+            txtDiaChiNoiLayMau.Text = ph.Phieu.DiaChiLayMau;
+            txtMaBenhNhan.Text = ph.Phieu.MaBenhNhan;
+            
 
         }
 
@@ -1834,7 +1849,7 @@ namespace BioNetSangLocSoSinh.Entry
                             {
                                 XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + "được chỉ định thu lại \r\n nhưng không tìm thấy danh sách thông số nguy cơ cao cần xét nghiệm lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                             }
-                            if(int.Parse(txtTrangThaiMau.EditValue.ToString())>2)
+                            if(int.Parse(txtTrangThaiMau.EditValue.ToString())<2)
                             {
                                 if (!BioNet_Bus.KiemTraPhieuThuMauLaiDaDuocChiDinhChua(txtMaPhieu1.Text, txtMaPhieu.Text.TrimEnd()))
                                 {
@@ -2108,6 +2123,38 @@ namespace BioNetSangLocSoSinh.Entry
             catch
             {
 
+            }
+        }
+
+        private void txtMaPhieuHienThi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if(e.KeyChar == Convert.ToChar(Keys.Enter))
+                {
+                    var phieu = BioNet_Bus.GetThongTinTiepNhanTheoMaPhieu(txtMaPhieuHienThi.Text);
+                    if (phieu != null)
+                    {
+                        HienThiThongTinPhieu(phieu.MaPhieu, phieu.MaDonVi);
+                    }
+                    else
+                    {
+                        DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Mã phiếu không tồn tại.");
+                        notData.ShowDialog();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txtMaPhieu1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                this.LoadTTPhieuLan1();
             }
         }
     }

@@ -185,7 +185,7 @@ namespace BioNetSangLocSoSinh.Entry
                     if (!maDonVi.Equals("all")|| ph!=null)
                     {
                         this.CheckPhieuTiepNhan(txtMaPhieuTiepNhan.Text.Trim(), maDonVi);
-                        this.txtMaPhieuTiepNhan.Reset();
+                        this.txtMaPhieuTiepNhan.ResetText();
                         this.txtMaPhieuTiepNhan.Focus();
                     }
                     else
@@ -409,7 +409,7 @@ namespace BioNetSangLocSoSinh.Entry
                         }
                     }
                     catch { }
-                    this.barCodePhieu.Text = phieu.maPhieu;
+                    this.txtMaPhieu.Text = phieu.maPhieu;
                     this.txtDiaChiNoiLayMau.Text = phieu.DiaChiLayMau;
                     this.txtNgayTruyenMau.EditValue = phieu.ngayTruyenMau;
                     this.txtSoLuongTruyenMau.Text = phieu.soLuongTruyenMau.ToString();

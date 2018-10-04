@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<serverInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <encrypt>true</encrypt>
-  <servername>BIONET_LETHANHQ\SQLEXPRESS</servername>
-  <username>sa</username>
-  <password>bionetvietnam</password>
-  <database>Bio_TestSync_Cu</database>
-</serverInfo>
