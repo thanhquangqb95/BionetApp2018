@@ -247,7 +247,7 @@
             // 
             this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 105.2083F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 98.87508F);
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(766F, 23F);
@@ -261,7 +261,7 @@
             // 
             this.xrLabel31.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel31.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel31.LocationFloat = new DevExpress.Utils.PointFloat(0.9763718F, 403.4583F);
+            this.xrLabel31.LocationFloat = new DevExpress.Utils.PointFloat(0.9763718F, 378.4583F);
             this.xrLabel31.Name = "xrLabel31";
             this.xrLabel31.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel31.SizeF = new System.Drawing.SizeF(273.3751F, 23F);
@@ -354,7 +354,7 @@
             // 
             this.xrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 139.5834F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 133.3334F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(153.0432F, 23F);
@@ -407,7 +407,7 @@
             this.xrLabel42,
             this.xrLabel43,
             this.xrLabel44});
-            this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 192.625F);
+            this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 167.625F);
             this.xrPanel1.Name = "xrPanel1";
             this.xrPanel1.SizeF = new System.Drawing.SizeF(780.7048F, 203.125F);
             this.xrPanel1.StylePriority.UseBorderDashStyle = false;
@@ -1315,7 +1315,7 @@
             this.xrLabel2,
             this.xrPanel1,
             this.xrLabel31});
-            this.ReportHeader.HeightF = 427.0833F;
+            this.ReportHeader.HeightF = 411.4583F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // xrPictureBox1

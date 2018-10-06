@@ -615,7 +615,7 @@
             this.xrLabel8.StylePriority.UseFont = false;
             this.xrLabel8.StylePriority.UseForeColor = false;
             this.xrLabel8.StylePriority.UseTextAlignment = false;
-            this.xrLabel8.Text = "Máy 2 bệnh";
+            this.xrLabel8.Text = "Máy 3 bệnh";
             this.xrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel4
@@ -1121,7 +1121,7 @@
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.objectDataSource2});
             this.DataSource = this.objectDataSource2;
-            this.ExportOptions.Xlsx.DocumentOptions.Company = "BIonet";
+            this.ExportOptions.Xlsx.DocumentOptions.Company = "Bionet";
             this.Margins = new System.Drawing.Printing.Margins(16, 3, 11, 12);
             this.PageHeight = 850;
             this.PageWidth = 1100;

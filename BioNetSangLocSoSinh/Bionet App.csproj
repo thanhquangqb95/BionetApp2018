@@ -63,6 +63,7 @@
     <Reference Include="DevExpress.BonusSkins.v17.1" />
     <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Docs.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Spreadsheet.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeMap.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -469,6 +470,12 @@
     <Compile Include="Entry\FrmPhongXetNghiem.Designer.cs">
       <DependentUpon>FrmPhongXetNghiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmQuanLyMauDuongTinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmQuanLyMauDuongTinh.Designer.cs">
+      <DependentUpon>FrmQuanLyMauDuongTinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entry\FrmSendSMS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -689,11 +696,11 @@
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.Designer.cs">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMayXN01New.cs">
+    <Compile Include="Reports\rptReportQuanLyMauDuongTinh.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMayXN01New.Designer.cs">
-      <DependentUpon>rptReportGanViTriMayXN01New.cs</DependentUpon>
+    <Compile Include="Reports\rptReportQuanLyMauDuongTinh.Designer.cs">
+      <DependentUpon>rptReportQuanLyMauDuongTinh.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.cs">
       <SubType>Component</SubType>
@@ -982,6 +989,9 @@
     <EmbeddedResource Include="Entry\FrmPhongXetNghiem.resx">
       <DependentUpon>FrmPhongXetNghiem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmQuanLyMauDuongTinh.resx">
+      <DependentUpon>FrmQuanLyMauDuongTinh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmSendSMS.resx">
       <DependentUpon>FrmSendSMS.cs</DependentUpon>
     </EmbeddedResource>
@@ -1103,8 +1113,8 @@
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.resx">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMayXN01New.resx">
-      <DependentUpon>rptReportGanViTriMayXN01New.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\rptReportQuanLyMauDuongTinh.resx">
+      <DependentUpon>rptReportQuanLyMauDuongTinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportGanViTriMAYXN02.resx">
       <DependentUpon>rptReportGanViTriMAYXN02.cs</DependentUpon>

@@ -8265,7 +8265,6 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportDSCapMa.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan.resources
-C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanViTriMayXN01New.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanVTMAY01.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportSoDoCapMa.resources
@@ -8293,3 +8292,17 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CoreCompileInputs.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Sparkline.v17.2.Core.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Data.v17.2.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Sparkline.v17.2.Core.xml
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Data.v17.2.xml
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\de\DevExpress.Sparkline.v17.2.Core.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\es\DevExpress.Sparkline.v17.2.Core.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ja\DevExpress.Sparkline.v17.2.Core.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ru\DevExpress.Sparkline.v17.2.Core.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\de\DevExpress.Data.v17.2.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\es\DevExpress.Data.v17.2.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ja\DevExpress.Data.v17.2.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ru\DevExpress.Data.v17.2.resources.dll
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Entry.FrmQuanLyMauDuongTinh.resources
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportQuanLyMauDuongTinh.resources

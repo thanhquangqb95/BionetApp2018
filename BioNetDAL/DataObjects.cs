@@ -1792,27 +1792,23 @@ namespace BioNetDAL
                 }
                 if (phieu.Count() > 0)
                 {
-                    if (!MaDV.Equals("all"))
-                    {
-                        phieu = phieu.Where(p => p.IDCoSo.Equals(MaDV)).ToList();
-                    }
-                    var dsdv = GetDanhSachDonViSMS(MaDV);
-                    if (dsdv.Count > 0)
-                    {
-                        List<PSPhieuSangLoc> phieu1 = new List<PSPhieuSangLoc>();
-                        foreach (var dv in dsdv)
+                        var dsdv = GetDanhSachDonViSMS(MaDV);
+                        if (dsdv.Count > 0)
                         {
-                            var phieudv = phieu.Where(p => p.IDCoSo.Equals(dv.MaDVCS)).ToList();
-                            phieu1.AddRange(phieudv);
+                            List<PSPhieuSangLoc> phieu1 = new List<PSPhieuSangLoc>();
+                            foreach (var dv in dsdv)
+                            {
+                                var phieudv = phieu.Where(p => p.IDCoSo.Equals(dv.MaDVCS)).ToList();
+                                phieu1.AddRange(phieudv);
+                            }
+                            phieu = null;
+                            phieu = phieu1;
                         }
-                        phieu = null;
-                        phieu = phieu1;
-                    }
-                    else
-                    {
-                        phieu = null;
-                    }
-
+                        else
+                        {
+                            phieu = phieu.Where(p => p.IDCoSo.Equals(MaDV)).ToList();
+                            phieu = null;
+                        }
                     foreach (var ph in phieu)
                     {
                         PSPatient pa = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan == ph.MaBenhNhan && x.isXoa != true);
@@ -2259,6 +2255,39 @@ namespace BioNetDAL
                     {
                         var idRow = res.Max(p => p.RowIDBenhNhan);
                         numID = int.Parse(res.FirstOrDefault(p => p.RowIDBenhNhan == idRow).MaKhachHang.Substring(12, 4)) + 1;
+                        if (numID <= 9)
+                            maKH = startStr + "000" + numID;
+                        else if (numID > 9 && numID <= 99)
+                            maKH = startStr + "00" + numID;
+                        else if (numID > 99 && numID <= 999)
+                            maKH = startStr + "0" + numID;
+                        else maKH = startStr + numID;
+                    }
+                    else maKH = startStr + "0001";
+                }
+                else maKH = startStr + "0001";
+            }
+            catch
+            {
+                maKH = startStr + "0001";
+            }
+            return maKH;
+        }
+        public string GetNewMaKhachHang2(string maDonVi, string chuoiNamThang)
+        {
+
+            int numID = 0;
+            string maKH = string.Empty;
+            string startStr = maDonVi + chuoiNamThang;
+            try
+            {
+                var res = db.PSPatients.Where(p => p.MaKhachHang.StartsWith(maDonVi + chuoiNamThang) && p.isXoa != true).ToList();
+                if (res != null)
+                {
+                    if (res.Count > 0)
+                    {
+                        var idRow = res.Max(p => p.MaKhachHang);
+                        numID = int.Parse(res.FirstOrDefault(p => p.MaKhachHang == idRow).MaKhachHang.Substring(12, 4)) + 1;
                         if (numID <= 9)
                             maKH = startStr + "000" + numID;
                         else if (numID > 9 && numID <= 99)
@@ -3364,14 +3393,14 @@ namespace BioNetDAL
             catch (Exception ex) { }
             return lst;
         }
-        public List<PSDanhMucDonViCoSo> GetDanhSachDonViSMS(string maChiCuc)
+        public List<PSDanhMucDonViCoSo> GetDanhSachDonViSMS(string maDV)
         {
             List<PSDanhMucDonViCoSo> lst = new List<PSDanhMucDonViCoSo>();
             try
             {
-                if (!string.IsNullOrEmpty(maChiCuc) & !maChiCuc.Equals("0") & !maChiCuc.ToLower().Equals("all"))
+                if (!string.IsNullOrEmpty(maDV) & !maDV.Equals("0") & !maDV.ToLower().Equals("all"))
                 {
-                    var results = db.PSDanhMucDonViCoSos.Where(p => p.isLocked == false && p.MaChiCuc == maChiCuc && p.isChoPhepGuiSMS == true).ToList();
+                    var results = db.PSDanhMucDonViCoSos.Where(p => p.isLocked == false && p.MaDVCS.Contains(maDV) && p.isChoPhepGuiSMS == true).ToList();
                     if (results.Count > 0) return results;
                 }
                 else
@@ -7796,7 +7825,7 @@ namespace BioNetDAL
                                 bc.IDDanToc = pa.DanTocID.ToString();
                             }
                             PSXN_TraKetQua TraKQ = new PSXN_TraKetQua();
-                              TraKQ=  db.PSXN_TraKetQuas.FirstOrDefault(x => x.isXoa != true && x.MaGoiXN == bc.GoiXN && x.MaPhieu == x.MaPhieu );
+                              TraKQ=  db.PSXN_TraKetQuas.FirstOrDefault(x => x.isXoa != true && x.MaGoiXN == bc.GoiXN && x.MaPhieu == bc.IDPhieu );
                             if (TraKQ != null)
                             {
                                 bc.NgayXetNghiem = TraKQ.NgayLamXetNghiem;
@@ -8314,7 +8343,7 @@ namespace BioNetDAL
                     {
                         if (string.IsNullOrEmpty(pat.pa.MaKhachHang))
                         {
-                            pat.pa.MaKhachHang = GetNewMaKhachHang(pat.ph.IDCoSo, SoBanDau());
+                            pat.pa.MaKhachHang = GetNewMaKhachHang2(pat.ph.IDCoSo, SoBanDau());
                             pat.pa.isDongBo = false;
                             db.SubmitChanges();
                             var dcd = db.PSDotChuanDoans.Where(x => x.MaBenhNhan.Equals(pat.pa.MaBenhNhan)).ToList();
@@ -8358,6 +8387,7 @@ namespace BioNetDAL
                             }
                         }
                     }
+                    reponse.Result = true;
                 }
 
             }

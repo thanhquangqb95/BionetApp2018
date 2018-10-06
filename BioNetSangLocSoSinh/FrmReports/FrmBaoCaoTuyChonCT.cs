@@ -16,6 +16,7 @@ using BioNetModel.Data;
 using DevExpress.XtraGrid.Views.BandedGrid;
 using DevExpress.XtraGrid.Localization;
 using BioNetModel;
+using DevExpress.XtraGrid.Columns;
 
 namespace BioNetSangLocSoSinh.FrmReports
 {
@@ -63,6 +64,7 @@ namespace BioNetSangLocSoSinh.FrmReports
 
         private void LoadDuLieuDieuKienLoc()
         {
+            this.cbbTenXN.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
             var DMThongSo = BioNet_Bus.GetThongSoXN();
             if (DMThongSo != null)
             {
@@ -394,6 +396,22 @@ namespace BioNetSangLocSoSinh.FrmReports
             {
                 this.lblTenDonVi.Text = "Thông kê đơn vị " + this.txtDonVi.Text.ToString();
             }
+        }
+
+        private void labelControl41_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            string filterMaDV = "["+"] Between(" + txtMin.Text + "," + txtMax.Text +")";
+            GVBaoCaoTuyChon.Columns["NgayLamXetNghiem"].FilterInfo = new ColumnFilterInfo(filterMaDV);
         }
     }
 }

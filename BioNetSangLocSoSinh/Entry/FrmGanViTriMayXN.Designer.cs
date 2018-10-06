@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -76,6 +76,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cbbGanVT = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDem = new DevExpress.XtraEditors.TextEdit();
             this.GCDanhSachGanViTri = new DevExpress.XtraGrid.GridControl();
             this.GVDanhSachGanViTri = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.tt = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -136,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbGanVT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupGoiXN)).BeginInit();
@@ -170,10 +172,10 @@
             // 
             this.groupControl1.Controls.Add(this.GCChuaKQ);
             this.groupControl1.Controls.Add(this.panelControl1);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(310, 685);
+            this.groupControl1.Size = new System.Drawing.Size(307, 685);
             this.groupControl1.TabIndex = 33;
             this.groupControl1.Text = "Danh sách cấp mã";
             // 
@@ -187,7 +189,7 @@
             this.repositoryItemLookUpDonVi_GCChuaCoKQ,
             this.lookUpGoiXN_GCChuaCoKQ,
             this.repositoryItemCheckEdit1});
-            this.GCChuaKQ.Size = new System.Drawing.Size(306, 475);
+            this.GCChuaKQ.Size = new System.Drawing.Size(303, 475);
             this.GCChuaKQ.TabIndex = 6;
             this.GCChuaKQ.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVChuaKQ});
@@ -413,7 +415,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(2, 22);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(306, 186);
+            this.panelControl1.Size = new System.Drawing.Size(303, 186);
             this.panelControl1.TabIndex = 5;
             // 
             // labelControl4
@@ -431,9 +433,9 @@
             this.btnClear.Location = new System.Drawing.Point(211, 154);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem4.Text = "Bỏ lọc";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.btnClear.SuperTip = superToolTip4;
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 33;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -450,9 +452,9 @@
             this.btnViewGhiChu.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.btnViewGhiChu.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.btnViewGhiChu.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem6.Text = "Nội dung viết tắt";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.btnViewGhiChu.SuperTip = superToolTip6;
+            toolTipTitleItem2.Text = "Nội dung viết tắt";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnViewGhiChu.SuperTip = superToolTip2;
             this.btnViewGhiChu.TabIndex = 37;
             this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
@@ -478,7 +480,7 @@
             this.cbbGoiXNLoc.Properties.DisplayMember = "TenGoiDichVuChung";
             this.cbbGoiXNLoc.Properties.NullText = "";
             this.cbbGoiXNLoc.Properties.ValueMember = "IDGoiDichVuChung";
-            this.cbbGoiXNLoc.Size = new System.Drawing.Size(221, 20);
+            this.cbbGoiXNLoc.Size = new System.Drawing.Size(218, 20);
             this.cbbGoiXNLoc.TabIndex = 32;
             this.cbbGoiXNLoc.EditValueChanged += new System.EventHandler(this.cbbGoiXNLoc_EditValueChanged);
             // 
@@ -499,7 +501,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchMaPhieuChuaCoKQ.Location = new System.Drawing.Point(78, 104);
             this.txtSearchMaPhieuChuaCoKQ.Name = "txtSearchMaPhieuChuaCoKQ";
-            this.txtSearchMaPhieuChuaCoKQ.Size = new System.Drawing.Size(221, 20);
+            this.txtSearchMaPhieuChuaCoKQ.Size = new System.Drawing.Size(218, 20);
             this.txtSearchMaPhieuChuaCoKQ.TabIndex = 29;
             this.txtSearchMaPhieuChuaCoKQ.EditValueChanged += new System.EventHandler(this.txtSearchMaPhieuChuaCoKQ_EditValueChanged);
             // 
@@ -524,7 +526,7 @@
             this.cbbChiCucChuaCoKQ.Properties.DisplayMember = "TenChiCuc";
             this.cbbChiCucChuaCoKQ.Properties.ValueMember = "MaChiCuc";
             this.cbbChiCucChuaCoKQ.Properties.View = this.gridView3;
-            this.cbbChiCucChuaCoKQ.Size = new System.Drawing.Size(236, 20);
+            this.cbbChiCucChuaCoKQ.Size = new System.Drawing.Size(233, 20);
             this.cbbChiCucChuaCoKQ.TabIndex = 21;
             this.cbbChiCucChuaCoKQ.EditValueChanged += new System.EventHandler(this.cbbChiCucChuaCoKQ_EditValueChanged);
             // 
@@ -593,7 +595,7 @@
             this.txtDenNgay_ChuaKQ.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.txtDenNgay_ChuaKQ.Properties.NullDate = new System.DateTime(2016, 12, 15, 16, 49, 27, 0);
             this.txtDenNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 49, 40, 0);
-            this.txtDenNgay_ChuaKQ.Size = new System.Drawing.Size(109, 20);
+            this.txtDenNgay_ChuaKQ.Size = new System.Drawing.Size(106, 20);
             this.txtDenNgay_ChuaKQ.TabIndex = 6;
             this.txtDenNgay_ChuaKQ.EditValueChanged += new System.EventHandler(this.txtDenNgay_ChuaKQ_EditValueChanged_1);
             // 
@@ -616,7 +618,7 @@
             this.txtTuNgay_ChuaKQ.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.txtTuNgay_ChuaKQ.Properties.NullDate = new System.DateTime(2016, 12, 15, 16, 49, 53, 0);
             this.txtTuNgay_ChuaKQ.Properties.NullDateCalendarValue = new System.DateTime(2016, 12, 15, 16, 50, 0, 0);
-            this.txtTuNgay_ChuaKQ.Size = new System.Drawing.Size(92, 20);
+            this.txtTuNgay_ChuaKQ.Size = new System.Drawing.Size(89, 20);
             this.txtTuNgay_ChuaKQ.TabIndex = 7;
             this.txtTuNgay_ChuaKQ.EditValueChanged += new System.EventHandler(this.txtTuNgay_ChuaKQ_EditValueChanged);
             // 
@@ -643,7 +645,7 @@
             this.cbbDonViChuaCoKQ.Properties.NullText = "Chọn đơn vị cơ sở cần nhận mẫu ...";
             this.cbbDonViChuaCoKQ.Properties.ValueMember = "MaDVCS";
             this.cbbDonViChuaCoKQ.Properties.View = this.searchLookUpEdit1View;
-            this.cbbDonViChuaCoKQ.Size = new System.Drawing.Size(236, 20);
+            this.cbbDonViChuaCoKQ.Size = new System.Drawing.Size(233, 20);
             this.cbbDonViChuaCoKQ.TabIndex = 0;
             this.cbbDonViChuaCoKQ.EditValueChanged += new System.EventHandler(this.cbbDonViChuaCoKQ_EditValueChanged);
             // 
@@ -695,12 +697,13 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Đang chờ duyệt vị trí XN", 2, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Đã duyệt vị trí XN", 3, -1)});
             this.cbbGanVT.Properties.PopupSizeable = true;
-            this.cbbGanVT.Size = new System.Drawing.Size(194, 20);
+            this.cbbGanVT.Size = new System.Drawing.Size(191, 20);
             this.cbbGanVT.TabIndex = 39;
             this.cbbGanVT.EditValueChanged += new System.EventHandler(this.cbbGanVT_EditValueChanged);
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.txtDem);
             this.groupControl2.Controls.Add(this.GCDanhSachGanViTri);
             this.groupControl2.Controls.Add(this.panelControl6);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -709,6 +712,15 @@
             this.groupControl2.Size = new System.Drawing.Size(997, 685);
             this.groupControl2.TabIndex = 34;
             this.groupControl2.Text = "Chức năng cấp mã";
+            // 
+            // txtDem
+            // 
+            this.txtDem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtDem.Location = new System.Drawing.Point(61, 660);
+            this.txtDem.Name = "txtDem";
+            this.txtDem.Properties.ReadOnly = true;
+            this.txtDem.Size = new System.Drawing.Size(121, 20);
+            this.txtDem.TabIndex = 32;
             // 
             // GCDanhSachGanViTri
             // 
@@ -1216,6 +1228,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbGanVT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupGoiXN)).EndInit();
@@ -1307,6 +1320,7 @@
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton btnXuatFile;
         private DevExpress.XtraEditors.TextEdit txtMaNgoai;
+        private DevExpress.XtraEditors.TextEdit txtDem;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtMaPhieu;
         private DevExpress.XtraEditors.LabelControl labelControl2;

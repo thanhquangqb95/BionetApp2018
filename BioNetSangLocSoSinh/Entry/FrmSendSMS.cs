@@ -100,6 +100,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbChiCuc.Properties.DataSource = this.lstChiCuc;
             this.cbbChiCuc.EditValue = "all";
             this.txtDSVietTat.Text = "#tentre = Tên trẻ \n #tennguoinhan= Tên người nhận \n #maphieu=mã phiếu \n #trangthaiphieu= trạng thái phiếu ";
+            PsReponse reponse = BioNet_Bus.UpdateMaKhachHang();
         }
         private void LoadDSMauTinNhan()
         {
@@ -345,22 +346,36 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 List<PsReponseSMS> resct = new List<PsReponseSMS>();
                 List<PSDanhSachGuiSMS> lisok = new List<PSDanhSachGuiSMS>();
+                
                 var lstChecked = this.GVCTDSGuiTinNhan.GetSelectedRows();
-                foreach (var index in lstChecked)
+                if(lstChecked.Count()>0)
                 {
-                    string MaPhieu = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_IDPhieu).ToString();
-                    string sdt1 = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_SDTGui)!=null ? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_SDTGui).ToString():string.Empty;
-                    string NoidungTN = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_NoiDungTN) != null? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_NoiDungTN).ToString():string.Empty;
-                    string MaKH = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang) != null? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang).ToString() : string.Empty; 
-                    if (!string.IsNullOrEmpty(sdt1))
+                    foreach (var index in lstChecked)
                     {
-                        PsReponseSMS res = BioNet_Bus.SMS(NoidungTN, sdt1, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
-                        var ls = lstsms.FirstOrDefault(x => x.MaPhieu.Equals(MaPhieu) && x.MaKhachHang.Equals(MaKH));
-                        BioNet_Bus.InsertSMSNumber(ls, res, emp.EmployeeCode);
+                        try
+                        {
+                            string MaPhieu = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_IDPhieu).ToString();
+                            string sdt1 = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_SDTGui) != null ? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_SDTGui).ToString() : string.Empty;
+                            string NoidungTN = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_NoiDungTN) != null ? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_NoiDungTN).ToString() : string.Empty;
+                            string MaKH = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang) != null ? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang).ToString() : string.Empty;
+                            if (!string.IsNullOrEmpty(sdt1))
+                            {
+                                PsReponseSMS res = BioNet_Bus.SMS(NoidungTN, sdt1, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                                var ls = lstsms.FirstOrDefault(x => x.MaPhieu.Equals(MaPhieu) && x.MaKhachHang.Equals(MaKH));
+                                BioNet_Bus.InsertSMSNumber(ls, res, emp.EmployeeCode);
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                        
                     }
-                   
                 }
-              
+                else
+                {
+                    return;
+                }
             }
             catch (Exception ex)
             {

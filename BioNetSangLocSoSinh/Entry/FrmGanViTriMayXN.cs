@@ -133,6 +133,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.GVDanhSachGanViTri.FocusedRowHandle = vt.Count();
             this.GVDanhSachGanViTri.SelectRow(vt.Count());
             this.GVDanhSachGanViTri.MoveLastVisible();
+            this.txtDem.Text = vt.Where(x => x.MaGoiXN.Equals("DVTest") != true).ToList().Count().ToString();
         }
 
         private void LoadLstChuaKetQua()

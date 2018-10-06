@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.GCPhieuCho = new DevExpress.XtraGrid.GridControl();
@@ -115,6 +115,7 @@
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.btnHuyDuyetTiepNhan = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.cbbChuongTrinh = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.txtMaPhieu = new DevExpress.XtraEditors.TextEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
@@ -124,7 +125,6 @@
             this.cbbTTTre = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.cbbCheDoDD = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.labelControl38 = new DevExpress.XtraEditors.LabelControl();
-            this.lblTruyenMau = new DevExpress.XtraEditors.LabelControl();
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
@@ -183,7 +183,6 @@
             this.txtTenCha = new DevExpress.XtraEditors.TextEdit();
             this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
             this.txtTenMe = new DevExpress.XtraEditors.TextEdit();
-            this.txtChuongTrinh = new DevExpress.XtraEditors.TextEdit();
             this.txtDonVi = new DevExpress.XtraEditors.TextEdit();
             this.labelControl37 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl40 = new DevExpress.XtraEditors.LabelControl();
@@ -244,6 +243,7 @@
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbChuongTrinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
@@ -287,7 +287,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChuongTrinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -968,9 +967,9 @@
             this.btnClear.Location = new System.Drawing.Point(251, 107);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(91, 23);
-            toolTipTitleItem3.Text = "Bỏ lọc";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.btnClear.SuperTip = superToolTip3;
+            toolTipTitleItem7.Text = "Bỏ lọc";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            this.btnClear.SuperTip = superToolTip7;
             this.btnClear.TabIndex = 37;
             // 
             // btnRefesh
@@ -1190,6 +1189,7 @@
             this.groupControl3.AppearanceCaption.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupControl3.AppearanceCaption.Options.UseFont = true;
             this.groupControl3.AppearanceCaption.Options.UseForeColor = true;
+            this.groupControl3.Controls.Add(this.cbbChuongTrinh);
             this.groupControl3.Controls.Add(this.labelControl35);
             this.groupControl3.Controls.Add(this.txtMaPhieu);
             this.groupControl3.Controls.Add(this.groupControl5);
@@ -1197,7 +1197,6 @@
             this.groupControl3.Controls.Add(this.labelControl36);
             this.groupControl3.Controls.Add(this.groupControl6);
             this.groupControl3.Controls.Add(this.groupControl4);
-            this.groupControl3.Controls.Add(this.txtChuongTrinh);
             this.groupControl3.Controls.Add(this.txtDonVi);
             this.groupControl3.Controls.Add(this.labelControl37);
             this.groupControl3.Controls.Add(this.labelControl40);
@@ -1209,6 +1208,30 @@
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "Thông tin phiếu";
             // 
+            // cbbChuongTrinh
+            // 
+            this.cbbChuongTrinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbChuongTrinh.EditValue = "";
+            this.cbbChuongTrinh.Location = new System.Drawing.Point(315, 47);
+            this.cbbChuongTrinh.Name = "cbbChuongTrinh";
+            this.cbbChuongTrinh.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.cbbChuongTrinh.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.cbbChuongTrinh.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.cbbChuongTrinh.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.cbbChuongTrinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbChuongTrinh.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IDChuongTrinh", "Mã Chương Trình"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenChuongTrinh", "Tên Chương Trình")});
+            this.cbbChuongTrinh.Properties.DisplayMember = "TenChuongTrinh";
+            this.cbbChuongTrinh.Properties.NullText = "Chọn chương trình";
+            this.cbbChuongTrinh.Properties.ReadOnly = true;
+            this.cbbChuongTrinh.Properties.ValueMember = "IDChuongTrinh";
+            this.cbbChuongTrinh.Size = new System.Drawing.Size(268, 20);
+            this.cbbChuongTrinh.TabIndex = 32;
+            this.cbbChuongTrinh.TabStop = false;
+            // 
             // labelControl35
             // 
             this.labelControl35.Location = new System.Drawing.Point(9, 32);
@@ -1219,9 +1242,15 @@
             // 
             // txtMaPhieu
             // 
-            this.txtMaPhieu.Enabled = false;
             this.txtMaPhieu.Location = new System.Drawing.Point(84, 25);
             this.txtMaPhieu.Name = "txtMaPhieu";
+            this.txtMaPhieu.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.txtMaPhieu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtMaPhieu.Properties.Appearance.Options.UseBackColor = true;
+            this.txtMaPhieu.Properties.Appearance.Options.UseFont = true;
+            this.txtMaPhieu.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtMaPhieu.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtMaPhieu.Properties.ReadOnly = true;
             this.txtMaPhieu.Size = new System.Drawing.Size(159, 20);
             this.txtMaPhieu.TabIndex = 25;
             // 
@@ -1240,7 +1269,6 @@
             this.groupControl5.Controls.Add(this.cbbTTTre);
             this.groupControl5.Controls.Add(this.cbbCheDoDD);
             this.groupControl5.Controls.Add(this.labelControl38);
-            this.groupControl5.Controls.Add(this.lblTruyenMau);
             this.groupControl5.Controls.Add(this.labelControl32);
             this.groupControl5.Controls.Add(this.labelControl31);
             this.groupControl5.Controls.Add(this.labelControl30);
@@ -1259,35 +1287,53 @@
             this.groupControl5.Controls.Add(this.txtNoiSinh);
             this.groupControl5.Controls.Add(this.txtCanNang);
             this.groupControl5.Controls.Add(this.txtTenBenhNhan);
-            this.groupControl5.Location = new System.Drawing.Point(8, 202);
+            this.groupControl5.Location = new System.Drawing.Point(8, 195);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(584, 145);
+            this.groupControl5.Size = new System.Drawing.Size(581, 135);
             this.groupControl5.TabIndex = 24;
             this.groupControl5.Text = "Thông tin trẻ";
             // 
             // txtNamSinhBenhNhan
             // 
-            this.txtNamSinhBenhNhan.EditValue = new System.DateTime(2018, 7, 10, 14, 52, 42, 563);
+            this.txtNamSinhBenhNhan.EditValue = null;
             this.txtNamSinhBenhNhan.Enabled = false;
-            this.txtNamSinhBenhNhan.Location = new System.Drawing.Point(64, 47);
+            this.txtNamSinhBenhNhan.Location = new System.Drawing.Point(64, 46);
             this.txtNamSinhBenhNhan.Name = "txtNamSinhBenhNhan";
+            this.txtNamSinhBenhNhan.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtNamSinhBenhNhan.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtNamSinhBenhNhan.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtNamSinhBenhNhan.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtNamSinhBenhNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNamSinhBenhNhan.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNamSinhBenhNhan.Properties.DisplayFormat.FormatString = "dd/mm/yyyy";
+            this.txtNamSinhBenhNhan.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtNamSinhBenhNhan.Properties.EditFormat.FormatString = "dd/mm/yyyy";
+            this.txtNamSinhBenhNhan.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtNamSinhBenhNhan.Properties.Mask.EditMask = "dd/mm/yyyy";
+            this.txtNamSinhBenhNhan.Properties.ReadOnly = true;
             this.txtNamSinhBenhNhan.Size = new System.Drawing.Size(79, 20);
             this.txtNamSinhBenhNhan.TabIndex = 32;
             // 
             // txtGioSinhBenhNhan
             // 
-            this.txtGioSinhBenhNhan.EditValue = new System.DateTime(2018, 7, 10, 14, 52, 52, 522);
-            this.txtGioSinhBenhNhan.Enabled = false;
-            this.txtGioSinhBenhNhan.Location = new System.Drawing.Point(200, 47);
+            this.txtGioSinhBenhNhan.EditValue = null;
+            this.txtGioSinhBenhNhan.Location = new System.Drawing.Point(200, 46);
             this.txtGioSinhBenhNhan.Name = "txtGioSinhBenhNhan";
+            this.txtGioSinhBenhNhan.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtGioSinhBenhNhan.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtGioSinhBenhNhan.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtGioSinhBenhNhan.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtGioSinhBenhNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtGioSinhBenhNhan.Properties.DisplayFormat.FormatString = "HH:mm";
+            this.txtGioSinhBenhNhan.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtGioSinhBenhNhan.Properties.EditFormat.FormatString = "HH:mm";
+            this.txtGioSinhBenhNhan.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtGioSinhBenhNhan.Properties.Mask.EditMask = "HH:mm";
-            this.txtGioSinhBenhNhan.Size = new System.Drawing.Size(52, 20);
+            this.txtGioSinhBenhNhan.Properties.ReadOnly = true;
+            this.txtGioSinhBenhNhan.Size = new System.Drawing.Size(63, 20);
             this.txtGioSinhBenhNhan.TabIndex = 33;
             // 
             // txtTuanTuoi
@@ -1299,8 +1345,12 @@
             0,
             0});
             this.txtTuanTuoi.Enabled = false;
-            this.txtTuanTuoi.Location = new System.Drawing.Point(531, 24);
+            this.txtTuanTuoi.Location = new System.Drawing.Point(528, 24);
             this.txtTuanTuoi.Name = "txtTuanTuoi";
+            this.txtTuanTuoi.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtTuanTuoi.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtTuanTuoi.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtTuanTuoi.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtTuanTuoi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTuanTuoi.Properties.MaxValue = new decimal(new int[] {
@@ -1313,14 +1363,20 @@
             0,
             0,
             0});
+            this.txtTuanTuoi.Properties.ReadOnly = true;
             this.txtTuanTuoi.Size = new System.Drawing.Size(46, 20);
             this.txtTuanTuoi.TabIndex = 31;
             // 
             // cbbTTTre
             // 
-            this.cbbTTTre.Enabled = false;
-            this.cbbTTTre.Location = new System.Drawing.Point(148, 93);
+            this.cbbTTTre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbTTTre.Location = new System.Drawing.Point(139, 111);
             this.cbbTTTre.Name = "cbbTTTre";
+            this.cbbTTTre.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.cbbTTTre.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.cbbTTTre.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.cbbTTTre.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.cbbTTTre.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbbTTTre.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
@@ -1329,45 +1385,43 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Dùng steroid", "2", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Dùng kháng sinh", "3", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Truyền máu", "4", -1)});
-            this.cbbTTTre.Size = new System.Drawing.Size(197, 20);
+            this.cbbTTTre.Properties.ReadOnly = true;
+            this.cbbTTTre.Size = new System.Drawing.Size(147, 20);
             this.cbbTTTre.TabIndex = 29;
             this.cbbTTTre.EditValueChanged += new System.EventHandler(this.cbbTTTre_EditValueChanged);
             // 
             // cbbCheDoDD
             // 
-            this.cbbCheDoDD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbCheDoDD.Enabled = false;
-            this.cbbCheDoDD.Location = new System.Drawing.Point(458, 71);
+            this.cbbCheDoDD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbCheDoDD.Location = new System.Drawing.Point(139, 89);
             this.cbbCheDoDD.Name = "cbbCheDoDD";
+            this.cbbCheDoDD.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.cbbCheDoDD.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.cbbCheDoDD.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.cbbCheDoDD.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.cbbCheDoDD.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbbCheDoDD.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Bú mẹ", "0", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Bú bình", "1", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tĩnh mạch", "2", -1)});
-            this.cbbCheDoDD.Size = new System.Drawing.Size(120, 20);
+            this.cbbCheDoDD.Properties.ReadOnly = true;
+            this.cbbCheDoDD.Size = new System.Drawing.Size(147, 20);
             this.cbbCheDoDD.TabIndex = 24;
             // 
             // labelControl38
             // 
             this.labelControl38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl38.Location = new System.Drawing.Point(481, 31);
+            this.labelControl38.Location = new System.Drawing.Point(478, 31);
             this.labelControl38.Name = "labelControl38";
             this.labelControl38.Size = new System.Drawing.Size(45, 13);
             this.labelControl38.TabIndex = 27;
             this.labelControl38.Text = "Tuần tuổi";
             // 
-            // lblTruyenMau
-            // 
-            this.lblTruyenMau.Location = new System.Drawing.Point(10, 124);
-            this.lblTruyenMau.Name = "lblTruyenMau";
-            this.lblTruyenMau.Size = new System.Drawing.Size(64, 13);
-            this.lblTruyenMau.TabIndex = 25;
-            this.lblTruyenMau.Text = "Truyền máu :";
-            // 
             // labelControl32
             // 
-            this.labelControl32.Location = new System.Drawing.Point(10, 100);
+            this.labelControl32.Location = new System.Drawing.Point(8, 118);
             this.labelControl32.Name = "labelControl32";
             this.labelControl32.Size = new System.Drawing.Size(122, 13);
             this.labelControl32.TabIndex = 24;
@@ -1375,8 +1429,7 @@
             // 
             // labelControl31
             // 
-            this.labelControl31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl31.Location = new System.Drawing.Point(361, 77);
+            this.labelControl31.Location = new System.Drawing.Point(7, 96);
             this.labelControl31.Name = "labelControl31";
             this.labelControl31.Size = new System.Drawing.Size(91, 13);
             this.labelControl31.TabIndex = 19;
@@ -1384,7 +1437,7 @@
             // 
             // labelControl30
             // 
-            this.labelControl30.Location = new System.Drawing.Point(10, 77);
+            this.labelControl30.Location = new System.Drawing.Point(8, 75);
             this.labelControl30.Name = "labelControl30";
             this.labelControl30.Size = new System.Drawing.Size(37, 13);
             this.labelControl30.TabIndex = 18;
@@ -1392,7 +1445,7 @@
             // 
             // labelControl29
             // 
-            this.labelControl29.Location = new System.Drawing.Point(446, 54);
+            this.labelControl29.Location = new System.Drawing.Point(428, 53);
             this.labelControl29.Name = "labelControl29";
             this.labelControl29.Size = new System.Drawing.Size(37, 13);
             this.labelControl29.TabIndex = 17;
@@ -1400,7 +1453,7 @@
             // 
             // labelControl28
             // 
-            this.labelControl28.Location = new System.Drawing.Point(292, 54);
+            this.labelControl28.Location = new System.Drawing.Point(269, 53);
             this.labelControl28.Name = "labelControl28";
             this.labelControl28.Size = new System.Drawing.Size(46, 13);
             this.labelControl28.TabIndex = 16;
@@ -1410,7 +1463,7 @@
             // 
             this.labelControl27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl27.Location = new System.Drawing.Point(151, 54);
+            this.labelControl27.Location = new System.Drawing.Point(151, 53);
             this.labelControl27.Name = "labelControl27";
             this.labelControl27.Size = new System.Drawing.Size(37, 13);
             this.labelControl27.TabIndex = 15;
@@ -1418,7 +1471,7 @@
             // 
             // labelControl26
             // 
-            this.labelControl26.Location = new System.Drawing.Point(10, 54);
+            this.labelControl26.Location = new System.Drawing.Point(8, 53);
             this.labelControl26.Name = "labelControl26";
             this.labelControl26.Size = new System.Drawing.Size(47, 13);
             this.labelControl26.TabIndex = 14;
@@ -1427,7 +1480,7 @@
             // labelControl25
             // 
             this.labelControl25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl25.Location = new System.Drawing.Point(366, 31);
+            this.labelControl25.Location = new System.Drawing.Point(363, 31);
             this.labelControl25.Name = "labelControl25";
             this.labelControl25.Size = new System.Drawing.Size(38, 13);
             this.labelControl25.TabIndex = 13;
@@ -1435,7 +1488,7 @@
             // 
             // labelControl24
             // 
-            this.labelControl24.Location = new System.Drawing.Point(10, 31);
+            this.labelControl24.Location = new System.Drawing.Point(8, 31);
             this.labelControl24.Name = "labelControl24";
             this.labelControl24.Size = new System.Drawing.Size(49, 13);
             this.labelControl24.TabIndex = 12;
@@ -1444,23 +1497,32 @@
             // txtGioiTinh
             // 
             this.txtGioiTinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGioiTinh.Enabled = false;
-            this.txtGioiTinh.Location = new System.Drawing.Point(410, 24);
+            this.txtGioiTinh.Location = new System.Drawing.Point(407, 24);
             this.txtGioiTinh.Name = "txtGioiTinh";
+            this.txtGioiTinh.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtGioiTinh.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtGioiTinh.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtGioiTinh.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtGioiTinh.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nam", "0", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", "1", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("N/A", "2", -1)});
+            this.txtGioiTinh.Properties.ReadOnly = true;
             this.txtGioiTinh.Size = new System.Drawing.Size(65, 20);
             this.txtGioiTinh.TabIndex = 12;
             // 
             // lookUpDanToc
             // 
-            this.lookUpDanToc.Enabled = false;
-            this.lookUpDanToc.Location = new System.Drawing.Point(491, 47);
+            this.lookUpDanToc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpDanToc.Location = new System.Drawing.Point(472, 46);
             this.lookUpDanToc.Name = "lookUpDanToc";
+            this.lookUpDanToc.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.lookUpDanToc.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.lookUpDanToc.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.lookUpDanToc.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.lookUpDanToc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpDanToc.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -1468,21 +1530,28 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDanToc", "Tên dân tộc")});
             this.lookUpDanToc.Properties.DisplayMember = "TenDanToc";
             this.lookUpDanToc.Properties.NullText = "";
+            this.lookUpDanToc.Properties.ReadOnly = true;
             this.lookUpDanToc.Properties.ValueMember = "IDDanToc";
-            this.lookUpDanToc.Size = new System.Drawing.Size(86, 20);
+            this.lookUpDanToc.Size = new System.Drawing.Size(102, 20);
             this.lookUpDanToc.TabIndex = 16;
             // 
             // txtSoLuongTruyenMau
             // 
-            this.txtSoLuongTruyenMau.Enabled = false;
-            this.txtSoLuongTruyenMau.Location = new System.Drawing.Point(149, 117);
+            this.txtSoLuongTruyenMau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSoLuongTruyenMau.Location = new System.Drawing.Point(360, 111);
             this.txtSoLuongTruyenMau.Name = "txtSoLuongTruyenMau";
-            this.txtSoLuongTruyenMau.Size = new System.Drawing.Size(103, 20);
+            this.txtSoLuongTruyenMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtSoLuongTruyenMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtSoLuongTruyenMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtSoLuongTruyenMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtSoLuongTruyenMau.Properties.ReadOnly = true;
+            this.txtSoLuongTruyenMau.Size = new System.Drawing.Size(64, 20);
             this.txtSoLuongTruyenMau.TabIndex = 20;
             // 
             // lblNgayTruyen
             // 
-            this.lblNgayTruyen.Location = new System.Drawing.Point(292, 120);
+            this.lblNgayTruyen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNgayTruyen.Location = new System.Drawing.Point(431, 118);
             this.lblNgayTruyen.Name = "lblNgayTruyen";
             this.lblNgayTruyen.Size = new System.Drawing.Size(60, 13);
             this.lblNgayTruyen.TabIndex = 5;
@@ -1490,7 +1559,8 @@
             // 
             // lblSoLuong
             // 
-            this.lblSoLuong.Location = new System.Drawing.Point(77, 124);
+            this.lblSoLuong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSoLuong.Location = new System.Drawing.Point(291, 118);
             this.lblSoLuong.Name = "lblSoLuong";
             this.lblSoLuong.Size = new System.Drawing.Size(66, 13);
             this.lblSoLuong.TabIndex = 5;
@@ -1498,9 +1568,10 @@
             // 
             // txtNgayTruyenMau
             // 
+            this.txtNgayTruyenMau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNgayTruyenMau.EditValue = null;
             this.txtNgayTruyenMau.Enabled = false;
-            this.txtNgayTruyenMau.Location = new System.Drawing.Point(355, 117);
+            this.txtNgayTruyenMau.Location = new System.Drawing.Point(495, 111);
             this.txtNgayTruyenMau.Name = "txtNgayTruyenMau";
             this.txtNgayTruyenMau.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1513,17 +1584,25 @@
             // 
             this.txtNoiSinh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNoiSinh.Enabled = false;
-            this.txtNoiSinh.Location = new System.Drawing.Point(64, 71);
+            this.txtNoiSinh.Location = new System.Drawing.Point(64, 68);
             this.txtNoiSinh.Name = "txtNoiSinh";
-            this.txtNoiSinh.Size = new System.Drawing.Size(281, 20);
+            this.txtNoiSinh.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtNoiSinh.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtNoiSinh.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtNoiSinh.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtNoiSinh.Properties.ReadOnly = true;
+            this.txtNoiSinh.Size = new System.Drawing.Size(510, 20);
             this.txtNoiSinh.TabIndex = 17;
             // 
             // txtCanNang
             // 
-            this.txtCanNang.Enabled = false;
-            this.txtCanNang.Location = new System.Drawing.Point(346, 47);
+            this.txtCanNang.Location = new System.Drawing.Point(322, 46);
             this.txtCanNang.Name = "txtCanNang";
+            this.txtCanNang.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtCanNang.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtCanNang.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtCanNang.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtCanNang.Properties.ReadOnly = true;
             this.txtCanNang.Size = new System.Drawing.Size(88, 20);
             this.txtCanNang.TabIndex = 15;
             // 
@@ -1531,23 +1610,31 @@
             // 
             this.txtTenBenhNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTenBenhNhan.Enabled = false;
             this.txtTenBenhNhan.Location = new System.Drawing.Point(64, 24);
             this.txtTenBenhNhan.Name = "txtTenBenhNhan";
-            this.txtTenBenhNhan.Size = new System.Drawing.Size(296, 20);
+            this.txtTenBenhNhan.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtTenBenhNhan.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtTenBenhNhan.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtTenBenhNhan.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtTenBenhNhan.Properties.ReadOnly = true;
+            this.txtTenBenhNhan.Size = new System.Drawing.Size(293, 20);
             this.txtTenBenhNhan.TabIndex = 11;
             // 
             // txtMaPhieu1
             // 
-            this.txtMaPhieu1.Enabled = false;
-            this.txtMaPhieu1.Location = new System.Drawing.Point(85, 49);
+            this.txtMaPhieu1.Location = new System.Drawing.Point(84, 47);
             this.txtMaPhieu1.Name = "txtMaPhieu1";
-            this.txtMaPhieu1.Size = new System.Drawing.Size(158, 20);
+            this.txtMaPhieu1.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtMaPhieu1.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtMaPhieu1.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtMaPhieu1.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtMaPhieu1.Properties.ReadOnly = true;
+            this.txtMaPhieu1.Size = new System.Drawing.Size(159, 20);
             this.txtMaPhieu1.TabIndex = 31;
             // 
             // labelControl36
             // 
-            this.labelControl36.Location = new System.Drawing.Point(10, 56);
+            this.labelControl36.Location = new System.Drawing.Point(10, 54);
             this.labelControl36.Name = "labelControl36";
             this.labelControl36.Size = new System.Drawing.Size(69, 13);
             this.labelControl36.TabIndex = 30;
@@ -1578,24 +1665,30 @@
             this.groupControl6.Controls.Add(this.labelControl6);
             this.groupControl6.Controls.Add(this.labelControl10);
             this.groupControl6.Controls.Add(this.labelControl12);
-            this.groupControl6.Location = new System.Drawing.Point(7, 353);
+            this.groupControl6.Location = new System.Drawing.Point(7, 336);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(585, 323);
+            this.groupControl6.Size = new System.Drawing.Size(582, 340);
             this.groupControl6.TabIndex = 23;
             this.groupControl6.Text = "Thông tin đơn vị lấy mẫu và gói xét nghiệm";
             // 
             // cbbViTriLayMau
             // 
-            this.cbbViTriLayMau.Enabled = false;
-            this.cbbViTriLayMau.Location = new System.Drawing.Point(79, 130);
+            this.cbbViTriLayMau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbViTriLayMau.Location = new System.Drawing.Point(390, 90);
             this.cbbViTriLayMau.Name = "cbbViTriLayMau";
+            this.cbbViTriLayMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.cbbViTriLayMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.cbbViTriLayMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.cbbViTriLayMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.cbbViTriLayMau.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbbViTriLayMau.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Gót chân", "0", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tĩnh mạch", "1", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("N/A", "2", -1)});
-            this.cbbViTriLayMau.Size = new System.Drawing.Size(192, 20);
+            this.cbbViTriLayMau.Properties.ReadOnly = true;
+            this.cbbViTriLayMau.Size = new System.Drawing.Size(185, 20);
             this.cbbViTriLayMau.TabIndex = 31;
             // 
             // txtDiaChiNoiLayMau
@@ -1603,22 +1696,27 @@
             this.txtDiaChiNoiLayMau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiaChiNoiLayMau.Enabled = false;
-            this.txtDiaChiNoiLayMau.Location = new System.Drawing.Point(103, 52);
+            this.txtDiaChiNoiLayMau.Location = new System.Drawing.Point(79, 46);
             this.txtDiaChiNoiLayMau.Name = "txtDiaChiNoiLayMau";
-            this.txtDiaChiNoiLayMau.Size = new System.Drawing.Size(475, 20);
+            this.txtDiaChiNoiLayMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtDiaChiNoiLayMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtDiaChiNoiLayMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtDiaChiNoiLayMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtDiaChiNoiLayMau.Properties.ReadOnly = true;
+            this.txtDiaChiNoiLayMau.Size = new System.Drawing.Size(496, 20);
             this.txtDiaChiNoiLayMau.TabIndex = 33;
             // 
             // labelControl39
             // 
-            this.labelControl39.Location = new System.Drawing.Point(8, 59);
+            this.labelControl39.Location = new System.Drawing.Point(8, 53);
             this.labelControl39.Name = "labelControl39";
-            this.labelControl39.Size = new System.Drawing.Size(89, 13);
+            this.labelControl39.Size = new System.Drawing.Size(35, 13);
             this.labelControl39.TabIndex = 32;
-            this.labelControl39.Text = "Địa chỉ nơi lấy mẫu";
+            this.labelControl39.Text = "Địa chỉ ";
             // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(326, 165);
+            this.labelControl13.Location = new System.Drawing.Point(322, 116);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(28, 13);
             this.labelControl13.TabIndex = 6;
@@ -1629,15 +1727,17 @@
             this.checkedListBoxXN.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBoxXN.Appearance.BackColor = System.Drawing.Color.White;
+            this.checkedListBoxXN.Appearance.Options.UseBackColor = true;
             this.checkedListBoxXN.CheckMember = "isChecked";
             this.checkedListBoxXN.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkedListBoxXN.DisplayMember = "TenDichVu";
             this.checkedListBoxXN.Enabled = false;
-            this.checkedListBoxXN.Location = new System.Drawing.Point(356, 157);
+            this.checkedListBoxXN.Location = new System.Drawing.Point(356, 114);
             this.checkedListBoxXN.MultiColumn = true;
             this.checkedListBoxXN.Name = "checkedListBoxXN";
             this.checkedListBoxXN.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.checkedListBoxXN.Size = new System.Drawing.Size(222, 159);
+            this.checkedListBoxXN.Size = new System.Drawing.Size(219, 217);
             this.checkedListBoxXN.TabIndex = 5;
             this.checkedListBoxXN.ValueMember = "IDDichVu";
             // 
@@ -1645,34 +1745,52 @@
             // 
             this.radioGroupGoiXN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioGroupGoiXN.Enabled = false;
-            this.radioGroupGoiXN.Location = new System.Drawing.Point(79, 156);
+            this.radioGroupGoiXN.Location = new System.Drawing.Point(79, 114);
             this.radioGroupGoiXN.Name = "radioGroupGoiXN";
-            this.radioGroupGoiXN.Size = new System.Drawing.Size(237, 160);
+            this.radioGroupGoiXN.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.radioGroupGoiXN.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.radioGroupGoiXN.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.radioGroupGoiXN.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.radioGroupGoiXN.Properties.ReadOnly = true;
+            this.radioGroupGoiXN.Size = new System.Drawing.Size(237, 217);
             this.radioGroupGoiXN.TabIndex = 29;
             // 
             // txtGioLayMau
             // 
             this.txtGioLayMau.EditValue = null;
-            this.txtGioLayMau.Enabled = false;
-            this.txtGioLayMau.Location = new System.Drawing.Point(260, 104);
+            this.txtGioLayMau.Location = new System.Drawing.Point(237, 90);
             this.txtGioLayMau.Name = "txtGioLayMau";
+            this.txtGioLayMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtGioLayMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtGioLayMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtGioLayMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtGioLayMau.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtGioLayMau.Size = new System.Drawing.Size(94, 20);
+            this.txtGioLayMau.Properties.DisplayFormat.FormatString = "HH:mm";
+            this.txtGioLayMau.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtGioLayMau.Properties.EditFormat.FormatString = "HH:mm";
+            this.txtGioLayMau.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtGioLayMau.Properties.Mask.EditMask = "HH:mm";
+            this.txtGioLayMau.Properties.ReadOnly = true;
+            this.txtGioLayMau.Size = new System.Drawing.Size(78, 20);
             this.txtGioLayMau.TabIndex = 27;
             // 
             // txtNgayLayMau
             // 
             this.txtNgayLayMau.EditValue = null;
             this.txtNgayLayMau.Enabled = false;
-            this.txtNgayLayMau.Location = new System.Drawing.Point(79, 104);
+            this.txtNgayLayMau.Location = new System.Drawing.Point(79, 90);
             this.txtNgayLayMau.Name = "txtNgayLayMau";
+            this.txtNgayLayMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtNgayLayMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtNgayLayMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtNgayLayMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtNgayLayMau.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNgayLayMau.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtNgayLayMau.Size = new System.Drawing.Size(109, 20);
+            this.txtNgayLayMau.Properties.ReadOnly = true;
+            this.txtNgayLayMau.Size = new System.Drawing.Size(89, 20);
             this.txtNgayLayMau.TabIndex = 26;
             // 
             // txtSDTNguoiLayMau
@@ -1680,17 +1798,27 @@
             this.txtSDTNguoiLayMau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSDTNguoiLayMau.Enabled = false;
-            this.txtSDTNguoiLayMau.Location = new System.Drawing.Point(353, 78);
+            this.txtSDTNguoiLayMau.Location = new System.Drawing.Point(390, 68);
             this.txtSDTNguoiLayMau.Name = "txtSDTNguoiLayMau";
-            this.txtSDTNguoiLayMau.Size = new System.Drawing.Size(225, 20);
+            this.txtSDTNguoiLayMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtSDTNguoiLayMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtSDTNguoiLayMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtSDTNguoiLayMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtSDTNguoiLayMau.Properties.ReadOnly = true;
+            this.txtSDTNguoiLayMau.Size = new System.Drawing.Size(185, 20);
             this.txtSDTNguoiLayMau.TabIndex = 25;
             // 
             // txtNguoiLayMau
             // 
             this.txtNguoiLayMau.Enabled = false;
-            this.txtNguoiLayMau.Location = new System.Drawing.Point(79, 78);
+            this.txtNguoiLayMau.Location = new System.Drawing.Point(79, 68);
             this.txtNguoiLayMau.Name = "txtNguoiLayMau";
-            this.txtNguoiLayMau.Size = new System.Drawing.Size(237, 20);
+            this.txtNguoiLayMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtNguoiLayMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtNguoiLayMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtNguoiLayMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtNguoiLayMau.Properties.ReadOnly = true;
+            this.txtNguoiLayMau.Size = new System.Drawing.Size(236, 20);
             this.txtNguoiLayMau.TabIndex = 24;
             // 
             // txtNoiLayMau
@@ -1698,14 +1826,19 @@
             this.txtNoiLayMau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNoiLayMau.Enabled = false;
-            this.txtNoiLayMau.Location = new System.Drawing.Point(79, 26);
+            this.txtNoiLayMau.Location = new System.Drawing.Point(79, 25);
             this.txtNoiLayMau.Name = "txtNoiLayMau";
-            this.txtNoiLayMau.Size = new System.Drawing.Size(499, 20);
+            this.txtNoiLayMau.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtNoiLayMau.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtNoiLayMau.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtNoiLayMau.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtNoiLayMau.Properties.ReadOnly = true;
+            this.txtNoiLayMau.Size = new System.Drawing.Size(496, 20);
             this.txtNoiLayMau.TabIndex = 22;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(326, 85);
+            this.labelControl3.Location = new System.Drawing.Point(325, 75);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(20, 13);
             this.labelControl3.TabIndex = 0;
@@ -1713,7 +1846,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(199, 111);
+            this.labelControl4.Location = new System.Drawing.Point(181, 97);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(55, 13);
             this.labelControl4.TabIndex = 0;
@@ -1721,7 +1854,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(8, 165);
+            this.labelControl9.Location = new System.Drawing.Point(9, 116);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(31, 13);
             this.labelControl9.TabIndex = 0;
@@ -1729,7 +1862,7 @@
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(8, 138);
+            this.labelControl8.Location = new System.Drawing.Point(323, 94);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(61, 13);
             this.labelControl8.TabIndex = 0;
@@ -1737,7 +1870,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(8, 111);
+            this.labelControl6.Location = new System.Drawing.Point(8, 97);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(65, 13);
             this.labelControl6.TabIndex = 0;
@@ -1745,7 +1878,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(8, 85);
+            this.labelControl10.Location = new System.Drawing.Point(8, 75);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(68, 13);
             this.labelControl10.TabIndex = 0;
@@ -1785,48 +1918,74 @@
             this.groupControl4.Controls.Add(this.txtTenMe);
             this.groupControl4.Location = new System.Drawing.Point(7, 74);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(585, 120);
+            this.groupControl4.Size = new System.Drawing.Size(582, 115);
             this.groupControl4.TabIndex = 21;
             this.groupControl4.Text = "Thông tin gia đình";
             // 
             // txtNamSinhCha
             // 
             this.txtNamSinhCha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNamSinhCha.EditValue = new System.DateTime(2018, 7, 10, 14, 52, 42, 563);
+            this.txtNamSinhCha.EditValue = null;
             this.txtNamSinhCha.Enabled = false;
-            this.txtNamSinhCha.Location = new System.Drawing.Point(512, 48);
+            this.txtNamSinhCha.Location = new System.Drawing.Point(509, 46);
             this.txtNamSinhCha.Name = "txtNamSinhCha";
+            this.txtNamSinhCha.Properties.AppearanceFocused.BackColor = System.Drawing.Color.White;
+            this.txtNamSinhCha.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black;
+            this.txtNamSinhCha.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtNamSinhCha.Properties.AppearanceFocused.Options.UseForeColor = true;
+            this.txtNamSinhCha.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtNamSinhCha.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtNamSinhCha.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtNamSinhCha.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtNamSinhCha.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNamSinhCha.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNamSinhCha.Properties.DisplayFormat.FormatString = "yyyy";
+            this.txtNamSinhCha.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtNamSinhCha.Properties.EditFormat.FormatString = "yyyy";
+            this.txtNamSinhCha.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtNamSinhCha.Properties.Mask.EditMask = "yyyy";
             this.txtNamSinhCha.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtNamSinhCha.Properties.ReadOnly = true;
             this.txtNamSinhCha.Size = new System.Drawing.Size(66, 20);
             this.txtNamSinhCha.TabIndex = 25;
             // 
             // txtNamSinhMe
             // 
             this.txtNamSinhMe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNamSinhMe.EditValue = new System.DateTime(2018, 7, 10, 14, 52, 42, 563);
+            this.txtNamSinhMe.EditValue = null;
             this.txtNamSinhMe.Enabled = false;
-            this.txtNamSinhMe.Location = new System.Drawing.Point(512, 25);
+            this.txtNamSinhMe.Location = new System.Drawing.Point(509, 25);
             this.txtNamSinhMe.Name = "txtNamSinhMe";
             this.txtNamSinhMe.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtNamSinhMe.Properties.Appearance.Options.UseBackColor = true;
+            this.txtNamSinhMe.Properties.AppearanceFocused.BackColor = System.Drawing.Color.White;
+            this.txtNamSinhMe.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black;
+            this.txtNamSinhMe.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtNamSinhMe.Properties.AppearanceFocused.Options.UseForeColor = true;
+            this.txtNamSinhMe.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtNamSinhMe.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtNamSinhMe.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtNamSinhMe.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txtNamSinhMe.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNamSinhMe.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtNamSinhMe.Properties.DisplayFormat.FormatString = "yyyy";
+            this.txtNamSinhMe.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.txtNamSinhMe.Properties.EditFormat.FormatString = "yyyy";
+            this.txtNamSinhMe.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtNamSinhMe.Properties.Mask.EditMask = "yyyy";
             this.txtNamSinhMe.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtNamSinhMe.Properties.ReadOnly = true;
             this.txtNamSinhMe.Size = new System.Drawing.Size(66, 20);
             this.txtNamSinhMe.TabIndex = 24;
             // 
             // labelControl23
             // 
             this.labelControl23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl23.Location = new System.Drawing.Point(446, 79);
+            this.labelControl23.Location = new System.Drawing.Point(443, 74);
             this.labelControl23.Name = "labelControl23";
             this.labelControl23.Size = new System.Drawing.Size(22, 13);
             this.labelControl23.TabIndex = 18;
@@ -1835,7 +1994,7 @@
             // labelControl22
             // 
             this.labelControl22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl22.Location = new System.Drawing.Point(446, 103);
+            this.labelControl22.Location = new System.Drawing.Point(443, 96);
             this.labelControl22.Name = "labelControl22";
             this.labelControl22.Size = new System.Drawing.Size(35, 13);
             this.labelControl22.TabIndex = 17;
@@ -1844,7 +2003,7 @@
             // labelControl21
             // 
             this.labelControl21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl21.Location = new System.Drawing.Point(445, 32);
+            this.labelControl21.Location = new System.Drawing.Point(442, 32);
             this.labelControl21.Name = "labelControl21";
             this.labelControl21.Size = new System.Drawing.Size(60, 13);
             this.labelControl21.TabIndex = 16;
@@ -1852,7 +2011,7 @@
             // 
             // labelControl20
             // 
-            this.labelControl20.Location = new System.Drawing.Point(8, 103);
+            this.labelControl20.Location = new System.Drawing.Point(8, 96);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(29, 13);
             this.labelControl20.TabIndex = 15;
@@ -1868,8 +2027,9 @@
             // 
             // labelControl15
             // 
-            this.labelControl15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl15.Location = new System.Drawing.Point(238, 103);
+            this.labelControl15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl15.Location = new System.Drawing.Point(235, 96);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(29, 13);
             this.labelControl15.TabIndex = 13;
@@ -1879,16 +2039,20 @@
             // 
             this.txtDiaChiDonVi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDiaChiDonVi.Enabled = false;
-            this.txtDiaChiDonVi.Location = new System.Drawing.Point(86, 72);
+            this.txtDiaChiDonVi.Location = new System.Drawing.Point(64, 67);
             this.txtDiaChiDonVi.Name = "txtDiaChiDonVi";
-            this.txtDiaChiDonVi.Size = new System.Drawing.Size(353, 20);
+            this.txtDiaChiDonVi.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtDiaChiDonVi.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtDiaChiDonVi.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtDiaChiDonVi.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtDiaChiDonVi.Properties.ReadOnly = true;
+            this.txtDiaChiDonVi.Size = new System.Drawing.Size(372, 20);
             this.txtDiaChiDonVi.TabIndex = 23;
             // 
             // labelControl17
             // 
             this.labelControl17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl17.Location = new System.Drawing.Point(446, 55);
+            this.labelControl17.Location = new System.Drawing.Point(443, 53);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(63, 13);
             this.labelControl17.TabIndex = 12;
@@ -1896,7 +2060,7 @@
             // 
             // labelControl34
             // 
-            this.labelControl34.Location = new System.Drawing.Point(8, 55);
+            this.labelControl34.Location = new System.Drawing.Point(8, 53);
             this.labelControl34.Name = "labelControl34";
             this.labelControl34.Size = new System.Drawing.Size(52, 13);
             this.labelControl34.TabIndex = 11;
@@ -1905,90 +2069,109 @@
             // cboPhuongPhapSinh
             // 
             this.cboPhuongPhapSinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboPhuongPhapSinh.Enabled = false;
-            this.cboPhuongPhapSinh.Location = new System.Drawing.Point(490, 96);
+            this.cboPhuongPhapSinh.Location = new System.Drawing.Point(487, 89);
             this.cboPhuongPhapSinh.Name = "cboPhuongPhapSinh";
+            this.cboPhuongPhapSinh.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.cboPhuongPhapSinh.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.cboPhuongPhapSinh.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.cboPhuongPhapSinh.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.cboPhuongPhapSinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboPhuongPhapSinh.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Sinh Thường", "0", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Sinh Mổ", "1", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Chưa xác định", "2", -1)});
-            this.cboPhuongPhapSinh.Size = new System.Drawing.Size(87, 20);
+            this.cboPhuongPhapSinh.Properties.ReadOnly = true;
+            this.cboPhuongPhapSinh.Size = new System.Drawing.Size(88, 20);
             this.cboPhuongPhapSinh.TabIndex = 9;
             // 
             // txtPara
             // 
             this.txtPara.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPara.Enabled = false;
-            this.txtPara.Location = new System.Drawing.Point(490, 72);
+            this.txtPara.Location = new System.Drawing.Point(487, 67);
             this.txtPara.Name = "txtPara";
+            this.txtPara.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtPara.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtPara.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtPara.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtPara.Properties.ReadOnly = true;
             this.txtPara.Size = new System.Drawing.Size(88, 20);
             this.txtPara.TabIndex = 10;
             // 
             // txtSDTCha
             // 
-            this.txtSDTCha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSDTCha.Enabled = false;
-            this.txtSDTCha.Location = new System.Drawing.Point(273, 96);
+            this.txtSDTCha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSDTCha.Location = new System.Drawing.Point(270, 89);
             this.txtSDTCha.Name = "txtSDTCha";
+            this.txtSDTCha.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtSDTCha.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtSDTCha.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtSDTCha.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtSDTCha.Properties.ReadOnly = true;
             this.txtSDTCha.Size = new System.Drawing.Size(166, 20);
             this.txtSDTCha.TabIndex = 8;
             // 
             // txtSDTMe
             // 
-            this.txtSDTMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSDTMe.Enabled = false;
-            this.txtSDTMe.Location = new System.Drawing.Point(64, 96);
+            this.txtSDTMe.Location = new System.Drawing.Point(64, 89);
             this.txtSDTMe.Name = "txtSDTMe";
-            this.txtSDTMe.Size = new System.Drawing.Size(168, 20);
+            this.txtSDTMe.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtSDTMe.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtSDTMe.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtSDTMe.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtSDTMe.Properties.ReadOnly = true;
+            this.txtSDTMe.Size = new System.Drawing.Size(165, 20);
             this.txtSDTMe.TabIndex = 7;
             // 
             // txtTenCha
             // 
             this.txtTenCha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTenCha.Enabled = false;
-            this.txtTenCha.Location = new System.Drawing.Point(64, 48);
+            this.txtTenCha.Location = new System.Drawing.Point(64, 46);
             this.txtTenCha.Name = "txtTenCha";
-            this.txtTenCha.Size = new System.Drawing.Size(375, 20);
+            this.txtTenCha.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtTenCha.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtTenCha.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtTenCha.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtTenCha.Properties.ReadOnly = true;
+            this.txtTenCha.Size = new System.Drawing.Size(372, 20);
             this.txtTenCha.TabIndex = 5;
             // 
             // labelControl33
             // 
-            this.labelControl33.Location = new System.Drawing.Point(8, 79);
+            this.labelControl33.Location = new System.Drawing.Point(8, 74);
             this.labelControl33.Name = "labelControl33";
-            this.labelControl33.Size = new System.Drawing.Size(72, 13);
+            this.labelControl33.Size = new System.Drawing.Size(32, 13);
             this.labelControl33.TabIndex = 0;
-            this.labelControl33.Text = "Địa chỉ gia đình";
+            this.labelControl33.Text = "Địa chỉ";
             // 
             // txtTenMe
             // 
             this.txtTenMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTenMe.Enabled = false;
             this.txtTenMe.Location = new System.Drawing.Point(64, 25);
             this.txtTenMe.Name = "txtTenMe";
-            this.txtTenMe.Size = new System.Drawing.Size(375, 20);
+            this.txtTenMe.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtTenMe.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtTenMe.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtTenMe.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtTenMe.Properties.ReadOnly = true;
+            this.txtTenMe.Size = new System.Drawing.Size(372, 20);
             this.txtTenMe.TabIndex = 3;
-            // 
-            // txtChuongTrinh
-            // 
-            this.txtChuongTrinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtChuongTrinh.Enabled = false;
-            this.txtChuongTrinh.Location = new System.Drawing.Point(317, 49);
-            this.txtChuongTrinh.Name = "txtChuongTrinh";
-            this.txtChuongTrinh.Size = new System.Drawing.Size(268, 20);
-            this.txtChuongTrinh.TabIndex = 20;
             // 
             // txtDonVi
             // 
-            this.txtDonVi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDonVi.Enabled = false;
-            this.txtDonVi.Location = new System.Drawing.Point(318, 25);
+            this.txtDonVi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDonVi.Location = new System.Drawing.Point(315, 25);
             this.txtDonVi.Name = "txtDonVi";
-            this.txtDonVi.Size = new System.Drawing.Size(267, 20);
+            this.txtDonVi.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White;
+            this.txtDonVi.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Black;
+            this.txtDonVi.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.txtDonVi.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txtDonVi.Properties.ReadOnly = true;
+            this.txtDonVi.Size = new System.Drawing.Size(268, 20);
             this.txtDonVi.TabIndex = 19;
             // 
             // labelControl37
@@ -2000,8 +2183,7 @@
             // 
             // labelControl40
             // 
-            this.labelControl40.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl40.Location = new System.Drawing.Point(248, 56);
+            this.labelControl40.Location = new System.Drawing.Point(246, 54);
             this.labelControl40.Name = "labelControl40";
             this.labelControl40.Size = new System.Drawing.Size(63, 13);
             this.labelControl40.TabIndex = 16;
@@ -2009,8 +2191,7 @@
             // 
             // labelControl41
             // 
-            this.labelControl41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl41.Location = new System.Drawing.Point(248, 32);
+            this.labelControl41.Location = new System.Drawing.Point(245, 32);
             this.labelControl41.Name = "labelControl41";
             this.labelControl41.Size = new System.Drawing.Size(31, 13);
             this.labelControl41.TabIndex = 17;
@@ -2156,6 +2337,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbChuongTrinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
@@ -2202,7 +2384,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtChuongTrinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -2220,7 +2401,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.LabelControl labelControl38;
-        private DevExpress.XtraEditors.LabelControl lblTruyenMau;
         private DevExpress.XtraEditors.LabelControl labelControl32;
         private DevExpress.XtraEditors.LabelControl labelControl31;
         private DevExpress.XtraEditors.LabelControl labelControl30;
@@ -2276,7 +2456,6 @@
         private DevExpress.XtraEditors.TextEdit txtTenCha;
         private DevExpress.XtraEditors.LabelControl labelControl33;
         private DevExpress.XtraEditors.TextEdit txtTenMe;
-        private DevExpress.XtraEditors.TextEdit txtChuongTrinh;
         private DevExpress.XtraEditors.TextEdit txtDonVi;
         private DevExpress.XtraEditors.LabelControl labelControl37;
         private DevExpress.XtraEditors.LabelControl labelControl40;
@@ -2382,5 +2561,6 @@
         private DevExpress.XtraEditors.TimeEdit txtGioSinhBenhNhan;
         private DevExpress.XtraEditors.DateEdit txtNamSinhCha;
         private DevExpress.XtraEditors.DateEdit txtNamSinhMe;
+        private DevExpress.XtraEditors.LookUpEdit cbbChuongTrinh;
     }
 }

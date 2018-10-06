@@ -63,6 +63,7 @@ namespace BioNetSangLocSoSinh.Entry
                 this.lstDanToc = BioNet_Bus.GetDanhSachDanToc(-1);//get all dân tộc
                 this.lstChuongTrinh = BioNet_Bus.GetDanhSachChuongTrinh(false);
                 this.lookUpDanToc.Properties.DataSource = this.lstDanToc;
+                this.cbbChuongTrinh.Properties.DataSource = this.lstChuongTrinh;
             }
             catch (Exception ex)
             {
@@ -387,13 +388,13 @@ namespace BioNetSangLocSoSinh.Entry
                             this.txtTenMe.Text = phieu.BenhNhan.MotherName;
                             this.txtTenCha.Text = phieu.BenhNhan.FatherName;
                             this.txtSDTMe.Text = phieu.BenhNhan.MotherPhoneNumber;
-                            this.txtNamSinhMe.Text = phieu.BenhNhan.MotherBirthday!=null?phieu.BenhNhan.MotherBirthday.Value.Year.ToString():null;
+                            this.txtNamSinhMe.EditValue = phieu.BenhNhan.MotherBirthday;
                             if(!string.IsNullOrEmpty(phieu.BenhNhan.FatherName))
                             {
-                                this.txtNamSinhCha.Text = phieu.BenhNhan.FatherBirthday!=null?phieu.BenhNhan.FatherBirthday.Value.Year.ToString():null;
-                                this.txtSDTCha.Text = phieu.BenhNhan.FatherPhoneNumber;
+                                this.txtNamSinhCha.EditValue = phieu.BenhNhan.FatherBirthday;
                             }
-                           
+                            this.txtSDTCha.Text = phieu.BenhNhan.FatherPhoneNumber;
+
                             this.txtTuanTuoi.Text = phieu.BenhNhan.TuanTuoiKhiSinh.ToString();
                             this.txtTenBenhNhan.Text = phieu.BenhNhan.TenBenhNhan;
                             this.txtCanNang.Text = phieu.BenhNhan.CanNang.ToString();
@@ -403,7 +404,7 @@ namespace BioNetSangLocSoSinh.Entry
                             this.txtNoiSinh.Text = phieu.BenhNhan.NoiSinh;
                             if (phieu.BenhNhan.NgayGioSinh!=null)
                             {
-                                this.txtGioSinhBenhNhan.EditValue = phieu.BenhNhan.NgayGioSinh.Value.TimeOfDay;
+                                this.txtGioSinhBenhNhan.EditValue = Convert.ToDateTime(phieu.BenhNhan.NgayGioSinh.Value.ToString("HH:mm"));
                                 this.txtNamSinhBenhNhan.EditValue = phieu.BenhNhan.NgayGioSinh.Value.ToShortDateString();
                             }
                         }
@@ -416,7 +417,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.cbbCheDoDD.EditValue = phieu.maCheDoDinhDuong.ToString();
                     this.cbbTTTre.EditValue = phieu.maTinhTrangLucLayMau.ToString();
                     this.cbbViTriLayMau.EditValue = phieu.idViTriLayMau.ToString();
-                    this.txtChuongTrinh.EditValue = lstChuongTrinh.FirstOrDefault(x => x.IDChuongTrinh == phieu.maChuongTrinh).TenChuongTrinh;
+                    this.cbbChuongTrinh.EditValue = phieu.maChuongTrinh==null?null:phieu.maChuongTrinh.ToString(); ;
                     var tendv = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonvi));
                     if(tendv!=null)
                     {
@@ -425,7 +426,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.radioGroupGoiXN.EditValue = phieu.maGoiXetNghiem;
                     if(phieu.ngayGioLayMau!=null)
                     {
-                        this.txtGioLayMau.EditValue = phieu.ngayGioLayMau.TimeOfDay;
+                        this.txtGioLayMau.EditValue = Convert.ToDateTime(phieu.ngayGioLayMau.ToString("HH:mm"));
                         this.txtNgayLayMau.EditValue = phieu.ngayGioLayMau.Date;
                     }
                     this.txtNguoiLayMau.Text = phieu.tenNVLayMau;
@@ -508,7 +509,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtCanNang.ResetText();
             this.txtGioiTinh.ResetText();
             this.lookUpDanToc.ResetText();
-            this.txtChuongTrinh.ResetText();
+            this.cbbChuongTrinh.ResetText();
             this.txtDonVi.ResetText();
             this.txtGioSinhBenhNhan.ResetText();
             this.txtGioLayMau.ResetText();
@@ -550,7 +551,6 @@ namespace BioNetSangLocSoSinh.Entry
                     txtSoLuongTruyenMau.Visible = true;
                     lblNgayTruyen.Visible = true;
                     lblSoLuong.Visible = true;
-                    lblTruyenMau.Visible = true;
                 }
                 else
                 {
@@ -558,7 +558,6 @@ namespace BioNetSangLocSoSinh.Entry
                     txtSoLuongTruyenMau.Visible = false;
                     lblNgayTruyen.Visible = false;
                     lblSoLuong.Visible = false;
-                    lblTruyenMau.Visible = false;
                 }
             }
             catch

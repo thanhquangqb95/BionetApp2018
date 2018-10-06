@@ -141,6 +141,14 @@
             this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Loopup_IDGioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Loopup_TenGioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.labelControl41 = new DevExpress.XtraEditors.LabelControl();
+            this.cbbTenXN = new DevExpress.XtraEditors.LookUpEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtMin = new DevExpress.XtraEditors.SpinEdit();
+            this.txtMax = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.btnLoc = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbTrangThaiPhieu.Properties)).BeginInit();
@@ -171,6 +179,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxDanhGiaMau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbTenXN.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMin.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMax.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -181,6 +192,13 @@
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnLoc);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl3);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtMax);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl2);
+            this.splitContainerControl1.Panel1.Controls.Add(this.simpleButton1);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl41);
+            this.splitContainerControl1.Panel1.Controls.Add(this.cbbTenXN);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel1.Controls.Add(this.cbbTrangThaiPhieu);
             this.splitContainerControl1.Panel1.Controls.Add(this.btnXuatExcel);
@@ -191,11 +209,12 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.lblTenDonVi);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtChiCuc);
             this.splitContainerControl1.Panel1.Controls.Add(this.txtDonVi);
+            this.splitContainerControl1.Panel1.Controls.Add(this.txtMin);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.GCBaoCaoTuyChon);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1313, 680);
-            this.splitContainerControl1.SplitterPosition = 92;
+            this.splitContainerControl1.SplitterPosition = 93;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -228,9 +247,9 @@
             // 
             this.btnXuatExcel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.ImageOptions.Image")));
-            this.btnXuatExcel.Location = new System.Drawing.Point(981, 38);
+            this.btnXuatExcel.Location = new System.Drawing.Point(706, 61);
             this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(94, 23);
+            this.btnXuatExcel.Size = new System.Drawing.Size(173, 23);
             this.btnXuatExcel.TabIndex = 1067;
             this.btnXuatExcel.Text = "Xuất Excel";
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
@@ -247,9 +266,9 @@
             // 
             this.btnLayDuLieu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnLayDuLieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLayDuLieu.ImageOptions.Image")));
-            this.btnLayDuLieu.Location = new System.Drawing.Point(981, 7);
+            this.btnLayDuLieu.Location = new System.Drawing.Point(706, 34);
             this.btnLayDuLieu.Name = "btnLayDuLieu";
-            this.btnLayDuLieu.Size = new System.Drawing.Size(94, 23);
+            this.btnLayDuLieu.Size = new System.Drawing.Size(173, 23);
             this.btnLayDuLieu.TabIndex = 1068;
             this.btnLayDuLieu.Text = "Lấy dữ liệu";
             this.btnLayDuLieu.Click += new System.EventHandler(this.btnXem_Click);
@@ -277,7 +296,7 @@
             this.lblTenDonVi.BackColor = System.Drawing.Color.Transparent;
             this.lblTenDonVi.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenDonVi.ForeColor = System.Drawing.Color.BlueViolet;
-            this.lblTenDonVi.Location = new System.Drawing.Point(333, 62);
+            this.lblTenDonVi.Location = new System.Drawing.Point(311, 60);
             this.lblTenDonVi.Name = "lblTenDonVi";
             this.lblTenDonVi.Size = new System.Drawing.Size(67, 25);
             this.lblTenDonVi.TabIndex = 1072;
@@ -387,7 +406,7 @@
             this.repositoryItemImageComboBoxGioiTinh,
             this.repositoryItemGridLookUpEditChuongTrinh,
             this.repositoryItemGridLookUpEditGoiXN});
-            this.GCBaoCaoTuyChon.Size = new System.Drawing.Size(1309, 579);
+            this.GCBaoCaoTuyChon.Size = new System.Drawing.Size(1309, 578);
             this.GCBaoCaoTuyChon.TabIndex = 1;
             this.GCBaoCaoTuyChon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVBaoCaoTuyChon});
@@ -1328,6 +1347,92 @@
             this.Loopup_TenGioiTinh.Visible = true;
             this.Loopup_TenGioiTinh.VisibleIndex = 0;
             // 
+            // labelControl41
+            // 
+            this.labelControl41.Location = new System.Drawing.Point(912, 37);
+            this.labelControl41.Name = "labelControl41";
+            this.labelControl41.Size = new System.Drawing.Size(53, 13);
+            this.labelControl41.TabIndex = 1077;
+            this.labelControl41.Text = "Xét nghiệm";
+            this.labelControl41.Click += new System.EventHandler(this.labelControl41_Click);
+            // 
+            // cbbTenXN
+            // 
+            this.cbbTenXN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbTenXN.Location = new System.Drawing.Point(986, 37);
+            this.cbbTenXN.Name = "cbbTenXN";
+            this.cbbTenXN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbTenXN.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IDDichVu", "Mã Dịch Vụ"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDichVu", "Tên Dich Vụ")});
+            this.cbbTenXN.Properties.DisplayMember = "TenDichVu";
+            this.cbbTenXN.Properties.NullText = "";
+            this.cbbTenXN.Properties.ValueMember = "IDDichVu";
+            this.cbbTenXN.Size = new System.Drawing.Size(132, 20);
+            this.cbbTenXN.TabIndex = 1078;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(1124, 34);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(173, 23);
+            this.simpleButton1.TabIndex = 1079;
+            this.simpleButton1.Text = "Xuất Excel Quản lý mẫu";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(912, 11);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(68, 13);
+            this.labelControl2.TabIndex = 1080;
+            this.labelControl2.Text = "Ngưỡng chĩ số";
+            // 
+            // txtMin
+            // 
+            this.txtMin.Location = new System.Drawing.Point(986, 8);
+            this.txtMin.Name = "txtMin";
+            this.txtMin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMin.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtMin.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtMin.Size = new System.Drawing.Size(54, 20);
+            this.txtMin.TabIndex = 1081;
+            // 
+            // txtMax
+            // 
+            this.txtMax.Location = new System.Drawing.Point(1064, 8);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMax.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtMax.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtMax.Size = new System.Drawing.Size(54, 20);
+            this.txtMax.TabIndex = 1082;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(1050, 11);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(8, 13);
+            this.labelControl3.TabIndex = 1083;
+            this.labelControl3.Text = "~";
+            // 
+            // btnLoc
+            // 
+            this.btnLoc.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnLoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.btnLoc.Location = new System.Drawing.Point(1124, 6);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(173, 23);
+            this.btnLoc.TabIndex = 1084;
+            this.btnLoc.Text = "Lọc QL Mẫu Dương Tính";
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
+            // 
             // FrmBaoCaoTuyChonCT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1369,6 +1474,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxDanhGiaMau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbTenXN.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMin.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMax.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1487,5 +1595,13 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
         private DevExpress.XtraGrid.Columns.GridColumn Loopup_IDGioiTinh;
         private DevExpress.XtraGrid.Columns.GridColumn Loopup_TenGioiTinh;
+        private DevExpress.XtraEditors.LabelControl labelControl41;
+        private DevExpress.XtraEditors.LookUpEdit cbbTenXN;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SpinEdit txtMin;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.SpinEdit txtMax;
+        private DevExpress.XtraEditors.SimpleButton btnLoc;
     }
 }

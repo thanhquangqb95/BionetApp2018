@@ -23,6 +23,7 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
         private List<PSMapsViTriMayXN> mapViTri = new List<PSMapsViTriMayXN>();
         private void xrTable2_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
+           
             if (!string.IsNullOrEmpty(col_STTVT.Text.ToLower()))
             {
                 col_ViTriThat.Text = mapViTri.FirstOrDefault(x => x.STT == long.Parse(col_STTVT.Text.ToString())).TenViTri;
@@ -37,6 +38,7 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
                 this.xrTable2.BackColor = System.Drawing.Color.PeachPuff;
                 this.col_ViTriThat.BackColor = System.Drawing.Color.PeachPuff;
                 this.col_ViTri.BackColor = System.Drawing.Color.PeachPuff;
+                this.col_MaGoiXNTV.ForeColor = System.Drawing.Color.Black;
                 this.col_MaGoiXNTV.Text = "";
             }
             else

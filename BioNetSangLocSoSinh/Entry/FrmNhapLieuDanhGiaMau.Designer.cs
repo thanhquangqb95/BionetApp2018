@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhapLieuDanhGiaMau));
-            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator2 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
+            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator1 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.searchLookUpChiCuc = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -400,7 +400,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 870);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 788);
             this.barDockControlBottom.Manager = this.barPopUp;
             this.barDockControlBottom.Size = new System.Drawing.Size(1268, 0);
             // 
@@ -410,7 +410,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barPopUp;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 870);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 788);
             // 
             // barDockControlRight
             // 
@@ -418,7 +418,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1268, 0);
             this.barDockControlRight.Manager = this.barPopUp;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 870);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 788);
             // 
             // duyetTatCa
             // 
@@ -630,7 +630,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(495, 870);
+            this.groupControl3.Size = new System.Drawing.Size(495, 788);
             this.groupControl3.TabIndex = 3;
             this.groupControl3.Text = "Thông tin phiếu";
             // 
@@ -658,7 +658,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(2, 22);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(491, 846);
+            this.panelControl4.Size = new System.Drawing.Size(491, 764);
             this.panelControl4.TabIndex = 0;
             // 
             // txtMaChiDinh
@@ -696,7 +696,7 @@
             this.panelControl5.Controls.Add(this.labelControl9);
             this.panelControl5.Location = new System.Drawing.Point(1, 470);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(484, 376);
+            this.panelControl5.Size = new System.Drawing.Size(484, 294);
             this.panelControl5.TabIndex = 4;
             // 
             // radioGroupGoiXN
@@ -705,7 +705,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.radioGroupGoiXN.Location = new System.Drawing.Point(51, 4);
             this.radioGroupGoiXN.Name = "radioGroupGoiXN";
-            this.radioGroupGoiXN.Size = new System.Drawing.Size(183, 369);
+            this.radioGroupGoiXN.Size = new System.Drawing.Size(183, 287);
             this.radioGroupGoiXN.TabIndex = 29;
             this.radioGroupGoiXN.SelectedIndexChanged += new System.EventHandler(this.radioGroupGoiXN_SelectedIndexChanged);
             this.radioGroupGoiXN.EditValueChanged += new System.EventHandler(this.radioGroupGoiXN_EditValueChanged);
@@ -724,7 +724,7 @@
             this.checkedListBoxXN.Location = new System.Drawing.Point(240, 4);
             this.checkedListBoxXN.MultiColumn = true;
             this.checkedListBoxXN.Name = "checkedListBoxXN";
-            this.checkedListBoxXN.Size = new System.Drawing.Size(239, 369);
+            this.checkedListBoxXN.Size = new System.Drawing.Size(239, 287);
             this.checkedListBoxXN.TabIndex = 30;
             this.checkedListBoxXN.TabStop = false;
             this.checkedListBoxXN.ValueMember = "IDDichVu";
@@ -1617,7 +1617,7 @@
             this.barCodePhieu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.barCodePhieu.ShowText = false;
             this.barCodePhieu.Size = new System.Drawing.Size(491, 40);
-            this.barCodePhieu.Symbology = code128Generator2;
+            this.barCodePhieu.Symbology = code128Generator1;
             this.barCodePhieu.TabIndex = 9;
             this.barCodePhieu.TabStop = false;
             this.barCodePhieu.VerticalAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -1651,7 +1651,7 @@
             this.groupControl2.Controls.Add(this.txtLuuY);
             this.groupControl2.Location = new System.Drawing.Point(4, 340);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(365, 390);
+            this.groupControl2.Size = new System.Drawing.Size(365, 308);
             this.groupControl2.TabIndex = 6;
             this.groupControl2.Text = "Lưu ý mẫu";
             // 
@@ -1665,7 +1665,7 @@
             this.txtLuuY.MenuManager = this.barPopUp;
             this.txtLuuY.Name = "txtLuuY";
             this.txtLuuY.ReadOnly = true;
-            this.txtLuuY.Size = new System.Drawing.Size(361, 366);
+            this.txtLuuY.Size = new System.Drawing.Size(361, 284);
             this.txtLuuY.TabIndex = 33;
             this.txtLuuY.Text = "Lưu ý";
             // 
@@ -1677,7 +1677,7 @@
             this.panelButton.Controls.Add(this.btnHuy);
             this.panelButton.Controls.Add(this.btnDuyet);
             this.panelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButton.Location = new System.Drawing.Point(0, 842);
+            this.panelButton.Location = new System.Drawing.Point(0, 760);
             this.panelButton.Name = "panelButton";
             this.panelButton.Size = new System.Drawing.Size(393, 28);
             this.panelButton.TabIndex = 7;
@@ -1886,7 +1886,7 @@
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMain.Location = new System.Drawing.Point(0, 0);
             this.pnMain.Name = "pnMain";
-            this.pnMain.Size = new System.Drawing.Size(888, 870);
+            this.pnMain.Size = new System.Drawing.Size(888, 788);
             this.pnMain.TabIndex = 5;
             this.pnMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMain_Paint);
             // 
@@ -1898,7 +1898,7 @@
             this.pn2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn2.Location = new System.Drawing.Point(0, 0);
             this.pn2.Name = "pn2";
-            this.pn2.Size = new System.Drawing.Size(888, 870);
+            this.pn2.Size = new System.Drawing.Size(888, 788);
             this.pn2.TabIndex = 1;
             // 
             // panel2
@@ -1908,7 +1908,7 @@
             this.panel2.Location = new System.Drawing.Point(495, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(393, 870);
+            this.panel2.Size = new System.Drawing.Size(393, 788);
             this.panel2.TabIndex = 5;
             // 
             // pn3
@@ -1922,7 +1922,7 @@
             this.pn3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn3.Location = new System.Drawing.Point(0, 0);
             this.pn3.Name = "pn3";
-            this.pn3.Size = new System.Drawing.Size(393, 870);
+            this.pn3.Size = new System.Drawing.Size(393, 788);
             this.pn3.TabIndex = 0;
             // 
             // groupControl8
@@ -1933,7 +1933,7 @@
             this.groupControl8.Controls.Add(this.txtGhiChu);
             this.groupControl8.Location = new System.Drawing.Point(2, 463);
             this.groupControl8.Name = "groupControl8";
-            this.groupControl8.Size = new System.Drawing.Size(388, 376);
+            this.groupControl8.Size = new System.Drawing.Size(388, 294);
             this.groupControl8.TabIndex = 34;
             this.groupControl8.Text = "Ghi Chú";
             // 
@@ -1946,7 +1946,7 @@
             this.txtGhiChu.MenuManager = this.barPopUp;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.ReadOnly = true;
-            this.txtGhiChu.Size = new System.Drawing.Size(384, 352);
+            this.txtGhiChu.Size = new System.Drawing.Size(384, 270);
             this.txtGhiChu.TabIndex = 33;
             // 
             // panel1
@@ -1956,7 +1956,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(495, 870);
+            this.panel1.Size = new System.Drawing.Size(495, 788);
             this.panel1.TabIndex = 4;
             // 
             // pn1
@@ -1967,7 +1967,7 @@
             this.pn1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn1.Location = new System.Drawing.Point(0, 0);
             this.pn1.Name = "pn1";
-            this.pn1.Size = new System.Drawing.Size(376, 870);
+            this.pn1.Size = new System.Drawing.Size(376, 788);
             this.pn1.TabIndex = 0;
             // 
             // panel3
@@ -1976,7 +1976,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 110);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(376, 760);
+            this.panel3.Size = new System.Drawing.Size(376, 678);
             this.panel3.TabIndex = 1;
             // 
             // panel4
@@ -1986,14 +1986,14 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(376, 760);
+            this.panel4.Size = new System.Drawing.Size(376, 678);
             this.panel4.TabIndex = 2;
             // 
             // panelControl6
             // 
             this.panelControl6.Controls.Add(this.btnBackPhieu);
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl6.Location = new System.Drawing.Point(0, 726);
+            this.panelControl6.Location = new System.Drawing.Point(0, 644);
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Size = new System.Drawing.Size(376, 34);
             this.panelControl6.TabIndex = 4;
@@ -2006,7 +2006,7 @@
             this.panelControl3.Controls.Add(this.xtraTabControl1);
             this.panelControl3.Location = new System.Drawing.Point(3, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(372, 726);
+            this.panelControl3.Size = new System.Drawing.Size(372, 644);
             this.panelControl3.TabIndex = 3;
             // 
             // xtraTabControl1
@@ -2017,7 +2017,7 @@
             this.xtraTabControl1.LookAndFeel.SkinName = "Office 2010 Blue";
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabDanhSachCho;
-            this.xtraTabControl1.Size = new System.Drawing.Size(368, 722);
+            this.xtraTabControl1.Size = new System.Drawing.Size(368, 640);
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabDanhSachCho,
@@ -2032,7 +2032,7 @@
             this.xtraTabDanhSachCho.Controls.Add(this.GCDanhSachTiepNhan);
             this.xtraTabDanhSachCho.Image = global::BioNetSangLocSoSinh.Properties.Resources.clock;
             this.xtraTabDanhSachCho.Name = "xtraTabDanhSachCho";
-            this.xtraTabDanhSachCho.Size = new System.Drawing.Size(363, 694);
+            this.xtraTabDanhSachCho.Size = new System.Drawing.Size(363, 612);
             this.xtraTabDanhSachCho.Text = "Danh sách chờ";
             // 
             // GCDanhSachTiepNhan
@@ -2044,7 +2044,7 @@
             this.GCDanhSachTiepNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryLookUpDonViGCTiepNhan,
             this.repositoryLookUpGoiXN});
-            this.GCDanhSachTiepNhan.Size = new System.Drawing.Size(363, 694);
+            this.GCDanhSachTiepNhan.Size = new System.Drawing.Size(363, 612);
             this.GCDanhSachTiepNhan.TabIndex = 0;
             this.GCDanhSachTiepNhan.TabStop = false;
             this.GCDanhSachTiepNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2171,7 +2171,7 @@
             this.xtraTabDanhSachDaDuyet.Controls.Add(this.GCDanhSachDaTracking);
             this.xtraTabDanhSachDaDuyet.Image = global::BioNetSangLocSoSinh.Properties.Resources.checklist;
             this.xtraTabDanhSachDaDuyet.Name = "xtraTabDanhSachDaDuyet";
-            this.xtraTabDanhSachDaDuyet.Size = new System.Drawing.Size(363, 694);
+            this.xtraTabDanhSachDaDuyet.Size = new System.Drawing.Size(363, 612);
             this.xtraTabDanhSachDaDuyet.Text = "Danh sách đã duyệt";
             // 
             // GCDanhSachDaTracking
@@ -2184,7 +2184,7 @@
             this.repositoryItemLookUpDonVi,
             this.lookupGoiXN,
             this.repositoryItemCheckEdit1});
-            this.GCDanhSachDaTracking.Size = new System.Drawing.Size(363, 694);
+            this.GCDanhSachDaTracking.Size = new System.Drawing.Size(363, 612);
             this.GCDanhSachDaTracking.TabIndex = 0;
             this.GCDanhSachDaTracking.TabStop = false;
             this.GCDanhSachDaTracking.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2352,7 +2352,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.pnMain);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1268, 870);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1268, 788);
             this.splitContainerControl1.SplitterPosition = 376;
             this.splitContainerControl1.TabIndex = 10;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -2362,7 +2362,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1268, 870);
+            this.ClientSize = new System.Drawing.Size(1268, 788);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -2371,7 +2371,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.LookAndFeel.SkinName = "Office 2007 Blue";
             this.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.MinimumSize = new System.Drawing.Size(1268, 870);
+            this.MinimumSize = new System.Drawing.Size(1268, 726);
             this.Name = "FrmNhapLieuDanhGiaMau";
             this.Text = "FrmNhapLieuDanhGiaMau";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
