@@ -367,9 +367,7 @@ namespace BioNetSangLocSoSinh.Entry
                         }
                         catch
                         {
-
-                        }
-                        
+                        }                        
                     }
                 }
                 else
@@ -382,7 +380,6 @@ namespace BioNetSangLocSoSinh.Entry
                 XtraMessageBox.Show("Gửi tin nhắn lỗi ", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.LoadDS();
-
         }
 
         private void labelControl21_Click(object sender, EventArgs e)

@@ -594,3 +594,4 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\D
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.csproj.CoreCompileInputs.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.pdb
+D:\Github\BionetApp2018\UnitTestProjectBionet\bin\Debug\itextsharp.xml

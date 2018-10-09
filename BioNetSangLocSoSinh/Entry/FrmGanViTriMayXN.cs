@@ -534,6 +534,11 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     Directory.CreateDirectory(link);
                 }
+                string LinkDate=link+DateTime.Now.Year.ToString()+"."+DateTime.Now.Month.ToString()+"."+DateTime.Now.Date.Day.ToString()+"\\";
+                 if (!Directory.Exists(LinkDate))
+                {
+                    Directory.CreateDirectory(LinkDate);
+                }
                 Workbook workbook = new DevExpress.Spreadsheet.Workbook();
                 string Idlangan = vt.Distinct().Select(x => x.IDLanGanXN).FirstOrDefault().ToString();
                 #region Máy 1
@@ -596,13 +601,29 @@ namespace BioNetSangLocSoSinh.Entry
                 File.Delete("May2Benh" + ".xlsx");
                 #endregion
                 string linkfile;
-                if(SaveFile)
+                List<string> listmay1 = vtmay1.Select(x => x.MaXetNghiem).ToList();
+                if (SaveFile)
                 {
-                    linkfile = link + "SodoXetNghiem" + DateTime.Now.Day+"." + DateTime.Now.Month+"." + DateTime.Now.Year+ ".xlsx";
+                    linkfile = LinkDate + "SodoXetNghiem" + DateTime.Now.Day+"." + DateTime.Now.Month+"." + DateTime.Now.Year+ ".xlsx";
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + ".txt") )
+                    {
+                        foreach (string line in listmay1)
+                        {
+                                file.WriteLine(line);
+                        }
+                    }
                 }
                 else
                 {
-                    linkfile = link + "SodoXetNghiemReviewNgay" + DateTime.Now.Day +"." + DateTime.Now.Month + "." + DateTime.Now.Year+"."+ DateTime.Now.Hour+"." + DateTime.Now.Minute + ".xlsx";
+                    linkfile = LinkDate + "SodoXetNghiemReviewNgay" + DateTime.Now.Day +"." + DateTime.Now.Month + "." + DateTime.Now.Year+"."+ DateTime.Now.Hour+"." + DateTime.Now.Minute + ".xlsx";
+                    
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoReviewMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + "." + DateTime.Now.Hour + "." + DateTime.Now.Minute + ".txt"))
+                    {
+                        foreach (string line in listmay1)
+                        {
+                            file.WriteLine(line);
+                        }
+                    }
                 }
                
                 workbook.SaveDocument(linkfile);

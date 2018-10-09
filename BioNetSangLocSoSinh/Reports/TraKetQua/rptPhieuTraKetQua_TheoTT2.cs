@@ -63,6 +63,7 @@ namespace BioNetSangLocSoSinh.Reports
                 txtGiaTri.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
                 txtGiaTri.Text = string.Empty;
                 txtDVDo.Text = string.Empty;
+                txtTenDichVu.Text = txtTenDichVu.Text + "\r\n *Khống có giá trị sau 3 tháng tuổi.";
                 txtNguongBT.Text = string.Empty;
                 txtDVDo.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
                 txtKetLuan.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));

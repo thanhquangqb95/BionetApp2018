@@ -1,4 +1,5 @@
-﻿using BioNetModel;
+﻿using BioNetBLL;
+using BioNetModel;
 using BioNetModel.Data;
 using Newtonsoft.Json;
 using System;
@@ -40,6 +41,7 @@ namespace DataSync.BioNetSync
                             List<PSPatient> lstpsl = new List<PSPatient>();
                             if (psl.TotalCount > 0)
                             {
+                                PsReponse reponse = BioNet_Bus.UpdateMaKhachHang();
                                 foreach (var item in psl.Items)
                                 {
                                     PSPatient term = new PSPatient();

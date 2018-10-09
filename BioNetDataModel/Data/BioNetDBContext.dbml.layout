@@ -50,18 +50,6 @@
         <elementListCompartment Id="73aceb93-46d4-4d05-bdba-2f6a193969f7" absoluteBounds="14.765, 16.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="36e120a1-f223-45a3-a431-f30add35688b" absoluteBounds="14.75, 6.25, 2, 2.3478011067708344">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8e7c66d2-a0ad-4916-b62f-14069b24f872" absoluteBounds="14.765, 6.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="742ba16c-f600-451b-96b0-8e79ca7ec356" absoluteBounds="17.5, 6, 2, 2.9247054036458335">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTriCT" />
-      <nestedChildShapes>
-        <elementListCompartment Id="68a9b3fe-d71f-4ba3-b50c-6aa18361ab42" absoluteBounds="17.515, 6.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="93a75232-e698-43b7-98f4-fe1ef5e78f39" absoluteBounds="17.75, 0.75, 2, 3.1170068359375005">
       <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucChiCuc" />
       <nestedChildShapes>
@@ -291,13 +279,6 @@
         <classShapeMoniker Id="287b5467-3a37-4b4b-b957-3d3a6887fe9b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(16.75 : 7.42390055338542); (17.5 : 7.42390055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri/PSCM_GanViTri_PSCM_GanViTriCT" />
-      <nodes>
-        <classShapeMoniker Id="36e120a1-f223-45a3-a431-f30add35688b" />
-        <classShapeMoniker Id="742ba16c-f600-451b-96b0-8e79ca7ec356" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(13.75 : 3.02965413411458); (14.5 : 3.02965413411458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSBenhNhanNguyCoCao/PSBenhNhanNguyCoCao_PSDotChuanDoan" />
       <nodes>
@@ -385,5 +366,24 @@
         <elementListCompartment Id="ff2e2920-874a-4902-85cd-f436fa7221a5" absoluteBounds="0.89000000000000012, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="d3f09dfd-1653-4dcd-a301-78c9eb43d17c" absoluteBounds="24.375, 21.25, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7c7d8c5a-85ab-48d5-aced-a4336a1a0820" absoluteBounds="24.39, 21.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b7ba9d6e-54dd-4434-826c-36f4cb718041" absoluteBounds="27.125, 21, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTriCT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d2489330-cedd-4cea-a6f5-bd2097568fc7" absoluteBounds="27.14, 21.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(26.375 : 22.5200512695313); (27.125 : 22.5200512695313)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri/PSCM_GanViTri_PSCM_GanViTriCT" />
+      <nodes>
+        <classShapeMoniker Id="d3f09dfd-1653-4dcd-a301-78c9eb43d17c" />
+        <classShapeMoniker Id="b7ba9d6e-54dd-4434-826c-36f4cb718041" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

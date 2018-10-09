@@ -13,6 +13,7 @@ using BioNetModel.Data;
 using BioNetBLL;
 using DevExpress.XtraGrid.Views.Grid;
 using BioNetSangLocSoSinh.Reports;
+using DevExpress.XtraGrid.Columns;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -1037,6 +1038,21 @@ namespace BioNetSangLocSoSinh.Entry
                 }
             }
             catch { }
+        }
+
+        private void cbbGoiXNLoc_ChuaCoKQ_EditValueChanged(object sender, EventArgs e)
+        {
+            string MaGoiXN = cbbGoiXNLoc_ChuaCoKQ.EditValue.ToString();
+            if (!MaGoiXN.Equals("ALL"))
+            {
+                string filterMaDV = "Contains([MaGoiXN], '" + MaGoiXN + "')";
+                GVChuaKQ.Columns["MaGoiXN"].FilterInfo = new ColumnFilterInfo(filterMaDV);
+            }
+            else
+            {
+                GVChuaKQ.Columns["MaGoiXN"].ClearFilter();
+            }
+            this.GVChuaKQ.ExpandAllGroups();
         }
     }
 }

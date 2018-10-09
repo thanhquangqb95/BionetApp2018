@@ -762,10 +762,10 @@
     <Compile Include="Reports\rptPhieuPDFTraKQ_TheoDonVi3.Designer.cs">
       <DependentUpon>rptPhieuPDFTraKQ_TheoDonVi3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua.Designer.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua.Designer.cs">
       <DependentUpon>rptPhieuTraKetQua.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPhieuTraKetQuaNew.cs">
@@ -774,16 +774,16 @@
     <Compile Include="Reports\rptPhieuTraKetQuaNew.Designer.cs">
       <DependentUpon>rptPhieuTraKetQuaNew.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua_TheoDonVi2.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi2.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua_TheoDonVi2.Designer.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi2.Designer.cs">
       <DependentUpon>rptPhieuTraKetQua_TheoDonVi2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua_TheoDonVi.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua_TheoDonVi.Designer.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi.Designer.cs">
       <DependentUpon>rptPhieuTraKetQua_TheoDonVi.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptBaoCaoChiTietTrungTam.cs">
@@ -792,10 +792,10 @@
     <Compile Include="Reports\rptBaoCaoChiTietTrungTam.Designer.cs">
       <DependentUpon>rptBaoCaoChiTietTrungTam.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua_TheoTT2.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoTT2.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptPhieuTraKetQua_TheoTT2.Designer.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoTT2.Designer.cs">
       <DependentUpon>rptPhieuTraKetQua_TheoTT2.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPhieuViewTT.cs">
@@ -1146,22 +1146,22 @@
     <EmbeddedResource Include="Reports\rptPhieuPDFTraKQ_TheoDonVi3.resx">
       <DependentUpon>rptPhieuPDFTraKQ_TheoDonVi3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPhieuTraKetQua.resx">
+    <EmbeddedResource Include="Reports\TraKetQua\rptPhieuTraKetQua.resx">
       <DependentUpon>rptPhieuTraKetQua.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPhieuTraKetQuaNew.resx">
       <DependentUpon>rptPhieuTraKetQuaNew.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPhieuTraKetQua_TheoDonVi2.resx">
+    <EmbeddedResource Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi2.resx">
       <DependentUpon>rptPhieuTraKetQua_TheoDonVi2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPhieuTraKetQua_TheoDonVi.resx">
+    <EmbeddedResource Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi.resx">
       <DependentUpon>rptPhieuTraKetQua_TheoDonVi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBaoCaoChiTietTrungTam.resx">
       <DependentUpon>rptBaoCaoChiTietTrungTam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPhieuTraKetQua_TheoTT2.resx">
+    <EmbeddedResource Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoTT2.resx">
       <DependentUpon>rptPhieuTraKetQua_TheoTT2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPhieuViewTT.resx">
