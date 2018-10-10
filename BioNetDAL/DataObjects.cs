@@ -3976,6 +3976,30 @@ namespace BioNetDAL
             catch { }
             return lst;
         }
+        public List<PsMapMayDichVu> GetMapMayDichVus(string IDMayXN)
+        {
+            List<PsMapMayDichVu> lst = new List<PsMapMayDichVu>();
+            try
+            {
+                var listdv = db.PSDanhMucDichVus.Where(x => x.isLocked == false).ToList();
+                var map = db.PSMapsMayXN_DichVus.Where(x => x.IDMayXN.Equals(IDMayXN)).ToList();
+                    if (listdv.Count > 0)
+                    {
+                        foreach (var dv in listdv)
+                        {
+                            PsMapMayDichVu mdv = new PsMapMayDichVu();
+                            mdv.RowID = dv.RowIDDichVu;
+                            mdv.TenDichVu = dv.TenDichVu;
+                            mdv.TenHienThi = dv.TenHienThiDichVu;
+                            mdv.IDDichVu = dv.IDDichVu;
+                            mdv.isChecked = map.FirstOrDefault(x => x.IDDichVu.Equals(dv.IDDichVu)) != null ? true:false ;
+                        lst.Add(mdv);
+                        }
+                    }
+            }
+            catch { }
+            return lst;
+        }
         public List<PSDanhMucChuongTrinh> GetDanhSachChuongTrinh(bool isLocked)
         {
             List<PSDanhMucChuongTrinh> lst = new List<PSDanhMucChuongTrinh>();

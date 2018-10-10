@@ -548,6 +548,12 @@
     <Compile Include="Entry\FrmGanViTriMayXN.Designer.cs">
       <DependentUpon>FrmGanViTriMayXN.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDanhMuc\FrmDanhMucMayXN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDanhMuc\FrmDanhMucMayXN.Designer.cs">
+      <DependentUpon>FrmDanhMucMayXN.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReports\FrmBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1027,6 +1033,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmGanViTriMayXN.resx">
       <DependentUpon>FrmGanViTriMayXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDanhMuc\FrmDanhMucMayXN.resx">
+      <DependentUpon>FrmDanhMucMayXN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReports\FrmBaoCao.resx">
       <DependentUpon>FrmBaoCao.cs</DependentUpon>

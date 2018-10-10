@@ -183,6 +183,12 @@ namespace BioNetModel.Data
     partial void InsertPSCM_GanViTriCT(PSCM_GanViTriCT instance);
     partial void UpdatePSCM_GanViTriCT(PSCM_GanViTriCT instance);
     partial void DeletePSCM_GanViTriCT(PSCM_GanViTriCT instance);
+    partial void InsertPSMapsMayDucLo_MayXN(PSMapsMayDucLo_MayXN instance);
+    partial void UpdatePSMapsMayDucLo_MayXN(PSMapsMayDucLo_MayXN instance);
+    partial void DeletePSMapsMayDucLo_MayXN(PSMapsMayDucLo_MayXN instance);
+    partial void InsertPSDanhMucMayDucLo(PSDanhMucMayDucLo instance);
+    partial void UpdatePSDanhMucMayDucLo(PSDanhMucMayDucLo instance);
+    partial void DeletePSDanhMucMayDucLo(PSDanhMucMayDucLo instance);
     #endregion
 		
 		public BioNetDBContextDataContext() : 
@@ -620,6 +626,22 @@ namespace BioNetModel.Data
 			get
 			{
 				return this.GetTable<PSCM_GanViTriCT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PSMapsMayDucLo_MayXN> PSMapsMayDucLo_MayXNs
+		{
+			get
+			{
+				return this.GetTable<PSMapsMayDucLo_MayXN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PSDanhMucMayDucLo> PSDanhMucMayDucLos
+		{
+			get
+			{
+				return this.GetTable<PSDanhMucMayDucLo>();
 			}
 		}
 		
@@ -15528,6 +15550,226 @@ namespace BioNetModel.Data
 						this._IDRowGanXN = default(long);
 					}
 					this.SendPropertyChanged("PSCM_GanViTri");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSMapsMayDucLo_MayXN")]
+	public partial class PSMapsMayDucLo_MayXN : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _RowIDMapMayDucLo;
+		
+		private string _IDMayDucLo;
+		
+		private string _IDMayXN;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRowIDMapMayDucLoChanging(long value);
+    partial void OnRowIDMapMayDucLoChanged();
+    partial void OnIDMayDucLoChanging(string value);
+    partial void OnIDMayDucLoChanged();
+    partial void OnIDMayXNChanging(string value);
+    partial void OnIDMayXNChanged();
+    #endregion
+		
+		public PSMapsMayDucLo_MayXN()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowIDMapMayDucLo", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long RowIDMapMayDucLo
+		{
+			get
+			{
+				return this._RowIDMapMayDucLo;
+			}
+			set
+			{
+				if ((this._RowIDMapMayDucLo != value))
+				{
+					this.OnRowIDMapMayDucLoChanging(value);
+					this.SendPropertyChanging();
+					this._RowIDMapMayDucLo = value;
+					this.SendPropertyChanged("RowIDMapMayDucLo");
+					this.OnRowIDMapMayDucLoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMayDucLo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string IDMayDucLo
+		{
+			get
+			{
+				return this._IDMayDucLo;
+			}
+			set
+			{
+				if ((this._IDMayDucLo != value))
+				{
+					this.OnIDMayDucLoChanging(value);
+					this.SendPropertyChanging();
+					this._IDMayDucLo = value;
+					this.SendPropertyChanged("IDMayDucLo");
+					this.OnIDMayDucLoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMayXN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string IDMayXN
+		{
+			get
+			{
+				return this._IDMayXN;
+			}
+			set
+			{
+				if ((this._IDMayXN != value))
+				{
+					this.OnIDMayXNChanging(value);
+					this.SendPropertyChanging();
+					this._IDMayXN = value;
+					this.SendPropertyChanged("IDMayXN");
+					this.OnIDMayXNChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSDanhMucMayDucLo")]
+	public partial class PSDanhMucMayDucLo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _RowIDMayDucLo;
+		
+		private string _IDMayDucLo;
+		
+		private System.Nullable<bool> _isUse;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRowIDMayDucLoChanging(long value);
+    partial void OnRowIDMayDucLoChanged();
+    partial void OnIDMayDucLoChanging(string value);
+    partial void OnIDMayDucLoChanged();
+    partial void OnisUseChanging(System.Nullable<bool> value);
+    partial void OnisUseChanged();
+    #endregion
+		
+		public PSDanhMucMayDucLo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowIDMayDucLo", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long RowIDMayDucLo
+		{
+			get
+			{
+				return this._RowIDMayDucLo;
+			}
+			set
+			{
+				if ((this._RowIDMayDucLo != value))
+				{
+					this.OnRowIDMayDucLoChanging(value);
+					this.SendPropertyChanging();
+					this._RowIDMayDucLo = value;
+					this.SendPropertyChanged("RowIDMayDucLo");
+					this.OnRowIDMayDucLoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDMayDucLo", DbType="NVarChar(50)")]
+		public string IDMayDucLo
+		{
+			get
+			{
+				return this._IDMayDucLo;
+			}
+			set
+			{
+				if ((this._IDMayDucLo != value))
+				{
+					this.OnIDMayDucLoChanging(value);
+					this.SendPropertyChanging();
+					this._IDMayDucLo = value;
+					this.SendPropertyChanged("IDMayDucLo");
+					this.OnIDMayDucLoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isUse", DbType="Bit")]
+		public System.Nullable<bool> isUse
+		{
+			get
+			{
+				return this._isUse;
+			}
+			set
+			{
+				if ((this._isUse != value))
+				{
+					this.OnisUseChanging(value);
+					this.SendPropertyChanging();
+					this._isUse = value;
+					this.SendPropertyChanged("isUse");
+					this.OnisUseChanged();
 				}
 			}
 		}

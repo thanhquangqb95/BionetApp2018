@@ -1637,19 +1637,24 @@ namespace BioNetBLL
             catch { }
             return lst;
         }
-        //public static rptBaoCaoTongHop GetBaoCaoTongHopTrungTam(DateTime tuNgay,DateTime denNgay)
-        //{
-        //    rptBaoCaoTongHop bc = new rptBaoCaoTongHop();
-        //    var db = new DataObjects();
-        //    var kq = db.GetDanhSachKetQuaDaDuyet(tuNgay, denNgay);
-        //    if(kq.Count>0)
-        //    {
-        //        var lstPhieu = kq.GroupBy(p => p.MaGoiXN);
-        //        var goiXNTrungTam = db.GetDanhMucGoiXetNghiemChung(string.Empty);
-        //    }
-        //    return bc;
-        //}
-        public static PSPatient GetThongTinBenhNhan(string maSoBenhNhan)
+        public static List<PsMapMayDichVu> GetMapMayDichVus(string IDMayXN)
+        {
+            var db = new DataObjects();
+          return db.GetMapMayDichVus(IDMayXN);
+        }
+            //public static rptBaoCaoTongHop GetBaoCaoTongHopTrungTam(DateTime tuNgay,DateTime denNgay)
+            //{
+            //    rptBaoCaoTongHop bc = new rptBaoCaoTongHop();
+            //    var db = new DataObjects();
+            //    var kq = db.GetDanhSachKetQuaDaDuyet(tuNgay, denNgay);
+            //    if(kq.Count>0)
+            //    {
+            //        var lstPhieu = kq.GroupBy(p => p.MaGoiXN);
+            //        var goiXNTrungTam = db.GetDanhMucGoiXetNghiemChung(string.Empty);
+            //    }
+            //    return bc;
+            //}
+            public static PSPatient GetThongTinBenhNhan(string maSoBenhNhan)
         {
             var db = new DataObjects();
             PSPatient BN = new PSPatient();

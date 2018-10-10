@@ -8327,3 +8327,4 @@ D:\Github\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ru\DevExpress.Data.v17.2.r
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Entry.FrmQuanLyMauDuongTinh.resources
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportQuanLyMauDuongTinh.resources
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanVTMAY01.resources
+D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmDanhMuc.FrmDanhMucMayXN.resources

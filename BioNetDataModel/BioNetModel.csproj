@@ -115,6 +115,7 @@
     <Compile Include="PSKetLuanPhieu.cs" />
     <Compile Include="PSKetQuaXetNghiem.cs" />
     <Compile Include="PsKetQua_ChiTiet.cs" />
+    <Compile Include="PsMapMayDichVu.cs" />
     <Compile Include="PSMenuTrans.cs" />
     <Compile Include="PsPhieuLoiKhiDanhGia.cs" />
     <Compile Include="PsNguoi.cs" />

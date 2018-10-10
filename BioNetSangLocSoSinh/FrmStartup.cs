@@ -1545,6 +1545,18 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             catch { }
         }
+
+        private void barButtonItem68_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                FrmDanhMuc.FrmDanhMucMayXN frm = new FrmDanhMuc.FrmDanhMucMayXN();
+                TabCreating(xTabMain, "Danh sách máy xét nghiệm", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
     }
 
 }

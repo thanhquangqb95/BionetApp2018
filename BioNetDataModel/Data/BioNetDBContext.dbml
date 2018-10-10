@@ -731,6 +731,20 @@
       <Association Name="PSCM_GanViTri_PSCM_GanViTriCT" Member="PSCM_GanViTri" ThisKey="IDRowGanXN" OtherKey="IDRowGanXN" Type="PSCM_GanViTri" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PSMapsMayDucLo_MayXN" Member="PSMapsMayDucLo_MayXNs">
+    <Type Name="PSMapsMayDucLo_MayXN">
+      <Column Name="RowIDMapMayDucLo" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDMayDucLo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDMayXN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSDanhMucMayDucLo" Member="PSDanhMucMayDucLos">
+    <Type Name="PSDanhMucMayDucLo">
+      <Column Name="RowIDMayDucLo" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDMayDucLo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isUse" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">
     <Parameter Name="MaPhieu" Parameter="maPhieu" Type="System.String" DbType="NVarChar(15)" />
     <Parameter Name="LuaChon" Parameter="luaChon" Type="System.Boolean" DbType="Bit" />
