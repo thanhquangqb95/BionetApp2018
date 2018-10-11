@@ -743,6 +743,7 @@
       <Column Name="RowIDMayDucLo" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="IDMayDucLo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="isUse" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TenMayDucLo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">

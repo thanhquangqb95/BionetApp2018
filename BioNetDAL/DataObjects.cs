@@ -3281,10 +3281,31 @@ namespace BioNetDAL
             return gvc;
         }
 
+        public List<PSDanhMucMayDucLo> GetDanhSachMayDucLo(bool isSuDung)
+        {
+            List<PSDanhMucMayDucLo> xn = db.PSDanhMucMayDucLos.Where(x => x.isUse == true).ToList();
+            return xn;
+        }
         public List<PSDanhMucMayXN> GetDSMayXN()
         {
             List<PSDanhMucMayXN> xn = db.PSDanhMucMayXNs.Where(x => x.isSuDung == true).ToList();
             return xn;
+        }
+        public List<PSDanhMucMayXN> GetDSMayXNTheoMayDucLo(String IDMayDucLo)
+        {
+            List<PSDanhMucMayXN> listMayXN = new List<PSDanhMucMayXN>();
+            var ds = (from dv in db.PSMapsMayDucLo_MayXNs
+                      join xn in db.PSDanhMucMayXNs on dv.IDMayXN equals xn.IDMayXN
+                      where dv.IDMayDucLo.Equals(IDMayDucLo)
+                      select new { xn }).ToList();
+            if(ds.Count>0)
+            {
+                foreach(var d in ds)
+                {
+                    listMayXN.Add(d.xn);
+                }
+            }
+            return listMayXN;
         }
         public List<PSMapsViTriMayXN> GetDSMapViTriMayXN(string IDMayXN)
         {

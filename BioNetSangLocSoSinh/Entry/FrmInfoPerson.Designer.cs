@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip20 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem20 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInfoPerson));
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip19 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem19 = new DevExpress.Utils.ToolTipTitleItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl_Info = new DevExpress.XtraGrid.GridControl();
             this.gridView_Info = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -115,6 +115,16 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.txtDonVi = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.TenDVCS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaDVCS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtChiCuc = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.TenChiCuc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaChiCuc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Info)).BeginInit();
@@ -157,6 +167,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChiCuc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -181,7 +195,7 @@
             // 
             this.gridControl_Info.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_Info.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl_Info.Location = new System.Drawing.Point(0, 62);
+            this.gridControl_Info.Location = new System.Drawing.Point(0, 76);
             this.gridControl_Info.LookAndFeel.SkinName = "Office 2007 Blue";
             this.gridControl_Info.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl_Info.MainView = this.gridView_Info;
@@ -190,7 +204,7 @@
             this.gridControl_Info.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGioiTinh,
             this.LookUpEditGioiTinh});
-            this.gridControl_Info.Size = new System.Drawing.Size(825, 616);
+            this.gridControl_Info.Size = new System.Drawing.Size(825, 602);
             this.gridControl_Info.TabIndex = 2;
             this.gridControl_Info.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Info});
@@ -208,6 +222,7 @@
             this.col_th_FatherName});
             this.gridView_Info.GridControl = this.gridControl_Info;
             this.gridView_Info.Name = "gridView_Info";
+            this.gridView_Info.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView_Info.OptionsView.ShowGroupPanel = false;
             this.gridView_Info.DoubleClick += new System.EventHandler(this.gridView_Info_DoubleClick);
             // 
@@ -346,6 +361,10 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.label7);
+            this.panelControl1.Controls.Add(this.label6);
+            this.panelControl1.Controls.Add(this.txtDonVi);
+            this.panelControl1.Controls.Add(this.txtChiCuc);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.cbbSL);
             this.panelControl1.Controls.Add(this.btnClear);
@@ -364,7 +383,7 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(825, 62);
+            this.panelControl1.Size = new System.Drawing.Size(825, 76);
             this.panelControl1.TabIndex = 0;
             // 
             // labelControl7
@@ -377,7 +396,7 @@
             // 
             // cbbSL
             // 
-            this.cbbSL.Location = new System.Drawing.Point(633, 32);
+            this.cbbSL.Location = new System.Drawing.Point(633, 28);
             this.cbbSL.Name = "cbbSL";
             this.cbbSL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -402,9 +421,9 @@
             this.btnClear.Location = new System.Drawing.Point(711, 30);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(106, 23);
-            toolTipTitleItem10.Text = "Bỏ lọc";
-            superToolTip10.Items.Add(toolTipTitleItem10);
-            this.btnClear.SuperTip = superToolTip10;
+            toolTipTitleItem20.Text = "Bỏ lọc";
+            superToolTip20.Items.Add(toolTipTitleItem20);
+            this.btnClear.SuperTip = superToolTip20;
             this.btnClear.TabIndex = 35;
             this.btnClear.Text = "Bỏ lọc";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -412,7 +431,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(357, 34);
+            this.label5.Location = new System.Drawing.Point(357, 35);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 17;
@@ -420,7 +439,7 @@
             // 
             // cbbTTPhieu
             // 
-            this.cbbTTPhieu.Location = new System.Drawing.Point(416, 31);
+            this.cbbTTPhieu.Location = new System.Drawing.Point(416, 28);
             this.cbbTTPhieu.Name = "cbbTTPhieu";
             this.cbbTTPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -442,7 +461,7 @@
             // txtSearchNgaySinh
             // 
             this.txtSearchNgaySinh.EditValue = null;
-            this.txtSearchNgaySinh.Location = new System.Drawing.Point(234, 31);
+            this.txtSearchNgaySinh.Location = new System.Drawing.Point(234, 28);
             this.txtSearchNgaySinh.Name = "txtSearchNgaySinh";
             this.txtSearchNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -453,7 +472,7 @@
             // 
             // txtSeachGioiTinh
             // 
-            this.txtSeachGioiTinh.Location = new System.Drawing.Point(61, 31);
+            this.txtSeachGioiTinh.Location = new System.Drawing.Point(60, 28);
             this.txtSeachGioiTinh.Name = "txtSeachGioiTinh";
             this.txtSeachGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -462,7 +481,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", 1, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không xác định", 2, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tất cả", "3", -1)});
-            this.txtSeachGioiTinh.Size = new System.Drawing.Size(87, 20);
+            this.txtSeachGioiTinh.Size = new System.Drawing.Size(88, 20);
             this.txtSeachGioiTinh.TabIndex = 12;
             // 
             // label4
@@ -477,7 +496,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 34);
+            this.label3.Location = new System.Drawing.Point(10, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 4;
@@ -579,9 +598,9 @@
             this.btnSendEmail2.Location = new System.Drawing.Point(404, 196);
             this.btnSendEmail2.Name = "btnSendEmail2";
             this.btnSendEmail2.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem6.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.btnSendEmail2.SuperTip = superToolTip6;
+            toolTipTitleItem16.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            this.btnSendEmail2.SuperTip = superToolTip16;
             this.btnSendEmail2.TabIndex = 39;
             this.btnSendEmail2.Click += new System.EventHandler(this.btnSendEmail2_Click);
             // 
@@ -600,9 +619,9 @@
             this.btnSendEmail1.Location = new System.Drawing.Point(404, 172);
             this.btnSendEmail1.Name = "btnSendEmail1";
             this.btnSendEmail1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem7.Text = "Gửi Mail";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            this.btnSendEmail1.SuperTip = superToolTip7;
+            toolTipTitleItem17.Text = "Gửi Mail";
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            this.btnSendEmail1.SuperTip = superToolTip17;
             this.btnSendEmail1.TabIndex = 38;
             this.btnSendEmail1.Click += new System.EventHandler(this.btnSendEmail1_Click);
             // 
@@ -624,9 +643,9 @@
             this.btnChiTietKQ2.Location = new System.Drawing.Point(224, 196);
             this.btnChiTietKQ2.Name = "btnChiTietKQ2";
             this.btnChiTietKQ2.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem8.Text = "Chi tiết phiếu kết quả 2";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            this.btnChiTietKQ2.SuperTip = superToolTip8;
+            toolTipTitleItem18.Text = "Chi tiết phiếu kết quả 2";
+            superToolTip18.Items.Add(toolTipTitleItem18);
+            this.btnChiTietKQ2.SuperTip = superToolTip18;
             this.btnChiTietKQ2.TabIndex = 37;
             this.btnChiTietKQ2.Click += new System.EventHandler(this.btnChiTietKQ2_Click);
             // 
@@ -638,9 +657,9 @@
             this.btnChiTietKQ1.Location = new System.Drawing.Point(224, 172);
             this.btnChiTietKQ1.Name = "btnChiTietKQ1";
             this.btnChiTietKQ1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem9.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            this.btnChiTietKQ1.SuperTip = superToolTip9;
+            toolTipTitleItem19.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip19.Items.Add(toolTipTitleItem19);
+            this.btnChiTietKQ1.SuperTip = superToolTip19;
             this.btnChiTietKQ1.TabIndex = 36;
             this.btnChiTietKQ1.Click += new System.EventHandler(this.btnChiTietKQ1_Click);
             // 
@@ -1035,6 +1054,106 @@
             this.btnEdit.Text = "Sửa";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // txtDonVi
+            // 
+            this.txtDonVi.Location = new System.Drawing.Point(360, 51);
+            this.txtDonVi.Name = "txtDonVi";
+            this.txtDonVi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDonVi.Properties.DisplayMember = "TenDVCS";
+            this.txtDonVi.Properties.NullText = "Chọn";
+            this.txtDonVi.Properties.PopupFormMinSize = new System.Drawing.Size(350, 350);
+            this.txtDonVi.Properties.PopupFormSize = new System.Drawing.Size(270, 300);
+            this.txtDonVi.Properties.PopupResizeMode = DevExpress.XtraEditors.Controls.ResizeMode.LiveResize;
+            this.txtDonVi.Properties.ShowFooter = false;
+            this.txtDonVi.Properties.ValueMember = "MaDVCS";
+            this.txtDonVi.Properties.View = this.gridView2;
+            this.txtDonVi.Size = new System.Drawing.Size(338, 20);
+            this.txtDonVi.TabIndex = 1071;
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.TenDVCS,
+            this.MaDVCS});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // TenDVCS
+            // 
+            this.TenDVCS.Caption = "Đơn Vị Cơ Sở";
+            this.TenDVCS.FieldName = "TenDVCS";
+            this.TenDVCS.Name = "TenDVCS";
+            this.TenDVCS.Visible = true;
+            this.TenDVCS.VisibleIndex = 0;
+            // 
+            // MaDVCS
+            // 
+            this.MaDVCS.Caption = "Mã Đơn Vị Cơ Sở";
+            this.MaDVCS.FieldName = "MaDVCS";
+            this.MaDVCS.Name = "MaDVCS";
+            // 
+            // txtChiCuc
+            // 
+            this.txtChiCuc.Location = new System.Drawing.Point(60, 51);
+            this.txtChiCuc.Name = "txtChiCuc";
+            this.txtChiCuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtChiCuc.Properties.DisplayMember = "TenChiCuc";
+            this.txtChiCuc.Properties.NullText = "Chọn";
+            this.txtChiCuc.Properties.PopupFormMinSize = new System.Drawing.Size(350, 350);
+            this.txtChiCuc.Properties.PopupFormSize = new System.Drawing.Size(270, 300);
+            this.txtChiCuc.Properties.PopupResizeMode = DevExpress.XtraEditors.Controls.ResizeMode.LiveResize;
+            this.txtChiCuc.Properties.ShowFooter = false;
+            this.txtChiCuc.Properties.ValueMember = "MaChiCuc";
+            this.txtChiCuc.Properties.View = this.gridView3;
+            this.txtChiCuc.Size = new System.Drawing.Size(230, 20);
+            this.txtChiCuc.TabIndex = 1070;
+            this.txtChiCuc.EditValueChanged += new System.EventHandler(this.txtChiCuc_EditValueChanged);
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.TenChiCuc,
+            this.MaChiCuc});
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // TenChiCuc
+            // 
+            this.TenChiCuc.Caption = "Chi Cục";
+            this.TenChiCuc.FieldName = "TenChiCuc";
+            this.TenChiCuc.Name = "TenChiCuc";
+            this.TenChiCuc.Visible = true;
+            this.TenChiCuc.VisibleIndex = 0;
+            // 
+            // MaChiCuc
+            // 
+            this.MaChiCuc.Caption = "Mã Chi Cục";
+            this.MaChiCuc.Name = "MaChiCuc";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.TabIndex = 1072;
+            this.label6.Text = "Chi cục";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(307, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 1073;
+            this.label7.Text = "Đơn vị";
+            // 
             // FrmInfoPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1094,6 +1213,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtChiCuc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1175,5 +1298,15 @@
         private DevExpress.XtraEditors.SimpleButton btnSendEmail1;
         private DevExpress.Utils.ImageCollection imageCollectionEmail;
         private DevExpress.XtraGrid.Columns.GridColumn col_th_FatherName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraEditors.SearchLookUpEdit txtDonVi;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn TenDVCS;
+        private DevExpress.XtraGrid.Columns.GridColumn MaDVCS;
+        private DevExpress.XtraEditors.SearchLookUpEdit txtChiCuc;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn TenChiCuc;
+        private DevExpress.XtraGrid.Columns.GridColumn MaChiCuc;
     }
 }

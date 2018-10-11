@@ -26,6 +26,7 @@ namespace BioNetSangLocSoSinh.FrmDanhMuc
 
         private void FrmDanhMucMayXN_Load(object sender, EventArgs e)
         {
+           
             LoadDanhSachMay();
         }
         private void LoadDanhSachMay()

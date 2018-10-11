@@ -263,6 +263,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap conveyor {
+            get {
+                object obj = ResourceManager.GetObject("conveyor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap debit_card {
             get {
                 object obj = ResourceManager.GetObject("debit-card", resourceCulture);
@@ -316,6 +326,16 @@ namespace BioNetSangLocSoSinh.Properties {
         internal static System.Drawing.Bitmap diskette {
             get {
                 object obj = ResourceManager.GetObject("diskette", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap drill {
+            get {
+                object obj = ResourceManager.GetObject("drill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -726,6 +746,26 @@ namespace BioNetSangLocSoSinh.Properties {
         internal static System.Drawing.Bitmap message {
             get {
                 object obj = ResourceManager.GetObject("message", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap microscope {
+            get {
+                object obj = ResourceManager.GetObject("microscope", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap microscope__1_ {
+            get {
+                object obj = ResourceManager.GetObject("microscope (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

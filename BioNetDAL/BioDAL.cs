@@ -1418,11 +1418,13 @@ namespace BioNetDAL
         //    catch { return lstInfoPerson = new List<PsInfoPerson>(); }
         //}
 
-        public List<PSPatient> GetListBenhNhanSearch(string TenTre,string TenPH,int? GioiTinh,DateTime NgaySinh,int view,int TTPhieu)
+        public List<PSPatient> GetListBenhNhanSearch(string TenTre,string TenPH,int? GioiTinh,DateTime NgaySinh,int view,int TTPhieu, string MaDV)
         {
             List<PSPatient> lstInfoPerson = new List<PSPatient>();
             try
-            {   lstInfoPerson = db.PSPatients.Where(x=>x.MaBenhNhan!=null).ToList();
+            {
+                lstInfoPerson = db.PSPatients.Where(x=>x.MaBenhNhan!=null).ToList();
+                #region Tên trẻ
                 if (string.IsNullOrEmpty(TenTre))
                 {
                     if (string.IsNullOrEmpty(TenPH))
@@ -1531,39 +1533,95 @@ namespace BioNetDAL
                         }
                     }
                 }
-                if(TTPhieu==1)
+                #endregion
+                if(MaDV.Equals("all"))
                 {
-                    var phieu = (from pe in lstInfoPerson 
-                                join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
-                                where ph.TrangThaiMau ==6 && ph.isXoa !=true
-                               select new { pe }).ToList();
-                    //var phieu = lstInfoPerson.Where(x => db.PSPhieuSangLocs.Where(y => y.MaBenhNhan != null && y.TrangThaiMau == 6 && y.isXoa!=true).Equals(x.MaBenhNhan)).ToList();
-                    if (phieu != null)
+                    if (TTPhieu == 1)
                     {
-                        lstInfoPerson = phieu.Select(x=>x.pe).ToList();
+                        var phieu = (from pe in lstInfoPerson
+                                     join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
+                                     where ph.TrangThaiMau == 6 && ph.isXoa != true
+                                     select new { pe }).ToList();
+                        //var phieu = lstInfoPerson.Where(x => db.PSPhieuSangLocs.Where(y => y.MaBenhNhan != null && y.TrangThaiMau == 6 && y.isXoa!=true).Equals(x.MaBenhNhan)).ToList();
+                        if (phieu != null)
+                        {
+                            lstInfoPerson = phieu.Select(x => x.pe).ToList();
+                        }
+                        else
+                        {
+                            lstInfoPerson = null;
+                        }
+
+                    }
+                    else if (TTPhieu == 2)
+                    {
+                        var phieu = (from pe in lstInfoPerson
+                                     join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
+                                     where ph.TrangThaiMau == 7 && ph.isXoa != true
+                                     select new { pe }).ToList();
+                        //var phieu = lstInfoPerson.Where(x => db.PSPhieuSangLocs.Where(y => y.MaBenhNhan != null && y.TrangThaiMau == 6 && y.isXoa!=true).Equals(x.MaBenhNhan)).ToList();
+                        if (phieu != null)
+                        {
+                            lstInfoPerson = phieu.Select(x => x.pe).ToList();
+                        }
+                        else
+                        {
+                            lstInfoPerson = null;
+                        }
+                    }
+                }
+                else
+                {
+                    if (TTPhieu == 1)
+                    {
+                        var phieu = (from pe in lstInfoPerson
+                                     join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
+                                     where ph.TrangThaiMau == 6 && ph.isXoa != true && ph.IDCoSo.Contains(MaDV)
+                                     select new { pe }).ToList();
+                        if (phieu != null)
+                        {
+                            lstInfoPerson = phieu.Select(x => x.pe).ToList();
+                        }
+                        else
+                        {
+                            lstInfoPerson = null;
+                        }
+
+                    }
+                    else if (TTPhieu == 2)
+                    {
+                        var phieu = (from pe in lstInfoPerson
+                                     join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
+                                     where ph.TrangThaiMau == 7 && ph.isXoa != true && ph.IDCoSo.Contains(MaDV)
+                                     select new { pe }).ToList();
+                        //var phieu = lstInfoPerson.Where(x => db.PSPhieuSangLocs.Where(y => y.MaBenhNhan != null && y.TrangThaiMau == 6 && y.isXoa!=true).Equals(x.MaBenhNhan)).ToList();
+                        if (phieu != null)
+                        {
+                            lstInfoPerson = phieu.Select(x => x.pe).ToList();
+                        }
+                        else
+                        {
+                            lstInfoPerson = null;
+                        }
                     }
                     else
                     {
-                       lstInfoPerson = null;
+                        var phieu = (from pe in lstInfoPerson
+                                    join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
+                                    where  ph.isXoa != true && ph.IDCoSo.Contains(MaDV)
+                                    select new { pe }).ToList();
+                        if (phieu != null)
+                        {
+                            lstInfoPerson = phieu.Select(x => x.pe).ToList();
+                        }
+                        else
+                        {
+                            lstInfoPerson = null;
+                        }
                     }
-                    
+
                 }
-                else if(TTPhieu==2)
-                {
-                    var phieu = (from pe in lstInfoPerson
-                                 join ph in db.PSPhieuSangLocs on pe.MaBenhNhan equals ph.MaBenhNhan
-                                 where ph.TrangThaiMau == 7 && ph.isXoa != true
-                                 select new { pe }).ToList();
-                    //var phieu = lstInfoPerson.Where(x => db.PSPhieuSangLocs.Where(y => y.MaBenhNhan != null && y.TrangThaiMau == 6 && y.isXoa!=true).Equals(x.MaBenhNhan)).ToList();
-                    if (phieu != null)
-                    {
-                        lstInfoPerson = phieu.Select(x => x.pe).ToList();
-                    }
-                    else
-                    {
-                        lstInfoPerson = null;
-                    }
-                }
+                
             }
             catch { }
             return lstInfoPerson.Take(view).ToList();

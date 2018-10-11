@@ -21,16 +21,20 @@ using System.Diagnostics;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraRichEdit.Commands;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Repository;
 
 namespace BioNetSangLocSoSinh.Entry
 {
     public partial class FrmGanViTriMayXN : DevExpress.XtraEditors.XtraForm
     {
-        public FrmGanViTriMayXN(PsEmployeeLogin EMP)
+        public FrmGanViTriMayXN(PsEmployeeLogin EMP,string MayDL)
         {
             emp = EMP;
+            MayDucLo = MayDL;
             InitializeComponent();
         }
+        public static string MayDucLo = string.Empty;
         public static PsEmployeeLogin emp = new PsEmployeeLogin();
         private List<PSCMGanViTriChung> vt = new List<PSCMGanViTriChung>();
         private List<PSDanhMucMayXN> dsmay = new List<PSDanhMucMayXN>();
@@ -46,7 +50,8 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmGanViTriMayXN_Load(object sender, EventArgs e)
         {
 
-            dsmay = BioNet_Bus.GetDSMayXN();
+            dsmay = BioNet_Bus.GetDSMayXNTheoMayDucLo(MayDucLo);
+            LoadMay();
             mapViTri = new List<PSMapsViTriMayXN>();
             if (dsmay.Count > 0)
             {
@@ -70,6 +75,61 @@ namespace BioNetSangLocSoSinh.Entry
         }
 
         #region Load Danh mục
+        private void LoadMay()
+        {
+            if (dsmay != null)
+            {
+                foreach (var may in dsmay)
+                {
+
+                    GridBand band = new GridBand();
+                    band.Name = may.IDMayXN;
+                    band.Caption = may.TenMayXN;
+                    band.RowCount = 1;
+                    band.Visible = true;
+                    gridBandViTri.Children.Add(band);
+
+                    DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+                    col4.Name = "col_"+may.IDMayXN+"_STT";
+                    col4.FieldName = may.IDMayXN +".STT";
+                    col4.Caption = "STT Máy";
+                    col4.OptionsColumn.AllowEdit = false;
+                    col4.Visible = true;
+                    band.Columns.Add(col4);
+
+                    DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+                    col3.Name = "col_" + may.IDMayXN + "_Dia";
+                    col3.FieldName = may.IDMayXN + ".Dia";
+                    col3.Caption = "Đĩa";
+                    col3.OptionsColumn.AllowEdit = false;
+                    col3.Visible = true;
+                    band.Columns.Add(col3);
+
+                    DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+                    col2.Name = "col_" + may.IDMayXN + "_ViTri";
+                    col2.FieldName = may.IDMayXN + ".ViTri";
+                    col2.Caption = "Vị Trí";
+                    col2.OptionsColumn.AllowEdit = false;
+                    col2.Visible = true;
+                    band.Columns.Add(col2);
+
+                    DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+                    col1.Name = "col_" + may.IDMayXN + "_GhiChu";
+                    col1.FieldName = may.IDMayXN + ".GhiChu";
+                    col1.Caption = "Ghi chú";
+                    col1.OptionsColumn.AllowEdit = false;
+                    col1.Visible = true;
+                    band.Columns.Add(col1);
+                    RepositoryItemLookUpEdit lookUp = new RepositoryItemLookUpEdit();
+                    lookUp.Name = "LookUpEdit" + may.IDMayXN;
+                    lookUp.Columns.Add(new LookUpColumnInfo("STT", "STT"));
+                    lookUp.Columns.Add(new LookUpColumnInfo("VT", "Vị Trí"));
+                    lookUp.Columns.Add(new LookUpColumnInfo("STTVT", "STT Vị Trí"));
+                    GCDanhSachGanViTri.RepositoryItems.Add(lookUp);
+                }
+
+            }
+        }
         private void LOadDanhMuc()
         {
             try

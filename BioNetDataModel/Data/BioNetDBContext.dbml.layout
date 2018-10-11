@@ -391,10 +391,10 @@
         <elementListCompartment Id="5e9d3b6f-0741-45f2-b3bb-db44e0495a38" absoluteBounds="18.14, 6.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="112d8547-fe4e-4723-87f4-f0c69b7f4330" absoluteBounds="17.5, 4.25, 2, 1.3862939453125">
+    <classShape Id="1d4191d5-72e9-4c8f-93ca-e0d8d9568e2d" absoluteBounds="15, 5.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMayDucLo" />
       <nestedChildShapes>
-        <elementListCompartment Id="f497fa53-84e0-403b-9d32-7a3ac0c02229" absoluteBounds="17.515, 4.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b0376777-623c-4695-9051-e1c96f5190c3" absoluteBounds="15.015, 6.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

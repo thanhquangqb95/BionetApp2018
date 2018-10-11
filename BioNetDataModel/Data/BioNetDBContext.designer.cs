@@ -15697,6 +15697,8 @@ namespace BioNetModel.Data
 		
 		private System.Nullable<bool> _isUse;
 		
+		private string _TenMayDucLo;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -15707,6 +15709,8 @@ namespace BioNetModel.Data
     partial void OnIDMayDucLoChanged();
     partial void OnisUseChanging(System.Nullable<bool> value);
     partial void OnisUseChanged();
+    partial void OnTenMayDucLoChanging(string value);
+    partial void OnTenMayDucLoChanged();
     #endregion
 		
 		public PSDanhMucMayDucLo()
@@ -15770,6 +15774,26 @@ namespace BioNetModel.Data
 					this._isUse = value;
 					this.SendPropertyChanged("isUse");
 					this.OnisUseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenMayDucLo", DbType="NVarChar(100)")]
+		public string TenMayDucLo
+		{
+			get
+			{
+				return this._TenMayDucLo;
+			}
+			set
+			{
+				if ((this._TenMayDucLo != value))
+				{
+					this.OnTenMayDucLoChanging(value);
+					this.SendPropertyChanging();
+					this._TenMayDucLo = value;
+					this.SendPropertyChanged("TenMayDucLo");
+					this.OnTenMayDucLoChanged();
 				}
 			}
 		}

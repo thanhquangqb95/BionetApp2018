@@ -139,6 +139,9 @@
             this.barSubItem9 = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem10 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem67 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem11 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem68 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem69 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCategory2 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -169,9 +172,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonPage9 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.barSubItem11 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem68 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem69 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -1237,6 +1237,32 @@
             this.barButtonItem67.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem67.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem67_ItemClick);
             // 
+            // barSubItem11
+            // 
+            this.barSubItem11.Caption = "Thiết bị";
+            this.barSubItem11.Id = 33;
+            this.barSubItem11.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.drill;
+            this.barSubItem11.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.drill;
+            this.barSubItem11.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem68, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem69)});
+            this.barSubItem11.Name = "barSubItem11";
+            // 
+            // barButtonItem68
+            // 
+            this.barButtonItem68.Caption = "Máy Xét Nghiệm";
+            this.barButtonItem68.Id = 34;
+            this.barButtonItem68.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.microscope;
+            this.barButtonItem68.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.conveyor;
+            this.barButtonItem68.Name = "barButtonItem68";
+            this.barButtonItem68.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem68_ItemClick);
+            // 
+            // barButtonItem69
+            // 
+            this.barButtonItem69.Caption = "Máy Đục Lỗ";
+            this.barButtonItem69.Id = 35;
+            this.barButtonItem69.Name = "barButtonItem69";
+            // 
             // ribbonPageCategory1
             // 
             this.ribbonPageCategory1.Name = "ribbonPageCategory1";
@@ -1489,28 +1515,6 @@
             // 
             this.ribbonPage9.Name = "ribbonPage9";
             this.ribbonPage9.Text = "ribbonPage9";
-            // 
-            // barSubItem11
-            // 
-            this.barSubItem11.Caption = "Thiết bị";
-            this.barSubItem11.Id = 33;
-            this.barSubItem11.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem68),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem69)});
-            this.barSubItem11.Name = "barSubItem11";
-            // 
-            // barButtonItem68
-            // 
-            this.barButtonItem68.Caption = "Máy Xét Nghiệm";
-            this.barButtonItem68.Id = 34;
-            this.barButtonItem68.Name = "barButtonItem68";
-            this.barButtonItem68.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem68_ItemClick);
-            // 
-            // barButtonItem69
-            // 
-            this.barButtonItem69.Caption = "Máy Đục Lỗ";
-            this.barButtonItem69.Id = 35;
-            this.barButtonItem69.Name = "barButtonItem69";
             // 
             // FrmStartup
             // 

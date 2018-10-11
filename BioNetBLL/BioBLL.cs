@@ -650,10 +650,10 @@ namespace BioNetBLL
         #endregion
 
         #region Thông tin bệnh nhân
-        public static List<PSPatient> GetListPatient(string tentre,string tenph,int gioitinh,DateTime ngaysinh,int view,int TTPhieu)
+        public static List<PSPatient> GetListPatient(string tentre,string tenph,int gioitinh,DateTime ngaysinh,int view,int TTPhieu,string MaDV)
         {
             var db = new BioDAL();
-            return db.GetListBenhNhanSearch(tentre,tenph,gioitinh,ngaysinh,view,TTPhieu);
+            return db.GetListBenhNhanSearch(tentre,tenph,gioitinh,ngaysinh,view,TTPhieu,MaDV);
         }
 
         public static PSPatient GetInfoPersonByMa(string maBenhNhan)

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -86,13 +86,11 @@
             this.col_MaGoiXetNghiem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LookupGoiXN = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridBandViTri = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.col_MayXN01_STT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_MayXN01_STTDia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_MayXN01_ViTri = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LookupMayXN01 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_MayXN01_GhiChu = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.col_MayXN02_STT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_MayXN02_STTDia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_MayXN02_ViTri = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -441,9 +439,9 @@
             this.btnClear.Location = new System.Drawing.Point(213, 141);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem3.Text = "Bỏ lọc";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.btnClear.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 33;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -459,9 +457,9 @@
             this.btnViewGhiChu.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.btnViewGhiChu.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.btnViewGhiChu.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem4.Text = "Nội dung viết tắt";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.btnViewGhiChu.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Nội dung viết tắt";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnViewGhiChu.SuperTip = superToolTip2;
             this.btnViewGhiChu.TabIndex = 37;
             this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
@@ -823,7 +821,7 @@
             this.tt.Columns.Add(this.col_MaGoiXetNghiem);
             this.tt.Name = "tt";
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 268;
+            this.tt.Width = 266;
             // 
             // col_STT
             // 
@@ -887,30 +885,9 @@
             this.gridBandViTri.AppearanceHeader.Options.UseTextOptions = true;
             this.gridBandViTri.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridBandViTri.Caption = "Vị Trí Máy XN";
-            this.gridBandViTri.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand1,
-            this.gridBand2});
             this.gridBandViTri.Name = "gridBandViTri";
             this.gridBandViTri.VisibleIndex = 1;
-            this.gridBandViTri.Width = 545;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gridBand1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.gridBand1.AppearanceHeader.Options.UseFont = true;
-            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Máy 3 Bệnh";
-            this.gridBand1.Columns.Add(this.col_MayXN01_STT);
-            this.gridBand1.Columns.Add(this.col_MayXN01_STTDia);
-            this.gridBand1.Columns.Add(this.col_MayXN01_ViTri);
-            this.gridBand1.Columns.Add(this.col_MayXN01_GhiChu);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 214;
+            this.gridBandViTri.Width = 237;
             // 
             // col_MayXN01_STT
             // 
@@ -979,23 +956,6 @@
             this.col_MayXN01_GhiChu.Name = "col_MayXN01_GhiChu";
             this.col_MayXN01_GhiChu.Visible = true;
             this.col_MayXN01_GhiChu.Width = 85;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridBand2.AppearanceHeader.ForeColor = System.Drawing.Color.Purple;
-            this.gridBand2.AppearanceHeader.Options.UseFont = true;
-            this.gridBand2.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand2.Caption = "Máy 2 Bệnh";
-            this.gridBand2.Columns.Add(this.col_MayXN02_STT);
-            this.gridBand2.Columns.Add(this.col_MayXN02_STTDia);
-            this.gridBand2.Columns.Add(this.col_MayXN02_ViTri);
-            this.gridBand2.Columns.Add(this.col_MayXN02_GhiChu);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 225;
             // 
             // col_MayXN02_STT
             // 
@@ -1070,7 +1030,7 @@
             this.gridBand3.Columns.Add(this.col_GhiNhoChung);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 163;
+            this.gridBand3.Width = 254;
             // 
             // col_GhiNhoChung
             // 
@@ -1316,13 +1276,11 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MaGoiXetNghiem;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookupGoiXN;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandViTri;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_STT;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_STTDia;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_ViTri;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookupMayXN01;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_GhiChu;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_STT;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_STTDia;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_ViTri;

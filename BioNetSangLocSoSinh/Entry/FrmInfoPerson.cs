@@ -11,6 +11,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using BioNetBLL;
 using BioNetModel;
 using BioNetModel.Data;
+using DevExpress.XtraSplashScreen;
+using BioNetSangLocSoSinh.DiaglogFrm;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -45,6 +47,10 @@ namespace BioNetSangLocSoSinh.Entry
             this.LoadDanhmuc();
             this.lookUpDanToc.Properties.DataSource = BioNet_Bus.GetDanhSachDanToc(-1);
             btnEdit.Enabled = btnCancel.Enabled = btnSave.Enabled = false;
+            this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
+            this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
+            this.txtDonVi.EditValue = "all";
+            this.txtChiCuc.EditValue = "all";
             ReadOnlyText(true);
             AddItemForm();
         }
@@ -64,14 +70,36 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnSendEmail2.Enabled = false;
             this.btnChiTietKQ1.Enabled = false;
             this.btnChiTietKQ2.Enabled = false;
+            this.txtChiCuc.EditValue = "all";
             LoadDanhSachBenhNhan();
 
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            this.gridControl_Info.DataSource = null;
-            this.gridControl_Info.DataSource = BioBLL.GetListPatient(this.txtSearchTenTre.Text.TrimEnd(),this.txtSearchChaMe.Text.TrimEnd(),int.Parse(this.txtSeachGioiTinh.EditValue.ToString()),this.txtSearchNgaySinh.DateTime,int.Parse(this.cbbSL.Text),int.Parse(this.cbbTTPhieu.EditValue.ToString()));
-            this.CLearText();
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitingLoadData), true, true, false);
+                string machicuc = txtChiCuc.EditValue.ToString();
+                string madv = txtDonVi.EditValue.ToString();
+                if (!machicuc.Equals("all") && madv.Equals("all"))
+                {
+                    madv = machicuc;
+                }
+                if (!machicuc.Equals("all") && madv.Equals("all"))
+                {
+                    madv = machicuc;
+                }
+                this.gridControl_Info.DataSource = null;
+                this.gridControl_Info.DataSource = BioBLL.GetListPatient(this.txtSearchTenTre.Text.TrimEnd(), this.txtSearchChaMe.Text.TrimEnd(),
+                int.Parse(this.txtSeachGioiTinh.EditValue.ToString()), this.txtSearchNgaySinh.DateTime, int.Parse(this.cbbSL.Text), int.Parse(this.cbbTTPhieu.EditValue.ToString()), madv);
+                this.CLearText();
+                SplashScreenManager.CloseForm();
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi tìm kiếm.", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
+            }
+           
         }
 
         private void gridView_Info_DoubleClick(object sender, EventArgs e)
@@ -520,6 +548,18 @@ namespace BioNetSangLocSoSinh.Entry
         private void btnSendEmail2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtChiCuc_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SearchLookUpEdit sear = sender as SearchLookUpEdit;
+                var value = sear.EditValue.ToString();
+                this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi(value.ToString());
+                this.txtDonVi.EditValue = "all";
+            }
+            catch { }
         }
     }
 }

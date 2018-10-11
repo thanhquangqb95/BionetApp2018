@@ -1285,13 +1285,24 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.SaveGanXN(pm);
         }
+        public static List<PSDanhMucMayDucLo> GetDanhSachMayDucLo(bool isSuDung)
+        {
+            var db = new DataObjects();
+            return  db.GetDanhSachMayDucLo(isSuDung);
+        }
         public static List<PSDanhMucMayXN> GetDSMayXN()
         {
             var db = new DataObjects();
             List<PSDanhMucMayXN>  lst = db.GetDSMayXN();
             return lst;
         }
-        public static List<PSMapsViTriMayXN> GetDSMapViTriMayXN(string IDMayXN)
+        public static List<PSDanhMucMayXN> GetDSMayXNTheoMayDucLo(String IDMayDucLo)
+        {
+            var db = new DataObjects();
+            return db.GetDSMayXNTheoMayDucLo(IDMayDucLo);
+        }
+
+            public static List<PSMapsViTriMayXN> GetDSMapViTriMayXN(string IDMayXN)
         {
             var db = new DataObjects();
             List<PSMapsViTriMayXN> lst = db.GetDSMapViTriMayXN(IDMayXN);
