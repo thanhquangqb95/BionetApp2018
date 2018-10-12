@@ -86,16 +86,6 @@
             this.col_MaGoiXetNghiem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LookupGoiXN = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridBandViTri = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.col_MayXN01_STT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.col_MayXN01_STTDia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.col_MayXN01_ViTri = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.LookupMayXN01 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.col_MayXN01_GhiChu = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.col_MayXN02_STT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.col_MayXN02_STTDia = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.col_MayXN02_ViTri = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.LookupMayXN02 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.col_MayXN02_GhiChu = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.col_GhiNhoChung = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_IDRow = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -139,8 +129,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupGoiXN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LookupMayXN01)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LookupMayXN02)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).BeginInit();
@@ -235,6 +223,7 @@
             this.GVChuaKQ.Name = "GVChuaKQ";
             this.GVChuaKQ.OptionsBehavior.ReadOnly = true;
             this.GVChuaKQ.OptionsDetail.EnableMasterViewMode = false;
+            this.GVChuaKQ.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.GVChuaKQ.OptionsView.ShowFooter = true;
             this.GVChuaKQ.OptionsView.ShowGroupPanel = false;
             this.GVChuaKQ.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -436,7 +425,7 @@
             // 
             this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear.Location = new System.Drawing.Point(213, 141);
+            this.btnClear.Location = new System.Drawing.Point(213, 140);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
             toolTipTitleItem1.Text = "Bỏ lọc";
@@ -449,7 +438,7 @@
             // 
             this.btnViewGhiChu.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnViewGhiChu.EditValue = global::BioNetSangLocSoSinh.Properties.Resources.settings_cog;
-            this.btnViewGhiChu.Location = new System.Drawing.Point(275, 141);
+            this.btnViewGhiChu.Location = new System.Drawing.Point(275, 139);
             this.btnViewGhiChu.Margin = new System.Windows.Forms.Padding(0);
             this.btnViewGhiChu.Name = "btnViewGhiChu";
             this.btnViewGhiChu.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -491,6 +480,10 @@
             // 
             // btnCapNhatDSChuaCoKQ
             // 
+            this.btnCapNhatDSChuaCoKQ.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnCapNhatDSChuaCoKQ.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCapNhatDSChuaCoKQ.Appearance.Options.UseFont = true;
+            this.btnCapNhatDSChuaCoKQ.Appearance.Options.UseForeColor = true;
             this.btnCapNhatDSChuaCoKQ.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.recycle;
             this.btnCapNhatDSChuaCoKQ.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCapNhatDSChuaCoKQ.Location = new System.Drawing.Point(7, 140);
@@ -739,9 +732,7 @@
             this.GCDanhSachGanViTri.MainView = this.GVDanhSachGanViTri;
             this.GCDanhSachGanViTri.Name = "GCDanhSachGanViTri";
             this.GCDanhSachGanViTri.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.LookupGoiXN,
-            this.LookupMayXN01,
-            this.LookupMayXN02});
+            this.LookupGoiXN});
             this.GCDanhSachGanViTri.Size = new System.Drawing.Size(993, 629);
             this.GCDanhSachGanViTri.TabIndex = 31;
             this.GCDanhSachGanViTri.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -782,19 +773,11 @@
             this.gridBandViTri,
             this.gridBand3});
             this.GVDanhSachGanViTri.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
-            this.col_MayXN01_GhiChu,
-            this.col_MayXN01_ViTri,
-            this.col_MayXN02_GhiChu,
-            this.col_MayXN02_ViTri,
             this.col_STT,
             this.col_IDPhieu,
             this.col_MaXetNghiem,
             this.col_MaGoiXetNghiem,
             this.col_GhiNhoChung,
-            this.col_MayXN01_STTDia,
-            this.col_MayXN02_STTDia,
-            this.col_MayXN01_STT,
-            this.col_MayXN02_STT,
             this.col_IDRow});
             this.GVDanhSachGanViTri.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.GVDanhSachGanViTri.GridControl = this.GCDanhSachGanViTri;
@@ -811,7 +794,9 @@
             // tt
             // 
             this.tt.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.tt.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tt.AppearanceHeader.Options.UseFont = true;
+            this.tt.AppearanceHeader.Options.UseForeColor = true;
             this.tt.AppearanceHeader.Options.UseTextOptions = true;
             this.tt.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.tt.Caption = "Thông tin phiếu";
@@ -821,7 +806,7 @@
             this.tt.Columns.Add(this.col_MaGoiXetNghiem);
             this.tt.Name = "tt";
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 266;
+            this.tt.Width = 306;
             // 
             // col_STT
             // 
@@ -831,9 +816,10 @@
             this.col_STT.FieldName = "STT_bang";
             this.col_STT.Name = "col_STT";
             this.col_STT.OptionsColumn.AllowEdit = false;
+            this.col_STT.OptionsColumn.AllowSize = false;
             this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
-            this.col_STT.Width = 39;
+            this.col_STT.Width = 34;
             // 
             // col_IDPhieu
             // 
@@ -843,7 +829,7 @@
             this.col_IDPhieu.FieldName = "MaPhieu";
             this.col_IDPhieu.Name = "col_IDPhieu";
             this.col_IDPhieu.Visible = true;
-            this.col_IDPhieu.Width = 70;
+            this.col_IDPhieu.Width = 90;
             // 
             // col_MaXetNghiem
             // 
@@ -866,7 +852,7 @@
             this.col_MaGoiXetNghiem.OptionsColumn.AllowEdit = false;
             this.col_MaGoiXetNghiem.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem.Visible = true;
-            this.col_MaGoiXetNghiem.Width = 84;
+            this.col_MaGoiXetNghiem.Width = 109;
             // 
             // LookupGoiXN
             // 
@@ -881,7 +867,9 @@
             // gridBandViTri
             // 
             this.gridBandViTri.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridBandViTri.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridBandViTri.AppearanceHeader.Options.UseFont = true;
+            this.gridBandViTri.AppearanceHeader.Options.UseForeColor = true;
             this.gridBandViTri.AppearanceHeader.Options.UseTextOptions = true;
             this.gridBandViTri.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridBandViTri.Caption = "Vị Trí Máy XN";
@@ -889,141 +877,12 @@
             this.gridBandViTri.VisibleIndex = 1;
             this.gridBandViTri.Width = 237;
             // 
-            // col_MayXN01_STT
-            // 
-            this.col_MayXN01_STT.AppearanceCell.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.col_MayXN01_STT.AppearanceCell.Options.UseBorderColor = true;
-            this.col_MayXN01_STT.AppearanceHeader.ForeColor = System.Drawing.Color.Maroon;
-            this.col_MayXN01_STT.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN01_STT.Caption = "STT Máy";
-            this.col_MayXN01_STT.FieldName = "MAYXN01.STT";
-            this.col_MayXN01_STT.Name = "col_MayXN01_STT";
-            this.col_MayXN01_STT.OptionsColumn.AllowEdit = false;
-            this.col_MayXN01_STT.Visible = true;
-            this.col_MayXN01_STT.Width = 51;
-            // 
-            // col_MayXN01_STTDia
-            // 
-            this.col_MayXN01_STTDia.AppearanceHeader.ForeColor = System.Drawing.Color.Maroon;
-            this.col_MayXN01_STTDia.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN01_STTDia.AppearanceHeader.Options.UseTextOptions = true;
-            this.col_MayXN01_STTDia.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.col_MayXN01_STTDia.Caption = "Đĩa";
-            this.col_MayXN01_STTDia.FieldName = "MAYXN01.STTDia";
-            this.col_MayXN01_STTDia.Name = "col_MayXN01_STTDia";
-            this.col_MayXN01_STTDia.OptionsColumn.AllowEdit = false;
-            this.col_MayXN01_STTDia.OptionsColumn.ReadOnly = true;
-            this.col_MayXN01_STTDia.Visible = true;
-            this.col_MayXN01_STTDia.Width = 34;
-            // 
-            // col_MayXN01_ViTri
-            // 
-            this.col_MayXN01_ViTri.AppearanceHeader.ForeColor = System.Drawing.Color.Maroon;
-            this.col_MayXN01_ViTri.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN01_ViTri.AppearanceHeader.Options.UseTextOptions = true;
-            this.col_MayXN01_ViTri.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.col_MayXN01_ViTri.Caption = "Vị Trí";
-            this.col_MayXN01_ViTri.ColumnEdit = this.LookupMayXN01;
-            this.col_MayXN01_ViTri.FieldName = "MAYXN01.ViTri";
-            this.col_MayXN01_ViTri.Name = "col_MayXN01_ViTri";
-            this.col_MayXN01_ViTri.Visible = true;
-            this.col_MayXN01_ViTri.Width = 51;
-            // 
-            // LookupMayXN01
-            // 
-            this.LookupMayXN01.AutoHeight = false;
-            this.LookupMayXN01.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.LookupMayXN01.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("STT", "STT"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ViTri", "Vị Trí"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("STTVT", "STT Vị Trí")});
-            this.LookupMayXN01.DisplayMember = "ViTri";
-            this.LookupMayXN01.Name = "LookupMayXN01";
-            this.LookupMayXN01.NullText = "0";
-            this.LookupMayXN01.ValueMember = "ViTri";
-            // 
-            // col_MayXN01_GhiChu
-            // 
-            this.col_MayXN01_GhiChu.AppearanceCell.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.col_MayXN01_GhiChu.AppearanceCell.Options.UseBorderColor = true;
-            this.col_MayXN01_GhiChu.AppearanceHeader.ForeColor = System.Drawing.Color.Maroon;
-            this.col_MayXN01_GhiChu.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN01_GhiChu.AppearanceHeader.Options.UseTextOptions = true;
-            this.col_MayXN01_GhiChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.col_MayXN01_GhiChu.Caption = "Ghi Chú";
-            this.col_MayXN01_GhiChu.FieldName = "MAYXN01.GhiChuCT";
-            this.col_MayXN01_GhiChu.Name = "col_MayXN01_GhiChu";
-            this.col_MayXN01_GhiChu.Visible = true;
-            this.col_MayXN01_GhiChu.Width = 85;
-            // 
-            // col_MayXN02_STT
-            // 
-            this.col_MayXN02_STT.AppearanceHeader.ForeColor = System.Drawing.Color.Purple;
-            this.col_MayXN02_STT.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN02_STT.Caption = "STT Máy";
-            this.col_MayXN02_STT.FieldName = "MAYXN02.STT";
-            this.col_MayXN02_STT.Name = "col_MayXN02_STT";
-            this.col_MayXN02_STT.OptionsColumn.AllowEdit = false;
-            this.col_MayXN02_STT.Visible = true;
-            this.col_MayXN02_STT.Width = 50;
-            // 
-            // col_MayXN02_STTDia
-            // 
-            this.col_MayXN02_STTDia.AppearanceHeader.ForeColor = System.Drawing.Color.Purple;
-            this.col_MayXN02_STTDia.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN02_STTDia.AppearanceHeader.Options.UseTextOptions = true;
-            this.col_MayXN02_STTDia.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.col_MayXN02_STTDia.Caption = "Đĩa";
-            this.col_MayXN02_STTDia.FieldName = "MAYXN02.STTDia";
-            this.col_MayXN02_STTDia.Name = "col_MayXN02_STTDia";
-            this.col_MayXN02_STTDia.OptionsColumn.AllowEdit = false;
-            this.col_MayXN02_STTDia.Visible = true;
-            this.col_MayXN02_STTDia.Width = 35;
-            // 
-            // col_MayXN02_ViTri
-            // 
-            this.col_MayXN02_ViTri.AppearanceHeader.ForeColor = System.Drawing.Color.Purple;
-            this.col_MayXN02_ViTri.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN02_ViTri.AppearanceHeader.Options.UseTextOptions = true;
-            this.col_MayXN02_ViTri.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.col_MayXN02_ViTri.Caption = "Vị Trí";
-            this.col_MayXN02_ViTri.ColumnEdit = this.LookupMayXN02;
-            this.col_MayXN02_ViTri.FieldName = "MAYXN02.ViTri";
-            this.col_MayXN02_ViTri.Name = "col_MayXN02_ViTri";
-            this.col_MayXN02_ViTri.Visible = true;
-            this.col_MayXN02_ViTri.Width = 64;
-            // 
-            // LookupMayXN02
-            // 
-            this.LookupMayXN02.AutoHeight = false;
-            this.LookupMayXN02.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.LookupMayXN02.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("STT", "STT"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ViTri", "Vị Trí"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("STTVT", "STT Vị Trí")});
-            this.LookupMayXN02.DisplayMember = "ViTri";
-            this.LookupMayXN02.Name = "LookupMayXN02";
-            this.LookupMayXN02.NullText = "0";
-            this.LookupMayXN02.ValueMember = "ViTri";
-            // 
-            // col_MayXN02_GhiChu
-            // 
-            this.col_MayXN02_GhiChu.AppearanceHeader.ForeColor = System.Drawing.Color.Purple;
-            this.col_MayXN02_GhiChu.AppearanceHeader.Options.UseForeColor = true;
-            this.col_MayXN02_GhiChu.AppearanceHeader.Options.UseTextOptions = true;
-            this.col_MayXN02_GhiChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.col_MayXN02_GhiChu.Caption = "Ghi Chú";
-            this.col_MayXN02_GhiChu.FieldName = "MAYXN02.GhiChuCT";
-            this.col_MayXN02_GhiChu.Name = "col_MayXN02_GhiChu";
-            this.col_MayXN02_GhiChu.Visible = true;
-            this.col_MayXN02_GhiChu.Width = 88;
-            // 
             // gridBand3
             // 
             this.gridBand3.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridBand3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.gridBand3.AppearanceHeader.Options.UseFont = true;
+            this.gridBand3.AppearanceHeader.Options.UseForeColor = true;
             this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
             this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridBand3.Caption = "Thêm";
@@ -1210,8 +1069,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupGoiXN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LookupMayXN01)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LookupMayXN02)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
@@ -1276,16 +1133,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MaGoiXetNghiem;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookupGoiXN;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandViTri;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_STT;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_STTDia;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_ViTri;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookupMayXN01;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN01_GhiChu;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_STT;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_STTDia;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_ViTri;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookupMayXN02;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MayXN02_GhiChu;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_GhiNhoChung;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_IDRow;

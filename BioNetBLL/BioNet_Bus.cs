@@ -1275,10 +1275,10 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.DuyetCapMaGanMayXN(pm);
         }
-        public static List<PSCMGanViTriChung> GetDanhSachGanXNLuu()
+        public static List<PSCMGanViTriChung> GetDanhSachGanXNLuu(string MayDucLo)
         {
             var db = new DataObjects();
-            return db.GetDanhSachGanXNLuu();
+            return db.GetDanhSachGanXNLuu(MayDucLo);
         }
         public static PsReponse SaveGanXN(PSCMGanViTriChung pm)
         {
