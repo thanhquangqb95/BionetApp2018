@@ -2632,43 +2632,35 @@ namespace BioNetDAL
         }
         public string GetMaRowIDLanGanXN(string MayDL)
         {
+            string Dau = "GVT" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day;
             string ma = string.Empty;
             try
             {
                 var res = db.PSCM_DSGanMays.FirstOrDefault(x => x.isDaDuyet != true && x.isDaXoa != true && x.IDMayDucLo.Equals(MayDL));
                 if(res!=null)
                 {
-
+                    ma = res.IDLanGanXN.ToString();
                 }
-                    var makq = (from vt in db.PSCM_GanViTris
-                                where vt.isDaDuyet != true && vt.isXoa != true
-                                select new { vt.IDLanGanXN }).OrderByDescending(x => x.IDLanGanXN).FirstOrDefault();
-                    if (makq != null)
+                else
+                {
+                    
+                    var list = db.PSCM_DSGanMays.Where(x =>x.IDLanGanXN.Contains(Dau)).ToList();
+                    if(list.Count()>0)
                     {
-                        ma = makq.IDLanGanXN.ToString();
+                        ma = Dau +list.Count()+1;
                     }
                     else
                     {
-                        var madcc = (from vt in db.PSCM_GanViTris
-                                     where vt.isDaDuyet == true && vt.isXoa!=true 
-                                     select new { vt.IDLanGanXN }).Max(x => x.IDLanGanXN);
-                        if (madcc.ToString()=="0" )
-                        {
-                            ma = "1";
-                        }
-                        else
-                        {
-                            ma = (int.Parse(madcc.ToString()) + 1).ToString();
-                        }
+                        ma = Dau + "01";
                     }
-
+                   
+                }
             }
             catch
             {
-                ma = "1";
+                ma = Dau + "E0000";
             }
             return ma;
-
         }
         public PsReponse SaveGanXN(PSCMGanViTriChung pm)
         {
@@ -2815,6 +2807,161 @@ namespace BioNetDAL
             }
             return gvc;
         }
+        public PsReponse SuaDanhSachGanXNLuuNew(PSCMGanViTriChung pm,string MayDucLo,string IDLanDucLo,string MaNV)
+        {
+            PsReponse gvc = new PsReponse();
+            try
+            {
+                var NewTable = db.PSCM_DSGanMays.FirstOrDefault(x => x.IDMayDucLo.Equals(MayDucLo) && x.isDaDuyet != true && x.isDaXoa != true && x.IDLanGanXN.Equals(IDLanDucLo));
+                if (NewTable == null)
+                {
+                    PSCM_DSGanMay ganMay = new PSCM_DSGanMay();
+                    ganMay.IDLanGanXN = IDLanDucLo;
+                    ganMay.IDMayDucLo = MayDucLo;
+                    ganMay.IDNVStart = MaNV;
+                    ganMay.DateStart = DateTime.Now;
+                    ganMay.isDaDuyet = false;
+                    ganMay.isDaXoa = false;
+                    db.PSCM_DSGanMays.InsertOnSubmit(ganMay);
+                    db.SubmitChanges();
+                }
+                    PSCM_GanViTri GanVTNew = new PSCM_GanViTri();
+                    GanVTNew.IDMayDucLo = MayDucLo;
+                    GanVTNew.MaGoiXN = pm.MaGoiXN;
+                    GanVTNew.IDLanGanXN = IDLanDucLo;
+                GanVTNew.MaXetNghiem = pm.MaXetNghiem;
+                GanVTNew.MaPhieu = pm.MaPhieu;
+                    GanVTNew.isDaDuyet = false;
+                    GanVTNew.isXoa = false;
+                    #region GanVTTest
+                    foreach (var pmMay in pm.may)
+                    {
+                        do
+                        {
+                            //var IDRowLanDL = db.PSCM_DSGanMays.FirstOrDefault(x => x.IDMayDucLo.Equals(pmMay.IDMayXN) && x.isDaDuyet != true && x.isDaXoa != true && x.IDLanGanXN.Equals(IDLanDucLo)).IDRowLanDucLo;
+                            var ganvt = db.PSMapsViTriMayXNs.Where(x => x.IDMayXN.Equals(pmMay.IDMayXN)).ToList();
+                            var listGanMay = db.PSCM_GanViTriCTs.Where(x => x.isDaDuyet != true && x.isXoa != true && x.IDLanGanXN.Equals(IDLanDucLo) && x.IDMayXN.Equals(pmMay.IDMayXN)).ToList();
+                            int STT = listGanMay.Count() + 1;
+                            int MaxViTri = ganvt.Count();
+                            int STTVTGan = STT % MaxViTri == 0 ? MaxViTri : STT % MaxViTri;
+                            long? STTDia = 1;
+                            if (STT % MaxViTri == 0)
+                            {
+                                STTDia = STT / MaxViTri;
+                            }
+                            else
+                            {
+                                STTDia = STT / MaxViTri + 1;
+                            }
+                            var VitriGan = ganvt.FirstOrDefault(x => x.IDMayXN.Equals(pmMay.IDMayXN) && x.STT == STTVTGan);
+                            if (VitriGan.isTest != true)
+                            {
+                                    PSCM_GanViTriCT ganvtCT = new PSCM_GanViTriCT();
+                                    ganvtCT.STTVT = STTVTGan;
+                                    ganvtCT.STTDia = STTDia;
+                                    ganvtCT.ViTri = VitriGan.TenViTri;
+                                    ganvtCT.isTest = false;
+                                    ganvtCT.STT = STT;
+                                    ganvtCT.IDMayXN = pmMay.IDMayXN;
+                                    ganvtCT.IDLanGanXN = IDLanDucLo;
+                                    ganvtCT.isDaDuyet = false;
+                                    ganvtCT.isXoa = false;
+                                    db.PSCM_GanViTriCTs.InsertOnSubmit(ganvtCT);
+                                    db.SubmitChanges();
+                            }
+                        }
+                        while (GanVTTest(pmMay.IDMayXN, IDLanDucLo, MayDucLo));
+                    }
+                    #endregion
+                    var lganvt = db.PSCM_GanViTris.Where(x => x.IDMayDucLo.Equals(MayDucLo) && x.isDaDuyet != true && x.isXoa != true && x.IDLanGanXN.Equals(IDLanDucLo)).ToList();
+                    GanVTNew.STT_bang = lganvt.Count + 1;
+                    db.PSCM_GanViTris.InsertOnSubmit(GanVTNew);
+                    db.SubmitChanges();
+                    var GanVTNewAdd = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(IDLanDucLo) && x.MaGoiXN.Equals(pm.MaGoiXN) && x.STT_bang==GanVTNew.STT_bang);
+                    if (GanVTNewAdd != null)
+                    {
+                        foreach (var pmMay in pm.may)
+                        {
+                            var vtct =db.PSCM_GanViTriCTs.FirstOrDefault(x => x.IDLanGanXN.Equals(IDLanDucLo) && x.IDMayXN.Equals(pmMay.IDMayXN) && x.IDRowGanXN==null);
+                        if(vtct!=null)
+                        {
+                            vtct.IDRowGanXN = GanVTNewAdd.IDRowGanXN;
+                            db.SubmitChanges();
+                        } 
+                        }
+                    }
+                   gvc.Result = true;
+                
+            }
+            catch (Exception ex)
+            {
+                gvc.Result = false;
+                gvc.StringError = ex.ToString();
+            }
+            return gvc;
+        }
+        public bool GanVTTest(string IDMayXN, string IDLanDucLo,string IDMayDucLo)
+        {
+            bool result = false;
+            try
+            {
+                var IDRowLanDL = db.PSCM_DSGanMays.FirstOrDefault(x => x.IDMayDucLo.Equals(IDMayDucLo) && x.isDaDuyet != true && x.isDaXoa != true && x.IDLanGanXN.Equals(IDLanDucLo)).IDRowLanDucLo;
+                var lganvt = db.PSCM_GanViTris.Where(x => x.IDMayDucLo.Equals(IDMayDucLo) && x.isDaDuyet != true && x.isXoa != true && x.IDLanGanXN.Equals(IDLanDucLo)).ToList();
+                int STTBang = lganvt.Count + 1;
+                var ganvt = db.PSMapsViTriMayXNs.Where(x => x.IDMayXN.Equals(IDMayXN)).ToList();
+                var listGanMay = db.PSCM_GanViTriCTs.Where(x => x.isDaDuyet != true && x.isXoa != true && x.IDLanGanXN.Equals(IDLanDucLo) && x.IDMayXN.Equals(IDMayXN)).ToList();
+                int STT = listGanMay.Count() + 1;
+                int MaxViTri = ganvt.Count();
+                int STTVTGan = STT % MaxViTri == 0 ? MaxViTri : STT % MaxViTri;
+                long? STTDia = 1;
+                if (STT % MaxViTri == 0)
+                {
+                    STTDia = STT / MaxViTri;
+                }
+                else
+                {
+                    STTDia = STT / MaxViTri + 1;
+                }
+                var VitriGan = ganvt.FirstOrDefault(x => x.IDMayXN.Equals(IDMayXN) && x.STT == STTVTGan);
+                if(VitriGan.isTest==true)
+                {
+                    PSCM_GanViTri GanVTNew = new PSCM_GanViTri();
+                    GanVTNew.STT_bang = STTBang;
+                    GanVTNew.MaGoiXN = "DVTest";
+                    GanVTNew.IDLanGanXN = IDLanDucLo;
+                    GanVTNew.isDaDuyet = false;
+                    GanVTNew.isXoa = false;
+                    GanVTNew.IDMayDucLo = IDMayDucLo;
+                    GanVTNew.MaXetNghiem = VitriGan.GiaTriTest;
+                    db.PSCM_GanViTris.InsertOnSubmit(GanVTNew);
+                    db.SubmitChanges();
+                    var GanVTNewAdd = db.PSCM_GanViTris.FirstOrDefault(x => x.IDLanGanXN.Equals(IDLanDucLo) && x.MaGoiXN.Equals("DVTest") && x.STT_bang.Equals(STTBang));
+                    if (GanVTNew != null)
+                    {
+                        PSCM_GanViTriCT ganvtCT = new PSCM_GanViTriCT();
+                        ganvtCT.STTVT = STTVTGan;
+                        ganvtCT.STTDia = STTDia;
+                        ganvtCT.ViTri = VitriGan.TenViTri;
+                        ganvtCT.isTest = true;
+                        ganvtCT.STT = STT;
+                        ganvtCT.IDMayXN = IDMayXN;
+                        ganvtCT.IDLanGanXN = IDLanDucLo;
+                        ganvtCT.IDRowGanXN = GanVTNew.IDRowGanXN;
+                        ganvtCT.isDaDuyet = false;
+                        ganvtCT.isXoa = false;
+                        db.PSCM_GanViTriCTs.InsertOnSubmit(ganvtCT);
+                        db.SubmitChanges();
+                    }
+                    result = true;
+                }
+            
+            }
+            catch
+            {
+            }
+            return result;
+        }
+        
         public PsReponse ThemGhiChuGanVT(PSCMGanViTriChung pm)
         {
             PsReponse gvc = new PsReponse();
@@ -2866,7 +3013,6 @@ namespace BioNetDAL
             try
             {
                 db.PSCM_DSGanMays.FirstOrDefault(x => x.IDMayDucLo.Equals(MayDucLo) && x.isDaDuyet != true && x.isDaXoa != true);
-                if()
             }
             catch
             {

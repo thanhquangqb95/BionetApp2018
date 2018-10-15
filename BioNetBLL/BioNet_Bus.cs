@@ -1219,17 +1219,22 @@ namespace BioNetBLL
             return lst;
         }
         
-        public static string GetMaRowIDLanGanXN()
+        public static string GetMaRowIDLanGanXN(string MaMayDL)
         {
             var db = new DataObjects();
-            return db.GetMaRowIDLanGanXN();
+            return db.GetMaRowIDLanGanXN(MaMayDL);
         }
         public static PsReponse SuaDanhSachGanXNLuu(PSCMGanViTriChung pm)
         {
             var db = new DataObjects();
             return db.SuaDanhSachGanXNLuu(pm);
         }
-        public static bool GetMaPhieuDaCoDSCapVT(string MaPhieu)
+        public static PsReponse SuaDanhSachGanXNLuuNew(PSCMGanViTriChung pm, string MayDucLo, string IDLanDucLo, string MaNV)
+        {
+            var db = new DataObjects();
+            return db.SuaDanhSachGanXNLuuNew(pm,MayDucLo,IDLanDucLo,MaNV);
+        }
+            public static bool GetMaPhieuDaCoDSCapVT(string MaPhieu)
         {
             var db = new DataObjects();
             return db.GetMaPhieuDaCoDSCapVT(MaPhieu);
