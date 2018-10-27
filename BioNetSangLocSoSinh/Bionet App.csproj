@@ -63,7 +63,6 @@
     <Reference Include="DevExpress.BonusSkins.v17.1" />
     <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Docs.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Spreadsheet.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeMap.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -620,6 +619,12 @@
     <Compile Include="FrmReports\urcReporTinhTrangMau.Designer.cs">
       <DependentUpon>urcReporTinhTrangMau.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReports\FrmBaoBaoTheoDonVI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReports\FrmBaoBaoTheoDonVI.Designer.cs">
+      <DependentUpon>FrmBaoBaoTheoDonVI.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmStartup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -768,11 +773,11 @@
     <Compile Include="Reports\rptDanhSachDaCapMaXetNghiem.Designer.cs">
       <DependentUpon>rptDanhSachDaCapMaXetNghiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptPhieuPDFTraKQ_TheoDonVi3.cs">
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi3.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptPhieuPDFTraKQ_TheoDonVi3.Designer.cs">
-      <DependentUpon>rptPhieuPDFTraKQ_TheoDonVi3.cs</DependentUpon>
+    <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi3.Designer.cs">
+      <DependentUpon>rptPhieuTraKetQua_TheoDonVi3.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\TraKetQua\rptPhieuTraKetQua.cs">
       <SubType>Component</SubType>
@@ -815,6 +820,12 @@
     </Compile>
     <Compile Include="Reports\rptPhieuViewTT.Designer.cs">
       <DependentUpon>rptPhieuViewTT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReports\FrmBaoCaoTheoPattent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReports\FrmBaoCaoTheoPattent.Designer.cs">
+      <DependentUpon>FrmBaoCaoTheoPattent.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\TextBoxTyping.cs">
       <SubType>Component</SubType>
@@ -1076,6 +1087,9 @@
     <EmbeddedResource Include="FrmReports\urcReporTinhTrangMau.resx">
       <DependentUpon>urcReporTinhTrangMau.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmReports\FrmBaoBaoTheoDonVI.resx">
+      <DependentUpon>FrmBaoBaoTheoDonVI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmStartup.resx">
       <DependentUpon>FrmStartup.cs</DependentUpon>
     </EmbeddedResource>
@@ -1161,8 +1175,8 @@
     <EmbeddedResource Include="Reports\rptDanhSachDaCapMaXetNghiem.resx">
       <DependentUpon>rptDanhSachDaCapMaXetNghiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPhieuPDFTraKQ_TheoDonVi3.resx">
-      <DependentUpon>rptPhieuPDFTraKQ_TheoDonVi3.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\TraKetQua\rptPhieuTraKetQua_TheoDonVi3.resx">
+      <DependentUpon>rptPhieuTraKetQua_TheoDonVi3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\TraKetQua\rptPhieuTraKetQua.resx">
       <DependentUpon>rptPhieuTraKetQua.cs</DependentUpon>
@@ -1184,6 +1198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPhieuViewTT.resx">
       <DependentUpon>rptPhieuViewTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReports\FrmBaoCaoTheoPattent.resx">
+      <DependentUpon>FrmBaoCaoTheoPattent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ucBaoCaoDonVi.resx">
       <DependentUpon>ucBaoCaoDonVi.cs</DependentUpon>
@@ -1277,6 +1294,7 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\pie-chart.png" />
     <None Include="Resources\shield1.png" />
     <None Include="Resources\shield.png" />
     <None Include="Resources\shield %281%29.png" />
@@ -1335,6 +1353,7 @@
     <None Include="Resources\debit-card.png" />
     <None Include="Resources\drill.png" />
     <None Include="Resources\conveyor.png" />
+    <None Include="Resources\bar-chart.png" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
@@ -1364,6 +1383,8 @@
     <None Include="Resources\mail %281%29.png" />
     <None Include="Resources\if_back3_216570.png" />
     <None Include="Resources\information %281%29.png" />
+    <None Include="Resources\filter1.png" />
+    <None Include="Resources\graph.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />

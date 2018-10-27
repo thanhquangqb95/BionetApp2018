@@ -1348,6 +1348,7 @@ namespace BioNetDAL
                     dmdonViCS.EmailTC = donViCS.EmailTC;
                     dmdonViCS.isGuiMailTC = donViCS.isGuiMailTC;
                     dmdonViCS.isChoPhepGuiSMS= donViCS.isChoPhepGuiSMS;
+                    dmdonViCS.VietTatDV = donViCS.VietTatDV;
                 }
                    //dmdonViCS.MaDVCS = donViCS.MaDVCS;
                    // dmdonViCS.MaChiCuc = donViCS.MaChiCuc;

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTraKetQuaNew));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xTabChuaCoKetQua = new DevExpress.XtraTab.XtraTabPage();
@@ -714,9 +714,9 @@
             this.btnClear_ChuaCoKQ.Location = new System.Drawing.Point(209, 149);
             this.btnClear_ChuaCoKQ.Name = "btnClear_ChuaCoKQ";
             this.btnClear_ChuaCoKQ.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear_ChuaCoKQ.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Bỏ lọc";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.btnClear_ChuaCoKQ.SuperTip = superToolTip3;
             this.btnClear_ChuaCoKQ.TabIndex = 35;
             // 
             // btnCapNhatDSChuaCoKQ
@@ -894,7 +894,7 @@
             this.xTabDaCoKetQua.Controls.Add(this.panelControl5);
             this.xTabDaCoKetQua.Controls.Add(this.panelControl4);
             this.xTabDaCoKetQua.Name = "xTabDaCoKetQua";
-            this.xTabDaCoKetQua.Size = new System.Drawing.Size(305, 640);
+            this.xTabDaCoKetQua.Size = new System.Drawing.Size(305, 638);
             this.xTabDaCoKetQua.Text = "Đã có kết quả cuối";
             // 
             // GCDaTraKetQua
@@ -909,7 +909,7 @@
             this.repositoryItemCheckEdit2,
             this.repositoryItemCheckEdit3,
             this.repositoryItemCheckEdit5});
-            this.GCDaTraKetQua.Size = new System.Drawing.Size(305, 426);
+            this.GCDaTraKetQua.Size = new System.Drawing.Size(305, 424);
             this.GCDaTraKetQua.TabIndex = 4;
             this.GCDaTraKetQua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDaTraKetQua});
@@ -1061,7 +1061,7 @@
             // 
             this.panelControl5.Controls.Add(this.btnLuuNhieuPDF);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl5.Location = new System.Drawing.Point(0, 609);
+            this.panelControl5.Location = new System.Drawing.Point(0, 607);
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(305, 31);
             this.panelControl5.TabIndex = 3;
@@ -1178,9 +1178,9 @@
             this.simpleButton1.Location = new System.Drawing.Point(211, 150);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem2.Text = "Bỏ lọc";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.simpleButton1.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Bỏ lọc";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.simpleButton1.SuperTip = superToolTip4;
             this.simpleButton1.TabIndex = 51;
             // 
             // simpleButton5
@@ -1972,7 +1972,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tĩnh mạch", "1", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("N/A", "2", -1)});
             this.cbbViTriLayMau.Properties.ReadOnly = true;
-            this.cbbViTriLayMau.Size = new System.Drawing.Size(363, 20);
+            this.cbbViTriLayMau.Size = new System.Drawing.Size(362, 20);
             this.cbbViTriLayMau.TabIndex = 39;
             // 
             // txtTenDVCS
@@ -1984,7 +1984,7 @@
             this.txtTenDVCS.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.txtTenDVCS.Properties.Appearance.Options.UseBackColor = true;
             this.txtTenDVCS.Properties.ReadOnly = true;
-            this.txtTenDVCS.Size = new System.Drawing.Size(334, 20);
+            this.txtTenDVCS.Size = new System.Drawing.Size(333, 20);
             this.txtTenDVCS.TabIndex = 38;
             // 
             // txtMaDonVi
@@ -2011,7 +2011,7 @@
             this.txtNgayNhanMau.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtNgayNhanMau.Properties.ReadOnly = true;
-            this.txtNgayNhanMau.Size = new System.Drawing.Size(160, 20);
+            this.txtNgayNhanMau.Size = new System.Drawing.Size(159, 20);
             this.txtNgayNhanMau.TabIndex = 35;
             // 
             // labelControl8
@@ -2031,7 +2031,7 @@
             this.txtDiaChiNoiLayMau.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtDiaChiNoiLayMau.Properties.Appearance.Options.UseBackColor = true;
             this.txtDiaChiNoiLayMau.Properties.ReadOnly = true;
-            this.txtDiaChiNoiLayMau.Size = new System.Drawing.Size(364, 20);
+            this.txtDiaChiNoiLayMau.Size = new System.Drawing.Size(363, 20);
             this.txtDiaChiNoiLayMau.TabIndex = 25;
             // 
             // labelControl39
@@ -2066,7 +2066,7 @@
             this.txtSDTNguoiLayMau.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtSDTNguoiLayMau.Properties.Appearance.Options.UseBackColor = true;
             this.txtSDTNguoiLayMau.Properties.ReadOnly = true;
-            this.txtSDTNguoiLayMau.Size = new System.Drawing.Size(160, 20);
+            this.txtSDTNguoiLayMau.Size = new System.Drawing.Size(159, 20);
             this.txtSDTNguoiLayMau.TabIndex = 27;
             // 
             // txtNguoiLayMau
@@ -2088,7 +2088,7 @@
             this.txtNoiLayMau.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtNoiLayMau.Properties.Appearance.Options.UseBackColor = true;
             this.txtNoiLayMau.Properties.ReadOnly = true;
-            this.txtNoiLayMau.Size = new System.Drawing.Size(364, 20);
+            this.txtNoiLayMau.Size = new System.Drawing.Size(363, 20);
             this.txtNoiLayMau.TabIndex = 24;
             // 
             // labelControl7
@@ -2157,7 +2157,7 @@
             this.cbbGoiXN.Properties.PopupSizeable = false;
             this.cbbGoiXN.Properties.ReadOnly = true;
             this.cbbGoiXN.Properties.ValueMember = "IDGoiDichVuChung";
-            this.cbbGoiXN.Size = new System.Drawing.Size(363, 20);
+            this.cbbGoiXN.Size = new System.Drawing.Size(362, 20);
             this.cbbGoiXN.TabIndex = 33;
             // 
             // panelControl1
@@ -2430,6 +2430,7 @@
             this.txtTraKQ.Name = "txtTraKQ";
             this.txtTraKQ.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtTraKQ.Properties.Appearance.Options.UseBackColor = true;
+            this.txtTraKQ.Properties.ReadOnly = true;
             this.txtTraKQ.Size = new System.Drawing.Size(329, 20);
             this.txtTraKQ.TabIndex = 24;
             // 
@@ -2450,6 +2451,7 @@
             this.txtNhapKQ2.Name = "txtNhapKQ2";
             this.txtNhapKQ2.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtNhapKQ2.Properties.Appearance.Options.UseBackColor = true;
+            this.txtNhapKQ2.Properties.ReadOnly = true;
             this.txtNhapKQ2.Size = new System.Drawing.Size(329, 20);
             this.txtNhapKQ2.TabIndex = 22;
             // 
@@ -2461,6 +2463,7 @@
             this.txtNVNhapKQ1.Name = "txtNVNhapKQ1";
             this.txtNVNhapKQ1.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtNVNhapKQ1.Properties.Appearance.Options.UseBackColor = true;
+            this.txtNVNhapKQ1.Properties.ReadOnly = true;
             this.txtNVNhapKQ1.Size = new System.Drawing.Size(329, 20);
             this.txtNVNhapKQ1.TabIndex = 21;
             // 
@@ -2517,6 +2520,7 @@
             this.txtMaXetNghiem.Name = "txtMaXetNghiem";
             this.txtMaXetNghiem.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.txtMaXetNghiem.Properties.Appearance.Options.UseBackColor = true;
+            this.txtMaXetNghiem.Properties.ReadOnly = true;
             this.txtMaXetNghiem.Size = new System.Drawing.Size(148, 20);
             this.txtMaXetNghiem.TabIndex = 2;
             this.txtMaXetNghiem.EditValueChanged += new System.EventHandler(this.txtMaXetNghiem_EditValueChanged);

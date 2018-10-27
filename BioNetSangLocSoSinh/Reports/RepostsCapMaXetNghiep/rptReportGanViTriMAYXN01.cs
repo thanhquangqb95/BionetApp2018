@@ -74,7 +74,7 @@ namespace BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep
         {
             try
             {
-                mapViTri.AddRange(BioNet_Bus.GetDSMapViTriMayXN("MAYXN01"));
+                mapViTri.AddRange(BioNet_Bus.GetDSMapViTriMayXN("MAYXN001"));
             }
             catch
             {

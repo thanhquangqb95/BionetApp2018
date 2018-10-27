@@ -4,5 +4,6 @@
   <servername>BIONET_LETHANHQ\SQLEXPRESS</servername>
   <username>sa</username>
   <password>bionetvietnam</password>
-  <database>Bio_TestSync</database>
+  <database>Bio_TestSync_Cu</database>
+ <!--<database>Bio_TestSync</database> -->
 </serverInfo>

@@ -1562,6 +1562,42 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             catch { }
         }
+
+        private void barButtonItem70_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                Entry.FrmQuanLyMauDuongTinh frm = new Entry.FrmQuanLyMauDuongTinh();
+                TabCreating(xTabMain, "Danh sách lọc dương tính", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
+
+        private void barButtonItem71_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                FrmReports.FrmBaoCaoTheoPattent frm = new FrmReports.FrmBaoCaoTheoPattent();
+                TabCreating(xTabMain, "Thông kê theo dịch vụ", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
+
+        private void barButtonItem72_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                FrmReports.FrmBaoBaoTheoDonVI frm = new FrmReports.FrmBaoBaoTheoDonVI();
+                TabCreating(xTabMain, "Thông kê theo đơn vị", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
     }
 
 }

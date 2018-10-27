@@ -142,6 +142,10 @@
             this.barSubItem11 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem68 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem69 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem70 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem12 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem71 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem72 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCategory2 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -172,6 +176,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonPage9 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.barSubItem13 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -289,9 +294,14 @@
             this.barButtonItem67,
             this.barSubItem11,
             this.barButtonItem68,
-            this.barButtonItem69});
+            this.barButtonItem69,
+            this.barButtonItem70,
+            this.barSubItem12,
+            this.barButtonItem71,
+            this.barButtonItem72,
+            this.barSubItem13});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 36;
+            this.ribbon.MaxItemId = 41;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1,
@@ -1263,6 +1273,41 @@
             this.barButtonItem69.Id = 35;
             this.barButtonItem69.Name = "barButtonItem69";
             // 
+            // barButtonItem70
+            // 
+            this.barButtonItem70.Caption = "Lọc mẫu dương tính";
+            this.barButtonItem70.Id = 36;
+            this.barButtonItem70.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.filter1;
+            this.barButtonItem70.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.filter1;
+            this.barButtonItem70.Name = "barButtonItem70";
+            this.barButtonItem70.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem70_ItemClick);
+            // 
+            // barSubItem12
+            // 
+            this.barSubItem12.Caption = "Báo cáo mới";
+            this.barSubItem12.Id = 37;
+            this.barSubItem12.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.graph;
+            this.barSubItem12.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem71),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem72)});
+            this.barSubItem12.Name = "barSubItem12";
+            // 
+            // barButtonItem71
+            // 
+            this.barButtonItem71.Caption = "Báo cáo theo dịch vụ";
+            this.barButtonItem71.Id = 38;
+            this.barButtonItem71.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pie_chart;
+            this.barButtonItem71.Name = "barButtonItem71";
+            this.barButtonItem71.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem71_ItemClick);
+            // 
+            // barButtonItem72
+            // 
+            this.barButtonItem72.Caption = "Thống kê theo đơn vị";
+            this.barButtonItem72.Id = 39;
+            this.barButtonItem72.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.bar_chart;
+            this.barButtonItem72.Name = "barButtonItem72";
+            this.barButtonItem72.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem72_ItemClick);
+            // 
             // ribbonPageCategory1
             // 
             this.ribbonPageCategory1.Name = "ribbonPageCategory1";
@@ -1338,10 +1383,10 @@
             // ribbonPageGroup12
             // 
             this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem48);
-            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem49);
             this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem50);
-            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem51);
             this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem66);
+            this.ribbonPageGroup12.ItemLinks.Add(this.barSubItem13);
+            this.ribbonPageGroup12.ItemLinks.Add(this.barSubItem12);
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             this.ribbonPageGroup12.Text = "Báo Cáo Đơn Vị";
             this.ribbonPageGroup12.Visible = false;
@@ -1394,6 +1439,7 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem65);
             this.ribbonPageGroup4.ItemLinks.Add(this.barSubItem9);
             this.ribbonPageGroup4.ItemLinks.Add(this.barSubItem10);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem70);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Sữa Lỗi Phiếu";
             // 
@@ -1515,6 +1561,15 @@
             // 
             this.ribbonPage9.Name = "ribbonPage9";
             this.ribbonPage9.Text = "ribbonPage9";
+            // 
+            // barSubItem13
+            // 
+            this.barSubItem13.Caption = "Báo cáo tài chính";
+            this.barSubItem13.Id = 40;
+            this.barSubItem13.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem49),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem51)});
+            this.barSubItem13.Name = "barSubItem13";
             // 
             // FrmStartup
             // 
@@ -1683,5 +1738,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem68;
         private DevExpress.XtraBars.BarButtonItem barButtonItem69;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem70;
+        private DevExpress.XtraBars.BarSubItem barSubItem12;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem71;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem72;
+        private DevExpress.XtraBars.BarSubItem barSubItem13;
     }
 }

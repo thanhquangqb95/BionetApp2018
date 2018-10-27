@@ -89,6 +89,8 @@
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.col_GhiNhoChung = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_IDRow = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.LookUpEditMAYXN001 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.LookUpEditMAYXN002 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.btnExportReview = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuyDanhSach = new DevExpress.XtraEditors.SimpleButton();
@@ -129,6 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupGoiXN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditMAYXN001)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditMAYXN002)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).BeginInit();
@@ -288,7 +292,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaXetNghiem", "Tổng: {0} mẫu")});
             this.col_MaXN_GCChuaCoKQ.Visible = true;
             this.col_MaXN_GCChuaCoKQ.VisibleIndex = 0;
-            this.col_MaXN_GCChuaCoKQ.Width = 104;
+            this.col_MaXN_GCChuaCoKQ.Width = 131;
             // 
             // col_MaKQ_GCChuaCoKQ
             // 
@@ -352,7 +356,7 @@
             this.col_MaPhieu_GCChuaCoKQ.OptionsColumn.AllowEdit = false;
             this.col_MaPhieu_GCChuaCoKQ.Visible = true;
             this.col_MaPhieu_GCChuaCoKQ.VisibleIndex = 1;
-            this.col_MaPhieu_GCChuaCoKQ.Width = 102;
+            this.col_MaPhieu_GCChuaCoKQ.Width = 87;
             // 
             // col_isDaDuyet
             // 
@@ -384,7 +388,7 @@
             this.col_NgayLamXN.Name = "col_NgayLamXN";
             this.col_NgayLamXN.Visible = true;
             this.col_NgayLamXN.VisibleIndex = 2;
-            this.col_NgayLamXN.Width = 80;
+            this.col_NgayLamXN.Width = 68;
             // 
             // panelControl1
             // 
@@ -732,7 +736,9 @@
             this.GCDanhSachGanViTri.MainView = this.GVDanhSachGanViTri;
             this.GCDanhSachGanViTri.Name = "GCDanhSachGanViTri";
             this.GCDanhSachGanViTri.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.LookupGoiXN});
+            this.LookupGoiXN,
+            this.LookUpEditMAYXN001,
+            this.LookUpEditMAYXN002});
             this.GCDanhSachGanViTri.Size = new System.Drawing.Size(993, 629);
             this.GCDanhSachGanViTri.TabIndex = 31;
             this.GCDanhSachGanViTri.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -806,7 +812,7 @@
             this.tt.Columns.Add(this.col_MaGoiXetNghiem);
             this.tt.Name = "tt";
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 306;
+            this.tt.Width = 323;
             // 
             // col_STT
             // 
@@ -819,7 +825,7 @@
             this.col_STT.OptionsColumn.AllowSize = false;
             this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
-            this.col_STT.Width = 34;
+            this.col_STT.Width = 39;
             // 
             // col_IDPhieu
             // 
@@ -829,7 +835,7 @@
             this.col_IDPhieu.FieldName = "MaPhieu";
             this.col_IDPhieu.Name = "col_IDPhieu";
             this.col_IDPhieu.Visible = true;
-            this.col_IDPhieu.Width = 90;
+            this.col_IDPhieu.Width = 84;
             // 
             // col_MaXetNghiem
             // 
@@ -839,7 +845,7 @@
             this.col_MaXetNghiem.FieldName = "MaXetNghiem";
             this.col_MaXetNghiem.Name = "col_MaXetNghiem";
             this.col_MaXetNghiem.Visible = true;
-            this.col_MaXetNghiem.Width = 73;
+            this.col_MaXetNghiem.Width = 83;
             // 
             // col_MaGoiXetNghiem
             // 
@@ -852,7 +858,7 @@
             this.col_MaGoiXetNghiem.OptionsColumn.AllowEdit = false;
             this.col_MaGoiXetNghiem.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem.Visible = true;
-            this.col_MaGoiXetNghiem.Width = 109;
+            this.col_MaGoiXetNghiem.Width = 117;
             // 
             // LookupGoiXN
             // 
@@ -861,7 +867,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.LookupGoiXN.DisplayMember = "TenGoiDichVuChung";
             this.LookupGoiXN.Name = "LookupGoiXN";
-            this.LookupGoiXN.NullText = "0";
+            this.LookupGoiXN.NullText = "";
             this.LookupGoiXN.ValueMember = "IDGoiDichVuChung";
             // 
             // gridBandViTri
@@ -875,7 +881,7 @@
             this.gridBandViTri.Caption = "Vị Trí Máy XN";
             this.gridBandViTri.Name = "gridBandViTri";
             this.gridBandViTri.VisibleIndex = 1;
-            this.gridBandViTri.Width = 237;
+            this.gridBandViTri.Width = 313;
             // 
             // gridBand3
             // 
@@ -889,7 +895,7 @@
             this.gridBand3.Columns.Add(this.col_GhiNhoChung);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 254;
+            this.gridBand3.Width = 340;
             // 
             // col_GhiNhoChung
             // 
@@ -899,13 +905,41 @@
             this.col_GhiNhoChung.FieldName = "GhiChuChung";
             this.col_GhiNhoChung.Name = "col_GhiNhoChung";
             this.col_GhiNhoChung.Visible = true;
-            this.col_GhiNhoChung.Width = 254;
+            this.col_GhiNhoChung.Width = 340;
             // 
             // col_IDRow
             // 
             this.col_IDRow.Caption = "IDRow";
             this.col_IDRow.FieldName = "IDRowGanXN";
             this.col_IDRow.Name = "col_IDRow";
+            // 
+            // LookUpEditMAYXN001
+            // 
+            this.LookUpEditMAYXN001.AutoHeight = false;
+            this.LookUpEditMAYXN001.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.LookUpEditMAYXN001.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("STT", "STT"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ViTri", "Vị Trí"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Đĩa", "STTDia"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("isTest", "Test")});
+            this.LookUpEditMAYXN001.DisplayMember = "ViTri";
+            this.LookUpEditMAYXN001.Name = "LookUpEditMAYXN001";
+            this.LookUpEditMAYXN001.ValueMember = "ViTri";
+            // 
+            // LookUpEditMAYXN002
+            // 
+            this.LookUpEditMAYXN002.AutoHeight = false;
+            this.LookUpEditMAYXN002.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.LookUpEditMAYXN002.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("STT", "STT"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ViTri", "Vị Trí"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("STTDia", "Đĩa"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("isTest", "Test")});
+            this.LookUpEditMAYXN002.DisplayMember = "ViTri";
+            this.LookUpEditMAYXN002.Name = "LookUpEditMAYXN002";
+            this.LookUpEditMAYXN002.ValueMember = "ViTri";
             // 
             // panelControl6
             // 
@@ -1069,6 +1103,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupGoiXN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditMAYXN001)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookUpEditMAYXN002)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
@@ -1148,5 +1184,7 @@
         private DevExpress.XtraEditors.TextEdit txtMaPhieu;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.Columns.GridColumn col_NgayLamXN;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditMAYXN001;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditMAYXN002;
     }
 }

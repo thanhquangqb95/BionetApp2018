@@ -64,7 +64,6 @@ namespace BioNetSangLocSoSinh.FrmReports
 
         private void LoadDuLieuDieuKienLoc()
         {
-            this.cbbTenXN.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
             var DMThongSo = BioNet_Bus.GetThongSoXN();
             if (DMThongSo != null)
             {
@@ -398,20 +397,6 @@ namespace BioNetSangLocSoSinh.FrmReports
             }
         }
 
-        private void labelControl41_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLoc_Click(object sender, EventArgs e)
-        {
-            string filterMaDV = "["+"] Between(" + txtMin.Text + "," + txtMax.Text +")";
-            GVBaoCaoTuyChon.Columns["NgayLamXetNghiem"].FilterInfo = new ColumnFilterInfo(filterMaDV);
-        }
+       
     }
 }

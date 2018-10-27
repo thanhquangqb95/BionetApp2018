@@ -80,9 +80,16 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         donVi.SDTCS = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "SDTCS").ToString();
                     }
-
-                   // donVi.Email = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, col_th_Email).ToString();
-                    if(gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "EmailTC")==null)
+                    if (gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "VietTatDV") == null)
+                    {
+                        donVi.VietTatDV = string.Empty;
+                    }
+                    else
+                    {
+                        donVi.VietTatDV = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "VietTatDV").ToString();
+                    }
+                    // donVi.Email = gridView_DonViCoSo.GetRowCellValue(e.RowHandle, col_th_Email).ToString();
+                    if (gridView_DonViCoSo.GetRowCellValue(e.RowHandle, "EmailTC")==null)
                     {
                         donVi.EmailTC = string.Empty;
                     }

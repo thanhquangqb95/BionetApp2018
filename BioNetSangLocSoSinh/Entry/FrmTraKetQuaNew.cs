@@ -56,6 +56,13 @@ namespace BioNetSangLocSoSinh.Entry
             try
             {
                 this.lstgoiXN = BioNet_Bus.GetDanhsachGoiDichVuChung();
+                PSDanhMucGoiDichVuChung goi4 = new PSDanhMucGoiDichVuChung();
+                goi4.IDGoiDichVuChung = "ALL";
+                goi4.TenGoiDichVuChung = "Tất cả";
+                goi4.Stt = 7;
+                goi4.DonGia = 0;
+                goi4.ChietKhau = 0;
+                this.lstgoiXN.Add(goi4);
                 this.cbbGoiXNLoc_ChuaCoKQ.Properties.DataSource = this.lstgoiXN;
                 this.cbbGoiLocXN_CoKQ.Properties.DataSource = this.lstgoiXN;
                 this.lstChiCuc.Clear();
@@ -705,8 +712,7 @@ namespace BioNetSangLocSoSinh.Entry
                     if (kieuTraKQ == 1) // Cần sửa chỗ này, cho chọn động loat report theo cấu hình của đơn vị
                     {
                        Reports.rptPhieuTraKetQua datarp = new Reports.rptPhieuTraKetQua();
-                        // Reports.rptPhieuTraKetQua_TheoDonVi datarp = new Reports.rptPhieuTraKetQua_TheoDonVi();
-                        // Reports.rptPhieuTraKetQua_TheoDonVi datarp = new Reports.rptPhieuTraKetQua_TheoDonVi();
+                        //Reports.rptPhieuTraKetQua_TheoDonVi3 datarp = new Reports.rptPhieuTraKetQua_TheoDonVi3();
                         datarp.DataSource = data;
                         string name = data.MaPhieu.ToString();
                         string madvcs = data.ThongTinDonVi.MaDonVi.ToString();

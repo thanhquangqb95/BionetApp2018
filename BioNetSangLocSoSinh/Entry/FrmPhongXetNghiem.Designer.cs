@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPhongXetNghiem));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -552,9 +552,9 @@
             this.btnClear.Location = new System.Drawing.Point(241, 130);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(60, 23);
-            toolTipTitleItem3.Text = "Bỏ lọc";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.btnClear.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 35;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -779,7 +779,7 @@
             this.xTabDaCoKetQua.Controls.Add(this.panelControl8);
             this.xTabDaCoKetQua.Controls.Add(this.panelControl3);
             this.xTabDaCoKetQua.Name = "xTabDaCoKetQua";
-            this.xTabDaCoKetQua.Size = new System.Drawing.Size(306, 823);
+            this.xTabDaCoKetQua.Size = new System.Drawing.Size(306, 821);
             this.xTabDaCoKetQua.Text = "Đã có kết quả";
             // 
             // GCDaCoKetQua
@@ -791,7 +791,7 @@
             this.GCDaCoKetQua.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpDonVi,
             this.LookUpGoiXN_GCDaCoKQ});
-            this.GCDaCoKetQua.Size = new System.Drawing.Size(306, 623);
+            this.GCDaCoKetQua.Size = new System.Drawing.Size(306, 621);
             this.GCDaCoKetQua.TabIndex = 4;
             this.GCDaCoKetQua.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDaCoKetQua});
@@ -962,9 +962,9 @@
             this.btnClearCoKQ.Location = new System.Drawing.Point(240, 132);
             this.btnClearCoKQ.Name = "btnClearCoKQ";
             this.btnClearCoKQ.Size = new System.Drawing.Size(60, 23);
-            toolTipTitleItem4.Text = "Bỏ lọc";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.btnClearCoKQ.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Bỏ lọc";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnClearCoKQ.SuperTip = superToolTip2;
             this.btnClearCoKQ.TabIndex = 49;
             // 
             // labelControl10
@@ -1188,7 +1188,7 @@
             // 
             this.panelControl3.Controls.Add(this.btnImportChange);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(0, 785);
+            this.panelControl3.Location = new System.Drawing.Point(0, 783);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(306, 38);
             this.panelControl3.TabIndex = 1;

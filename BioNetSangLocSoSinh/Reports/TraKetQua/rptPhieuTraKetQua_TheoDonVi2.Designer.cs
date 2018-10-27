@@ -144,6 +144,7 @@
             this.xrTableRow2});
             this.xrTable3.SizeF = new System.Drawing.SizeF(796.9999F, 25F);
             this.xrTable3.StylePriority.UseFont = false;
+            this.xrTable3.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.xrTable3_BeforePrint);
             // 
             // xrTableRow2
             // 
@@ -163,6 +164,7 @@
             this.txtTenDichVu.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.txtTenDichVu.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "chitietKetQua.TenDichVu")});
+            this.txtTenDichVu.Multiline = true;
             this.txtTenDichVu.Name = "txtTenDichVu";
             this.txtTenDichVu.Padding = new DevExpress.XtraPrinting.PaddingInfo(15, 0, 0, 0, 100F);
             this.txtTenDichVu.StylePriority.UseBorders = false;
