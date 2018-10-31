@@ -24,7 +24,6 @@ namespace BioNetSangLocSoSinh.Entry
         {
             try
             {
-
                 this.lstgoiXN = BioNet_Bus.GetDanhsachGoiDichVuChung();
                 this.LookUpEditGoiXN.DataSource = null;
                 this.LookUpEditGoiXN.DataSource = this.lstgoiXN;

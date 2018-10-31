@@ -32,6 +32,8 @@ namespace BioNetModel
         public string MaDV { get; set; }
         public List<PSThongKeChiTiet> PsThongKeCT {get;set;}
         public PSThongKePPSinh PSTKPPSinh { get; set; }
+        public PSThongKeTuoiMe PSThongKeTuoiMe { get; set; }
+        public PSThongKeCanNang PSThongKeCanNang { get; set; }
     }
     public class PSThongKeChiTiet
     {
@@ -48,10 +50,26 @@ namespace BioNetModel
     public class PSThongKeTuoiMe
     {
         public int Duoi13 { get; set; }
-        public int TUoi14 { get; set; }
+        public int Tuoi14 { get; set; }
         public int Tuoi15 { get; set; }
         public int Tuoi16 { get; set; }
         public int Tuoi17 { get; set; }
-        public int Tuoi15 { get; set; }
+        public int Tuoi17den20 { get; set; }
+        public int Tuoi20den25 { get; set; }
+        public int Tuoi25den30 { get; set; }
+        public int Tuoi30den35 { get; set; }
+        public int Tuoi35den40 { get; set; }
+        public int Tuoi40den45 { get; set; }
+        public int TuoiTren45 { get; set; }
+    }
+    public class PSThongKeCanNang
+    {
+        public int Duoi25 { get; set; }
+        public int Tu25Den30 { get; set; }
+        public int Tu30Den35 { get; set; }
+        public int Tu35Den40 { get; set; }
+        public int Tu40Den45 { get; set; }
+        public int Tu45Den50 { get; set; }
+        public int Tren50 { get; set; }
     }
 }

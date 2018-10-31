@@ -44,6 +44,8 @@
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblUpdate = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo.Properties)).BeginInit();
@@ -251,6 +253,30 @@
             this.lblError.UseCompatibleTextRendering = true;
             this.lblError.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Crimson;
+            this.label1.Location = new System.Drawing.Point(31, 371);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(253, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Phiên bản dùng chính thức từ ngày 31/10/2018";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Crimson;
+            this.label2.Location = new System.Drawing.Point(64, 384);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(188, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Không dùng bất kì phiên bản khác";
+            // 
             // FrmLoginNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +285,8 @@
             this.BackgroundImage = global::BioNetSangLocSoSinh.Properties.Resources._8cda90f704c93bc4c3b4a0a9c188d061;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(322, 425);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.lblUpdate);
             this.Controls.Add(this.lblVersion);
@@ -302,5 +330,7 @@
         private System.Windows.Forms.Label lblUpdate;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

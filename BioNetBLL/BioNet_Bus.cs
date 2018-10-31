@@ -2360,10 +2360,6 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.LoadDSThongKeDonViCT(lst);
         }
-        public static List<PSThongKeTheoDonVi> LoadDSThongKePPSinh(List<PSBaoCaoTuyChonDonVi> lst, List<PSThongKeTheoDonVi> lstdv)
-        {
-            var db = new DataObjects();
-            return db.LoadDSThongKePPSinh(lst, lstdv);
-        }
+       
     }
 }

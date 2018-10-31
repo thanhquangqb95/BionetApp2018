@@ -283,6 +283,19 @@ namespace BioNetSangLocSoSinh.Entry
                         //MaXN = this.GVThongTinKQ.GetRowCellValue(i, this.col_maXN).ToString();
                         string TenKyThuat = this.GVThongTinKQ.GetRowCellValue(i, this.col_TenKyThuat).ToString();
                         CTKQ.DonViTinh = DonviTinh;
+                        switch (GiaTri.Trim())
+                        {
+                            case "<":
+                                {
+                                    GiaTri = "0";
+                                    break;
+                                }
+                            case "-":
+                                {
+                                    GiaTri = GiaTri.Replace("-", "");
+                                    break;
+                                }
+                        }
                         CTKQ.GiaTri = GiaTri;
                         CTKQ.GiaTriTrungBinh = GiaTriTB;
                         CTKQ.isNguyCoCao = isNguyCo;
@@ -935,7 +948,6 @@ namespace BioNetSangLocSoSinh.Entry
                                             if (tk != null)
                                             {
                                                 tk.PSCTEmportExcelKQ.Add(ctkq);
-
                                             }
                                             else
                                             {
@@ -989,36 +1001,28 @@ namespace BioNetSangLocSoSinh.Entry
                                         List<PsKetQua_ChiTiet> lstKQCT = new List<PsKetQua_ChiTiet>();
                                         foreach (var ts in thongsoChiTiet)
                                         {
-                                            bool nguyco = false;
                                             string GiaTri = string.Empty;
                                             var cttskq = TsKQ.PSCTEmportExcelKQ.FirstOrDefault(x => x.MaDV.Equals(ts.TenKyThuat));
                                             if (cttskq != null)
                                             {
                                                 GiaTri = cttskq.VALUE;
-                                                try
+                                                if (!String.IsNullOrEmpty(GiaTri))
                                                 {
-                                                    float Gt = float.Parse(GiaTri);
-                                                    if (Gt >= ts.GiaTriMin && Gt < ts.GiaTriMax)
-                                                        nguyco = false;
-                                                    else nguyco = true;
+                                                    bool nguyco = false;
+                                                    try
+                                                    {
+                                                        float Gt = float.Parse(GiaTri);
+                                                        if (Gt >= ts.GiaTriMin && Gt < ts.GiaTriMax)
+                                                            nguyco = false;
+                                                        else nguyco = true;
+                                                        ts.GiaTri = GiaTri;
+                                                        ts.isNguyCoCao = nguyco;
+                                                       
+                                                    }
+                                                    catch { }
                                                 }
-                                                catch { }
-                                                PsKetQua_ChiTiet CTKQ = new PsKetQua_ChiTiet();
-                                                CTKQ.DonViTinh = ts.DonViTinh;
-                                                CTKQ.GiaTri = GiaTri;
-                                                CTKQ.GiaTriTrungBinh = ts.GiaTriTrungBinh;
-                                                CTKQ.isNguyCoCao = nguyco;
-                                                CTKQ.GiaTriMin = ts.GiaTriMin;
-                                                CTKQ.GiaTriMax = ts.GiaTriMax;
-                                                CTKQ.MaDichVu = ts.MaDichVu;
-                                                CTKQ.MaKQ = ts.MaKQ;
-                                                CTKQ.MaKyThuat = ts.MaKyThuat;
-                                                CTKQ.MaThongSo = ts.MaThongSo;
-                                                CTKQ.MaXN = mau.MaXetNghiem;
-                                                CTKQ.TenKyThuat = ts.TenKyThuat;
-                                                CTKQ.TenThongSo = ts.TenThongSo;
-                                                lstKQCT.Add(CTKQ);
                                             }
+                                            lstKQCT.Add(ts);
                                         }
                                         KQ.KetQuaChiTiet = lstKQCT;
                                         KQ.maNhanVienTraKQ = emp.EmployeeCode;
@@ -1442,21 +1446,90 @@ namespace BioNetSangLocSoSinh.Entry
                                         string[] STTDia = ViTri.Trim().Split('-');
                                         try
                                         {
-                                            var kk = ssstv.FirstOrDefault(x => x.STT.Equals(STTDia[1].ToString()));
+                                        string value = string.Empty;
+                                        value = tab.Rows[r][tab.Columns[1]].ToString();
+                                       
+                                        var kk = ssstv.FirstOrDefault(x => x.STT.Equals(STTDia[1].ToString()));
                                             if (kk != null)
                                             {
-                                                PsDuLieuThongSo2Benh_CAH_CH b3ct = new PsDuLieuThongSo2Benh_CAH_CH();
-                                                string maxn = kk.MaXN;
-                                                b3ct.MaXN = maxn.Trim();
-                                                string value = string.Empty;
-                                                value = tab.Rows[r][tab.Columns[1]].ToString();
-                                                switch (value.TrimEnd())
+                                            var kt = lst3b.FirstOrDefault(x => x.MaXN.Equals(kk.MaXN));
+                                            if(kt!=null)
+                                            {
+                                                switch (value.Trim())
                                                 {
                                                     case "TSH (CH)":
                                                         {
                                                             string gt = string.Empty;
                                                             gt = tab.Rows[r][tab.Columns[3]].ToString();
-                                                            switch (gt.TrimEnd())
+                                                            switch (gt.Trim())
+                                                            {
+                                                                case "<":
+                                                                    {
+                                                                        gt = "0";
+                                                                        break;
+                                                                    }
+                                                                case "-":
+                                                                    {
+                                                                        gt = gt.Replace("-", "");
+                                                                        break;
+                                                                    }
+                                                            }
+                                                            kt.CH = gt;
+                                                            break;
+                                                        }
+                                                    case "17 OHP (CAH)":
+                                                        {
+                                                            string gt = string.Empty;
+                                                            gt = tab.Rows[r][tab.Columns[3]].ToString();
+                                                            switch (gt.Trim())
+                                                            {
+                                                                case "<":
+                                                                    {
+                                                                        gt = "0";
+                                                                        break;
+                                                                    }
+                                                                case "-":
+                                                                    {
+                                                                        gt = gt.Replace("-", "");
+                                                                        break;
+                                                                    }
+                                                            }
+                                                            kt.CAH = gt;
+                                                            break;
+                                                        }
+                                                    case "17 OHP":
+                                                        {
+                                                            string gt = string.Empty;
+                                                            gt = tab.Rows[r][tab.Columns[3]].ToString();
+                                                            switch (gt.Trim())
+                                                            {
+                                                                case "<":
+                                                                    {
+                                                                        gt = "0";
+                                                                        break;
+                                                                    }
+                                                                case "-":
+                                                                    {
+                                                                        gt = gt.Replace("-", "");
+                                                                        break;
+                                                                    }
+                                                            }
+                                                            kt.CAH = gt;
+                                                            break;
+                                                        }
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                PsDuLieuThongSo2Benh_CAH_CH b3ct = new PsDuLieuThongSo2Benh_CAH_CH();
+                                                switch (value.Trim())
+                                                {
+                                                    case "TSH (CH)":
+                                                        {
+                                                            string gt = string.Empty;
+                                                            gt = tab.Rows[r][tab.Columns[3]].ToString();
+                                                            switch (gt.Trim())
                                                             {
                                                                 case "<":
                                                                     {
@@ -1476,7 +1549,7 @@ namespace BioNetSangLocSoSinh.Entry
                                                         {
                                                             string gt = string.Empty;
                                                             gt = tab.Rows[r][tab.Columns[3]].ToString();
-                                                            switch (gt.TrimEnd())
+                                                            switch (gt.Trim())
                                                             {
                                                                 case "<":
                                                                     {
@@ -1492,28 +1565,32 @@ namespace BioNetSangLocSoSinh.Entry
                                                             b3ct.CAH = gt;
                                                             break;
                                                         }
-                                                case "17 OHP":
-                                                    {
-                                                        string gt = string.Empty;
-                                                        gt = tab.Rows[r][tab.Columns[3]].ToString();
-                                                        switch (gt.TrimEnd())
+                                                    case "17 OHP":
                                                         {
-                                                            case "<":
-                                                                {
-                                                                    gt = "0";
-                                                                    break;
-                                                                }
-                                                            case "-":
-                                                                {
-                                                                    gt = gt.Replace("-", "");
-                                                                    break;
-                                                                }
+                                                            string gt = string.Empty;
+                                                            gt = tab.Rows[r][tab.Columns[3]].ToString();
+                                                            switch (gt.Trim())
+                                                            {
+                                                                case "<":
+                                                                    {
+                                                                        gt = "0";
+                                                                        break;
+                                                                    }
+                                                                case "-":
+                                                                    {
+                                                                        gt = gt.Replace("-", "");
+                                                                        break;
+                                                                    }
+                                                            }
+                                                            b3ct.CAH = gt;
+                                                            break;
                                                         }
-                                                        b3ct.CAH = gt;
-                                                        break;
-                                                    }
-                                            }
+                                                }
+                                                string maxn = kk.MaXN;
+                                                b3ct.MaXN = maxn.Trim();
                                                 lst3b.Add(b3ct);
+                                            }
+                                           
                                             }
                                         }
                                         catch
@@ -1552,36 +1629,45 @@ namespace BioNetSangLocSoSinh.Entry
                                                 List<PsKetQua_ChiTiet> lstKQCT = new List<PsKetQua_ChiTiet>();
                                                 foreach (var ts in thongsoChiTiet)
                                                 {
-                                                    bool nguyco = false;
+                                                    
                                                     string GiaTri = string.Empty;
                                                     if (ts.MaThongSo.Equals("CAH"))
                                                         GiaTri = TsKQ.CAH ?? string.Empty;
                                                     else if (ts.MaThongSo.Equals("CH"))
                                                         GiaTri = TsKQ.CH ?? string.Empty;
+                                                    if(!String.IsNullOrEmpty(GiaTri))
+                                                    {
+                                                    bool nguyco = false;
                                                     try
                                                     {
                                                         float Gt = float.Parse(GiaTri);
                                                         if (Gt >= ts.GiaTriMin && Gt < ts.GiaTriMax)
                                                             nguyco = false;
                                                         else nguyco = true;
+                                                        ts.GiaTri = GiaTri;
+                                                        ts.isNguyCoCao = nguyco;
+                                                       
                                                     }
                                                     catch { }
-                                                    PsKetQua_ChiTiet CTKQ = new PsKetQua_ChiTiet();
-                                                    CTKQ.DonViTinh = ts.DonViTinh;
-                                                    CTKQ.GiaTri = GiaTri;
-                                                    CTKQ.GiaTriTrungBinh = ts.GiaTriTrungBinh;
-                                                    CTKQ.isNguyCoCao = nguyco;
-                                                    CTKQ.GiaTriMin = ts.GiaTriMin;
-                                                    CTKQ.GiaTriMax = ts.GiaTriMax;
-                                                    CTKQ.MaDichVu = ts.MaDichVu;
-                                                    CTKQ.MaKQ = ts.MaKQ;
-                                                    CTKQ.MaKyThuat = ts.MaKyThuat;
-                                                    CTKQ.MaThongSo = ts.MaThongSo;
-                                                    CTKQ.MaXN = mau.MaXetNghiem;
-                                                    CTKQ.TenKyThuat = ts.TenKyThuat;
-                                                    CTKQ.TenThongSo = ts.TenThongSo;
-                                                    lstKQCT.Add(CTKQ);
-                                                }
+                                                    }
+                                                lstKQCT.Add(ts);
+
+                                                //PsKetQua_ChiTiet CTKQ = new PsKetQua_ChiTiet();
+                                                //CTKQ.DonViTinh = ts.DonViTinh;
+                                                //CTKQ.GiaTri = GiaTri;
+                                                //CTKQ.GiaTriTrungBinh = ts.GiaTriTrungBinh;
+
+                                                //CTKQ.GiaTriMin = ts.GiaTriMin;
+                                                //CTKQ.GiaTriMax = ts.GiaTriMax;
+                                                //CTKQ.MaDichVu = ts.MaDichVu;
+                                                //CTKQ.MaKQ = ts.MaKQ;
+                                                //CTKQ.MaKyThuat = ts.MaKyThuat;
+                                                //CTKQ.MaThongSo = ts.MaThongSo;
+                                                //CTKQ.MaXN = mau.MaXetNghiem;
+                                                //CTKQ.TenKyThuat = ts.TenKyThuat;
+                                                //CTKQ.TenThongSo = ts.TenThongSo;
+                                                //lstKQCT.Add(CTKQ);
+                                            }
                                                 KQ.KetQuaChiTiet = lstKQCT;
                                                 KQ.maNhanVienTraKQ = emp.EmployeeCode;
                                                 var resultSave = BioNet_Bus.LuuKetQuaXN(KQ);
@@ -1755,7 +1841,6 @@ namespace BioNetSangLocSoSinh.Entry
                                                 List<PsKetQua_ChiTiet> lstKQCT = new List<PsKetQua_ChiTiet>();
                                                 foreach (var ts in thongsoChiTiet)
                                                 {
-                                                    bool nguyco = false;
                                                     string GiaTri = string.Empty;
                                                     if (ts.MaThongSo.Equals("G6PD"))
                                                         GiaTri = TsKQ.G6PD ?? string.Empty;
@@ -1763,29 +1848,38 @@ namespace BioNetSangLocSoSinh.Entry
                                                         GiaTri = TsKQ.PKU ?? string.Empty;
                                                     else if (ts.MaThongSo.Equals("GAL"))
                                                         GiaTri = TsKQ.GAL ?? string.Empty;
-                                                    try
+                                                    if (!String.IsNullOrEmpty(GiaTri))
                                                     {
-                                                        float Gt = float.Parse(GiaTri);
-                                                        if (Gt >= ts.GiaTriMin && Gt < ts.GiaTriMax)
-                                                            nguyco = false;
-                                                        else nguyco = true;
+                                                        bool nguyco = false;
+                                                        try
+                                                        {
+                                                            float Gt = float.Parse(GiaTri);
+                                                            if (Gt >= ts.GiaTriMin && Gt < ts.GiaTriMax)
+                                                                nguyco = false;
+                                                            else nguyco = true;
+                                                            ts.GiaTri = GiaTri;
+                                                            ts.isNguyCoCao = nguyco;
+                                                           
+                                                        }
+                                                        catch { }
+                                                        
                                                     }
-                                                    catch { }
-                                                    PsKetQua_ChiTiet CTKQ = new PsKetQua_ChiTiet();
-                                                    CTKQ.DonViTinh = ts.DonViTinh;
-                                                    CTKQ.GiaTri = GiaTri;
-                                                    CTKQ.GiaTriTrungBinh = ts.GiaTriTrungBinh;
-                                                    CTKQ.isNguyCoCao = nguyco;
-                                                    CTKQ.GiaTriMin = ts.GiaTriMin;
-                                                    CTKQ.GiaTriMax = ts.GiaTriMax;
-                                                    CTKQ.MaDichVu = ts.MaDichVu;
-                                                    CTKQ.MaKQ = ts.MaKQ;
-                                                    CTKQ.MaKyThuat = ts.MaKyThuat;
-                                                    CTKQ.MaThongSo = ts.MaThongSo;
-                                                    CTKQ.MaXN = mau.MaXetNghiem;
-                                                    CTKQ.TenKyThuat = ts.TenKyThuat;
-                                                    CTKQ.TenThongSo = ts.TenThongSo;
-                                                    lstKQCT.Add(CTKQ);
+                                                    lstKQCT.Add(ts);
+                                                    //PsKetQua_ChiTiet CTKQ = new PsKetQua_ChiTiet();
+                                                    //CTKQ.DonViTinh = ts.DonViTinh;
+                                                    //CTKQ.GiaTri = GiaTri;
+                                                    //CTKQ.GiaTriTrungBinh = ts.GiaTriTrungBinh;
+                                                    //CTKQ.isNguyCoCao = nguyco;
+                                                    //CTKQ.GiaTriMin = ts.GiaTriMin;
+                                                    //CTKQ.GiaTriMax = ts.GiaTriMax;
+                                                    //CTKQ.MaDichVu = ts.MaDichVu;
+                                                    //CTKQ.MaKQ = ts.MaKQ;
+                                                    //CTKQ.MaKyThuat = ts.MaKyThuat;
+                                                    //CTKQ.MaThongSo = ts.MaThongSo;
+                                                    //CTKQ.MaXN = mau.MaXetNghiem;
+                                                    //CTKQ.TenKyThuat = ts.TenKyThuat;
+                                                    //CTKQ.TenThongSo = ts.TenThongSo;
+                                                    //lstKQCT.Add(CTKQ);
                                                 }
                                                 KQ.KetQuaChiTiet = lstKQCT;
                                                 KQ.maNhanVienTraKQ = emp.EmployeeCode;

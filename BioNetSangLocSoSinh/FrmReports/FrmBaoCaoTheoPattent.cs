@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BioNetBLL;
+using DevExpress.XtraSplashScreen;
+using BioNetSangLocSoSinh.DiaglogFrm;
+using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.FrmReports
 {
@@ -18,7 +21,8 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             InitializeComponent();
         }
-
+        int gio = 0, phut = 0, giay = 0;
+        private List<PSDanhMucGoiDichVuChung> lstgoiXN = new List<PSDanhMucGoiDichVuChung>();
         private void btnThongke_Click(object sender, EventArgs e)
         {
             try
@@ -39,8 +43,14 @@ namespace BioNetSangLocSoSinh.FrmReports
                 {
                     MaDonVi = this.txtDonVi.EditValue.ToString();
                 }
+                SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
+                gio = 0; phut = 0; giay = 0;
+                timer1.Interval = 1000;
+                timer1.Start();
                 GCDanhSachMauDuongTinh.DataSource = null;
                 GCDanhSachMauDuongTinh.DataSource = BioNet_Bus.LoadDSBaoCaoTuyChonDichVu(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
+                SplashScreenManager.CloseForm();
+                txtTime.Text = gio.ToString() + " : " + phut.ToString() + " : " + giay.ToString();
             }
             catch
             {
@@ -50,14 +60,24 @@ namespace BioNetSangLocSoSinh.FrmReports
 
         private void FrmBaoCaoTheoPattent_Load(object sender, EventArgs e)
         {
-           // this.LoadGoiDichVuXetNGhiem();
+           this.LoadGoiDichVuXetNGhiem();
             cbbDichVu.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             dllNgay.tungay.Value = DateTime.Now;
             dllNgay.denngay.Value = DateTime.Now;
             this.txtChiCuc.EditValue = "all";
         }
+        private void LoadGoiDichVuXetNGhiem()
+        {
+            try
+            {
 
+                this.lstgoiXN = BioNet_Bus.GetDanhsachGoiDichVuChung();
+                this.LookUpEditGoiXN.DataSource = null;
+                this.LookUpEditGoiXN.DataSource = this.lstgoiXN;
+            }
+            catch { }
+        }
         private void txtChiCuc_EditValueChanged(object sender, EventArgs e)
         {
             try
@@ -76,5 +96,22 @@ namespace BioNetSangLocSoSinh.FrmReports
             }
             catch { }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            giay++;
+            if (giay == 60)
+            {
+                phut++;
+                giay = 0;
+            }
+            if (phut == 60)
+            {
+                gio++;
+                phut = 0;
+            }
+            
+        }
+        
     }
 }
