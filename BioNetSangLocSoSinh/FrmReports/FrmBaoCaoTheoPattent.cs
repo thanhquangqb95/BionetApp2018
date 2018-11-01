@@ -47,10 +47,11 @@ namespace BioNetSangLocSoSinh.FrmReports
                 gio = 0; phut = 0; giay = 0;
                 timer1.Interval = 1000;
                 timer1.Start();
+                DateTime TIme1 = DateTime.Now;
                 GCDanhSachMauDuongTinh.DataSource = null;
                 GCDanhSachMauDuongTinh.DataSource = BioNet_Bus.LoadDSBaoCaoTuyChonDichVu(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
                 SplashScreenManager.CloseForm();
-                txtTime.Text = gio.ToString() + " : " + phut.ToString() + " : " + giay.ToString();
+                DateTime TIme2 = DateTime.Now;
             }
             catch
             {

@@ -6753,7 +6753,7 @@ namespace BioNetDAL
             db.Connection.Open();
             db.Transaction = db.Connection.BeginTransaction();
             bool isXNL2 = false;
-            bool isxNL = false;
+            
             try
             {
                 bool isCoKQ = true;
@@ -6780,13 +6780,13 @@ namespace BioNetDAL
                                 item.isNguyCo = KetQuaCT.isNguyCoCao;
                                 item.isDongBo = false;
                                 item.isXoa = false;
+                                db.SubmitChanges();
                             }
                         }
                         if (string.IsNullOrEmpty(item.GiaTri))
                         {
                             isCoKQ = false;
                         }
-                        db.SubmitChanges();
                     }
 
                     KetQua.isCoKQ = isCoKQ;
@@ -6807,8 +6807,8 @@ namespace BioNetDAL
                 }
                 if (isCoKQ)
                 {
+                    bool isxNL = false;
                     var TraKetQua = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu == KQ.maPhieu && x.MaTiepNhan == KQ.maTiepNhan);
-                    //Tạo dữ liệu bảng kết quả và bảng trả kết quả
                     if (TraKetQua == null)
                     {
                         PSXN_TraKetQua traKQ = new PSXN_TraKetQua();
@@ -6861,7 +6861,7 @@ namespace BioNetDAL
                                 CtTraKQ.MaTiepNhan = KQ.maTiepNhan;
                                 CtTraKQ.TenKyThuat = item.TenKyThuat;
                                 CtTraKQ.TenThongSo = item.TenThongSo;
-                                CtTraKQ.isMauXNLai = isXNL2;
+                                CtTraKQ.isMauXNLai = isxNL;
                                 CtTraKQ.isDaDuyetKQ = false;
                                 try
                                 {
@@ -6883,15 +6883,11 @@ namespace BioNetDAL
                                 db.PSXN_TraKQ_ChiTiets.InsertOnSubmit(CtTraKQ);
                                 db.SubmitChanges();
                             }
-                            else
-                            {
-
-                            }
+                            
                         }
                         traKQ.isNguyCoCao = isNC;
                         db.SubmitChanges();
                     }
-                    //Update Kết quả xét nghiệm lần 2 vào bảng Trả Kết Quả và Chi Tiết Trả KQ
                     else
                     {
                         TraKetQua.NgayCoKQ = DateTime.Now;
@@ -6902,175 +6898,102 @@ namespace BioNetDAL
                         TraKetQua.isTraKQ = false;
                         TraKetQua.KetLuanTongQuat = string.Empty;
                         TraKetQua.isDaGuiMail = false;
-                        if (isXNL2)
+                        TraKetQua.UserTraKQ= KQ.maNhanVienTraKQ;
+                        if(string.IsNullOrEmpty(TraKetQua.MaPhieuCu))
+                        {
+                            isxNL = true;
+                        }
+                        if(isXNL2)
                         {
                             if (!string.IsNullOrEmpty(KQ.GhiChu))
                             {
-                                TraKetQua.GhiChuPhongXetNghiem = TraKetQua.GhiChuPhongXetNghiem + ".Ghi chú XN2: " + KQ.GhiChu;
-                            }
-                            else
-                            {
-                                TraKetQua.GhiChuPhongXetNghiem = KQ.GhiChu;
+                                if(!string.IsNullOrEmpty(TraKetQua.GhiChuPhongXetNghiem))
+                                {
+                                    if(!TraKetQua.GhiChuPhongXetNghiem.Contains(KQ.GhiChu))
+                                    {
+                                        TraKetQua.GhiChuPhongXetNghiem = TraKetQua.GhiChuPhongXetNghiem + ".Ghi chú XN2: " + KQ.GhiChu;
+                                    }                                  
+                                }
+                                else
+                                {
+                                    TraKetQua.GhiChuPhongXetNghiem = KQ.GhiChu;
+                                }                               
                             }
                             foreach (var item in KQ.KetQuaChiTiet)
                             {
                                 var kqct = TraKetQua.PSXN_TraKQ_ChiTiets.FirstOrDefault(x => x.MaDichVu == item.MaDichVu);
                                 if (kqct != null)
                                 {
-                                    if (!isXNL2)
+                                    float gt1 = 0;
+                                    float gt2 = 0;
+                                    try
                                     {
-                                        kqct.isDaDuyetKQ = false;
-                                        float gt = 0;
-                                        try
-                                        {
-                                            gt = float.Parse(item.GiaTri);
-                                        }
-                                        catch
-                                        {
-                                        }
-                                        kqct.GiaTri1 = gt.ToString();
-                                        if (gt >= item.GiaTriMin && gt < item.GiaTriMax)
-                                        {
-                                            kqct.isNguyCo = false;
-                                            kqct.KetLuan = "Nguy cơ thấp";
-                                        }
-                                        else
-                                        {
-                                            isNC = true;
-                                            kqct.isNguyCo = true;
-                                            kqct.KetLuan = "Nghi ngờ";
-                                        }
-                                        kqct.GiaTriCuoi = String.Format("{0:0.##}", gt);
+                                        gt1 = float.Parse(kqct.GiaTri1);
+                                    }
+                                    catch{ }
+                                    try
+                                    {
+                                        gt2 = float.Parse(item.GiaTri);
+                                    }
+                                    catch {}
+                                    kqct.GiaTri1 = gt1.ToString();
+                                    kqct.GiaTri2 = gt2.ToString();
+                                    kqct.isDaDuyetKQ = false;
+                                    float gtcuoi = (gt1 + gt2) / 2;
+                                    kqct.GiaTriCuoi = String.Format("{0:0.##}", gtcuoi);
+                                    if (gtcuoi >= item.GiaTriMin && gtcuoi < item.GiaTriMax)
+                                    {
+                                        kqct.isNguyCo = false;
+                                        kqct.KetLuan = "Nguy cơ thấp";
                                     }
                                     else
                                     {
-                                        float gt1 = 0;
-                                        float gt2 = 0;
-                                        try
-                                        {
-                                            gt1 = float.Parse(kqct.GiaTri1);
-                                        }
-                                        catch
-                                        {
-
-                                        }
-                                        try
-                                        {
-                                            gt2 = float.Parse(kqct.GiaTri2);
-                                        }
-                                        catch
-                                        {
-
-                                        }
-                                        kqct.GiaTri1 = gt1.ToString();
-                                        kqct.GiaTri2 = gt2.ToString();
-                                        kqct.isDaDuyetKQ = false;
-                                        float gtcuoi = (gt1 + gt2) / 2;
-                                        kqct.GiaTriCuoi = String.Format("{0:0.##}", gtcuoi);
-                                        if (gtcuoi >= item.GiaTriMin && gtcuoi < item.GiaTriMax)
-                                        {
-                                            kqct.isNguyCo = false;
-                                            kqct.KetLuan = "Nguy cơ thấp";
-                                        }
-                                        else
-                                        {
-                                            kqct.isNguyCo = true;
-                                            kqct.KetLuan = "Nguy cơ cao";
-                                            isNC = true;
-                                        }
+                                        kqct.isNguyCo = true;
+                                        kqct.KetLuan = "Nguy cơ cao";
+                                        isNC = true;
                                     }
                                     kqct.isDaDuyetKQ = false;
                                     kqct.isDongBo = false;
                                     kqct.isXoa = false;
-                                    kqct.isMauXNLai = isXNL2;
-                                    db.SubmitChanges();
-                                }
-                                else
-                                {
-                                    PSXN_TraKQ_ChiTiet CtTraKQ = new PSXN_TraKQ_ChiTiet();
-                                    CtTraKQ.GiaTri1 = item.GiaTri;
-                                    CtTraKQ.GiaTriMax = item.GiaTriMax;
-                                    CtTraKQ.GiaTriMin = item.GiaTriMin;
-                                    CtTraKQ.GiaTriTrungBinh = item.GiaTriTrungBinh;
-                                    CtTraKQ.IDDonViTinh = item.MaDonViTinh;
-                                    CtTraKQ.DonViTinh = item.DonViTinh;
-                                    CtTraKQ.IDKyThuat = item.MaKyThuat;
-                                    CtTraKQ.IDThongSoXN = item.MaThongSo;
-                                    CtTraKQ.isNguyCo = item.isNguyCoCao;
-                                    CtTraKQ.MaDichVu = item.MaDichVu;
-                                    CtTraKQ.MaPhieu = KQ.maPhieu;
-                                    CtTraKQ.isXoa = false;
-                                    CtTraKQ.isDongBo = false;
-                                    CtTraKQ.MaTiepNhan = KQ.maTiepNhan;
-                                    CtTraKQ.TenKyThuat = item.TenKyThuat;
-                                    CtTraKQ.TenThongSo = item.TenThongSo;
-                                    TraKetQua.GhiChuPhongXetNghiem = TraKetQua.GhiChuPhongXetNghiem + KQ.GhiChu;
-                                    CtTraKQ.isMauXNLai = isXNL2;
-                                    CtTraKQ.isDaDuyetKQ = false;
-                                    if (!isXNL2)
-                                    {
-                                        kqct.isDaDuyetKQ = false;
-                                        float gt = 0;
-                                        try
-                                        {
-                                            gt = float.Parse(item.GiaTri);
-                                        }
-                                        catch { }
-                                        kqct.GiaTri1 = gt.ToString();
-                                        if (gt >= item.GiaTriMin && gt < item.GiaTriMax)
-                                        {
-                                            kqct.isNguyCo = false;
-                                            kqct.KetLuan = "Nguy cơ thấp";
-                                        }
-                                        else
-                                        {
-                                            isNC = true;
-                                            kqct.isNguyCo = true;
-                                            kqct.KetLuan = "Nghi ngờ";
-                                        }
-                                        kqct.GiaTriCuoi = String.Format("{0:0.##}", gt);
-                                    }
-                                    else
-                                    {
-                                        float gt1 = 0;
-                                        float gt2 = 0;
-                                        try
-                                        {
-                                            gt1 = float.Parse(kqct.GiaTri1);
-                                        }
-                                        catch { }
-                                        try
-                                        {
-                                            gt2 = float.Parse(kqct.GiaTri2);
-                                        }
-                                        catch { }
-                                        kqct.GiaTri1 = gt1.ToString();
-                                        kqct.GiaTri2 = gt2.ToString();
-                                        kqct.isDaDuyetKQ = false;
-                                        float gtcuoi = (gt1 + gt2) / 2;
-                                        kqct.GiaTriCuoi = String.Format("{0:0.##}", gtcuoi);
-                                        if (gtcuoi >= item.GiaTriMin && gtcuoi < item.GiaTriMax)
-                                        {
-                                            kqct.isNguyCo = false;
-                                            kqct.KetLuan = "Nguy cơ thấp";
-                                        }
-                                        else
-                                        {
-                                            kqct.isNguyCo = true;
-                                            kqct.KetLuan = "Nguy cơ cao";
-                                            isNC = true;
-                                        }
-                                    }
-                                    db.PSXN_TraKQ_ChiTiets.InsertOnSubmit(CtTraKQ);
+                                    kqct.isMauXNLai = isxNL;
                                     db.SubmitChanges();
                                 }
                             }
                             TraKetQua.isNguyCoCao = isNC;
                             db.SubmitChanges();
                         }
-                    }
-                    db.Transaction.Commit();
-                }
+                        else
+                        {
+                            foreach(var item in TraKetQua.PSXN_TraKQ_ChiTiets)
+                            {
+                                var kq= KQ.KetQuaChiTiet.FirstOrDefault(x =>x.MaDichVu==item.MaDichVu);
+                                if(kq!=null)
+                                {
+                                    try
+                                    {
+                                        float gt = float.Parse(kq.GiaTri);
+                                        item.GiaTri1 = gt.ToString();
+                                        if (gt >= item.GiaTriMin && gt < item.GiaTriMax)
+                                        {
+                                            item.isNguyCo = false;
+                                            item.KetLuan = "Nguy cơ thấp";
+                                        }
+                                        else
+                                        {
+                                            isNC = true;
+                                            item.isNguyCo = true;
+                                            item.KetLuan = "Nghi ngờ";
+                                        }
+                                        item.GiaTriCuoi = String.Format("{0:0.##}", gt);
+                                    }
+                                    catch { }
+                                    db.SubmitChanges();
+                                }
+                                
+                            }
+                        }
+                    }     
+                }  
             }
             catch (Exception ex)
             {
@@ -7078,6 +7001,7 @@ namespace BioNetDAL
                 res.StringError = ex.ToString();
                 db.Transaction.Rollback();
             }
+            db.Transaction.Commit();
             db.Connection.Close();
             return res;
         }
