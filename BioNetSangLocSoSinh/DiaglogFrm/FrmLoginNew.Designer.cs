@@ -263,7 +263,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(253, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Phiên bản dùng chính thức từ ngày 31/10/2018";
+            this.label1.Text = "Phiên bản dùng chính thức từ ngày 02/11/2018";
             // 
             // label2
             // 
