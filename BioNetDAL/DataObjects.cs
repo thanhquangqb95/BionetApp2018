@@ -6861,7 +6861,6 @@ namespace BioNetDAL
                                 CtTraKQ.MaTiepNhan = KQ.maTiepNhan;
                                 CtTraKQ.TenKyThuat = item.TenKyThuat;
                                 CtTraKQ.TenThongSo = item.TenThongSo;
-                                CtTraKQ.isMauXNLai = isxNL;
                                 CtTraKQ.isDaDuyetKQ = false;
                                 try
                                 {
@@ -6880,6 +6879,14 @@ namespace BioNetDAL
                                     CtTraKQ.GiaTriCuoi = String.Format("{0:0.##}", gt);
                                 }
                                 catch { }
+                                if(string.IsNullOrEmpty(CtTraKQ.GiaTri2))
+                                {
+                                    CtTraKQ.isMauXNLai = false;
+                                }
+                                else
+                                {
+                                    CtTraKQ.isMauXNLai = true;
+                                }
                                 db.PSXN_TraKQ_ChiTiets.InsertOnSubmit(CtTraKQ);
                                 db.SubmitChanges();
                             }
@@ -6955,7 +6962,14 @@ namespace BioNetDAL
                                     kqct.isDaDuyetKQ = false;
                                     kqct.isDongBo = false;
                                     kqct.isXoa = false;
-                                    kqct.isMauXNLai = isxNL;
+                                    if (string.IsNullOrEmpty(kqct.GiaTri2))
+                                    {
+                                        kqct.isMauXNLai = false;
+                                    }
+                                    else
+                                    {
+                                        kqct.isMauXNLai = true;
+                                    }
                                     db.SubmitChanges();
                                 }
                             }
@@ -6987,6 +7001,14 @@ namespace BioNetDAL
                                         item.GiaTriCuoi = String.Format("{0:0.##}", gt);
                                     }
                                     catch { }
+                                    if (string.IsNullOrEmpty(item.GiaTri2))
+                                    {
+                                        item.isMauXNLai = false;
+                                    }
+                                    else
+                                    {
+                                        item.isMauXNLai = true;
+                                    }
                                     db.SubmitChanges();
                                 }
                                 
@@ -8826,6 +8848,7 @@ namespace BioNetDAL
                         var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
                         decimal GiaTri = 0;
                         string kl = string.Empty;
+                        bool isL2 = false;
                         foreach (var ls in lstphieu)
                         {
                             if (ls.isLayMauLan2 == true)
@@ -8835,14 +8858,6 @@ namespace BioNetDAL
                                 var ctkq = kq2.PSXN_TraKQ_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(TenDichVu) && x.isXoa != true);
                                 duongtinh.KetQuaCuoiL2 = ctkq.GiaTriCuoi;
                                 duongtinh.VietTatDV = GetVietTatDV(ls.IDCoSo);
-                                if (!string.IsNullOrEmpty(ctkq.GiaTri2))
-                                {
-                                    GiaTri = Decimal.Parse(ctkq.GiaTri2);
-                                }
-                                else
-                                {
-                                    GiaTri = Decimal.Parse(ctkq.GiaTri1);
-                                }
                                 duongtinh.KetQua2L1 = ctkq.GiaTri1;
                                 duongtinh.KetQua2L2 = ctkq.GiaTri2;
                                 duongtinh.TenDichVu = ctkq.TenThongSo;
@@ -8859,6 +8874,15 @@ namespace BioNetDAL
                                     duongtinh.KetQuaCuoiL1 = phieu1.GiaTriCuoi;
                                     duongtinh.KetQua1L1 = phieu1.GiaTri1;
                                     duongtinh.KetQua1L2 = phieu1.GiaTri2;
+                                }
+                                isL2 = true;
+                                if (!string.IsNullOrEmpty(ctkq.GiaTri2))
+                                {
+                                   GiaTri = Decimal.Parse(ctkq.GiaTri2);
+                                }
+                                else
+                                {
+                                   GiaTri = Decimal.Parse(ctkq.GiaTri1);
                                 }
                             }
                             else
@@ -8877,20 +8901,24 @@ namespace BioNetDAL
                                 duongtinh.NgayNhanMau = ls.NgayNhanMau;
                                 duongtinh.CLMau = ls.LyDoKhongDat;
                                 kl = ctkq.KetLuan;
-                                if (!string.IsNullOrEmpty(ctkq.GiaTri2))
+                                if(!isL2)
                                 {
-                                    GiaTri = Decimal.Parse(ctkq.GiaTri2);
-                                }
-                                else
-                                {
-                                    GiaTri = Decimal.Parse(ctkq.GiaTri1);
-                                }
+                                    if (!string.IsNullOrEmpty(ctkq.GiaTri2))
+                                    {
+                                        GiaTri = Decimal.Parse(ctkq.GiaTri2);
+                                    }
+                                    else
+                                    {
+                                        GiaTri = Decimal.Parse(ctkq.GiaTri1);
+                                    }
+                                }                               
                             }
                         }
                         if (!string.IsNullOrEmpty(kl))
                         {
                             duongtinh.KetLuan = kl;
                         }
+
                         if (!string.IsNullOrEmpty(Min) && !string.IsNullOrEmpty(Max))
                         {
                             if (Decimal.Parse(Min) <= GiaTri && GiaTri <= Decimal.Parse(Max))
@@ -8916,11 +8944,14 @@ namespace BioNetDAL
                             }
                         }
                     }
-                    catch
-                    {
+                    catch { }
 
-                    }
-
+                }
+                dsduongtinh = dsduongtinh.OrderBy(x => x.MaGoiXN).ToList();
+                int stt = 1;
+                foreach(var ds in dsduongtinh)
+                {
+                    ds.STT = stt++;
                 }
             }
             catch

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -205,9 +205,9 @@
             this.btnClear.Location = new System.Drawing.Point(1003, 33);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 23);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Bỏ lọc";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnClear.SuperTip = superToolTip2;
             this.btnClear.TabIndex = 1080;
             this.btnClear.Text = "Bỏ lọc";
             // 
@@ -611,7 +611,7 @@
             // 
             // col_KQL2_2
             // 
-            this.col_KQL2_2.Caption = "Lần 1.2";
+            this.col_KQL2_2.Caption = "Lần 2.2";
             this.col_KQL2_2.FieldName = "KetQua2L2";
             this.col_KQL2_2.Name = "col_KQL2_2";
             this.col_KQL2_2.Visible = true;
