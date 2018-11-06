@@ -647,7 +647,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-                FrmReports.FrmGuiMail frm = new FrmReports.FrmGuiMail();
+                FrmReports.FrmGuiMail frm = new FrmReports.FrmGuiMail(emp);
                 TabCreating(xTabMain, "Gửi mail cho khách hàng", frm);
                 SplashScreenManager.CloseForm();
             }

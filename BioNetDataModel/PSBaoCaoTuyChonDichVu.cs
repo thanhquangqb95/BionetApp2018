@@ -16,6 +16,7 @@ namespace BioNetModel
         public PSXN_TraKQ_ChiTiet CTKQ1 { get; set; }
         public PSXN_TraKetQua KQ2 { get; set; }
         public PSXN_TraKQ_ChiTiet CTKQ2 { get; set; }
+        public string KetLuan { get; set; }
     }
     public class PSBaoCaoTuyChonDonVi
     {

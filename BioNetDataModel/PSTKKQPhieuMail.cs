@@ -17,12 +17,16 @@ namespace BioNetModel
         public int benh2 { get; set; }
         public int benh3 { get; set; }
         public  int benh5 { get; set; }
+        public int hemo2 { get; set; }
+        public int hemo3 { get; set; }
+        public int hemo5 { get; set; }
 
         public int G6PD { get; set; }
         public int GAL { get; set; }
         public int PKU { get; set; }
         public int CH { get; set; }
         public int CAH { get; set; }
+        public int HEMO { get; set; }
 
         public int NguyCoThap2 { get; set; }
         public int NguyCoCao2 { get; set; }
@@ -31,24 +35,28 @@ namespace BioNetModel
         public int PKU2 { get; set; }
         public int CH2 { get; set; }
         public int CAH2 { get; set; }
+        public int HEMO2 { get; set; }
 
         public int G6PD3 { get; set; }
         public int GAL3 { get; set; }
         public int PKU3 { get; set; }
         public int CH3 { get; set; }
         public int CAH3 { get; set; }
+        public int HEMO3 { get; set; }
 
         public int G6PD4 { get; set; }
         public int GAL4 { get; set; }
         public int PKU4 { get; set; }
         public int CH4 { get; set; }
         public int CAH4 { get; set; }
+        public int HEMO4 { get; set; }
 
         public int G6PD5 { get; set; }
         public int GAL5 { get; set; }
         public int PKU5 { get; set; }
         public int CH5 { get; set; }
         public int CAH5 { get; set; }
+        public int HEMO5 { get; set; }
 
         public int MauKDat { get; set; }
         public int MauDat { get; set; }

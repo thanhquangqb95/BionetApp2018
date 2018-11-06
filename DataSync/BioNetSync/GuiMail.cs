@@ -50,11 +50,13 @@ namespace DataSync.BioNetSync
                 System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
 
                 string from = SendFrom;
-                string to = SendTo;
+                MailAddress fromsend = new MailAddress(SendFrom, "BIONET VN SLSS", Encoding.Unicode);
+              
+                string to = "thanhquangqb95@gmail.com";
                 string subject = tieude;
                string body =noidung;
                 string passmail = pass;
-               string[] mailcc=SendTo.Split(',');
+                string[] mailcc=to.Split(',');
                 if(mailcc.Count()>0)
                 {
                     bool result = regex.IsMatch(mailcc[0]);
@@ -67,28 +69,34 @@ namespace DataSync.BioNetSync
                     {
                         try
                         {
-                            MailMessage em = new MailMessage(from, to, subject, body);
+                            
+                           // MailMessage em = new MailMessage(from, to, subject, body);
+                            MailAddress tosend = new MailAddress(mailcc[0]);
+                            MailMessage emnew = new MailMessage(fromsend, tosend);
                             using (Attachment attach = new Attachment(AttachmentPath))
                             {
-                                em.Attachments.Add(attach);
-                                for(int i=0; i<mailcc.Count();i++)
-                                {
-                                    if(i==0)
-                                    {
-                                        em.Bcc.Add(mailcc[i]);
-                                    }
-                                    else
-                                    {
-                                        em.CC.Add(mailcc[i]);
-                                    }
-                                    
-                                }
-                                em.IsBodyHtml = true;
+                                emnew.Attachments.Add(attach);
+                                emnew.Bcc.Add(to);
+                                //for(int i=0; i<mailcc.Count();i++)
+                                //{
+                                //    if(i==0)
+                                //    {
+                                //        em.Bcc.Add(mailcc[i]);
+                                //    }
+                                //    else
+                                //    {
+                                //        em.CC.Add(mailcc[i]);
+                                //    }
+
+                                //}
+                                emnew.Subject = subject;
+                                emnew.Body = noidung;
+                                emnew.IsBodyHtml = true;
                                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                                 smtp.EnableSsl = true;
                                 smtp.Credentials = new NetworkCredential(from, passmail);//Mật khâu mail
-                                smtp.Send(em);
-                                em.Dispose();
+                                smtp.Send(emnew);
+                                emnew.Dispose();
                                 return 0;
                             }
 

@@ -623,6 +623,11 @@
       <Column Name="isDaGui" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="GroupSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NoiDungGui" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailTT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailKH" Member="EmailDV" Type="System.String" DbType="NVarChar(max)" CanBeNull="true" />
+      <Column Name="SLPhieu" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="NVGuiEmail" Type="System.String" DbType="Nvarchar(50)" CanBeNull="false" />
+      <Column Name="DateSendEmail" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="PSSMSC_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
     </Type>
   </Table>
@@ -637,6 +642,7 @@
       <Column Name="IDNhanVienSend" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="NumberMobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaPhieu" Type="System.String" DbType="Nvarchar(50)" CanBeNull="true" />
       <Association Name="PSSMSC_PSSMSLog" Member="PSSMSC" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSC" IsForeignKey="true" />
     </Type>
   </Table>

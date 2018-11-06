@@ -12798,6 +12798,16 @@ namespace BioNetModel.Data
 		
 		private string _NoiDungGui;
 		
+		private string _EmailTT;
+		
+		private string _EmailDV;
+		
+		private System.Nullable<int> _SLPhieu;
+		
+		private string _NVGuiEmail;
+		
+		private System.Nullable<System.DateTime> _DateSendEmail;
+		
 		private EntitySet<PSSMSLog> _PSSMSLogs;
 		
     #region Extensibility Method Definitions
@@ -12816,6 +12826,16 @@ namespace BioNetModel.Data
     partial void OnGroupSMSChanged();
     partial void OnNoiDungGuiChanging(string value);
     partial void OnNoiDungGuiChanged();
+    partial void OnEmailTTChanging(string value);
+    partial void OnEmailTTChanged();
+    partial void OnEmailDVChanging(string value);
+    partial void OnEmailDVChanged();
+    partial void OnSLPhieuChanging(System.Nullable<int> value);
+    partial void OnSLPhieuChanged();
+    partial void OnNVGuiEmailChanging(string value);
+    partial void OnNVGuiEmailChanged();
+    partial void OnDateSendEmailChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateSendEmailChanged();
     #endregion
 		
 		public PSSMSC()
@@ -12944,6 +12964,106 @@ namespace BioNetModel.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailTT", DbType="NVarChar(50)")]
+		public string EmailTT
+		{
+			get
+			{
+				return this._EmailTT;
+			}
+			set
+			{
+				if ((this._EmailTT != value))
+				{
+					this.OnEmailTTChanging(value);
+					this.SendPropertyChanging();
+					this._EmailTT = value;
+					this.SendPropertyChanged("EmailTT");
+					this.OnEmailTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="EmailKH", Storage="_EmailDV", DbType="NVarChar(max)")]
+		public string EmailDV
+		{
+			get
+			{
+				return this._EmailDV;
+			}
+			set
+			{
+				if ((this._EmailDV != value))
+				{
+					this.OnEmailDVChanging(value);
+					this.SendPropertyChanging();
+					this._EmailDV = value;
+					this.SendPropertyChanged("EmailDV");
+					this.OnEmailDVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SLPhieu", DbType="int")]
+		public System.Nullable<int> SLPhieu
+		{
+			get
+			{
+				return this._SLPhieu;
+			}
+			set
+			{
+				if ((this._SLPhieu != value))
+				{
+					this.OnSLPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._SLPhieu = value;
+					this.SendPropertyChanged("SLPhieu");
+					this.OnSLPhieuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NVGuiEmail", DbType="Nvarchar(50)", CanBeNull=false)]
+		public string NVGuiEmail
+		{
+			get
+			{
+				return this._NVGuiEmail;
+			}
+			set
+			{
+				if ((this._NVGuiEmail != value))
+				{
+					this.OnNVGuiEmailChanging(value);
+					this.SendPropertyChanging();
+					this._NVGuiEmail = value;
+					this.SendPropertyChanged("NVGuiEmail");
+					this.OnNVGuiEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateSendEmail", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateSendEmail
+		{
+			get
+			{
+				return this._DateSendEmail;
+			}
+			set
+			{
+				if ((this._DateSendEmail != value))
+				{
+					this.OnDateSendEmailChanging(value);
+					this.SendPropertyChanging();
+					this._DateSendEmail = value;
+					this.SendPropertyChanged("DateSendEmail");
+					this.OnDateSendEmailChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PSSMSC_PSSMSLog", Storage="_PSSMSLogs", ThisKey="RowIDNumber", OtherKey="RowIDNumber")]
 		public EntitySet<PSSMSLog> PSSMSLogs
 		{
@@ -13014,6 +13134,8 @@ namespace BioNetModel.Data
 		
 		private string _NumberMobile;
 		
+		private string _MaPhieu;
+		
 		private EntityRef<PSSMSC> _PSSMSC;
 		
     #region Extensibility Method Definitions
@@ -13038,6 +13160,8 @@ namespace BioNetModel.Data
     partial void OnIDMauSendChanged();
     partial void OnNumberMobileChanging(string value);
     partial void OnNumberMobileChanged();
+    partial void OnMaPhieuChanging(string value);
+    partial void OnMaPhieuChanged();
     #endregion
 		
 		public PSSMSLog()
@@ -13226,6 +13350,26 @@ namespace BioNetModel.Data
 					this._NumberMobile = value;
 					this.SendPropertyChanged("NumberMobile");
 					this.OnNumberMobileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhieu", DbType="Nvarchar(50)")]
+		public string MaPhieu
+		{
+			get
+			{
+				return this._MaPhieu;
+			}
+			set
+			{
+				if ((this._MaPhieu != value))
+				{
+					this.OnMaPhieuChanging(value);
+					this.SendPropertyChanging();
+					this._MaPhieu = value;
+					this.SendPropertyChanged("MaPhieu");
+					this.OnMaPhieuChanged();
 				}
 			}
 		}

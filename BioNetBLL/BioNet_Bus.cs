@@ -393,10 +393,10 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetCTChatLuogMau(MaPhieu, IDCoSo, IDChiCuc, NgayBD, NgayKT);
         }
-        public static PsReponse CapNhatGuiMail(List<string> maPhieu)
+        public static PsReponse CapNhatGuiMail(List<String> MaPhieu, string MaDonVi, string EmailTT,string EmailDV, string NV)
         {
             var db = new DataObjects();
-            return db.CapNhatGuiMail(maPhieu);
+            return db.CapNhatGuiMail(MaPhieu, MaDonVi,EmailTT,EmailDV,NV);
         }
         public static List<PsTinhTrangPhieu> GetTinhTrangPhieuMail(DateTime startdate, DateTime enddate, string maDonVi, string maChiCuc)
         {
