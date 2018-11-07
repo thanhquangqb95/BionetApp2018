@@ -9211,6 +9211,7 @@ namespace BioNetDAL
                     if (kq.Count() > 0)
                     {
                         var pa = kq.Select(x => x.patient).ToList();
+                        var ph1 = kq.Select(x => x.phieu1).ToList();
                         dv.PSTKPPSinh = new PSThongKePPSinh();
                         dv.PSTKPPSinh.SinhThuong = pa.Where(x => x.PhuongPhapSinh == 0).Count();
                         dv.PSTKPPSinh.SinhMo = pa.Where(x => x.PhuongPhapSinh == 1).Count();
@@ -9236,6 +9237,21 @@ namespace BioNetDAL
                         dv.PSThongKeCanNang.Tu40Den45 = pa.Where(x => x.CanNang >= 4000 && x.CanNang < 4500).Count();
                         dv.PSThongKeCanNang.Tu45Den50 = pa.Where(x => x.CanNang >= 4500 && x.CanNang < 5000).Count();
                         dv.PSThongKeCanNang.Tren50 = pa.Where(x => x.CanNang >= 5000).Count();
+                        dv.PSTKChuongTrinh = new PSThongKeChuongTrinh();
+                        dv.PSTKChuongTrinh.QuocGia = ph1.Where(x => x.IDChuongTrinh.Equals("CTQG0001")).Count();
+                        dv.PSTKChuongTrinh.XaHoi = ph1.Where(x => x.IDChuongTrinh.Equals("CTXH0001")).Count();
+                        dv.PSTKChuongTrinh.Demo = ph1.Where(x => x.IDChuongTrinh.Equals("CTDM0001")).Count();
+                        dv.PSTKCon = new PSThongKeCon();
+                        dv.PSTKCon.Sinh3Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("3")).Count();
+                        dv.PSTKCon.Sinh4Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("4")).Count();
+                        dv.PSTKCon.SinhTu5Con = pa.Where(x => int.Parse(x.Para.ToString().Substring(3))>=5).Count();
+                        dv.PSThongKeGoiBenh = new PSThongKeGoiBenh();
+                        dv.PSThongKeGoiBenh.Benh2 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0002")).Count();
+                        dv.PSThongKeGoiBenh.Benh3 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0003")).Count();
+                        dv.PSThongKeGoiBenh.Benh5 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0004")).Count();
+                        dv.PSThongKeGoiBenh.Benh5Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0006")).Count();
+                        dv.PSThongKeGoiBenh.Benh3Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0007")).Count();
+                        dv.PSThongKeGoiBenh.Benh2Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0008")).Count();
                     }
                 }
             }

@@ -35,6 +35,9 @@ namespace BioNetModel
         public PSThongKePPSinh PSTKPPSinh { get; set; }
         public PSThongKeTuoiMe PSThongKeTuoiMe { get; set; }
         public PSThongKeCanNang PSThongKeCanNang { get; set; }
+        public PSThongKeChuongTrinh PSTKChuongTrinh { get; set; }
+        public PSThongKeCon PSTKCon { get; set; }
+        public PSThongKeGoiBenh PSThongKeGoiBenh { get; set; }
     }
     public class PSThongKeChiTiet
     {
@@ -72,5 +75,26 @@ namespace BioNetModel
         public int Tu40Den45 { get; set; }
         public int Tu45Den50 { get; set; }
         public int Tren50 { get; set; }
+    }
+    public class PSThongKeChuongTrinh
+    {
+        public int XaHoi { get; set; }
+        public int QuocGia { get; set; }
+        public int Demo { get; set; }
+    }
+    public class PSThongKeCon
+    {
+        public int Sinh3Con { get; set; }
+        public int Sinh4Con { get; set; }
+        public int SinhTu5Con { get; set; }
+    }
+    public class PSThongKeGoiBenh
+    {
+        public int Benh2 { get; set; }
+        public int Benh3 { get; set; }
+        public int Benh5 { get; set; }
+        public int Benh2Hemo { get; set; }
+        public int Benh3Hemo { get; set; }
+        public int Benh5Hemo { get; set; }
     }
 }

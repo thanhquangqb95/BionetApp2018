@@ -28,7 +28,7 @@ namespace BioNetSangLocSoSinh.FrmReports
         private void FrmBaoBaoTheoDonVI_Load(object sender, EventArgs e)
         {
             //cbbDichVu.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
-            cbbThongKe.EditValue = 0;
+        
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             listDonVi= BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
             dllNgay.tungay.Value = DateTime.Now;
@@ -39,6 +39,9 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.LoadPPSinh();
             this.LoadTuoiMe();
             this.LoadCanNang();
+            this.LoadChuongTrinh();
+            this.LoadSLSinh();
+            this.LoadGoiXN();
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "0", TenPPSinh = "Sinh thường" });
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "1", TenPPSinh = "Sinh mổ" });
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "2", TenPPSinh = "N/A" });
@@ -76,6 +79,129 @@ namespace BioNetSangLocSoSinh.FrmReports
             col2.OptionsColumn.AllowEdit = false;
             col2.Visible = true;
             band.Columns.Add(col2);
+        }
+        private void LoadChuongTrinh()
+        {
+            GridBand band = new GridBand();
+            band.Name = "LoadChuongTrinh";
+            band.Caption = "Thông tin chương trình";
+            band.RowCount = 1;
+            band.Visible = true;
+            this.GVDanhSachDonVi.Bands.Add(band);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col4.Name = "ChuongTrinhQuocGia";
+            col4.FieldName = "PSTKChuongTrinh.QuocGia";
+            col4.Caption = "Quốc gia";
+            col4.OptionsColumn.AllowEdit = false;
+            col4.Visible = true;
+            band.Columns.Add(col4);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col3.Name = "ChuongTrinhXaHoi";
+            col3.FieldName = "PSTKChuongTrinh.XaHoi";
+            col3.Caption = "Xã hội hóa";
+            col3.OptionsColumn.AllowEdit = false;
+            col3.Visible = true;
+            band.Columns.Add(col3);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col2.Name = "ChuongTrinhDemo";
+            col2.FieldName = "PSTKChuongTrinh.Demo";
+            col2.Caption = "Demo";
+            col2.OptionsColumn.AllowEdit = false;
+            col2.Visible = true;
+            band.Columns.Add(col2);
+        }
+        private void LoadSLSinh()
+        {
+            GridBand band = new GridBand();
+            band.Name = "LoadSLSinh";
+            band.Caption = "Thông tin Para";
+            band.RowCount = 1;
+            band.Visible = true;
+            this.GVDanhSachDonVi.Bands.Add(band);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col4.Name = "PSTKCon3Sinh";
+            col4.FieldName = "PSTKCon.Sinh3Con";
+            col4.Caption = "Sinh con thứ 3";
+            col4.OptionsColumn.AllowEdit = false;
+            col4.Visible = true;
+            band.Columns.Add(col4);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col3.Name = "PSTKCon4Sinh";
+            col3.FieldName = "PSTKCon.Sinh4Con";
+            col3.Caption = "Sinh con thứ 4";
+            col3.OptionsColumn.AllowEdit = false;
+            col3.Visible = true;
+            band.Columns.Add(col3);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col2.Name = "PSTKCon5Sinh";
+            col2.FieldName = "PSTKCon.SinhTu5Con";
+            col2.Caption = "Sinh con thứ 5 trờ lên";
+            col2.OptionsColumn.AllowEdit = false;
+            col2.Visible = true;
+            band.Columns.Add(col2);
+        }
+        private void LoadGoiXN()
+        {
+            GridBand band = new GridBand();
+            band.Name = "LoadGoiXN";
+            band.Caption = "Thông tin gói xét nghiệm";
+            band.RowCount = 1;
+            band.Visible = true;
+            this.GVDanhSachDonVi.Bands.Add(band);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col4.Name = "PSTKCon3Sinh";
+            col4.FieldName = "PSThongKeGoiBenh.Benh2";
+            col4.Caption = "2 Bệnh";
+            col4.OptionsColumn.AllowEdit = false;
+            col4.Visible = true;
+            band.Columns.Add(col4);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col3.Name = "PSTKCon4Sinh";
+            col3.FieldName = "PSThongKeGoiBenh.Benh3";
+            col3.Caption = "3 Bệnh";
+            col3.OptionsColumn.AllowEdit = false;
+            col3.Visible = true;
+            band.Columns.Add(col3);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col2.Name = "PSTKCon5Sinh";
+            col2.FieldName = "PSThongKeGoiBenh.Benh5";
+            col2.Caption = "5 Bệnh";
+            col2.OptionsColumn.AllowEdit = false;
+            col2.Visible = true;
+            band.Columns.Add(col2);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col5.Name = "Benh2Hemo";
+            col5.FieldName = "PSThongKeGoiBenh.Benh2";
+            col5.Caption = "2 Bệnh + Hemo";
+            col5.OptionsColumn.AllowEdit = false;
+            col5.Visible = true;
+            band.Columns.Add(col5);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col6.Name = "Benh3Hemo";
+            col6.FieldName = "PSThongKeGoiBenh.Benh3Hemo";
+            col6.Caption = "3 Bệnh +Hemo";
+            col6.OptionsColumn.AllowEdit = false;
+            col6.Visible = true;
+            band.Columns.Add(col6);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col7.Name = "Benh5Hemo";
+            col7.FieldName = "PSThongKeGoiBenh.Benh5Hemo";
+            col7.Caption = "5 Bệnh + Hemo";
+            col7.OptionsColumn.AllowEdit = false;
+            col7.Visible = true;
+            band.Columns.Add(col7);
         }
         private void LoadTuoiMe()
         {
@@ -240,15 +366,13 @@ namespace BioNetSangLocSoSinh.FrmReports
             col7.OptionsColumn.AllowEdit = false;
             col7.Visible = true;
             band.Columns.Add(col7);
-
-
         }
+        
         #endregion
         private void loadDuLieu()
         {
             GCDanhSachDonVi.DataSource = null;
             GCDanhSachDonVi.DataSource = lstTK;
-            txtNoiDung.Text = lstTK.Count().ToString() + " đơn vị."+ listBaoCao.Count().ToString()+" bệnh nhân.";
         }
         public class CLPPSinh
         {
@@ -330,7 +454,7 @@ namespace BioNetSangLocSoSinh.FrmReports
 
         private void btnBaoCao_Click(object sender, EventArgs e)
         {
-
+            
             //this.GVDanhSachDonVi.Bands.Remove(2);
             //switch(cbbThongKe.EditValue)
             //{
