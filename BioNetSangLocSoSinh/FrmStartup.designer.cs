@@ -146,6 +146,8 @@
             this.barSubItem12 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem71 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem72 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem73 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem13 = new DevExpress.XtraBars.BarSubItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPageCategory2 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -176,7 +178,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonPage9 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.barSubItem13 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -299,9 +300,10 @@
             this.barSubItem12,
             this.barButtonItem71,
             this.barButtonItem72,
-            this.barSubItem13});
+            this.barSubItem13,
+            this.barButtonItem73});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 41;
+            this.ribbon.MaxItemId = 42;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1,
@@ -1272,6 +1274,7 @@
             this.barButtonItem69.Caption = "Máy Đục Lỗ";
             this.barButtonItem69.Id = 35;
             this.barButtonItem69.Name = "barButtonItem69";
+            this.barButtonItem69.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem69_ItemClick);
             // 
             // barButtonItem70
             // 
@@ -1289,7 +1292,8 @@
             this.barSubItem12.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.graph;
             this.barSubItem12.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem71),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem72)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem72),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem73)});
             this.barSubItem12.Name = "barSubItem12";
             // 
             // barButtonItem71
@@ -1307,6 +1311,22 @@
             this.barButtonItem72.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.bar_chart;
             this.barButtonItem72.Name = "barButtonItem72";
             this.barButtonItem72.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem72_ItemClick);
+            // 
+            // barButtonItem73
+            // 
+            this.barButtonItem73.Caption = "Thống kê theo file excel";
+            this.barButtonItem73.Id = 41;
+            this.barButtonItem73.Name = "barButtonItem73";
+            this.barButtonItem73.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem73_ItemClick);
+            // 
+            // barSubItem13
+            // 
+            this.barSubItem13.Caption = "Báo cáo tài chính";
+            this.barSubItem13.Id = 40;
+            this.barSubItem13.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem49),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem51)});
+            this.barSubItem13.Name = "barSubItem13";
             // 
             // ribbonPageCategory1
             // 
@@ -1562,15 +1582,6 @@
             this.ribbonPage9.Name = "ribbonPage9";
             this.ribbonPage9.Text = "ribbonPage9";
             // 
-            // barSubItem13
-            // 
-            this.barSubItem13.Caption = "Báo cáo tài chính";
-            this.barSubItem13.Id = 40;
-            this.barSubItem13.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem49),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem51)});
-            this.barSubItem13.Name = "barSubItem13";
-            // 
             // FrmStartup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1743,5 +1754,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem71;
         private DevExpress.XtraBars.BarButtonItem barButtonItem72;
         private DevExpress.XtraBars.BarSubItem barSubItem13;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem73;
     }
 }

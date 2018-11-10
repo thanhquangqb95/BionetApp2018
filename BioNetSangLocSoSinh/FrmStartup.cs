@@ -1598,6 +1598,26 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             catch { }
         }
+
+        private void barButtonItem73_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                FrmReports.FrmBaoCaoExcelNguyCo frm = new FrmReports.FrmBaoCaoExcelNguyCo();
+                TabCreating(xTabMain, "Thông kê theo excel", frm);
+                SplashScreenManager.CloseForm();
+            }
+            catch { }
+        }
+
+        private void barButtonItem69_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+            }
+            catch { }
+        }
     }
 
 }

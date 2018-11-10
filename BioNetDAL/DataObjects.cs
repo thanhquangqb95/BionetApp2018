@@ -9082,11 +9082,26 @@ namespace BioNetDAL
                         }
                         if(isLan2)
                         {
-                            dv.KetLuan = dv.CTKQ2.KetLuan;
+                            if(dv.CTKQ2.isNguyCo==true)
+                            {
+                                dv.KetLuan = dv.CTKQ2.KetLuan;
+                            }
+                            else
+                            {
+                                dv.KetLuan = "Nguy cơ thấp L2";
+                            }
+                           
                         }
                         else
                         {
-                            dv.KetLuan = dv.CTKQ1.KetLuan;
+                            if (dv.CTKQ1.isNguyCo != true)
+                            {
+                                dv.KetLuan = dv.CTKQ1.KetLuan;
+                            }
+                            else
+                            {
+                                dv.KetLuan = "Nghi ngờ";
+                            }
                         }
                         dv.STT = STT++;
                         lst.Add(dv);

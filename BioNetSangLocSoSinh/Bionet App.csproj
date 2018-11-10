@@ -571,6 +571,12 @@
     <Compile Include="FrmReports\FrmBaoCaoDonVi_ChiTietcs.Designer.cs">
       <DependentUpon>FrmBaoCaoDonVi_ChiTietcs.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReports\FrmBaoCaoExcelNguyCo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReports\FrmBaoCaoExcelNguyCo.Designer.cs">
+      <DependentUpon>FrmBaoCaoExcelNguyCo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReports\FrmBaoCaoTaiChinhCTDonVi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -670,6 +676,12 @@
     </Compile>
     <Compile Include="Reports\frmReportEditGeneral.Designer.cs">
       <DependentUpon>frmReportEditGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.Designer.cs">
+      <DependentUpon>rptBaoCaoExcelNguyCo.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoHoaDon.cs">
       <SubType>Component</SubType>
@@ -1063,6 +1075,9 @@
     <EmbeddedResource Include="FrmReports\FrmBaoCaoDonVi_ChiTietcs.resx">
       <DependentUpon>FrmBaoCaoDonVi_ChiTietcs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmReports\FrmBaoCaoExcelNguyCo.resx">
+      <DependentUpon>FrmBaoCaoExcelNguyCo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmReports\FrmBaoCaoTaiChinhCTDonVi.resx">
       <DependentUpon>FrmBaoCaoTaiChinhCTDonVi.cs</DependentUpon>
     </EmbeddedResource>
@@ -1123,6 +1138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReportEditGeneral.resx">
       <DependentUpon>frmReportEditGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.resx">
+      <DependentUpon>rptBaoCaoExcelNguyCo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoHoaDon.resx">
       <DependentUpon>rptBaoCaoHoaDon.cs</DependentUpon>
