@@ -52,7 +52,7 @@ namespace DataSync.BioNetSync
                 string from = SendFrom;
                 MailAddress fromsend = new MailAddress(SendFrom, "BIONET VN SLSS", Encoding.Unicode);
               
-                string to = "thanhquangqb95@gmail.com";
+                string to = SendTo;
                 string subject = tieude;
                string body =noidung;
                 string passmail = pass;

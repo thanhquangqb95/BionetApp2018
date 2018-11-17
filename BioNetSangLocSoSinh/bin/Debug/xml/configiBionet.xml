@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <serverInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <encrypt>true</encrypt>
-  <servername>192.168.1.254,1433</servername>
+  <servername>LETHANHQUANG\THANHQUANGQB95</servername>
   <username>sa</username>
-  <password>Bionet@0104223466</password>
+  <password>bionetvietnam</password>
  <database>Bio_TestSync</database> 
 </serverInfo>

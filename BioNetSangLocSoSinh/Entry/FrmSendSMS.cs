@@ -14,6 +14,8 @@ using BioNetBLL;
 using UserControlDate;
 using System.Text.RegularExpressions;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraSplashScreen;
+using BioNetSangLocSoSinh.DiaglogFrm;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -111,7 +113,9 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
             this.LoadDS();
+            SplashScreenManager.CloseForm();
         }
         private void LoadDS()
         {
@@ -454,6 +458,16 @@ namespace BioNetSangLocSoSinh.Entry
                         e.Appearance.BackColor = Color.SkyBlue;
                         e.Appearance.BackColor2 = Color.LightSkyBlue;
                     }
+                    if(e.Column.FieldName== "SDTNguoiNhan")
+                    {
+                        string no10so = View.GetRowCellValue(e.RowHandle, this.col_no10so) == null ? string.Empty : View.GetRowCellValue(e.RowHandle, this.col_no10so).ToString();
+                        if (no10so == "True")
+                        {
+                            e.Appearance.BackColor = Color.GhostWhite;
+                            e.Appearance.BackColor2 = Color.GhostWhite;
+                        }
+                    }
+                   
                 }
             }
             catch { }

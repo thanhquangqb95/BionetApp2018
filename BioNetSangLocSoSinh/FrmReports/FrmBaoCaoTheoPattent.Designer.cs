@@ -189,6 +189,7 @@
             // 
             // txtTime
             // 
+            this.txtTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTime.Location = new System.Drawing.Point(1011, 60);
             this.txtTime.Name = "txtTime";
             this.txtTime.Properties.ReadOnly = true;

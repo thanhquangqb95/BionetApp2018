@@ -72,14 +72,13 @@ namespace BioNetSangLocSoSinh.FrmReports
                     MaDonVi = this.txtDonVi.EditValue.ToString();
                 }
                 SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
-                gio = 0; phut = 0; giay = 0;
-                timer1.Interval = 1000;
-                timer1.Start();
                 DateTime TIme1 = DateTime.Now;
                 GCDanhSachMauDuongTinh.DataSource = null;
                 GCDanhSachMauDuongTinh.DataSource = BioNet_Bus.LoadDSBaoCaoTuyChonDichVu(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
                 SplashScreenManager.CloseForm();
                 DateTime TIme2 = DateTime.Now;
+                TimeSpan kt = TIme2 - TIme1;
+                txtTime.Text = string.Format("{0:00}:{1:00}:{2:00}", kt.Hours, kt.Minutes, kt.Seconds);
             }
             catch
             {

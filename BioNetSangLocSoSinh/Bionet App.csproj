@@ -707,6 +707,12 @@
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.Designer.cs">
       <DependentUpon>rptBaoCaoTaiChinhTongHop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptThongKeExcelGene.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptThongKeExcelGene.Designer.cs">
+      <DependentUpon>rptThongKeExcelGene.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportDSCapMa.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1153,6 +1159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.resx">
       <DependentUpon>rptBaoCaoTaiChinhTongHop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsBaoCao\rptThongKeExcelGene.resx">
+      <DependentUpon>rptThongKeExcelGene.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportDSCapMa.resx">
       <DependentUpon>rptReportDSCapMa.cs</DependentUpon>

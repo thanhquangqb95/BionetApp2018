@@ -6,8 +6,7 @@ using System.Text;
 namespace BioNetModel
 {
     public class PSDanhSachGuiSMS
-    {
-       
+    {       
         public string TenTre { get; set; }
         public string SDTNguoiNhan { get; set; }
         public string EmailGui { get; set; }
@@ -22,6 +21,7 @@ namespace BioNetModel
         public int SoKiTu { get; set; }
         public string MaKhachHang { get; set; }
         public bool? isDaGui { get; set; }
+        public bool Not10so   { get; set; }
 
     }
 }

@@ -52,8 +52,14 @@
             this.GCAmTinh = new DevExpress.XtraGrid.GridControl();
             this.GVAmTinh = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
-            this.documentView = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             this.openFileExel = new System.Windows.Forms.OpenFileDialog();
+            this.previewBar1 = new DevExpress.XtraPrinting.Preview.PreviewBar();
+            this.previewBar2 = new DevExpress.XtraPrinting.Preview.PreviewBar();
+            this.previewBar3 = new DevExpress.XtraPrinting.Preview.PreviewBar();
+            this.previewBar4 = new DevExpress.XtraPrinting.Preview.PreviewBar();
+            this.documentView = new DevExpress.XtraPrinting.Preview.DocumentViewer();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -83,12 +89,14 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.simpleButton2);
+            this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Controls.Add(this.btnLocDanhSach);
             this.panelControl1.Controls.Add(this.btnOpenFile);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1383, 42);
+            this.panelControl1.Size = new System.Drawing.Size(1370, 42);
             this.panelControl1.TabIndex = 0;
             this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
@@ -116,7 +124,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 42);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1383, 659);
+            this.panelControl2.Size = new System.Drawing.Size(1370, 659);
             this.panelControl2.TabIndex = 1;
             // 
             // TabConTrol
@@ -125,7 +133,7 @@
             this.TabConTrol.Location = new System.Drawing.Point(2, 2);
             this.TabConTrol.Name = "TabConTrol";
             this.TabConTrol.SelectedTabPage = this.xtraTabPage1;
-            this.TabConTrol.Size = new System.Drawing.Size(1379, 655);
+            this.TabConTrol.Size = new System.Drawing.Size(1366, 655);
             this.TabConTrol.TabIndex = 1;
             this.TabConTrol.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -140,7 +148,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.GCFileExcel);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1373, 627);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1360, 627);
             this.xtraTabPage1.Text = "Danh sách dữ liệu";
             // 
             // GCFileExcel
@@ -149,7 +157,7 @@
             this.GCFileExcel.Location = new System.Drawing.Point(0, 0);
             this.GCFileExcel.MainView = this.GVFileExcel;
             this.GCFileExcel.Name = "GCFileExcel";
-            this.GCFileExcel.Size = new System.Drawing.Size(1373, 627);
+            this.GCFileExcel.Size = new System.Drawing.Size(1360, 627);
             this.GCFileExcel.TabIndex = 0;
             this.GCFileExcel.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVFileExcel});
@@ -293,29 +301,81 @@
             // 
             this.xtraTabPage7.Controls.Add(this.documentView);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1373, 627);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1360, 627);
             this.xtraTabPage7.Text = "Báo cáo tổng hợp";
-            // 
-            // documentView
-            // 
-            this.documentView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.documentView.DocumentSource = typeof(BioNetSangLocSoSinh.Reports.rptPhieuViewTT);
-            this.documentView.IsMetric = false;
-            this.documentView.Location = new System.Drawing.Point(0, 0);
-            this.documentView.Margin = new System.Windows.Forms.Padding(1);
-            this.documentView.Name = "documentView";
-            this.documentView.Size = new System.Drawing.Size(1373, 627);
-            this.documentView.TabIndex = 6;
             // 
             // openFileExel
             // 
             this.openFileExel.FileName = "openFileExcel";
             // 
+            // previewBar1
+            // 
+            this.previewBar1.BarName = "Toolbar";
+            this.previewBar1.DockCol = 0;
+            this.previewBar1.DockRow = 1;
+            this.previewBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.previewBar1.Text = "Toolbar";
+            // 
+            // previewBar2
+            // 
+            this.previewBar2.BarName = "Toolbar";
+            this.previewBar2.DockCol = 0;
+            this.previewBar2.DockRow = 1;
+            this.previewBar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.previewBar2.Text = "Toolbar";
+            // 
+            // previewBar3
+            // 
+            this.previewBar3.BarName = "Toolbar";
+            this.previewBar3.DockCol = 0;
+            this.previewBar3.DockRow = 1;
+            this.previewBar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.previewBar3.Text = "Toolbar";
+            // 
+            // previewBar4
+            // 
+            this.previewBar4.BarName = "Main Menu";
+            this.previewBar4.DockCol = 0;
+            this.previewBar4.DockRow = 0;
+            this.previewBar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.previewBar4.OptionsBar.MultiLine = true;
+            this.previewBar4.OptionsBar.UseWholeRow = true;
+            this.previewBar4.Text = "Main Menu";
+            // 
+            // documentView
+            // 
+            this.documentView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.documentView.DocumentSource = typeof(BioNetSangLocSoSinh.Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo);
+            this.documentView.IsMetric = false;
+            this.documentView.Location = new System.Drawing.Point(0, 0);
+            this.documentView.Margin = new System.Windows.Forms.Padding(1);
+            this.documentView.Name = "documentView";
+            this.documentView.Size = new System.Drawing.Size(1360, 627);
+            this.documentView.TabIndex = 6;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(204, 5);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(122, 23);
+            this.simpleButton1.TabIndex = 7;
+            this.simpleButton1.Text = "Lưu Excel các nhóm";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(341, 5);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(134, 23);
+            this.simpleButton2.TabIndex = 8;
+            this.simpleButton2.Text = "Lưu báo cáo tổng hợp";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
             // FrmBaoCaoExcelNguyCo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 701);
+            this.ClientSize = new System.Drawing.Size(1370, 701);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
@@ -378,6 +438,12 @@
         private DevExpress.XtraGrid.GridControl GCAmTinh;
         private DevExpress.XtraGrid.Views.Grid.GridView GVAmTinh;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
+        private DevExpress.XtraPrinting.Preview.PreviewBar previewBar1;
+        private DevExpress.XtraPrinting.Preview.PreviewBar previewBar2;
+        private DevExpress.XtraPrinting.Preview.PreviewBar previewBar3;
+        private DevExpress.XtraPrinting.Preview.PreviewBar previewBar4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraPrinting.Preview.DocumentViewer documentView;
     }
 }

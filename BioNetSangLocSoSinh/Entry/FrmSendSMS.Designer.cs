@@ -95,6 +95,7 @@
             this.col_TinhTrangGui = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEditSMS = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.col_MaKhachHang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_no10so = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnXuatSMS = new DevExpress.XtraEditors.SimpleButton();
             this.btnSendSMS = new DevExpress.XtraEditors.SimpleButton();
@@ -719,7 +720,8 @@
             this.col_NoiDungTN,
             this.gridColumn10,
             this.col_TinhTrangGui,
-            this.col_MaKhachHang});
+            this.col_MaKhachHang,
+            this.col_no10so});
             this.GVCTDSGuiTinNhan.GridControl = this.GCCTDSGuiTinNhan;
             this.GVCTDSGuiTinNhan.Name = "GVCTDSGuiTinNhan";
             this.GVCTDSGuiTinNhan.OptionsSelection.MultiSelect = true;
@@ -804,7 +806,7 @@
             this.col_TinhTrangGui.OptionsColumn.AllowEdit = false;
             this.col_TinhTrangGui.Visible = true;
             this.col_TinhTrangGui.VisibleIndex = 6;
-            this.col_TinhTrangGui.Width = 95;
+            this.col_TinhTrangGui.Width = 87;
             // 
             // repositoryItemCheckEditSMS
             // 
@@ -821,6 +823,14 @@
             this.col_MaKhachHang.FieldName = "MaKhachHang";
             this.col_MaKhachHang.Name = "col_MaKhachHang";
             this.col_MaKhachHang.Tag = "";
+            // 
+            // col_no10so
+            // 
+            this.col_no10so.Caption = "Không phải 10 số";
+            this.col_no10so.FieldName = "Not10so";
+            this.col_no10so.Name = "col_no10so";
+            this.col_no10so.Visible = true;
+            this.col_no10so.VisibleIndex = 8;
             // 
             // panelControl2
             // 
@@ -1200,7 +1210,8 @@
             this.cbbSDT.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Tất cả", ((short)(3)), -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Có số điện thoại", ((short)(1)), -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không có số điện thoại", ((short)(0)), -1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không có số điện thoại", ((short)(0)), -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Không phải 10 số", "2", -1)});
             this.cbbSDT.Size = new System.Drawing.Size(150, 20);
             this.cbbSDT.TabIndex = 1069;
             // 
@@ -1429,5 +1440,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.ToggleSwitch cbbSDT1;
         private DevExpress.XtraGrid.Columns.GridColumn col_MaKhachHang;
+        private DevExpress.XtraGrid.Columns.GridColumn col_no10so;
     }
 }

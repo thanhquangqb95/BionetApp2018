@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Bio_TestSync_Cu" Class="BioNetDBContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=BIONET_LETHANHQ\SQLEXPRESS;Initial Catalog=Bio_TestSync_Cu;Integrated Security=True" SettingsObjectName="BioNetModel.Properties.Settings" SettingsPropertyName="Bio_TestSync_CuConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Bio_TestSync" Class="BioNetDBContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LETHANHQUANG\THANHQUANGQB95;Initial Catalog=Bio_TestSync;Integrated Security=True" SettingsObjectName="BioNetModel.Properties.Settings" SettingsPropertyName="Bio_TestSyncConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BangGhiDuLieu" Member="BangGhiDuLieus">
     <Type Name="BangGhiDuLieu">
       <Column Name="MaDuLieu" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -163,6 +163,38 @@
       <Column Name="SLViTri" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PSCM_GanViTri" Member="PSCM_GanViTris">
+    <Type Name="PSCM_GanViTri">
+      <Column Name="IDRowGanXN" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDLanGanXN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="STT_bang" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaXetNghiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaGoiXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChuChung" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isDaDuyet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IDMayDucLo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PSCM_GanViTri_PSCM_GanViTriCT" Member="PSCM_GanViTriCTs" ThisKey="IDRowGanXN" OtherKey="IDRowGanXN" Type="PSCM_GanViTriCT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSCM_GanViTriCT" Member="PSCM_GanViTriCTs">
+    <Type Name="PSCM_GanViTriCT">
+      <Column Name="IDRowGanCT" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDLanGanXN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDRowGanXN" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="STT" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="STTDia" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="STTVT" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ViTri" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IDMayXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChuCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isDaDuyet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isTest" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PSCM_GanViTri_PSCM_GanViTriCT" Member="PSCM_GanViTri" ThisKey="IDRowGanXN" OtherKey="IDRowGanXN" Type="PSCM_GanViTri" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.PSDanhMucChauLuc" Member="PSDanhMucChauLucs">
     <Type Name="PSDanhMucChauLuc">
       <Column Name="IDChauLuc" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -236,6 +268,29 @@
       <Column Name="MaNhom" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="isLocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ChietKhau" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSDanhMucDonViCoSo" Member="PSDanhMucDonViCoSos">
+    <Type Name="PSDanhMucDonViCoSo">
+      <Column Name="RowIDDVCS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaDVCS" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="TenDVCS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChiDVCS" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SDTCS" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="isLocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Logo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HeaderReport" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Stt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaChiCuc" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="KieuTraKetQua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isDongBo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TenBacSiDaiDien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ChuKiDonVi" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EmailTC" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="isGuiMailTC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isChoPhepGuiSMS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="VietTatDV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.PSDanhMucGhiChu" Member="PSDanhMucGhiChus">
@@ -623,11 +678,11 @@
       <Column Name="isDaGui" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="GroupSMS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NoiDungGui" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="EmailTT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="EmailKH" Member="EmailDV" Type="System.String" DbType="NVarChar(max)" CanBeNull="true" />
-      <Column Name="SLPhieu" Type="System.Int32" DbType="int" CanBeNull="true" />
-      <Column Name="NVGuiEmail" Type="System.String" DbType="Nvarchar(50)" CanBeNull="false" />
+      <Column Name="EmailTT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="EmailDV" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DateSendEmail" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SLPhieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NVGuiEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="PSSMSC_PSSMSLog" Member="PSSMSLogs" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSLog" />
     </Type>
   </Table>
@@ -642,7 +697,7 @@
       <Column Name="IDNhanVienSend" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IDMauSend" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="NumberMobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaPhieu" Type="System.String" DbType="Nvarchar(50)" CanBeNull="true" />
+      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="PSSMSC_PSSMSLog" Member="PSSMSC" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSC" IsForeignKey="true" />
     </Type>
   </Table>
@@ -772,61 +827,6 @@
       <Column Name="isDongBoPDF" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="isDaGuiMail" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="PSXN_TraKetQua_PSXN_TraKQ_ChiTiet" Member="PSXN_TraKQ_ChiTiets" ThisKey="MaPhieu" OtherKey="MaPhieu" Type="PSXN_TraKQ_ChiTiet" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PSCM_GanViTri" Member="PSCM_GanViTris">
-    <Type Name="PSCM_GanViTri">
-      <Column Name="IDRowGanXN" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="IDLanGanXN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="STT_bang" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaXetNghiem" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MaGoiXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GhiChuChung" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="isDaDuyet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="IDMayDucLo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="PSCM_GanViTri_PSCM_GanViTriCT" Member="PSCM_GanViTriCTs" ThisKey="IDRowGanXN" OtherKey="IDRowGanXN" Type="PSCM_GanViTriCT" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PSCM_GanViTriCT" Member="PSCM_GanViTriCTs">
-    <Type Name="PSCM_GanViTriCT">
-      <Column Name="IDRowGanCT" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="IDLanGanXN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="IDRowGanXN" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="STT" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="STTDia" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="STTVT" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="ViTri" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IDMayXN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GhiChuCT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="isDaDuyet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isTest" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="PSCM_GanViTri_PSCM_GanViTriCT" Member="PSCM_GanViTri" ThisKey="IDRowGanXN" OtherKey="IDRowGanXN" Type="PSCM_GanViTri" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PSDanhMucDonViCoSo" Member="PSDanhMucDonViCoSos">
-    <Type Name="PSDanhMucDonViCoSo">
-      <Column Name="RowIDDVCS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaDVCS" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="TenDVCS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DiaChiDVCS" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="SDTCS" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="isLocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Logo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="HeaderReport" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Stt" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaChiCuc" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="KieuTraKetQua" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="isDongBo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="TenBacSiDaiDien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="ChuKiDonVi" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="EmailTC" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="isGuiMailTC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isChoPhepGuiSMS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="VietTatDV" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">

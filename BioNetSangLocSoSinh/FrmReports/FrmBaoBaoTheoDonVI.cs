@@ -12,6 +12,8 @@ using BioNetBLL;
 using BioNetModel;
 using BioNetModel.Data;
 using DevExpress.XtraGrid.Views.BandedGrid;
+using DevExpress.XtraSplashScreen;
+using BioNetSangLocSoSinh.DiaglogFrm;
 
 namespace BioNetSangLocSoSinh.FrmReports
 {
@@ -252,6 +254,14 @@ namespace BioNetSangLocSoSinh.FrmReports
             col5.Visible = true;
             band.Columns.Add(col5);
 
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col12.Name = "TuoiMe17den20";
+            col12.FieldName = "PSThongKeTuoiMe.Tuoi17den20";
+            col12.Caption = "Từ 18 đến 20 tuổi";
+            col12.OptionsColumn.AllowEdit = false;
+            col12.Visible = true;
+            band.Columns.Add(col12);
+
             DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             col6.Name = "TuoiMe20den25";
             col6.FieldName = "PSThongKeTuoiMe.Tuoi20den25";
@@ -423,9 +433,15 @@ namespace BioNetSangLocSoSinh.FrmReports
                     MaDonVi = this.txtDonVi.EditValue.ToString();
                 }
                 listBaoCao = null;
+                SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
+                DateTime TIme1 = DateTime.Now;
                 listBaoCao = BioNet_Bus.LoadDSThongKeDonVi(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, MaDonVi);
                 lstTK = BioNet_Bus.LoadDSThongKeDonViCT(listBaoCao);
                 loadDuLieu();
+                SplashScreenManager.CloseForm();
+                DateTime TIme2 = DateTime.Now;
+                TimeSpan kt = TIme2 - TIme1;
+                txtTime.Text = string.Format("{0:00}:{1:00}:{2:00}", kt.Hours, kt.Minutes, kt.Seconds);
             }
             catch
             {
@@ -477,7 +493,40 @@ namespace BioNetSangLocSoSinh.FrmReports
             //}
         }
         #region Thông kê
-        
+
         #endregion
+
+        private void btnXuatFile_Click(object sender, EventArgs e)
+        {
+            if (this.GVDanhSachDonVi.RowCount > 0)
+            {
+                this.ExportDataToExcelFile();
+            }
+            else
+            {
+                XtraMessageBox.Show("Không có dữ liệu, vui lòng lấy dữ liệu lại và kiểm tra điều kiện lọc.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void ExportDataToExcelFile()
+        {
+            SaveFileDialog ofd = new SaveFileDialog();
+            ofd.Filter = "Excel File(*.xlsx)|*.xlsx";
+            ofd.FileName = "BaoCaoThongKeTheoDonVi"+txtChiCuc.Text+ DateTime.Now.Date.ToString("yyyy-MM-dd") + ".xlsx";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                if (ofd.FileName.Length > 0)
+                {
+                    try
+                    {
+
+                        this.GVDanhSachDonVi.ExportToXlsx(ofd.FileName);
+                    }
+                    catch
+                    {
+                        XtraMessageBox.Show("Không thể lưu file này! Vui lòng chọn đường dẫn khác.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

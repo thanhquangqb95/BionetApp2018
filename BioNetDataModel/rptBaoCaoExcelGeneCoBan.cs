@@ -7,7 +7,8 @@ namespace BioNetModel
 {
     public class rptBaoCaoExcelGeneCoBan
     {
-        //Thống kê mẫu
+        //Thống kê 
+        public DateTime NgayIn { get; set; }
         public TKExcelSoMau TongSoMau { get; set; }
        // public TKExcelSoMau MauNguyCoThapL1 { get; set; }
         public TKExcelSoMau MauNghiNgo { get; set; }
@@ -40,7 +41,43 @@ namespace BioNetModel
       //  public TKExcelXNGene CLMauL2Dat { get; set; }
 
     }
+    public class rptBaoCaoExcelGene
+    {
+        //Thống kê 
+        public DateTime NgayIn { get; set; }
+        public string TenNhom { get; set; }
+        public string STT { get; set; }
+        //Thống kê gene
+        public List<TKGene> TongGene { get; set; }
+
+    }
+    public class rptBaoCaoExcelTong
+    {
+        //Thống kê 
+        public DateTime NgayIn { get; set; }
+        public string Tieude { get; set; }
+        public List<rptBaoCaoExcelGene> Gene { get; set; }
+
+    }
+    public class TKGene
+    {
+        public string Ten { get; set; }
+        public string Tong { get; set; }
+        public string Tile { get; set; }
+        public string NghiNgo { get; set; }
+        public string NguyCoCao { get; set; }
+        public string NguyCoThapL2 { get; set; }
+        public string AmTinh { get; set; }
+        public string DuongTinh { get; set; }
+    }
     public class TKExcelSoMau
+    {
+        public string SoLuong { get; set; }
+        public string Tile { get; set; }
+        public string SLLamGene { get; set; }
+        public string SLChuaLamGene { get; set; }
+    }
+    public class TKExcelSoMau1
     {
         public string SoLuong { get; set; }
         public string Tile { get; set; }

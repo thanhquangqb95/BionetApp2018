@@ -33,6 +33,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnThongke = new DevExpress.XtraEditors.SimpleButton();
+            this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtChiCuc = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -55,7 +56,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LookUpEditTenVietTat = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
+            this.txtTime = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtChiCuc.Properties)).BeginInit();
@@ -68,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditTenVietTat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -75,6 +77,7 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.txtTime);
             this.panelControl1.Controls.Add(this.btnClear);
             this.panelControl1.Controls.Add(this.btnThongke);
             this.panelControl1.Controls.Add(this.btnXuatFile);
@@ -125,6 +128,23 @@
             this.btnThongke.TabIndex = 1079;
             this.btnThongke.Text = "Thống kê";
             this.btnThongke.Click += new System.EventHandler(this.btnThongke_Click);
+            // 
+            // btnXuatFile
+            // 
+            this.btnXuatFile.Appearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnXuatFile.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.btnXuatFile.Appearance.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnXuatFile.Appearance.Options.UseBorderColor = true;
+            this.btnXuatFile.Appearance.Options.UseFont = true;
+            this.btnXuatFile.Appearance.Options.UseForeColor = true;
+            this.btnXuatFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__2_;
+            this.btnXuatFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnXuatFile.Location = new System.Drawing.Point(722, 6);
+            this.btnXuatFile.Name = "btnXuatFile";
+            this.btnXuatFile.Size = new System.Drawing.Size(119, 23);
+            this.btnXuatFile.TabIndex = 2;
+            this.btnXuatFile.Text = "Xuất file";
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
             // labelControl16
             // 
@@ -348,22 +368,13 @@
             this.gridView5.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView5.OptionsView.ShowGroupPanel = false;
             // 
-            // btnXuatFile
+            // txtTime
             // 
-            this.btnXuatFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXuatFile.Appearance.BorderColor = System.Drawing.Color.Maroon;
-            this.btnXuatFile.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.btnXuatFile.Appearance.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnXuatFile.Appearance.Options.UseBorderColor = true;
-            this.btnXuatFile.Appearance.Options.UseFont = true;
-            this.btnXuatFile.Appearance.Options.UseForeColor = true;
-            this.btnXuatFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__2_;
-            this.btnXuatFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnXuatFile.Location = new System.Drawing.Point(722, 6);
-            this.btnXuatFile.Name = "btnXuatFile";
-            this.btnXuatFile.Size = new System.Drawing.Size(119, 23);
-            this.btnXuatFile.TabIndex = 2;
-            this.btnXuatFile.Text = "Xuất file";
+            this.txtTime.Location = new System.Drawing.Point(596, 62);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Properties.ReadOnly = true;
+            this.txtTime.Size = new System.Drawing.Size(120, 20);
+            this.txtTime.TabIndex = 1084;
             // 
             // FrmBaoBaoTheoDonVI
             // 
@@ -392,6 +403,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditTenVietTat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -424,5 +436,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraEditors.SimpleButton btnXuatFile;
+        private DevExpress.XtraEditors.TextEdit txtTime;
     }
 }
