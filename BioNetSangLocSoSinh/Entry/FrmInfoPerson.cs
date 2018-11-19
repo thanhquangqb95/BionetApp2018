@@ -123,6 +123,8 @@ namespace BioNetSangLocSoSinh.Entry
             txtNang.Text = infoPerson.CanNang.ToString();
             cboPhuongPhapSinh.EditValue = infoPerson.PhuongPhapSinh;
             txtMaPhieu1.Text = BioNet_Bus.GetMaPhieu1TheoMaBN(maBenhNhan);
+            txtMaKhachHang.Text = infoPerson.MaKhachHang;
+           
          
             if(!string.IsNullOrEmpty(txtMaPhieu1.Text))
             {
@@ -132,20 +134,26 @@ namespace BioNetSangLocSoSinh.Entry
                 
                 if(Phieu!=null)
                 {
+                    txtMaDVSC.Text = Phieu.maDonViCoSo;
                     btnSendEmail1.Enabled = true;
+                    string CTNguyCoCao = string.Empty;
                     var kq = BioNet_Bus.GetThongTinKetQuaXN(txtMaPhieu1.Text, maTiepNhan);
-                    btnChiTietKQ1.Enabled = true;
-                    string CTNguyCoCao=string.Empty;
-                    if (kq.PSXN_TraKQ_ChiTiets != null)
+                    if(kq!=null)
                     {
-                        foreach (var kqct in kq.PSXN_TraKQ_ChiTiets)
+                        btnChiTietKQ1.Enabled = true;
+                       
+                        if (kq.PSXN_TraKQ_ChiTiets != null)
                         {
-                            if (kqct.isNguyCo)
+                            foreach (var kqct in kq.PSXN_TraKQ_ChiTiets)
                             {
-                                CTNguyCoCao= CTNguyCoCao+" " +kqct.TenThongSo;
+                                if (kqct.isNguyCo)
+                                {
+                                    CTNguyCoCao = CTNguyCoCao + " " + kqct.TenThongSo;
+                                }
                             }
                         }
                     }
+                   
                     switch (Phieu.trangThaiMau)
                     {
                         case 1:
@@ -560,6 +568,13 @@ namespace BioNetSangLocSoSinh.Entry
                 this.txtDonVi.EditValue = "all";
             }
             catch { }
+        }
+
+        private void btnSDT1_Click(object sender, EventArgs e)
+        {
+            UserControl.ucLogSMS ucLogSMS = new UserControl.ucLogSMS(txtMaPhieu1.Text,txtMaKhachHang.Text,txtSDTMe.Text,txtMaDVSC.Text);
+            ucLogSMS.ShowDialog();
+
         }
     }
 }

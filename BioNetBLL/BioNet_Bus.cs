@@ -414,7 +414,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetDanhSachGuiSMS(TuNgay, DenNgay, TrangThaiPhieu, nguyco, MaDV, NoiDung, DoiTuong, KieuKiTu, TrangThaiGui, SDT, NoiDungGui, MauGui, HinhThuc, isSDT1);
         }
-        public static PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
+        public static string GetLogSMS(string MaPhieu, string MaKhachHang, string SDT, string DV)
+        {
+            var db = new DataObjects();
+            return db.GetLogSMS(MaPhieu, MaKhachHang,SDT,DV);
+        }
+            public static PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
         {
             var db = new DataObjects();
             return db.InsertMauSMS(sms);

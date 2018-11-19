@@ -7887,7 +7887,6 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Deb
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetSangLocSoSinh.pdb
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetBLL.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetModel.dll
-C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\Bunifu_UI_v1.5.3.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DataSync.exe
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.BonusSkins.v17.1.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Charts.v17.1.Core.dll
@@ -8190,7 +8189,6 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Deb
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\es\DevExpress.XtraVerticalGrid.v17.1.resources.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ja\DevExpress.XtraVerticalGrid.v17.1.resources.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ru\DevExpress.XtraVerticalGrid.v17.1.resources.dll
-C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csprojResolveAssemblyReference.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.DiaglogFrm.FrmChangePass.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.DiaglogFrm.FrmChonMayDucLo.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.DiaglogFrm.frmConfig.resources
@@ -8315,3 +8313,6 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CoreCompileInputs.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csprojAssemblyReference.cache
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.UserControl.ucLogSMS.resources
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CopyComplete

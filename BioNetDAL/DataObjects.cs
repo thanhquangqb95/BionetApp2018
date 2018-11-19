@@ -1710,6 +1710,226 @@ namespace BioNetDAL
             catch { }
             return tt;
         }
+        
+        public string GetTenTrangThaiPhieu(int TrangThaiPhieu)
+        {
+            string TenTrangThai = "không xác định";
+            if (TrangThaiPhieu <= 2)
+            {
+                TenTrangThai = "tiếp nhận và đánh giá mẫu";
+            }
+            else if (TrangThaiPhieu == 3 || TrangThaiPhieu == 5)
+            {
+                TenTrangThai = "đang xét nghiệm";
+            }
+            else if (TrangThaiPhieu == 4)
+            {
+                TenTrangThai = "đã có kết quả";
+            }
+            else if (TrangThaiPhieu == 6)
+            {
+                TenTrangThai = "đã có kết quả- cần thu lại mẫu";
+            }
+            else if (TrangThaiPhieu == 7)
+            {
+                TenTrangThai = "đã có kết quả- đã thu lại mẫu";
+            }
+            return TenTrangThai;
+        }
+        public string[] GetKetQua(string MaPhieu)
+        {
+            string[] lst = new string[2];
+            string KQ = "chưa có kết quả";
+            string KQNCC = "Nguy cơ cao(";
+            string KQNCT = "Nguy cơ thấp(";
+            string KetLuan = "";
+            bool ncc = false;
+            var XNKQ = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu == MaPhieu && x.isXoa != true);
+            if (XNKQ != null)
+            {
+                switch (XNKQ.isNguyCoCao)
+                {
+                    case true:
+                        {
+                            KetLuan = "nguy cơ cao";
+                            break;
+                        }
+                    default:
+                        {
+                            KetLuan = "nguy cơ thấp";
+                            break;
+                        }
+                }
+                foreach (var ctkq in XNKQ.PSXN_TraKQ_ChiTiets)
+                {
+                    string ten = GetTenDichVuVietTatCuaKyThuat(ctkq.IDKyThuat);
+                    if (ctkq.isNguyCo)
+                    {
+                        if (KQNCC.Equals("Nguy cơ cao("))
+                        {
+                            KQNCC = KQNCC + ten;
+                        }
+                        else
+                        {
+                            KQNCC = KQNCC + "," + ten;
+                        }
+                        ncc = true;
+
+                    }
+                    else
+                    {
+                        if (KQNCT.Equals("Nguy cơ thấp("))
+                        {
+                            KQNCT = KQNCT + ten;
+                        }
+                        else
+                        {
+                            KQNCT = KQNCT + "," + ten;
+                        }
+                    }
+                }
+                if (ncc)
+                {
+                    KQ = KQNCT + ")," + KQNCC + ")";
+                }
+                else
+                {
+                    KQ = KQNCT + ")";
+                }
+            }
+
+            lst[0] = KQ;
+            lst[1] = KetLuan;
+            return lst;
+        }
+        public PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
+        {
+            PsReponse res = new PsReponse();
+            try
+            {
+                if (sms.RowIDMauSMS == 0)
+                {
+                    db.PSDanhMucMauSMS.InsertOnSubmit(sms);
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    var sm = db.PSDanhMucMauSMS.FirstOrDefault(x => x.RowIDMauSMS == sms.RowIDMauSMS);
+                    sm.MauNoiDungGui = sms.MauNoiDungGui;
+                    db.SubmitChanges();
+                }
+                res.Result = true;
+            }
+            catch
+            {
+
+            }
+            return res;
+        }
+        #region SMS
+        public List<PSDanhMucMauSMS> LoadMauSMS(string HinhThucGuiTN, string DoituongNhanTinNhan, string Noidunggui)
+        {
+            List<PSDanhMucMauSMS> danhmucsms = new List<PSDanhMucMauSMS>();
+            try
+            {
+                danhmucsms = db.PSDanhMucMauSMS.OrderBy(y => y.STT).Where(x => x.HinhThucGuiTN == HinhThucGuiTN && x.DoiTuongNhanTN == DoituongNhanTinNhan && x.NoidungGui == Noidunggui).ToList();
+            }
+            catch
+            {
+            }
+            return danhmucsms;
+        }
+        public string NoiDungVietTatSMS(string NoiDung, string maPhieu, string TenTre, string TenNguoiNhan, bool isCoDau, int Trangthaiphieu, DateTime ngaysinh)
+        {
+            string tam = string.Empty;
+            try
+            {
+                string Trangthai = GetTenTrangThaiPhieu(Trangthaiphieu);
+                string[] KQKL = new string[2];
+                KQKL = GetKetQua(maPhieu);
+                tam = NoiDung.Replace("#maphieu", maPhieu);
+                tam = tam.Replace("#tentre", TenTre);
+                tam = tam.Replace("#tennguoinhan", TenNguoiNhan);
+                tam = tam.Replace("#trangthaiphieu", Trangthai);
+                tam = tam.Replace("#ketqua", KQKL[0]);
+                tam = tam.Replace("#ketluan", KQKL[1]);
+                tam = tam.Replace("#ngaysinh", ngaysinh.ToShortDateString());
+                if (!isCoDau)
+                {
+                    Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+                    tam = tam.Normalize(NormalizationForm.FormD);
+                    tam = regex.Replace(tam, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+                    return tam;
+                }
+                else
+                {
+                    return tam;
+                }
+            }
+            catch
+            {
+
+            }
+            return tam;
+        }
+
+        public PsReponse InsertSMSNumber(PSDanhSachGuiSMS sms, PsReponseSMS kq, string MaNV)
+        {
+            PsReponse psReponse = new PsReponse();
+            try
+            {
+                var smsC = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(sms.MaKhachHang) && x.NoiDungGui.Equals(sms.NoiDungGui) && x.GroupSMS.Equals(sms.HinhThucGui) && x.IDPhieu == sms.MaPhieu);
+                if (smsC != null)
+                {
+                    PSSMSLog log = new PSSMSLog();
+                    log.RowIDNumber = smsC.RowIDNumber;
+                    log.SMSContent = sms.NoiDungTinNhan;
+                    log.TimeSend = DateTime.Now;
+                    log.IDNhanVienSend = MaNV;
+                    log.NumberMobile = sms.SDTNguoiNhan;
+                    log.SMSError = kq.StringError;
+                    log.isResult = kq.Result;
+                    log.IDMauSend = sms.MauGui;
+                    log.MaPhieu = sms.MaPhieu;
+                    log.RowIDSMSlog = 0;
+                    db.PSSMSLogs.InsertOnSubmit(log);
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    PSSMSC pSSMS = new PSSMSC();
+                    pSSMS.MaKhachHang = sms.MaKhachHang;
+                    pSSMS.NoiDungGui = sms.NoiDungGui;
+                    pSSMS.GroupSMS = sms.HinhThucGui;
+                    pSSMS.isDaGui = kq.Result;
+                    pSSMS.RowIDNumber = 0;
+                    pSSMS.IDPhieu = sms.MaPhieu;
+                    db.PSSMSCs.InsertOnSubmit(pSSMS);
+                    db.SubmitChanges();
+                    var t = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(sms.MaKhachHang) && x.NoiDungGui.Equals(sms.NoiDungGui) && x.GroupSMS.Equals(sms.HinhThucGui) && x.IDPhieu == sms.MaPhieu);
+                    if (t != null)
+                    {
+                        PSSMSLog log = new PSSMSLog();
+                        log.RowIDNumber = t.RowIDNumber;
+                        log.SMSContent = sms.NoiDungTinNhan;
+                        log.TimeSend = DateTime.Now;
+                        log.IDNhanVienSend = MaNV;
+                        log.NumberMobile = sms.SDTNguoiNhan;
+                        log.SMSError = kq.StringError;
+                        log.isResult = kq.Result;
+                        log.IDMauSend = sms.MauGui;
+                        log.MaPhieu = sms.MaPhieu;
+                        log.RowIDSMSlog = 0;
+                        db.PSSMSLogs.InsertOnSubmit(log);
+                        db.SubmitChanges();
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return psReponse;
+        }
         public List<PSDanhSachGuiSMS> GetDanhSachGuiSMS(DateTime TuNgay, DateTime DenNgay, int TrangThaiPhieu, int nguyco, string MaDV, string NoiDung, string DoiTuong, bool KieuKiTu, int TrangThaiGui,
             int SDT, string NoiDungGUi, string MauGui, string HinhThuc, bool SDT1)
         {
@@ -1814,6 +2034,7 @@ namespace BioNetDAL
                         phieu = phieu.Where(p => p.IDCoSo.Equals(MaDV)).ToList();
                         phieu = null;
                     }
+                    
                     foreach (var ph in phieu)
                     {
                         PSPatient pa = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan == ph.MaBenhNhan && x.isXoa != true);
@@ -1859,9 +2080,9 @@ namespace BioNetDAL
                                     dsms.SDTNguoiNhan = pa.FatherPhoneNumber.Trim();
                                 }
                             }
-                            if(!string.IsNullOrEmpty(dsms.SDTNguoiNhan))
+                            if (!string.IsNullOrEmpty(dsms.SDTNguoiNhan))
                             {
-                                switch(dsms.SDTNguoiNhan.Substring(2,3))
+                                switch (dsms.SDTNguoiNhan.Substring(2, 3))
                                 {
                                     case "162":
                                         {
@@ -1979,7 +2200,7 @@ namespace BioNetDAL
                                     dsms.Not10so = false;
                                 }
                             }
-                          
+
                             dsms.NoiDungTinNhan = NoiDungVietTatSMS(NoiDung, ph.IDPhieu, pa.TenBenhNhan, dsms.TenNguoiNhan, KieuKiTu, int.Parse(ph.TrangThaiMau.ToString()), pa.NgayGioSinh.Value);
                             dsms.HinhThucGui = HinhThuc;
                             dsms.NoiDungGui = NoiDungGUi;
@@ -1996,7 +2217,7 @@ namespace BioNetDAL
                     {
                         lst = lst.Where(x => x.SDTNguoiNhan == null).ToList();
                     }
-                    else if(SDT==2)
+                    else if (SDT == 2)
                     {
                         lst = lst.Where(x => x.SDTNguoiNhan != null).ToList();
                         lst = lst.Where(x => x.Not10so == true).ToList();
@@ -2021,226 +2242,54 @@ namespace BioNetDAL
                     }
                 }
             }
-            catch(Exception  ex)
+            catch (Exception ex)
             { }
             return lst;
         }
-        public string GetTenTrangThaiPhieu(int TrangThaiPhieu)
+        public string GetLogSMS(string MaPhieu, string MaKhachHang, string SDT,string DV)
         {
-            string TenTrangThai = "không xác định";
-            if (TrangThaiPhieu <= 2)
+            string kq = string.Empty;
+            try
             {
-                TenTrangThai = "tiếp nhận và đánh giá mẫu";
-            }
-            else if (TrangThaiPhieu == 3 || TrangThaiPhieu == 5)
-            {
-                TenTrangThai = "đang xét nghiệm";
-            }
-            else if (TrangThaiPhieu == 4)
-            {
-                TenTrangThai = "đã có kết quả";
-            }
-            else if (TrangThaiPhieu == 6)
-            {
-                TenTrangThai = "đã có kết quả- cần thu lại mẫu";
-            }
-            else if (TrangThaiPhieu == 7)
-            {
-                TenTrangThai = "đã có kết quả- đã thu lại mẫu";
-            }
-            return TenTrangThai;
-        }
-        public string[] GetKetQua(string MaPhieu)
-        {
-            string[] lst = new string[2];
-            string KQ = "chưa có kết quả";
-            string KQNCC = "Nguy cơ cao(";
-            string KQNCT = "Nguy cơ thấp(";
-            string KetLuan = "";
-            bool ncc = false;
-            var XNKQ = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu == MaPhieu && x.isXoa != true);
-            if (XNKQ != null)
-            {
-                switch (XNKQ.isNguyCoCao)
+                var ph = GetTTPhieu(MaPhieu,DV);
+                var ph1 = GetMaPhieu1TheoMaBN(ph.Benhnhan.MaBenhNhan);
+                var ph2 = GetMaPhieu2TheoMaBN(ph.Benhnhan.MaBenhNhan);
+                var smslog1 = db.PSSMSCs.Where(x => x.IDPhieu.Equals(ph1) && x.MaKhachHang.Equals(MaKhachHang) && x.GroupSMS.Equals("sms")).ToList();
+                var smslog2 = db.PSSMSCs.Where(x => x.IDPhieu.Equals(ph2) && x.MaKhachHang.Equals(MaKhachHang) && x.GroupSMS.Equals("sms")).ToList();
+                if(smslog1!=null)
                 {
-                    case true:
-                        {
-                            KetLuan = "nguy cơ cao";
-                            break;
-                        }
-                    default:
-                        {
-                            KetLuan = "nguy cơ thấp";
-                            break;
-                        }
-                }
-                foreach (var ctkq in XNKQ.PSXN_TraKQ_ChiTiets)
-                {
-                    string ten = GetTenDichVuVietTatCuaKyThuat(ctkq.IDKyThuat);
-                    if (ctkq.isNguyCo)
+                   foreach(var sms in smslog1)
                     {
-                        if (KQNCC.Equals("Nguy cơ cao("))
+                      kq= kq+"<<<Lịch sủ gửi tin nhắn mã phiếu " + ph1 + " >>>";
+                      foreach(var ct in sms.PSSMSLogs)
                         {
-                            KQNCC = KQNCC + ten;
-                        }
-                        else
-                        {
-                            KQNCC = KQNCC + "," + ten;
-                        }
-                        ncc = true;
-
-                    }
-                    else
-                    {
-                        if (KQNCT.Equals("Nguy cơ thấp("))
-                        {
-                            KQNCT = KQNCT + ten;
-                        }
-                        else
-                        {
-                            KQNCT = KQNCT + "," + ten;
+                            string log = "\n \n >>" + ct.TimeSend.Value + "||" + ct.NumberMobile + "|| ID mẫu tin: " + ct.IDMauSend + "||" + (ct.isResult == true ? "Thành công" : "Thất bại") + "||" + GetThongTinNhanVien(ct.IDNhanVienSend).EmployeeName +
+                                "\n Nội dung gửi: " + ct.SMSContent;
+                            kq = kq + log;
                         }
                     }
                 }
-                if (ncc)
+                if (smslog2 != null)
                 {
-                    KQ = KQNCT + ")," + KQNCC + ")";
-                }
-                else
-                {
-                    KQ = KQNCT + ")";
-                }
-            }
-
-            lst[0] = KQ;
-            lst[1] = KetLuan;
-            return lst;
-        }
-        public PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
-        {
-            PsReponse res = new PsReponse();
-            try
-            {
-                if (sms.RowIDMauSMS == 0)
-                {
-                    db.PSDanhMucMauSMS.InsertOnSubmit(sms);
-                    db.SubmitChanges();
-                }
-                else
-                {
-                    var sm = db.PSDanhMucMauSMS.FirstOrDefault(x => x.RowIDMauSMS == sms.RowIDMauSMS);
-                    sm.MauNoiDungGui = sms.MauNoiDungGui;
-                    db.SubmitChanges();
-                }
-                res.Result = true;
-            }
-            catch
-            {
-
-            }
-            return res;
-        }
-        public List<PSDanhMucMauSMS> LoadMauSMS(string HinhThucGuiTN, string DoituongNhanTinNhan, string Noidunggui)
-        {
-            List<PSDanhMucMauSMS> danhmucsms = new List<PSDanhMucMauSMS>();
-            try
-            {
-                danhmucsms = db.PSDanhMucMauSMS.OrderBy(y => y.STT).Where(x => x.HinhThucGuiTN == HinhThucGuiTN && x.DoiTuongNhanTN == DoituongNhanTinNhan && x.NoidungGui == Noidunggui).ToList();
-            }
-            catch
-            {
-            }
-            return danhmucsms;
-        }
-        public string NoiDungVietTatSMS(string NoiDung, string maPhieu, string TenTre, string TenNguoiNhan, bool isCoDau, int Trangthaiphieu, DateTime ngaysinh)
-        {
-            string tam = string.Empty;
-            try
-            {
-                string Trangthai = GetTenTrangThaiPhieu(Trangthaiphieu);
-                string[] KQKL = new string[2];
-                KQKL = GetKetQua(maPhieu);
-                tam = NoiDung.Replace("#maphieu", maPhieu);
-                tam = tam.Replace("#tentre", TenTre);
-                tam = tam.Replace("#tennguoinhan", TenNguoiNhan);
-                tam = tam.Replace("#trangthaiphieu", Trangthai);
-                tam = tam.Replace("#ketqua", KQKL[0]);
-                tam = tam.Replace("#ketluan", KQKL[1]);
-                tam = tam.Replace("#ngaysinh", ngaysinh.ToShortDateString());
-                if (!isCoDau)
-                {
-                    Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
-                    tam = tam.Normalize(NormalizationForm.FormD);
-                    tam = regex.Replace(tam, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
-                    return tam;
-                }
-                else
-                {
-                    return tam;
-                }
-            }
-            catch
-            {
-
-            }
-            return tam;
-        }
-
-        public PsReponse InsertSMSNumber(PSDanhSachGuiSMS sms, PsReponseSMS kq, string MaNV)
-        {
-            PsReponse psReponse = new PsReponse();
-            try
-            {
-                var smsC = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(sms.MaKhachHang) && x.NoiDungGui.Equals(sms.NoiDungGui) && x.GroupSMS.Equals(sms.HinhThucGui) && x.IDPhieu == sms.MaPhieu);
-                if (smsC != null)
-                {
-                    PSSMSLog log = new PSSMSLog();
-                    log.RowIDNumber = smsC.RowIDNumber;
-                    log.SMSContent = sms.NoiDungTinNhan;
-                    log.TimeSend = DateTime.Now;
-                    log.IDNhanVienSend = MaNV;
-                    log.NumberMobile = sms.SDTNguoiNhan;
-                    log.SMSError = kq.StringError;
-                    log.isResult = kq.Result;
-                    log.IDMauSend = sms.MauGui;
-                    log.RowIDSMSlog = 0;
-                    db.PSSMSLogs.InsertOnSubmit(log);
-                    db.SubmitChanges();
-                }
-                else
-                {
-                    PSSMSC pSSMS = new PSSMSC();
-                    pSSMS.MaKhachHang = sms.MaKhachHang;
-                    pSSMS.NoiDungGui = sms.NoiDungGui;
-                    pSSMS.GroupSMS = sms.HinhThucGui;
-                    pSSMS.isDaGui = kq.Result;
-                    pSSMS.RowIDNumber = 0;
-                    pSSMS.IDPhieu = sms.MaPhieu;
-                    db.PSSMSCs.InsertOnSubmit(pSSMS);
-                    db.SubmitChanges();
-                    var t = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(sms.MaKhachHang) && x.NoiDungGui.Equals(sms.NoiDungGui) && x.GroupSMS.Equals(sms.HinhThucGui));
-                    if (t != null)
+                    foreach (var sms in smslog2)
                     {
-                        PSSMSLog log = new PSSMSLog();
-                        log.RowIDNumber = t.RowIDNumber;
-                        log.SMSContent = sms.NoiDungTinNhan;
-                        log.TimeSend = DateTime.Now;
-                        log.IDNhanVienSend = MaNV;
-                        log.NumberMobile = sms.SDTNguoiNhan;
-                        log.SMSError = kq.StringError;
-                        log.isResult = kq.Result;
-                        log.IDMauSend = sms.MauGui;
-                        log.RowIDSMSlog = 0;
-                        db.PSSMSLogs.InsertOnSubmit(log);
-                        db.SubmitChanges();
+                        kq = kq + "\n<<<Lịch sủ gửi tin nhắn mã phiếu " + ph2 + " >>>";
+                        foreach (var ct in sms.PSSMSLogs)
+                        {
+                            string log = "\n \n >>" + ct.TimeSend.Value + "||" + ct.NumberMobile + "|| ID mẫu tin: " + ct.IDMauSend + "||" + (ct.isResult == true ? "Thành công" : "Thất bại") + "||" + GetThongTinNhanVien(ct.IDNhanVienSend).EmployeeName +
+                                "\n Nội dung gửi: " + ct.SMSContent;
+                            kq = kq + log;
+                        }
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+
             }
-            return psReponse;
+            return kq;
         }
+        #endregion
         public bool KiemTraGioiHan()
         {
             try
@@ -8982,6 +9031,7 @@ namespace BioNetDAL
             }
             return viettat;
         }
+
         #region Báo cáo dương tính
         public List<PsDanhSachMauDuongTinh> GetDanhSachDuongTinh(DateTime NgayBD, DateTime NgayKT, string TenDichVu, string DonVi, string Min, string Max)
         {

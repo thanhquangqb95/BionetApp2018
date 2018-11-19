@@ -2004,7 +2004,6 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\de\DevEx
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\es\DevExpress.XtraGrid.v17.1.resources.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\ja\DevExpress.XtraGrid.v17.1.resources.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\ru\DevExpress.XtraGrid.v17.1.resources.dll
-C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csprojResolveAssemblyReference.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.FrmStartupSync.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.Properties.Resources.resources
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.GenerateResource.Cache
@@ -2012,3 +2011,5 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CoreCompileInputs.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.exe
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csprojAssemblyReference.cache
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CopyComplete

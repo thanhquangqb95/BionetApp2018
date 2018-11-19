@@ -866,6 +866,12 @@
     <Compile Include="UserControl\ucBaoCaoTuyChonTrungTam.Designer.cs">
       <DependentUpon>ucBaoCaoTuyChonTrungTam.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\ucLogSMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControl\ucLogSMS.Designer.cs">
+      <DependentUpon>ucLogSMS.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UscCapMaTheoDonVi.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1237,6 +1243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ucBaoCaoTuyChonTrungTam.resx">
       <DependentUpon>ucBaoCaoTuyChonTrungTam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ucLogSMS.resx">
+      <DependentUpon>ucLogSMS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UscCapMaTheoDonVi.resx">
       <DependentUpon>UscCapMaTheoDonVi.cs</DependentUpon>

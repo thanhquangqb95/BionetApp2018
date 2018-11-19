@@ -591,7 +591,8 @@ C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\bin\D
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\bin\Debug\es\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\bin\Debug\ja\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\bin\Debug\ru\DevExpress.Diagram.v17.1.Core.resources.dll
-C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.csprojResolveAssemblyReference.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.csproj.CoreCompileInputs.cache
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.dll
 C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.csprojAssemblyReference.cache
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\UnitTestProjectBionet\obj\Debug\UnitTestProjectBionet.csproj.CopyComplete
