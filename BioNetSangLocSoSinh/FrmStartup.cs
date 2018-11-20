@@ -1618,6 +1618,11 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             catch { }
         }
+
+        private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 
 }

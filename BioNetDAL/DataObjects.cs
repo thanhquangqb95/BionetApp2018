@@ -9172,39 +9172,36 @@ namespace BioNetDAL
         public List<PSBaoCaoTuyChonDichVu> LoadDSBaoCaoTuyChonDichVu(DateTime NgayBD, DateTime NgayKT, string MaDichVu, string MaDV)
         {
             List<PSBaoCaoTuyChonDichVu> lst = new List<PSBaoCaoTuyChonDichVu>();
-            try
-            {
-                List<string> ress = new List<string>();
+                List<PSPatient> ress = new List<PSPatient>();
                 if (MaDV.Equals("all"))
                 {
                     var res = (from ph in db.PSPhieuSangLocs
+                               join pa in db.PSPatients on ph.MaBenhNhan equals pa.MaBenhNhan
                                join kq in db.PSXN_TraKetQuas on ph.IDPhieu equals kq.MaPhieu
                                join ct in db.PSXN_TraKQ_ChiTiets on kq.MaPhieu equals ct.MaPhieu
                                where kq.NgayCoKQ.Value.Date >= NgayBD.Date && kq.NgayCoKQ.Value.Date <= NgayKT.Date
                                && kq.isXoa != true && ph.isXoa != true && kq.isTraKQ == true && ct.MaDichVu.Equals(MaDichVu)
-                               select new { ph.MaBenhNhan }).Distinct().ToList();
-                    ress = res.Select(x => x.MaBenhNhan).ToList();
+                               select new { pa }).Distinct().ToList();
+                    ress = res.Select(x => x.pa).ToList();
                 }
                 else
                 {
                     var res = (from ph in db.PSPhieuSangLocs
+                               join pa in db.PSPatients on ph.MaBenhNhan equals pa.MaBenhNhan
                                join kq in db.PSXN_TraKetQuas on ph.IDPhieu equals kq.MaPhieu
                                join ct in db.PSXN_TraKQ_ChiTiets on kq.MaPhieu equals ct.MaPhieu
                                where kq.NgayCoKQ.Value.Date >= NgayBD.Date && kq.NgayCoKQ.Value.Date <= NgayKT.Date
                                && kq.isXoa != true && ph.isXoa != true && kq.isTraKQ == true && ct.MaDichVu.Equals(MaDichVu)
                                && ph.IDCoSo.Contains(MaDV)
-                               select new { ph.MaBenhNhan }).Distinct().ToList();
-                    ress = res.Select(x => x.MaBenhNhan).ToList();
+                               select new { pa }).Distinct().ToList();
+                  ress = res.Select(x => x.pa).ToList();
                 }
                 int STT = 1;
-                foreach (var re in ress)
+                foreach (var pat in ress)
                 {
                     try
                     {
                         PSBaoCaoTuyChonDichVu dv = new PSBaoCaoTuyChonDichVu();
-                        var pat = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(re));
-                        if(pat!=null)
-                        {
                             if (!string.IsNullOrEmpty(pat.FatherPhoneNumber))
                             {
                                 if (!(pat.FatherPhoneNumber.StartsWith("0") || pat.FatherPhoneNumber.StartsWith("84")))
@@ -9220,8 +9217,6 @@ namespace BioNetDAL
                                 }
                             }
                             dv.patient = pat;
-                        }
-                      
                         var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
                         bool isLan2 = false;
                         foreach (var ls in lstphieu)
@@ -9265,8 +9260,7 @@ namespace BioNetDAL
                             else
                             {
                                 dv.KetLuan = "Nguy cơ thấp L2";
-                            }
-                           
+                            }                        
                         }
                         else
                         {
@@ -9287,11 +9281,6 @@ namespace BioNetDAL
 
                     }
                 }
-            }
-            catch
-            {
-
-            }
             return lst;
         }
         #endregion

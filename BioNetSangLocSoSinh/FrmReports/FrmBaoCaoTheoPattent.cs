@@ -55,32 +55,43 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             try
             {
-                string MaDonVi = String.Empty;
-                if (this.txtDonVi.EditValue.ToString() == "all")
+               
+                if (!string.IsNullOrEmpty(cbbDichVu.EditValue.ToString()))
                 {
-                    if (this.txtChiCuc.EditValue.ToString() == "all")
+                    SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
+                    string MaDonVi = String.Empty;
+                    if (this.txtDonVi.EditValue.ToString() == "all")
                     {
-                        MaDonVi = "all";
+                        if (this.txtChiCuc.EditValue.ToString() == "all")
+                        {
+                            MaDonVi = "all";
+                        }
+                        else
+                        {
+                            MaDonVi = this.txtChiCuc.EditValue.ToString();
+                        }
                     }
                     else
                     {
-                        MaDonVi = this.txtChiCuc.EditValue.ToString();
+                        MaDonVi = this.txtDonVi.EditValue.ToString();
                     }
+                   
+                    DateTime TIme1 = DateTime.Now;
+                    GCDanhSachMauDuongTinh.DataSource = null;
+                    GCDanhSachMauDuongTinh.DataSource = BioNet_Bus.LoadDSBaoCaoTuyChonDichVu(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
+                    DateTime TIme2 = DateTime.Now;
+                    TimeSpan kt = TIme2 - TIme1;
+                    txtTime.Text = string.Format("{0:00}:{1:00}:{2:00}", kt.Hours, kt.Minutes, kt.Seconds);
+                    SplashScreenManager.CloseForm();
                 }
                 else
                 {
-                    MaDonVi = this.txtDonVi.EditValue.ToString();
+                    MessageBox.Show("Vui lòng chọn dịch vụ cần thống kê","BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
-                DateTime TIme1 = DateTime.Now;
-                GCDanhSachMauDuongTinh.DataSource = null;
-                GCDanhSachMauDuongTinh.DataSource = BioNet_Bus.LoadDSBaoCaoTuyChonDichVu(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
-                SplashScreenManager.CloseForm();
-                DateTime TIme2 = DateTime.Now;
-                TimeSpan kt = TIme2 - TIme1;
-                txtTime.Text = string.Format("{0:00}:{1:00}:{2:00}", kt.Hours, kt.Minutes, kt.Seconds);
+               
+
             }
-            catch
+            catch(Exception ex)
             {
 
             }

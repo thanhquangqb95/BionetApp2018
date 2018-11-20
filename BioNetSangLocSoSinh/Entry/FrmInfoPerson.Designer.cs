@@ -42,8 +42,6 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl_Info = new DevExpress.XtraGrid.GridControl();
             this.gridView_Info = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -83,6 +81,7 @@
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.txtSearchTenTre = new DevExpress.XtraEditors.TextEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.txtMaDVSC = new DevExpress.XtraEditors.TextEdit();
             this.btnSendEmail2 = new DevExpress.XtraEditors.SimpleButton();
             this.imageCollectionEmail = new DevExpress.Utils.ImageCollection(this.components);
             this.btnSendEmail1 = new DevExpress.XtraEditors.SimpleButton();
@@ -111,7 +110,7 @@
             this.txtNamSinhBenhNhan = new DevExpress.XtraEditors.DateEdit();
             this.txtTenBenhNhan = new DevExpress.XtraEditors.TextEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.btnSDT2 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtMaKhachHang = new DevExpress.XtraEditors.TextEdit();
             this.btnSDT1 = new DevExpress.XtraEditors.SimpleButton();
             this.txtNamSinhCha = new DevExpress.XtraEditors.TextEdit();
             this.txtNamSinhMe = new DevExpress.XtraEditors.TextEdit();
@@ -131,8 +130,6 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
-            this.txtMaKhachHang = new DevExpress.XtraEditors.TextEdit();
-            this.txtMaDVSC = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Info)).BeginInit();
@@ -154,6 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearchTenTre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaDVSC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrangThaiPhieu2.Properties)).BeginInit();
@@ -170,6 +168,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenBenhNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
@@ -179,8 +178,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaDVSC.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -700,6 +697,17 @@
             this.groupControl5.TabIndex = 6;
             this.groupControl5.Text = "Thông tin trẻ";
             // 
+            // txtMaDVSC
+            // 
+            this.txtMaDVSC.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
+            this.txtMaDVSC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaDVSC.Location = new System.Drawing.Point(268, 146);
+            this.txtMaDVSC.Name = "txtMaDVSC";
+            this.txtMaDVSC.Size = new System.Drawing.Size(48, 20);
+            this.txtMaDVSC.TabIndex = 41;
+            this.txtMaDVSC.Visible = false;
+            // 
             // btnSendEmail2
             // 
             this.btnSendEmail2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -978,7 +986,6 @@
             this.groupControl4.AppearanceCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.groupControl4.AppearanceCaption.Options.UseFont = true;
             this.groupControl4.Controls.Add(this.txtMaKhachHang);
-            this.groupControl4.Controls.Add(this.btnSDT2);
             this.groupControl4.Controls.Add(this.btnSDT1);
             this.groupControl4.Controls.Add(this.txtNamSinhCha);
             this.groupControl4.Controls.Add(this.txtNamSinhMe);
@@ -1001,33 +1008,31 @@
             this.groupControl4.TabIndex = 7;
             this.groupControl4.Text = "Thông tin gia đình";
             // 
-            // btnSDT2
+            // txtMaKhachHang
             // 
-            this.btnSDT2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSDT2.ImageOptions.ImageIndex = 0;
-            this.btnSDT2.ImageOptions.ImageList = this.imageCollectionEmail;
-            this.btnSDT2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnSDT2.Location = new System.Drawing.Point(400, 96);
-            this.btnSDT2.Name = "btnSDT2";
-            this.btnSDT2.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem6.Text = "Gửi Mail";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.btnSDT2.SuperTip = superToolTip6;
-            this.btnSDT2.TabIndex = 40;
+            this.txtMaKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMaKhachHang.Location = new System.Drawing.Point(7, 141);
+            this.txtMaKhachHang.Name = "txtMaKhachHang";
+            this.txtMaKhachHang.Size = new System.Drawing.Size(48, 20);
+            this.txtMaKhachHang.TabIndex = 40;
+            this.txtMaKhachHang.Visible = false;
             // 
             // btnSDT1
             // 
             this.btnSDT1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSDT1.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.mail__1_;
             this.btnSDT1.ImageOptions.ImageIndex = 0;
             this.btnSDT1.ImageOptions.ImageList = this.imageCollectionEmail;
             this.btnSDT1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnSDT1.Location = new System.Drawing.Point(400, 50);
             this.btnSDT1.Name = "btnSDT1";
             this.btnSDT1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem7.Text = "Gửi Mail";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            this.btnSDT1.SuperTip = superToolTip7;
+            toolTipTitleItem6.Text = "Lịch sử SMS";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            this.btnSDT1.SuperTip = superToolTip6;
             this.btnSDT1.TabIndex = 39;
+            this.btnSDT1.Text = "Lịch sử sms";
             this.btnSDT1.Click += new System.EventHandler(this.btnSDT1_Click);
             // 
             // txtNamSinhCha
@@ -1197,27 +1202,6 @@
             this.btnEdit.Text = "Sửa";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // txtMaKhachHang
-            // 
-            this.txtMaKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaKhachHang.Location = new System.Drawing.Point(7, 141);
-            this.txtMaKhachHang.Name = "txtMaKhachHang";
-            this.txtMaKhachHang.Size = new System.Drawing.Size(48, 20);
-            this.txtMaKhachHang.TabIndex = 40;
-            this.txtMaKhachHang.Visible = false;
-            // 
-            // txtMaDVSC
-            // 
-            this.txtMaDVSC.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
-            this.txtMaDVSC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaDVSC.Location = new System.Drawing.Point(268, 146);
-            this.txtMaDVSC.Name = "txtMaDVSC";
-            this.txtMaDVSC.Size = new System.Drawing.Size(48, 20);
-            this.txtMaDVSC.TabIndex = 41;
-            this.txtMaDVSC.Visible = false;
-            // 
             // FrmInfoPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1255,6 +1239,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaDVSC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrangThaiPhieu2.Properties)).EndInit();
@@ -1272,6 +1257,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
@@ -1281,8 +1267,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaDVSC.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1374,7 +1358,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Columns.GridColumn TenChiCuc;
         private DevExpress.XtraGrid.Columns.GridColumn MaChiCuc;
-        private DevExpress.XtraEditors.SimpleButton btnSDT2;
         private DevExpress.XtraEditors.SimpleButton btnSDT1;
         private DevExpress.XtraEditors.TextEdit txtMaKhachHang;
         private DevExpress.XtraEditors.TextEdit txtMaDVSC;
