@@ -9197,95 +9197,98 @@ namespace BioNetDAL
                   ress = res.Select(x => x.pa).ToList();
                 }
                 int STT = 1;
-                foreach (var pat in ress)
+            foreach (var pat in ress)
                 {
-                    try
+                try
+                {
+                    PSBaoCaoTuyChonDichVu dv = new PSBaoCaoTuyChonDichVu();
+                    //if (!(pat.MotherPhoneNumber.StartsWith("0") || pat.MotherPhoneNumber.StartsWith("84")))
+                    //{
+                    //    pat.FatherPhoneNumber = string.Empty;
+                    //}
+                    //if (!string.IsNullOrEmpty(pat.FatherPhoneNumber))
+                    //{
+                    //    if (!(pat.FatherPhoneNumber.StartsWith("0") || pat.FatherPhoneNumber.StartsWith("84")))
+                    //    {
+                    //        pat.FatherPhoneNumber = string.Empty;
+                    //    }
+                    //}
+                    var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
+                    bool isLan2 = false;
+                    foreach (var ls in lstphieu)
                     {
-                        PSBaoCaoTuyChonDichVu dv = new PSBaoCaoTuyChonDichVu();
-                            if (!string.IsNullOrEmpty(pat.FatherPhoneNumber))
+                        if (ls.isLayMauLan2 != true)
+                        {
+                            var kq = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu.Equals(ls.IDPhieu) && x.isXoa != true);
+                            if (kq != null)
                             {
-                                if (!(pat.FatherPhoneNumber.StartsWith("0") || pat.FatherPhoneNumber.StartsWith("84")))
+                                var ctkq = kq.PSXN_TraKQ_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(MaDichVu) && x.isXoa != true);
+                                if (ctkq != null)
                                 {
-                                    pat.FatherPhoneNumber = string.Empty;
+                                    dv.phieu1 = ls;
+                                    dv.KQ1 = kq;
+                                    dv.CTKQ1 = ctkq;
+                                    dv.patient = pat;
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
                                 }
                             }
-                            if (!string.IsNullOrEmpty(pat.MotherPhoneNumber))
-                            {
-                                if (!(pat.MotherPhoneNumber.StartsWith("0") || pat.MotherPhoneNumber.StartsWith("84")))
-                                {
-                                    pat.FatherPhoneNumber = string.Empty;
-                                }
-                            }
-                            dv.patient = pat;
-                        var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
-                        bool isLan2 = false;
-                        foreach (var ls in lstphieu)
-                        {
-                            if (ls.isLayMauLan2 == true)
-                            {
-                                var kq = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu.Equals(ls.IDPhieu) && x.isXoa != true && x.NgayCoKQ.Value.Date >= NgayBD.Date && x.NgayCoKQ.Value.Date <= NgayKT.Date);
-                                if (kq != null)
-                                {
-                                    var ctkq = kq.PSXN_TraKQ_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(MaDichVu) && x.isXoa != true);
-                                    if (ctkq != null)
-                                    {
-                                        dv.phieu2 = ls;
-                                        dv.KQ2 = kq;
-                                        dv.CTKQ2 = ctkq;
-                                    }
-                                    isLan2 = true;
-                                }                              
-                            }
-                            else
-                            {
-                                var kq = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu.Equals(ls.IDPhieu) && x.isXoa != true);
-                                if(kq!=null)
-                                {
-                                    var ctkq = kq.PSXN_TraKQ_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(MaDichVu) && x.isXoa != true);
-                                    if (ctkq != null)
-                                    {
-                                        dv.phieu1 = ls;
-                                        dv.KQ1 = kq;
-                                        dv.CTKQ1 = ctkq;
-                                    }
-                                }                               
-                            }
-                        }
-                        if(isLan2)
-                        {
-                            if(dv.CTKQ2.isNguyCo==true)
-                            {
-                                dv.KetLuan = dv.CTKQ2.KetLuan;
-                            }
-                            else
-                            {
-                                dv.KetLuan = "Nguy cơ thấp L2";
-                            }                        
+                            else { break; }
                         }
                         else
                         {
-                            if (dv.CTKQ1.isNguyCo != true)
+                            var kq = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu.Equals(ls.IDPhieu) && x.isXoa != true && x.NgayCoKQ.Value.Date >= NgayBD.Date && x.NgayCoKQ.Value.Date <= NgayKT.Date);
+                            if (kq != null)
                             {
-                                dv.KetLuan = dv.CTKQ1.KetLuan;
-                            }
-                            else
-                            {
-                                dv.KetLuan = "Nghi ngờ";
+                                var ctkq = kq.PSXN_TraKQ_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(MaDichVu) && x.isXoa != true);
+                                if (ctkq != null)
+                                {
+                                    dv.phieu2 = ls;
+                                    dv.KQ2 = kq;
+                                    dv.CTKQ2 = ctkq;
+                                }
+                                isLan2 = true;
                             }
                         }
-                        dv.STT = STT++;
-                        lst.Add(dv);
                     }
-                    catch
+                    if (isLan2)
                     {
-
+                        if (dv.CTKQ2.isNguyCo == true)
+                        {
+                            dv.KetLuan = dv.CTKQ2.KetLuan;
+                        }
+                        else
+                        {
+                            dv.KetLuan = "Nguy cơ thấp L2";
+                        }
                     }
+                    else
+                    {
+                        if (dv.CTKQ1.isNguyCo != true)
+                        {
+                            dv.KetLuan = dv.CTKQ1.KetLuan;
+                        }
+                        else
+                        {
+                            dv.KetLuan = "Nghi ngờ";
+                        }
+                    }
+                    dv.STT = STT++;
+                    lst.Add(dv);
+                }
+                catch 
+                {
+
+                }
                 }
             return lst;
         }
-        #endregion
-        #region Báo cáo theo đơn vị
-        public List<PSBaoCaoTuyChonDonVi> LoadDSThongKeDonVi(DateTime NgayBD, DateTime NgayKT, string MaDV)
+            #endregion
+            #region Báo cáo theo đơn vị
+            public List<PSBaoCaoTuyChonDonVi> LoadDSThongKeDonVi(DateTime NgayBD, DateTime NgayKT, string MaDV)
         {
             List<PSBaoCaoTuyChonDonVi> result = new List<PSBaoCaoTuyChonDonVi>();
             try
@@ -9319,27 +9322,27 @@ namespace BioNetDAL
                     {
                         PSBaoCaoTuyChonDonVi dv = new PSBaoCaoTuyChonDonVi();
                         var pat = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(re));
-                        dv.patient = pat;
+                    
                         var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
-                        decimal GiaTri = 0;
                         foreach (var ls in lstphieu)
                         {
-                            if (ls.isLayMauLan2 == true)
-                            {
-                                var kq = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu.Equals(ls.IDPhieu) && x.isXoa != true && x.NgayCoKQ.Value.Date >= NgayBD.Date && x.NgayCoKQ.Value.Date <= NgayKT.Date);
-                                if (kq != null)
-                                {
-                                    dv.phieu2 = ls;
-                                    dv.KQ2 = kq;
-                                }
-                            }
-                            else
+                            if (ls.isLayMauLan2 != true)
                             {
                                 var kq = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu.Equals(ls.IDPhieu) && x.isXoa != true);
                                 if (kq != null)
                                 {
                                     dv.phieu1 = ls;
                                     dv.KQ1 = kq;
+                                    dv.patient = pat;
+                                }
+                            }
+                            else
+                            {
+                                var kq = db.PSXN_TraKetQuas.FirstOrDefault(x => x.MaPhieu.Equals(ls.IDPhieu) && x.isXoa != true && x.NgayCoKQ.Value.Date >= NgayBD.Date && x.NgayCoKQ.Value.Date <= NgayKT.Date);
+                                if (kq != null)
+                                {
+                                    dv.phieu2 = ls;
+                                    dv.KQ2 = kq;
                                 }
                             }
                         }

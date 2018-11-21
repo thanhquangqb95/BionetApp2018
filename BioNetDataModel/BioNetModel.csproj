@@ -76,6 +76,9 @@
     <Compile Include="APIViewModel\XN_TraKetQuaViewModel.cs" />
     <Compile Include="APIViewModel\XN_TraKQ_ChiTietViewModel.cs" />
     <Compile Include="ClassDieuKienLocBaoCao.cs" />
+    <Compile Include="Data\BioNetDBContext.cs">
+      <DependentUpon>BioNetDBContext.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Data\BioNetDBContext.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
