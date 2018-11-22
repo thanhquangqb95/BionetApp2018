@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInfoPerson));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl_Info = new DevExpress.XtraGrid.GridControl();
             this.gridView_Info = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -130,6 +130,7 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.txtSearchMaPhieu = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Info)).BeginInit();
@@ -178,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchMaPhieu.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -202,7 +204,7 @@
             // 
             this.gridControl_Info.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_Info.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl_Info.Location = new System.Drawing.Point(0, 76);
+            this.gridControl_Info.Location = new System.Drawing.Point(0, 79);
             this.gridControl_Info.LookAndFeel.SkinName = "Office 2007 Blue";
             this.gridControl_Info.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl_Info.MainView = this.gridView_Info;
@@ -211,7 +213,7 @@
             this.gridControl_Info.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryGioiTinh,
             this.LookUpEditGioiTinh});
-            this.gridControl_Info.Size = new System.Drawing.Size(825, 602);
+            this.gridControl_Info.Size = new System.Drawing.Size(825, 599);
             this.gridControl_Info.TabIndex = 2;
             this.gridControl_Info.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Info});
@@ -368,6 +370,7 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.txtSearchMaPhieu);
             this.panelControl1.Controls.Add(this.label7);
             this.panelControl1.Controls.Add(this.label6);
             this.panelControl1.Controls.Add(this.txtDonVi);
@@ -390,13 +393,13 @@
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(825, 76);
+            this.panelControl1.Size = new System.Drawing.Size(825, 79);
             this.panelControl1.TabIndex = 0;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(307, 58);
+            this.label7.Location = new System.Drawing.Point(307, 62);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 1073;
@@ -405,7 +408,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 58);
+            this.label6.Location = new System.Drawing.Point(10, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 1072;
@@ -413,7 +416,7 @@
             // 
             // txtDonVi
             // 
-            this.txtDonVi.Location = new System.Drawing.Point(360, 51);
+            this.txtDonVi.Location = new System.Drawing.Point(360, 55);
             this.txtDonVi.Name = "txtDonVi";
             this.txtDonVi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -454,7 +457,7 @@
             // 
             // txtChiCuc
             // 
-            this.txtChiCuc.Location = new System.Drawing.Point(60, 51);
+            this.txtChiCuc.Location = new System.Drawing.Point(60, 55);
             this.txtChiCuc.Name = "txtChiCuc";
             this.txtChiCuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -495,7 +498,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(547, 35);
+            this.labelControl7.Location = new System.Drawing.Point(547, 39);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(80, 13);
             this.labelControl7.TabIndex = 38;
@@ -503,7 +506,7 @@
             // 
             // cbbSL
             // 
-            this.cbbSL.Location = new System.Drawing.Point(633, 28);
+            this.cbbSL.Location = new System.Drawing.Point(633, 32);
             this.cbbSL.Name = "cbbSL";
             this.cbbSL.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -525,12 +528,12 @@
             this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.btnClear.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear.Location = new System.Drawing.Point(711, 30);
+            this.btnClear.Location = new System.Drawing.Point(711, 29);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(106, 23);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear.SuperTip = superToolTip1;
+            toolTipTitleItem13.Text = "Bỏ lọc";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            this.btnClear.SuperTip = superToolTip13;
             this.btnClear.TabIndex = 35;
             this.btnClear.Text = "Bỏ lọc";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -538,7 +541,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(357, 35);
+            this.label5.Location = new System.Drawing.Point(357, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 17;
@@ -546,7 +549,7 @@
             // 
             // cbbTTPhieu
             // 
-            this.cbbTTPhieu.Location = new System.Drawing.Point(416, 28);
+            this.cbbTTPhieu.Location = new System.Drawing.Point(416, 32);
             this.cbbTTPhieu.Name = "cbbTTPhieu";
             this.cbbTTPhieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -568,7 +571,7 @@
             // txtSearchNgaySinh
             // 
             this.txtSearchNgaySinh.EditValue = null;
-            this.txtSearchNgaySinh.Location = new System.Drawing.Point(234, 28);
+            this.txtSearchNgaySinh.Location = new System.Drawing.Point(234, 32);
             this.txtSearchNgaySinh.Name = "txtSearchNgaySinh";
             this.txtSearchNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -579,7 +582,7 @@
             // 
             // txtSeachGioiTinh
             // 
-            this.txtSeachGioiTinh.Location = new System.Drawing.Point(60, 28);
+            this.txtSeachGioiTinh.Location = new System.Drawing.Point(60, 32);
             this.txtSeachGioiTinh.Name = "txtSeachGioiTinh";
             this.txtSeachGioiTinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -603,7 +606,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 35);
+            this.label3.Location = new System.Drawing.Point(10, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 4;
@@ -612,7 +615,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(154, 35);
+            this.label2.Location = new System.Drawing.Point(154, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 3;
@@ -717,9 +720,9 @@
             this.btnSendEmail2.Location = new System.Drawing.Point(404, 196);
             this.btnSendEmail2.Name = "btnSendEmail2";
             this.btnSendEmail2.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem2.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnSendEmail2.SuperTip = superToolTip2;
+            toolTipTitleItem14.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            this.btnSendEmail2.SuperTip = superToolTip14;
             this.btnSendEmail2.TabIndex = 39;
             this.btnSendEmail2.Click += new System.EventHandler(this.btnSendEmail2_Click);
             // 
@@ -738,9 +741,9 @@
             this.btnSendEmail1.Location = new System.Drawing.Point(404, 172);
             this.btnSendEmail1.Name = "btnSendEmail1";
             this.btnSendEmail1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem3.Text = "Gửi Mail";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.btnSendEmail1.SuperTip = superToolTip3;
+            toolTipTitleItem15.Text = "Gửi Mail";
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            this.btnSendEmail1.SuperTip = superToolTip15;
             this.btnSendEmail1.TabIndex = 38;
             this.btnSendEmail1.Click += new System.EventHandler(this.btnSendEmail1_Click);
             // 
@@ -762,9 +765,9 @@
             this.btnChiTietKQ2.Location = new System.Drawing.Point(224, 196);
             this.btnChiTietKQ2.Name = "btnChiTietKQ2";
             this.btnChiTietKQ2.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem4.Text = "Chi tiết phiếu kết quả 2";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.btnChiTietKQ2.SuperTip = superToolTip4;
+            toolTipTitleItem16.Text = "Chi tiết phiếu kết quả 2";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            this.btnChiTietKQ2.SuperTip = superToolTip16;
             this.btnChiTietKQ2.TabIndex = 37;
             this.btnChiTietKQ2.Click += new System.EventHandler(this.btnChiTietKQ2_Click);
             // 
@@ -776,9 +779,9 @@
             this.btnChiTietKQ1.Location = new System.Drawing.Point(224, 172);
             this.btnChiTietKQ1.Name = "btnChiTietKQ1";
             this.btnChiTietKQ1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem5.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            this.btnChiTietKQ1.SuperTip = superToolTip5;
+            toolTipTitleItem17.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            this.btnChiTietKQ1.SuperTip = superToolTip17;
             this.btnChiTietKQ1.TabIndex = 36;
             this.btnChiTietKQ1.Click += new System.EventHandler(this.btnChiTietKQ1_Click);
             // 
@@ -812,9 +815,9 @@
             // 
             // txtMaPhieu2
             // 
-            this.txtMaPhieu2.Enabled = false;
             this.txtMaPhieu2.Location = new System.Drawing.Point(65, 196);
             this.txtMaPhieu2.Name = "txtMaPhieu2";
+            this.txtMaPhieu2.Properties.ReadOnly = true;
             this.txtMaPhieu2.Size = new System.Drawing.Size(153, 20);
             this.txtMaPhieu2.TabIndex = 30;
             // 
@@ -828,9 +831,9 @@
             // 
             // txtMaPhieu1
             // 
-            this.txtMaPhieu1.Enabled = false;
             this.txtMaPhieu1.Location = new System.Drawing.Point(65, 172);
             this.txtMaPhieu1.Name = "txtMaPhieu1";
+            this.txtMaPhieu1.Properties.ReadOnly = true;
             this.txtMaPhieu1.Size = new System.Drawing.Size(153, 20);
             this.txtMaPhieu1.TabIndex = 28;
             // 
@@ -1028,9 +1031,9 @@
             this.btnSDT1.Location = new System.Drawing.Point(400, 50);
             this.btnSDT1.Name = "btnSDT1";
             this.btnSDT1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem6.Text = "Lịch sử SMS";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.btnSDT1.SuperTip = superToolTip6;
+            toolTipTitleItem18.Text = "Lịch sử SMS";
+            superToolTip18.Items.Add(toolTipTitleItem18);
+            this.btnSDT1.SuperTip = superToolTip18;
             this.btnSDT1.TabIndex = 39;
             this.btnSDT1.Text = "Lịch sử sms";
             this.btnSDT1.Click += new System.EventHandler(this.btnSDT1_Click);
@@ -1202,6 +1205,16 @@
             this.btnEdit.Text = "Sửa";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // txtSearchMaPhieu
+            // 
+            this.txtSearchMaPhieu.Location = new System.Drawing.Point(711, 55);
+            this.txtSearchMaPhieu.Name = "txtSearchMaPhieu";
+            this.txtSearchMaPhieu.Properties.Appearance.BackColor = System.Drawing.Color.PeachPuff;
+            this.txtSearchMaPhieu.Properties.Appearance.Options.UseBackColor = true;
+            this.txtSearchMaPhieu.Size = new System.Drawing.Size(106, 20);
+            this.txtSearchMaPhieu.TabIndex = 1074;
+            this.txtSearchMaPhieu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchMaPhieu_KeyPress_1);
+            // 
             // FrmInfoPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1267,6 +1280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtSearchMaPhieu.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1361,5 +1375,6 @@
         private DevExpress.XtraEditors.SimpleButton btnSDT1;
         private DevExpress.XtraEditors.TextEdit txtMaKhachHang;
         private DevExpress.XtraEditors.TextEdit txtMaDVSC;
+        private DevExpress.XtraEditors.TextEdit txtSearchMaPhieu;
     }
 }

@@ -2356,13 +2356,22 @@ namespace BioNetDAL
             catch { }
             return lst;
         }
+        public int GetSLChuaDuocGuiMail()
+        {
+            var re = (from ph in db.PSPhieuSangLocs
+                      join kq in db.PSXN_TraKetQuas on ph.IDPhieu equals kq.MaPhieu
+                      where kq.isTraKQ == true && kq.isDaDuyetKQ == true && kq.isXoa != true && ph.isXoa != true && kq.isDaGuiMail!=true
+                      select kq).ToList();
+            return re.Count();
+            
+        }
 
         public PsReponse CapNhatGuiMail(List<String> MaPhieu,string MaDonVi, string EmailTT,string EmailDV,string NV)
         {
             PsReponse res = new PsReponse();
             try
             {
-                var data = db.PSXN_TraKetQuas.Where(s => (MaPhieu).Equals(s.MaPhieu)).ToList();
+                var data = db.PSXN_TraKetQuas.Where(s => (MaPhieu).Contains(s.MaPhieu)).ToList();
                 data.ToList().ForEach(c => c.isDaGuiMail = true);
                 db.SubmitChanges();
                 PSSMSC SMS = new PSSMSC();
@@ -2377,18 +2386,25 @@ namespace BioNetDAL
                 SMS.DateSendEmail = DateTime.Now;
                 db.PSSMSCs.InsertOnSubmit(SMS);
                 db.SubmitChanges();
-                var smskq = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(SMS.MaKhachHang) && x.EmailTT.Equals(EmailTT) && x.EmailDV.Equals(EmailDV) && x.DateSendEmail.Equals(SMS.DateSendEmail) && x.SLPhieu.Equals(SMS.SLPhieu));
-                foreach (string mphieu in MaPhieu)
+                try
                 {
-                    PSSMSLog Log = new PSSMSLog();
-                    Log.TimeSend = smskq.DateSendEmail;
-                    Log.isResult = true;
-                    Log.IDNhanVienSend = NV;
-                    Log.SMSContent = "email";
-                    Log.RowIDNumber = smskq.RowIDNumber;
-                    Log.MaPhieu = mphieu;
-                    db.PSSMSLogs.InsertOnSubmit(Log);
-                    db.SubmitChanges();
+                    var smskq = db.PSSMSCs.FirstOrDefault(x => x.MaKhachHang.Equals(SMS.MaKhachHang) && x.EmailTT.Equals(EmailTT) && x.EmailDV.Equals(EmailDV) && x.DateSendEmail.Equals(SMS.DateSendEmail) && x.SLPhieu.Equals(SMS.SLPhieu));
+                    foreach (string mphieu in MaPhieu)
+                    {
+                        PSSMSLog Log = new PSSMSLog();
+                        Log.TimeSend = smskq.DateSendEmail;
+                        Log.isResult = true;
+                        Log.IDNhanVienSend = NV;
+                        Log.SMSContent = "email";
+                        Log.RowIDNumber = smskq.RowIDNumber;
+                        Log.MaPhieu = mphieu;
+                        db.PSSMSLogs.InsertOnSubmit(Log);
+                        db.SubmitChanges();
+                    }
+                }
+                catch
+                {
+
                 }
                 
                 //db.Transaction.Commit();
@@ -9285,6 +9301,11 @@ namespace BioNetDAL
                 }
                 }
             return lst;
+        }
+        public List<pro_ThongKeTheoDichVuResult> LoadDSBaoCaoTuyChonDichVuNew(DateTime NgayBD, DateTime NgayKT,  string MaDichVu, string MaDV)
+        {
+            List<pro_ThongKeTheoDichVuResult> lst = new List<pro_ThongKeTheoDichVuResult>();
+            return lst=db.pro_ThongKeTheoDichVu(NgayBD, NgayKT, MaDV, MaDichVu).ToList();
         }
             #endregion
             #region Báo cáo theo đơn vị

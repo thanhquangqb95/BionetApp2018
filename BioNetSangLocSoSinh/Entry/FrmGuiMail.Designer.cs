@@ -71,6 +71,8 @@
             this.repositoryItemCheckGuiMail = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.col_isNguyCoCao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.col_VTDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lblChuaGuiEmail = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.checkChon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -95,6 +97,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.lblChuaGuiEmail);
             this.panelControl1.Controls.Add(this.ckkTenTre);
             this.panelControl1.Controls.Add(this.lblTongCheck);
             this.panelControl1.Controls.Add(this.lblDemChon);
@@ -203,9 +206,13 @@
             // 
             // bttGuiMail
             // 
-            this.bttGuiMail.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.bttGuiMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bttGuiMail.Appearance.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.bttGuiMail.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bttGuiMail.Appearance.Options.UseFont = true;
+            this.bttGuiMail.Appearance.Options.UseForeColor = true;
             this.bttGuiMail.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.email;
-            this.bttGuiMail.Location = new System.Drawing.Point(783, 48);
+            this.bttGuiMail.Location = new System.Drawing.Point(974, 43);
             this.bttGuiMail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bttGuiMail.Name = "bttGuiMail";
             this.bttGuiMail.Size = new System.Drawing.Size(152, 26);
@@ -265,9 +272,11 @@
             // 
             // butOK
             // 
-            this.butOK.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.butOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butOK.Appearance.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.butOK.Appearance.Options.UseFont = true;
             this.butOK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("butOK.ImageOptions.Image")));
-            this.butOK.Location = new System.Drawing.Point(783, 11);
+            this.butOK.Location = new System.Drawing.Point(974, 12);
             this.butOK.Name = "butOK";
             this.butOK.Size = new System.Drawing.Size(152, 26);
             this.butOK.TabIndex = 1055;
@@ -347,6 +356,7 @@
             this.GV_DSPhieuMail.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.col_MaChiCuc,
             this.col_TenChiCuc,
+            this.col_VTDonVi,
             this.col_TenDonVi,
             this.col_Email,
             this.col_NgayNhanMau,
@@ -412,7 +422,7 @@
             this.col_Email.OptionsColumn.AllowEdit = false;
             this.col_Email.OptionsColumn.ReadOnly = true;
             this.col_Email.Visible = true;
-            this.col_Email.VisibleIndex = 2;
+            this.col_Email.VisibleIndex = 3;
             this.col_Email.Width = 211;
             // 
             // col_NgayNhanMau
@@ -424,7 +434,7 @@
             this.col_NgayNhanMau.Name = "col_NgayNhanMau";
             this.col_NgayNhanMau.OptionsColumn.AllowEdit = false;
             this.col_NgayNhanMau.Visible = true;
-            this.col_NgayNhanMau.VisibleIndex = 3;
+            this.col_NgayNhanMau.VisibleIndex = 4;
             this.col_NgayNhanMau.Width = 147;
             // 
             // col_IDPhieu
@@ -439,7 +449,7 @@
             this.col_IDPhieu.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "IDPhieu", "Tổng: {0} phiếu")});
             this.col_IDPhieu.Visible = true;
-            this.col_IDPhieu.VisibleIndex = 4;
+            this.col_IDPhieu.VisibleIndex = 5;
             this.col_IDPhieu.Width = 111;
             // 
             // col_TinhTrangMau_Text
@@ -452,7 +462,7 @@
             this.col_TinhTrangMau_Text.OptionsColumn.AllowEdit = false;
             this.col_TinhTrangMau_Text.OptionsColumn.ReadOnly = true;
             this.col_TinhTrangMau_Text.Visible = true;
-            this.col_TinhTrangMau_Text.VisibleIndex = 5;
+            this.col_TinhTrangMau_Text.VisibleIndex = 6;
             this.col_TinhTrangMau_Text.Width = 121;
             // 
             // col_Chon
@@ -466,7 +476,7 @@
             this.col_Chon.OptionsColumn.AllowEdit = false;
             this.col_Chon.OptionsColumn.ReadOnly = true;
             this.col_Chon.Visible = true;
-            this.col_Chon.VisibleIndex = 6;
+            this.col_Chon.VisibleIndex = 7;
             this.col_Chon.Width = 41;
             // 
             // repositoryItemCheckChon
@@ -508,7 +518,7 @@
             this.col_isGuiMail.OptionsColumn.AllowEdit = false;
             this.col_isGuiMail.OptionsColumn.ReadOnly = true;
             this.col_isGuiMail.Visible = true;
-            this.col_isGuiMail.VisibleIndex = 7;
+            this.col_isGuiMail.VisibleIndex = 8;
             this.col_isGuiMail.Width = 83;
             // 
             // repositoryItemCheckGuiMail
@@ -527,7 +537,7 @@
             this.col_isNguyCoCao.OptionsColumn.AllowEdit = false;
             this.col_isNguyCoCao.OptionsColumn.ReadOnly = true;
             this.col_isNguyCoCao.Visible = true;
-            this.col_isNguyCoCao.VisibleIndex = 8;
+            this.col_isNguyCoCao.VisibleIndex = 9;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -539,6 +549,26 @@
             this.repositoryItemCheckEdit1.PictureGrayed = global::BioNetSangLocSoSinh.Properties.Resources.safety;
             this.repositoryItemCheckEdit1.PictureUnchecked = global::BioNetSangLocSoSinh.Properties.Resources.safety;
             this.repositoryItemCheckEdit1.ValueGrayed = false;
+            // 
+            // col_VTDonVi
+            // 
+            this.col_VTDonVi.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.col_VTDonVi.AppearanceHeader.Options.UseFont = true;
+            this.col_VTDonVi.Caption = "Viết tắt";
+            this.col_VTDonVi.FieldName = "VietTatDV";
+            this.col_VTDonVi.Name = "col_VTDonVi";
+            this.col_VTDonVi.Visible = true;
+            this.col_VTDonVi.VisibleIndex = 2;
+            // 
+            // lblChuaGuiEmail
+            // 
+            this.lblChuaGuiEmail.AutoSize = true;
+            this.lblChuaGuiEmail.ForeColor = System.Drawing.Color.Blue;
+            this.lblChuaGuiEmail.Location = new System.Drawing.Point(755, 12);
+            this.lblChuaGuiEmail.Name = "lblChuaGuiEmail";
+            this.lblChuaGuiEmail.Size = new System.Drawing.Size(146, 13);
+            this.lblChuaGuiEmail.TabIndex = 1072;
+            this.lblChuaGuiEmail.Text = "Tổng số phiếu chưa gửi email";
             // 
             // FrmGuiMail
             // 
@@ -623,5 +653,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_isNguyCoCao;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private System.Windows.Forms.CheckBox ckkTenTre;
+        private DevExpress.XtraGrid.Columns.GridColumn col_VTDonVi;
+        private System.Windows.Forms.Label lblChuaGuiEmail;
     }
 }

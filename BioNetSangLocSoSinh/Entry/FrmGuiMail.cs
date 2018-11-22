@@ -66,6 +66,8 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.txtChiCuc.EditValue = "all";
             this.bttGuiMail.Enabled = false;
             lblTongCheck.Text = "Tổng cộng phiếu được chọn: " + TongCheck.ToString() + " phiếu";
+            int sl=BioNet_Bus.GetSLChuaDuocGuiMail();
+            lblChuaGuiEmail.Text = "Còn " + sl + " phiếu chưa được trả qua email";
             AddItemForm();
         }
 

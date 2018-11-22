@@ -37,6 +37,8 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 TimKiem(txtMaPhieu.Text.Trim());
             }
+            txtMaPhieu.ResetText();
+            txtMaPhieu.Focus();
         }
         private void TimKiem(string MaPhieu)
         {

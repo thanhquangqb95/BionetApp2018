@@ -403,6 +403,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetTinhTrangPhieuMail(startdate, enddate, maDonVi, maChiCuc);
         }
+        public static int GetSLChuaDuocGuiMail()
+        {
+            var db = new DataObjects();
+            return db.GetSLChuaDuocGuiMail();
+        }
         public static PSTKKQPhieuMail GetThongKePhieuMail(string[] maphieu)
         {
             var db = new DataObjects();
@@ -887,7 +892,26 @@ namespace BioNetBLL
             else return null;
             return rptKQ;
         }
-
+        public static string GetPatientTheoMaPhieu(string maPhieu)
+        {
+            string MaBN = string.Empty;
+            try
+            {
+                PSTiepNhan tn = GetThongTinTiepNhanTheoMaPhieu(maPhieu);
+                if (tn != null)
+                {
+                    PsPhieu ph = GetThongTinPhieu(tn.MaPhieu, tn.MaDonVi);
+                    if (ph != null)
+                    {
+                        MaBN = ph.maBenhNhan;
+                    }
+                }
+            }
+            catch
+            {
+            }           
+            return MaBN;
+        }
         public static List<PSXN_TraKetQua> GetDanhSachChoTraKetQua(DateTime tuNgay, DateTime denNgay, string maDonVi)
         {
             var db = new DataObjects();
@@ -2354,6 +2378,11 @@ namespace BioNetBLL
         {
             var db = new DataObjects();
             return db.LoadDSBaoCaoTuyChonDichVu(NgayBD, NgayKT, MaDV, MaDichVu);
+        }
+        public static List<pro_ThongKeTheoDichVuResult> LoadDSBaoCaoTuyChonDichVuNew(DateTime NgayBD, DateTime NgayKT, string MaDichVu, string MaDV)
+        {
+            var db = new DataObjects();
+            return db.LoadDSBaoCaoTuyChonDichVuNew(NgayBD, NgayKT, MaDichVu, MaDV);
         }
         public static List<PSBaoCaoTuyChonDonVi> LoadDSThongKeDonVi(DateTime NgayBD, DateTime NgayKT, string MaDV)
         {

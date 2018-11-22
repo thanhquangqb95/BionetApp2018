@@ -211,6 +211,28 @@ namespace BioNetSangLocSoSinh.FrmReports
                 }
             }
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            string MaDonVi = String.Empty;
+            if (this.txtDonVi.EditValue.ToString() == "all")
+            {
+                if (this.txtChiCuc.EditValue.ToString() == "all")
+                {
+                    MaDonVi = "all";
+                }
+                else
+                {
+                    MaDonVi = this.txtChiCuc.EditValue.ToString();
+                }
+            }
+            else
+            {
+                MaDonVi = this.txtDonVi.EditValue.ToString();
+            }
+            GCDanhSach.DataSource= BioNet_Bus.LoadDSBaoCaoTuyChonDichVuNew(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
+        }
+
         private void txtChiCuc_EditValueChanged(object sender, EventArgs e)
         {
             try
