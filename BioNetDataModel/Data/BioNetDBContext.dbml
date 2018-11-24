@@ -701,30 +701,6 @@
       <Association Name="PSSMSC_PSSMSLog" Member="PSSMSC" ThisKey="RowIDNumber" OtherKey="RowIDNumber" Type="PSSMSC" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PSThongTinTrungTam" Member="PSThongTinTrungTams">
-    <Type Name="PSThongTinTrungTam">
-      <Column Name="MaTrungTam" Type="System.String" DbType="VarChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenTrungTam" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Diachi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="Logo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="MaVietTat" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
-      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="isDongBo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isChoXNLan2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isChoThuLaiMauLan2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="isCapMaXNTheoMaPhieu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="ID" Type="System.String" DbType="VarChar(38)" CanBeNull="true" />
-      <Column Name="LicenseKey" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="PassEmail" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Header" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ChuKiTT" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ChuKiXN" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="EmailTC" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="PassEmailTC" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PSTiepNhan" Member="PSTiepNhans">
     <Type Name="PSTiepNhan">
       <Column Name="RowIDTiepNhan" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -854,6 +830,7 @@
       <Column Name="isTraKQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="NgayChiDinh2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="isLayMauLan2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KetLuan2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.View_KQPhieu1" Member="View_KQPhieu1s">
@@ -881,6 +858,37 @@
       <Column Name="isTraKQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="NgayChiDinh1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="isLayMauLan2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KetLuan1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TinhTrangLucLayMau" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PSThongTinTrungTam" Member="PSThongTinTrungTams">
+    <Type Name="PSThongTinTrungTam">
+      <Column Name="MaTrungTam" Type="System.String" DbType="VarChar(3) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenTrungTam" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Diachi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Logo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MaVietTat" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isDongBo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isChoXNLan2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isChoThuLaiMauLan2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isCapMaXNTheoMaPhieu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(38)" CanBeNull="true" />
+      <Column Name="LicenseKey" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PassEmail" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Header" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ChuKiTT" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ChuKiXN" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EmailTC" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PassEmailTC" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="LinkUpdate" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="isUpdateBionet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BionetVersion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="HostUpdate" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">
@@ -1394,6 +1402,8 @@
       <Column Name="NgayGioXoa" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="MaGoiXN1" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="IDCoSo" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="MaDichVu" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="TinhTrangLucLayMau" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="IDPhieu1" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="isKhongDat1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="LyDoKhongDat1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
@@ -1404,6 +1414,7 @@
       <Column Name="GiaTri1_1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaTri1_2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaTriCuoi1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KetLuan1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="isNguyCo1" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IDPhieu2" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="isKhongDat2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -1415,7 +1426,9 @@
       <Column Name="GiaTri2_1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaTri2_2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="GiaTriCuoi2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KetLuan2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="isNguyCo2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NhomMau" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

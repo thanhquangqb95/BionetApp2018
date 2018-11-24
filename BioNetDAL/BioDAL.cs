@@ -1663,7 +1663,7 @@ namespace BioNetDAL
                 patient.FatherPhoneNumber = infoPerson.FatherPhoneNumber;
                 patient.MotherPhoneNumber  = infoPerson.MotherPhoneNumber;
                 patient.DiaChi = infoPerson.DiaChi;
-
+                patient.isDongBo = false;
                 db.SubmitChanges();
                 db.Transaction.Commit();
                 db.Connection.Close();

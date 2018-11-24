@@ -62,6 +62,7 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
+            this.lookupeditviettat.DataSource= BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
             this.txtDonVi.EditValue = "all";
             this.txtChiCuc.EditValue = "all";
             this.bttGuiMail.Enabled = false;

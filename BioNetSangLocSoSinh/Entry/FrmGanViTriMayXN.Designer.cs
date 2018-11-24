@@ -812,7 +812,7 @@
             this.tt.Columns.Add(this.col_MaGoiXetNghiem);
             this.tt.Name = "tt";
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 323;
+            this.tt.Width = 395;
             // 
             // col_STT
             // 
@@ -822,10 +822,9 @@
             this.col_STT.FieldName = "STT_bang";
             this.col_STT.Name = "col_STT";
             this.col_STT.OptionsColumn.AllowEdit = false;
-            this.col_STT.OptionsColumn.AllowSize = false;
             this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
-            this.col_STT.Width = 39;
+            this.col_STT.Width = 56;
             // 
             // col_IDPhieu
             // 
@@ -835,7 +834,7 @@
             this.col_IDPhieu.FieldName = "MaPhieu";
             this.col_IDPhieu.Name = "col_IDPhieu";
             this.col_IDPhieu.Visible = true;
-            this.col_IDPhieu.Width = 84;
+            this.col_IDPhieu.Width = 81;
             // 
             // col_MaXetNghiem
             // 
@@ -845,7 +844,7 @@
             this.col_MaXetNghiem.FieldName = "MaXetNghiem";
             this.col_MaXetNghiem.Name = "col_MaXetNghiem";
             this.col_MaXetNghiem.Visible = true;
-            this.col_MaXetNghiem.Width = 83;
+            this.col_MaXetNghiem.Width = 96;
             // 
             // col_MaGoiXetNghiem
             // 
@@ -858,7 +857,7 @@
             this.col_MaGoiXetNghiem.OptionsColumn.AllowEdit = false;
             this.col_MaGoiXetNghiem.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem.Visible = true;
-            this.col_MaGoiXetNghiem.Width = 117;
+            this.col_MaGoiXetNghiem.Width = 162;
             // 
             // LookupGoiXN
             // 
@@ -881,7 +880,7 @@
             this.gridBandViTri.Caption = "Vị Trí Máy XN";
             this.gridBandViTri.Name = "gridBandViTri";
             this.gridBandViTri.VisibleIndex = 1;
-            this.gridBandViTri.Width = 313;
+            this.gridBandViTri.Width = 1083;
             // 
             // gridBand3
             // 
@@ -895,7 +894,7 @@
             this.gridBand3.Columns.Add(this.col_GhiNhoChung);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 340;
+            this.gridBand3.Width = 143;
             // 
             // col_GhiNhoChung
             // 
@@ -905,7 +904,7 @@
             this.col_GhiNhoChung.FieldName = "GhiChuChung";
             this.col_GhiNhoChung.Name = "col_GhiNhoChung";
             this.col_GhiNhoChung.Visible = true;
-            this.col_GhiNhoChung.Width = 340;
+            this.col_GhiNhoChung.Width = 143;
             // 
             // col_IDRow
             // 

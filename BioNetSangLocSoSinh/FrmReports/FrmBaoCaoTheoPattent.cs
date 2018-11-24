@@ -78,7 +78,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                    
                     DateTime TIme1 = DateTime.Now;
                     GCDanhSachMauDuongTinh.DataSource = null;
-                    GCDanhSachMauDuongTinh.DataSource = BioNet_Bus.LoadDSBaoCaoTuyChonDichVu(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
+                    GCDanhSachMauDuongTinh.DataSource = BioNet_Bus.LoadDSBaoCaoTuyChonDichVuNew(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
                     DateTime TIme2 = DateTime.Now;
                     TimeSpan kt = TIme2 - TIme1;
                     txtTime.Text = string.Format("{0:00}:{1:00}:{2:00}", kt.Hours, kt.Minutes, kt.Seconds);
@@ -100,7 +100,7 @@ namespace BioNetSangLocSoSinh.FrmReports
         private void FrmBaoCaoTheoPattent_Load(object sender, EventArgs e)
         {
            this.LoadGoiDichVuXetNGhiem();
-            cbbDichVu.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
+            this.cbbDichVu.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             dllNgay.tungay.Value = DateTime.Now;
             dllNgay.denngay.Value = DateTime.Now;
@@ -120,6 +120,8 @@ namespace BioNetSangLocSoSinh.FrmReports
         }
         private void LoadDuLieuDieuKienLoc()
         {
+            this.LookupEditTenDV.DataSource = BioNet_Bus.GetDanhSachDonViCoSo();
+            this.LookupEditTenVietTat.DataSource = BioNet_Bus.GetDanhSachDonViCoSo();
             List<CLPPSinh> CLPPSinhs = new List<CLPPSinh>();
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "0", TenPPSinh = "Sinh thường" });
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "1", TenPPSinh = "Sinh mổ" });
@@ -214,23 +216,12 @@ namespace BioNetSangLocSoSinh.FrmReports
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            string MaDonVi = String.Empty;
-            if (this.txtDonVi.EditValue.ToString() == "all")
-            {
-                if (this.txtChiCuc.EditValue.ToString() == "all")
-                {
-                    MaDonVi = "all";
-                }
-                else
-                {
-                    MaDonVi = this.txtChiCuc.EditValue.ToString();
-                }
-            }
-            else
-            {
-                MaDonVi = this.txtDonVi.EditValue.ToString();
-            }
-            GCDanhSach.DataSource= BioNet_Bus.LoadDSBaoCaoTuyChonDichVuNew(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi);
+            
+        }
+
+        private void GCDanhSachMauDuongTinh_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void txtChiCuc_EditValueChanged(object sender, EventArgs e)

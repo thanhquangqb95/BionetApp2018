@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGuiMail));
             this.checkChon = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lblChuaGuiEmail = new System.Windows.Forms.Label();
             this.ckkTenTre = new System.Windows.Forms.CheckBox();
             this.lblTongCheck = new System.Windows.Forms.Label();
             this.lblDemChon = new System.Windows.Forms.Label();
@@ -58,6 +59,8 @@
             this.GV_DSPhieuMail = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_MaChiCuc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_TenChiCuc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_VTDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lookupeditviettat = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_TenDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_Email = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_NgayNhanMau = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,8 +74,8 @@
             this.repositoryItemCheckGuiMail = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.col_isNguyCoCao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.col_VTDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lblChuaGuiEmail = new System.Windows.Forms.Label();
+            this.lookupTenVietTat = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.checkChon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -84,9 +87,12 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GC_DSPhieuMail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GV_DSPhieuMail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupeditviettat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckChon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckGuiMail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupTenVietTat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // checkChon
@@ -115,6 +121,16 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1138, 84);
             this.panelControl1.TabIndex = 1;
+            // 
+            // lblChuaGuiEmail
+            // 
+            this.lblChuaGuiEmail.AutoSize = true;
+            this.lblChuaGuiEmail.ForeColor = System.Drawing.Color.Blue;
+            this.lblChuaGuiEmail.Location = new System.Drawing.Point(755, 12);
+            this.lblChuaGuiEmail.Name = "lblChuaGuiEmail";
+            this.lblChuaGuiEmail.Size = new System.Drawing.Size(146, 13);
+            this.lblChuaGuiEmail.TabIndex = 1072;
+            this.lblChuaGuiEmail.Text = "Tổng số phiếu chưa gửi email";
             // 
             // ckkTenTre
             // 
@@ -345,7 +361,9 @@
             this.GC_DSPhieuMail.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckChon,
             this.repositoryItemCheckGuiMail,
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.lookupTenVietTat,
+            this.lookupeditviettat});
             this.GC_DSPhieuMail.Size = new System.Drawing.Size(1138, 508);
             this.GC_DSPhieuMail.TabIndex = 0;
             this.GC_DSPhieuMail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -398,6 +416,28 @@
             this.col_TenChiCuc.Visible = true;
             this.col_TenChiCuc.VisibleIndex = 0;
             this.col_TenChiCuc.Width = 111;
+            // 
+            // col_VTDonVi
+            // 
+            this.col_VTDonVi.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.col_VTDonVi.AppearanceHeader.Options.UseFont = true;
+            this.col_VTDonVi.Caption = "Viết tắt";
+            this.col_VTDonVi.ColumnEdit = this.lookupeditviettat;
+            this.col_VTDonVi.FieldName = "MaDonVi";
+            this.col_VTDonVi.Name = "col_VTDonVi";
+            this.col_VTDonVi.OptionsColumn.AllowEdit = false;
+            this.col_VTDonVi.Visible = true;
+            this.col_VTDonVi.VisibleIndex = 2;
+            this.col_VTDonVi.Width = 52;
+            // 
+            // lookupeditviettat
+            // 
+            this.lookupeditviettat.AutoHeight = false;
+            this.lookupeditviettat.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookupeditviettat.DisplayMember = "VietTatDV";
+            this.lookupeditviettat.Name = "lookupeditviettat";
+            this.lookupeditviettat.ValueMember = "MaDVCS";
             // 
             // col_TenDonVi
             // 
@@ -477,7 +517,7 @@
             this.col_Chon.OptionsColumn.ReadOnly = true;
             this.col_Chon.Visible = true;
             this.col_Chon.VisibleIndex = 7;
-            this.col_Chon.Width = 41;
+            this.col_Chon.Width = 40;
             // 
             // repositoryItemCheckChon
             // 
@@ -519,7 +559,7 @@
             this.col_isGuiMail.OptionsColumn.ReadOnly = true;
             this.col_isGuiMail.Visible = true;
             this.col_isGuiMail.VisibleIndex = 8;
-            this.col_isGuiMail.Width = 83;
+            this.col_isGuiMail.Width = 81;
             // 
             // repositoryItemCheckGuiMail
             // 
@@ -538,6 +578,7 @@
             this.col_isNguyCoCao.OptionsColumn.ReadOnly = true;
             this.col_isNguyCoCao.Visible = true;
             this.col_isNguyCoCao.VisibleIndex = 9;
+            this.col_isNguyCoCao.Width = 80;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -550,25 +591,22 @@
             this.repositoryItemCheckEdit1.PictureUnchecked = global::BioNetSangLocSoSinh.Properties.Resources.safety;
             this.repositoryItemCheckEdit1.ValueGrayed = false;
             // 
-            // col_VTDonVi
+            // lookupTenVietTat
             // 
-            this.col_VTDonVi.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.col_VTDonVi.AppearanceHeader.Options.UseFont = true;
-            this.col_VTDonVi.Caption = "Viết tắt";
-            this.col_VTDonVi.FieldName = "VietTatDV";
-            this.col_VTDonVi.Name = "col_VTDonVi";
-            this.col_VTDonVi.Visible = true;
-            this.col_VTDonVi.VisibleIndex = 2;
+            this.lookupTenVietTat.AutoHeight = false;
+            this.lookupTenVietTat.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookupTenVietTat.DisplayMember = "VietTatDV";
+            this.lookupTenVietTat.Name = "lookupTenVietTat";
+            this.lookupTenVietTat.ValueMember = "MaDVCS";
+            this.lookupTenVietTat.View = this.repositoryItemGridLookUpEdit1View;
             // 
-            // lblChuaGuiEmail
+            // repositoryItemGridLookUpEdit1View
             // 
-            this.lblChuaGuiEmail.AutoSize = true;
-            this.lblChuaGuiEmail.ForeColor = System.Drawing.Color.Blue;
-            this.lblChuaGuiEmail.Location = new System.Drawing.Point(755, 12);
-            this.lblChuaGuiEmail.Name = "lblChuaGuiEmail";
-            this.lblChuaGuiEmail.Size = new System.Drawing.Size(146, 13);
-            this.lblChuaGuiEmail.TabIndex = 1072;
-            this.lblChuaGuiEmail.Text = "Tổng số phiếu chưa gửi email";
+            this.repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
+            this.repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // FrmGuiMail
             // 
@@ -600,9 +638,12 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GC_DSPhieuMail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GV_DSPhieuMail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupeditviettat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckChon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckGuiMail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookupTenVietTat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -655,5 +696,8 @@
         private System.Windows.Forms.CheckBox ckkTenTre;
         private DevExpress.XtraGrid.Columns.GridColumn col_VTDonVi;
         private System.Windows.Forms.Label lblChuaGuiEmail;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit lookupTenVietTat;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lookupeditviettat;
     }
 }

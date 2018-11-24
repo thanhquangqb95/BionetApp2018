@@ -68,7 +68,6 @@ namespace BioNetDAL
                 //this.connectionstring = string.Empty;
                 throw new Exception(ex.Message);
             }
-
         }
         public ServerInfo LoadFileXml(string FileName)
         {
@@ -2968,7 +2967,6 @@ namespace BioNetDAL
                     viTri.MaGoiXN = pm.MaGoiXN;
                     viTri.MaPhieu = pm.MaPhieu;
                     viTri.MaXetNghiem = pm.MaXetNghiem;
-                    viTri.STT_bang = pm.STT_bang;
                     viTri.isDaDuyet = false;
                     viTri.GhiChuChung = pm.GhiChuChung;
                     viTri.isXoa = false;
@@ -9474,5 +9472,6 @@ namespace BioNetDAL
 
 
         #endregion
+        
     }
 }
