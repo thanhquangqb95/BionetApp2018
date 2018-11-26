@@ -8,7 +8,6 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BioNetBLL;
-using DataSync;
 using BioNetModel.Data;
 
 namespace BioNetSangLocSoSinh.Entry

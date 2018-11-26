@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txtTime = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -265,9 +265,9 @@
             this.btnClear.Location = new System.Drawing.Point(1011, 33);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 23);
-            toolTipTitleItem2.Text = "Bỏ lọc";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnClear.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 1080;
             this.btnClear.Text = "Bỏ lọc";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -424,7 +424,8 @@
             // 
             // GCDanhSachMauDuongTinh
             // 
-            this.GCDanhSachMauDuongTinh.Location = new System.Drawing.Point(3, 81);
+            this.GCDanhSachMauDuongTinh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GCDanhSachMauDuongTinh.Location = new System.Drawing.Point(0, 88);
             this.GCDanhSachMauDuongTinh.LookAndFeel.SkinName = "Office 2007 Blue";
             this.GCDanhSachMauDuongTinh.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GCDanhSachMauDuongTinh.MainView = this.GVDanhSachDuongTinh;
@@ -442,7 +443,7 @@
             this.LookupDanToc,
             this.ComboDanhGiaMau,
             this.LookupEditTenVietTat});
-            this.GCDanhSachMauDuongTinh.Size = new System.Drawing.Size(1262, 545);
+            this.GCDanhSachMauDuongTinh.Size = new System.Drawing.Size(1268, 619);
             this.GCDanhSachMauDuongTinh.TabIndex = 4;
             this.GCDanhSachMauDuongTinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachDuongTinh});

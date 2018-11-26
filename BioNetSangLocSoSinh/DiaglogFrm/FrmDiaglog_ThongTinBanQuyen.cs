@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Diagnostics;
 using DLLLicensePS;
-using DataSync.BioNetSync;
 using BioNetModel.Data;
 using BioNetBLL;
 
@@ -107,10 +106,10 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
 
         private void btnSync_Click(object sender, EventArgs e)
         {
-            var res = ThongTinTrungTamSync.GetThongTinTrungTam();
-            if (!string.IsNullOrEmpty(res.StringError))
+            var res = BioNet_Bus.GetThongTinTrungTam();
+            if (res!=null)
             {
-                XtraMessageBox.Show(res.StringError, "BioNet Sàng Lọc Sơ Sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //XtraMessageBox.Show(, "BioNet Sàng Lọc Sơ Sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             else

@@ -13,15 +13,15 @@ using DevExpress.XtraBars.Ribbon;
 using BioNetModel.Data;
 using BioNetBLL;
 using DevExpress.XtraEditors;
-using DataSync;
 using System.Threading;
 using BioNetSangLocSoSinh.FrmReports;
 using System.IO;
 using System.IO.Compression;
 using BioNetModel;
 using BioNetSangLocSoSinh.DiaglogFrm;
-using DataSync.BioNetSync;
 using DevExpress.XtraGrid.Views.Grid;
+using DataSync.BioNetSync;
+using DataSync;
 
 namespace BioNetSangLocSoSinh
 {
@@ -1623,6 +1623,8 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         {
 
         }
+
+       
     }
 
 }

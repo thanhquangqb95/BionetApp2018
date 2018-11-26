@@ -665,6 +665,12 @@
     <Compile Include="Reports\frmDanhSachDaCapMa.Designer.cs">
       <DependentUpon>frmDanhSachDaCapMa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmReportCTTaiChinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1144,6 +1150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmDanhSachDaCapMa.resx">
       <DependentUpon>frmDanhSachDaCapMa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReportCTTaiChinh.resx">
       <DependentUpon>frmReportCTTaiChinh.cs</DependentUpon>

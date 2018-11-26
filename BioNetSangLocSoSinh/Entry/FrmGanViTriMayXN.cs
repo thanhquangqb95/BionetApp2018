@@ -140,9 +140,8 @@ namespace BioNetSangLocSoSinh.Entry
                     band.Columns.Add(col2);
                     DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
                     col1.Name = "col_" + may.IDMayXN + "_GhiChu";
-                    col1.FieldName = may.IDMayXN + ".GhiChu";
+                    col1.FieldName = may.IDMayXN + ".GhiChuCT";
                     col1.Caption = "Ghi chú";
-                    col1.OptionsColumn.AllowEdit = true;
                     col1.Visible = true;
                     col1.Width = 40;
                     band.Columns.Add(col1);
@@ -192,6 +191,7 @@ namespace BioNetSangLocSoSinh.Entry
                                 v.isTest = m.isTest;
                                 v.STTVT = m.STTVT;
                                 v.ViTri = m.ViTri;
+                                v.GhiChuCT = m.GhiChuCT;
                                 vtMayXN001.Add(v);
                             }
                             LookUpEditMAYXN001.DataSource = null;
@@ -209,6 +209,7 @@ namespace BioNetSangLocSoSinh.Entry
                                 v.isTest = m.isTest;
                                 v.STTVT = m.STTVT;
                                 v.ViTri = m.ViTri;
+                                v.GhiChuCT = m.GhiChuCT;
                                 vtMayXN002.Add(v);
                             }
                             LookUpEditMAYXN002.DataSource = null;
@@ -398,6 +399,7 @@ namespace BioNetSangLocSoSinh.Entry
                                                     ph.MAYXN001.ViTri = vtxn.ViTri;
                                                     ph.MAYXN001.isTest = vtxn.isTest;
                                                     ph.MAYXN001.STT = vtxn.STT;
+                                                    ph.MAYXN001.GhiChuCT = vtxn.GhiChuCT;
                                                 }
                                                 break;
                                             }
@@ -412,6 +414,7 @@ namespace BioNetSangLocSoSinh.Entry
                                                     ph.MAYXN002.ViTri = vtxn.ViTri;
                                                     ph.MAYXN002.isTest = vtxn.isTest;
                                                     ph.MAYXN002.STT = vtxn.STT;
+                                                    ph.MAYXN002.GhiChuCT = vtxn.GhiChuCT;
                                                 }
 
                                                 break;
@@ -960,16 +963,26 @@ namespace BioNetSangLocSoSinh.Entry
                     var stt = view.GetRowCellValue(rowfocus, this.col_STT);
                     var idPhieu = view.GetRowCellValue(rowfocus, this.col_IDPhieu);
                     var maxn = view.GetRowCellValue(rowfocus, this.col_MaXetNghiem);
-                    if(maxn==null)
+
+                    PSCMGanViTriChung rss = new PSCMGanViTriChung();
+                    if (maxn == null)
                     {
-                        PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.STT_bang == int.Parse(stt.ToString()) && p.MaXetNghiem==null);
-                        BioNet_Bus.DeleteDanhSachGanXNLuu(rss);
+                        rss = vt.FirstOrDefault(p => p.STT_bang == int.Parse(stt.ToString()) && p.MaXetNghiem == null);
                     }
                     else
                     {
-                        PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.STT_bang == int.Parse(stt.ToString()) && p.MaXetNghiem == maxn.ToString());
-                        BioNet_Bus.DeleteDanhSachGanXNLuu(rss);
+                        rss = vt.FirstOrDefault(p => p.STT_bang == int.Parse(stt.ToString()) && p.MaXetNghiem == maxn.ToString());
                     }
+                    BioNet_Bus.DeleteDanhSachGanXNLuu(rss);
+                    //if (int.Parse(stt.ToString())== vt.Count())
+                    //{
+                    //    BioNet_Bus.DeleteDanhSachGanXNLuuMax(rss);
+                    //}
+                    //else
+                    //{
+                        
+                    //}
+                    
                     LoadDSDaLuu();
                 }
             }
@@ -1154,8 +1167,8 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     if (e.Column.Name.Equals("col_MAYXN002_GhiChu"))
                     {
-                        var tenvitri = view.GetRowCellDisplayText(rowfocus, "col_MAYXN002_ViTri");
-                        var ghichu = view.GetRowCellDisplayText(rowfocus,"col_MAYXN002_GhiChu");
+                        var tenvitri = view.GetRowCellDisplayText(rowfocus, "MAYXN002.ViTri");
+                        var ghichu = view.GetRowCellDisplayText(rowfocus,"MAYXN002.GhiChuCT");
                         List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN002 != null).ToList();
                         PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN002.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
                         rsmoi.MAYXN002.GhiChuCT = ghichu.ToString();
@@ -1170,8 +1183,8 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     if (e.Column.Name.Equals("col_MAYXN001_GhiChu"))
                     {
-                        var tenvitri = view.GetRowCellDisplayText(rowfocus, "col_MAYXN001_ViTri");
-                        var ghichu = view.GetRowCellDisplayText(rowfocus, "col_MAYXN001_GhiChu");
+                        var tenvitri = view.GetRowCellDisplayText(rowfocus, "MAYXN001.ViTri");
+                        var ghichu = view.GetRowCellDisplayText(rowfocus, "MAYXN001.GhiChuCT");
                         List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN001 != null).ToList();
                         PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN001.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
                         rsmoi.MAYXN001.GhiChuCT = ghichu.ToString();

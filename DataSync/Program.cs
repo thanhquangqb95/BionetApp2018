@@ -21,7 +21,7 @@ namespace DataSync
             UserLookAndFeel.Default.SkinName = "Office 2016 Colorful";//"Lilian";
         //   BonusSkins.Register();
             SkinManager.EnableFormSkins();
-       Application.Run(new FrmStartupSync());
+       Application.Run();
         // Application.Run(new Entry.FrmNhapKho());
          // Application.Run(new FrmReports.FrmBaoCapMain());
            // Application.Run(new FrmReports.frmReportTrungTam_ChiCuc());

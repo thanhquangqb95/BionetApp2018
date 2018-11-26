@@ -100,19 +100,19 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             var tt = BioNet_Bus.GetThongTinTrungTam();
             if(!tt.BionetVersion.Equals(versionCurrent) && tt.isUpdateBionet==true)
             {
-                //MessageBox.Show("Yêu cầu cập nhật phiên bản mới nhất", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Process.Start(Application.StartupPath+ "\\BionetUpdate.exe");
-                Application.Exit();
-
+                MessageBox.Show("Yêu cầu cập nhật phiên bản mới nhất", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Process.Start(Application.StartupPath+ "\\BionetUpdate.exe");
+                //Application.Exit();
             }
             else
             {
-                lblUpdate.Text = "Ngày cập nhật: "+tt.DateUpdate;
-                lblVersion.Text = "SLSS.2.0. bản demo" + versionCurrent;
-                this.lblError.Visible = false;
-                AddItemForm();
+               
             }
-       
+            lblUpdate.Text = "Ngày cập nhật: " + 26 / 11 / 2018;
+            lblVersion.Text = "SLSS.2.0. bản demo" + versionCurrent;
+            this.lblError.Visible = false;
+            AddItemForm();
+
         }
         private void AddItemForm()
         {

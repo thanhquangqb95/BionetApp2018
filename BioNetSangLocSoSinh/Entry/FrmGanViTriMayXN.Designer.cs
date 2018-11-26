@@ -812,7 +812,7 @@
             this.tt.Columns.Add(this.col_MaGoiXetNghiem);
             this.tt.Name = "tt";
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 395;
+            this.tt.Width = 241;
             // 
             // col_STT
             // 
@@ -824,7 +824,7 @@
             this.col_STT.OptionsColumn.AllowEdit = false;
             this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
-            this.col_STT.Width = 56;
+            this.col_STT.Width = 37;
             // 
             // col_IDPhieu
             // 
@@ -834,7 +834,7 @@
             this.col_IDPhieu.FieldName = "MaPhieu";
             this.col_IDPhieu.Name = "col_IDPhieu";
             this.col_IDPhieu.Visible = true;
-            this.col_IDPhieu.Width = 81;
+            this.col_IDPhieu.Width = 48;
             // 
             // col_MaXetNghiem
             // 
@@ -844,7 +844,7 @@
             this.col_MaXetNghiem.FieldName = "MaXetNghiem";
             this.col_MaXetNghiem.Name = "col_MaXetNghiem";
             this.col_MaXetNghiem.Visible = true;
-            this.col_MaXetNghiem.Width = 96;
+            this.col_MaXetNghiem.Width = 57;
             // 
             // col_MaGoiXetNghiem
             // 
@@ -857,7 +857,7 @@
             this.col_MaGoiXetNghiem.OptionsColumn.AllowEdit = false;
             this.col_MaGoiXetNghiem.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem.Visible = true;
-            this.col_MaGoiXetNghiem.Width = 162;
+            this.col_MaGoiXetNghiem.Width = 99;
             // 
             // LookupGoiXN
             // 
@@ -880,7 +880,7 @@
             this.gridBandViTri.Caption = "Vị Trí Máy XN";
             this.gridBandViTri.Name = "gridBandViTri";
             this.gridBandViTri.VisibleIndex = 1;
-            this.gridBandViTri.Width = 1083;
+            this.gridBandViTri.Width = 648;
             // 
             // gridBand3
             // 
@@ -894,7 +894,7 @@
             this.gridBand3.Columns.Add(this.col_GhiNhoChung);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 143;
+            this.gridBand3.Width = 87;
             // 
             // col_GhiNhoChung
             // 
@@ -904,7 +904,7 @@
             this.col_GhiNhoChung.FieldName = "GhiChuChung";
             this.col_GhiNhoChung.Name = "col_GhiNhoChung";
             this.col_GhiNhoChung.Visible = true;
-            this.col_GhiNhoChung.Width = 143;
+            this.col_GhiNhoChung.Width = 87;
             // 
             // col_IDRow
             // 

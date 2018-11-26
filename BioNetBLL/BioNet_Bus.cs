@@ -1281,6 +1281,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.DeleteDanhSachGanXNLuu(pm);
         }
+        public static PsReponse DeleteDanhSachGanXNLuuMax(PSCMGanViTriChung pm)
+        {
+            var db = new DataObjects();
+            return db.DeleteDanhSachGanXNLuu(pm);
+        }
         public static PsReponse DeleteCTGanXNLuu(PSCM_GanViTriCT gan)
         {
             var db = new DataObjects();

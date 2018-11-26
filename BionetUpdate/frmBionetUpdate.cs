@@ -54,7 +54,7 @@ namespace BionetUpdate
                                     progressBarControlDownload.Properties.Maximum = 100;
                                     progressBarControlDownload.Properties.Minimum = 0;
                                     WebClient Wc = new WebClient();
-                                    Wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
+                                   
                                     DirectoryInfo dirInfo = new DirectoryInfo(empName);
                                     FileInfo[] childFiles = dirInfo.GetFiles();
 
@@ -62,7 +62,8 @@ namespace BionetUpdate
                                     {
                                         try
                                         {
-                                            Wc = new WebClient();
+                                            File.Exists(childFile.FullName);
+                                            Wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
                                             Wc.DownloadFileAsync(new Uri(childFile.FullName), Application.StartupPath + "\\" + childFile.Name);
                                             progressBarControlDownload.PerformStep();
                                             progressBarControlDownload.Update();
@@ -79,7 +80,7 @@ namespace BionetUpdate
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
 
             }
@@ -138,8 +139,8 @@ namespace BionetUpdate
         private void btnSync_Click(object sender, EventArgs e)
         {
             this.BBUpdate();
-            Process.Start(Application.StartupPath + "\\BioNetSangLocSoSinh.exe");
-            Application.Exit();
+            //Process.Start(Application.StartupPath + "\\BioNetSangLocSoSinh.exe");
+           Application.Exit();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

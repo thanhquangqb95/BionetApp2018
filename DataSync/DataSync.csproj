@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{67B2B6BE-7B98-4568-BC08-48A8CC510E2F}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataSync</RootNamespace>
     <AssemblyName>DataSync</AssemblyName>
@@ -104,20 +104,11 @@
     <Compile Include="BioNetSync\TiepNhanSync.cs" />
     <Compile Include="BioNetSync\TraKetQuaSync.cs" />
     <Compile Include="BioNetSync\DBPhieuKQDataSync.cs" />
-    <Compile Include="FrmStartupSync.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmStartupSync.Designer.cs">
-      <DependentUpon>FrmStartupSync.cs</DependentUpon>
-    </Compile>
     <Compile Include="BioNetSync\GuiMail.cs" />
     <Compile Include="ObjectModel.cs" />
     <Compile Include="ProcessDataSync.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmStartupSync.resx">
-      <DependentUpon>FrmStartupSync.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

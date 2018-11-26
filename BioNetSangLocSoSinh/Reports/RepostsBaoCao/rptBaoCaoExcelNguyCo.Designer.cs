@@ -114,6 +114,7 @@
             this.xrPictureBox1,
             this.xrLabel2,
             this.xrLabel1});
+            this.reportHeaderBand1.Expanded = false;
             this.reportHeaderBand1.HeightF = 98.16241F;
             this.reportHeaderBand1.Name = "reportHeaderBand1";
             // 
