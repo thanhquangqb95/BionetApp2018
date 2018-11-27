@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -100,15 +101,29 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             var tt = BioNet_Bus.GetThongTinTrungTam();
             if(!tt.BionetVersion.Equals(versionCurrent) && tt.isUpdateBionet==true)
             {
-                MessageBox.Show("Yêu cầu cập nhật phiên bản mới nhất", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //Process.Start(Application.StartupPath+ "\\BionetUpdate.exe");
-                //Application.Exit();
+                DialogResult dialog= MessageBox.Show("Yêu cầu cập nhật phiên bản mới nhất", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if(dialog==DialogResult.OK)
+                {
+                    if(File.Exists(Application.StartupPath + "\\BionetUpdate.exe"))
+                    {
+                        Process.Start(Application.StartupPath + "\\BionetUpdate.exe");
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy file BionetUpdate.exe để cập nhật", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                  
+                }
+                else
+                {
+                    lblCapNhat.Text = "Cần cập nhật phiên bản " + tt.BionetVersion;
+                }
             }
             else
             {
-               
+                lblCapNhat.Text = "Phiên bản mới nhất";
             }
-            lblUpdate.Text = "Ngày cập nhật: " + 26 / 11 / 2018;
+            lblUpdate.Text = "Ngày cập nhật: 27/11/2018";
             lblVersion.Text = "SLSS.2.0. bản demo" + versionCurrent;
             this.lblError.Visible = false;
             AddItemForm();

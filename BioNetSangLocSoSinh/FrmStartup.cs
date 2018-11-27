@@ -56,11 +56,9 @@ namespace BioNetSangLocSoSinh
                 DiaglogFrm.frmConfig frm = new DiaglogFrm.frmConfig();
                 frm.ShowDialog(this);
                 if (frm.isConnected)
-                    Application.Restart();
+                Application.Restart();
             }
-
             AddItemForm();
-
         }
 
         private void LoadDuLieu()
@@ -76,8 +74,6 @@ namespace BioNetSangLocSoSinh
             //}
             //FrmStartupSync dl = new FrmStartupSync();
             //dl.DongBoDuLieu();
-           
-
         }
 
         private void GetLogin()
@@ -87,7 +83,6 @@ namespace BioNetSangLocSoSinh
             DLLLicensePS.Reponse res = DLLLicensePS.DECRYPT.CheckLisences(TrungTam.ID, string.Empty, TrungTam.LicenseKey, NgayServer.Date.ToString("dd/MM/yyyy"), DateTime.Now.Date.ToString("dd/MM/yyy"));
             res.Result = true;
             res.TimeRemind = 10;
-
             if (!res.Result)
             {
                 XtraMessageBox.Show("Bản quyền phần mềm hết hạn,vui lòng liên hệ với nhà cung cấp! \r\n Thông tin chi tiết : " + res.ResultString, "BioNet - Chương trình sàng lọc sơ sinh!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -108,6 +103,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                 {
                     emp = frm.emp;
                     empCode = emp.EmployeeCode;
+                    txtNameNV.Caption = BioNet_Bus.GetThongTinNhanVien(empCode).EmployeeName;
                     List<PSMenuSecurity> lstMenuSecurity = new List<PSMenuSecurity>();
                     lstMenuSecurity = BioBLL.ListMenuSecurity(emp.EmployeeCode);
                     foreach (var item in lstMenuSecurity)
@@ -115,7 +111,6 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
                         this.SetMenu(item.MenuCode);
                     }
                 }
-
             }
         }
 
@@ -1624,7 +1619,10 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
 
         }
 
-       
+        private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 
 }

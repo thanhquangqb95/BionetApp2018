@@ -7882,7 +7882,6 @@ D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTheoPattent.resources
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoBaoTheoDonVI.resources
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DataSync.exe
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetBLL.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetModel.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.BonusSkins.v17.1.dll

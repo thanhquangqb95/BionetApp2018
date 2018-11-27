@@ -1339,6 +1339,8 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\pdf.png" />
+    <None Include="Resources\result %281%29.png" />
     <None Include="Resources\pie-chart.png" />
     <None Include="Resources\shield1.png" />
     <None Include="Resources\shield.png" />
@@ -1430,6 +1432,7 @@
     <None Include="Resources\information %281%29.png" />
     <None Include="Resources\filter1.png" />
     <None Include="Resources\graph.png" />
+    <None Include="Resources\excel1.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />
@@ -1438,6 +1441,7 @@
     <None Include="Resources\news-paper.png" />
     <None Include="Resources\microscope.png" />
     <None Include="Resources\microscope %281%29.png" />
+    <None Include="Resources\man.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

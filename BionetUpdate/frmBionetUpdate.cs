@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +27,8 @@ namespace BionetUpdate
         }
         public void FrmBionetUpdate_Load(object sender, EventArgs e)
         {
-            
+            lblFileCopy.Text = string.Empty;
+            lblCopyLink.Text = string.Empty;
         }
         private void BBUpdate()
         {
@@ -49,29 +51,30 @@ namespace BionetUpdate
                                 {
                                     int lint = reader.GetOrdinal("LinkUpdate");
                                     string empName = reader.GetString(lint);
-                                    progressBarControlDownload.Properties.Step = 1;
-                                    progressBarControlDownload.Properties.PercentView = true;
-                                    progressBarControlDownload.Properties.Maximum = 100;
-                                    progressBarControlDownload.Properties.Minimum = 0;
-                                    WebClient Wc = new WebClient();
-                                   
-                                    DirectoryInfo dirInfo = new DirectoryInfo(empName);
-                                    FileInfo[] childFiles = dirInfo.GetFiles();
+                                    CopyfileFull(empName, Application.StartupPath);
+                                    //progressBarControlDownload.Properties.Step = 1;
+                                    //progressBarControlDownload.Properties.PercentView = true;
+                                    //progressBarControlDownload.Properties.Maximum = 100;
+                                    //progressBarControlDownload.Properties.Minimum = 0;
+                                    //WebClient Wc = new WebClient();
 
-                                    foreach (FileInfo childFile in childFiles)
-                                    {
-                                        try
-                                        {
-                                            File.Exists(childFile.FullName);
-                                            Wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
-                                            Wc.DownloadFileAsync(new Uri(childFile.FullName), Application.StartupPath + "\\" + childFile.Name);
-                                            progressBarControlDownload.PerformStep();
-                                            progressBarControlDownload.Update();
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                        }
-                                    }
+                                    //DirectoryInfo dirInfo = new DirectoryInfo(empName);
+                                    //FileInfo[] childFiles = dirInfo.GetFiles();
+
+                                    //foreach (FileInfo childFile in childFiles)
+                                    //{
+                                    //    try
+                                    //    {
+                                    //        File.Exists(childFile.FullName);
+                                    //        Wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
+                                    //        Wc.DownloadFileAsync(new Uri(childFile.FullName), Application.StartupPath + "\\" + childFile.Name);
+                                    //        progressBarControlDownload.PerformStep();
+                                    //        progressBarControlDownload.Update();
+                                    //    }
+                                    //    catch (Exception ex)
+                                    //    {
+                                    //    }
+                                    //}
 
                                 }
                             }
@@ -139,13 +142,68 @@ namespace BionetUpdate
         private void btnSync_Click(object sender, EventArgs e)
         {
             this.BBUpdate();
-            //Process.Start(Application.StartupPath + "\\BioNetSangLocSoSinh.exe");
-           Application.Exit();
+            Application.Exit();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        private void CopyfileFull(string _srcPath, string _disPath)// string _currentPath)
+        {
+            try
+            {
+                string[] fileName = Directory.GetFiles(_srcPath);
+                if (fileName.Length != 0)
+                {
+                    progressBarControlDownload.Properties.Maximum = fileName.Length;
+                    progressBarControlDownload.Properties.Minimum = 0;
+                    progressBarControlDownload.Properties.Step = 1;
+                    progressBarControlDownload.Properties.PercentView = true;
+                    foreach (string filename in fileName)
+                    {
+                        try
+                        {
+                            this.lblCopyLink.Text = filename.Substring(_srcPath.Length + 1);
+                            this.Refresh();
+                            int index = filename.LastIndexOf("\\");
+                            string tenfile = filename.Substring(index).Trim('\\');
+                            this.lblFileCopy.Text = tenfile;
+                            if (tenfile.ToLower() == "BionetUpdate.exe")
+                            {
+                                //if (System.IO.File.Exists(_currentPath + "\\BionetUpdate.exe"))
+                                    continue;
+                            }
+                            File.Copy(filename, _disPath + filename.Substring(_srcPath.Length), true);
+                            progressBarControlDownload.PerformStep();
+                            progressBarControlDownload.Update();
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show(" Lỗi copy file: " + ex.ToString() + " \n\t Vui lòng kiểm tra lại!", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                }
+                string[] Directs = Directory.GetDirectories(_srcPath);
+                foreach (string direct in Directs)
+                {
+                    Directory.CreateDirectory(_disPath + direct.Substring(_srcPath.Length));
+                    this.CopyfileFull(direct, _disPath + direct.Substring(_srcPath.Length));// _currentPath);
+                }
+                DialogResult dlr=XtraMessageBox.Show("Cập nhật phần mềm thành công. \n\t Khởi động lại phần mềm? ", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if(dlr==DialogResult.OK)
+                {
+                    Process.Start(Application.StartupPath + "\\BioNetSangLocSoSinh.exe");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(" Không tồn tại file copy: " + ex.ToString(), "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
         }
     }
 }

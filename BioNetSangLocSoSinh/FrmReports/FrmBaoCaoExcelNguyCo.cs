@@ -38,7 +38,18 @@ namespace BioNetSangLocSoSinh.FrmReports
                 try
                 {
                     GCFileExcel.DataSource = null;
+                    GVFileExcel.Columns.Clear();
                     GCNghiNgo.DataSource = null;
+                    GVNghiNgo.Columns.Clear();
+                    GCAmTinh.DataSource = null;
+                    GVAmTinh.Columns.Clear();
+                    GCDuongtinh.DataSource = null;
+                    GVDuongTinh.Columns.Clear();
+                    GCNguycocao.DataSource = null;
+                    GVNguycocao.Columns.Clear();
+                    GCNguycothap2.DataSource = null;
+                    GVNguycothap2.Columns.Clear();
+                    TabPageBaoCaoTongHop.Controls.Clear();
                     GCFileExcel.DataSource = OpenFile(of.FileName);
                 }
                 catch
@@ -77,7 +88,24 @@ namespace BioNetSangLocSoSinh.FrmReports
                         excelReader.IsFirstRowAsColumnNames = true;
                         var result = excelReader.AsDataSet();
                         excelReader.Close();
-                        tab = result.Tables[0];
+                        DataTable tabtemp = result.Tables[0];
+                        int rows = tabtemp.Rows.Count;
+                        int cols = tabtemp.Columns.Count;
+                        tab = new DataTable();
+                        for (int c = 0; c < cols; c++)
+                        {
+                            string xn = tabtemp.Columns[c].ToString().Trim();
+                            tab.Columns.Add(xn);
+                        }
+                        for (int r = 0; r < rows; r++)
+                        {
+                           DataRow dr = tab.NewRow();
+                           for (int c = 0; c < cols; c++)
+                           {
+                              dr[tab.Columns[c].ToString().Trim()] = tabtemp.Rows[r][c].ToString();
+                           }
+                           tab.Rows.Add(dr);
+                        }
                     }
                     catch
                     {
@@ -96,12 +124,14 @@ namespace BioNetSangLocSoSinh.FrmReports
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             LocDanhSach();
-
+            ThongKeDonVi();
+            cbbDonVi.Properties.DataSource= (from DataRow myRow in tab.Rows
+                                             where !string.IsNullOrEmpty(myRow["Tên Đơn Vị"].ToString())
+                                             select myRow["Tên Đơn Vị"]).Distinct().ToList();
         }
         private void ThongKe()
         {
             rptBaoCaoExcelGeneCoBan baocao = new rptBaoCaoExcelGeneCoBan();
-            // Tổng
             baocao.TongSoMau = new TKExcelSoMau();
             TongSoMau = (from DataRow myRow in tab.Rows
                          where !string.IsNullOrEmpty(myRow["STT"].ToString())
@@ -194,23 +224,35 @@ namespace BioNetSangLocSoSinh.FrmReports
                 baoc6.TongGene.Add(ThongKeTKExcelCLMau(dt.ToString(), "Dân tộc"));
             }
             baoct.Gene.Add(baoc6);
+            //rptBaoCaoExcelGene baoc7 = new rptBaoCaoExcelGene();
+            //baoc7.NgayIn = DateTime.Now;
+            //baoc7.TenNhom = "Đơn vị";
+            //baoc7.STT = "6";
+            //baoc7.NgayIn = DateTime.Now;
+            //baoc7.TongGene = new List<TKGene>();
+            //baoc7.TongGene.Add(ThongKeTKExcelCLMauTong("Tên Đơn Vị"));
+            //var dsdv = (from DataRow myRow in tab.Rows
+            //                where !string.IsNullOrEmpty(myRow["Tên Đơn Vị"].ToString())
+            //                select myRow["Tên Đơn Vị"]).Distinct().ToList();
+            //foreach (var dt in dsdv)
+            //{
+            //    baoc7.TongGene.Add(ThongKeTKExcelCLMau(dt.ToString(), "Tên Đơn Vị"));
+            //}
+            //baoct.Gene.Add(baoc7);
             try
             {
 
                 Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
-                //datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
                 datarp.DataSource = baoct;
+                TabPageBaoCaoTongHop.Controls.Clear();
                 Reports.frmReport myForm = new Reports.frmReport(datarp);
                 myForm.TopLevel = false;
                 myForm.Parent = TabPageBaoCaoTongHop;
                 myForm.Dock = DockStyle.Fill;
                 myForm.Show();
-                // myForm.ShowDialog();
-
             }
             catch
             {
-
             }
         }
         private TKGene ThongKeTKExcelGene(string cso)
@@ -379,7 +421,6 @@ namespace BioNetSangLocSoSinh.FrmReports
             }
             return tk;
         }
-
         private TKGene ThongKeTKExcelCanNang(int? min,int? max)
         {
             TKGene tk = new TKGene();
@@ -690,84 +731,87 @@ namespace BioNetSangLocSoSinh.FrmReports
                 GCDuongtinh.DataSource = tabDuongTinh;
                 GCAmTinh.DataSource = null;
                 GCAmTinh.DataSource = tabAmTinh;
-               ThongKe();
+                ThongKe();
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Kiểm tra lại file dữ liệu góc");
+                XtraMessageBox.Show("Vui lòng kiểm tra lại dữ liệu file gốc", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         
         }
-
-        private void panelControl1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void xtraTabPage3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void xtraTabPage4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {
-            GVFileExcel.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "DataTong" });
+            SaveFileDialog ofd = new SaveFileDialog();
+            // ofd.Multiselect = false;
+            ofd.Filter = "Execl files |*.xls *.xlsx";
+            ofd.FileName = "BaoCaoThongKeTheoExcelNguyCo_" + DateTime.Now.Day+DateTime.Now.Month+DateTime.Now.Year + ".xlsx";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Workbook workbook = new DevExpress.Spreadsheet.Workbook();
 
-            Workbook workbook2 = new DevExpress.Spreadsheet.Workbook();
-            using (FileStream stream = new FileStream("FileTempTT.xlsx", FileMode.Open))
-            {
-                workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
-            }
-            Workbook workbook = new DevExpress.Spreadsheet.Workbook();
-            workbook.Worksheets.Insert(0, "DataTong");
-            workbook.Worksheets[0].CopyFrom(workbook2.Worksheets[0]);
-            File.Delete("FileTempTT.xlsx");
-            GVNghiNgo.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "NghiNgo" });
-            using (FileStream stream = new FileStream("NghiNgo" + ".xlsx", FileMode.Open))
-            {
-                workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
-            }
-            workbook.Worksheets.Insert(1, "NghiNgo");
-            workbook.Worksheets[1].CopyFrom(workbook2.Worksheets[0]);
-            File.Delete("FileTempTT" + ".xlsx");
-            GVNguycothap2.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "NguyCoThapL2" });
-            using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
-            {
-                workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
-            }
-            workbook.Worksheets.Insert(2, "NguyCoThapL2");
-            workbook.Worksheets[2].CopyFrom(workbook2.Worksheets[0]);
-            File.Delete("FileTempTT" + ".xlsx");
-            GVNguycocao.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "NguyCoCao" });
-            using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
-            {
-                workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
-            }
-            workbook.Worksheets.Insert(3, "NguyCoCao");
-            workbook.Worksheets[3].CopyFrom(workbook2.Worksheets[0]);
-            File.Delete("FileTempTT" + ".xlsx");
-            GVDuongTinh.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "DuongTinh" });
-            using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
-            {
-                workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
-            }
-            workbook.Worksheets.Insert(4, "DuongTinh");
-            workbook.Worksheets[4].CopyFrom(workbook2.Worksheets[0]);
-            File.Delete("FileTempTT" + ".xlsx");
-            GVAmTinh.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "AmTinh" });
-            using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
-            {
-                workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
-            }
-            workbook.Worksheets.Insert(5, "AmTinh");
-            workbook.Worksheets[6].CopyFrom(workbook2.Worksheets[0]);
-            File.Delete("FileTempTT" + ".xlsx");
+                GVFileExcel.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "DataTong" });
+                Workbook workbook2 = new DevExpress.Spreadsheet.Workbook();
+                using (FileStream stream = new FileStream("FileTempTT.xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                
+                workbook.Worksheets.Insert(0, "DataTong");
+                workbook.Worksheets[0].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("FileTempTT.xlsx");
 
+                GVNghiNgo.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "NghiNgo" });
+                using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(1, "NghiNgo");
+                workbook.Worksheets[1].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("FileTempTT" + ".xlsx");
+                GVNguycothap2.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "NguyCoThapL2" });
+                using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(2, "NguyCoThapL2");
+                workbook.Worksheets[2].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("FileTempTT" + ".xlsx");
+                GVNguycocao.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "NguyCoCao" });
+                using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(3, "NguyCoCao");
+                workbook.Worksheets[3].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("FileTempTT" + ".xlsx");
+                GVDuongTinh.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "DuongTinh" });
+                using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(4, "DuongTinh");
+                workbook.Worksheets[4].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("FileTempTT" + ".xlsx");
+                GVAmTinh.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "AmTinh" });
+                using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(5, "AmTinh");
+                workbook.Worksheets[5].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("FileTempTT" + ".xlsx");
+
+                GVBaoCaoDonVi.ExportToXlsx("FileTempTT.xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "BaoCaoDonVi" });
+                using (FileStream stream = new FileStream("FileTempTT" + ".xlsx", FileMode.Open))
+                {
+                    workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+                workbook.Worksheets.Insert(5, "BaoCaoDonVi");
+                workbook.Worksheets[5].CopyFrom(workbook2.Worksheets[0]);
+                File.Delete("FileTempTT" + ".xlsx");
+                workbook.SaveDocument(ofd.FileName);
+            }
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -885,6 +929,321 @@ namespace BioNetSangLocSoSinh.FrmReports
             {
 
             }
+        }
+
+        #region Báo cáo đơn vị
+        private void ThongKeDonVi()
+        {
+            try
+            {
+                DataTable tabledv = new DataTable();
+                var kqgene = (from DataRow myRow in tab.Rows
+                              where !string.IsNullOrEmpty(myRow["KQ gene"].ToString())
+                              select myRow["KQ gene"]).Distinct().ToList();
+                tabledv.Columns.Add("STT");//0
+                tabledv.Columns.Add("Mã Đơn Vị");//1
+                tabledv.Columns.Add("Tên Đơn Vị");//2
+                tabledv.Columns.Add("Viết Tắt ĐV");//3
+                tabledv.Columns.Add("Tổng");//4
+                tabledv.Columns.Add("Nghi ngờ");//5
+                tabledv.Columns.Add("Nguy cơ cao");//6
+                tabledv.Columns.Add("Nguy cơ thấp L2");//7
+                tabledv.Columns.Add("Âm tính");//8
+                tabledv.Columns.Add("Dương tính");//9
+                foreach (var kq in kqgene)
+                {
+                    tabledv.Columns.Add(kq.ToString());
+                }
+                var lisdv = (from DataRow myRow in tab.Rows
+                             where !string.IsNullOrEmpty(myRow["Tên Đơn Vị"].ToString())
+                             select myRow["Tên Đơn Vị"]).Distinct().ToList();
+                int stt = 1;
+                var gen = (from DataRow myRow in tab.Rows
+                           where !string.IsNullOrEmpty(myRow["KQ gene"].ToString())
+                           select myRow).ToList();
+                foreach (var dv in lisdv)
+                {
+                    try
+                    {
+                        DataRow dr = tabledv.NewRow();
+                        dr[tabledv.Columns[3].ToString().Trim()] = (from DataRow myRow in tab.Rows where
+                                                                   !string.IsNullOrEmpty(myRow["Tên Đơn Vị"].ToString())
+                                                                    where myRow["Tên Đơn Vị"].Equals(dv)
+                                                                    select myRow["Viết Tắt ĐV"]).FirstOrDefault();
+                        dr[tabledv.Columns[1].ToString().Trim()] = (from DataRow myRow in tab.Rows where
+                                                                   !string.IsNullOrEmpty(myRow["Tên Đơn Vị"].ToString())
+                                                                    where myRow["Tên Đơn Vị"].Equals(dv)
+                                                                    select myRow["Mã Đơn Vị"]).FirstOrDefault();
+                        dr[tabledv.Columns[0].ToString().Trim()] = stt.ToString();
+                        dr[tabledv.Columns[2].ToString().Trim()] = dv.ToString();
+                        var kq= ThongKeTKExcelCLMau(dv.ToString(), "Tên Đơn Vị");
+                        dr[tabledv.Columns[4].ToString().Trim()] = kq.Tong;
+                        dr[tabledv.Columns[5].ToString().Trim()] = kq.NghiNgo;
+                        dr[tabledv.Columns[6].ToString().Trim()] = kq.NguyCoCao;
+                        dr[tabledv.Columns[7].ToString().Trim()] = kq.NguyCoThapL2;
+                        dr[tabledv.Columns[8].ToString().Trim()] = kq.AmTinh;
+                        dr[tabledv.Columns[9].ToString().Trim()] = kq.DuongTinh;
+                        var gene = (from DataRow myRow in tab.Rows
+                                    where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(dv)
+                                    select myRow["KQ gene"]).ToList();
+                        for (int c = 10; c < tabledv.Columns.Count; c++)
+                        {
+                            string ge = tabledv.Columns[c].ToString();
+                            dr[tabledv.Columns[c].ToString().Trim()] = gene.Where(x => x.Equals(ge)).ToList().Count().ToString();
+                        }
+                        tabledv.Rows.Add(dr);
+                        stt = stt + 1;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                GCBaoCaoDonVi.DataSource = null;
+                GVBaoCaoDonVi.Columns.Clear();
+                GCBaoCaoDonVi.DataSource = tabledv;
+            }
+            catch
+            {
+
+            }
+        }
+        #endregion
+
+        private void btnPDFDonVi_Click(object sender, EventArgs e)
+        {
+            if(cbbDonVi.EditValue!=null)
+            {
+                ThongKeDonVi(cbbDonVi.EditValue.ToString());
+            }
+            else
+            {
+                XtraMessageBox.Show("Vui lòng chọn đơn vị thống kê", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+        }
+        private void ThongKeDonVi(string Donvi)
+        {
+            rptBaoCaoExcelGeneCoBan baocao = new rptBaoCaoExcelGeneCoBan();
+            baocao.TongSoMau = new TKExcelSoMau();
+            TongSoMau = (from DataRow myRow in tab.Rows
+                         where !string.IsNullOrEmpty(myRow["STT"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                         select myRow).Count();
+            TongSoLamGene = (from DataRow myRow in tab.Rows
+                             where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                             select myRow["KL gene"]).Count();
+            var tabTongGene = (from DataRow myRow in tab.Rows
+                               where string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                               select myRow["KQ gene"]).ToList();
+            TongSoXD = tabTongGene.Where(x => x.Equals("KXĐ")).Count();
+            baocao.NgayIn = DateTime.Now;
+            rptBaoCaoExcelTong baoct = new rptBaoCaoExcelTong();
+            baoct.Tieude = "";
+            baoct.NgayIn = DateTime.Now;
+            baoct.Gene = new List<rptBaoCaoExcelGene>();
+            rptBaoCaoExcelGene baoc = new rptBaoCaoExcelGene();
+            baoc.NgayIn = DateTime.Now;
+            baoc.TenNhom = "Thông tin về xét nghiệm gene";
+            var tabTongsoGene = (from DataRow myRow in tab.Rows
+                                 where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                 select myRow["KQ gene"]).Distinct().ToList();
+            baoc.TongGene = new List<TKGene>();
+            baoc.TongGene.Add(ThongKeTKExcelDonVi("Tổng","KQ gene",Donvi));
+            baoc.TongGene.Add(ThongKeTKExcelDonVi("ChuaXN", "KQ gene", Donvi));
+            baoc.TongGene.Add(ThongKeTKExcelDonVi("", "KQ gene", Donvi));
+            baoc.TongGene.Add(ThongKeTKExcelDonVi("KXĐ", "KQ gene", Donvi));
+            baoc.TongGene.Add(ThongKeTKExcelDonVi("Xac dinh", "KQ gene", Donvi));
+            baoc.STT = "1";
+            foreach (var t in tabTongsoGene)
+            {
+                if (!t.Equals("KXĐ"))
+                {
+                    baoc.TongGene.Add(ThongKeTKExcelDonVi(t.ToString(), "KQ gene", Donvi));
+                }
+            }
+            baoct.Gene.Add(baoc);
+            rptBaoCaoExcelGene baoc2 = new rptBaoCaoExcelGene();
+            baoc2.NgayIn = DateTime.Now;
+            baoc2.TenNhom = "Giới tính";
+            baoc2.STT = "2";
+            baoc2.NgayIn = DateTime.Now;
+            baoc2.TongGene = new List<TKGene>();
+            baoc2.TongGene.Add(ThongKeTKExcelDonVi("Nam", "Giới tính", Donvi));
+            baoc2.TongGene.Add(ThongKeTKExcelDonVi("Nữ", "Giới tính", Donvi));
+            baoc2.TongGene.Add(ThongKeTKExcelDonVi("N/A", "Giới tính", Donvi));
+            baoct.Gene.Add(baoc2);
+            rptBaoCaoExcelGene baoc3 = new rptBaoCaoExcelGene();
+            baoc3.NgayIn = DateTime.Now;
+            baoc3.TenNhom = "Cân Nặng";
+            baoc3.STT = "3";
+            baoc3.NgayIn = DateTime.Now;
+            baoc3.TongGene = new List<TKGene>();
+            baoc3.TongGene.Add(ThongKeTKExcelCanNang(0, 2500));
+            baoc3.TongGene.Add(ThongKeTKExcelCanNang(2500, 3000));
+            baoc3.TongGene.Add(ThongKeTKExcelCanNang(3000, 0));
+            baoct.Gene.Add(baoc3);
+            rptBaoCaoExcelGene baoc4 = new rptBaoCaoExcelGene();
+            baoc4.NgayIn = DateTime.Now;
+            baoc4.TenNhom = "Chất lượng Mẫu lần 1";
+            baoc4.STT = "4";
+            baoc4.NgayIn = DateTime.Now;
+            baoc4.TongGene = new List<TKGene>();
+            baoc4.TongGene.Add(ThongKeTKExcelDonVi("Tổng", "Chất lượng mẫu 1", Donvi));
+            baoc4.TongGene.Add(ThongKeTKExcelCLMau("Đạt", "Chất lượng mẫu 1"));
+            baoc4.TongGene.Add(ThongKeTKExcelCLMau("Không Đạt", "Chất lượng mẫu 1"));
+            baoct.Gene.Add(baoc4);
+            rptBaoCaoExcelGene baoc5 = new rptBaoCaoExcelGene();
+            baoc5.NgayIn = DateTime.Now;
+            baoc5.TenNhom = "Chất lượng Mẫu lần 2";
+            baoc5.STT = "5";
+            baoc5.NgayIn = DateTime.Now;
+            baoc5.TongGene = new List<TKGene>();
+            baoc5.TongGene.Add(ThongKeTKExcelDonVi("Tổng","Chất lượng mẫu 2", Donvi));
+            baoc5.TongGene.Add(ThongKeTKExcelDonVi("Đạt", "Chất lượng mẫu 2", Donvi));
+            baoc5.TongGene.Add(ThongKeTKExcelDonVi("Không Đạt", "Chất lượng mẫu 2", Donvi));
+            baoct.Gene.Add(baoc5);
+            rptBaoCaoExcelGene baoc6 = new rptBaoCaoExcelGene();
+            baoc6.NgayIn = DateTime.Now;
+            baoc6.TenNhom = "Dân tộc";
+            baoc6.STT = "6";
+            baoc6.NgayIn = DateTime.Now;
+            baoc6.TongGene = new List<TKGene>();
+            baoc6.TongGene.Add(ThongKeTKExcelCLMauTong("Dân tộc"));
+            var dsdantoc = (from DataRow myRow in tab.Rows
+                            where !string.IsNullOrEmpty(myRow["Dân tộc"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                            select myRow["Dân tộc"]).Distinct().ToList();
+            foreach (var dt in dsdantoc)
+            {
+                baoc6.TongGene.Add(ThongKeTKExcelDonVi(dt.ToString(), "Dân tộc", Donvi));
+            }
+            baoct.Gene.Add(baoc6);
+            try
+            {
+
+                Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
+                datarp.DataSource = baoct;
+                Reports.frmReport myForm = new Reports.frmReport(datarp);
+                myForm.ShowDialog();
+            }
+            catch
+            {
+            }
+        }
+        private TKGene ThongKeTKExcelDonVi(string cso, string CLM,string Donvi)
+        {
+            TKGene tk = new TKGene();
+            try
+            {
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                   select myRow[CLM]).ToList();
+                var tabNghiNgoGene = (from DataRow myRow in tabNghiNgo.Rows
+                                      where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                      select myRow[CLM]).ToList();
+                var tabNgytCoCaoTongGene = (from DataRow myRow in tabNguyCoCao.Rows
+                                            where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                            select myRow[CLM]).ToList();
+                var tabNguyCoThapL2Gene = (from DataRow myRow in tabNguycoThap2.Rows
+                                           where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                           select myRow[CLM]).ToList();
+                var tabAmTinhGene = (from DataRow myRow in tabAmTinh.Rows
+                                     where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                     select myRow[CLM]).ToList();
+                var tabDuongTinhGene = (from DataRow myRow in tabDuongTinh.Rows
+                                        where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                        select myRow[CLM]).ToList();
+                tk.Ten = cso;
+                if(cso.Equals("Tổng"))
+                {
+                    tk.Tong = tabTongGene.Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Count().ToString();
+                    tk.Tile = "100%";
+                }
+                else
+                {
+                    tk.Tong = tabTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)tabTongGene.Where(x => x.Equals(cso)).Count() / (double)tabTongGene.Count) * 100) + "%";
+                }
+               
+            }
+            catch
+            {
+
+            }
+            return tk;
+        }
+        private TKGene ThongKeTKExcelDonViCanNang(int? min, int? max, string Donvi)
+        {
+            TKGene tk = new TKGene();
+            try
+            {
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                   select myRow["Cân nặng"]).ToList();
+                var tabNghiNgoGene = (from DataRow myRow in tabNghiNgo.Rows
+                                      where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                      select myRow["Cân nặng"]).ToList();
+                var tabNgytCoCaoTongGene = (from DataRow myRow in tabNguyCoCao.Rows
+                                            where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                            select myRow["Cân nặng"]).ToList();
+                var tabNguyCoThapL2Gene = (from DataRow myRow in tabNguycoThap2.Rows
+                                           where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                           select myRow["Cân nặng"]).ToList();
+                var tabAmTinhGene = (from DataRow myRow in tabAmTinh.Rows
+                                     where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                     select myRow["Cân nặng"]).ToList();
+                var tabDuongTinhGene = (from DataRow myRow in tabDuongTinh.Rows
+                                        where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                        select myRow["Cân nặng"]).ToList();
+
+                if (min == 0)
+                {
+                    tk.Ten = "<=" + max.ToString();
+                    tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)tabTongGene.Where(x => int.Parse(x.ToString()) <= max).Count() / (double)TongSoMau) * 100) + "%";
+                }
+                else if (max == 0)
+                {
+                    tk.Ten = ">" + min.ToString();
+                    tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)tabTongGene.Where(x => int.Parse(x.ToString()) > min).Count() / (double)TongSoMau) * 100) + "%";
+                }
+                else
+                {
+                    tk.Ten = min.ToString() + "<X<=" + max.ToString();
+                    tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)tabTongGene.Where(x => int.Parse(x.ToString()) <= max).Count() / (double)TongSoMau) * 100) + "%";
+                }
+            }
+            catch
+            {
+
+            }
+            return tk;
         }
     }
 }

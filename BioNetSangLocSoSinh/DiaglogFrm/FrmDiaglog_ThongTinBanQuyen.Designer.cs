@@ -46,7 +46,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.CaptionImage = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImage")));
+            this.groupControl1.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImageOptions.Image")));
             this.groupControl1.ContentImage = ((System.Drawing.Image)(resources.GetObject("groupControl1.ContentImage")));
             this.groupControl1.ContentImageAlignment = System.Drawing.ContentAlignment.BottomLeft;
             this.groupControl1.Controls.Add(this.txtThoiGian);
@@ -63,13 +63,14 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(319, 198);
+            this.groupControl1.Size = new System.Drawing.Size(344, 218);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Thông tin bản quyền";
             // 
             // txtThoiGian
             // 
             this.txtThoiGian.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtThoiGian.Appearance.Options.UseFont = true;
             this.txtThoiGian.Location = new System.Drawing.Point(110, 147);
             this.txtThoiGian.Name = "txtThoiGian";
             this.txtThoiGian.Size = new System.Drawing.Size(38, 16);
@@ -79,6 +80,7 @@
             // txtBanQuyen
             // 
             this.txtBanQuyen.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtBanQuyen.Appearance.Options.UseFont = true;
             this.txtBanQuyen.Location = new System.Drawing.Point(99, 125);
             this.txtBanQuyen.Name = "txtBanQuyen";
             this.txtBanQuyen.Size = new System.Drawing.Size(81, 17);
@@ -88,6 +90,7 @@
             // txtVersion
             // 
             this.txtVersion.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.txtVersion.Appearance.Options.UseFont = true;
             this.txtVersion.Location = new System.Drawing.Point(99, 102);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.Size = new System.Drawing.Size(138, 16);
@@ -97,6 +100,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Location = new System.Drawing.Point(6, 147);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(91, 17);
@@ -106,6 +110,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(6, 125);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(75, 17);
@@ -115,6 +120,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(6, 102);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(73, 17);
@@ -125,21 +131,24 @@
             // 
             this.txtTenTrungTam.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.txtTenTrungTam.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.txtTenTrungTam.Appearance.Options.UseFont = true;
+            this.txtTenTrungTam.Appearance.Options.UseForeColor = true;
+            this.txtTenTrungTam.Appearance.Options.UseTextOptions = true;
             this.txtTenTrungTam.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.txtTenTrungTam.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.txtTenTrungTam.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.txtTenTrungTam.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.txtTenTrungTam.Location = new System.Drawing.Point(6, 23);
             this.txtTenTrungTam.Name = "txtTenTrungTam";
-            this.txtTenTrungTam.Size = new System.Drawing.Size(309, 53);
+            this.txtTenTrungTam.Size = new System.Drawing.Size(326, 40);
             this.txtTenTrungTam.TabIndex = 2;
             this.txtTenTrungTam.Text = "Không Tìm Thấy Thông Tin Trung Tâm";
             // 
             // simpleButton3
             // 
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(240, 175);
+            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.simpleButton3.Location = new System.Drawing.Point(240, 190);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(75, 23);
             this.simpleButton3.TabIndex = 1;
@@ -149,8 +158,8 @@
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(160, 175);
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(159, 190);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(75, 23);
             this.simpleButton2.TabIndex = 1;
@@ -160,8 +169,8 @@
             // btnSync
             // 
             this.btnSync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSync.Image = ((System.Drawing.Image)(resources.GetObject("btnSync.Image")));
-            this.btnSync.Location = new System.Drawing.Point(81, 175);
+            this.btnSync.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSync.ImageOptions.Image")));
+            this.btnSync.Location = new System.Drawing.Point(73, 190);
             this.btnSync.Name = "btnSync";
             this.btnSync.Size = new System.Drawing.Size(75, 23);
             this.btnSync.TabIndex = 1;
@@ -172,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 198);
+            this.ClientSize = new System.Drawing.Size(344, 218);
             this.Controls.Add(this.groupControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDiaglog_ThongTinBanQuyen";
