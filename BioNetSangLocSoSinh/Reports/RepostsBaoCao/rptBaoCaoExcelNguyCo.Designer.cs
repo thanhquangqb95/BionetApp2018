@@ -91,7 +91,7 @@
             // 
             // xrPageInfo1
             // 
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 9.291666F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 9.291672F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
@@ -101,7 +101,7 @@
             // xrPageInfo2
             // 
             this.xrPageInfo2.Format = "Page {0} of {1}";
-            this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(416F, 6F);
+            this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(421.9998F, 9.291672F);
             this.xrPageInfo2.Name = "xrPageInfo2";
             this.xrPageInfo2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo2.SizeF = new System.Drawing.SizeF(398F, 23F);
@@ -114,7 +114,6 @@
             this.xrPictureBox1,
             this.xrLabel2,
             this.xrLabel1});
-            this.reportHeaderBand1.Expanded = false;
             this.reportHeaderBand1.HeightF = 98.16241F;
             this.reportHeaderBand1.Name = "reportHeaderBand1";
             // 

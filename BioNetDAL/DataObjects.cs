@@ -9331,7 +9331,7 @@ namespace BioNetDAL
         }
             #endregion
             #region Báo cáo theo đơn vị
-            public List<PSBaoCaoTuyChonDonVi> LoadDSThongKeDonVi(DateTime NgayBD, DateTime NgayKT, string MaDV)
+        public List<PSBaoCaoTuyChonDonVi> LoadDSThongKeDonVi(DateTime NgayBD, DateTime NgayKT, string MaDV)
         {
             List<PSBaoCaoTuyChonDonVi> result = new List<PSBaoCaoTuyChonDonVi>();
             try
@@ -9440,6 +9440,11 @@ namespace BioNetDAL
                         {
                             var pa = kq.Select(x => x.patient).ToList();
                             var ph1 = kq.Select(x => x.phieu1).ToList();
+                            dv.Tong = pa.Count();
+                            dv.PSThongKeGioiTinh = new PSThongKeGioiTinh();
+                            dv.PSThongKeGioiTinh.Nam = pa.Where(x => x.GioiTinh == 0).Count();
+                            dv.PSThongKeGioiTinh.Nu = pa.Where(x => x.GioiTinh == 1).Count();
+                            dv.PSThongKeGioiTinh.NA = pa.Where(x => x.GioiTinh == 2).Count();
                             dv.PSTKPPSinh = new PSThongKePPSinh();
                             dv.PSTKPPSinh.SinhThuong = pa.Where(x => x.PhuongPhapSinh == 0).Count();
                             dv.PSTKPPSinh.SinhMo = pa.Where(x => x.PhuongPhapSinh == 1).Count();

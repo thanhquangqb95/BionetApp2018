@@ -683,6 +683,12 @@
     <Compile Include="Reports\frmReportEditGeneral.Designer.cs">
       <DependentUpon>frmReportEditGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoCBTheoDonVi.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoCBTheoDonVi.Designer.cs">
+      <DependentUpon>rptBaoCaoCBTheoDonVi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1160,6 +1166,9 @@
     <EmbeddedResource Include="Reports\frmReportEditGeneral.resx">
       <DependentUpon>frmReportEditGeneral.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoCBTheoDonVi.resx">
+      <DependentUpon>rptBaoCaoCBTheoDonVi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.resx">
       <DependentUpon>rptBaoCaoExcelNguyCo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1442,6 +1451,7 @@
     <None Include="Resources\microscope.png" />
     <None Include="Resources\microscope %281%29.png" />
     <None Include="Resources\man.png" />
+    <None Include="Resources\pdf %281%29.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

@@ -31,6 +31,8 @@
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnXuatPDF = new DevExpress.XtraEditors.SimpleButton();
+            this.txtTime = new DevExpress.XtraEditors.TextEdit();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnThongke = new DevExpress.XtraEditors.SimpleButton();
             this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
@@ -56,9 +58,9 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LookUpEditTenVietTat = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.txtTime = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChiCuc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
@@ -69,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditTenVietTat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -77,6 +78,7 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.btnXuatPDF);
             this.panelControl1.Controls.Add(this.txtTime);
             this.panelControl1.Controls.Add(this.btnClear);
             this.panelControl1.Controls.Add(this.btnThongke);
@@ -92,12 +94,36 @@
             this.panelControl1.LookAndFeel.TouchUIMode = DevExpress.Utils.DefaultBoolean.False;
             this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1288, 88);
+            this.panelControl1.Size = new System.Drawing.Size(1288, 82);
             this.panelControl1.TabIndex = 3;
+            // 
+            // btnXuatPDF
+            // 
+            this.btnXuatPDF.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatPDF.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.btnXuatPDF.Appearance.Options.UseFont = true;
+            this.btnXuatPDF.Appearance.Options.UseForeColor = true;
+            this.btnXuatPDF.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf__1_;
+            this.btnXuatPDF.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnXuatPDF.Location = new System.Drawing.Point(722, 34);
+            this.btnXuatPDF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXuatPDF.Name = "btnXuatPDF";
+            this.btnXuatPDF.Size = new System.Drawing.Size(120, 23);
+            this.btnXuatPDF.TabIndex = 1085;
+            this.btnXuatPDF.Text = "Xuất PDF";
+            this.btnXuatPDF.Click += new System.EventHandler(this.btnXuatPDF_Click);
+            // 
+            // txtTime
+            // 
+            this.txtTime.Location = new System.Drawing.Point(348, 54);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Properties.ReadOnly = true;
+            this.txtTime.Size = new System.Drawing.Size(239, 20);
+            this.txtTime.TabIndex = 1084;
             // 
             // btnClear
             // 
-            this.btnClear.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.Appearance.Options.UseForeColor = true;
@@ -115,8 +141,8 @@
             // 
             // btnThongke
             // 
-            this.btnThongke.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongke.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnThongke.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongke.Appearance.ForeColor = System.Drawing.Color.Maroon;
             this.btnThongke.Appearance.Options.UseFont = true;
             this.btnThongke.Appearance.Options.UseForeColor = true;
             this.btnThongke.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.graph;
@@ -132,6 +158,7 @@
             // btnXuatFile
             // 
             this.btnXuatFile.Appearance.BorderColor = System.Drawing.Color.Maroon;
+            this.btnXuatFile.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXuatFile.Appearance.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.btnXuatFile.Appearance.ForeColor = System.Drawing.Color.DarkRed;
             this.btnXuatFile.Appearance.Options.UseBorderColor = true;
@@ -259,7 +286,7 @@
             // GCDanhSachDonVi
             // 
             this.GCDanhSachDonVi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GCDanhSachDonVi.Location = new System.Drawing.Point(0, 88);
+            this.GCDanhSachDonVi.Location = new System.Drawing.Point(0, 82);
             this.GCDanhSachDonVi.LookAndFeel.SkinName = "Office 2007 Blue";
             this.GCDanhSachDonVi.LookAndFeel.UseDefaultLookAndFeel = false;
             this.GCDanhSachDonVi.MainView = this.GVDanhSachDonVi;
@@ -267,7 +294,7 @@
             this.GCDanhSachDonVi.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.LookupeditDV,
             this.LookUpEditTenVietTat});
-            this.GCDanhSachDonVi.Size = new System.Drawing.Size(1288, 629);
+            this.GCDanhSachDonVi.Size = new System.Drawing.Size(1288, 635);
             this.GCDanhSachDonVi.TabIndex = 4;
             this.GCDanhSachDonVi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachDonVi});
@@ -368,14 +395,6 @@
             this.gridView5.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView5.OptionsView.ShowGroupPanel = false;
             // 
-            // txtTime
-            // 
-            this.txtTime.Location = new System.Drawing.Point(596, 62);
-            this.txtTime.Name = "txtTime";
-            this.txtTime.Properties.ReadOnly = true;
-            this.txtTime.Size = new System.Drawing.Size(120, 20);
-            this.txtTime.TabIndex = 1084;
-            // 
             // FrmBaoBaoTheoDonVI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,6 +412,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChiCuc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
@@ -403,7 +423,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditTenVietTat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,5 +456,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraEditors.SimpleButton btnXuatFile;
         private DevExpress.XtraEditors.TextEdit txtTime;
+        private DevExpress.XtraEditors.SimpleButton btnXuatPDF;
     }
 }

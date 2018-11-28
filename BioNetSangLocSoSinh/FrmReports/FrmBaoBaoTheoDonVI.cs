@@ -25,8 +25,9 @@ namespace BioNetSangLocSoSinh.FrmReports
         }
         private List<PSBaoCaoTuyChonDonVi> listBaoCao = new List<PSBaoCaoTuyChonDonVi>();
         private List<PSDanhMucDonViCoSo> listDonVi = new List<PSDanhMucDonViCoSo>();
-        List<PSThongKeTheoDonVi> lstTK = new List<PSThongKeTheoDonVi>();
+        private List<PSThongKeTheoDonVi> lstTK = new List<PSThongKeTheoDonVi>();
         private List<CLPPSinh> CLPPSinhs = new List<CLPPSinh>();
+        private List<CLGioiTinh> CLGioiTinhs = new List<CLGioiTinh>();
         private void FrmBaoBaoTheoDonVI_Load(object sender, EventArgs e)
         {
             //cbbDichVu.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
@@ -38,15 +39,20 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.txtChiCuc.EditValue = "all";
             this.LookupeditDV.DataSource = listDonVi;
             this.LookUpEditTenVietTat.DataSource = listDonVi;
+            this.LoadGioiTinh();
             this.LoadPPSinh();
             this.LoadTuoiMe();
             this.LoadCanNang();
             this.LoadChuongTrinh();
             this.LoadSLSinh();
             this.LoadGoiXN();
+            
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "0", TenPPSinh = "Sinh thường" });
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "1", TenPPSinh = "Sinh mổ" });
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "2", TenPPSinh = "N/A" });
+            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "0", TenGioiTinh = "Nam" });
+            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "1", TenGioiTinh = "Nữ" });
+            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "2", TenGioiTinh = "N/A" });
         }
         #region Load cột
         private void LoadPPSinh()
@@ -377,6 +383,39 @@ namespace BioNetSangLocSoSinh.FrmReports
             col7.Visible = true;
             band.Columns.Add(col7);
         }
+        private void LoadGioiTinh()
+        {
+            GridBand band = new GridBand();
+            band.Name = "TTGioiTinh";
+            band.Caption = "Giới tính";
+            band.RowCount = 1;
+            band.Visible = true;
+            this.GVDanhSachDonVi.Bands.Add(band);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col3.Name = "GioiTinhNam";
+            col3.FieldName = "PSThongKeGioiTinh.Nam";
+            col3.Caption = "Nam";
+            col3.OptionsColumn.AllowEdit = false;
+            col3.Visible = true;
+            band.Columns.Add(col3);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col2.Name = "GioiTinhNu";
+            col2.FieldName = "PSThongKeGioiTinh.Nu";
+            col2.Caption = "Nữ";
+            col2.OptionsColumn.AllowEdit = false;
+            col2.Visible = true;
+            band.Columns.Add(col2);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col1.Name = "GioiTinhNA";
+            col1.FieldName = "PSThongKeGioiTinh.NA";
+            col1.Caption = "N/A";
+            col1.OptionsColumn.AllowEdit = false;
+            col1.Visible = true;
+            band.Columns.Add(col1);
+        }
         
         #endregion
         private void loadDuLieu()
@@ -388,6 +427,11 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             public string TenPPSinh { get; set; }
             public string PPSinh { get; set; }
+        }
+        public class CLGioiTinh
+        {
+            public string TenGioiTinh { get; set; }
+            public string GioiTinh { get; set; }
         }
 
         public class CLViTriLayMau
@@ -406,11 +450,6 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             public string CheDoDinhDuong { get; set; }
             public string IDCheDoDinhDuong { get; set; }
-        }
-        public class CLGioiTinh
-        {
-            public string TenGioiTinh { get; set; }
-            public string GioiTinh { get; set; }
         }
         private void btnThongke_Click(object sender, EventArgs e)
         {
@@ -527,6 +566,117 @@ namespace BioNetSangLocSoSinh.FrmReports
                     }
                 }
             }
+        }
+
+        private void btnXuatPDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string MaDonVi = String.Empty;
+                if (this.txtDonVi.EditValue.ToString() == "all")
+                {
+                    if (this.txtChiCuc.EditValue.ToString() == "all")
+                    {
+                        MaDonVi = "all";
+                    }
+                    else
+                    {
+                        MaDonVi = this.txtChiCuc.EditValue.ToString();
+                    }
+                }
+                else
+                {
+                    MaDonVi = this.txtDonVi.EditValue.ToString();
+                }
+                
+                
+                foreach(var tk in lstTK)
+                {
+                    PSThongKePDFDonVi pdfdv = new PSThongKePDFDonVi();
+                    pdfdv.DonVi = BioNet_Bus.GetThongTinDonViCoSo(tk.MaDV).TenDVCS;
+                    pdfdv.ThoiGian = "Từ ngày " + dllNgay.tungay.Value.Date.ToShortDateString() + " đến " + dllNgay.denngay.Value.Date.ToShortDateString();
+                    pdfdv.LuuY = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + " )";
+                    pdfdv.Tong = tk.Tong.ToString();
+                    pdfdv.GTNam = tk.PSThongKeGioiTinh.Nam.ToString();
+                    pdfdv.GTNu = tk.PSThongKeGioiTinh.Nu.ToString();
+                    pdfdv.TLNamNu = String.Format("{0:0.00}", ((double)tk.PSThongKeGioiTinh.Nam / (double)tk.PSThongKeGioiTinh.Nu));
+                    pdfdv.PSThongKePDFDonViNhom = new List<PSThongKePDFDonViNhom>();
+                    PSThongKePDFDonViNhom nhom = new PSThongKePDFDonViNhom();
+                    nhom.STT = 3;
+                    nhom.TenNhom = "Phương pháp sinh";
+                    nhom.ThongKe = new List<PSThongKePDFDonViCT>();
+                    nhom.ThongKe.Add(GetPDFCT("Sinh mổ", tk.PSTKPPSinh.SinhMo, tk.Tong));
+                    nhom.ThongKe.Add(GetPDFCT("Sinh thường", tk.PSTKPPSinh.SinhThuong, tk.Tong));
+                    nhom.ThongKe.Add(GetPDFCT("N/A", tk.PSTKPPSinh.NA, tk.Tong));
+                    pdfdv.PSThongKePDFDonViNhom.Add(nhom);
+                    PSThongKePDFDonViNhom nhom2 = new PSThongKePDFDonViNhom();
+                    nhom2.STT = 4;
+                    nhom2.TenNhom = "Tuổi mẹ khi sinh (Chi tiết tại Trang 2)";
+                    nhom2.ThongKe = new List<PSThongKePDFDonViCT>();
+                    nhom2.ThongKe.Add(GetPDFCT("Dưới 18 tuổi", tk.PSThongKeTuoiMe.Tuoi14 + tk.PSThongKeTuoiMe.Tuoi15 + tk.PSThongKeTuoiMe.Tuoi16
+                        + tk.PSThongKeTuoiMe.Tuoi17 + tk.PSThongKeTuoiMe.Duoi13, tk.Tong));
+                    nhom2.ThongKe.Add(GetPDFCT("Từ 18 đến 35 tuổi", tk.PSThongKeTuoiMe.Tuoi17den20 + tk.PSThongKeTuoiMe.Tuoi20den25 + tk.PSThongKeTuoiMe.Tuoi25den30 + tk.PSThongKeTuoiMe.Tuoi30den35, tk.Tong));
+                    nhom2.ThongKe.Add(GetPDFCT("Trên 35 tuổi", tk.PSThongKeTuoiMe.Tuoi35den40 + tk.PSThongKeTuoiMe.Tuoi40den45 + tk.PSThongKeTuoiMe.TuoiTren45, tk.Tong));
+                    pdfdv.PSThongKePDFDonViNhom.Add(nhom2);
+                    PSThongKePDFDonViNhom nhom3 = new PSThongKePDFDonViNhom();
+                    nhom3.STT = 5;
+                    nhom3.TenNhom = "Sinh con thứ 3 trở lên (Dựa vào Para)";
+                    nhom3.ThongKe = new List<PSThongKePDFDonViCT>();
+                    nhom3.ThongKe.Add(GetPDFCT("Sinh con thứ 3", tk.PSTKCon.Sinh3Con, tk.Tong));
+                    nhom3.ThongKe.Add(GetPDFCT("Sinh con thứ 4", tk.PSTKCon.Sinh4Con, tk.Tong));
+                    nhom3.ThongKe.Add(GetPDFCT("Sinh con thứ 5 trở lên", tk.PSTKCon.SinhTu5Con, tk.Tong));
+                    pdfdv.PSThongKePDFDonViNhom.Add(nhom3);
+                    PSThongKePDFDonViNhom nhom4 = new PSThongKePDFDonViNhom();
+                    nhom4.STT = 6;
+                    nhom4.TenNhom = "Cân nặng trẻ (g)";
+                    nhom4.ThongKe = new List<PSThongKePDFDonViCT>();
+                    nhom4.ThongKe.Add(GetPDFCT("< 2500", tk.PSThongKeCanNang.Duoi25, tk.Tong));
+                    nhom4.ThongKe.Add(GetPDFCT("2500 ≤ X < 3000", tk.PSThongKeCanNang.Tu25Den30, tk.Tong));
+                    nhom4.ThongKe.Add(GetPDFCT("3000 ≤ X < 3500", tk.PSThongKeCanNang.Tu30Den35, tk.Tong));
+                    nhom4.ThongKe.Add(GetPDFCT("3500 ≤ X < 4000", tk.PSThongKeCanNang.Tu35Den40, tk.Tong));
+                    nhom4.ThongKe.Add(GetPDFCT("4000 ≤ X < 5000", tk.PSThongKeCanNang.Tu40Den45 + tk.PSThongKeCanNang.Tu45Den50, tk.Tong));
+                    nhom4.ThongKe.Add(GetPDFCT("≥ 5000", tk.PSThongKeCanNang.Tren50, tk.Tong));
+                    pdfdv.PSThongKePDFDonViNhom.Add(nhom4);
+                    PSThongKePDFDonViNhom nhom5 = new PSThongKePDFDonViNhom();
+                    nhom5.STT = 7;
+                    nhom5.TenNhom = "Gói xét nghiệm";
+                    nhom5.ThongKe = new List<PSThongKePDFDonViCT>();
+                    nhom5.ThongKe.Add(GetPDFCT("2 bệnh", tk.PSThongKeGoiBenh.Benh2, tk.Tong));
+                    nhom5.ThongKe.Add(GetPDFCT("3 bệnh", tk.PSThongKeGoiBenh.Benh3, tk.Tong));
+                    nhom5.ThongKe.Add(GetPDFCT("5 bệnh", tk.PSThongKeGoiBenh.Benh5, tk.Tong));
+                    nhom5.ThongKe.Add(GetPDFCT("2 bệnh + Hemo", tk.PSThongKeGoiBenh.Benh2Hemo, tk.Tong));
+                    nhom5.ThongKe.Add(GetPDFCT("3 bệnh + Hemo", tk.PSThongKeGoiBenh.Benh3Hemo, tk.Tong));
+                    nhom5.ThongKe.Add(GetPDFCT("5 bệnh + Hemo", tk.PSThongKeGoiBenh.Benh5Hemo, tk.Tong));
+                    pdfdv.PSThongKePDFDonViNhom.Add(nhom5);
+                    PSThongKePDFDonViNhom nhom6 = new PSThongKePDFDonViNhom();
+                    nhom6.STT = 8;
+                    nhom6.TenNhom = "Chương trình sàng lọc";
+                    nhom6.ThongKe = new List<PSThongKePDFDonViCT>();
+                    nhom6.ThongKe.Add(GetPDFCT("Quốc gia", tk.PSTKChuongTrinh.QuocGia, tk.Tong));
+                    nhom6.ThongKe.Add(GetPDFCT("Xã hội hóa", tk.PSTKChuongTrinh.XaHoi, tk.Tong));
+                    nhom6.ThongKe.Add(GetPDFCT("Demo", tk.PSTKChuongTrinh.Demo, tk.Tong));
+                    pdfdv.PSThongKePDFDonViNhom.Add(nhom6);
+
+                    Reports.RepostsBaoCao.rptBaoCaoCBTheoDonVi datarp = new Reports.RepostsBaoCao.rptBaoCaoCBTheoDonVi();
+                    datarp.DataSource = pdfdv;
+                    Reports.frmReport rpt = new Reports.frmReport(datarp);
+                    rpt.ShowDialog();
+                  
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private PSThongKePDFDonViCT GetPDFCT(string Tk,int SL,int Tong)
+        {
+            PSThongKePDFDonViCT ct = new PSThongKePDFDonViCT();
+            ct.TenThongKe = Tk;
+            ct.SoLuong = SL.ToString();
+            ct.Tile= String.Format("{0:00}", ((double)SL / (double)Tong) * 100) + "%";
+            return ct;
         }
     }
 }

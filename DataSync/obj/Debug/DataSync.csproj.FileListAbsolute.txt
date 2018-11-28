@@ -1908,6 +1908,8 @@ D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CoreCompileInputs.cac
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CopyComplete
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.exe
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.dll.config
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.pdb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\BioNetBLL.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\BioNetDAL.dll
@@ -2005,10 +2007,8 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\ru\DevEx
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csprojAssemblyReference.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.Properties.Resources.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.GenerateResource.cache
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.dll.licenses
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CoreCompileInputs.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CopyComplete
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.pdb
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.dll.config
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.dll
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.dll.licenses
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.dll
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.pdb

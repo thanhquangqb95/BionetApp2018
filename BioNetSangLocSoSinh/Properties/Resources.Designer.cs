@@ -863,6 +863,16 @@ namespace BioNetSangLocSoSinh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pdf__1_ {
+            get {
+                object obj = ResourceManager.GetObject("pdf (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pdf_icon {
             get {
                 object obj = ResourceManager.GetObject("pdf-icon", resourceCulture);

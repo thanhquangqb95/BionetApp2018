@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
-            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener1 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
-            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener2 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
-            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener3 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
-            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener4 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
+            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener5 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
+            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener6 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
+            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener7 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
+            DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener8 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
             this.xrDesignRibbonController1 = new DevExpress.XtraReports.UserDesigner.XRDesignRibbonController(this.components);
             this.xrDesignDockManager1 = new DevExpress.XtraReports.UserDesigner.XRDesignDockManager(this.components);
             this.printPreviewStaticItem1 = new DevExpress.XtraPrinting.Preview.PrintPreviewStaticItem();
@@ -974,15 +974,15 @@
             // reportDesigner1
             // 
             this.reportDesigner1.ContainerControl = null;
-            xrDesignPanelListener1.DesignControl = this.xrDesignRibbonController1;
-            xrDesignPanelListener2.DesignControl = this.xrDesignDockManager1;
-            xrDesignPanelListener3.DesignControl = this.xrDesignRibbonController1;
-            xrDesignPanelListener4.DesignControl = this.xrDesignDockManager1;
+            xrDesignPanelListener5.DesignControl = this.xrDesignRibbonController1;
+            xrDesignPanelListener6.DesignControl = this.xrDesignDockManager1;
+            xrDesignPanelListener7.DesignControl = this.xrDesignRibbonController1;
+            xrDesignPanelListener8.DesignControl = this.xrDesignDockManager1;
             this.reportDesigner1.DesignPanelListeners.AddRange(new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener[] {
-            xrDesignPanelListener1,
-            xrDesignPanelListener2,
-            xrDesignPanelListener3,
-            xrDesignPanelListener4});
+            xrDesignPanelListener5,
+            xrDesignPanelListener6,
+            xrDesignPanelListener7,
+            xrDesignPanelListener8});
             this.reportDesigner1.Form = null;
             // 
             // snapDockManager1
@@ -1009,16 +1009,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 576);
-            this.ControlBox = false;
             this.Controls.Add(this.documentView);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmReport";
-            this.Text = "frmReport";
+            this.Text = "Báo cáo thống kê";
             ((System.ComponentModel.ISupportInitialize)(this.xrDesignRibbonController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrDesignDockManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).EndInit();

@@ -21,8 +21,7 @@ namespace BioNetSangLocSoSinh.Reports
         private void documentView_Load(object sender, EventArgs e)
         {
             try
-            {
-                
+            {                
                 this.rpt.CreateDocument(true);
                 this.documentView.DocumentSource = this.rpt;
                 try
