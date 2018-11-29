@@ -106,6 +106,7 @@ namespace BioNetModel
 
     public class PSThongKeGoiBenh
     {
+        public int ThuLaiMau { get; set; }
         public int Benh2 { get; set; }
         public int Benh3 { get; set; }
         public int Benh5 { get; set; }
@@ -113,6 +114,8 @@ namespace BioNetModel
         public int Benh3Hemo { get; set; }
         public int Benh5Hemo { get; set; }
     }
+
+    #region thống kê đơn vi cơ bản
     public class PSThongKePDFDonVi
     {
         public string ThoiGian { get; set; }
@@ -136,5 +139,40 @@ namespace BioNetModel
         public string SoLuong { get; set; }
         public string Tile { get; set; }
     }
+    #endregion
+
+    #region Chỉ tiêu theo xét nghiệm kq
+    public class PSThongKePDFDonViXN
+    {
+        public string ThoiGian { get; set; }
+        public string DonVi { get; set; }
+        public string LuuY { get; set; }
+        public List<PSThongKePDFDonViXNNhom> PSThongKePDFDonViNhom { get; set; }
+    }
+    public class PSThongKePDFDonViXNNhom
+    {
+        public int STT { get; set; }
+        public string TenNhom { get; set; }
+        public string NguyCoThap1 { get; set; }
+        public string NguyCoCao1 { get; set; }
+        public string Tong1 { get; set; }
+        public string NguyCoThap2 { get; set; }
+        public string NguyCoCao2 { get; set; }
+        public string Tong2 { get; set; }
+        public List<PSThongKePDFDonViXNCT> ThongKe { get; set; }
+    }
+    public class PSThongKePDFDonViXNCT
+    {
+        public string TenThongKe { get; set; }
+        public string NguyCoThap1 { get; set; }
+        public string NguyCoCao1 { get; set; }
+        public string Tong1 { get; set; }
+        public string NguyCoThap2 { get; set; }
+        public string NguyCoCao2 { get; set; }
+        public string Tong2 { get; set; }
+
+    }
+    #endregion
+
 
 }

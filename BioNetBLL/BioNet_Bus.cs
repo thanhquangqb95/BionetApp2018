@@ -2034,7 +2034,12 @@ namespace BioNetBLL
                 }
             return lst;
         }
-        public static List<ClassDieuKienLocBaoCao.LoaiMau> GetDieuKienLocBaoCao_LoaiMau()
+        public static string GetTenDanToc(int maDanToc)
+        {
+            var db = new DataObjects();
+            return db.GetTenDanToc(maDanToc);
+        }
+            public static List<ClassDieuKienLocBaoCao.LoaiMau> GetDieuKienLocBaoCao_LoaiMau()
         {
             List<ClassDieuKienLocBaoCao.LoaiMau> lst = new List<ClassDieuKienLocBaoCao.LoaiMau>();
             ClassDieuKienLocBaoCao.LoaiMau cl1 = new ClassDieuKienLocBaoCao.LoaiMau();
@@ -2399,6 +2404,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.LoadDSThongKeDonViCT(lst);
         }
-       
+        public static PSThongKeTheoDonVi LoadDSThongKeDV(List<PSBaoCaoTuyChonDonVi> lst, PSThongKeTheoDonVi dv,int phieu)
+        {
+            var db = new DataObjects();
+            return db.LoadDSThongKeDV(lst, dv,phieu);
+        }
+
     }
 }

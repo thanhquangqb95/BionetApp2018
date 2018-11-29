@@ -1908,6 +1908,7 @@ D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CoreCompileInputs.cac
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CopyComplete
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.exe
 D:\Github\BionetApp2018\DataSync\obj\Debug\DataSync.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.XtraBars.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.dll.config
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DataSync.pdb
@@ -1920,7 +1921,6 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpre
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.Printing.v17.1.Core.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.RichEdit.v17.1.Core.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.Utils.v17.1.dll
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.XtraBars.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.XtraEditors.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.XtraPrinting.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\DevExpress.XtraRichEdit.v17.1.dll

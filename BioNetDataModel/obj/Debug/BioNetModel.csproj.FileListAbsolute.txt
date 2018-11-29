@@ -156,8 +156,8 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\bin\Debug\d
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\bin\Debug\es\DevExpress.Xpo.v17.1.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\bin\Debug\ja\DevExpress.Xpo.v17.1.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\bin\Debug\ru\DevExpress.Xpo.v17.1.resources.dll
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csprojAssemblyReference.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csproj.CoreCompileInputs.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csproj.CopyComplete
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDataModel\obj\Debug\BioNetModel.csprojAssemblyReference.cache

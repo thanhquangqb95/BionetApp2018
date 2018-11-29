@@ -701,6 +701,12 @@
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoHoaDon.Designer.cs">
       <DependentUpon>rptBaoCaoHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoNhomDonViTheoKQXN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoNhomDonViTheoKQXN.Designer.cs">
+      <DependentUpon>rptBaoCaoNhomDonViTheoKQXN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhDonViChiTiet.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1174,6 +1180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoHoaDon.resx">
       <DependentUpon>rptBaoCaoHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoNhomDonViTheoKQXN.resx">
+      <DependentUpon>rptBaoCaoNhomDonViTheoKQXN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhDonViChiTiet.resx">
       <DependentUpon>rptBaoCaoTaiChinhDonViChiTiet.cs</DependentUpon>

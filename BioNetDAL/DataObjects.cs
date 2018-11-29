@@ -4318,6 +4318,14 @@ namespace BioNetDAL
             }
             catch { return null; }
         }
+        public string GetTenDanToc(int maDanToc)
+        {
+            try
+            {
+               return db.PSDanhMucDanTocs.FirstOrDefault(p => p.IDDanToc==maDanToc).TenDanToc;
+            }
+            catch { return null; }
+        }
         public string GetThongTinPhieuLan1(string maPhieuLan2, string maDonVi)
         {
             try
@@ -9429,62 +9437,17 @@ namespace BioNetDAL
         }
         public List<PSThongKeTheoDonVi> LoadDSThongKe(List<PSBaoCaoTuyChonDonVi> lst, List<PSThongKeTheoDonVi> lstdv)
         {
+            List<PSThongKeTheoDonVi> lstresult = new List<PSThongKeTheoDonVi>();
             try
             {
-                foreach (var dv in lstdv)
+                foreach (PSThongKeTheoDonVi dv in lstdv)
                 {
                     try
                     {
                         var kq = lst.Where(y => y.phieu1.IDCoSo.Equals(dv.MaDV)).ToList();
                         if (kq.Count() > 0)
                         {
-                            var pa = kq.Select(x => x.patient).ToList();
-                            var ph1 = kq.Select(x => x.phieu1).ToList();
-                            dv.Tong = pa.Count();
-                            dv.PSThongKeGioiTinh = new PSThongKeGioiTinh();
-                            dv.PSThongKeGioiTinh.Nam = pa.Where(x => x.GioiTinh == 0).Count();
-                            dv.PSThongKeGioiTinh.Nu = pa.Where(x => x.GioiTinh == 1).Count();
-                            dv.PSThongKeGioiTinh.NA = pa.Where(x => x.GioiTinh == 2).Count();
-                            dv.PSTKPPSinh = new PSThongKePPSinh();
-                            dv.PSTKPPSinh.SinhThuong = pa.Where(x => x.PhuongPhapSinh == 0).Count();
-                            dv.PSTKPPSinh.SinhMo = pa.Where(x => x.PhuongPhapSinh == 1).Count();
-                            dv.PSTKPPSinh.NA = pa.Where(x => x.PhuongPhapSinh == 2).Count();
-                            dv.PSThongKeTuoiMe = new PSThongKeTuoiMe();
-                            dv.PSThongKeTuoiMe.Duoi13 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 13).Count();
-                            dv.PSThongKeTuoiMe.Tuoi14 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 14).Count();
-                            dv.PSThongKeTuoiMe.Tuoi15 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 15).Count();
-                            dv.PSThongKeTuoiMe.Tuoi16 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 16).Count();
-                            dv.PSThongKeTuoiMe.Tuoi17 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 17).Count();
-                            dv.PSThongKeTuoiMe.Tuoi17den20 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 17 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 20).Count();
-                            dv.PSThongKeTuoiMe.Tuoi20den25 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 20 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 25).Count();
-                            dv.PSThongKeTuoiMe.Tuoi25den30 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 25 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 30).Count();
-                            dv.PSThongKeTuoiMe.Tuoi30den35 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 30 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 35).Count();
-                            dv.PSThongKeTuoiMe.Tuoi35den40 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 35 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 40).Count();
-                            dv.PSThongKeTuoiMe.Tuoi40den45 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 40 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 45).Count();
-                            dv.PSThongKeTuoiMe.TuoiTren45 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 45).Count();
-                            dv.PSThongKeCanNang = new PSThongKeCanNang();
-                            dv.PSThongKeCanNang.Duoi25 = pa.Where(x => x.CanNang < 2500).Count();
-                            dv.PSThongKeCanNang.Tu25Den30 = pa.Where(x => x.CanNang >= 2500 && x.CanNang < 3000).Count();
-                            dv.PSThongKeCanNang.Tu30Den35 = pa.Where(x => x.CanNang >= 3000 && x.CanNang < 3500).Count();
-                            dv.PSThongKeCanNang.Tu35Den40 = pa.Where(x => x.CanNang >= 3500 && x.CanNang < 4000).Count();
-                            dv.PSThongKeCanNang.Tu40Den45 = pa.Where(x => x.CanNang >= 4000 && x.CanNang < 4500).Count();
-                            dv.PSThongKeCanNang.Tu45Den50 = pa.Where(x => x.CanNang >= 4500 && x.CanNang < 5000).Count();
-                            dv.PSThongKeCanNang.Tren50 = pa.Where(x => x.CanNang >= 5000).Count();
-                            dv.PSTKChuongTrinh = new PSThongKeChuongTrinh();
-                            dv.PSTKChuongTrinh.QuocGia = ph1.Where(x => x.IDChuongTrinh.Equals("CTQG0001")).Count();
-                            dv.PSTKChuongTrinh.XaHoi = ph1.Where(x => x.IDChuongTrinh.Equals("CTXH0001")).Count();
-                            dv.PSTKChuongTrinh.Demo = ph1.Where(x => x.IDChuongTrinh.Equals("CTDM0001")).Count();
-                            dv.PSTKCon = new PSThongKeCon();
-                            dv.PSTKCon.Sinh3Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("3")).Count();
-                            dv.PSTKCon.Sinh4Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("4")).Count();
-                            dv.PSTKCon.SinhTu5Con = pa.Where(x => int.Parse(x.Para.ToString().Substring(3)) >= 5).Count();
-                            dv.PSThongKeGoiBenh = new PSThongKeGoiBenh();
-                            dv.PSThongKeGoiBenh.Benh2 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0002")).Count();
-                            dv.PSThongKeGoiBenh.Benh3 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0003")).Count();
-                            dv.PSThongKeGoiBenh.Benh5 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0004")).Count();
-                            dv.PSThongKeGoiBenh.Benh5Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0006")).Count();
-                            dv.PSThongKeGoiBenh.Benh3Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0007")).Count();
-                            dv.PSThongKeGoiBenh.Benh2Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0008")).Count();
+                            lstresult.Add(LoadDSThongKeDV(kq,dv,1));
                         }
                     }
                     catch
@@ -9496,11 +9459,178 @@ namespace BioNetDAL
             catch
             {
             }
-            return lstdv;
+            return lstresult;
         }
 
-
+      
+        public PSThongKeTheoDonVi LoadDSThongKeDV(List<PSBaoCaoTuyChonDonVi> lst, PSThongKeTheoDonVi dv, int phieu)
+        {
+            List<PSBaoCaoTuyChonDonVi> kq = new List<PSBaoCaoTuyChonDonVi>();
+            List<PSPhieuSangLoc> ph1 = new List<PSPhieuSangLoc>();
+            try
+            {
+                if (phieu == 1)
+                {
+                    kq = lst.Where(y => y.phieu1.IDCoSo.Equals(dv.MaDV)).ToList();
+                    ph1 = kq.Select(x => x.phieu1).ToList();
+                }
+                else
+                {
+                    kq= lst.Where(y => y.phieu2.IDCoSo.Equals(dv.MaDV)).ToList();
+                    ph1 = kq.Select(x => x.phieu2).ToList();
+                }
+                if (kq.Count() > 0)
+                {
+                    var pa = kq.Select(x => x.patient).ToList();
+                    dv.Tong = pa.Count();
+                    dv.PSThongKeGioiTinh = new PSThongKeGioiTinh();
+                    dv.PSThongKeGioiTinh.Nam = pa.Where(x => x.GioiTinh == 0).Count();
+                    dv.PSThongKeGioiTinh.Nu = pa.Where(x => x.GioiTinh == 1).Count();
+                    dv.PSThongKeGioiTinh.NA = pa.Where(x => x.GioiTinh == 2).Count();
+                    dv.PSTKPPSinh = new PSThongKePPSinh();
+                    dv.PSTKPPSinh.SinhThuong = pa.Where(x => x.PhuongPhapSinh == 0).Count();
+                    dv.PSTKPPSinh.SinhMo = pa.Where(x => x.PhuongPhapSinh == 1).Count();
+                    dv.PSTKPPSinh.NA = pa.Where(x => x.PhuongPhapSinh == 2).Count();
+                    dv.PSThongKeTuoiMe = new PSThongKeTuoiMe();
+                    dv.PSThongKeTuoiMe.Duoi13 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 13).Count();
+                    dv.PSThongKeTuoiMe.Tuoi14 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 14).Count();
+                    dv.PSThongKeTuoiMe.Tuoi15 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 15).Count();
+                    dv.PSThongKeTuoiMe.Tuoi16 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 16).Count();
+                    dv.PSThongKeTuoiMe.Tuoi17 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 17).Count();
+                    dv.PSThongKeTuoiMe.Tuoi17den20 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 17 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 20).Count();
+                    dv.PSThongKeTuoiMe.Tuoi20den25 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 20 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 25).Count();
+                    dv.PSThongKeTuoiMe.Tuoi25den30 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 25 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 30).Count();
+                    dv.PSThongKeTuoiMe.Tuoi30den35 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 30 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 35).Count();
+                    dv.PSThongKeTuoiMe.Tuoi35den40 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 35 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 40).Count();
+                    dv.PSThongKeTuoiMe.Tuoi40den45 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 40 && (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 45).Count();
+                    dv.PSThongKeTuoiMe.TuoiTren45 = pa.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) > 45).Count();
+                    dv.PSThongKeCanNang = new PSThongKeCanNang();
+                    dv.PSThongKeCanNang.Duoi25 = pa.Where(x => x.CanNang < 2500).Count();
+                    dv.PSThongKeCanNang.Tu25Den30 = pa.Where(x => x.CanNang >= 2500 && x.CanNang < 3000).Count();
+                    dv.PSThongKeCanNang.Tu30Den35 = pa.Where(x => x.CanNang >= 3000 && x.CanNang < 3500).Count();
+                    dv.PSThongKeCanNang.Tu35Den40 = pa.Where(x => x.CanNang >= 3500 && x.CanNang < 4000).Count();
+                    dv.PSThongKeCanNang.Tu40Den45 = pa.Where(x => x.CanNang >= 4000 && x.CanNang < 4500).Count();
+                    dv.PSThongKeCanNang.Tu45Den50 = pa.Where(x => x.CanNang >= 4500 && x.CanNang < 5000).Count();
+                    dv.PSThongKeCanNang.Tren50 = pa.Where(x => x.CanNang >= 5000).Count();
+                    dv.PSTKChuongTrinh = new PSThongKeChuongTrinh();
+                    dv.PSTKChuongTrinh.QuocGia = ph1.Where(x => x.IDChuongTrinh.Equals("CTQG0001")).Count();
+                    dv.PSTKChuongTrinh.XaHoi = ph1.Where(x => x.IDChuongTrinh.Equals("CTXH0001")).Count();
+                    dv.PSTKChuongTrinh.Demo = ph1.Where(x => x.IDChuongTrinh.Equals("CTDM0001")).Count();
+                    dv.PSTKCon = new PSThongKeCon();
+                    dv.PSTKCon.Sinh3Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("3")).Count();
+                    dv.PSTKCon.Sinh4Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("4")).Count();
+                    dv.PSTKCon.SinhTu5Con = pa.Where(x => int.Parse(x.Para.ToString().Substring(3)) >= 5).Count();
+                    dv.PSThongKeGoiBenh = new PSThongKeGoiBenh();
+                    dv.PSThongKeGoiBenh.Benh2 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0002")).Count();
+                    dv.PSThongKeGoiBenh.Benh3 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0003")).Count();
+                    dv.PSThongKeGoiBenh.Benh5 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0004")).Count();
+                    dv.PSThongKeGoiBenh.Benh5Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0006")).Count();
+                    dv.PSThongKeGoiBenh.Benh3Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0007")).Count();
+                    dv.PSThongKeGoiBenh.Benh2Hemo = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0008")).Count();
+                }
+                else
+                {
+                    dv.Tong = 0;
+                    dv.PSThongKeGioiTinh = new PSThongKeGioiTinh();
+                    dv.PSThongKeGioiTinh.Nam = 0;
+                    dv.PSThongKeGioiTinh.Nu = 0;
+                    dv.PSThongKeGioiTinh.NA = 0;
+                    dv.PSTKPPSinh = new PSThongKePPSinh();
+                    dv.PSTKPPSinh.SinhThuong = 0;
+                    dv.PSTKPPSinh.SinhMo = 0;
+                    dv.PSTKPPSinh.NA = 0;
+                    dv.PSThongKeTuoiMe = new PSThongKeTuoiMe();
+                    dv.PSThongKeTuoiMe.Duoi13 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi14 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi15 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi16 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi17 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi17den20 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi20den25 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi25den30 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi30den35 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi35den40 = 0;
+                    dv.PSThongKeTuoiMe.Tuoi40den45 = 0;
+                    dv.PSThongKeTuoiMe.TuoiTren45 = 0;
+                    dv.PSThongKeCanNang = new PSThongKeCanNang();
+                    dv.PSThongKeCanNang.Duoi25 = 0;
+                    dv.PSThongKeCanNang.Tu25Den30 = 0;
+                    dv.PSThongKeCanNang.Tu30Den35 = 0;
+                    dv.PSThongKeCanNang.Tu35Den40 = 0;
+                    dv.PSThongKeCanNang.Tu40Den45 = 0;
+                    dv.PSThongKeCanNang.Tu45Den50 = 0;
+                    dv.PSThongKeCanNang.Tren50 = 0;
+                    dv.PSTKChuongTrinh = new PSThongKeChuongTrinh();
+                    dv.PSTKChuongTrinh.QuocGia = 0;
+                    dv.PSTKChuongTrinh.XaHoi = 0;
+                    dv.PSTKChuongTrinh.Demo = 0;
+                    dv.PSTKCon = new PSThongKeCon();
+                    dv.PSTKCon.Sinh3Con = 0;
+                    dv.PSTKCon.Sinh4Con = 0;
+                    dv.PSTKCon.SinhTu5Con = 0;
+                    dv.PSThongKeGoiBenh = new PSThongKeGoiBenh();
+                    dv.PSThongKeGoiBenh.ThuLaiMau = 0;
+                    dv.PSThongKeGoiBenh.Benh2 = 0;
+                    dv.PSThongKeGoiBenh.Benh3 = 0;
+                    dv.PSThongKeGoiBenh.Benh5 = 0;
+                    dv.PSThongKeGoiBenh.Benh5Hemo = 0;
+                    dv.PSThongKeGoiBenh.Benh3Hemo = 0;
+                    dv.PSThongKeGoiBenh.Benh2Hemo = 0;
+                }
+            }
+            catch
+            {
+                dv.Tong = 0;
+                dv.PSThongKeGioiTinh = new PSThongKeGioiTinh();
+                dv.PSThongKeGioiTinh.Nam = 0;
+                dv.PSThongKeGioiTinh.Nu = 0;
+                dv.PSThongKeGioiTinh.NA = 0;
+                dv.PSTKPPSinh = new PSThongKePPSinh();
+                dv.PSTKPPSinh.SinhThuong = 0;
+                dv.PSTKPPSinh.SinhMo = 0;
+                dv.PSTKPPSinh.NA = 0;
+                dv.PSThongKeTuoiMe = new PSThongKeTuoiMe();
+                dv.PSThongKeTuoiMe.Duoi13 = 0;
+                dv.PSThongKeTuoiMe.Tuoi14 = 0;
+                dv.PSThongKeTuoiMe.Tuoi15 = 0;
+                dv.PSThongKeTuoiMe.Tuoi16 = 0;
+                dv.PSThongKeTuoiMe.Tuoi17 = 0;
+                dv.PSThongKeTuoiMe.Tuoi17den20 = 0;
+                dv.PSThongKeTuoiMe.Tuoi20den25 = 0;
+                dv.PSThongKeTuoiMe.Tuoi25den30 = 0;
+                dv.PSThongKeTuoiMe.Tuoi30den35 = 0;
+                dv.PSThongKeTuoiMe.Tuoi35den40 = 0;
+                dv.PSThongKeTuoiMe.Tuoi40den45 = 0;
+                dv.PSThongKeTuoiMe.TuoiTren45 = 0;
+                dv.PSThongKeCanNang = new PSThongKeCanNang();
+                dv.PSThongKeCanNang.Duoi25 = 0;
+                dv.PSThongKeCanNang.Tu25Den30 = 0;
+                dv.PSThongKeCanNang.Tu30Den35 = 0;
+                dv.PSThongKeCanNang.Tu35Den40 = 0;
+                dv.PSThongKeCanNang.Tu40Den45 = 0;
+                dv.PSThongKeCanNang.Tu45Den50 = 0;
+                dv.PSThongKeCanNang.Tren50 = 0;
+                dv.PSTKChuongTrinh = new PSThongKeChuongTrinh();
+                dv.PSTKChuongTrinh.QuocGia = 0;
+                dv.PSTKChuongTrinh.XaHoi = 0;
+                dv.PSTKChuongTrinh.Demo = 0;
+                dv.PSTKCon = new PSThongKeCon();
+                dv.PSTKCon.Sinh3Con = 0;
+                dv.PSTKCon.Sinh4Con = 0;
+                dv.PSTKCon.SinhTu5Con = 0;
+                dv.PSThongKeGoiBenh = new PSThongKeGoiBenh();
+                dv.PSThongKeGoiBenh.ThuLaiMau = 0;
+                dv.PSThongKeGoiBenh.Benh2 = 0;
+                dv.PSThongKeGoiBenh.Benh3 = 0;
+                dv.PSThongKeGoiBenh.Benh5 = 0;
+                dv.PSThongKeGoiBenh.Benh5Hemo = 0;
+                dv.PSThongKeGoiBenh.Benh3Hemo = 0;
+                dv.PSThongKeGoiBenh.Benh2Hemo = 0;
+            }
+            return dv;
+        }
+    
         #endregion
-        
+
     }
 }

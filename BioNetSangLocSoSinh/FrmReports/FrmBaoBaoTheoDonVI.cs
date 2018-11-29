@@ -587,9 +587,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                 else
                 {
                     MaDonVi = this.txtDonVi.EditValue.ToString();
-                }
-                
-                
+                }                              
                 foreach(var tk in lstTK)
                 {
                     PSThongKePDFDonVi pdfdv = new PSThongKePDFDonVi();
@@ -667,7 +665,6 @@ namespace BioNetSangLocSoSinh.FrmReports
             }
             catch
             {
-
             }
         }
         private PSThongKePDFDonViCT GetPDFCT(string Tk,int SL,int Tong)
@@ -678,5 +675,164 @@ namespace BioNetSangLocSoSinh.FrmReports
             ct.Tile= String.Format("{0:00}", ((double)SL / (double)Tong) * 100) + "%";
             return ct;
         }
+      
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+           
+            foreach (var tk in lstTK)
+            {
+                if(tk.MaDV.Equals("all"))
+                {
+
+                }
+                else
+                {
+                   
+                    var p1 = listBaoCao.Where(y => y.phieu1.IDCoSo.Equals(tk.MaDV)).ToList();
+                    var p2 = listBaoCao.Where(x => x.phieu2 != null).Where(y => y.phieu2.IDCoSo.Equals(tk.MaDV)).ToList();
+                    var t1 = p1.Where(y => y.KQ1.isNguyCoCao == false).ToList();
+                    var t2 = p2.Where(y => y.KQ2.isNguyCoCao == false).ToList();
+                    var c1 = p1.Where(y => y.KQ1.isNguyCoCao == true).ToList();
+                    var c2 = p2.Where(y => y.KQ2.isNguyCoCao == true).ToList();
+                    PSThongKeTheoDonVi ph1 = new PSThongKeTheoDonVi();
+                    PSThongKeTheoDonVi ph2 = new PSThongKeTheoDonVi();
+                    PSThongKeTheoDonVi ph1thap = new PSThongKeTheoDonVi();
+                    PSThongKeTheoDonVi ph2thap = new PSThongKeTheoDonVi();
+                    PSThongKeTheoDonVi ph1cao = new PSThongKeTheoDonVi();
+                    PSThongKeTheoDonVi ph2cao = new PSThongKeTheoDonVi();
+                    PSThongKeTheoDonVi dvtk = new PSThongKeTheoDonVi();
+                    dvtk.MaDV = tk.MaDV;
+                    ph1 = BioNet_Bus.LoadDSThongKeDV(p1,dvtk,1);
+                    dvtk = new PSThongKeTheoDonVi();
+                    dvtk.MaDV = tk.MaDV;
+                    ph2 = BioNet_Bus.LoadDSThongKeDV(p2, dvtk,2);
+                    dvtk = new PSThongKeTheoDonVi();
+                    dvtk.MaDV = tk.MaDV;
+                    ph1thap = BioNet_Bus.LoadDSThongKeDV(t1, dvtk,1);
+                    dvtk = new PSThongKeTheoDonVi();
+                    dvtk.MaDV = tk.MaDV;
+                    ph1cao = BioNet_Bus.LoadDSThongKeDV(c1, dvtk,2);
+                    dvtk = new PSThongKeTheoDonVi();
+                    dvtk.MaDV = tk.MaDV;
+                    ph2thap = BioNet_Bus.LoadDSThongKeDV(t2, dvtk,1);
+                    dvtk = new PSThongKeTheoDonVi();
+                    dvtk.MaDV = tk.MaDV;
+                    ph2cao = BioNet_Bus.LoadDSThongKeDV(c2, dvtk,2);
+                 
+                    PSThongKePDFDonViXNNhom nhom = new PSThongKePDFDonViXNNhom();
+                    nhom.STT = 1;
+                    nhom.TenNhom = "Cân nặng trẻ (g)";
+                    nhom.NguyCoThap1 = t1.Count().ToString();
+                    nhom.NguyCoThap2 = t2.Count().ToString();
+                    nhom.NguyCoCao1 = c1.Count().ToString();
+                    nhom.NguyCoCao2 = c2.Count().ToString();
+                    nhom.Tong1 = p1.Count().ToString();
+                    nhom.Tong2 = p2.Count().ToString();
+                    nhom.ThongKe = new List<PSThongKePDFDonViXNCT>();
+                    nhom.ThongKe.Add(GetCTThongKe("< 2500", ph1thap.PSThongKeCanNang.Duoi25, ph1cao.PSThongKeCanNang.Duoi25, ph1.PSThongKeCanNang.Duoi25, ph2thap.PSThongKeCanNang.Duoi25, ph2cao.PSThongKeCanNang.Duoi25, ph2.PSThongKeCanNang.Duoi25));
+                    nhom.ThongKe.Add(GetCTThongKe("2500 ≤ X < 3000", ph1thap.PSThongKeCanNang.Tu25Den30, ph1cao.PSThongKeCanNang.Tu25Den30, ph1.PSThongKeCanNang.Tu25Den30, ph2thap.PSThongKeCanNang.Tu25Den30, ph2cao.PSThongKeCanNang.Tu25Den30, ph2.PSThongKeCanNang.Tu25Den30));
+                    nhom.ThongKe.Add(GetCTThongKe("3000 ≤ X < 3500", ph1thap.PSThongKeCanNang.Tu30Den35, ph1cao.PSThongKeCanNang.Tu30Den35, ph1.PSThongKeCanNang.Tu30Den35, ph2thap.PSThongKeCanNang.Tu30Den35, ph2cao.PSThongKeCanNang.Tu30Den35, ph2.PSThongKeCanNang.Tu30Den35));
+                    nhom.ThongKe.Add(GetCTThongKe("3500 ≤ X < 4000", ph1thap.PSThongKeCanNang.Tu35Den40, ph1cao.PSThongKeCanNang.Tu35Den40, ph1.PSThongKeCanNang.Tu35Den40, ph2thap.PSThongKeCanNang.Tu35Den40, ph2cao.PSThongKeCanNang.Tu35Den40, ph2.PSThongKeCanNang.Tu35Den40));
+                    nhom.ThongKe.Add(GetCTThongKe("4000 ≤ X < 4500", ph1thap.PSThongKeCanNang.Tu40Den45, ph1cao.PSThongKeCanNang.Tu40Den45, ph1.PSThongKeCanNang.Tu40Den45, ph2thap.PSThongKeCanNang.Tu40Den45, ph2cao.PSThongKeCanNang.Tu40Den45, ph2.PSThongKeCanNang.Tu40Den45));
+                    nhom.ThongKe.Add(GetCTThongKe("4500 ≤ X < 5000", ph1thap.PSThongKeCanNang.Tu45Den50, ph1cao.PSThongKeCanNang.Tu45Den50, ph1.PSThongKeCanNang.Tu45Den50, ph2thap.PSThongKeCanNang.Tu45Den50, ph2cao.PSThongKeCanNang.Tu45Den50, ph2.PSThongKeCanNang.Tu45Den50));
+                    nhom.ThongKe.Add(GetCTThongKe("≥ 5000", ph1thap.PSThongKeCanNang.Tren50, ph1cao.PSThongKeCanNang.Tren50, ph1.PSThongKeCanNang.Tren50, ph2thap.PSThongKeCanNang.Tren50, ph2cao.PSThongKeCanNang.Tren50, ph2.PSThongKeCanNang.Tren50));
+
+                    PSThongKePDFDonViXNNhom nhom2 = new PSThongKePDFDonViXNNhom();
+                    nhom2.STT = 2;
+                    nhom2.TenNhom = "Tuổi mẹ";
+                    nhom2.NguyCoThap1 = t1.Count().ToString();
+                    nhom2.NguyCoThap2 = t2.Count().ToString();
+                    nhom2.NguyCoCao1 = c1.Count().ToString();
+                    nhom2.NguyCoCao2 = c2.Count().ToString();
+                    nhom2.Tong1 = p1.Count().ToString();
+                    nhom2.Tong2 = p2.Count().ToString();
+                    nhom2.ThongKe = new List<PSThongKePDFDonViXNCT>();
+                    nhom2.ThongKe.Add(GetCTThongKe("13", ph1thap.PSThongKeTuoiMe.Duoi13, ph1cao.PSThongKeTuoiMe.Duoi13, ph1.PSThongKeTuoiMe.Duoi13, ph2thap.PSThongKeTuoiMe.Duoi13, ph2cao.PSThongKeTuoiMe.Duoi13, ph2.PSThongKeTuoiMe.Duoi13));
+                    nhom2.ThongKe.Add(GetCTThongKe("14", ph1thap.PSThongKeTuoiMe.Tuoi14, ph1cao.PSThongKeTuoiMe.Tuoi14, ph1.PSThongKeTuoiMe.Tuoi14, ph2thap.PSThongKeTuoiMe.Tuoi14, ph2cao.PSThongKeTuoiMe.Tuoi14, ph2.PSThongKeTuoiMe.Tuoi14));
+                    nhom2.ThongKe.Add(GetCTThongKe("15", ph1thap.PSThongKeTuoiMe.Tuoi15, ph1cao.PSThongKeTuoiMe.Tuoi15, ph1.PSThongKeTuoiMe.Tuoi15, ph2thap.PSThongKeTuoiMe.Tuoi15, ph2cao.PSThongKeTuoiMe.Tuoi15, ph2.PSThongKeTuoiMe.Tuoi15));
+                    nhom2.ThongKe.Add(GetCTThongKe("16", ph1thap.PSThongKeTuoiMe.Tuoi16, ph1cao.PSThongKeTuoiMe.Tuoi16, ph1.PSThongKeTuoiMe.Tuoi16, ph2thap.PSThongKeTuoiMe.Tuoi16, ph2cao.PSThongKeTuoiMe.Tuoi16, ph2.PSThongKeTuoiMe.Tuoi16));
+                    nhom2.ThongKe.Add(GetCTThongKe("17", ph1thap.PSThongKeTuoiMe.Tuoi17, ph1cao.PSThongKeTuoiMe.Tuoi17, ph1.PSThongKeTuoiMe.Tuoi17, ph2thap.PSThongKeTuoiMe.Tuoi17, ph2cao.PSThongKeTuoiMe.Tuoi17, ph2.PSThongKeTuoiMe.Tuoi17));
+                    nhom2.ThongKe.Add(GetCTThongKe("18 ≤ X < 20", ph1thap.PSThongKeTuoiMe.Tuoi17den20, ph1cao.PSThongKeTuoiMe.Tuoi17den20, ph1.PSThongKeTuoiMe.Tuoi17den20, ph2thap.PSThongKeTuoiMe.Tuoi17den20, ph2cao.PSThongKeTuoiMe.Tuoi17den20, ph2.PSThongKeTuoiMe.Tuoi17den20));
+                    nhom2.ThongKe.Add(GetCTThongKe("20 ≤ X < 25", ph1thap.PSThongKeTuoiMe.Tuoi20den25, ph1cao.PSThongKeTuoiMe.Tuoi20den25, ph1.PSThongKeTuoiMe.Tuoi20den25, ph2thap.PSThongKeTuoiMe.Tuoi20den25, ph2cao.PSThongKeTuoiMe.Tuoi20den25, ph2.PSThongKeTuoiMe.Tuoi20den25));
+                    nhom2.ThongKe.Add(GetCTThongKe("25 ≤ X < 30", ph1thap.PSThongKeTuoiMe.Tuoi25den30, ph1cao.PSThongKeTuoiMe.Tuoi25den30, ph1.PSThongKeTuoiMe.Tuoi25den30, ph2thap.PSThongKeTuoiMe.Tuoi25den30, ph2cao.PSThongKeTuoiMe.Tuoi25den30, ph2.PSThongKeTuoiMe.Tuoi25den30));
+                    nhom2.ThongKe.Add(GetCTThongKe("30 ≤ X <35", ph1thap.PSThongKeTuoiMe.Tuoi30den35, ph1cao.PSThongKeTuoiMe.Tuoi30den35, ph1.PSThongKeTuoiMe.Tuoi30den35, ph2thap.PSThongKeTuoiMe.Tuoi30den35, ph2cao.PSThongKeTuoiMe.Tuoi30den35, ph2.PSThongKeTuoiMe.Tuoi30den35));
+                    nhom2.ThongKe.Add(GetCTThongKe("35 ≤ X < 40", ph1thap.PSThongKeTuoiMe.Tuoi35den40, ph1cao.PSThongKeTuoiMe.Tuoi35den40, ph1.PSThongKeTuoiMe.Tuoi35den40, ph2thap.PSThongKeTuoiMe.Tuoi35den40, ph2cao.PSThongKeTuoiMe.Tuoi35den40, ph2.PSThongKeTuoiMe.Tuoi35den40));
+                    nhom2.ThongKe.Add(GetCTThongKe("40 ≤ X<45", ph1thap.PSThongKeTuoiMe.Tuoi40den45, ph1cao.PSThongKeTuoiMe.Tuoi40den45, ph1.PSThongKeTuoiMe.Tuoi40den45, ph2thap.PSThongKeTuoiMe.Tuoi40den45, ph2cao.PSThongKeTuoiMe.Tuoi40den45, ph2.PSThongKeTuoiMe.Tuoi40den45));
+                    nhom2.ThongKe.Add(GetCTThongKe("≥ 45", ph1thap.PSThongKeTuoiMe.TuoiTren45, ph1cao.PSThongKeTuoiMe.TuoiTren45, ph1.PSThongKeTuoiMe.TuoiTren45, ph2thap.PSThongKeTuoiMe.TuoiTren45, ph2cao.PSThongKeTuoiMe.TuoiTren45, ph2.PSThongKeTuoiMe.TuoiTren45));
+
+                    PSThongKePDFDonViXNNhom nhom3 = new PSThongKePDFDonViXNNhom();
+                    nhom3.STT = 3;
+                    nhom3.TenNhom = "Dân tộc";
+                    nhom3.NguyCoThap1 = t1.Count().ToString();
+                    nhom3.NguyCoThap2 = t2.Count().ToString();
+                    nhom3.NguyCoCao1 = c1.Count().ToString();
+                    nhom3.NguyCoCao2 = c2.Count().ToString();
+                    nhom3.Tong1 = p1.Count().ToString();
+                    nhom3.Tong2 = p2.Count().ToString();
+                    nhom3.ThongKe = new List<PSThongKePDFDonViXNCT>();
+                    foreach(var dt in BioNet_Bus.GetDanhSachDanToc(-1))
+                    {
+                        nhom3.ThongKe.Add(GetCTThongKeDanToc(dt.IDDanToc,t1,c1,p1,t2,c2,p2));
+                    }
+                    //PSThongKePDFDonViXNNhom nhom4 = new PSThongKePDFDonViXNNhom();
+                    //nhom4.STT = 4;
+                    //nhom4.TenNhom = "Kết quả sàng lọc sơ sinh";
+                    //nhom4.NguyCoThap1 = t1.Count().ToString();
+                    //nhom4.NguyCoThap2 = t2.Count().ToString();
+                    //nhom4.NguyCoCao1 = c1.Count().ToString();
+                    //nhom4.NguyCoCao2 = c2.Count().ToString();
+                    //nhom4.Tong1 = p1.Count().ToString();
+                    //nhom4.Tong2 = p2.Count().ToString();
+                    //nhom4.ThongKe = new List<PSThongKePDFDonViXNCT>();
+                    //foreach (var dt in BioNet_Bus.GetDanhSachDichVu(false))
+                    //{
+                    //    nhom4.ThongKe.Add(GetCTThongKeKQ(dt.IDDichVu,dt.TenDichVu, t1, c1, p1, t2, c2, p2));
+                    //}
+                    PSThongKePDFDonViXN tkdv = new PSThongKePDFDonViXN();
+                    tkdv.DonVi = BioNet_Bus.GetThongTinDonViCoSo(tk.MaDV).TenDVCS;
+                    tkdv.ThoiGian = "Từ ngày " + dllNgay.tungay.Value.Date.ToShortDateString() + " đến " + dllNgay.denngay.Value.Date.ToShortDateString();
+                    tkdv.LuuY = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + " )";
+                    tkdv.PSThongKePDFDonViNhom = new List<PSThongKePDFDonViXNNhom>();
+                    tkdv.PSThongKePDFDonViNhom.Add(nhom);
+                    tkdv.PSThongKePDFDonViNhom.Add(nhom2);
+                    tkdv.PSThongKePDFDonViNhom.Add(nhom3);
+                    //tkdv.PSThongKePDFDonViNhom.Add(nhom4);
+                    Reports.RepostsBaoCao.rptBaoCaoNhomDonViTheoKQXN rptdv = new Reports.RepostsBaoCao.rptBaoCaoNhomDonViTheoKQXN();
+                    rptdv.DataSource = tkdv;
+                    Reports.frmReport reponse = new Reports.frmReport(rptdv);
+                    reponse.ShowDialog();
+
+                }
+                
+            }
+        }
+         
+        private PSThongKePDFDonViXNCT GetCTThongKe(string name,int thap1,int cao1,int p1,int thap2,int cao2, int p2)
+        {
+            PSThongKePDFDonViXNCT ct = new PSThongKePDFDonViXNCT();
+            ct.TenThongKe = name;
+            ct.NguyCoThap1 = thap1.ToString();
+            ct.NguyCoThap2 = thap2.ToString();
+            ct.Tong1 = p1.ToString();
+            ct.NguyCoCao1 = cao1.ToString();
+            ct.NguyCoCao2 = cao2.ToString();
+            ct.Tong2= p2.ToString();
+            return ct;
+        }
+
+        private PSThongKePDFDonViXNCT GetCTThongKeDanToc(int name,List<PSBaoCaoTuyChonDonVi> thap1,List<PSBaoCaoTuyChonDonVi> cao1,List<PSBaoCaoTuyChonDonVi> p1,List<PSBaoCaoTuyChonDonVi> thap2,List<PSBaoCaoTuyChonDonVi> cao2,List<PSBaoCaoTuyChonDonVi> p2)
+        {
+            PSThongKePDFDonViXNCT ct = new PSThongKePDFDonViXNCT();
+            ct.TenThongKe = BioNet_Bus.GetTenDanToc(name);
+            ct.NguyCoThap1 = thap1.Where(x=>x.patient.DanTocID.Equals(name)).Count().ToString();
+            ct.NguyCoThap2 = thap2.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
+            ct.Tong1 = p1.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
+            ct.NguyCoCao1 = cao1.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
+            ct.NguyCoCao2 = cao2.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
+            ct.Tong2 = p2.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
+            return ct;
+        }
+       
     }
 }
