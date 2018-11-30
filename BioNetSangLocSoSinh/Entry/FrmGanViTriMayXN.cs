@@ -65,10 +65,10 @@ namespace BioNetSangLocSoSinh.Entry
             }
             cbbMayXN.EditValue = "MAYXN00";
             cbbGanVT.EditValue = 0;
+            this.GetIDLanDucLo();
             this.LoadDSDaLuu();
             this.LOadDanhMuc();
             this.LoadLstChuaKetQua();
-            this.GetIDLanGanXN();
             this.txtTuNgay_ChuaKQ.EditValue = DateTime.Now;
             this.txtDenNgay_ChuaKQ.EditValue = DateTime.Now;
             this.GVChuaKQ.ClearColumnsFilter();
@@ -76,9 +76,9 @@ namespace BioNetSangLocSoSinh.Entry
         }
 
         #region Load Danh mục
-        private void GetIDLanGanXN()
+        private void GetIDLanDucLo()
         {
-            IDLanDucLo = BioNet_Bus.GetMaRowIDLanGanXN(MayDucLo);
+            IDLanDucLo = BioNet_Bus.GetMaRowIDLanDucLo(MayDucLo);
         }
         private void LoadMay()
         {
@@ -118,7 +118,7 @@ namespace BioNetSangLocSoSinh.Entry
                     col2.Caption = "Vị Trí";
                     col2.Visible = true;
                     col2.Width = 20;
-                    col2.OptionsColumn.AllowEdit = true;
+                    col2.OptionsColumn.AllowEdit = false;
 
                     List<ViTriXN> vtMay = new List<ViTriXN>();
                     switch (may.IDMayXN)
@@ -175,7 +175,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.vt.Clear();
             vtMayXN001.Clear();
             vtMayXN002.Clear();
-            vt = BioNet_Bus.GetDanhSachGanXNLuu(MayDucLo);
+            //vt = BioNet_Bus.GetDanhSachGanXNLuu(MayDucLo);
+            vt = BioNet_Bus.GetDanhSachGanXNLuuNew(MayDucLo, IDLanDucLo);
             foreach (var may in dsmay)
             {
                 switch (may.IDMayXN)
@@ -312,7 +313,7 @@ namespace BioNetSangLocSoSinh.Entry
                             {
                                 ph.STT_bang = vtNull.STT_bang;
                                 ph.IDRowGanXN = vtNull.IDRowGanXN;
-                                ph.IDLanGanXN = vtNull.IDLanGanXN;
+                                ph.IDLanDucLo = vtNull.IDLanDucLo;
                                 foreach (var pm in ph.may)
                                 {
                                     switch (pm.IDMayXN)
@@ -343,8 +344,8 @@ namespace BioNetSangLocSoSinh.Entry
                         }
                         if (gg != true)
                         {
-                            string MaLanGan = BioNet_Bus.GetMaRowIDLanGanXN(MayDucLo);
-                            ph.IDLanGanXN = MaLanGan;
+                            string MaLanGan = BioNet_Bus.GetMaRowIDLanDucLo(MayDucLo);
+                            ph.IDLanDucLo = MaLanGan;
                             foreach (var ctm in ph.may)
                             {
                                 do
@@ -458,19 +459,20 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 PSCMGanViTriChung kq = new PSCMGanViTriChung();
                 bool gg = true;
-                List<PSCMGanViTriChung> vtN = vt.Where(x => x.MaXetNghiem != null).ToList();
-                kq = vtN.FirstOrDefault(x => x.MaXetNghiem.Equals(ph.MaXetNghiem));
+                List<PSCMGanViTriChung> vtN = vt.Where(x => x.GGanViTri.MaXetNghiem != null).ToList();
+                kq = vtN.FirstOrDefault(x => x.GGanViTri.MaXetNghiem.Equals(ph.MaXetNghiem));
                 if (kq == null)
                 {
                     if (ph.may.Count() > 0)
                     {
                         BioNet_Bus.SuaDanhSachGanXNLuuNew(ph, MayDucLo, IDLanDucLo, emp.EmployeeCode);
-                    }
-                    LoadLstChuaKetQua();
-                    //LoadDSDaLuu();                  
+                        this.LoadDSDaLuu();
+                        this.LoadLstChuaKetQua();
+                    }                 
                 }
                 else
                 {
+                    XtraMessageBox.Show("Mã xét nghiệm đã tồn tại", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch
@@ -518,8 +520,8 @@ namespace BioNetSangLocSoSinh.Entry
                     test.MaXetNghiem = VitriGan.GiaTriTest;
                     test.STT_bang = vt.Count + 1;
                     test.MaGoiXN = "DVTest";
-                    string MaLanGan = BioNet_Bus.GetMaRowIDLanGanXN(MayDucLo);
-                    test.IDLanGanXN = MaLanGan;
+                    string MaLanGan = BioNet_Bus.GetMaRowIDLanDucLo(MayDucLo);
+                    test.IDLanDucLo = MaLanGan;
                     ViTriXN vtxn = new ViTriXN
                     {
                         ViTri = STTDia + VitriGan.TenViTri,
@@ -579,7 +581,7 @@ namespace BioNetSangLocSoSinh.Entry
                    this.XuatFile(true); 
                    this.LoadLstChuaKetQua();
                    this.LoadDSDaLuu();
-                   this.GetIDLanGanXN();
+                   this.GetIDLanDucLo();
                 }
             }
          catch
@@ -665,7 +667,7 @@ namespace BioNetSangLocSoSinh.Entry
                     Directory.CreateDirectory(LinkDate);
                 }
                 Workbook workbook = new DevExpress.Spreadsheet.Workbook();
-                string Idlangan = vt.Distinct().Select(x => x.IDLanGanXN).FirstOrDefault().ToString();
+                string Idlangan = vt.Distinct().Select(x => x.IDLanDucLo).FirstOrDefault().ToString();
                 #region Máy 1
                 Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
                 BindingList<PSCMGanViTriChungReport> vtmay1 = XuatCMGanViTriChungReport(1);
@@ -967,22 +969,13 @@ namespace BioNetSangLocSoSinh.Entry
                     PSCMGanViTriChung rss = new PSCMGanViTriChung();
                     if (maxn == null)
                     {
-                        rss = vt.FirstOrDefault(p => p.STT_bang == int.Parse(stt.ToString()) && p.MaXetNghiem == null);
+                        rss = vt.FirstOrDefault(p => p.GGanViTri.STT_bang == long.Parse(stt.ToString()) && p.GGanViTri.MaXetNghiem == null);
                     }
                     else
                     {
-                        rss = vt.FirstOrDefault(p => p.STT_bang == int.Parse(stt.ToString()) && p.MaXetNghiem == maxn.ToString());
+                        rss = vt.FirstOrDefault(p => p.GGanViTri.STT_bang == long.Parse(stt.ToString()) && p.GGanViTri.MaXetNghiem == maxn.ToString());
                     }
                     BioNet_Bus.DeleteDanhSachGanXNLuu(rss);
-                    //if (int.Parse(stt.ToString())== vt.Count())
-                    //{
-                    //    BioNet_Bus.DeleteDanhSachGanXNLuuMax(rss);
-                    //}
-                    //else
-                    //{
-                        
-                    //}
-                    
                     LoadDSDaLuu();
                 }
             }
@@ -1004,24 +997,8 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     else
                     {
-                        // GanVaoDS(ph);
                         SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
                         GanVaoDSNew(ph);
-                        //var kq = lstMauChoKQ.FirstOrDefault(x => x.MaPhieu == ph.MaPhieu && x.MaXetNghiem == ph.MaXetNghiem);
-                        //if(kq!=null)
-                        //{
-                        //    kq.isDaDuyet = false;
-                        //}
-                        //else
-                        //{
-                        //    LoadLstChuaKetQua();
-                        //}
-                        this.LoadDSDaLuu();
-                        this.GVChuaKQ.OptionsSelection.MultiSelect = false;
-                        this.GVChuaKQ.ClearSelection();
-                        this.GVChuaKQ.FocusedRowHandle =2;
-                        this.GVChuaKQ.SelectRow(2);
-                        this.GVChuaKQ.MoveLastVisible();
                         SplashScreenManager.CloseForm();
                     }
                     txtMaPhieu.ResetText();
@@ -1059,7 +1036,10 @@ namespace BioNetSangLocSoSinh.Entry
                         ph.MaXetNghiem = MaXNNgoai;
                         ph.MaGoiXN = "DVKhac";
                     }
+                    SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
                     GanVaoDSNew(ph);
+                    
+                    SplashScreenManager.CloseForm();
                     txtMaNgoai.ResetText();
                     txtMaNgoai.Focus();
                 }
@@ -1079,6 +1059,7 @@ namespace BioNetSangLocSoSinh.Entry
                 var idPhieu = view.GetRowCellValue(rowfocus, this.col_IDPhieu);
                 var maxn = view.GetRowCellValue(rowfocus, this.col_MaXetNghiem);
                 var idrow = view.GetRowCellValue(rowfocus, this.col_IDRow);
+                PSCMGanViTriChung kvt = vt.FirstOrDefault(x => x.GGanViTri.STT_bang.Equals(long.Parse(stt.ToString())));
                 if (rowfocus < view.RowCount)
                 {
                     if (e.Column.Name.Equals("col_MAYXN001_ViTri"))
@@ -1114,81 +1095,60 @@ namespace BioNetSangLocSoSinh.Entry
                     if (columnHandle == this.col_IDPhieu.ColumnHandle)
                     {
                         PSCMGanViTriChung ph = BioNet_Bus.GetPhieuChuaCoKQ(idPhieu.ToString());
-                        if (ph != null)
+                        if (ph.MaPhieu == null)
                         {
-                            if (BioNet_Bus.GetMaPhieuDaCoDSCapVT(idPhieu.ToString()))
+                            DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã phiếu không hợp lệ.");
+                            warning.ShowDialog();
+                        }
+                        else
+                        {
+                            SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
+                            List<PSCMGanViTriChung> vtN = vt.Where(x => x.MaXetNghiem != null).ToList();
+                            PSCMGanViTriChung kq = vtN.FirstOrDefault(x => x.MaXetNghiem.Equals(ph.MaXetNghiem));
+                            if (kq == null)
                             {
-                                PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.STT_bang == long.Parse(stt.ToString()) && p.IDRowGanXN == long.Parse(idrow.ToString()));
-                                int countMay = (from pscm in rss.may
-                                                join phcm in ph.may on pscm.IDMayXN equals phcm.IDMayXN
-                                                where pscm.IDMayXN == phcm.IDMayXN
-                                                select new { phcm }).Count();
-                                if (countMay == rss.may.Count())
+                                if (ph.may.Count()==kvt.may.Count())
                                 {
-                                    ph.STT_bang = rss.STT_bang;
-                                    ph.IDRowGanXN = rss.IDRowGanXN;
-                                    ph.IDLanGanXN = rss.IDLanGanXN;
-                                    foreach (var pm in ph.may)
-                                    {
-                                        switch (pm.IDMayXN)
-                                        {
-                                            case "MAYXN001":
-                                                {
-                                                    ph.MAYXN001 = rss.MAYXN001;
-                                                    break;
-                                                }
-                                            case "MAYXN002":
-                                                {
-                                                    ph.MAYXN002 = rss.MAYXN002;
-                                                    break;
-                                                }
-                                        }
-                                    }
-                                    BioNet_Bus.SuaDanhSachGanXNLuu(ph);
+                                    BioNet_Bus.SuaDanhSachGanXNLuu(ph, stt.ToString(),IDLanDucLo);
                                 }
                                 else
                                 {
-                                    DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Thay đổi mã phiếu không hợp lệ vui lòng kiểm tra lại.");
-                                    warning.ShowDialog();
+                                    XtraMessageBox.Show("Mã phiếu không phù hợp với vị trí", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                             else
                             {
-                                DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã phiếu đã có trong danh sách.");
-                                warning.ShowDialog();
+                                XtraMessageBox.Show("Mã xét nghiệm đã tồn tại", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
+                            SplashScreenManager.CloseForm();
                         }
-                        else
-                        {
-                            DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã phiếu không tồn tại.");
-                            warning.ShowDialog();
-                        }
-                        LoadDSDaLuu();
-                    }
+                        this.LoadDSDaLuu();
+                        this.LoadLstChuaKetQua();
+                     }
                     if (e.Column.Name.Equals("col_MAYXN002_GhiChu"))
                     {
                         var tenvitri = view.GetRowCellDisplayText(rowfocus, "MAYXN002.ViTri");
                         var ghichu = view.GetRowCellDisplayText(rowfocus,"MAYXN002.GhiChuCT");
                         List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN002 != null).ToList();
-                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN002.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN002.ViTri == tenvitri.ToString() && p.GGanViTri.STT_bang  == long.Parse(stt.ToString())).FirstOrDefault();
                         rsmoi.MAYXN002.GhiChuCT = ghichu.ToString();
-                        BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
+                        BioNet_Bus.ThemGhiChuGanVT(rsmoi);
                     }
                     if (columnHandle == this.col_GhiNhoChung.ColumnHandle)
                     {
                         var ghichu = view.GetRowCellDisplayText(rowfocus, this.col_GhiNhoChung);
-                        PSCMGanViTriChung rsmoi = vt.Where(p => p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
-                        rsmoi.GhiChuChung = ghichu.ToString();
-                        BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
+                        PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.GGanViTri.STT_bang == long.Parse(stt.ToString()));
+                        rss.GhiChuChung = ghichu.ToString();
+                        BioNet_Bus.ThemGhiChuGanVT(rss);
                     }
                     if (e.Column.Name.Equals("col_MAYXN001_GhiChu"))
                     {
                         var tenvitri = view.GetRowCellDisplayText(rowfocus, "MAYXN001.ViTri");
                         var ghichu = view.GetRowCellDisplayText(rowfocus, "MAYXN001.GhiChuCT");
                         List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN001 != null).ToList();
-                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN001.ViTri == tenvitri.ToString() && p.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN001.ViTri == tenvitri.ToString() && p.GGanViTri.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
                         rsmoi.MAYXN001.GhiChuCT = ghichu.ToString();
-                        BioNet_Bus.SuaDanhSachGanXNLuu(rsmoi);
+                        BioNet_Bus.ThemGhiChuGanVT(rsmoi);
                     }
                     if (columnHandle == this.col_MaXetNghiem.ColumnHandle)
                     {
@@ -1204,7 +1164,7 @@ namespace BioNetSangLocSoSinh.Entry
                         //    {
                         //        ph.STT_bang = rss.STT_bang;
                         //        ph.IDRowGanXN = rss.IDRowGanXN;
-                        //        ph.IDLanGanXN = rss.IDLanGanXN;
+                        //        ph.IDLanDucLo = rss.IDLanDucLo;
                         //        foreach (var pm in ph.may)
                         //        {
                         //            switch (pm.IDMayXN)
@@ -1442,7 +1402,7 @@ namespace BioNetSangLocSoSinh.Entry
                     if (MessageBox.Show("Bạn có chắn chắn hủy hết danh sách phiếu không?", "Cảnh báo", MessageBoxButtons.YesNo) != DialogResult.Yes)
                         return;
                     BioNet_Bus.DeleteDanhSachAllGanXNLuu(IDLanDucLo,emp.EmployeeCode);
-                    this.GetIDLanGanXN();
+                    this.GetIDLanDucLo();
                 }
                 else
                 {

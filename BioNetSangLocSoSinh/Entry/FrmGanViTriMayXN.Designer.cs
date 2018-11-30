@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -153,7 +153,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1308, 685);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1190, 672);
             this.splitContainerControl1.SplitterPosition = 307;
             this.splitContainerControl1.TabIndex = 32;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -171,7 +171,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(307, 685);
+            this.groupControl1.Size = new System.Drawing.Size(307, 672);
             this.groupControl1.TabIndex = 33;
             this.groupControl1.Text = "Danh sách cấp mã";
             // 
@@ -185,7 +185,7 @@
             this.repositoryItemLookUpDonVi_GCChuaCoKQ,
             this.lookUpGoiXN_GCChuaCoKQ,
             this.repositoryItemCheckEdit1});
-            this.GCChuaKQ.Size = new System.Drawing.Size(303, 490);
+            this.GCChuaKQ.Size = new System.Drawing.Size(303, 477);
             this.GCChuaKQ.TabIndex = 6;
             this.GCChuaKQ.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVChuaKQ});
@@ -432,9 +432,9 @@
             this.btnClear.Location = new System.Drawing.Point(213, 140);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear.SuperTip = superToolTip1;
+            toolTipTitleItem7.Text = "Bỏ lọc";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            this.btnClear.SuperTip = superToolTip7;
             this.btnClear.TabIndex = 33;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -450,9 +450,9 @@
             this.btnViewGhiChu.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.btnViewGhiChu.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.btnViewGhiChu.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem2.Text = "Nội dung viết tắt";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnViewGhiChu.SuperTip = superToolTip2;
+            toolTipTitleItem9.Text = "Nội dung viết tắt";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            this.btnViewGhiChu.SuperTip = superToolTip9;
             this.btnViewGhiChu.TabIndex = 37;
             this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
@@ -715,14 +715,14 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(997, 685);
+            this.groupControl2.Size = new System.Drawing.Size(879, 672);
             this.groupControl2.TabIndex = 34;
             this.groupControl2.Text = "Chức năng cấp mã";
             // 
             // txtDem
             // 
             this.txtDem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDem.Location = new System.Drawing.Point(61, 660);
+            this.txtDem.Location = new System.Drawing.Point(61, 647);
             this.txtDem.Name = "txtDem";
             this.txtDem.Properties.ReadOnly = true;
             this.txtDem.Size = new System.Drawing.Size(121, 20);
@@ -739,7 +739,7 @@
             this.LookupGoiXN,
             this.LookUpEditMAYXN001,
             this.LookUpEditMAYXN002});
-            this.GCDanhSachGanViTri.Size = new System.Drawing.Size(993, 629);
+            this.GCDanhSachGanViTri.Size = new System.Drawing.Size(875, 616);
             this.GCDanhSachGanViTri.TabIndex = 31;
             this.GCDanhSachGanViTri.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachGanViTri});
@@ -811,40 +811,44 @@
             this.tt.Columns.Add(this.col_MaXetNghiem);
             this.tt.Columns.Add(this.col_MaGoiXetNghiem);
             this.tt.Name = "tt";
+            this.tt.OptionsBand.FixedWidth = true;
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 241;
+            this.tt.Width = 446;
             // 
             // col_STT
             // 
             this.col_STT.AppearanceHeader.Options.UseTextOptions = true;
             this.col_STT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.col_STT.Caption = "STT";
-            this.col_STT.FieldName = "STT_bang";
+            this.col_STT.FieldName = "GGanViTri.STT_bang";
             this.col_STT.Name = "col_STT";
             this.col_STT.OptionsColumn.AllowEdit = false;
+            this.col_STT.OptionsColumn.FixedWidth = true;
             this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
-            this.col_STT.Width = 37;
+            this.col_STT.Width = 20;
             // 
             // col_IDPhieu
             // 
             this.col_IDPhieu.AppearanceHeader.Options.UseTextOptions = true;
             this.col_IDPhieu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.col_IDPhieu.Caption = "Mã Phiếu";
-            this.col_IDPhieu.FieldName = "MaPhieu";
+            this.col_IDPhieu.FieldName = "GGanViTri.MaPhieu";
             this.col_IDPhieu.Name = "col_IDPhieu";
+            this.col_IDPhieu.OptionsColumn.FixedWidth = true;
             this.col_IDPhieu.Visible = true;
-            this.col_IDPhieu.Width = 48;
+            this.col_IDPhieu.Width = 125;
             // 
             // col_MaXetNghiem
             // 
             this.col_MaXetNghiem.AppearanceHeader.Options.UseTextOptions = true;
             this.col_MaXetNghiem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.col_MaXetNghiem.Caption = "Mã Xét Nghiệm";
-            this.col_MaXetNghiem.FieldName = "MaXetNghiem";
+            this.col_MaXetNghiem.FieldName = "GGanViTri.MaXetNghiem";
             this.col_MaXetNghiem.Name = "col_MaXetNghiem";
+            this.col_MaXetNghiem.OptionsColumn.FixedWidth = true;
             this.col_MaXetNghiem.Visible = true;
-            this.col_MaXetNghiem.Width = 57;
+            this.col_MaXetNghiem.Width = 125;
             // 
             // col_MaGoiXetNghiem
             // 
@@ -852,12 +856,13 @@
             this.col_MaGoiXetNghiem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.col_MaGoiXetNghiem.Caption = "Gói Xét Nghiệm";
             this.col_MaGoiXetNghiem.ColumnEdit = this.LookupGoiXN;
-            this.col_MaGoiXetNghiem.FieldName = "MaGoiXN";
+            this.col_MaGoiXetNghiem.FieldName = "GGanViTri.MaGoiXN";
             this.col_MaGoiXetNghiem.Name = "col_MaGoiXetNghiem";
             this.col_MaGoiXetNghiem.OptionsColumn.AllowEdit = false;
+            this.col_MaGoiXetNghiem.OptionsColumn.FixedWidth = true;
             this.col_MaGoiXetNghiem.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem.Visible = true;
-            this.col_MaGoiXetNghiem.Width = 99;
+            this.col_MaGoiXetNghiem.Width = 150;
             // 
             // LookupGoiXN
             // 
@@ -893,18 +898,20 @@
             this.gridBand3.Caption = "Thêm";
             this.gridBand3.Columns.Add(this.col_GhiNhoChung);
             this.gridBand3.Name = "gridBand3";
+            this.gridBand3.OptionsBand.FixedWidth = true;
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 87;
+            this.gridBand3.Width = 100;
             // 
             // col_GhiNhoChung
             // 
             this.col_GhiNhoChung.AppearanceHeader.Options.UseTextOptions = true;
             this.col_GhiNhoChung.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.col_GhiNhoChung.Caption = "Ghi chú chung";
-            this.col_GhiNhoChung.FieldName = "GhiChuChung";
+            this.col_GhiNhoChung.FieldName = "GGanViTri.GhiChuChung";
             this.col_GhiNhoChung.Name = "col_GhiNhoChung";
+            this.col_GhiNhoChung.OptionsColumn.FixedWidth = true;
             this.col_GhiNhoChung.Visible = true;
-            this.col_GhiNhoChung.Width = 87;
+            this.col_GhiNhoChung.Width = 100;
             // 
             // col_IDRow
             // 
@@ -956,7 +963,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl6.Location = new System.Drawing.Point(2, 22);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(993, 32);
+            this.panelControl6.Size = new System.Drawing.Size(875, 32);
             this.panelControl6.TabIndex = 6;
             // 
             // btnExportReview
@@ -980,7 +987,7 @@
             // 
             this.btnHuyDanhSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHuyDanhSach.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.garbage;
-            this.btnHuyDanhSach.Location = new System.Drawing.Point(881, 4);
+            this.btnHuyDanhSach.Location = new System.Drawing.Point(763, 4);
             this.btnHuyDanhSach.Name = "btnHuyDanhSach";
             this.btnHuyDanhSach.Size = new System.Drawing.Size(103, 23);
             this.btnHuyDanhSach.TabIndex = 38;
@@ -1063,7 +1070,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 685);
+            this.ClientSize = new System.Drawing.Size(1190, 672);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainerControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

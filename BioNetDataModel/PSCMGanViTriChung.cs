@@ -8,8 +8,11 @@ namespace BioNetModel
 {
     public class PSCMGanViTriChung
     {
+        public PSCM_GanViTri GGanViTri { get; set; }
+        public PSCM_GanViTriCT CTMAYXN001 { get; set; }
+        public PSCM_GanViTriCT CTMAYXN002 { get; set; }
         public long IDRowGanXN { get; set; }
-        public string IDLanGanXN { get; set; }
+        public string IDLanDucLo { get; set; }
         public long? STT_bang { get; set; }
         public string MaPhieu { get; set; }
         public string MaXetNghiem { get; set; }

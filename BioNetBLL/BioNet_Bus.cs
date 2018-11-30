@@ -1251,15 +1251,15 @@ namespace BioNetBLL
             return lst;
         }
 
-        public static string GetMaRowIDLanGanXN(string MaMayDL)
+        public static string GetMaRowIDLanDucLo(string MaMayDL)
         {
             var db = new DataObjects();
-            return db.GetMaRowIDLanGanXN(MaMayDL);
+            return db.GetMaRowIDLanDucLo(MaMayDL);
         }
-        public static PsReponse SuaDanhSachGanXNLuu(PSCMGanViTriChung pm)
+        public static PsReponse SuaDanhSachGanXNLuu(PSCMGanViTriChung pm,string STT,string IDLanDucLo)
         {
             var db = new DataObjects();
-            return db.SuaDanhSachGanXNLuu(pm);
+            return db.SuaDanhSachGanXNLuu(pm,STT,IDLanDucLo);
         }
         public static PsReponse SuaDanhSachGanXNLuuNew(PSCMGanViTriChung pm, string MayDucLo, string IDLanDucLo, string MaNV)
         {
@@ -1271,7 +1271,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.DoiViTriGanXN(pm1, pm2, IDMayXN);
         }
-        public static bool GetMaPhieuDaCoDSCapVT(string MaPhieu)
+        public static PsReponse ThemGhiChuGanVT(PSCMGanViTriChung pm)
+        {
+            var db = new DataObjects();
+            return db.ThemGhiChuGanVT(pm);
+        }
+            public static bool GetMaPhieuDaCoDSCapVT(string MaPhieu)
         {
             var db = new DataObjects();
             return db.GetMaPhieuDaCoDSCapVT(MaPhieu);
@@ -1322,12 +1327,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.DuyetCapMaGanMayXN(IDLanGanXN, IDNhanVien);
         }
-        public static List<PSCMGanViTriChung> GetDanhSachGanXNLuu(string MayDucLo)
+        public static List<PSCMGanViTriChung> GetDanhSachGanXNLuuNew(string MayDucLo, string IDLanDucLo)
         {
             var db = new DataObjects();
-            return db.GetDanhSachGanXNLuu(MayDucLo);
+            return db.GetDanhSachGanXNLuuNew(MayDucLo,IDLanDucLo);
         }
-        public static PsReponse SaveGanXN(PSCMGanViTriChung pm)
+            public static PsReponse SaveGanXN(PSCMGanViTriChung pm)
         {
             var db = new DataObjects();
             return db.SaveGanXN(pm);

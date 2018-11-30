@@ -45,3 +45,4 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\Bion
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.csproj.CopyComplete
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.exe
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.csprojAssemblyReference.cache
