@@ -609,16 +609,16 @@ namespace BioNetSangLocSoSinh.Entry
                         {
                             PSCMGanViTriChungReport rep = new PSCMGanViTriChungReport();
                             rep.isTest = vtm.MAYXN001.isTest;
-                            rep.MaPhieu = vtm.MaPhieu == null ? string.Empty : vtm.MaPhieu;
-                            rep.MaXetNghiem = vtm.MaXetNghiem.Trim().ToUpper();
-                            rep.MaGoiXN = vtm.MaGoiXN;
-                            rep.TenGoiXN = lstgoiXN.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(vtm.MaGoiXN)).TenGoiDichVuChung;
+                            rep.MaPhieu = vtm.GGanViTri.MaPhieu == null ? string.Empty : vtm.GGanViTri.MaPhieu;
+                            rep.MaXetNghiem = vtm.GGanViTri.MaXetNghiem.Trim().ToUpper();
+                            rep.MaGoiXN = vtm.GGanViTri.MaGoiXN;
+                            rep.TenGoiXN = lstgoiXN.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(vtm.GGanViTri.MaGoiXN)).TenGoiDichVuChung;
                             rep.STT = vtm.MAYXN001.STT;
                             rep.STTDia = vtm.MAYXN001.STTDia;
                             rep.STTVT = vtm.MAYXN001.STTVT;
                             rep.GhiChuCT = vtm.MAYXN001.GhiChuCT == null ? string.Empty : vtm.MAYXN001.GhiChuCT;
                             rep.ViTri = vtm.MAYXN001.ViTri;
-                            rep.GhiChuChung = vtm.GhiChuChung == null ? string.Empty : vtm.GhiChuChung;
+                            rep.GhiChuChung = vtm.GGanViTri.GhiChuChung == null ? string.Empty : vtm.GGanViTri.GhiChuChung;
                             rep.isMoi = goi.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(rep.MaGoiXN)) != null?true:false;
                             re.Add(rep);
                         }
@@ -631,16 +631,16 @@ namespace BioNetSangLocSoSinh.Entry
                         {
                             PSCMGanViTriChungReport rep = new PSCMGanViTriChungReport();
                             rep.isTest = vtm.MAYXN002.isTest;
-                            rep.MaPhieu = vtm.MaPhieu == null ? string.Empty : vtm.MaPhieu;
-                            rep.MaXetNghiem = vtm.MaXetNghiem.Trim().ToUpper();
-                            rep.MaGoiXN = vtm.MaGoiXN;
-                            rep.TenGoiXN = lstgoiXN.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(vtm.MaGoiXN)).TenGoiDichVuChung;
+                            rep.MaPhieu = vtm.GGanViTri.MaPhieu == null ? string.Empty : vtm.GGanViTri.MaPhieu;
+                            rep.MaXetNghiem = vtm.GGanViTri.MaXetNghiem.Trim().ToUpper();
+                            rep.MaGoiXN = vtm.GGanViTri.MaGoiXN;
+                            rep.TenGoiXN = lstgoiXN.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(vtm.GGanViTri.MaGoiXN)).TenGoiDichVuChung;
                             rep.STT = vtm.MAYXN002.STT;
                             rep.STTDia = vtm.MAYXN002.STTDia;
                             rep.STTVT = vtm.MAYXN002.STTVT;
                             rep.GhiChuCT = vtm.MAYXN002.GhiChuCT == null ? string.Empty : vtm.MAYXN002.GhiChuCT;
                             rep.ViTri = vtm.MAYXN002.ViTri;
-                            rep.GhiChuChung = vtm.GhiChuChung == null ? string.Empty : vtm.GhiChuChung;
+                            rep.GhiChuChung = vtm.GGanViTri.GhiChuChung == null ? string.Empty : vtm.GGanViTri.GhiChuChung;
                             rep.isMoi = goi.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(rep.MaGoiXN)) != null ? true : false;
                             re.Add(rep);
                         }

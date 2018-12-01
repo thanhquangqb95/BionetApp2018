@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -432,9 +432,9 @@
             this.btnClear.Location = new System.Drawing.Point(213, 140);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(59, 23);
-            toolTipTitleItem7.Text = "Bỏ lọc";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            this.btnClear.SuperTip = superToolTip7;
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 33;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -450,9 +450,9 @@
             this.btnViewGhiChu.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.btnViewGhiChu.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.btnViewGhiChu.Size = new System.Drawing.Size(24, 24);
-            toolTipTitleItem9.Text = "Nội dung viết tắt";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            this.btnViewGhiChu.SuperTip = superToolTip9;
+            toolTipTitleItem2.Text = "Nội dung viết tắt";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnViewGhiChu.SuperTip = superToolTip2;
             this.btnViewGhiChu.TabIndex = 37;
             this.btnViewGhiChu.Click += new System.EventHandler(this.btnViewGhiChu_Click);
             // 
@@ -813,7 +813,7 @@
             this.tt.Name = "tt";
             this.tt.OptionsBand.FixedWidth = true;
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 446;
+            this.tt.Width = 430;
             // 
             // col_STT
             // 
@@ -826,7 +826,7 @@
             this.col_STT.OptionsColumn.FixedWidth = true;
             this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
-            this.col_STT.Width = 20;
+            this.col_STT.Width = 30;
             // 
             // col_IDPhieu
             // 
@@ -885,7 +885,7 @@
             this.gridBandViTri.Caption = "Vị Trí Máy XN";
             this.gridBandViTri.Name = "gridBandViTri";
             this.gridBandViTri.VisibleIndex = 1;
-            this.gridBandViTri.Width = 648;
+            this.gridBandViTri.Width = 328;
             // 
             // gridBand3
             // 
