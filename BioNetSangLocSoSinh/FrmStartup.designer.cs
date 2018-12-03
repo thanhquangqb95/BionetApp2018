@@ -1018,7 +1018,7 @@
             // 
             this.barButtonItem49.Caption = "Báo cáo tài chính";
             this.barButtonItem49.Id = 2;
-            this.barButtonItem49.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.versions;
+            this.barButtonItem49.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.business;
             this.barButtonItem49.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.versions;
             this.barButtonItem49.Name = "barButtonItem49";
             this.barButtonItem49.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem49_ItemClick);
@@ -1035,7 +1035,7 @@
             // 
             this.barButtonItem51.Caption = "Bác Cáo Tài Chính Đơn Vị Chi Tiết";
             this.barButtonItem51.Id = 6;
-            this.barButtonItem51.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.versions;
+            this.barButtonItem51.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.analytics;
             this.barButtonItem51.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.versions;
             this.barButtonItem51.Name = "barButtonItem51";
             this.barButtonItem51.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem51_ItemClick);
@@ -1330,6 +1330,7 @@
             // 
             this.barSubItem13.Caption = "Báo cáo tài chính";
             this.barSubItem13.Id = 40;
+            this.barSubItem13.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.money;
             this.barSubItem13.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem49),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem51)});

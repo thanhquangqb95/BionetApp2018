@@ -2823,7 +2823,6 @@ namespace BioNetDAL
                     {
                         gan.isDaDuyet = Boolean.Parse(duyet.isDaDuyet.ToString());
                     }
-
                     lst.Add(gan);
                 }
             }
@@ -2832,7 +2831,7 @@ namespace BioNetDAL
             }
             return lst;
         }
-        public PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu)
+        public PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu,string IDMayDucLo)
         {
             PSCMGanViTriChung vt = new PSCMGanViTriChung();
             try
@@ -2847,9 +2846,13 @@ namespace BioNetDAL
                     vt.MaPhieu = kq.MaPhieu;
                     vt.MaGoiXN = kq.MaGoiXN;
                     vt.MaXetNghiem = kq.MaXetNghiem;
+                    var dsmay = (from ct in db.PSMapsMayDucLo_MayXNs
+                                 join may in db.PSDanhMucMayXNs on ct.IDMayXN equals may.IDMayXN
+                                 where ct.IDMayDucLo.Equals(IDMayDucLo)
+                                 select new { may }).ToList().Distinct();
                     var idmay = (from ct in kq.PSXN_KetQua_ChiTiets
                                  join dv in db.PSMapsMayXN_DichVus on ct.MaDichVu equals dv.IDDichVu
-                                 join may in db.PSDanhMucMayXNs on dv.IDMayXN equals may.IDMayXN
+                                 join may in dsmay.Select(x=>x.may) on dv.IDMayXN equals may.IDMayXN
                                  select new { may }).ToList().Distinct();
                     List<PSDanhMucMayXN> m = new List<PSDanhMucMayXN>();
                     foreach (var mayct in idmay)
@@ -2857,7 +2860,6 @@ namespace BioNetDAL
                         m.Add(mayct.may);
                     }
                     vt.may = m;
-
                 }
             }
             catch
@@ -3025,6 +3027,7 @@ namespace BioNetDAL
                 #region GanVTTest
                 foreach (var pmMay in pm.may)
                 {
+                    
                     do
                     {
                         var ganvt = db.PSMapsViTriMayXNs.Where(x => x.IDMayXN.Equals(pmMay.IDMayXN)).ToList();
@@ -3056,6 +3059,7 @@ namespace BioNetDAL
                             ganvtCT.isXoa = false;
                             db.PSCM_GanViTriCTs.InsertOnSubmit(ganvtCT);
                             db.SubmitChanges();
+                            break;
                         }
                     }
                     while (GanVTTest(pmMay.IDMayXN, IDLanDucLo, MayDucLo, dSGanMay.IDRowLanDucLo));
@@ -3241,7 +3245,7 @@ namespace BioNetDAL
                 && x.isDaDuyet != true);
                 if (viTri != null)
                 {
-                    viTri.GhiChuChung = pm.GhiChuChung;
+                    viTri.GhiChuChung = pm.GGanViTri.GhiChuChung;
                     if (viTri.PSCM_GanViTriCTs.Count() > 0)
                     {
                         foreach (var vtc in viTri.PSCM_GanViTriCTs)
@@ -3407,9 +3411,8 @@ namespace BioNetDAL
                 }
                 db.PSCM_GanViTris.Where(x => x.IDLanDucLo.Equals(IDLanDucLo) && x.isDaDuyet != true && x.isXoa != true).ToList().ForEach(c => c.isXoa = true);
                 db.PSCM_GanViTriCTs.Where(x => x.IDLanDucLo.Equals(IDLanDucLo) && x.isDaDuyet != true && x.isXoa != true).ToList().ForEach(c => c.isXoa = true);
-                gvc.Result = true;
                 db.SubmitChanges();
-
+                gvc.Result = true;
             }
             catch (Exception ex)
             {
@@ -3432,12 +3435,10 @@ namespace BioNetDAL
                         {
                             foreach (var vtc in viTri.PSCM_GanViTriCTs)
                             {
-                                //db.PSCM_GanViTriCTs.DeleteOnSubmit(vtc);
                                 vtc.isXoa = true;
                                 db.SubmitChanges();
                             }
                         }
-                        //db.PSCM_GanViTris.DeleteOnSubmit(viTri);
                         viTri.isXoa = true;
                         db.SubmitChanges();
                     }
@@ -3462,8 +3463,8 @@ namespace BioNetDAL
                     dsmay.IDNVEnd = IDNhanVien;
                     db.SubmitChanges();
                 }
-                var gvt = db.PSCM_GanViTris.Where(x => x.IDLanDucLo.Equals(IDLanDucLo) && x.isDaDuyet != true && x.isXoa != true).ToList();
-                foreach (var cm in gvt)
+                //var gvt = dsmay.PSCM_GanViTris.Where(x => x.IDLanDucLo.Equals(IDLanDucLo) && x.isDaDuyet != true && x.isXoa != true).ToList();
+                foreach (var cm in dsmay.PSCM_GanViTris)
                 {
                     cm.isDaDuyet = true;
                     var kq = db.PSXN_KetQuas.FirstOrDefault(x => x.MaPhieu == cm.MaPhieu && x.MaXetNghiem == cm.MaXetNghiem && x.isCoKQ != true && x.isXoa != true);
@@ -9150,6 +9151,175 @@ namespace BioNetDAL
                 dsduongtinh = dsduongtinh.OrderBy(x => x.MaGoiXN).ToList();
                 int stt = 1;
                 foreach(var ds in dsduongtinh)
+                {
+                    ds.STT = stt++;
+                }
+            }
+            catch
+            {
+
+            }
+            return dsduongtinh;
+        }
+        public List<PsDanhSachMauDuongTinh> GetDanhSachDuongTinhNew(DateTime NgayBD, DateTime NgayKT, string TenDichVu, string DonVi, string Min, string Max)
+        {
+            List<PsDanhSachMauDuongTinh> dsduongtinh = new List<PsDanhSachMauDuongTinh>();
+            try
+            {
+                var res = (from ph in db.PSPhieuSangLocs
+                           join kq in db.PSXN_KetQuas on ph.IDPhieu equals kq.MaPhieu
+                           join ct in db.PSXN_KetQua_ChiTiets on kq.MaKetQua equals ct.MaKQ
+                           where kq.isCoKQ != true && kq.NgayLamXetNghiem.Value.Date >= NgayBD.Date && kq.NgayLamXetNghiem.Value.Date <= NgayKT.Date
+                          && kq.isXoa != true && ph.isXoa != true && kq.isCoKQ != true && ct.MaDichVu.Equals(TenDichVu)
+                           select new { ph.MaBenhNhan }).Distinct().ToList();
+                int STT = 1;
+                foreach (var re in res)
+                {
+                    try
+                    {
+                        PsDanhSachMauDuongTinh duongtinh = new PsDanhSachMauDuongTinh();
+                        var pat = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(re.MaBenhNhan));
+                        duongtinh.NgaySinh = pat.NgayGioSinh;
+                        var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
+                        decimal GiaTri1 = 0;
+                        decimal GiaTri2 = 0;
+                        string kl = string.Empty;
+                        bool isL2 = false;
+                        int MP = 0;
+                        foreach (var ls in lstphieu)
+                        {
+                            if(ls.isLayMauLan2!=true)
+                            {
+                                //mã phiếu1
+                                MP = 1;
+                                duongtinh.MaPhieuL1 = ls.IDPhieu;
+                                duongtinh.MaGoiXN = ls.MaGoiXN;
+                                duongtinh.VietTatDV = GetVietTatDV(ls.IDCoSo);
+                                duongtinh.NgayLayMau = ls.NgayGioLayMau;
+                                duongtinh.NgayNhanMau = ls.NgayNhanMau;
+                                duongtinh.CLMau = ls.LyDoKhongDat;
+                                int isXN2=0 ;
+                                var kq1 = db.PSXN_KetQuas.Where(x => x.MaPhieu.Equals(duongtinh.MaPhieuL1) && x.isXoa != true).ToList();
+                                foreach(var kq in kq1)
+                                {
+                                    var ctkq1 = kq.PSXN_KetQua_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(TenDichVu) && x.isXoa != true);
+                                    duongtinh.TenDichVu = ctkq1.TenThongSo;
+                                    duongtinh.MaDichVu = ctkq1.MaDichVu;
+                                    if (kq.MaGoiXN.Equals("DVGXNL2") && kq.isCoKQ==true)
+                                    {
+                                        //Có KQ2
+                                        duongtinh.KetQua1L2 = ctkq1.GiaTri;
+                                        isXN2 = 2;
+
+
+                                    }
+                                    else
+                                    {
+                                        //Có KQ1
+                                        duongtinh.KetQua1L1 = ctkq1.GiaTri;
+                                        isXN2 = 1;
+                                    } 
+
+                                }
+                                if (isXN2 ==2)
+                                {
+                                    float gtcuoi = (float.Parse(duongtinh.KetQua1L1) + float.Parse(duongtinh.KetQua1L2)) / 2;
+                                    duongtinh.KetQuaCuoiL1 = String.Format("{0:0.##}", gtcuoi);
+                                    GiaTri1 = Decimal.Parse(duongtinh.KetQuaCuoiL1);
+                                }
+                                else if(isXN2==1)
+                                {
+                                    GiaTri1 = Decimal.Parse(duongtinh.KetQua1L1);
+                                }
+                            }
+                            else
+                            {
+                                //mã phiếu2
+                                MP = 2;
+                                duongtinh.MaPhieuL2 = ls.IDPhieu;
+                                duongtinh.CLMau = ls.LyDoKhongDat;
+                                int isXN2 = 0;
+                                var kq2 = db.PSXN_KetQuas.Where(x => x.MaPhieu.Equals(duongtinh.MaPhieuL2) && x.isXoa != true).ToList();
+                                foreach (var kq in kq2)
+                                {
+                                    var ctkq1 = kq.PSXN_KetQua_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(TenDichVu) && x.isXoa != true);
+                                    duongtinh.TenDichVu = ctkq1.TenThongSo;
+                                    duongtinh.MaDichVu = ctkq1.MaDichVu;
+                                    if (kq.MaGoiXN.Equals("DVGXNL2") && kq.isCoKQ == true)
+                                    {
+                                        //Có KQ2
+                                        duongtinh.KetQua2L2 = ctkq1.GiaTri;
+                                        isXN2 = 2;
+                                        float gtcuoi = (float.Parse(duongtinh.KetQua1L1) + float.Parse(duongtinh.KetQua1L2)) / 2;
+                                        duongtinh.KetQuaCuoiL1 = String.Format("{0:0.##}", gtcuoi);
+                                        
+                                    }
+                                    else
+                                    {
+                                        //Có KQ1
+                                        duongtinh.KetQua2L1 = ctkq1.GiaTri;
+                                        isXN2 = 1;
+                                    }
+                                }
+                                if (isXN2 == 2)
+                                {
+                                    float gtcuoi = (float.Parse(duongtinh.KetQua2L1) + float.Parse(duongtinh.KetQua2L2)) / 2;
+                                    duongtinh.KetQuaCuoiL2 = String.Format("{0:0.##}", gtcuoi);
+                                    GiaTri2 = Decimal.Parse(duongtinh.KetQuaCuoiL2);
+                                }
+                                else if (isXN2 == 1)
+                                {
+                                    GiaTri2 = Decimal.Parse(duongtinh.KetQua2L1);
+                                }
+                            }
+                        }
+                        decimal GiaTri = 0;
+                        if (MP==1)
+                        {
+                            GiaTri = GiaTri1;
+                        }
+                        else if (MP==2)
+                        {
+                            GiaTri = GiaTri2;
+                        }
+
+                        if (!string.IsNullOrEmpty(kl))
+                        {
+                            duongtinh.KetLuan = kl;
+                        }
+                        
+
+                        if (!string.IsNullOrEmpty(Min) && !string.IsNullOrEmpty(Max))
+                        {
+                            if (Decimal.Parse(Min) <= GiaTri && GiaTri <= Decimal.Parse(Max))
+                            {
+                                duongtinh.STT = STT++;
+                                dsduongtinh.Add(duongtinh);
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(Max))
+                        {
+                            if (GiaTri <= Decimal.Parse(Max))
+                            {
+                                duongtinh.STT = STT++;
+                                dsduongtinh.Add(duongtinh);
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(Min))
+                        {
+                            if (Decimal.Parse(Min) <= GiaTri)
+                            {
+                                duongtinh.STT = STT++;
+                                dsduongtinh.Add(duongtinh);
+                            }
+                        }
+                    }
+                    catch { }
+
+                }
+                dsduongtinh = dsduongtinh.OrderBy(x=>x.KetQuaCuoiL1).ToList();
+                int stt = 1;
+                foreach (var ds in dsduongtinh)
                 {
                     ds.STT = stt++;
                 }

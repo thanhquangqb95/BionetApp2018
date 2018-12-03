@@ -1,4 +1,5 @@
-﻿using BioNetModel;
+﻿using BioNetBLL;
+using BioNetModel;
 using DevExpress.Spreadsheet;
 using DevExpress.XtraEditors;
 using Excel;
@@ -1026,14 +1027,14 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             rptBaoCaoExcelGeneCoBan baocao = new rptBaoCaoExcelGeneCoBan();
             baocao.TongSoMau = new TKExcelSoMau();
-            TongSoMau = (from DataRow myRow in tab.Rows
+            int TongSoMauDV = (from DataRow myRow in tab.Rows
                          where !string.IsNullOrEmpty(myRow["STT"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                          select myRow).Count();
             TongSoLamGene = (from DataRow myRow in tab.Rows
                              where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                              select myRow["KL gene"]).Count();
             var tabTongGene = (from DataRow myRow in tab.Rows
-                               where string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                               where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                select myRow["KQ gene"]).ToList();
             TongSoXD = tabTongGene.Where(x => x.Equals("KXĐ")).Count();
             baocao.NgayIn = DateTime.Now;
@@ -1048,17 +1049,17 @@ namespace BioNetSangLocSoSinh.FrmReports
                                  where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                  select myRow["KQ gene"]).Distinct().ToList();
             baoc.TongGene = new List<TKGene>();
-            baoc.TongGene.Add(ThongKeTKExcelDonVi("Tổng","KQ gene",Donvi));
-            baoc.TongGene.Add(ThongKeTKExcelDonVi("ChuaXN", "KQ gene", Donvi));
-            baoc.TongGene.Add(ThongKeTKExcelDonVi("", "KQ gene", Donvi));
-            baoc.TongGene.Add(ThongKeTKExcelDonVi("KXĐ", "KQ gene", Donvi));
-            baoc.TongGene.Add(ThongKeTKExcelDonVi("Xac dinh", "KQ gene", Donvi));
+            baoc.TongGene.Add(ThongKeTKExcelGeneDV("Tổng",Donvi,TongSoMauDV));
+            baoc.TongGene.Add(ThongKeTKExcelGeneDV("ChuaXN",  Donvi, TongSoMauDV));
+            baoc.TongGene.Add(ThongKeTKExcelGeneDV("",  Donvi, TongSoMauDV));
+            baoc.TongGene.Add(ThongKeTKExcelGeneDV("KXĐ",  Donvi, TongSoMauDV));
+            baoc.TongGene.Add(ThongKeTKExcelGeneDV("Xac dinh", Donvi, TongSoMauDV));
             baoc.STT = "1";
             foreach (var t in tabTongsoGene)
             {
                 if (!t.Equals("KXĐ"))
                 {
-                    baoc.TongGene.Add(ThongKeTKExcelDonVi(t.ToString(), "KQ gene", Donvi));
+                    baoc.TongGene.Add(ThongKeTKExcelGeneDV(t.ToString(), Donvi, TongSoMauDV));
                 }
             }
             baoct.Gene.Add(baoc);
@@ -1089,8 +1090,8 @@ namespace BioNetSangLocSoSinh.FrmReports
             baoc4.NgayIn = DateTime.Now;
             baoc4.TongGene = new List<TKGene>();
             baoc4.TongGene.Add(ThongKeTKExcelDonVi("Tổng", "Chất lượng mẫu 1", Donvi));
-            baoc4.TongGene.Add(ThongKeTKExcelCLMau("Đạt", "Chất lượng mẫu 1"));
-            baoc4.TongGene.Add(ThongKeTKExcelCLMau("Không Đạt", "Chất lượng mẫu 1"));
+            baoc4.TongGene.Add(ThongKeTKExcelDonVi("Đạt", "Chất lượng mẫu 1", Donvi));
+            baoc4.TongGene.Add(ThongKeTKExcelDonVi("Không Đạt", "Chất lượng mẫu 1",Donvi));
             baoct.Gene.Add(baoc4);
             rptBaoCaoExcelGene baoc5 = new rptBaoCaoExcelGene();
             baoc5.NgayIn = DateTime.Now;
@@ -1122,35 +1123,146 @@ namespace BioNetSangLocSoSinh.FrmReports
 
                 Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
                 datarp.DataSource = baoct;
-                Reports.frmReport myForm = new Reports.frmReport(datarp);
-                myForm.ShowDialog();
+                string Link=BioNet_Bus.SaveFileReport("Excel", "Unit", Donvi, DateTime.Now,DateTime.Now,".pdf");
+                datarp.ExportToPdf(Link);
+                //Reports.frmReport myForm = new Reports.frmReport(datarp);
+                // myForm.ShowDialog();
             }
-            catch
+            catch(Exception ex)
             {
             }
         }
+        private TKGene ThongKeTKExcelGeneDV(string cso,string Donvi,int TongSoMauDV)
+        {
+            TKGene tk = new TKGene();
+            try
+            {
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where   myRow["Tên Đơn Vị"].Equals(Donvi)
+                                   select myRow["KQ gene"]).ToList();
+                var tabNghiNgoGene = (from DataRow myRow in tabNghiNgo.Rows
+                                      where  myRow["Tên Đơn Vị"].Equals(Donvi)
+                                      select myRow["KQ gene"]).ToList();
+                var tabNguyCoCaoTongGene = (from DataRow myRow in tabNguyCoCao.Rows
+                                            where ! myRow["Tên Đơn Vị"].Equals(Donvi)
+                                            select myRow["KQ gene"]).ToList();
+                var tabNguyCoThapL2Gene = (from DataRow myRow in tabNguycoThap2.Rows
+                                           where  myRow["Tên Đơn Vị"].Equals(Donvi)
+                                           select myRow["KQ gene"]).ToList();
+                var tabAmTinhGene = (from DataRow myRow in tabAmTinh.Rows
+                                     where  myRow["Tên Đơn Vị"].Equals(Donvi)
+                                     select myRow["KQ gene"]).ToList();
+                var tabDuongTinhGene = (from DataRow myRow in tabDuongTinh.Rows
+                                        where  myRow["Tên Đơn Vị"].Equals(Donvi)
+                                        select myRow["KQ gene"]).ToList();
+                if (string.IsNullOrEmpty(cso))
+                {
+                    tk.Ten = "Tổng đã làm đột biến Gene";
+                    tk.Tong = tabTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)int.Parse(tk.Tong) / (double)tabTongGene.Count()) * 100) + "%";
+                }
+                else if (cso.Equals("Tổng"))
+                {
+                    tk.Ten = "Tổng";
+                    tk.Tong = tabTongGene.Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)tabTongGene.Count() / (double)tabTongGene.Count()) * 100) + "%";
+                }
+                else if (cso.Equals("ChuaXN"))
+                {
+                    tk.Ten = "Chưa làm Gene";
+                    tk.Tong = tabTongGene.Where(x=>x==null || x.Equals("")).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)int.Parse(tk.Tong) / (double)tabTongGene.Count()) * 100) + "%";
+                }
+                else if (cso.Equals("KXĐ") || cso.Equals("Xac dinh"))
+                {
+                    var tkTong = tabTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    var tabTongGeneKL = (from DataRow myRow in tab.Rows
+                                         where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                         select myRow["KL gene"]).ToList();
+                    var tabNghiNgoGeneKL = (from DataRow myRow in tabNghiNgo.Rows
+                                            where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                            select myRow["KL gene"]).ToList();
+                    var tabNgytCoCaoTongGeneKL = (from DataRow myRow in tabNguyCoCao.Rows
+                                                  where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                                  select myRow["KL gene"]).ToList();
+                    var tabNguyCoThapL2GeneKL = (from DataRow myRow in tabNguycoThap2.Rows
+                                                 where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                                 select myRow["KL gene"]).ToList();
+                    var tabAmTinhGeneKL = (from DataRow myRow in tabAmTinh.Rows
+                                           where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                           select myRow["KL gene"]).ToList();
+                    var tabDuongTinhGeneKL = (from DataRow myRow in tabDuongTinh.Rows
+                                              where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                              select myRow["KL gene"]).ToList();
+                    tk.Ten = cso;
+                    tk.Tong = tabTongGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2GeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.AmTinh = tabAmTinhGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)tabTongGeneKL.Where(x => x.Equals(cso)).Count() / (double)int.Parse(tkTong)) * 100) + "%";
+                }
+                else
+                {
+                    tk.Ten = cso;
+                    var tabTongGeneKL = (from DataRow myRow in tab.Rows
+                                         where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
+                                         select myRow["KL gene"]).ToList();
+                    var tkTong = tabTongGeneKL.Where(x => x.Equals("Xac dinh")).Count().ToString();
+                    tk.Tong = tabTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.Tile = String.Format("{0:00}", ((double)int.Parse(tk.Tong) / (double)int.Parse(tkTong)) * 100) + "%";
+                }
+            }
+            catch
+            {
+
+            }
+            return tk;
+        }
+
         private TKGene ThongKeTKExcelDonVi(string cso, string CLM,string Donvi)
         {
             TKGene tk = new TKGene();
             try
             {
                 var tabTongGene = (from DataRow myRow in tab.Rows
-                                   where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                   where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                    select myRow[CLM]).ToList();
                 var tabNghiNgoGene = (from DataRow myRow in tabNghiNgo.Rows
-                                      where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                      where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                       select myRow[CLM]).ToList();
                 var tabNgytCoCaoTongGene = (from DataRow myRow in tabNguyCoCao.Rows
-                                            where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                            where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                             select myRow[CLM]).ToList();
                 var tabNguyCoThapL2Gene = (from DataRow myRow in tabNguycoThap2.Rows
-                                           where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                           where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                            select myRow[CLM]).ToList();
                 var tabAmTinhGene = (from DataRow myRow in tabAmTinh.Rows
-                                     where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                     where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                      select myRow[CLM]).ToList();
                 var tabDuongTinhGene = (from DataRow myRow in tabDuongTinh.Rows
-                                        where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow[CLM].Equals(Donvi)
+                                        where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                         select myRow[CLM]).ToList();
                 tk.Ten = cso;
                 if(cso.Equals("Tổng"))
@@ -1171,7 +1283,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                     tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => x.Equals(cso)).Count().ToString();
                     tk.AmTinh = tabAmTinhGene.Where(x => x.Equals(cso)).Count().ToString();
                     tk.DuongTinh = tabDuongTinhGene.Where(x => x.Equals(cso)).Count().ToString();
-                    tk.Tile = String.Format("{0:00}", ((double)tabTongGene.Where(x => x.Equals(cso)).Count() / (double)tabTongGene.Count) * 100) + "%";
+                    tk.Tile = String.Format("{0:00}", ((double)tabTongGene.Where(x => x.Equals(cso)).Count() / (double)tabTongGene.Count()) * 100) + "%";
                 }
                
             }
@@ -1181,6 +1293,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             }
             return tk;
         }
+
         private TKGene ThongKeTKExcelDonViCanNang(int? min, int? max, string Donvi)
         {
             TKGene tk = new TKGene();

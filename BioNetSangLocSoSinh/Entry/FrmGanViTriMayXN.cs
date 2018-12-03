@@ -59,6 +59,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 foreach (var may in dsmay)
                 {
+                    cbbMayXN.Properties.Items.Add(new ImageComboBoxItem(may.TenMayXN, may.IDMayXN));
                     mapViTri.AddRange(BioNet_Bus.GetDSMapViTriMayXN(may.IDMayXN));
                     List<PSMapsViTriMayXN> a = BioNet_Bus.GetDSMapViTriMayXN(may.IDMayXN);
                 }
@@ -231,8 +232,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.GVDanhSachGanViTri.FocusedRowHandle = vt.Count();
             this.GVDanhSachGanViTri.SelectRow(vt.Count());
             this.GVDanhSachGanViTri.MoveLastVisible();
-            var vtdem = vt.Where(x => !string.IsNullOrEmpty(x.MaGoiXN)).ToList();
-            this.txtDem.Text = vtdem.Where(x => x.MaGoiXN.Equals("DVTest") != true).ToList().Count().ToString();
+            var vtdem = vt.Where(x => !string.IsNullOrEmpty(x.GGanViTri.MaGoiXN)).ToList();
+            this.txtDem.Text = vtdem.Where(x => x.GGanViTri.MaGoiXN.Equals("DVTest") != true).ToList().Count().ToString();
         }
 
         private void LoadLstChuaKetQua()
@@ -243,7 +244,14 @@ namespace BioNetSangLocSoSinh.Entry
             this.GCChuaKQ.DataSource = this.lstMauChoKQ;
             this.GVChuaKQ.ExpandAllGroups();
         }
-        
+        private void UpdateLoadLstChuaKetQua(string MaPhieu)
+        {
+            PSGanViTriXNKQ kq= this.lstMauChoKQ.FirstOrDefault(x => x.MaPhieu.Equals(MaPhieu));
+            kq.isDaDuyet = false;
+            this.GCChuaKQ.DataSource = null;
+            this.GCChuaKQ.DataSource = this.lstMauChoKQ;
+            this.GVChuaKQ.ExpandAllGroups();
+        }
         private void LoadGoiDichVuXetNGhiem()
         {
             try
@@ -453,7 +461,7 @@ namespace BioNetSangLocSoSinh.Entry
 
             }
         }
-        private void GanVaoDSNew(PSCMGanViTriChung ph)
+        private void GanVaoDSNew(PSCMGanViTriChung ph,bool MaNgoai)
         {
             try
             {
@@ -465,9 +473,16 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     if (ph.may.Count() > 0)
                     {
+                        DateTime d1 = DateTime.Now;
                         BioNet_Bus.SuaDanhSachGanXNLuuNew(ph, MayDucLo, IDLanDucLo, emp.EmployeeCode);
-                        this.LoadDSDaLuu();
-                        this.LoadLstChuaKetQua();
+                        LoadDSDaLuu();
+                        //if(!MaNgoai)
+                        //{
+                        //    UpdateLoadLstChuaKetQua(ph.MaPhieu);
+                        //}
+                        DateTime d2 = DateTime.Now;
+                        TimeSpan kt = d2 - d1;
+                        txtTime.Text = string.Format("{0:00}:{1:00}:{2:00}", kt.Hours, kt.Minutes, kt.Seconds);
                     }                 
                 }
                 else
@@ -661,13 +676,13 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     Directory.CreateDirectory(link);
                 }
-                string LinkDate=link+DateTime.Now.Year.ToString()+"."+DateTime.Now.Month.ToString()+"."+DateTime.Now.Date.Day.ToString()+"\\";
+                string LinkDate=link+DateTime.Now.Year.ToString()+"."+DateTime.Now.Month.ToString()+"."+DateTime.Now.Date.Day.ToString()+"\\"+MayDucLo+"\\";
                  if (!Directory.Exists(LinkDate))
                 {
                     Directory.CreateDirectory(LinkDate);
                 }
                 Workbook workbook = new DevExpress.Spreadsheet.Workbook();
-                string Idlangan = vt.Distinct().Select(x => x.IDLanDucLo).FirstOrDefault().ToString();
+                //string Idlangan = vt.Distinct().Select(x => x.GGanViTri.IDLanDucLo.Equals(IDLanDucLo)).FirstOrDefault().ToString();
                 #region Máy 1
                 Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
                 BindingList<PSCMGanViTriChungReport> vtmay1 = XuatCMGanViTriChungReport(1);
@@ -678,7 +693,7 @@ namespace BioNetSangLocSoSinh.Entry
                 rp1.Parameters["SLGoi5benh"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXN0004").Count();
                 rp1.Parameters["SLGoi3benh"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXN0003").Count();
                 rp1.Parameters["SLGoi2benh"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXN0002").Count();
-                rp1.Parameters["SLGoiHemo"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXN0006" || y.MaGoiXN.Equals("DVGXN0007")).Count();
+                rp1.Parameters["SLGoiHemo"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXN0006" || y.MaGoiXN.Equals("DVGXN0007") || y.MaGoiXN.Equals("DVGXN0008")).Count();
                 rp1.Parameters["SLXNL"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXN0001").Count();
                 rp1.Parameters["SLXNNgoai"].Value = vtmay1.Where(x => x.MaGoiXN == "DVKhac").Count();
                 rp1.Parameters["SLXNL2benh"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXNL2").Count();
@@ -708,7 +723,7 @@ namespace BioNetSangLocSoSinh.Entry
                 rp2.Parameters["SLGoi5benh"].Value = vtmay2.Where(x => x.MaGoiXN == "DVGXN0004").Count();
                 rp2.Parameters["SLGoi3benh"].Value = vtmay2.Where(x => x.MaGoiXN == "DVGXN0003").Count();
                 rp2.Parameters["SLGoi2benh"].Value = vtmay2.Where(y => y.MaGoiXN == "DVGXN0002").Count();
-                rp2.Parameters["SLGoiHemo"].Value = vtmay2.Where(x => x.MaGoiXN == "DVGXN0006" || x.MaGoiXN.Equals("DVGXN0007")).Count();
+                rp2.Parameters["SLGoiHemo"].Value = vtmay2.Where(x => x.MaGoiXN == "DVGXN0006" || x.MaGoiXN.Equals("DVGXN0007") || x.MaGoiXN.Equals("DVGXN0008")).Count();
                 rp2.Parameters["SLXNNgoai"].Value = vtmay2.Where(x => x.MaGoiXN == "DVKhac").Count();
                 rp2.Parameters["SLXNL"].Value = vtmay2.Where(y => y.MaGoiXN == "DVGXN0001").Count();
                 rp2.Parameters["SLXNL2benh"].Value = vtmay2.Where(y => y.MaGoiXN == "DVGXNL2").Count();
@@ -728,16 +743,24 @@ namespace BioNetSangLocSoSinh.Entry
                 File.Delete("May2Benh" + ".xlsx");
                 #endregion
                 string linkfile;
-                List<string> listmay1 = vtmay1.Select(x => x.MaXetNghiem).ToList();
+                
                 if (SaveFile)
                 {
                     linkfile = LinkDate + "SodoXetNghiem" + DateTime.Now.Day+"." + DateTime.Now.Month+"." + DateTime.Now.Year+ ".xlsx";
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + ".txt") )
                     {
-                        foreach (string line in listmay1)
+                        var sttdia = vtmay1.Select(x => x.STTDia).ToList().Distinct();
+                        foreach(var dia in sttdia)
                         {
+                            List<string> listmay1 = vtmay1.Where(y=>y.STTDia==long.Parse(dia.ToString())).Select(x => x.MaXetNghiem).ToList();
+                            file.WriteLine("DiaStart"+dia);
+                            foreach (string line in listmay1)
+                            {
                                 file.WriteLine(line);
+                            }
+                            file.WriteLine("DiaEnd" + dia);
                         }
+                       
                     }
                 }
                 else
@@ -746,10 +769,18 @@ namespace BioNetSangLocSoSinh.Entry
                     
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoReviewMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + "." + DateTime.Now.Hour + "." + DateTime.Now.Minute + ".txt"))
                     {
-                        foreach (string line in listmay1)
+                        var sttdia = vtmay1.Select(x => x.STTDia).ToList().Distinct();
+                        foreach (var dia in sttdia)
                         {
-                            file.WriteLine(line);
+                            List<string> listmay1 = vtmay1.Where(y => y.STTDia == long.Parse(dia.ToString())).Select(x => x.MaXetNghiem).ToList();
+                            file.WriteLine("DiaStart" + dia);
+                            foreach (string line in listmay1)
+                            {
+                                file.WriteLine(line);
+                            }
+                            file.WriteLine("DiaEnd" + dia);
                         }
+
                     }
                 }
                
@@ -989,7 +1020,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 {
-                    PSCMGanViTriChung ph = BioNet_Bus.GetPhieuChuaCoKQ(txtMaPhieu.Text);
+                    PSCMGanViTriChung ph = BioNet_Bus.GetPhieuChuaCoKQ(txtMaPhieu.Text, MayDucLo);
                     if (ph.MaPhieu == null)
                     {
                         DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã phiếu không hợp lệ.");
@@ -998,7 +1029,7 @@ namespace BioNetSangLocSoSinh.Entry
                     else
                     {
                         SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-                        GanVaoDSNew(ph);
+                        GanVaoDSNew(ph,false);
                         SplashScreenManager.CloseForm();
                     }
                     txtMaPhieu.ResetText();
@@ -1037,7 +1068,7 @@ namespace BioNetSangLocSoSinh.Entry
                         ph.MaGoiXN = "DVKhac";
                     }
                     SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-                    GanVaoDSNew(ph);
+                    GanVaoDSNew(ph,true);
                     
                     SplashScreenManager.CloseForm();
                     txtMaNgoai.ResetText();
@@ -1094,7 +1125,7 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     if (columnHandle == this.col_IDPhieu.ColumnHandle)
                     {
-                        PSCMGanViTriChung ph = BioNet_Bus.GetPhieuChuaCoKQ(idPhieu.ToString());
+                        PSCMGanViTriChung ph = BioNet_Bus.GetPhieuChuaCoKQ(idPhieu.ToString(), MayDucLo);
                         if (ph.MaPhieu == null)
                         {
                             DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã phiếu không hợp lệ.");
@@ -1109,6 +1140,15 @@ namespace BioNetSangLocSoSinh.Entry
                             {
                                 if (ph.may.Count()==kvt.may.Count())
                                 {
+                                    foreach(var k in ph.may)
+                                    {
+                                        var kt = kvt.may.FirstOrDefault(x => x.IDMayXN.Equals(k.IDMayXN));
+                                        if(kt==null)
+                                        {
+                                            XtraMessageBox.Show("Mã phiếu không phù hợp với vị trí", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            LoadDSDaLuu();
+                                        }
+                                    }
                                     BioNet_Bus.SuaDanhSachGanXNLuu(ph, stt.ToString(),IDLanDucLo);
                                 }
                                 else
@@ -1123,16 +1163,17 @@ namespace BioNetSangLocSoSinh.Entry
                             SplashScreenManager.CloseForm();
                         }
                         this.LoadDSDaLuu();
-                        this.LoadLstChuaKetQua();
+                        //this.UpdateLoadLstChuaKetQua(idPhieu.ToString());
                      }
                     if (e.Column.Name.Equals("col_MAYXN002_GhiChu"))
                     {
                         var tenvitri = view.GetRowCellDisplayText(rowfocus, "MAYXN002.ViTri");
                         var ghichu = view.GetRowCellDisplayText(rowfocus,"MAYXN002.GhiChuCT");
-                        List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN002 != null).ToList();
-                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN002.ViTri == tenvitri.ToString() && p.GGanViTri.STT_bang  == long.Parse(stt.ToString())).FirstOrDefault();
-                        rsmoi.MAYXN002.GhiChuCT = ghichu.ToString();
-                        BioNet_Bus.ThemGhiChuGanVT(rsmoi);
+                        PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.GGanViTri.STT_bang == long.Parse(stt.ToString()));
+                        //PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN002.ViTri == tenvitri.ToString() && p.GGanViTri.STT_bang  == long.Parse(stt.ToString())).FirstOrDefault();
+                        rss.MAYXN002.GhiChuCT = ghichu.ToString();
+                        BioNet_Bus.ThemGhiChuGanVT(rss);
+                        LoadDSDaLuu();
                     }
                     if (columnHandle == this.col_GhiNhoChung.ColumnHandle)
                     {
@@ -1140,64 +1181,24 @@ namespace BioNetSangLocSoSinh.Entry
                         PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.GGanViTri.STT_bang == long.Parse(stt.ToString()));
                         rss.GhiChuChung = ghichu.ToString();
                         BioNet_Bus.ThemGhiChuGanVT(rss);
+                        LoadDSDaLuu();
                     }
                     if (e.Column.Name.Equals("col_MAYXN001_GhiChu"))
                     {
                         var tenvitri = view.GetRowCellDisplayText(rowfocus, "MAYXN001.ViTri");
                         var ghichu = view.GetRowCellDisplayText(rowfocus, "MAYXN001.GhiChuCT");
-                        List<PSCMGanViTriChung> rss = vt.Where(p => p.MAYXN001 != null).ToList();
-                        PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN001.ViTri == tenvitri.ToString() && p.GGanViTri.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
-                        rsmoi.MAYXN001.GhiChuCT = ghichu.ToString();
-                        BioNet_Bus.ThemGhiChuGanVT(rsmoi);
+                        PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.GGanViTri.STT_bang == long.Parse(stt.ToString()));
+                       // PSCMGanViTriChung rsmoi = rss.Where(p => p.MAYXN001.ViTri == tenvitri.ToString() && p.GGanViTri.STT_bang == long.Parse(stt.ToString())).FirstOrDefault();
+                        rss.MAYXN001.GhiChuCT = ghichu.ToString();
+                        BioNet_Bus.ThemGhiChuGanVT(rss);
+                        LoadDSDaLuu();
                     }
                     if (columnHandle == this.col_MaXetNghiem.ColumnHandle)
                     {
-                        //var kq=vt.FirstOrDefault(x => x.MaXetNghiem.Equals(maxn));
-                        //if (kq==null)
-                        //{
-                        //    PSCMGanViTriChung rss = vt.FirstOrDefault(p => p.STT_bang == long.Parse(stt.ToString()) && p.IDRowGanXN == long.Parse(idrow.ToString()));
-                        //    int countMay = (from pscm in rss.may
-                        //                    join phcm in ph.may on pscm.IDMayXN equals phcm.IDMayXN
-                        //                    where pscm.IDMayXN == phcm.IDMayXN
-                        //                    select new { phcm }).Count();
-                        //    if (countMay == rss.may.Count())
-                        //    {
-                        //        ph.STT_bang = rss.STT_bang;
-                        //        ph.IDRowGanXN = rss.IDRowGanXN;
-                        //        ph.IDLanDucLo = rss.IDLanDucLo;
-                        //        foreach (var pm in ph.may)
-                        //        {
-                        //            switch (pm.IDMayXN)
-                        //            {
-                        //                case "MAYXN001":
-                        //                    {
-                        //                        ph.MAYXN001 = rss.MAYXN001;
-                        //                        break;
-                        //                    }
-                        //                case "MAYXN002":
-                        //                    {
-                        //                        ph.MAYXN002 = rss.MAYXN002;
-                        //                        break;
-                        //                    }
-                        //            }
-                        //        }
-                        //        BioNet_Bus.SuaDanhSachGanXNLuu(ph);
-                        //    }
-                        //    else
-                        //    {
-                        //        DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Thay đổi mã phiếu không hợp lệ vui lòng kiểm tra lại.");
-                        //        warning.ShowDialog();
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã xét nghiệm đã có trong danh sách.");
-                        //    warning.ShowDialog();
-                        //}
+                        
                     }
                 }
-                LoadLstChuaKetQua();
-                LoadDSDaLuu();
+                
             }
             catch
             {
@@ -1370,11 +1371,11 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            List<PSXN_KetQua> lstMauChoKQ = new List<PSXN_KetQua>();
-            lstMauChoKQ = BioNet_Bus.GetDanhSachChoKetQuaXN(DateTime.Parse("2018-07-01"), DateTime.Parse("2018-08-01"), "all");
+            //List<PSXN_KetQua> lstMauChoKQ = new List<PSXN_KetQua>();
+           // lstMauChoKQ = BioNet_Bus.GetDanhSachChoKetQuaXN(DateTime.Parse("2018-07-01"), DateTime.Parse("2018-08-01"), "all");
             foreach (var a in lstMauChoKQ)
             {
-                PSCMGanViTriChung ph = BioNet_Bus.GetPhieuChuaCoKQ(a.MaPhieu);
+                PSCMGanViTriChung ph = BioNet_Bus.GetPhieuChuaCoKQ(a.MaPhieu,MayDucLo);
                 if (ph.MaPhieu == null)
                 {
                     DiaglogFrm.FrmWarning warning = new DiaglogFrm.FrmWarning("Mã phiếu không hợp lệ.");
@@ -1382,7 +1383,7 @@ namespace BioNetSangLocSoSinh.Entry
                 }
                 else
                 {
-                    GanVaoDSNew(ph);
+                    GanVaoDSNew(ph,false);
                 }
             }
         }

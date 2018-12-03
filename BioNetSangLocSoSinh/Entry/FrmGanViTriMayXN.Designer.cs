@@ -77,6 +77,7 @@
             this.cbbGanVT = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtDem = new DevExpress.XtraEditors.TextEdit();
+            this.btnHuyDanhSach = new DevExpress.XtraEditors.SimpleButton();
             this.GCDanhSachGanViTri = new DevExpress.XtraGrid.GridControl();
             this.GVDanhSachGanViTri = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.tt = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -92,8 +93,9 @@
             this.LookUpEditMAYXN001 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.LookUpEditMAYXN002 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtTime = new DevExpress.XtraEditors.TextEdit();
             this.btnExportReview = new DevExpress.XtraEditors.SimpleButton();
-            this.btnHuyDanhSach = new DevExpress.XtraEditors.SimpleButton();
             this.cbbMayXN = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
@@ -135,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditMAYXN002)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
@@ -153,7 +156,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1190, 672);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1263, 672);
             this.splitContainerControl1.SplitterPosition = 307;
             this.splitContainerControl1.TabIndex = 32;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -710,23 +713,35 @@
             this.groupControl2.AppearanceCaption.Options.UseFont = true;
             this.groupControl2.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl2.Controls.Add(this.txtDem);
+            this.groupControl2.Controls.Add(this.btnHuyDanhSach);
             this.groupControl2.Controls.Add(this.GCDanhSachGanViTri);
             this.groupControl2.Controls.Add(this.panelControl6);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(879, 672);
+            this.groupControl2.Size = new System.Drawing.Size(952, 672);
             this.groupControl2.TabIndex = 34;
             this.groupControl2.Text = "Chức năng cấp mã";
             // 
             // txtDem
             // 
             this.txtDem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDem.Location = new System.Drawing.Point(61, 647);
+            this.txtDem.Location = new System.Drawing.Point(61, 645);
             this.txtDem.Name = "txtDem";
             this.txtDem.Properties.ReadOnly = true;
             this.txtDem.Size = new System.Drawing.Size(121, 20);
             this.txtDem.TabIndex = 32;
+            // 
+            // btnHuyDanhSach
+            // 
+            this.btnHuyDanhSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHuyDanhSach.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.garbage;
+            this.btnHuyDanhSach.Location = new System.Drawing.Point(836, 644);
+            this.btnHuyDanhSach.Name = "btnHuyDanhSach";
+            this.btnHuyDanhSach.Size = new System.Drawing.Size(104, 23);
+            this.btnHuyDanhSach.TabIndex = 38;
+            this.btnHuyDanhSach.Text = "Hủy danh sách";
+            this.btnHuyDanhSach.Click += new System.EventHandler(this.btnHuyDanhSach_Click);
             // 
             // GCDanhSachGanViTri
             // 
@@ -739,7 +754,7 @@
             this.LookupGoiXN,
             this.LookUpEditMAYXN001,
             this.LookUpEditMAYXN002});
-            this.GCDanhSachGanViTri.Size = new System.Drawing.Size(875, 616);
+            this.GCDanhSachGanViTri.Size = new System.Drawing.Size(948, 616);
             this.GCDanhSachGanViTri.TabIndex = 31;
             this.GCDanhSachGanViTri.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachGanViTri});
@@ -813,7 +828,7 @@
             this.tt.Name = "tt";
             this.tt.OptionsBand.FixedWidth = true;
             this.tt.VisibleIndex = 0;
-            this.tt.Width = 430;
+            this.tt.Width = 418;
             // 
             // col_STT
             // 
@@ -823,10 +838,11 @@
             this.col_STT.FieldName = "GGanViTri.STT_bang";
             this.col_STT.Name = "col_STT";
             this.col_STT.OptionsColumn.AllowEdit = false;
+            this.col_STT.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.col_STT.OptionsColumn.FixedWidth = true;
             this.col_STT.OptionsColumn.ReadOnly = true;
             this.col_STT.Visible = true;
-            this.col_STT.Width = 30;
+            this.col_STT.Width = 48;
             // 
             // col_IDPhieu
             // 
@@ -835,6 +851,7 @@
             this.col_IDPhieu.Caption = "Mã Phiếu";
             this.col_IDPhieu.FieldName = "GGanViTri.MaPhieu";
             this.col_IDPhieu.Name = "col_IDPhieu";
+            this.col_IDPhieu.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.col_IDPhieu.OptionsColumn.FixedWidth = true;
             this.col_IDPhieu.Visible = true;
             this.col_IDPhieu.Width = 125;
@@ -862,7 +879,7 @@
             this.col_MaGoiXetNghiem.OptionsColumn.FixedWidth = true;
             this.col_MaGoiXetNghiem.OptionsColumn.ReadOnly = true;
             this.col_MaGoiXetNghiem.Visible = true;
-            this.col_MaGoiXetNghiem.Width = 150;
+            this.col_MaGoiXetNghiem.Width = 120;
             // 
             // LookupGoiXN
             // 
@@ -951,8 +968,9 @@
             // 
             this.panelControl6.Appearance.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.panelControl6.Appearance.Options.UseBackColor = true;
+            this.panelControl6.Controls.Add(this.simpleButton1);
+            this.panelControl6.Controls.Add(this.txtTime);
             this.panelControl6.Controls.Add(this.btnExportReview);
-            this.panelControl6.Controls.Add(this.btnHuyDanhSach);
             this.panelControl6.Controls.Add(this.cbbMayXN);
             this.panelControl6.Controls.Add(this.label1);
             this.panelControl6.Controls.Add(this.btnXuatFile);
@@ -963,8 +981,25 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl6.Location = new System.Drawing.Point(2, 22);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(875, 32);
+            this.panelControl6.Size = new System.Drawing.Size(948, 32);
             this.panelControl6.TabIndex = 6;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(918, 3);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(25, 23);
+            this.simpleButton1.TabIndex = 1086;
+            this.simpleButton1.Text = "simpleButton1";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // txtTime
+            // 
+            this.txtTime.Location = new System.Drawing.Point(835, 5);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Properties.ReadOnly = true;
+            this.txtTime.Size = new System.Drawing.Size(78, 20);
+            this.txtTime.TabIndex = 1085;
             // 
             // btnExportReview
             // 
@@ -976,23 +1011,12 @@
             this.btnExportReview.Appearance.Options.UseForeColor = true;
             this.btnExportReview.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.folder;
             this.btnExportReview.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnExportReview.Location = new System.Drawing.Point(716, 4);
+            this.btnExportReview.Location = new System.Drawing.Point(681, 5);
             this.btnExportReview.Name = "btnExportReview";
             this.btnExportReview.Size = new System.Drawing.Size(148, 23);
             this.btnExportReview.TabIndex = 39;
             this.btnExportReview.Text = "Xem trước danh sách";
             this.btnExportReview.Click += new System.EventHandler(this.btnExportReview_Click);
-            // 
-            // btnHuyDanhSach
-            // 
-            this.btnHuyDanhSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHuyDanhSach.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.garbage;
-            this.btnHuyDanhSach.Location = new System.Drawing.Point(763, 4);
-            this.btnHuyDanhSach.Name = "btnHuyDanhSach";
-            this.btnHuyDanhSach.Size = new System.Drawing.Size(103, 23);
-            this.btnHuyDanhSach.TabIndex = 38;
-            this.btnHuyDanhSach.Text = "Hủy danh sách";
-            this.btnHuyDanhSach.Click += new System.EventHandler(this.btnHuyDanhSach_Click);
             // 
             // cbbMayXN
             // 
@@ -1001,10 +1025,8 @@
             this.cbbMayXN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbbMayXN.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Máy 3 Bệnh", "MAYXN01", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Máy 2 Bệnh", "MAYXN02", -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Toàn bộ máy", "MAYXN00", -1)});
-            this.cbbMayXN.Size = new System.Drawing.Size(139, 20);
+            this.cbbMayXN.Size = new System.Drawing.Size(119, 20);
             this.cbbMayXN.TabIndex = 33;
             // 
             // label1
@@ -1027,7 +1049,7 @@
             this.btnXuatFile.Appearance.Options.UseForeColor = true;
             this.btnXuatFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__2_;
             this.btnXuatFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnXuatFile.Location = new System.Drawing.Point(569, 4);
+            this.btnXuatFile.Location = new System.Drawing.Point(537, 5);
             this.btnXuatFile.Name = "btnXuatFile";
             this.btnXuatFile.Size = new System.Drawing.Size(138, 23);
             this.btnXuatFile.TabIndex = 0;
@@ -1070,7 +1092,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 672);
+            this.ClientSize = new System.Drawing.Size(1263, 672);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainerControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1114,6 +1136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
@@ -1192,5 +1215,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn col_NgayLamXN;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditMAYXN001;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditMAYXN002;
+        private DevExpress.XtraEditors.TextEdit txtTime;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

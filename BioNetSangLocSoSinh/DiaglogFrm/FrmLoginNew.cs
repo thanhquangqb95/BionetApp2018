@@ -123,7 +123,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
             {
                 lblCapNhat.Text = "Phiên bản mới nhất";
             }
-            lblUpdate.Text = "Ngày cập nhật: 30/11/2018";
+            lblUpdate.Text = "Ngày cập nhật: 03/12/2018";
             lblVersion.Text = "SLSS.2.0. bản demo" + versionCurrent;
             this.lblError.Visible = false;
             AddItemForm();

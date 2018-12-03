@@ -1243,11 +1243,11 @@ namespace BioNetBLL
                 lst = results;
             return lst;
         }
-        public static PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu)
+        public static PSCMGanViTriChung GetPhieuChuaCoKQ(string maphieu,string IDMayDucLo)
         {
             PSCMGanViTriChung lst = new PSCMGanViTriChung();
             var db = new DataObjects();
-            lst = db.GetPhieuChuaCoKQ(maphieu);
+            lst = db.GetPhieuChuaCoKQ(maphieu,IDMayDucLo);
             return lst;
         }
 
@@ -2387,7 +2387,7 @@ namespace BioNetBLL
         public static List<PsDanhSachMauDuongTinh> GetDanhSachDuongTinh(DateTime NgayBD, DateTime NgayKT, string TenDichVu, string DonVi, string Min, string Max)
         {
             var db = new DataObjects();
-            return db.GetDanhSachDuongTinh(NgayBD, NgayKT, TenDichVu, DonVi, Min, Max);
+            return db.GetDanhSachDuongTinhNew(NgayBD, NgayKT, TenDichVu, DonVi, Min, Max);
         }
         public static List<PSBaoCaoTuyChonDichVu> LoadDSBaoCaoTuyChonDichVu(DateTime NgayBD, DateTime NgayKT, string MaDV, string MaDichVu)
         {
@@ -2415,5 +2415,12 @@ namespace BioNetBLL
             return db.LoadDSThongKeDV(lst, dv,phieu);
         }
 
+        #region Save Tree Report
+        public static string SaveFileReport(string Type, string Group, string Unit,DateTime dateBD, DateTime dateKT,string EndFile)
+        {
+            var db = new BioData();
+            return db.SaveFileReport(Type, Group, Unit, dateBD, dateKT,EndFile);
+        }
+        #endregion
     }
 }

@@ -133,6 +133,9 @@ namespace BioNetSangLocSoSinh.FrmReports
                 bc.Parameters["benh3"].Value = kq.Where(x => x.MaGoiXN.Contains("DVGXN0003")).Count();
                 bc.Parameters["benh5"].Value = kq.Where(x => x.MaGoiXN.Contains("DVGXN0004")).Count();
                 bc.Parameters["MauThuLai"].Value = kq.Where(x => x.MaGoiXN.Contains("DVGXN0001")).Count();
+                bc.Parameters["benh2Hemo"].Value = kq.Where(x => x.MaGoiXN.Contains("DVGXN0008")).Count();
+                bc.Parameters["benh3Hemo"].Value = kq.Where(x => x.MaGoiXN.Contains("DVGXN0007")).Count();
+                bc.Parameters["benh5Hemo"].Value = kq.Where(x => x.MaGoiXN.Contains("DVGXN0006")).Count();
                 bc.Parameters["Ngay"].Value = DateTime.Now.Day;
                 bc.Parameters["Thang"].Value = DateTime.Now.Month;
                 bc.Parameters["Nam"].Value = DateTime.Now.Year;
@@ -174,6 +177,9 @@ namespace BioNetSangLocSoSinh.FrmReports
                     bc.Parameters["benh3"].Value = kqdv.Where(x => x.MaGoiXN.Contains("DVGXN0003")).Count();
                     bc.Parameters["benh5"].Value = kqdv.Where(x => x.MaGoiXN.Contains("DVGXN0004")).Count();
                     bc.Parameters["MauThuLai"].Value = kqdv.Where(x => x.MaGoiXN.Contains("DVGXN0001")).Count();
+                    bc.Parameters["benh2hemo"].Value = kqdv.Where(x => x.MaGoiXN.Contains("DVGXN0008")).Count();
+                    bc.Parameters["benh3Hemo"].Value = kqdv.Where(x => x.MaGoiXN.Contains("DVGXN0007")).Count();
+                    bc.Parameters["benh5Hemo"].Value = kqdv.Where(x => x.MaGoiXN.Contains("DVGXN0006")).Count();
                     bc.Parameters["Ngay"].Value = DateTime.Now.Day;
                     bc.Parameters["Thang"].Value = DateTime.Now.Month;
                     bc.Parameters["Nam"].Value = DateTime.Now.Year;
@@ -286,10 +292,58 @@ namespace BioNetSangLocSoSinh.FrmReports
                         string b2 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0002")).Select(x => x.DonGia).FirstOrDefault().ToString();
                         string b3 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0003")).Select(x => x.DonGia).FirstOrDefault().ToString();
                         string b5 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0004")).Select(x => x.DonGia).FirstOrDefault().ToString();
+                        string b2Hemo = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0008")).Select(x => x.DonGia).FirstOrDefault().ToString();
+                        string b3Hemo = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0007")).Select(x => x.DonGia).FirstOrDefault().ToString();
+                        string b5Gemo = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0006")).Select(x => x.DonGia).FirstOrDefault().ToString();
 
                         ct.Gia2Benh = Convert.ToInt32(goi.Where(x => x.IDGoiDichVuChung.Contains("DVGXN0002")).Select(x => x.DonGia).FirstOrDefault().ToString());
                         ct.Gia3Benh = Convert.ToInt32(goi.Where(x => x.IDGoiDichVuChung.Contains("DVGXN0003")).Select(x => x.DonGia).FirstOrDefault().ToString());
                         ct.Gia5Benh = Convert.ToInt32(goi.Where(x => x.IDGoiDichVuChung.Contains("DVGXN0004")).Select(x => x.DonGia).FirstOrDefault().ToString());
+                    try
+                    {
+                        ct.Gia2BenhHemo = Convert.ToInt32(goi.Where(x => x.IDGoiDichVuChung.Contains("DVGXN0008")).Select(x => x.DonGia).FirstOrDefault().ToString());
+                        ct.SL2BenhHemo = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0008") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
+                        ct.SL2BenhHemoT1 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0008") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T1DenNgay.Date).ToList().Count().ToString();
+                        ct.SL2BenhHemoT2 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0008") && x.NgayCoKQ.Value.Date >= T2TuNgay.Date && x.NgayCoKQ.Value.Date <= T2DenNgay.Date).ToList().Count().ToString();
+                        ct.SL2BenhHemoT3 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0008") && x.NgayCoKQ.Value.Date >= T3TuNgay.Date && x.NgayCoKQ.Value.Date <= T3DenNgay.Date).ToList().Count().ToString();
+                        ct.SL2BenhHemoT4 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0008") && x.NgayCoKQ.Value.Date >= T4TuNgay.Date && x.NgayCoKQ.Value.Date <= T4DenNgay.Date).ToList().Count().ToString();
+                        ct.SL2BenhHemoT5 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0008") && x.NgayCoKQ.Value.Date >= T5TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
+                    }
+                    catch
+                    {
+
+                    }
+                    try
+                    {
+                        ct.Gia3BenhHemo = Convert.ToInt32(goi.Where(x => x.IDGoiDichVuChung.Contains("DVGXN0007")).Select(x => x.DonGia).FirstOrDefault().ToString());
+                        ct.SL3BenhHemo = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0007") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
+                        ct.SL3BenhHemoT1 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0007") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T1DenNgay.Date).ToList().Count().ToString();
+                        ct.SL3BenhHemoT2 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0007") && x.NgayCoKQ.Value.Date >= T2TuNgay.Date && x.NgayCoKQ.Value.Date <= T2DenNgay.Date).ToList().Count().ToString();
+                        ct.SL3BenhHemoT3 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0007") && x.NgayCoKQ.Value.Date >= T3TuNgay.Date && x.NgayCoKQ.Value.Date <= T3DenNgay.Date).ToList().Count().ToString();
+                        ct.SL3BenhHemoT4 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0007") && x.NgayCoKQ.Value.Date >= T4TuNgay.Date && x.NgayCoKQ.Value.Date <= T4DenNgay.Date).ToList().Count().ToString();
+                        ct.SL3BenhHemoT5 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0007") && x.NgayCoKQ.Value.Date >= T5TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
+                    }
+                    catch
+                    {
+
+                    }
+                    try
+                    {
+                        ct.Gia5BenhHemo = Convert.ToInt32(goi.Where(x => x.IDGoiDichVuChung.Contains("DVGXN0006")).Select(x => x.DonGia).FirstOrDefault().ToString());
+                        ct.SL5BenhHemo = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0006") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
+                        ct.SL5BenhHemoT1 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0006") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T1DenNgay.Date).ToList().Count().ToString();
+                        ct.SL5BenhHemoT2 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0006") && x.NgayCoKQ.Value.Date >= T2TuNgay.Date && x.NgayCoKQ.Value.Date <= T2DenNgay.Date).ToList().Count().ToString();
+                        ct.SL5BenhHemoT3 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0006") && x.NgayCoKQ.Value.Date >= T3TuNgay.Date && x.NgayCoKQ.Value.Date <= T3DenNgay.Date).ToList().Count().ToString();
+                        ct.SL5BenhHemoT4 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0006") && x.NgayCoKQ.Value.Date >= T4TuNgay.Date && x.NgayCoKQ.Value.Date <= T4DenNgay.Date).ToList().Count().ToString();
+                        ct.SL5BenhHemoT5 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0006") && x.NgayCoKQ.Value.Date >= T5TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
+                    }
+                    catch
+                    {
+
+                    }
+                        
+                        
+                        
 
                         ct.SL2Benh = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0002") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
                         ct.SL2BenhT1 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0002") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T1DenNgay.Date).ToList().Count().ToString();
@@ -297,6 +351,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                         ct.SL2BenhT3 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0002") && x.NgayCoKQ.Value.Date >= T3TuNgay.Date && x.NgayCoKQ.Value.Date <= T3DenNgay.Date).ToList().Count().ToString();
                         ct.SL2BenhT4 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0002") && x.NgayCoKQ.Value.Date >= T4TuNgay.Date && x.NgayCoKQ.Value.Date <= T4DenNgay.Date).ToList().Count().ToString();
                         ct.SL2BenhT5 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0002") && x.NgayCoKQ.Value.Date >= T5TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
+
 
                         ct.SL3Benh = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0003") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
                         ct.SL3BenhT1 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0003") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T1DenNgay.Date).ToList().Count().ToString();
@@ -312,6 +367,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                         ct.SL5BenhT4 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0004") && x.NgayCoKQ.Value.Date >= T4TuNgay.Date && x.NgayCoKQ.Value.Date <= T4DenNgay.Date).ToList().Count().ToString();
                         ct.SL5BenhT5 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0004") && x.NgayCoKQ.Value.Date >= T5TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
 
+                       
                         ct.SLThuMauLai = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0001") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T5DenNgay.Date).ToList().Count().ToString();
                         ct.SLThuMauLaiT1 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0001") && x.NgayCoKQ.Value.Date >= T1TuNgay.Date && x.NgayCoKQ.Value.Date <= T1DenNgay.Date).ToList().Count().ToString();
                         ct.SLThuMauLaiT2 = phieu.Where(x => x.MaGoiXN.Contains("DVGXN0001") && x.NgayCoKQ.Value.Date >= T2TuNgay.Date && x.NgayCoKQ.Value.Date <= T2DenNgay.Date).ToList().Count().ToString();
@@ -321,20 +377,35 @@ namespace BioNetSangLocSoSinh.FrmReports
 
                         ct.TongTienT1 = ((Convert.ToInt32(ct.SL2BenhT1) * ct.Gia2Benh) +
                                         (Convert.ToInt32(ct.SL3BenhT1) * ct.Gia3Benh) +
-                                        (Convert.ToInt32(ct.SL5BenhT1) * ct.Gia5Benh));
+                                        (Convert.ToInt32(ct.SL5BenhT1) * ct.Gia5Benh)) +
+                                        ((Convert.ToInt32(ct.SL2BenhHemoT1) * ct.Gia2BenhHemo) +
+                                        (Convert.ToInt32(ct.SL3BenhHemoT1) * ct.Gia3BenhHemo) +
+                                        (Convert.ToInt32(ct.SL5BenhHemoT1) * ct.Gia5BenhHemo));
                         ct.TongTienT2 = ((Convert.ToInt32(ct.SL2BenhT2) * ct.Gia2Benh) +
                                         (Convert.ToInt32(ct.SL3BenhT2) * ct.Gia3Benh) +
-                                        (Convert.ToInt32(ct.SL5BenhT2) * ct.Gia5Benh));
-                        ct.TongTienT3 = ((Convert.ToInt32(ct.SL2BenhT3) * ct.Gia2Benh) +
+                                        (Convert.ToInt32(ct.SL5BenhT2) * ct.Gia5Benh)) +
+                                        ((Convert.ToInt32(ct.SL2BenhHemoT2) * ct.Gia2BenhHemo) +
+                                        (Convert.ToInt32(ct.SL3BenhHemoT2) * ct.Gia3BenhHemo) +
+                                        (Convert.ToInt32(ct.SL5BenhHemoT2) * ct.Gia5BenhHemo));
+                    ct.TongTienT3 = ((Convert.ToInt32(ct.SL2BenhT3) * ct.Gia2Benh) +
                                         (Convert.ToInt32(ct.SL3BenhT3) * ct.Gia3Benh) +
-                                        (Convert.ToInt32(ct.SL5BenhT3) * ct.Gia5Benh));
-                        ct.TongTienT4 = ((Convert.ToInt32(ct.SL2BenhT4) * ct.Gia2Benh) +
+                                        (Convert.ToInt32(ct.SL5BenhT3) * ct.Gia5Benh)) +
+                                        ((Convert.ToInt32(ct.SL2BenhHemoT3) * ct.Gia2BenhHemo) +
+                                        (Convert.ToInt32(ct.SL3BenhHemoT3) * ct.Gia3BenhHemo) +
+                                        (Convert.ToInt32(ct.SL5BenhHemoT3) * ct.Gia5BenhHemo));
+                    ct.TongTienT4 = ((Convert.ToInt32(ct.SL2BenhT4) * ct.Gia2Benh) +
                                         (Convert.ToInt32(ct.SL3BenhT4) * ct.Gia3Benh) +
-                                        (Convert.ToInt32(ct.SL5BenhT4) * ct.Gia5Benh));
-                        ct.TongTienT5 = ((Convert.ToInt32(ct.SL2BenhT5) * ct.Gia2Benh) +
+                                        (Convert.ToInt32(ct.SL5BenhT4) * ct.Gia5Benh)) +
+                                        ((Convert.ToInt32(ct.SL2BenhHemoT4) * ct.Gia2BenhHemo) +
+                                        (Convert.ToInt32(ct.SL3BenhHemoT4) * ct.Gia3BenhHemo) +
+                                        (Convert.ToInt32(ct.SL5BenhHemoT4) * ct.Gia5BenhHemo));
+                    ct.TongTienT5 = ((Convert.ToInt32(ct.SL2BenhT5) * ct.Gia2Benh) +
                                         (Convert.ToInt32(ct.SL3BenhT5) * ct.Gia3Benh) +
-                                        (Convert.ToInt32(ct.SL5BenhT5) * ct.Gia5Benh));
-                        ct.TongTienDV = ct.TongTienT1 + ct.TongTienT2 + ct.TongTienT3 + ct.TongTienT4 + ct.TongTienT5;
+                                        (Convert.ToInt32(ct.SL5BenhT5) * ct.Gia5Benh)) +
+                                        ((Convert.ToInt32(ct.SL2BenhHemoT5) * ct.Gia2BenhHemo) +
+                                        (Convert.ToInt32(ct.SL3BenhHemoT5) * ct.Gia3BenhHemo) +
+                                        (Convert.ToInt32(ct.SL5BenhHemoT5) * ct.Gia5BenhHemo));
+                    ct.TongTienDV = ct.TongTienT1 + ct.TongTienT2 + ct.TongTienT3 + ct.TongTienT4 + ct.TongTienT5;
                         tc.Add(ct);
                     }
                 
@@ -550,6 +621,21 @@ namespace BioNetSangLocSoSinh.FrmReports
                         case "DVGXN0004":
                             {
                                 bcct.TenGoiDV = "Gói XN cơ bản 05 bệnh";
+                                break;
+                            }
+                        case "DVGXN0006":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 05 bệnh + Hemo";
+                                break;
+                            }
+                        case "DVGXN0007":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 03 bệnh + Hemo";
+                                break;
+                            }
+                        case "DVGXN0008":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 02 bệnh + Hemo";
                                 break;
                             }
                         default:

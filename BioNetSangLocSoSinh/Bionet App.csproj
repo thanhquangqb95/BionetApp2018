@@ -713,12 +713,6 @@
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhDonViChiTiet.Designer.cs">
       <DependentUpon>rptBaoCaoTaiChinhDonViChiTiet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhHoaDon.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhHoaDon.Designer.cs">
-      <DependentUpon>rptBaoCaoTaiChinhHoaDon.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1187,9 +1181,6 @@
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhDonViChiTiet.resx">
       <DependentUpon>rptBaoCaoTaiChinhDonViChiTiet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhHoaDon.resx">
-      <DependentUpon>rptBaoCaoTaiChinhHoaDon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoTaiChinhTongHop.resx">
       <DependentUpon>rptBaoCaoTaiChinhTongHop.cs</DependentUpon>
     </EmbeddedResource>
@@ -1419,6 +1410,8 @@
     <None Include="Resources\drill.png" />
     <None Include="Resources\conveyor.png" />
     <None Include="Resources\bar-chart.png" />
+    <None Include="Resources\business.png" />
+    <None Include="Resources\analytics.png" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
@@ -1461,6 +1454,7 @@
     <None Include="Resources\microscope %281%29.png" />
     <None Include="Resources\man.png" />
     <None Include="Resources\pdf %281%29.png" />
+    <None Include="Resources\money.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

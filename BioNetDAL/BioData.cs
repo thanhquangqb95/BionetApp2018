@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace BioNetDAL
 {
@@ -840,6 +841,59 @@ namespace BioNetDAL
         }
 
         #endregion
-       
+        public static string convertToUnSign(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+        #region Save Tree Report
+        public string SaveFileReport(string Type,string Group,string Unit,DateTime dateBD,DateTime dateKT,string EndFile)
+        {
+            string LinkCenter = Application.StartupPath + "\\Report";
+            try
+            {
+                Unit = convertToUnSign(Unit);
+                Unit = Unit.Replace(" ", "");
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + Type;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + Group;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + DateTime.Now.ToString("yyyy.MM.dd") ;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                if(!dateBD.ToString().Equals(dateBD.ToString()))
+                {
+                    LinkCenter = LinkCenter + "\\" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd")+EndFile;
+                }
+                else
+                {
+                    LinkCenter = LinkCenter + "\\" + Type + "_" + Unit + "_" + DateTime.Now.ToString("yyyy.MM.dd")+ EndFile;
+                }
+                if (File.Exists(LinkCenter))
+                {
+                    File.Delete(LinkCenter);
+                }
+            }
+            catch
+            {
+
+            }
+            return LinkCenter;
+        }
+        #endregion
+
     }
 }
