@@ -743,6 +743,12 @@
     <Compile Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.Designer.cs">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\rptQuanLyMauDuongTinh.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptQuanLyMauDuongTinh.Designer.cs">
+      <DependentUpon>rptQuanLyMauDuongTinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptReportQuanLyMauDuongTinh.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1195,6 +1201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsCapMaXetNghiep\rptReportCapMaXetNghiemCoBan.resx">
       <DependentUpon>rptReportCapMaXetNghiemCoBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptQuanLyMauDuongTinh.resx">
+      <DependentUpon>rptQuanLyMauDuongTinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptReportQuanLyMauDuongTinh.resx">
       <DependentUpon>rptReportQuanLyMauDuongTinh.cs</DependentUpon>

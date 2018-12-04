@@ -615,6 +615,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                 return;
             }
             document.Open();
+
             foreach (string maPhieu in MaPhieu)
             {
                 string fileName =  Application.StartupPath + "\\PhieuKetQua\\" + maDVCS + "\\" + maPhieu + ".pdf";

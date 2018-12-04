@@ -746,8 +746,9 @@ namespace BioNetSangLocSoSinh.Entry
                 
                 if (SaveFile)
                 {
-                    linkfile = LinkDate + "SodoXetNghiem" + DateTime.Now.Day+"." + DateTime.Now.Month+"." + DateTime.Now.Year+ ".xlsx";
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + ".txt") )
+                    linkfile = LinkDate +MayDucLo+ "SodoXetNghiem" + DateTime.Now.Day+"." + DateTime.Now.Month+"." + DateTime.Now.Year+"."+DateTime.Now.Hour+"."+DateTime.Now.Minute+ ".xlsx";
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "."
+                        + DateTime.Now.Year + "." + DateTime.Now.Hour + "." + DateTime.Now.Minute + ".txt") )
                     {
                         var sttdia = vtmay1.Select(x => x.STTDia).ToList().Distinct();
                         foreach(var dia in sttdia)
@@ -1148,8 +1149,12 @@ namespace BioNetSangLocSoSinh.Entry
                                             XtraMessageBox.Show("Mã phiếu không phù hợp với vị trí", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             LoadDSDaLuu();
                                         }
+                                        else
+                                        {
+                                            BioNet_Bus.SuaDanhSachGanXNLuu(ph, stt.ToString(), IDLanDucLo);
+                                        }
                                     }
-                                    BioNet_Bus.SuaDanhSachGanXNLuu(ph, stt.ToString(),IDLanDucLo);
+                                    
                                 }
                                 else
                                 {

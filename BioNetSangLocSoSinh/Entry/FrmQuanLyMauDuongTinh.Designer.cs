@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmQuanLyMauDuongTinh));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -83,6 +84,7 @@
             this.col_CLMau = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KetLuan = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_GiaiQuyet = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.txtDate = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDichVu.Properties)).BeginInit();
@@ -99,11 +101,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachDuongTinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditGoiXN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.txtDate);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -202,14 +206,15 @@
             this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.btnClear.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear.Location = new System.Drawing.Point(1003, 33);
+            this.btnClear.Location = new System.Drawing.Point(1003, 36);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 23);
-            toolTipTitleItem2.Text = "Bỏ lọc";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnClear.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 1080;
             this.btnClear.Text = "Bỏ lọc";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSearch
             // 
@@ -395,7 +400,6 @@
             this.GCDanhSachMauDuongTinh.TabIndex = 0;
             this.GCDanhSachMauDuongTinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachDuongTinh});
-            this.GCDanhSachMauDuongTinh.Click += new System.EventHandler(this.GCDanhSachMauDuongTinh_Click);
             // 
             // GVDanhSachDuongTinh
             // 
@@ -426,6 +430,7 @@
             this.GVDanhSachDuongTinh.GridControl = this.GCDanhSachMauDuongTinh;
             this.GVDanhSachDuongTinh.Name = "GVDanhSachDuongTinh";
             this.GVDanhSachDuongTinh.OptionsBehavior.ReadOnly = true;
+            this.GVDanhSachDuongTinh.OptionsPrint.RtfReportHeader = resources.GetString("GVDanhSachDuongTinh.OptionsPrint.RtfReportHeader");
             this.GVDanhSachDuongTinh.OptionsView.ShowFooter = true;
             this.GVDanhSachDuongTinh.OptionsView.ShowGroupPanel = false;
             // 
@@ -695,6 +700,17 @@
             this.col_GiaiQuyet.Visible = true;
             this.col_GiaiQuyet.Width = 167;
             // 
+            // txtDate
+            // 
+            this.txtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDate.EditValue = "";
+            this.txtDate.Enabled = false;
+            this.txtDate.Location = new System.Drawing.Point(1129, 39);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Properties.ReadOnly = true;
+            this.txtDate.Size = new System.Drawing.Size(119, 20);
+            this.txtDate.TabIndex = 1087;
+            // 
             // FrmQuanLyMauDuongTinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,6 +744,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachDuongTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditGoiXN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -787,5 +804,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit1View;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.TextEdit txtDate;
     }
 }

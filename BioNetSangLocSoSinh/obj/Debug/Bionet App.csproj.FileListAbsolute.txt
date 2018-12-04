@@ -8318,3 +8318,4 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CopyComplete
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptQuanLyMauDuongTinh.resources

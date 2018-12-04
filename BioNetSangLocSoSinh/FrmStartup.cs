@@ -1563,7 +1563,7 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-                Entry.FrmQuanLyMauDuongTinh frm = new Entry.FrmQuanLyMauDuongTinh();
+                Entry.FrmQuanLyMauDuongTinh frm = new Entry.FrmQuanLyMauDuongTinh(emp);
                 TabCreating(xTabMain, "Danh sách lọc dương tính", frm);
                 SplashScreenManager.CloseForm();
             }

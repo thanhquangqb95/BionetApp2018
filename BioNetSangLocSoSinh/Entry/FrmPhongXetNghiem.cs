@@ -16,6 +16,8 @@ using MsExcel = Microsoft.Office.Interop.Excel;
 using Excel;
 using System.IO;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraSplashScreen;
+using BioNetSangLocSoSinh.DiaglogFrm;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -1411,7 +1413,8 @@ namespace BioNetSangLocSoSinh.Entry
                         {
                             try
                             {
-                                excelReader.IsFirstRowAsColumnNames = true;
+                            SplashScreenManager.ShowForm(this, typeof(WaitingLoadData), true, true, false);
+                            excelReader.IsFirstRowAsColumnNames = true;
                                 var result = excelReader.AsDataSet();
                                 var workSheet = excelReader.AsDataSet().Tables[1];
                                 DataTable tabstt = new DataTable();
@@ -1699,11 +1702,11 @@ namespace BioNetSangLocSoSinh.Entry
                                 {
                                     XtraMessageBox.Show("Không có mẫu nào trong danh sách chờ!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
-                                #endregion Add dữ liệu vào DB
+                            #endregion Add dữ liệu vào DB
 
+                            SplashScreenManager.CloseForm();
 
-
-                            }
+                        }
                             catch (Exception ex)
                             {
                                 excelReader.Close();
@@ -1748,6 +1751,7 @@ namespace BioNetSangLocSoSinh.Entry
                         {
                             try
                             {
+                                SplashScreenManager.ShowForm(this, typeof(WaitingLoadData), true, true, false);
                                 excelReader.IsFirstRowAsColumnNames = true;
                                 var result = excelReader.AsDataSet();
                                 excelReader.Close();
@@ -1814,6 +1818,7 @@ namespace BioNetSangLocSoSinh.Entry
                                     }
                                 }
                                 #region Add dữ liệu vào DB
+                               
                                 if (this.lstMauChoKQ.Count > 0)
                                 {
                                     if (lst3b.Count > 0)
@@ -1912,6 +1917,7 @@ namespace BioNetSangLocSoSinh.Entry
                                 {
                                     XtraMessageBox.Show("Không có mẫu nào trong danh sách chờ!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
+                                SplashScreenManager.CloseForm();
                                 #endregion Add dữ liệu vào DB
                             }
                             catch (Exception ex)

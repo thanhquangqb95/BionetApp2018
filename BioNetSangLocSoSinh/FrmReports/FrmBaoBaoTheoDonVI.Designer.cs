@@ -98,6 +98,7 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1288, 82);
             this.panelControl1.TabIndex = 3;
+            this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
             // simpleButton1
             // 

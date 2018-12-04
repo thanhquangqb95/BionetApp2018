@@ -26,7 +26,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         }
 
         #endregion
-
+        
         public enum SplashScreenCommand
         {
         }
