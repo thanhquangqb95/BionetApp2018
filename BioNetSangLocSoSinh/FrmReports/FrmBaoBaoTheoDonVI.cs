@@ -17,6 +17,7 @@ using BioNetSangLocSoSinh.DiaglogFrm;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
+using System.Diagnostics;
 
 namespace BioNetSangLocSoSinh.FrmReports
 {
@@ -551,31 +552,41 @@ namespace BioNetSangLocSoSinh.FrmReports
         }
         private void ExportDataToExcelFile()
         {
-            SaveFileDialog ofd = new SaveFileDialog();
-            ofd.Filter = "Excel File(*.xlsx)|*.xlsx";
-            ofd.FileName = "BaoCaoThongKeTheoDonVi"+txtChiCuc.Text+ DateTime.Now.Date.ToString("yyyy-MM-dd") + ".xlsx";
-            if (ofd.ShowDialog() == DialogResult.OK)
+            try
             {
-                if (ofd.FileName.Length > 0)
+                string TenDonVi = string.Empty;
+                if (txtDonVi.EditValue.ToString() == "all")
                 {
-                    try
+                    if (txtChiCuc.EditValue.ToString() == "all")
                     {
-
-                        this.GVDanhSachDonVi.ExportToXlsx(ofd.FileName);
+                        TenDonVi = BioNet_Bus.GetThongTinTrungTam().TenTrungTam;
                     }
-                    catch
+                    else
                     {
-                        XtraMessageBox.Show("Không thể lưu file này! Vui lòng chọn đường dẫn khác.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        TenDonVi = BioNet_Bus.GetThongTinChiCuc(txtChiCuc.EditValue.ToString()).TenChiCuc;
                     }
                 }
+                else
+                {
+                    TenDonVi = BioNet_Bus.GetThongTinDonViCoSo(txtDonVi.EditValue.ToString()).TenDVCS;
+                }
+                string Folder = BioNet_Bus.GetFileReport("Unit", "Excel");
+                string Link = BioNet_Bus.SaveFileReport(Folder, "Unit", TenDonVi, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, ".xlsx");
+                this.GVDanhSachDonVi.ExportToXlsx(Link);
+                XtraMessageBox.Show("Xuất file báo cáo thành công", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(Folder);
             }
+            catch
+            {
+                XtraMessageBox.Show("Xuất file báo cáo lỗi", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }       
         }
 
         private void btnXuatPDF_Click(object sender, EventArgs e)
         {
             GopPDF();
         }
-        private void XuatFile1(PSThongKeTheoDonVi tk)
+        private void XuatFile1(PSThongKeTheoDonVi tk,string Link)
         {
             try
             {
@@ -646,7 +657,7 @@ namespace BioNetSangLocSoSinh.FrmReports
 
                     Reports.RepostsBaoCao.rptBaoCaoCBTheoDonVi datarp = new Reports.RepostsBaoCao.rptBaoCaoCBTheoDonVi();
                     datarp.DataSource = pdfdv;
-                    string Link = BioNet_Bus.SaveFileReport("Temp", "Temp", tk.MaDV, DateTime.Now, DateTime.Now, ".pdf");
+                   // string Link = BioNet_Bus.SaveFileReport("Temp", "Temp", tk.MaDV, DateTime.Now, DateTime.Now, ".pdf");
                     datarp.ExportToPdf(Link);
                     //Reports.frmReport rpt = new Reports.frmReport(datarp);
                     //rpt.ShowDialog();
@@ -655,15 +666,9 @@ namespace BioNetSangLocSoSinh.FrmReports
             {
             }
         }
-        private void XuatFile2(PSThongKeTheoDonVi tk)
+        private void XuatFile2(PSThongKeTheoDonVi tk,string Link,int i)
         {
-                if (tk.MaDV.Equals("all"))
-                {
-
-                }
-                else
-                {
-
+               
                     var p1 = listBaoCao.Where(y => y.phieu1.IDCoSo.Equals(tk.MaDV)).ToList();
                     var p2 = listBaoCao.Where(x => x.phieu2 != null).Where(y => y.phieu2.IDCoSo.Equals(tk.MaDV)).ToList();
                     var t1 = p1.Where(y => y.KQ1.isNguyCoCao == false).ToList();
@@ -772,14 +777,14 @@ namespace BioNetSangLocSoSinh.FrmReports
                     tkdv.PSThongKePDFDonViNhom.Add(nhom);
                     tkdv.PSThongKePDFDonViNhom.Add(nhom2);
                     tkdv.PSThongKePDFDonViNhom.Add(nhom3);
-                    Reports.RepostsBaoCao.rptBaoCaoNhomDonViTheoKQXN rptdv = new Reports.RepostsBaoCao.rptBaoCaoNhomDonViTheoKQXN();
+                    Reports.RepostsBaoCao.rptBaoCaoNhomDonViTheoKQXN rptdv = new Reports.RepostsBaoCao.rptBaoCaoNhomDonViTheoKQXN(i);
                     rptdv.DataSource = tkdv;
-                    string Link = BioNet_Bus.SaveFileReport("Temp", "Temp", tk.MaDV, DateTime.Now, DateTime.Now, ".pdf");
+                    //string Link = BioNet_Bus.SaveFileReport("Temp", "Temp", tk.MaDV, DateTime.Now, DateTime.Now, ".pdf");
                     rptdv.ExportToPdf(Link);
                     //Reports.frmReport reponse = new Reports.frmReport(rptdv);
                     //reponse.ShowDialog();
 
-                }
+                
         }
         public  void GopPDF()
         {
@@ -805,12 +810,14 @@ namespace BioNetSangLocSoSinh.FrmReports
                     MaDonVi = this.txtDonVi.EditValue.ToString();
                     ldv = lstTK.Where(x => x.MaDV.Equals(MaDonVi)).ToList();
                 }
-               
-
+                string Folder = BioNet_Bus.GetFileReport("Unit", "PDF");
                 //File1
-                foreach(var tk in ldv)
+                SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
+                foreach (var tk in ldv)
                 {
-                    string Link = BioNet_Bus.SaveFileReport("Unit", "Unit", tk.MaDV, DateTime.Now, DateTime.Now, ".pdf");
+                    string TenDonVi = BioNet_Bus.GetThongTinDonViCoSo(tk.MaDV).TenDVCS;
+                    
+                    string Link = BioNet_Bus.SaveFileReport(Folder, "Unit", TenDonVi, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, ".pdf");
                     Document document = new Document();
                     PdfCopy writer = new PdfCopy(document, new FileStream(Link, FileMode.Create));
                     if (writer == null)
@@ -818,15 +825,16 @@ namespace BioNetSangLocSoSinh.FrmReports
                         return;
                     }
                     document.Open();
-                    XuatFile1(tk);
-                    string fileName = BioNet_Bus.SaveFileReport("Temp", "Temp", tk.MaDV, DateTime.Now, DateTime.Now, ".pdf");
+                    string fileName = BioNet_Bus.SaveFileTemp("Unit", TenDonVi, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, ".pdf");
+                    XuatFile1(tk, fileName);
                     PdfReader reader = new PdfReader(fileName);
                     reader.ConsolidateNamedDestinations();
-
+                    int str = 1;
                     for (int i = 1; i <= reader.NumberOfPages; i++)
                     {
                         PdfImportedPage page = writer.GetImportedPage(reader, i);
                         writer.AddPage(page);
+                        str = str+1;
                     }
                     PRAcroForm form = reader.AcroForm;
                     if (form != null)
@@ -838,18 +846,16 @@ namespace BioNetSangLocSoSinh.FrmReports
                     {
                         File.Delete(fileName);
                     }
-                    writer.Close();
-                    document.Close();
                     //File2
-                    document.Open();
-                    XuatFile2(tk);
-                    string fileName2 = BioNet_Bus.SaveFileReport("Temp", "Temp", tk.MaDV, DateTime.Now, DateTime.Now, ".pdf");
-                    PdfReader reader2 = new PdfReader(fileName);
+                    string fileName2 = BioNet_Bus.SaveFileTemp("Unit", TenDonVi, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, ".pdf");
+                    XuatFile2(tk,fileName2,str);
+                    PdfReader reader2 = new PdfReader(fileName2);
                     reader2.ConsolidateNamedDestinations();
-                    for (int i = 1; i <= reader2.NumberOfPages; i++)
+                    for (int i=1; i <= reader2.NumberOfPages; i++)
                     {
-                        PdfImportedPage page = writer.GetImportedPage(reader2, i);
+                        PdfImportedPage page = writer.GetImportedPage(reader2,i);
                         writer.AddPage(page);
+                        str = str + 1;
                     }
                     PRAcroForm form2 = reader2.AcroForm;
                     if (form2 != null)
@@ -864,10 +870,11 @@ namespace BioNetSangLocSoSinh.FrmReports
                     writer.Close();
                     document.Close();
                 }
-                
+                SplashScreenManager.CloseForm();
                 XtraMessageBox.Show("Xuất file báo cáo thành công", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(Folder);
             }
-            catch
+            catch(Exception ex)
             {
                 XtraMessageBox.Show("Xuất file báo cáo thất bại", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

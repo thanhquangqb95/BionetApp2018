@@ -839,16 +839,89 @@ namespace BioNetDAL
             }
             catch { return false; }
         }
-
+        public PSDanhMucMayXN GetTTMayXN(string IDMayXN)
+        {
+            return  db.PSDanhMucMayXNs.FirstOrDefault(x => x.IDMayXN.Equals(IDMayXN));
+        }
+        public PSDanhMucMayDucLo GetTTMayDucLo(string IDMayDucLo)
+        {
+            return db.PSDanhMucMayDucLos.FirstOrDefault(x => x.IDMayDucLo.Equals(IDMayDucLo));
+        }
         #endregion
-        public static string convertToUnSign(string s)
+        public string convertToUnSign(string s)
         {
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
             string temp = s.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
         #region Save Tree Report
-        public string SaveFileReport(string Type,string Group,string Unit,DateTime dateBD,DateTime dateKT,string EndFile)
+        public string GetFileReport(string Type, string EndFile)
+        {
+            string LinkCenter = Application.StartupPath + "\\Report";
+            try
+            {
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + Type;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + EndFile;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + DateTime.Now.ToString("yyyy.MM.dd");
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                DirectoryInfo dirInfo = new DirectoryInfo(LinkCenter);
+                DirectoryInfo[] childFolder = dirInfo.GetDirectories();
+                LinkCenter = LinkCenter + "\\Serial" + (childFolder.ToList().Count() + 1);
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+            }
+            catch
+            {
+            }
+            return LinkCenter;
+        }
+        public string SaveFileReport(string Folder,string Type, string Unit,DateTime dateBD,DateTime dateKT,string EndFile)
+        {
+            string LinkCenter = Folder;
+            try
+            {
+                Unit = convertToUnSign(Unit);
+                Unit = Unit.Replace(" ", "");
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                if (!dateBD.ToString().Equals(dateBD.ToString()))
+                {
+                    LinkCenter = LinkCenter + "\\Report" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd")+EndFile;
+                }
+                else
+                {
+                    LinkCenter = LinkCenter + "\\Report" + Type + "_" + Unit + "_" + DateTime.Now.ToString("yyyy.MM.dd")+ EndFile;
+                }
+                if (File.Exists(LinkCenter))
+                {
+                    File.Delete(LinkCenter);
+                }
+            }
+            catch
+            {
+            }
+            return LinkCenter;
+        }
+        public string SaveFileTemp(string Group, string Unit, DateTime dateBD, DateTime dateKT, string EndFile)
         {
             string LinkCenter = Application.StartupPath + "\\Report";
             try
@@ -859,7 +932,57 @@ namespace BioNetDAL
                 {
                     Directory.CreateDirectory(LinkCenter);
                 }
-                LinkCenter = LinkCenter + "\\" + Type;
+                LinkCenter = LinkCenter + "\\Temp"  ;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + Group;
+                string LinkTT = LinkCenter;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + DateTime.Now.ToString("yyyy.MM.dd");
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                if (!dateBD.ToString().Equals(dateBD.ToString()))
+                {
+                    LinkCenter = LinkCenter + "\\Temp_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd.HH.mm") + EndFile;
+                }
+                else
+                {
+                    LinkCenter = LinkCenter + "\\Temp_" + Unit + "_" + DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + EndFile;
+                }
+                if (File.Exists(LinkCenter))
+                {
+                    File.Delete(LinkTT);
+                }
+            }
+            catch
+            {
+            }
+            return LinkCenter;
+        }
+        public string GetFileGanViTri(string Group,string Machine,string STT)
+        {
+            string LinkCenter = Application.StartupPath + "\\TestChart";
+            try
+            {
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\" + DateTime.Now.ToString("yyyy.MM.dd");
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                string TenMayDL = convertToUnSign(GetTTMayDucLo(Machine).TenMayDucLo);
+                TenMayDL = TenMayDL.Replace(" ", "");
+                LinkCenter = LinkCenter + "\\" + TenMayDL;
                 if (!File.Exists(LinkCenter))
                 {
                     Directory.CreateDirectory(LinkCenter);
@@ -869,30 +992,63 @@ namespace BioNetDAL
                 {
                     Directory.CreateDirectory(LinkCenter);
                 }
-                LinkCenter = LinkCenter + "\\" + DateTime.Now.ToString("yyyy.MM.dd") ;
+                LinkCenter = LinkCenter + "\\Serial" + STT;
                 if (!File.Exists(LinkCenter))
                 {
                     Directory.CreateDirectory(LinkCenter);
                 }
-                if(!dateBD.ToString().Equals(dateBD.ToString()))
+            }
+            catch
+            {
+            }
+            return LinkCenter;
+        }
+        public string GetFileGanViTriTemp(string Machine, string STT,string IDMayXN)
+        {
+            string LinkCenter = Application.StartupPath + "\\TestChart";
+            try
+            {
+               
+                if (!File.Exists(LinkCenter))
                 {
-                    LinkCenter = LinkCenter + "\\" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd")+EndFile;
+                    Directory.CreateDirectory(LinkCenter);
                 }
-                else
+                LinkCenter = LinkCenter + "\\Temp";
+                if (!File.Exists(LinkCenter))
                 {
-                    LinkCenter = LinkCenter + "\\" + Type + "_" + Unit + "_" + DateTime.Now.ToString("yyyy.MM.dd")+ EndFile;
+                    Directory.CreateDirectory(LinkCenter);
                 }
-                if (File.Exists(LinkCenter))
+                LinkCenter = LinkCenter + "\\" + DateTime.Now.ToString("yyyy.MM.dd");
+                if (!File.Exists(LinkCenter))
                 {
-                    File.Delete(LinkCenter);
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                string TenMayDL = convertToUnSign(GetTTMayDucLo(Machine).TenMayDucLo);
+                TenMayDL = TenMayDL.Replace(" ", "");
+                LinkCenter = LinkCenter + "\\" + TenMayDL;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                string TenMay = convertToUnSign(GetTTMayXN(IDMayXN).TenMayXN);
+                TenMay = TenMay.Replace(" ", "");
+                LinkCenter = LinkCenter + "\\" + TenMay;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
+                }
+                LinkCenter = LinkCenter + "\\Serial" + STT;
+                if (!File.Exists(LinkCenter))
+                {
+                    Directory.CreateDirectory(LinkCenter);
                 }
             }
             catch
             {
-
             }
             return LinkCenter;
         }
+      
         #endregion
 
     }

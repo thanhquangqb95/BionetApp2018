@@ -32,6 +32,7 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmQuanLyMauDuongTinh));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.txtDate = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -84,9 +85,11 @@
             this.col_CLMau = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KetLuan = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_GiaiQuyet = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.txtDate = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.cbbKetQua = new DevExpress.XtraEditors.ImageComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDichVu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChiCuc.Properties)).BeginInit();
@@ -101,12 +104,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachDuongTinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditGoiXN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbKetQua.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.cbbKetQua);
+            this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.txtDate);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl2);
@@ -128,9 +133,20 @@
             this.panelControl1.Size = new System.Drawing.Size(1260, 88);
             this.panelControl1.TabIndex = 0;
             // 
+            // txtDate
+            // 
+            this.txtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDate.EditValue = "";
+            this.txtDate.Enabled = false;
+            this.txtDate.Location = new System.Drawing.Point(1129, 39);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Properties.ReadOnly = true;
+            this.txtDate.Size = new System.Drawing.Size(119, 20);
+            this.txtDate.TabIndex = 1087;
+            // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(599, 12);
+            this.labelControl3.Location = new System.Drawing.Point(599, 38);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(66, 13);
             this.labelControl3.TabIndex = 1086;
@@ -138,7 +154,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(722, 8);
+            this.labelControl2.Location = new System.Drawing.Point(722, 38);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(8, 13);
             this.labelControl2.TabIndex = 1085;
@@ -364,7 +380,7 @@
             // txtMin
             // 
             this.txtMin.EditValue = "";
-            this.txtMin.Location = new System.Drawing.Point(671, 5);
+            this.txtMin.Location = new System.Drawing.Point(671, 35);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(45, 20);
             this.txtMin.TabIndex = 1083;
@@ -372,7 +388,7 @@
             // txtMax
             // 
             this.txtMax.EditValue = "";
-            this.txtMax.Location = new System.Drawing.Point(736, 5);
+            this.txtMax.Location = new System.Drawing.Point(736, 35);
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(45, 20);
             this.txtMax.TabIndex = 1084;
@@ -700,16 +716,25 @@
             this.col_GiaiQuyet.Visible = true;
             this.col_GiaiQuyet.Width = 167;
             // 
-            // txtDate
+            // labelControl4
             // 
-            this.txtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDate.EditValue = "";
-            this.txtDate.Enabled = false;
-            this.txtDate.Location = new System.Drawing.Point(1129, 39);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Properties.ReadOnly = true;
-            this.txtDate.Size = new System.Drawing.Size(119, 20);
-            this.txtDate.TabIndex = 1087;
+            this.labelControl4.Location = new System.Drawing.Point(599, 12);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(37, 13);
+            this.labelControl4.TabIndex = 1089;
+            this.labelControl4.Text = "Kết quả";
+            // 
+            // cbbKetQua
+            // 
+            this.cbbKetQua.Location = new System.Drawing.Point(642, 9);
+            this.cbbKetQua.Name = "cbbKetQua";
+            this.cbbKetQua.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbKetQua.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Chưa đầy kết quả", false, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Đã đầy đủ kết quả", true, -1)});
+            this.cbbKetQua.Size = new System.Drawing.Size(139, 20);
+            this.cbbKetQua.TabIndex = 1090;
             // 
             // FrmQuanLyMauDuongTinh
             // 
@@ -730,6 +755,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDichVu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtChiCuc.Properties)).EndInit();
@@ -744,7 +770,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachDuongTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditGoiXN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbKetQua.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -805,5 +831,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.TextEdit txtDate;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.ImageComboBoxEdit cbbKetQua;
     }
 }

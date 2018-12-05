@@ -1268,6 +1268,16 @@ namespace BioNetDAL
             catch (Exception ex) { }
             return tt;
         }
+        public PSDanhMucChiCuc GetThongTinChiCuc(string MaChiCuc)
+        {
+            PSDanhMucChiCuc tt = new PSDanhMucChiCuc();
+            try
+            {
+                tt = db.PSDanhMucChiCucs.FirstOrDefault(x=>x.MaChiCuc.Equals(MaChiCuc));
+            }
+            catch (Exception ex) { }
+            return tt;
+        }
         public PSEmployee GetThongTinNhanVien(string maNV)
         {
             PSEmployee NV = new PSEmployee();
@@ -3755,6 +3765,11 @@ namespace BioNetDAL
                 }
             }
             return listMayXN;
+        }
+        public PSDanhMucMayDucLo GetTTMayDucLo(string IDMayDucLo)
+        {
+            PSDanhMucMayDucLo xn = db.PSDanhMucMayDucLos.FirstOrDefault(x => x.IDMayDucLo.Equals(IDMayDucLo));
+            return xn;
         }
         public List<PSMapsViTriMayXN> GetDSMapViTriMayXN(string IDMayXN)
         {
@@ -9064,7 +9079,10 @@ namespace BioNetDAL
                                 duongtinh.TenDichVu = ctkq.TenThongSo;
                                 duongtinh.MaDichVu = ctkq.MaDichVu;
                                 duongtinh.MaGoiXN = ls.MaGoiXN;
-                                duongtinh.CLMau = ls.LyDoKhongDat;
+                                if (!string.IsNullOrEmpty(ls.LyDoKhongDat))
+                                {
+                                    duongtinh.CLMau = duongtinh.CLMau + "CL2: " + ls.LyDoKhongDat;
+                                }
                                 duongtinh.NgayLayMau = ls.NgayGioLayMau;
                                 duongtinh.NgayNhanMau = ls.NgayNhanMau;
                                 duongtinh.KetLuan = ctkq.KetLuan;
@@ -9100,7 +9118,10 @@ namespace BioNetDAL
                                 duongtinh.VietTatDV = GetVietTatDV(ls.IDCoSo);
                                 duongtinh.NgayLayMau = ls.NgayGioLayMau;
                                 duongtinh.NgayNhanMau = ls.NgayNhanMau;
-                                duongtinh.CLMau = ls.LyDoKhongDat;
+                                if (!string.IsNullOrEmpty(ls.LyDoKhongDat))
+                                {
+                                    duongtinh.CLMau = duongtinh.CLMau + " CL1: " + ls.LyDoKhongDat;
+                                }
                                 kl = ctkq.KetLuan;
                                 if(!isL2)
                                 {
@@ -9335,7 +9356,6 @@ namespace BioNetDAL
             }
             catch
             {
-
             }
             return dsduongtinh;
         }
@@ -9464,6 +9484,7 @@ namespace BioNetDAL
             return lst=db.pro_ThongKeTheoDichVu(NgayBD, NgayKT, MaDV, MaDichVu).ToList();
         }
             #endregion
+        
             #region Báo cáo theo đơn vị
         public List<PSBaoCaoTuyChonDonVi> LoadDSThongKeDonVi(DateTime NgayBD, DateTime NgayKT, string MaDV)
         {

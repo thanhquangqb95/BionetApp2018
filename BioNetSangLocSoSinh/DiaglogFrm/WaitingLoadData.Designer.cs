@@ -94,6 +94,10 @@
             // 
             this.txtTime.Location = new System.Drawing.Point(84, 210);
             this.txtTime.Name = "txtTime";
+            this.txtTime.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtTime.Properties.Appearance.Options.UseFont = true;
+            this.txtTime.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtTime.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.txtTime.Size = new System.Drawing.Size(72, 20);
             this.txtTime.TabIndex = 15;
             // 
@@ -111,6 +115,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.labelControl1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "WaitingLoadData";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.WaitingLoadData_Load);

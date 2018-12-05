@@ -52,6 +52,7 @@ namespace BioNetSangLocSoSinh.Entry
         {
 
             dsmay = BioNet_Bus.GetDSMayXNTheoMayDucLo(MayDucLo);
+            txtMayDucLo.Text = BioNet_Bus.GetTTMayDucLo(MayDucLo).TenMayDucLo;
             LoadGoiDichVuXetNGhiem();
             LoadMay();
             mapViTri = new List<PSMapsViTriMayXN>();
@@ -676,18 +677,12 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     Directory.CreateDirectory(link);
                 }
-                string LinkDate=link+DateTime.Now.Year.ToString()+"."+DateTime.Now.Month.ToString()+"."+DateTime.Now.Date.Day.ToString()+"\\"+MayDucLo+"\\";
-                 if (!Directory.Exists(LinkDate))
-                {
-                    Directory.CreateDirectory(LinkDate);
-                }
                 Workbook workbook = new DevExpress.Spreadsheet.Workbook();
-                //string Idlangan = vt.Distinct().Select(x => x.GGanViTri.IDLanDucLo.Equals(IDLanDucLo)).FirstOrDefault().ToString();
                 #region Máy 1
                 Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01 rp1 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN01();
                 BindingList<PSCMGanViTriChungReport> vtmay1 = XuatCMGanViTriChungReport(1);
                 rp1.DataSource = vtmay1;
-                rp1.PaperName = "May2Benh";
+                rp1.PaperName = "May3Benh";
                 rp1.Parameters["TenNV"].Value = emp.EmployeeName;
                 rp1.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
                 rp1.Parameters["SLGoi5benh"].Value = vtmay1.Where(y => y.MaGoiXN == "DVGXN0004").Count();
@@ -702,22 +697,22 @@ namespace BioNetSangLocSoSinh.Entry
                 rp1.Parameters["SLXNTest"].Value = vtmay1.Where(x => x.isTest == true).Count();
                 rp1.Parameters["SLXNConLai"].Value = int.Parse(rp1.Parameters["TongMauMoi"].Value.ToString()) - int.Parse(rp1.Parameters["SLGoi5benh"].Value.ToString())
                 - int.Parse(rp1.Parameters["SLGoi3benh"].Value.ToString()) - int.Parse(rp1.Parameters["SLGoi2benh"].Value.ToString()) - int.Parse(rp1.Parameters["SLGoiHemo"].Value.ToString());
-                rp1.ExportToXlsx("May3Benh" + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "May3Benh" });
+                rp1.ExportToXlsx(BioNet_Bus.GetFileGanViTriTemp(MayDucLo, IDLanDucLo, "MAYXN001") + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "May3Benh" });
 
                 Workbook workbook2 = new DevExpress.Spreadsheet.Workbook();
-                using (FileStream stream = new FileStream("May3Benh" + ".xlsx", FileMode.Open))
+                using (FileStream stream = new FileStream(BioNet_Bus.GetFileGanViTriTemp(MayDucLo,IDLanDucLo, "MAYXN001")+ ".xlsx", FileMode.Open))
                 {
                     workbook2.LoadDocument(stream, DocumentFormat.Xlsx);
                 }
                 workbook.Worksheets.Insert(0, "May3Benh");
                 workbook.Worksheets[0].CopyFrom(workbook2.Worksheets[0]);
-                File.Delete("May3Benh" + ".xlsx");
+                File.Delete(BioNet_Bus.GetFileGanViTriTemp(MayDucLo, IDLanDucLo, "MAYXN001") + ".xlsx");
                 #endregion
                 #region Máy 2
                 Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02 rp2 = new Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02();
                 BindingList<PSCMGanViTriChungReport> vtmay2 = XuatCMGanViTriChungReport(2);
                 rp2.DataSource = vtmay2;
-                rp2.PaperName = "May3Benh";
+                rp2.PaperName = "May2Benh";
                 rp2.Parameters["TenNV"].Value = emp.EmployeeName;
                 rp2.Parameters["NgayTaoDS"].Value = DateTime.Now.ToString();
                 rp2.Parameters["SLGoi5benh"].Value = vtmay2.Where(x => x.MaGoiXN == "DVGXN0004").Count();
@@ -732,23 +727,25 @@ namespace BioNetSangLocSoSinh.Entry
                 rp2.Parameters["SLXNTest"].Value = vtmay2.Where(x => x.isTest == true).Count();
                 rp2.Parameters["SLXNConLai"].Value = int.Parse(rp2.Parameters["TongMauMoi"].Value.ToString()) - int.Parse(rp2.Parameters["SLGoi5benh"].Value.ToString())
                 - int.Parse(rp2.Parameters["SLGoi3benh"].Value.ToString()) - int.Parse(rp2.Parameters["SLGoi2benh"].Value.ToString()) - int.Parse(rp2.Parameters["SLGoiHemo"].Value.ToString());
-                rp2.ExportToXlsx("May2Benh" + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "May2Benh" });
+                rp2.ExportToXlsx(BioNet_Bus.GetFileGanViTriTemp(MayDucLo, IDLanDucLo, "MAYXN002") + ".xlsx", new DevExpress.XtraPrinting.XlsxExportOptions() { SheetName = "May2Benh" });
                 Workbook workbook3 = new DevExpress.Spreadsheet.Workbook();
-                using (FileStream stream = new FileStream("May2Benh" + ".xlsx", FileMode.Open))
+                using (FileStream stream = new FileStream(BioNet_Bus.GetFileGanViTriTemp(MayDucLo, IDLanDucLo, "MAYXN002") + ".xlsx", FileMode.Open))
                 {
                     workbook3.LoadDocument(stream, DocumentFormat.Xlsx);
                 }
                 workbook.Worksheets.Insert(1, "May2Benh");
                 workbook.Worksheets[1].CopyFrom(workbook3.Worksheets[0]);
-                File.Delete("May2Benh" + ".xlsx");
+                File.Delete(BioNet_Bus.GetFileGanViTriTemp(MayDucLo, IDLanDucLo, "MAYXN002") + ".xlsx");
                 #endregion
                 string linkfile;
-                
+                string tenMayDL = BioNet_Bus.convertToUnSign(BioNet_Bus.GetTTMayDucLo(MayDucLo).TenMayDucLo).Replace(" ", "");
+                string tenMay3benh = BioNet_Bus.convertToUnSign(BioNet_Bus.GetTTMayXN("MAYXN001").TenMayXN).Replace(" ", ""); 
                 if (SaveFile)
                 {
-                    linkfile = LinkDate +MayDucLo+ "SodoXetNghiem" + DateTime.Now.Day+"." + DateTime.Now.Month+"." + DateTime.Now.Year+"."+DateTime.Now.Hour+"."+DateTime.Now.Minute+ ".xlsx";
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "."
-                        + DateTime.Now.Year + "." + DateTime.Now.Hour + "." + DateTime.Now.Minute + ".txt") )
+                    string LinkDate = BioNet_Bus.GetFileGanViTri("Browse", MayDucLo, IDLanDucLo);
+                    linkfile = LinkDate + "\\Diagram_Browse_" + MayDucLo + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd");
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "\\Diagram_Browse_" +
+                        tenMayDL + "_" + tenMay3benh + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + ".txt"))
                     {
                         var sttdia = vtmay1.Select(x => x.STTDia).ToList().Distinct();
                         foreach(var dia in sttdia)
@@ -761,14 +758,17 @@ namespace BioNetSangLocSoSinh.Entry
                             }
                             file.WriteLine("DiaEnd" + dia);
                         }
-                       
+                        workbook.SaveDocument(LinkDate + "\\Diagram_Browse_" + tenMayDL+"_" + IDLanDucLo+"_" + DateTime.Now.ToString("yyyy.MM.dd") + ".xlsx");
                     }
+                    System.Diagnostics.Process.Start(LinkDate);
                 }
                 else
                 {
-                    linkfile = LinkDate + "SodoXetNghiemReviewNgay" + DateTime.Now.Day +"." + DateTime.Now.Month + "." + DateTime.Now.Year+"."+ DateTime.Now.Hour+"." + DateTime.Now.Minute + ".xlsx";
-                    
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "SoDoReviewMay3Benh" + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year + "." + DateTime.Now.Hour + "." + DateTime.Now.Minute + ".txt"))
+                    string LinkDate = BioNet_Bus.GetFileGanViTri("Renew", MayDucLo, IDLanDucLo);
+                    linkfile = LinkDate + "\\Diagram_Renew_" + MayDucLo+"_" + IDLanDucLo+"_" + DateTime.Now.ToString("yyyy.MM.dd"); 
+
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "\\Diagram_Renew_"  +
+                        tenMayDL + "_" + tenMay3benh+"_"+ IDLanDucLo + "_"+ DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + ".txt"))
                     {
                         var sttdia = vtmay1.Select(x => x.STTDia).ToList().Distinct();
                         foreach (var dia in sttdia)
@@ -781,13 +781,10 @@ namespace BioNetSangLocSoSinh.Entry
                             }
                             file.WriteLine("DiaEnd" + dia);
                         }
-
+                        workbook.SaveDocument(LinkDate + "\\Diagram_Renew_" + tenMayDL + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + ".xlsx");
                     }
+                    System.Diagnostics.Process.Start(LinkDate);
                 }
-               
-                workbook.SaveDocument(linkfile);
-                System.Diagnostics.Process.Start(linkfile);
-
             }
             catch (Exception ex)
             {

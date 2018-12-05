@@ -31,7 +31,6 @@
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnXuatPDF = new DevExpress.XtraEditors.SimpleButton();
             this.txtTime = new DevExpress.XtraEditors.TextEdit();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
@@ -79,7 +78,6 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Controls.Add(this.btnXuatPDF);
             this.panelControl1.Controls.Add(this.txtTime);
             this.panelControl1.Controls.Add(this.btnClear);
@@ -100,22 +98,6 @@
             this.panelControl1.TabIndex = 3;
             this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.Maroon;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf__1_;
-            this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(722, 55);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(120, 23);
-            this.simpleButton1.TabIndex = 1086;
-            this.simpleButton1.Text = "Xuất PDF";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
             // btnXuatPDF
             // 
             this.btnXuatPDF.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,12 +106,12 @@
             this.btnXuatPDF.Appearance.Options.UseForeColor = true;
             this.btnXuatPDF.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf__1_;
             this.btnXuatPDF.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnXuatPDF.Location = new System.Drawing.Point(722, 30);
+            this.btnXuatPDF.Location = new System.Drawing.Point(745, 41);
             this.btnXuatPDF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXuatPDF.Name = "btnXuatPDF";
-            this.btnXuatPDF.Size = new System.Drawing.Size(120, 23);
+            this.btnXuatPDF.Size = new System.Drawing.Size(188, 31);
             this.btnXuatPDF.TabIndex = 1085;
-            this.btnXuatPDF.Text = "Xuất PDF";
+            this.btnXuatPDF.Text = "Xuất PDF Báo Cáo";
             this.btnXuatPDF.Click += new System.EventHandler(this.btnXuatPDF_Click);
             // 
             // txtTime
@@ -149,9 +131,9 @@
             this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.btnClear.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear.Location = new System.Drawing.Point(596, 30);
+            this.btnClear.Location = new System.Drawing.Point(607, 41);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(120, 23);
+            this.btnClear.Size = new System.Drawing.Size(120, 31);
             toolTipTitleItem1.Text = "Bỏ lọc";
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.btnClear.SuperTip = superToolTip1;
@@ -166,10 +148,10 @@
             this.btnThongke.Appearance.Options.UseForeColor = true;
             this.btnThongke.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.graph;
             this.btnThongke.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnThongke.Location = new System.Drawing.Point(596, 5);
+            this.btnThongke.Location = new System.Drawing.Point(607, 5);
             this.btnThongke.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongke.Name = "btnThongke";
-            this.btnThongke.Size = new System.Drawing.Size(120, 23);
+            this.btnThongke.Size = new System.Drawing.Size(120, 31);
             this.btnThongke.TabIndex = 1079;
             this.btnThongke.Text = "Thống kê";
             this.btnThongke.Click += new System.EventHandler(this.btnThongke_Click);
@@ -183,13 +165,13 @@
             this.btnXuatFile.Appearance.Options.UseBorderColor = true;
             this.btnXuatFile.Appearance.Options.UseFont = true;
             this.btnXuatFile.Appearance.Options.UseForeColor = true;
-            this.btnXuatFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__2_;
+            this.btnXuatFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.excel;
             this.btnXuatFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnXuatFile.Location = new System.Drawing.Point(722, 5);
+            this.btnXuatFile.Location = new System.Drawing.Point(745, 5);
             this.btnXuatFile.Name = "btnXuatFile";
-            this.btnXuatFile.Size = new System.Drawing.Size(119, 23);
+            this.btnXuatFile.Size = new System.Drawing.Size(188, 31);
             this.btnXuatFile.TabIndex = 2;
-            this.btnXuatFile.Text = "Xuất file";
+            this.btnXuatFile.Text = "Xuất Excel Thống Kê";
             this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
             // labelControl16
@@ -476,6 +458,5 @@
         private DevExpress.XtraEditors.SimpleButton btnXuatFile;
         private DevExpress.XtraEditors.TextEdit txtTime;
         private DevExpress.XtraEditors.SimpleButton btnXuatPDF;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

@@ -368,6 +368,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongTinTrungTam();
         }
+        public static PSDanhMucChiCuc GetThongTinChiCuc(string MaChiCuc)
+        {
+            var db = new DataObjects();
+            return db.GetThongTinChiCuc(MaChiCuc);
+        }
         public static List<PsTinhTrangPhieu> GetTinhTrangPhieu(DateTime startdate, DateTime enddate, string maDonVi)
         {
             var db = new DataObjects();
@@ -1352,6 +1357,11 @@ namespace BioNetBLL
         {
             var db = new DataObjects();
             return db.GetDSMayXNTheoMayDucLo(IDMayDucLo);
+        }
+        public static PSDanhMucMayDucLo GetTTMayDucLo(string IDMayDucLo)
+        {
+            var db = new DataObjects();
+            return db.GetTTMayDucLo(IDMayDucLo);
         }
 
         public static List<PSMapsViTriMayXN> GetDSMapViTriMayXN(string IDMayXN)
@@ -2387,6 +2397,11 @@ namespace BioNetBLL
         public static List<PsDanhSachMauDuongTinh> GetDanhSachDuongTinh(DateTime NgayBD, DateTime NgayKT, string TenDichVu, string DonVi, string Min, string Max)
         {
             var db = new DataObjects();
+            return db.GetDanhSachDuongTinh(NgayBD, NgayKT, TenDichVu, DonVi, Min, Max);
+        }
+        public static List<PsDanhSachMauDuongTinh> GetDanhSachDuongTinhNew(DateTime NgayBD, DateTime NgayKT, string TenDichVu, string DonVi, string Min, string Max)
+        {
+            var db = new DataObjects();
             return db.GetDanhSachDuongTinhNew(NgayBD, NgayKT, TenDichVu, DonVi, Min, Max);
         }
         public static List<PSBaoCaoTuyChonDichVu> LoadDSBaoCaoTuyChonDichVu(DateTime NgayBD, DateTime NgayKT, string MaDV, string MaDichVu)
@@ -2416,10 +2431,41 @@ namespace BioNetBLL
         }
 
         #region Save Tree Report
-        public static string SaveFileReport(string Type, string Group, string Unit,DateTime dateBD, DateTime dateKT,string EndFile)
+        public static string GetFileReport(string Type, string EndFile)
         {
             var db = new BioData();
-            return db.SaveFileReport(Type, Group, Unit, dateBD, dateKT,EndFile);
+            return db.GetFileReport(Type, EndFile);
+        }
+        public static string SaveFileReport(string Folder,string Type, string Unit,DateTime dateBD, DateTime dateKT,string EndFile)
+        {
+            var db = new BioData();
+            return db.SaveFileReport(Folder,Type, Unit, dateBD, dateKT,EndFile);
+        }
+        public static string SaveFileTemp( string Group, string Unit, DateTime dateBD, DateTime dateKT, string EndFile)
+        {
+            var db = new BioData();
+            return db.SaveFileTemp( Group, Unit, dateBD, dateKT, EndFile);
+        }
+        public static string GetFileGanViTri(string Group, string Machine, string STT)
+        {
+            var db = new BioData();
+            return db.GetFileGanViTri(Group, Machine,STT);
+        }
+        public static string GetFileGanViTriTemp(string Machine, string STT, string IDMayXN)
+        {
+            var db = new BioData();
+            return db.GetFileGanViTriTemp( Machine, STT,IDMayXN);
+        }
+        public static PSDanhMucMayXN GetTTMayXN(string IDMayXN)
+        {
+            var db = new BioData();
+            return db.GetTTMayXN(IDMayXN);
+        }
+
+        public static string convertToUnSign(string s)
+        {
+            var db = new BioData();
+            return db.convertToUnSign(s);
         }
         #endregion
     }

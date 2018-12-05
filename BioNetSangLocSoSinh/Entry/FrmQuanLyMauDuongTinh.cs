@@ -68,6 +68,7 @@ namespace BioNetSangLocSoSinh.Entry
                 }
                 else
                 {
+                    
                     if (string.IsNullOrEmpty(txtMin.Text) && string.IsNullOrEmpty(txtMax.Text))
                     {
                         XtraMessageBox.Show("Yêu cầu chọn khoảng giá trị.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -77,7 +78,16 @@ namespace BioNetSangLocSoSinh.Entry
                         SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
                         DateTime d1 = DateTime.Now;
                         lstMauDT = new List<PsDanhSachMauDuongTinh>();
-                        lstMauDT = BioNet_Bus.GetDanhSachDuongTinh(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi, txtMin.Text, txtMax.Text);
+                        string kq = cbbKetQua.EditValue.ToString();
+                        if (cbbKetQua.EditValue.ToString().Equals("True"))
+                        {
+                            lstMauDT = BioNet_Bus.GetDanhSachDuongTinh(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi, txtMin.Text, txtMax.Text);
+                        }
+                        else
+                        {
+                            lstMauDT = BioNet_Bus.GetDanhSachDuongTinhNew(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, cbbDichVu.EditValue.ToString(), MaDonVi, txtMin.Text, txtMax.Text);
+                        }
+                        
                         GCDanhSachMauDuongTinh.DataSource = null;
                         GCDanhSachMauDuongTinh.DataSource = lstMauDT;
                         DateTime d2 = DateTime.Now;
@@ -101,6 +111,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             dllNgay.tungay.Value = DateTime.Now;
             dllNgay.denngay.Value = DateTime.Now;
+            cbbKetQua.EditValue = false;
             this.txtChiCuc.EditValue = "all";
         }
 

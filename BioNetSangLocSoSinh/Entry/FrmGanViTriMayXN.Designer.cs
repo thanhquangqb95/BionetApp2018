@@ -103,6 +103,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtMaPhieu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtMayDucLo = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -141,6 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMayDucLo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -712,6 +714,7 @@
             this.groupControl2.AppearanceCaption.ForeColor = System.Drawing.Color.Maroon;
             this.groupControl2.AppearanceCaption.Options.UseFont = true;
             this.groupControl2.AppearanceCaption.Options.UseForeColor = true;
+            this.groupControl2.Controls.Add(this.txtMayDucLo);
             this.groupControl2.Controls.Add(this.txtDem);
             this.groupControl2.Controls.Add(this.btnHuyDanhSach);
             this.groupControl2.Controls.Add(this.GCDanhSachGanViTri);
@@ -991,6 +994,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(25, 23);
             this.simpleButton1.TabIndex = 1086;
             this.simpleButton1.Text = "simpleButton1";
+            this.simpleButton1.Visible = false;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // txtTime
@@ -1088,6 +1092,19 @@
             this.labelControl2.TabIndex = 26;
             this.labelControl2.Text = "Mã Phiếu";
             // 
+            // txtMayDucLo
+            // 
+            this.txtMayDucLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtMayDucLo.Location = new System.Drawing.Point(200, 645);
+            this.txtMayDucLo.Name = "txtMayDucLo";
+            this.txtMayDucLo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtMayDucLo.Properties.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.txtMayDucLo.Properties.Appearance.Options.UseFont = true;
+            this.txtMayDucLo.Properties.Appearance.Options.UseForeColor = true;
+            this.txtMayDucLo.Properties.ReadOnly = true;
+            this.txtMayDucLo.Size = new System.Drawing.Size(147, 20);
+            this.txtMayDucLo.TabIndex = 39;
+            // 
             // FrmGanViTriMayXN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1140,6 +1157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMayDucLo.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1217,5 +1235,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditMAYXN002;
         private DevExpress.XtraEditors.TextEdit txtTime;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.TextEdit txtMayDucLo;
     }
 }
