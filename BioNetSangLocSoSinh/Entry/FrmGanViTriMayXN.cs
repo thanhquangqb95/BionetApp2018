@@ -742,9 +742,9 @@ namespace BioNetSangLocSoSinh.Entry
                 string tenMay3benh = BioNet_Bus.convertToUnSign(BioNet_Bus.GetTTMayXN("MAYXN001").TenMayXN).Replace(" ", ""); 
                 if (SaveFile)
                 {
-                    string LinkDate = BioNet_Bus.GetFileGanViTri("Browse", MayDucLo, IDLanDucLo);
-                    linkfile = LinkDate + "\\Diagram_Browse_" + MayDucLo + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd");
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "\\Diagram_Browse_" +
+                    string LinkDate = BioNet_Bus.GetFileGanViTri("DaDuyet", MayDucLo, IDLanDucLo);
+                    linkfile = LinkDate + "\\SoDoGanViTri_" + MayDucLo + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd");
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "\\SoDoGanViTri_" +
                         tenMayDL + "_" + tenMay3benh + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + ".txt"))
                     {
                         var sttdia = vtmay1.Select(x => x.STTDia).ToList().Distinct();
@@ -758,16 +758,16 @@ namespace BioNetSangLocSoSinh.Entry
                             }
                             file.WriteLine("DiaEnd" + dia);
                         }
-                        workbook.SaveDocument(LinkDate + "\\Diagram_Browse_" + tenMayDL+"_" + IDLanDucLo+"_" + DateTime.Now.ToString("yyyy.MM.dd") + ".xlsx");
+                        workbook.SaveDocument(LinkDate + "\\SoDoGanViTri_" + tenMayDL+"_" + IDLanDucLo+"_" + DateTime.Now.ToString("yyyy.MM.dd") + ".xlsx");
                     }
                     System.Diagnostics.Process.Start(LinkDate);
                 }
                 else
                 {
-                    string LinkDate = BioNet_Bus.GetFileGanViTri("Renew", MayDucLo, IDLanDucLo);
-                    linkfile = LinkDate + "\\Diagram_Renew_" + MayDucLo+"_" + IDLanDucLo+"_" + DateTime.Now.ToString("yyyy.MM.dd"); 
+                    string LinkDate = BioNet_Bus.GetFileGanViTri("XemTruoc", MayDucLo, IDLanDucLo);
+                    linkfile = LinkDate + "\\XemTruoc_SoDoGanViTri_" + MayDucLo+"_" + IDLanDucLo+"_" + DateTime.Now.ToString("yyyy.MM.dd"); 
 
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "\\Diagram_Renew_"  +
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(LinkDate + "\\XemTruoc_SoDoGanViTri_"  +
                         tenMayDL + "_" + tenMay3benh+"_"+ IDLanDucLo + "_"+ DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + ".txt"))
                     {
                         var sttdia = vtmay1.Select(x => x.STTDia).ToList().Distinct();
@@ -781,7 +781,7 @@ namespace BioNetSangLocSoSinh.Entry
                             }
                             file.WriteLine("DiaEnd" + dia);
                         }
-                        workbook.SaveDocument(LinkDate + "\\Diagram_Renew_" + tenMayDL + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + ".xlsx");
+                        workbook.SaveDocument(LinkDate + "\\XemTruoc_SoDoGanViTri_" + tenMayDL + "_" + IDLanDucLo + "_" + DateTime.Now.ToString("yyyy.MM.dd.HH.mm") + ".xlsx");
                     }
                     System.Diagnostics.Process.Start(LinkDate);
                 }

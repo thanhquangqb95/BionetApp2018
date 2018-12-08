@@ -795,6 +795,14 @@ namespace BioNetModel.Data
 			}
 		}
 		
+		public System.Data.Linq.Table<View_TraKQ> View_TraKQs
+		{
+			get
+			{
+				return this.GetTable<View_TraKQ>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.pro_DeletePhieu")]
 		public int pro_DeletePhieu([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaPhieu", DbType="NVarChar(15)")] string maPhieu, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LuaChon", DbType="Bit")] System.Nullable<bool> luaChon)
 		{
@@ -20288,6 +20296,501 @@ namespace BioNetModel.Data
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_TraKQ")]
+	public partial class View_TraKQ
+	{
+		
+		private long _RowIDXN_TraKetQua;
+		
+		private System.Nullable<System.DateTime> _NgayTraKQ;
+		
+		private string _UserTraKQ;
+		
+		private string _MaPhieu;
+		
+		private string _KetLuanTongQuat;
+		
+		private string _GhiChu;
+		
+		private string _IDCoSo;
+		
+		private string _MaTiepNhan;
+		
+		private System.Nullable<bool> _isDaDuyetKQ;
+		
+		private System.Nullable<System.DateTime> _NgayCoKQ;
+		
+		private System.Nullable<System.DateTime> _NgayTiepNhan;
+		
+		private System.Nullable<System.DateTime> _NgayChiDinh;
+		
+		private System.Nullable<System.DateTime> _NgayLamXetNghiem;
+		
+		private string _MaXetNghiem;
+		
+		private System.Nullable<bool> _isTraKQ;
+		
+		private string _MaPhieuCu;
+		
+		private string _GhiChuPhongXetNghiem;
+		
+		private System.Nullable<bool> _isDongBo;
+		
+		private System.Nullable<bool> _isXoa;
+		
+		private string _IDNhanVienXoa;
+		
+		private System.Nullable<System.DateTime> _NgayGioXoa;
+		
+		private string _LyDoXoa;
+		
+		private string _MaGoiXN;
+		
+		private System.Nullable<bool> _isNguyCoCao;
+		
+		private System.Nullable<bool> _isDongBoPDF;
+		
+		private System.Nullable<bool> _isDaGuiMail;
+		
+		private System.Nullable<bool> _isDaNhapLieu;
+		
+		public View_TraKQ()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowIDXN_TraKetQua", DbType="BigInt NOT NULL")]
+		public long RowIDXN_TraKetQua
+		{
+			get
+			{
+				return this._RowIDXN_TraKetQua;
+			}
+			set
+			{
+				if ((this._RowIDXN_TraKetQua != value))
+				{
+					this._RowIDXN_TraKetQua = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTraKQ", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayTraKQ
+		{
+			get
+			{
+				return this._NgayTraKQ;
+			}
+			set
+			{
+				if ((this._NgayTraKQ != value))
+				{
+					this._NgayTraKQ = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserTraKQ", DbType="NVarChar(50)")]
+		public string UserTraKQ
+		{
+			get
+			{
+				return this._UserTraKQ;
+			}
+			set
+			{
+				if ((this._UserTraKQ != value))
+				{
+					this._UserTraKQ = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhieu", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string MaPhieu
+		{
+			get
+			{
+				return this._MaPhieu;
+			}
+			set
+			{
+				if ((this._MaPhieu != value))
+				{
+					this._MaPhieu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KetLuanTongQuat", DbType="NVarChar(500)")]
+		public string KetLuanTongQuat
+		{
+			get
+			{
+				return this._KetLuanTongQuat;
+			}
+			set
+			{
+				if ((this._KetLuanTongQuat != value))
+				{
+					this._KetLuanTongQuat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChu", DbType="NVarChar(500)")]
+		public string GhiChu
+		{
+			get
+			{
+				return this._GhiChu;
+			}
+			set
+			{
+				if ((this._GhiChu != value))
+				{
+					this._GhiChu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCoSo", DbType="NVarChar(15)")]
+		public string IDCoSo
+		{
+			get
+			{
+				return this._IDCoSo;
+			}
+			set
+			{
+				if ((this._IDCoSo != value))
+				{
+					this._IDCoSo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTiepNhan", DbType="NVarChar(38)")]
+		public string MaTiepNhan
+		{
+			get
+			{
+				return this._MaTiepNhan;
+			}
+			set
+			{
+				if ((this._MaTiepNhan != value))
+				{
+					this._MaTiepNhan = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDaDuyetKQ", DbType="Bit")]
+		public System.Nullable<bool> isDaDuyetKQ
+		{
+			get
+			{
+				return this._isDaDuyetKQ;
+			}
+			set
+			{
+				if ((this._isDaDuyetKQ != value))
+				{
+					this._isDaDuyetKQ = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayCoKQ", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayCoKQ
+		{
+			get
+			{
+				return this._NgayCoKQ;
+			}
+			set
+			{
+				if ((this._NgayCoKQ != value))
+				{
+					this._NgayCoKQ = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTiepNhan", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayTiepNhan
+		{
+			get
+			{
+				return this._NgayTiepNhan;
+			}
+			set
+			{
+				if ((this._NgayTiepNhan != value))
+				{
+					this._NgayTiepNhan = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayChiDinh", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayChiDinh
+		{
+			get
+			{
+				return this._NgayChiDinh;
+			}
+			set
+			{
+				if ((this._NgayChiDinh != value))
+				{
+					this._NgayChiDinh = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayLamXetNghiem", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayLamXetNghiem
+		{
+			get
+			{
+				return this._NgayLamXetNghiem;
+			}
+			set
+			{
+				if ((this._NgayLamXetNghiem != value))
+				{
+					this._NgayLamXetNghiem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaXetNghiem", DbType="NVarChar(15)")]
+		public string MaXetNghiem
+		{
+			get
+			{
+				return this._MaXetNghiem;
+			}
+			set
+			{
+				if ((this._MaXetNghiem != value))
+				{
+					this._MaXetNghiem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isTraKQ", DbType="Bit")]
+		public System.Nullable<bool> isTraKQ
+		{
+			get
+			{
+				return this._isTraKQ;
+			}
+			set
+			{
+				if ((this._isTraKQ != value))
+				{
+					this._isTraKQ = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhieuCu", DbType="NVarChar(15)")]
+		public string MaPhieuCu
+		{
+			get
+			{
+				return this._MaPhieuCu;
+			}
+			set
+			{
+				if ((this._MaPhieuCu != value))
+				{
+					this._MaPhieuCu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GhiChuPhongXetNghiem", DbType="NVarChar(500)")]
+		public string GhiChuPhongXetNghiem
+		{
+			get
+			{
+				return this._GhiChuPhongXetNghiem;
+			}
+			set
+			{
+				if ((this._GhiChuPhongXetNghiem != value))
+				{
+					this._GhiChuPhongXetNghiem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDongBo", DbType="Bit")]
+		public System.Nullable<bool> isDongBo
+		{
+			get
+			{
+				return this._isDongBo;
+			}
+			set
+			{
+				if ((this._isDongBo != value))
+				{
+					this._isDongBo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isXoa", DbType="Bit")]
+		public System.Nullable<bool> isXoa
+		{
+			get
+			{
+				return this._isXoa;
+			}
+			set
+			{
+				if ((this._isXoa != value))
+				{
+					this._isXoa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDNhanVienXoa", DbType="NVarChar(15)")]
+		public string IDNhanVienXoa
+		{
+			get
+			{
+				return this._IDNhanVienXoa;
+			}
+			set
+			{
+				if ((this._IDNhanVienXoa != value))
+				{
+					this._IDNhanVienXoa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayGioXoa", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayGioXoa
+		{
+			get
+			{
+				return this._NgayGioXoa;
+			}
+			set
+			{
+				if ((this._NgayGioXoa != value))
+				{
+					this._NgayGioXoa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDoXoa", DbType="NVarChar(MAX)")]
+		public string LyDoXoa
+		{
+			get
+			{
+				return this._LyDoXoa;
+			}
+			set
+			{
+				if ((this._LyDoXoa != value))
+				{
+					this._LyDoXoa = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaGoiXN", DbType="NVarChar(15)")]
+		public string MaGoiXN
+		{
+			get
+			{
+				return this._MaGoiXN;
+			}
+			set
+			{
+				if ((this._MaGoiXN != value))
+				{
+					this._MaGoiXN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isNguyCoCao", DbType="Bit")]
+		public System.Nullable<bool> isNguyCoCao
+		{
+			get
+			{
+				return this._isNguyCoCao;
+			}
+			set
+			{
+				if ((this._isNguyCoCao != value))
+				{
+					this._isNguyCoCao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDongBoPDF", DbType="Bit")]
+		public System.Nullable<bool> isDongBoPDF
+		{
+			get
+			{
+				return this._isDongBoPDF;
+			}
+			set
+			{
+				if ((this._isDongBoPDF != value))
+				{
+					this._isDongBoPDF = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDaGuiMail", DbType="Bit")]
+		public System.Nullable<bool> isDaGuiMail
+		{
+			get
+			{
+				return this._isDaGuiMail;
+			}
+			set
+			{
+				if ((this._isDaGuiMail != value))
+				{
+					this._isDaGuiMail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDaNhapLieu", DbType="Bit")]
+		public System.Nullable<bool> isDaNhapLieu
+		{
+			get
+			{
+				return this._isDaNhapLieu;
+			}
+			set
+			{
+				if ((this._isDaNhapLieu != value))
+				{
+					this._isDaNhapLieu = value;
+				}
 			}
 		}
 	}

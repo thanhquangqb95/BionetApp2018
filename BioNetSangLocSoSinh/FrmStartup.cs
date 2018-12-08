@@ -1623,6 +1623,21 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
         {
 
         }
+
+        private void txtNameNV_ItemDoubleClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void txtNameNV_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                DiaglogFrm.FrmMenuUser frmMenu = new DiaglogFrm.FrmMenuUser(emp);
+                frmMenu.ShowDialog();
+            }
+            catch { }
+        }
     }
 
 }

@@ -265,6 +265,12 @@
     <Compile Include="DiaglogFrm\FrmLoginNew.Designer.cs">
       <DependentUpon>FrmLoginNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiaglogFrm\FrmMenuUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiaglogFrm\FrmMenuUser.Designer.cs">
+      <DependentUpon>FrmMenuUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="DiaglogFrm\FrmNotData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -689,6 +695,12 @@
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoCBTheoDonVi.Designer.cs">
       <DependentUpon>rptBaoCaoCBTheoDonVi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoDonViTKCoBan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoDonViTKCoBan.Designer.cs">
+      <DependentUpon>rptBaoCaoDonViTKCoBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -785,16 +797,10 @@
     <Compile Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.Designer.cs">
       <DependentUpon>rptBaoCaoChiTietTrungTamTheoDonVi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptBaocaoDonviSoBo.cs">
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoThongKeCoBan.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptBaocaoDonviSoBo.Designer.cs">
-      <DependentUpon>rptBaocaoDonviSoBo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\rptBaoCaoThongKeCoBan.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\rptBaoCaoThongKeCoBan.Designer.cs">
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoThongKeCoBan.Designer.cs">
       <DependentUpon>rptBaoCaoThongKeCoBan.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptBaocaoTrungTamSoBo.cs">
@@ -951,6 +957,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DiaglogFrm\FrmLoginNew.resx">
       <DependentUpon>FrmLoginNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiaglogFrm\FrmMenuUser.resx">
+      <DependentUpon>FrmMenuUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DiaglogFrm\FrmNotData.resx">
       <DependentUpon>FrmNotData.cs</DependentUpon>
@@ -1175,6 +1184,9 @@
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoCBTheoDonVi.resx">
       <DependentUpon>rptBaoCaoCBTheoDonVi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoDonViTKCoBan.resx">
+      <DependentUpon>rptBaoCaoDonViTKCoBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.resx">
       <DependentUpon>rptBaoCaoExcelNguyCo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1223,10 +1235,7 @@
     <EmbeddedResource Include="Reports\rptBaoCaoChiTietTrungTamTheoDonVi.resx">
       <DependentUpon>rptBaoCaoChiTietTrungTamTheoDonVi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptBaocaoDonviSoBo.resx">
-      <DependentUpon>rptBaocaoDonviSoBo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptBaoCaoThongKeCoBan.resx">
+    <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoThongKeCoBan.resx">
       <DependentUpon>rptBaoCaoThongKeCoBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBaocaoTrungTamSoBo.resx">
@@ -1357,6 +1366,7 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\smartphone.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\result %281%29.png" />
     <None Include="Resources\pie-chart.png" />
@@ -1421,6 +1431,10 @@
     <None Include="Resources\bar-chart.png" />
     <None Include="Resources\business.png" />
     <None Include="Resources\analytics.png" />
+    <None Include="Resources\address.png" />
+    <None Include="Resources\card.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\computer.png" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
@@ -1453,6 +1467,11 @@
     <None Include="Resources\filter1.png" />
     <None Include="Resources\graph.png" />
     <None Include="Resources\excel1.png" />
+    <None Include="Resources\girl.png" />
+    <None Include="Resources\id-card.png" />
+    <None Include="Resources\intersex.png" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\girl %281%29.png" />
     <Content Include="Resources\mail.png" />
     <None Include="Resources\mailSend.gif" />
     <None Include="Resources\password.png" />
@@ -1464,6 +1483,7 @@
     <None Include="Resources\man.png" />
     <None Include="Resources\pdf %281%29.png" />
     <None Include="Resources\money.png" />
+    <None Include="Resources\man %281%29.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

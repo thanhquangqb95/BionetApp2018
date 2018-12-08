@@ -989,6 +989,37 @@
       <Association Name="PSCM_GanViTri_PSCM_GanViTriCT" Member="PSCM_GanViTri" ThisKey="IDRowGanXN" OtherKey="IDRowGanXN" Type="PSCM_GanViTri" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.View_TraKQ" Member="View_TraKQs">
+    <Type Name="View_TraKQ">
+      <Column Name="RowIDXN_TraKetQua" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="NgayTraKQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserTraKQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaPhieu" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="KetLuanTongQuat" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="IDCoSo" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="MaTiepNhan" Type="System.String" DbType="NVarChar(38)" CanBeNull="true" />
+      <Column Name="isDaDuyetKQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NgayCoKQ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayTiepNhan" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayChiDinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayLamXetNghiem" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaXetNghiem" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="isTraKQ" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MaPhieuCu" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="GhiChuPhongXetNghiem" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="isDongBo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isXoa" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IDNhanVienXoa" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="NgayGioXoa" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LyDoXoa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaGoiXN" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="isNguyCoCao" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isDongBoPDF" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isDaGuiMail" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isDaNhapLieu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.pro_DeletePhieu" Method="pro_DeletePhieu">
     <Parameter Name="MaPhieu" Parameter="maPhieu" Type="System.String" DbType="NVarChar(15)" />
     <Parameter Name="LuaChon" Parameter="luaChon" Type="System.Boolean" DbType="Bit" />

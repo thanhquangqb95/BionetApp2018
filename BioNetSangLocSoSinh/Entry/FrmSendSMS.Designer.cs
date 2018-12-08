@@ -634,10 +634,10 @@
             this.xtraTabControl1.AppearancePage.Header.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.xtraTabControl1.AppearancePage.Header.Options.UseFont = true;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 111);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 105);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1029, 555);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1029, 561);
             this.xtraTabControl1.TabIndex = 4;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -649,7 +649,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.panelControl3);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1024, 530);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1024, 536);
             this.xtraTabPage1.Text = "Danh sách gửi";
             // 
             // panelControl3
@@ -660,7 +660,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1024, 530);
+            this.panelControl3.Size = new System.Drawing.Size(1024, 536);
             this.panelControl3.TabIndex = 6;
             // 
             // PanelDanhSachKiTu
@@ -705,7 +705,7 @@
             this.GCCTDSGuiTinNhan.Name = "GCCTDSGuiTinNhan";
             this.GCCTDSGuiTinNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEditSMS});
-            this.GCCTDSGuiTinNhan.Size = new System.Drawing.Size(1020, 492);
+            this.GCCTDSGuiTinNhan.Size = new System.Drawing.Size(1020, 498);
             this.GCCTDSGuiTinNhan.TabIndex = 6;
             this.GCCTDSGuiTinNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVCTDSGuiTinNhan});
@@ -837,7 +837,7 @@
             this.panelControl2.Controls.Add(this.btnXuatSMS);
             this.panelControl2.Controls.Add(this.btnSendSMS);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(2, 494);
+            this.panelControl2.Location = new System.Drawing.Point(2, 500);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1020, 34);
             this.panelControl2.TabIndex = 5;
@@ -872,7 +872,7 @@
             this.xtraTabPage2.Controls.Add(this.panelControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.PageVisible = false;
-            this.xtraTabPage2.Size = new System.Drawing.Size(1024, 530);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1024, 536);
             this.xtraTabPage2.Text = "Danh sách gửi thành công";
             // 
             // gridControl1
@@ -881,7 +881,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView2;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1024, 494);
+            this.gridControl1.Size = new System.Drawing.Size(1024, 500);
             this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -966,7 +966,7 @@
             // 
             this.panelControl1.Controls.Add(this.simpleButton9);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 494);
+            this.panelControl1.Location = new System.Drawing.Point(0, 500);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1024, 36);
             this.panelControl1.TabIndex = 5;
@@ -986,7 +986,7 @@
             // 
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.PageVisible = false;
-            this.xtraTabPage3.Size = new System.Drawing.Size(1024, 530);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1024, 536);
             this.xtraTabPage3.Text = "Danh sách gửi thất bại";
             // 
             // groupControl3
@@ -1012,7 +1012,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1029, 111);
+            this.groupControl3.Size = new System.Drawing.Size(1029, 105);
             this.groupControl3.TabIndex = 1;
             this.groupControl3.Text = "Danh sách gửi tin nhắn";
             // 
@@ -1058,7 +1058,7 @@
             // 
             this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear.Location = new System.Drawing.Point(963, 50);
+            this.btnClear.Location = new System.Drawing.Point(975, 49);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(46, 24);
             toolTipTitleItem4.Text = "Bỏ lọc";
@@ -1071,7 +1071,7 @@
             this.btnExport.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.excel;
             this.btnExport.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnExport.ImageOptions.ImageToTextIndent = 5;
-            this.btnExport.Location = new System.Drawing.Point(826, 82);
+            this.btnExport.Location = new System.Drawing.Point(838, 78);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(183, 23);
             this.btnExport.TabIndex = 17;
@@ -1083,7 +1083,7 @@
             this.btnSearch.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.recycle;
             this.btnSearch.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnSearch.ImageOptions.ImageToTextIndent = 5;
-            this.btnSearch.Location = new System.Drawing.Point(826, 50);
+            this.btnSearch.Location = new System.Drawing.Point(838, 49);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(131, 25);
             this.btnSearch.TabIndex = 1064;

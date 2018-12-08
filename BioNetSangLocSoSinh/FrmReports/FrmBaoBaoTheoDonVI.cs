@@ -457,6 +457,7 @@ namespace BioNetSangLocSoSinh.FrmReports
         }
         private void btnThongke_Click(object sender, EventArgs e)
         {
+
             try
             {
                 string MaDonVi = String.Empty;
@@ -786,6 +787,10 @@ namespace BioNetSangLocSoSinh.FrmReports
 
                 
         }
+        private void XuatFile3(PSThongKeTheoDonVi tk,string Link,int i)
+        {
+
+        }
         public  void GopPDF()
         {
             try
@@ -925,6 +930,15 @@ namespace BioNetSangLocSoSinh.FrmReports
         private void panelControl1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void simpleButton1_Click_1(object sender, EventArgs e)
+        {
+            
+            Reports.RepostsBaoCao.rptBaoCaoDonViTKCoBan bv = new Reports.RepostsBaoCao.rptBaoCaoDonViTKCoBan();
+            bv.DataSource= BioNet_Bus.GetBaoCaoDonViXNCoBan(listBaoCao, "", dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date);
+            Reports.frmReport reponse = new Reports.frmReport(bv);
+            reponse.ShowDialog();
         }
     }
 }

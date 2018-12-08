@@ -76,6 +76,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cbbGanVT = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.txtMayDucLo = new DevExpress.XtraEditors.TextEdit();
             this.txtDem = new DevExpress.XtraEditors.TextEdit();
             this.btnHuyDanhSach = new DevExpress.XtraEditors.SimpleButton();
             this.GCDanhSachGanViTri = new DevExpress.XtraGrid.GridControl();
@@ -103,7 +104,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtMaPhieu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtMayDucLo = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -130,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbGanVT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMayDucLo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).BeginInit();
@@ -142,7 +143,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMayDucLo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -726,6 +726,19 @@
             this.groupControl2.TabIndex = 34;
             this.groupControl2.Text = "Chức năng cấp mã";
             // 
+            // txtMayDucLo
+            // 
+            this.txtMayDucLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtMayDucLo.Location = new System.Drawing.Point(200, 645);
+            this.txtMayDucLo.Name = "txtMayDucLo";
+            this.txtMayDucLo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.txtMayDucLo.Properties.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.txtMayDucLo.Properties.Appearance.Options.UseFont = true;
+            this.txtMayDucLo.Properties.Appearance.Options.UseForeColor = true;
+            this.txtMayDucLo.Properties.ReadOnly = true;
+            this.txtMayDucLo.Size = new System.Drawing.Size(147, 20);
+            this.txtMayDucLo.TabIndex = 39;
+            // 
             // txtDem
             // 
             this.txtDem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -744,7 +757,7 @@
             this.btnHuyDanhSach.Size = new System.Drawing.Size(104, 23);
             this.btnHuyDanhSach.TabIndex = 38;
             this.btnHuyDanhSach.Text = "Hủy danh sách";
-            this.btnHuyDanhSach.Click += new System.EventHandler(this.btnHuyDanhSach_Click);
+            this.btnHuyDanhSach.DoubleClick += new System.EventHandler(this.btnHuyDanhSach_Click);
             // 
             // GCDanhSachGanViTri
             // 
@@ -1092,19 +1105,6 @@
             this.labelControl2.TabIndex = 26;
             this.labelControl2.Text = "Mã Phiếu";
             // 
-            // txtMayDucLo
-            // 
-            this.txtMayDucLo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtMayDucLo.Location = new System.Drawing.Point(200, 645);
-            this.txtMayDucLo.Name = "txtMayDucLo";
-            this.txtMayDucLo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.txtMayDucLo.Properties.Appearance.ForeColor = System.Drawing.Color.Maroon;
-            this.txtMayDucLo.Properties.Appearance.Options.UseFont = true;
-            this.txtMayDucLo.Properties.Appearance.Options.UseForeColor = true;
-            this.txtMayDucLo.Properties.ReadOnly = true;
-            this.txtMayDucLo.Size = new System.Drawing.Size(147, 20);
-            this.txtMayDucLo.TabIndex = 39;
-            // 
             // FrmGanViTriMayXN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1144,6 +1144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbGanVT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtMayDucLo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachGanViTri)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachGanViTri)).EndInit();
@@ -1157,7 +1158,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbbMayXN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNgoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMayDucLo.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

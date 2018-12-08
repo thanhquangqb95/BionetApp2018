@@ -968,7 +968,7 @@ namespace BioNetDAL
         }
         public string GetFileGanViTri(string Group,string Machine,string STT)
         {
-            string LinkCenter = Application.StartupPath + "\\TestChart";
+            string LinkCenter = Application.StartupPath + "\\SoDoGanViTriMayXN";
             try
             {
                 if (!File.Exists(LinkCenter))

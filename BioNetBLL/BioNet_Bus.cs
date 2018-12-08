@@ -942,6 +942,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetDanhSachChoTraKetQuaAll();
         }
+        public static List<View_TraKQ> GetDanhSachChoTraKetQuaAllNew()
+        {
+            var db = new DataObjects();
+            return db.GetDanhSachChoTraKetQuaAllNew();
+        }
         public static List<PsKetQua_ChiTiet> GetDanhSachKetQuaChiTiet(string maKQ, string maPhieu, string MaXN)
         {
             var db = new DataObjects();
@@ -2429,7 +2434,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.LoadDSThongKeDV(lst, dv,phieu);
         }
-
+        public static PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<PSBaoCaoTuyChonDonVi> lst, string MaDVCS, DateTime NgayBD, DateTime NgayKT)
+        {
+            var db = new DataObjects();
+            return db.GetBaoCaoDonViXNCoBan(lst, MaDVCS, NgayBD, NgayKT);
+        }
         #region Save Tree Report
         public static string GetFileReport(string Type, string EndFile)
         {
@@ -2467,6 +2476,7 @@ namespace BioNetBLL
             var db = new BioData();
             return db.convertToUnSign(s);
         }
-        #endregion
+       
+            #endregion
+        }
     }
-}

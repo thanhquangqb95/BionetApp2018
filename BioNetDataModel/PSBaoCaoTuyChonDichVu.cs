@@ -140,6 +140,24 @@ namespace BioNetModel
         public string Tile { get; set; }
     }
     #endregion
+    public class PSThongKePDFXetNghiem
+    {
+        public string ThoiGian { get; set; }
+        public string DonVi { get; set; }
+        public string LuuY { get; set; }
+        public string CanThuLaiL2 { get; set; }
+        public string MauDaThuLaiL2 { get; set; }
+        public string MauChuaThuLaiL2 { get; set; }
+        public List<PSThongKePDFXetNghiemCT> PSThongKePDFXetNghiemCT { get; set; }
+    }
+
+    public class PSThongKePDFXetNghiemCT
+    {
+        public string TenDichVu { get; set; }
+        public string MauL1NCCChuaThuLaiMau { get; set; }
+        public string MauL2NCC { get; set; }
+        public string MauL2NCT { get; set; }
+    }
 
     #region Chỉ tiêu theo xét nghiệm kq
     public class PSThongKePDFDonViXN

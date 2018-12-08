@@ -27,7 +27,7 @@ namespace BioNetSangLocSoSinh.Entry
         public List<PSDanhMucGoiDichVuChung> lstgoiXN = new List<PSDanhMucGoiDichVuChung>();
         private List<PSXN_TraKetQua> lstDaDuyetTraKetQua = new List<PSXN_TraKetQua>();
         //private List<PSXN_TraKetQua> lstChoTraKetQua = new List<PSXN_TraKetQua>();
-        private List<PSXN_TTTraKQ> lstChoTraKetQua = new List<PSXN_TTTraKQ>();
+        private List<View_TraKQ> lstChoTraKetQua = new List<View_TraKQ>();
         private List<PSXN_TTTraKQ> lstChoTraKetQuaXNLan2 = new List<PSXN_TTTraKQ>();
         private List<PSXN_TraKQ_ChiTiet> lstChiTietKQ = new List<PSXN_TraKQ_ChiTiet>();
         private List<PSXN_TraKQ_ChiTiet> lstChiTietKQCu = new List<PSXN_TraKQ_ChiTiet>();
@@ -88,7 +88,7 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadGCChuaCOKQ()
         {
             this.lstChoTraKetQua.Clear();
-            this.lstChoTraKetQua = BioNet_Bus.GetDanhSachChoTraKetQuaAll();
+            this.lstChoTraKetQua = BioNet_Bus.GetDanhSachChoTraKetQuaAllNew();
             this.GCChuaKQ.DataSource = null;
             this.GCChuaKQ.DataSource = this.lstChoTraKetQua;
             this.GVChuaKQ.ExpandAllGroups();

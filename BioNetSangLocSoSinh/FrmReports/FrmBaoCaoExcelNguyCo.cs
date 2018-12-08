@@ -1125,8 +1125,6 @@ namespace BioNetSangLocSoSinh.FrmReports
                 datarp.DataSource = baoct;
                 string Link=BioNet_Bus.SaveFileReport("Excel", "Unit", Donvi, DateTime.Now,DateTime.Now,".pdf");
                 datarp.ExportToPdf(Link);
-                //Reports.frmReport myForm = new Reports.frmReport(datarp);
-                // myForm.ShowDialog();
             }
             catch(Exception ex)
             {

@@ -4780,6 +4780,19 @@ namespace BioNetDAL
             }
             return lst;
         }
+        public List<View_TraKQ> GetDanhSachChoTraKetQuaAllNew()
+        {
+
+            List<View_TraKQ> lst = new List<View_TraKQ>();
+            try
+            {
+                lst=db.View_TraKQs.Where(x => x.isDaDuyetKQ != true && x.isTraKQ != true).ToList().OrderBy(x=>x.MaPhieu).ToList();
+            }
+            catch (Exception ex)
+            {
+            }
+            return lst;
+        }
         public object ConvertObjectToObject(object source, object des)
         {
             var props = des.GetType().GetProperties();
@@ -9347,7 +9360,7 @@ namespace BioNetDAL
                     catch { }
 
                 }
-                dsduongtinh = dsduongtinh.OrderBy(x => x.MaGoiXN).ThenBy(x => x.VietTatDV).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L1).ThenBy(y => y.KetQuaCuoiL2).ThenBy(x=>x.KetQuaCuoiL1).ToList();
+                dsduongtinh = dsduongtinh.OrderBy(x => x.MaGoiXN).ThenBy(x => x.VietTatDV).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L1).ThenBy(y => y.KetQua2L2).ThenBy(x=>x.KetQua1L2).ToList();
                 int stt = 1;
                 foreach (var ds in dsduongtinh)
                 {
@@ -9549,13 +9562,11 @@ namespace BioNetDAL
                     }
                     catch
                     {
-
                     }
                 }
             }
             catch
             {
-
             }
             return result;
         }
@@ -9574,7 +9585,6 @@ namespace BioNetDAL
                     result.Add(tk);
                 }
                 result = LoadDSThongKe(lst, result);
-
             }
             catch
             {
@@ -9599,7 +9609,6 @@ namespace BioNetDAL
                     }
                     catch
                     {
-
                     }                   
                 }
             }
@@ -9608,8 +9617,6 @@ namespace BioNetDAL
             }
             return lstresult;
         }
-
-      
         public PSThongKeTheoDonVi LoadDSThongKeDV(List<PSBaoCaoTuyChonDonVi> lst, PSThongKeTheoDonVi dv, int phieu)
         {
             List<PSBaoCaoTuyChonDonVi> kq = new List<PSBaoCaoTuyChonDonVi>();
@@ -9775,6 +9782,66 @@ namespace BioNetDAL
                 dv.PSThongKeGoiBenh.Benh2Hemo = 0;
             }
             return dv;
+        }
+
+        public PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<PSBaoCaoTuyChonDonVi> lst,string MaDVCS,DateTime NgayBD,DateTime NgayKT)
+        {
+            PSThongKePDFXetNghiem Repo = new PSThongKePDFXetNghiem();
+            try
+            {
+                //Repo.DonVi = GetThongTinDonViCoSo(MaDVCS).TenDVCS;
+                Repo.ThoiGian = "Từ ngày " + NgayBD.Date.ToString("dd/MM/yyyy") + " đến " + NgayKT.Date.ToString("dd/MM/yyyy") + ".";
+                Repo.LuuY = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.ToString("dd/MM/yyyy") + ".";
+                Repo.PSThongKePDFXetNghiemCT = new List<PSThongKePDFXetNghiemCT>();
+                Repo.CanThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true).ToList().Count().ToString();
+                Repo.MauDaThuLaiL2 = lst.Where(x => x.phieu2!=null).ToList().Count().ToString();
+                Repo.MauChuaThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2==null).ToList().Count().ToString();
+                Repo.DonVi = "AA";
+                List<PSXN_TraKetQua> kq2 = lst.Where(x => x.phieu2 != null).Select(x => x.KQ2).ToList();
+                var kq1ncc = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2 == null).Select(x => x.KQ1).ToList();
+                Repo.MauChuaThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2 == null).ToList().Count().ToString();
+                var dv = db.PSDanhMucDichVus.ToList();
+                foreach(var d in dv)
+                {
+                    PSThongKePDFXetNghiemCT ct = new PSThongKePDFXetNghiemCT();
+                    ct.TenDichVu = d.TenDichVu;
+                    try
+                    {
+                        var ct2 = kq2.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu))).ToList();
+                        ct2 = ct2.Where(x => x != null).ToList();
+                        //var ct2 = kq2.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu)).isNguyCo).ToList();
+                        ct.MauL2NCT = ct2.Where(x => x.isNguyCo == false).ToList().Count().ToString();
+                        ct.MauL2NCC = ct2.Where(x => x.isNguyCo == true).ToList().Count().ToString();
+                        //ct.MauL2NCT = ct2.Where(x => x == false).ToList().Count().ToString();
+                        //ct.MauL2NCC = ct2.Where(x => x == true).ToList().Count().ToString();
+                    }
+                    catch
+                    {
+                        ct.MauL2NCT = "0";
+                        ct.MauL2NCC = "0";
+                    }
+                    try
+                    {
+                        var ct1c = kq1ncc.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu))).ToList();
+                        ct1c = ct1c.Where(x => x != null).ToList();
+                       // var ct1cc = kq1ncc.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu)).isNguyCo).ToList();
+                        ct.MauL1NCCChuaThuLaiMau = ct1c.Where(x => x.isNguyCo == true).ToList().Count().ToString();
+                        //ct.MauL1NCCChuaThuLaiMau = ct1cc.Where(x => x == true).ToList().Count().ToString();
+                    }
+                    catch
+                    {
+                        ct.MauL1NCCChuaThuLaiMau = "0";
+                    }
+                   
+                    Repo.PSThongKePDFXetNghiemCT.Add(ct);
+                }
+                
+            }
+            catch
+            {
+
+            }
+            return Repo;
         }
     
         #endregion

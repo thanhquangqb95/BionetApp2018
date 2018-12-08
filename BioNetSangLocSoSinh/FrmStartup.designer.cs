@@ -1342,6 +1342,8 @@
             this.txtNameNV.Id = 42;
             this.txtNameNV.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.man;
             this.txtNameNV.Name = "txtNameNV";
+            this.txtNameNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.txtNameNV_ItemClick);
+            this.txtNameNV.ItemDoubleClick += new DevExpress.XtraBars.ItemClickEventHandler(this.txtNameNV_ItemDoubleClick);
             // 
             // ribbonPageCategory1
             // 
