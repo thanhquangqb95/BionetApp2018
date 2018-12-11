@@ -58,7 +58,6 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LookUpEditTenVietTat = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTime.Properties)).BeginInit();
@@ -79,7 +78,6 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Controls.Add(this.btnXuatPDF);
             this.panelControl1.Controls.Add(this.txtTime);
             this.panelControl1.Controls.Add(this.btnClear);
@@ -98,7 +96,6 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1288, 82);
             this.panelControl1.TabIndex = 3;
-            this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
             // btnXuatPDF
             // 
@@ -398,15 +395,6 @@
             this.gridView5.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView5.OptionsView.ShowGroupPanel = false;
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(973, 12);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 1086;
-            this.simpleButton1.Text = "simpleButton1";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
-            // 
             // FrmBaoBaoTheoDonVI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,6 +457,5 @@
         private DevExpress.XtraEditors.SimpleButton btnXuatFile;
         private DevExpress.XtraEditors.TextEdit txtTime;
         private DevExpress.XtraEditors.SimpleButton btnXuatPDF;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

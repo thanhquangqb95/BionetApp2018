@@ -70,7 +70,11 @@
             this.xrLabel27 = new DevExpress.XtraReports.UI.XRLabel();
             this.DetailReport = new DevExpress.XtraReports.UI.DetailReportBand();
             this.Detail1 = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
             this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
+            this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrPanel3 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrPanel4 = new DevExpress.XtraReports.UI.XRPanel();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -671,7 +675,7 @@
             this.xrLabel20.BackColor = System.Drawing.Color.LightSteelBlue;
             this.xrLabel20.BorderColor = System.Drawing.Color.Black;
             this.xrLabel20.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
-            this.xrLabel20.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel20.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrLabel20.BorderWidth = 1F;
             this.xrLabel20.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "PSThongKePDFDonViNhom.ThongKe.Tong1")});
@@ -698,7 +702,7 @@
             this.xrLabel21.BackColor = System.Drawing.Color.White;
             this.xrLabel21.BorderColor = System.Drawing.Color.Black;
             this.xrLabel21.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
-            this.xrLabel21.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel21.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrLabel21.BorderWidth = 1F;
             this.xrLabel21.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "PSThongKePDFDonViNhom.ThongKe.NguyCoThap1")});
@@ -776,7 +780,7 @@
             this.xrLabel24.BackColor = System.Drawing.Color.White;
             this.xrLabel24.BorderColor = System.Drawing.Color.Black;
             this.xrLabel24.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Dot;
-            this.xrLabel24.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLabel24.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrLabel24.BorderWidth = 1F;
             this.xrLabel24.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "PSThongKePDFDonViNhom.ThongKe.NguyCoCao2")});
@@ -861,6 +865,10 @@
             // Detail1
             // 
             this.Detail1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPanel4,
+            this.xrPanel3,
+            this.xrPanel2,
+            this.xrPanel1,
             this.xrLabel20,
             this.xrLabel21,
             this.xrLabel22,
@@ -871,11 +879,43 @@
             this.Detail1.HeightF = 25F;
             this.Detail1.Name = "Detail1";
             // 
+            // xrPanel1
+            // 
+            this.xrPanel1.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrPanel1.LocationFloat = new DevExpress.Utils.PointFloat(3.178914E-05F, 0F);
+            this.xrPanel1.Name = "xrPanel1";
+            this.xrPanel1.SizeF = new System.Drawing.SizeF(223.9998F, 25F);
+            this.xrPanel1.StylePriority.UseBorders = false;
+            // 
             // objectDataSource1
             // 
             this.objectDataSource1.Constructor = objectConstructorInfo1;
             this.objectDataSource1.DataSource = typeof(BioNetModel.PSThongKePDFDonViXN);
             this.objectDataSource1.Name = "objectDataSource1";
+            // 
+            // xrPanel2
+            // 
+            this.xrPanel2.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrPanel2.LocationFloat = new DevExpress.Utils.PointFloat(322.9999F, 0F);
+            this.xrPanel2.Name = "xrPanel2";
+            this.xrPanel2.SizeF = new System.Drawing.SizeF(101F, 25F);
+            this.xrPanel2.StylePriority.UseBorders = false;
+            // 
+            // xrPanel3
+            // 
+            this.xrPanel3.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrPanel3.LocationFloat = new DevExpress.Utils.PointFloat(522.9999F, 0F);
+            this.xrPanel3.Name = "xrPanel3";
+            this.xrPanel3.SizeF = new System.Drawing.SizeF(101F, 25F);
+            this.xrPanel3.StylePriority.UseBorders = false;
+            // 
+            // xrPanel4
+            // 
+            this.xrPanel4.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrPanel4.LocationFloat = new DevExpress.Utils.PointFloat(723.0001F, 0F);
+            this.xrPanel4.Name = "xrPanel4";
+            this.xrPanel4.SizeF = new System.Drawing.SizeF(101.0001F, 25F);
+            this.xrPanel4.StylePriority.UseBorders = false;
             // 
             // rptBaoCaoNhomDonViTheoKQXN
             // 
@@ -938,5 +978,9 @@
         private DevExpress.XtraReports.UI.DetailBand Detail1;
         private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel1;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel4;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel3;
+        private DevExpress.XtraReports.UI.XRPanel xrPanel2;
     }
 }

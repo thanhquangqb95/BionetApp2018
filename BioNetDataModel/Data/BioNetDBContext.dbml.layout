@@ -389,7 +389,7 @@
         <classShapeMoniker Id="2f385efe-687c-40b6-9250-8d5f4a63ccaf" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 5.0112939453125); (1.75 : 5.7973046875); (6.5 : 5.7973046875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 5.0112939453125); (1.75 : 5.7973046875); (6.5 : 5.7973046875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition/PSEmployeePosition_PSEmployee" />
       <nodes>
         <classShapeMoniker Id="352550d5-e82c-45de-baf1-01db64dfd758" />
@@ -403,7 +403,7 @@
         <classShapeMoniker Id="1add9c0b-39e3-43cd-a6a4-ab4fa6da675b" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.31814697265625); (3.5 : 4.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.31814697265625); (3.5 : 4.31814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition/PSEmployeePosition_PSMenuSecurityPosition" />
       <nodes>
         <classShapeMoniker Id="352550d5-e82c-45de-baf1-01db64dfd758" />

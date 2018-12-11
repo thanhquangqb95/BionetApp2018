@@ -857,7 +857,7 @@ namespace BioNetDAL
         #region Save Tree Report
         public string GetFileReport(string Type, string EndFile)
         {
-            string LinkCenter = Application.StartupPath + "\\Report";
+            string LinkCenter = Application.StartupPath + "\\BaoCao";
             try
             {
                 if (!File.Exists(LinkCenter))
@@ -903,13 +903,13 @@ namespace BioNetDAL
                 {
                     Directory.CreateDirectory(LinkCenter);
                 }
-                if (!dateBD.ToString().Equals(dateBD.ToString()))
+                if (!dateBD.ToString().Equals(dateKT.ToString()))
                 {
-                    LinkCenter = LinkCenter + "\\Report" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd")+EndFile;
+                    LinkCenter = LinkCenter + "\\BaoCao" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd")+EndFile;
                 }
                 else
                 {
-                    LinkCenter = LinkCenter + "\\Report" + Type + "_" + Unit + "_" + DateTime.Now.ToString("yyyy.MM.dd")+ EndFile;
+                    LinkCenter = LinkCenter + "\\BaoCao" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd")+ EndFile;
                 }
                 if (File.Exists(LinkCenter))
                 {
@@ -923,7 +923,7 @@ namespace BioNetDAL
         }
         public string SaveFileTemp(string Group, string Unit, DateTime dateBD, DateTime dateKT, string EndFile)
         {
-            string LinkCenter = Application.StartupPath + "\\Report";
+            string LinkCenter = Application.StartupPath + "\\BaoCao";
             try
             {
                 Unit = convertToUnSign(Unit);

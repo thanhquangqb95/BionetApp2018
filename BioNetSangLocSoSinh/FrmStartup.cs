@@ -1072,7 +1072,8 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.Waitingfrom), true, true, false);
-                FrmReports.FrmBaoCaoTuyChon_TrungTam frm = new FrmReports.FrmBaoCaoTuyChon_TrungTam();
+                //FrmReports.FrmBaoCaoTuyChon_TrungTam frm = new FrmReports.FrmBaoCaoTuyChon_TrungTam();
+                FrmReports.FrmBaoCaoTuyChonNew frm = new FrmReports.FrmBaoCaoTuyChonNew();
                 TabCreating(xTabMain, "Báo cáo tùy chọn", frm);
                 SplashScreenManager.CloseForm();
             }

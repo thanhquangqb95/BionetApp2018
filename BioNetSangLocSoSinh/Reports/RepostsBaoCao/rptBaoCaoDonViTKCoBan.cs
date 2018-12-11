@@ -8,9 +8,10 @@ namespace BioNetSangLocSoSinh.Reports.RepostsBaoCao
 {
     public partial class rptBaoCaoDonViTKCoBan : DevExpress.XtraReports.UI.XtraReport
     {
-        public rptBaoCaoDonViTKCoBan()
+        public rptBaoCaoDonViTKCoBan(int i)
         {
             InitializeComponent();
+            this.xrPageInfo1.StartPageNumber = i;
         }
 
     }

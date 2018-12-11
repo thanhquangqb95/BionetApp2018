@@ -12,6 +12,7 @@ namespace BioNetModel
         public string CAH { get; set; }
         public string PKU { get; set; }
         public string GAL { get; set; }
+        public string HEMO { get; set; }
 
     }
 }

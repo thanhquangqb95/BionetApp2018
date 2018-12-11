@@ -8660,6 +8660,13 @@ namespace BioNetDAL
                                 kqcuoi.PKU = ct.GiaTriCuoi;
                                 klcuoi.PKU = ct.KetLuan;
                             }
+                            else if (ct.IDThongSoXN.TrimEnd().Equals("HEMO"))
+                            {
+                                kq1.PKU = ct.GiaTri1;
+                                kq2.PKU = ct.GiaTri2;
+                                kqcuoi.PKU = ct.GiaTriCuoi;
+                                klcuoi.PKU = ct.KetLuan;
+                            }
                             if (dat.ph.MaGoiXN.Equals("DVGXN0001"))
                             {
                                 if (string.IsNullOrEmpty(bc.ChiSoXNLai))
@@ -8688,6 +8695,12 @@ namespace BioNetDAL
                 db.Connection.Close();
             }
             return lst;
+        }
+        public List<pro_Report_BaoCaoTuyChonResult> GetBaoCaoTuyChonNew(DateTime NgayBD,DateTime NgayKt,string MaDV)
+        {
+            List<pro_Report_BaoCaoTuyChonResult> results = new List<pro_Report_BaoCaoTuyChonResult>();
+            results = db.pro_Report_BaoCaoTuyChon(NgayBD, NgayKt, MaDV).ToList();
+            return results;
         }
         private static string SoBanDau()
         {
@@ -9127,7 +9140,6 @@ namespace BioNetDAL
                                 duongtinh.KetQua1L2 = ctkq.GiaTri2;
                                 duongtinh.TenDichVu = ctkq.TenThongSo;
                                 duongtinh.MaDichVu = ctkq.MaDichVu;
-                                duongtinh.MaGoiXN = ls.MaGoiXN;
                                 duongtinh.VietTatDV = GetVietTatDV(ls.IDCoSo);
                                 duongtinh.NgayLayMau = ls.NgayGioLayMau;
                                 duongtinh.NgayNhanMau = ls.NgayNhanMau;
@@ -9138,6 +9150,7 @@ namespace BioNetDAL
                                 kl = ctkq.KetLuan;
                                 if(!isL2)
                                 {
+                                    duongtinh.MaGoiXN = ls.MaGoiXN;
                                     if (!string.IsNullOrEmpty(ctkq.GiaTri2))
                                     {
                                         GiaTri = Decimal.Parse(ctkq.GiaTri2);
@@ -9226,7 +9239,6 @@ namespace BioNetDAL
                                 //mã phiếu1
                                 MP = 1;
                                 duongtinh.MaPhieuL1 = ls.IDPhieu;
-                                duongtinh.MaGoiXN = ls.MaGoiXN;
                                 duongtinh.VietTatDV = GetVietTatDV(ls.IDCoSo);
                                 duongtinh.NgayLayMau = ls.NgayGioLayMau;
                                 duongtinh.NgayNhanMau = ls.NgayNhanMau;
@@ -9265,11 +9277,16 @@ namespace BioNetDAL
                                 {
                                     GiaTri1 = Decimal.Parse(duongtinh.KetQua1L1);
                                 }
+                                if (!isL2)
+                                {
+                                    duongtinh.MaGoiXN = ls.MaGoiXN;
+                                }
                             }
                             else
                             {
                                 //mã phiếu2
                                 MP = 2;
+                                isL2 = true;
                                 duongtinh.MaPhieuL1 = ls.IDPhieuLan1;
                                 duongtinh.MaGoiXN = ls.MaGoiXN;
                                 duongtinh.VietTatDV = GetVietTatDV(ls.IDCoSo);
@@ -9288,6 +9305,7 @@ namespace BioNetDAL
                                 duongtinh.KetQuaCuoiL1 = kq1.GiaTriCuoi;
                                 int isXN2 = 0;
                                 var kq2 = db.PSXN_KetQuas.Where(x => x.MaPhieu.Equals(duongtinh.MaPhieuL2) && x.isXoa != true).ToList();
+                               
                                 foreach (var kq in kq2)
                                 {
                                     var ctkq1 = kq.PSXN_KetQua_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(TenDichVu) && x.isXoa != true);
@@ -9671,9 +9689,9 @@ namespace BioNetDAL
                     dv.PSTKChuongTrinh.XaHoi = ph1.Where(x => x.IDChuongTrinh.Equals("CTXH0001")).Count();
                     dv.PSTKChuongTrinh.Demo = ph1.Where(x => x.IDChuongTrinh.Equals("CTDM0001")).Count();
                     dv.PSTKCon = new PSThongKeCon();
-                    dv.PSTKCon.Sinh3Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("3")).Count();
-                    dv.PSTKCon.Sinh4Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("4")).Count();
-                    dv.PSTKCon.SinhTu5Con = pa.Where(x => int.Parse(x.Para.ToString().Substring(3)) >= 5).Count();
+                    dv.PSTKCon.Sinh3Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("2")).Count()+1;
+                    dv.PSTKCon.Sinh4Con = pa.Where(x => x.Para.ToString().Substring(3).Equals("3")).Count()+1;
+                    dv.PSTKCon.SinhTu5Con = pa.Where(x => int.Parse(x.Para.ToString().Substring(3)) >= 4).Count()+1;
                     dv.PSThongKeGoiBenh = new PSThongKeGoiBenh();
                     dv.PSThongKeGoiBenh.Benh2 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0002")).Count();
                     dv.PSThongKeGoiBenh.Benh3 = ph1.Where(x => x.MaGoiXN.Equals("DVGXN0003")).Count();
@@ -9796,7 +9814,7 @@ namespace BioNetDAL
                 Repo.CanThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true).ToList().Count().ToString();
                 Repo.MauDaThuLaiL2 = lst.Where(x => x.phieu2!=null).ToList().Count().ToString();
                 Repo.MauChuaThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2==null).ToList().Count().ToString();
-                Repo.DonVi = "AA";
+                Repo.DonVi = GetThongTinDonViCoSo(MaDVCS).TenDVCS;
                 List<PSXN_TraKetQua> kq2 = lst.Where(x => x.phieu2 != null).Select(x => x.KQ2).ToList();
                 var kq1ncc = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2 == null).Select(x => x.KQ1).ToList();
                 Repo.MauChuaThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2 == null).ToList().Count().ToString();
@@ -9832,19 +9850,14 @@ namespace BioNetDAL
                     {
                         ct.MauL1NCCChuaThuLaiMau = "0";
                     }
-                   
                     Repo.PSThongKePDFXetNghiemCT.Add(ct);
                 }
-                
             }
             catch
             {
-
             }
             return Repo;
-        }
-    
+        }   
         #endregion
-
     }
 }

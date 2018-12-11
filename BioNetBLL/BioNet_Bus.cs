@@ -1892,6 +1892,12 @@ namespace BioNetBLL
             }
 
         }
+        public static List<pro_Report_BaoCaoTuyChonResult> GetBaoCaoTuyChonNew(DateTime NgayBD, DateTime NgayKT, string MaDonVi)
+        {
+            var db = new DataObjects();
+            return db.GetBaoCaoTuyChonNew(NgayBD, NgayKT, MaDonVi);
+
+        }
         //public static rptChiTietTrungTam GetBaoCaoTrungTamCoBan(DateTime tuNgay, DateTime denNgay)
         //{
 
