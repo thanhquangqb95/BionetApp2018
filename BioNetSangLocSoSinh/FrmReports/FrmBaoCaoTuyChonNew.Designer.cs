@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBaoCaoTuyChonNew));
-            this.repositoryItemImageComboBoxGioiTinh = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.bandedGridColumn16 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemGridLookUpEditGoiXN = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView10 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -74,10 +73,6 @@
             this.col_DT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_NgaySinh = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.Loopup_IDGioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Loopup_TenGioiTinh = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repositoryItemGridLookUpEditGioiTinh = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.bandedGridColumn26 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn25 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn24 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -140,7 +135,8 @@
             this.btnXuatExcel = new DevExpress.XtraEditors.SimpleButton();
             this.btnLayDuLieu = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxGioiTinh)).BeginInit();
+            this.repositoryItemGridLookUpEditGioiTinh = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGoiXN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditChuongTrinh)).BeginInit();
@@ -153,8 +149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditCheDoDinhDuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditDanToc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -169,18 +163,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCBaoCaoTuyChon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             this.SuspendLayout();
-            // 
-            // repositoryItemImageComboBoxGioiTinh
-            // 
-            this.repositoryItemImageComboBoxGioiTinh.AutoHeight = false;
-            this.repositoryItemImageComboBoxGioiTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBoxGioiTinh.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nam", "0", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Nữ", "1", -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("N/A", "2", -1)});
-            this.repositoryItemImageComboBoxGioiTinh.Name = "repositoryItemImageComboBoxGioiTinh";
             // 
             // bandedGridColumn16
             // 
@@ -278,7 +263,7 @@
             this.bandedGridColumn22.Caption = "Ngày xét nghiệm";
             this.bandedGridColumn22.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.bandedGridColumn22.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.bandedGridColumn22.FieldName = "NgayXetNghiem";
+            this.bandedGridColumn22.FieldName = "NgayLamXetNghiem";
             this.bandedGridColumn22.Name = "bandedGridColumn22";
             this.bandedGridColumn22.Visible = true;
             this.bandedGridColumn22.Width = 121;
@@ -351,7 +336,7 @@
             this.repositoryItemImageComboBoxTinhTrangMau.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Mẫu thu lại", true, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Mẫu mới", false, -1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Thu mới", null, -1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Mẫu mới", null, -1)});
             this.repositoryItemImageComboBoxTinhTrangMau.Name = "repositoryItemImageComboBoxTinhTrangMau";
             // 
             // col_ChiSoXNLai
@@ -444,7 +429,7 @@
             // 
             this.bandedGridColumn9.Caption = "Tình trạng trẻ lúc lấy mẫu";
             this.bandedGridColumn9.ColumnEdit = this.repositoryItemGridLookUpEditTinhTrangTre;
-            this.bandedGridColumn9.FieldName = "IDTinhTrangTre";
+            this.bandedGridColumn9.FieldName = "TinhTrangLucLayMau";
             this.bandedGridColumn9.Name = "bandedGridColumn9";
             this.bandedGridColumn9.Visible = true;
             this.bandedGridColumn9.Width = 72;
@@ -477,7 +462,7 @@
             // 
             this.bandedGridColumn12.Caption = "Chế độ dinh dưỡng";
             this.bandedGridColumn12.ColumnEdit = this.repositoryItemGridLookUpEditCheDoDinhDuong;
-            this.bandedGridColumn12.FieldName = "IDCheDoDinhDuong";
+            this.bandedGridColumn12.FieldName = "CheDoDinhDuong";
             this.bandedGridColumn12.Name = "bandedGridColumn12";
             this.bandedGridColumn12.Visible = true;
             this.bandedGridColumn12.Width = 72;
@@ -493,7 +478,7 @@
             // col_TuoiThai
             // 
             this.col_TuoiThai.Caption = "Tuổi Thai (tuần)";
-            this.col_TuoiThai.FieldName = "TuoiThaiKhiSinh";
+            this.col_TuoiThai.FieldName = "TuanTuoiKhiSinh";
             this.col_TuoiThai.Name = "col_TuoiThai";
             this.col_TuoiThai.Visible = true;
             this.col_TuoiThai.Width = 72;
@@ -550,7 +535,7 @@
             // 
             this.col_DT.Caption = "Dân tộc";
             this.col_DT.ColumnEdit = this.repositoryItemGridLookUpEditDanToc;
-            this.col_DT.FieldName = "IDDanToc";
+            this.col_DT.FieldName = "DanTocID";
             this.col_DT.Name = "col_DT";
             this.col_DT.Visible = true;
             this.col_DT.Width = 72;
@@ -575,38 +560,6 @@
             this.col_NgaySinh.Visible = true;
             this.col_NgaySinh.Width = 72;
             // 
-            // Loopup_IDGioiTinh
-            // 
-            this.Loopup_IDGioiTinh.Caption = "IDGioiTinh";
-            this.Loopup_IDGioiTinh.FieldName = "GioiTinh";
-            this.Loopup_IDGioiTinh.Name = "Loopup_IDGioiTinh";
-            // 
-            // Loopup_TenGioiTinh
-            // 
-            this.Loopup_TenGioiTinh.Caption = "Tên Giới Tính";
-            this.Loopup_TenGioiTinh.FieldName = "TenGioiTinh";
-            this.Loopup_TenGioiTinh.Name = "Loopup_TenGioiTinh";
-            this.Loopup_TenGioiTinh.Visible = true;
-            this.Loopup_TenGioiTinh.VisibleIndex = 0;
-            // 
-            // gridView8
-            // 
-            this.gridView8.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Loopup_IDGioiTinh,
-            this.Loopup_TenGioiTinh});
-            this.gridView8.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView8.Name = "gridView8";
-            this.gridView8.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView8.OptionsView.ShowGroupPanel = false;
-            // 
-            // repositoryItemGridLookUpEditGioiTinh
-            // 
-            this.repositoryItemGridLookUpEditGioiTinh.AutoHeight = false;
-            this.repositoryItemGridLookUpEditGioiTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemGridLookUpEditGioiTinh.Name = "repositoryItemGridLookUpEditGioiTinh";
-            this.repositoryItemGridLookUpEditGioiTinh.View = this.gridView8;
-            // 
             // bandedGridColumn26
             // 
             this.bandedGridColumn26.AppearanceHeader.Options.UseTextOptions = true;
@@ -630,7 +583,7 @@
             // bandedGridColumn24
             // 
             this.bandedGridColumn24.Caption = "Kết luận nguy cơ cao";
-            this.bandedGridColumn24.FieldName = "KLNguyCoCao";
+            this.bandedGridColumn24.FieldName = "KLNguyCo";
             this.bandedGridColumn24.Name = "bandedGridColumn24";
             this.bandedGridColumn24.Visible = true;
             this.bandedGridColumn24.Width = 20;
@@ -666,7 +619,7 @@
             // col_GioiTinh
             // 
             this.col_GioiTinh.Caption = "Giới tính";
-            this.col_GioiTinh.ColumnEdit = this.repositoryItemImageComboBoxGioiTinh;
+            this.col_GioiTinh.ColumnEdit = this.repositoryItemGridLookUpEditGioiTinh;
             this.col_GioiTinh.FieldName = "GioiTinh";
             this.col_GioiTinh.Name = "col_GioiTinh";
             this.col_GioiTinh.Visible = true;
@@ -890,7 +843,7 @@
             // bandedGridColumn20
             // 
             this.bandedGridColumn20.Caption = "Mã Phiếu Lần 1";
-            this.bandedGridColumn20.FieldName = "IDPhieu1";
+            this.bandedGridColumn20.FieldName = "IDPhieuLan1";
             this.bandedGridColumn20.Name = "bandedGridColumn20";
             this.bandedGridColumn20.Visible = true;
             this.bandedGridColumn20.Width = 102;
@@ -982,6 +935,7 @@
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "IDPhieu", this.col_MaPhieu, "Tổng phiếu = {0}")});
             this.GVBaoCaoTuyChon.Name = "GVBaoCaoTuyChon";
             this.GVBaoCaoTuyChon.OptionsPrint.EnableAppearanceOddRow = true;
+            this.GVBaoCaoTuyChon.OptionsView.ColumnAutoWidth = true;
             this.GVBaoCaoTuyChon.OptionsView.ShowFooter = true;
             this.GVBaoCaoTuyChon.OptionsView.ShowGroupPanel = false;
             // 
@@ -1236,12 +1190,11 @@
             this.repositoryItemGridLookUpEditDanToc,
             this.repositoryItemGridLookUpEditTinhTrangTre,
             this.repositoryItemGridLookUpEditCheDoDinhDuong,
-            this.repositoryItemGridLookUpEditGioiTinh,
             this.repositoryItemImageComboBoxDanhGiaMau,
             this.repositoryItemImageComboBoxTinhTrangMau,
-            this.repositoryItemImageComboBoxGioiTinh,
             this.repositoryItemGridLookUpEditChuongTrinh,
-            this.repositoryItemGridLookUpEditGoiXN});
+            this.repositoryItemGridLookUpEditGoiXN,
+            this.repositoryItemGridLookUpEditGioiTinh});
             this.GCBaoCaoTuyChon.Size = new System.Drawing.Size(1284, 518);
             this.GCBaoCaoTuyChon.TabIndex = 0;
             this.GCBaoCaoTuyChon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1304,6 +1257,21 @@
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
+            // repositoryItemGridLookUpEditGioiTinh
+            // 
+            this.repositoryItemGridLookUpEditGioiTinh.AutoHeight = false;
+            this.repositoryItemGridLookUpEditGioiTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemGridLookUpEditGioiTinh.Name = "repositoryItemGridLookUpEditGioiTinh";
+            this.repositoryItemGridLookUpEditGioiTinh.View = this.gridView8;
+            // 
+            // gridView8
+            // 
+            this.gridView8.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView8.Name = "gridView8";
+            this.gridView8.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView8.OptionsView.ShowGroupPanel = false;
+            // 
             // FrmBaoCaoTuyChonNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1315,7 +1283,6 @@
             this.Name = "FrmBaoCaoTuyChonNew";
             this.Text = "FrmBaoCaoTuyChonNew";
             this.Load += new System.EventHandler(this.FrmBaoCaoTuyChonNew_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxGioiTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGoiXN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditChuongTrinh)).EndInit();
@@ -1328,8 +1295,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditCheDoDinhDuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditDanToc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
@@ -1344,13 +1309,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCBaoCaoTuyChon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBoxGioiTinh;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn16;
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemGridLookUpEditGoiXN;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView10;
@@ -1395,10 +1360,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_DT;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_NgaySinh;
-        private DevExpress.XtraGrid.Columns.GridColumn Loopup_IDGioiTinh;
-        private DevExpress.XtraGrid.Columns.GridColumn Loopup_TenGioiTinh;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
-        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemGridLookUpEditGioiTinh;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn26;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn25;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn24;
@@ -1461,5 +1422,7 @@
         private DevExpress.XtraEditors.SimpleButton btnXuatExcel;
         private DevExpress.XtraEditors.SimpleButton btnLayDuLieu;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repositoryItemGridLookUpEditGioiTinh;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
     }
 }

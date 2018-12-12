@@ -32,6 +32,7 @@ namespace BioNetSangLocSoSinh.FrmReports
         private List<PSThongKeTheoDonVi> lstTK = new List<PSThongKeTheoDonVi>();
         private List<CLPPSinh> CLPPSinhs = new List<CLPPSinh>();
         private List<CLGioiTinh> CLGioiTinhs = new List<CLGioiTinh>();
+        private List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> ListBC = new List<pro_Report_BaoCaoTongHopTheoBenhNhanResult>();
         private void FrmBaoBaoTheoDonVI_Load(object sender, EventArgs e)
         {
             //cbbDichVu.Properties.DataSource = BioNet_Bus.GetDanhSachDichVu(false);
@@ -50,13 +51,6 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.LoadChuongTrinh();
             this.LoadSLSinh();
             this.LoadGoiXN();
-
-            CLPPSinhs.Add(new CLPPSinh() { PPSinh = "0", TenPPSinh = "Sinh thường" });
-            CLPPSinhs.Add(new CLPPSinh() { PPSinh = "1", TenPPSinh = "Sinh mổ" });
-            CLPPSinhs.Add(new CLPPSinh() { PPSinh = "2", TenPPSinh = "N/A" });
-            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "0", TenGioiTinh = "Nam" });
-            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "1", TenGioiTinh = "Nữ" });
-            CLGioiTinhs.Add(new CLGioiTinh() { GioiTinh = "2", TenGioiTinh = "N/A" });
         }
         #region Load cột
         private void LoadPPSinh()
@@ -231,6 +225,14 @@ namespace BioNetSangLocSoSinh.FrmReports
             col1.OptionsColumn.AllowEdit = false;
             col1.Visible = true;
             band.Columns.Add(col1);
+
+            DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            col13.Name = "TuoiMeDuoi13";
+            col13.FieldName = "PSThongKeTuoiMe.Tuoi13";
+            col13.Caption = "13 tuổi";
+            col13.OptionsColumn.AllowEdit = false;
+            col13.Visible = true;
+            band.Columns.Add(col13);
 
             DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             col2.Name = "TuoiMeTuoi14";
@@ -477,10 +479,12 @@ namespace BioNetSangLocSoSinh.FrmReports
                     MaDonVi = this.txtDonVi.EditValue.ToString();
                 }
                 listBaoCao = null;
+                ListBC = null;
                 SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
                 DateTime TIme1 = DateTime.Now;
-                listBaoCao = BioNet_Bus.LoadDSThongKeDonVi(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, MaDonVi);
-                lstTK = BioNet_Bus.LoadDSThongKeDonViCT(listBaoCao);
+                //listBaoCao = BioNet_Bus.LoadDSThongKeDonVi(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, MaDonVi);
+                ListBC= BioNet_Bus.LoadDSThongKeTheoBenhNhan(dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, MaDonVi);
+                lstTK = BioNet_Bus.LoadDSThongKeDonViCTNew(ListBC);
                 loadDuLieu();
                 SplashScreenManager.CloseForm();
                 DateTime TIme2 = DateTime.Now;
@@ -670,12 +674,12 @@ namespace BioNetSangLocSoSinh.FrmReports
         private void XuatFile2(PSThongKeTheoDonVi tk, string Link, int i)
         {
 
-            var p1 = listBaoCao.Where(y => y.phieu1.IDCoSo.Equals(tk.MaDV)).ToList();
-            var p2 = listBaoCao.Where(x => x.phieu2 != null).Where(y => y.phieu2.IDCoSo.Equals(tk.MaDV)).ToList();
-            var t1 = p1.Where(y => y.KQ1.isNguyCoCao == false).ToList();
-            var t2 = p2.Where(y => y.KQ2.isNguyCoCao == false).ToList();
-            var c1 = p1.Where(y => y.KQ1.isNguyCoCao == true).ToList();
-            var c2 = p2.Where(y => y.KQ2.isNguyCoCao == true).ToList();
+            var p1 = ListBC.Where(y => y.IDCoSo.Equals(tk.MaDV)).ToList();
+            var p2 = ListBC.Where(x => x.IDPhieu2 != null && x.IDCoSo.Equals(tk.MaDV)).ToList();
+            var t1 = p1.Where(y => y.NguyCoCao1 == false).ToList();
+            var t2 = p2.Where(y => y.NguyCoCao2 == false).ToList();
+            var c1 = p1.Where(y => y.NguyCoCao1 == true).ToList();
+            var c2 = p2.Where(y => y.NguyCoCao2 == true).ToList();
             PSThongKeTheoDonVi ph1 = new PSThongKeTheoDonVi();
             PSThongKeTheoDonVi ph2 = new PSThongKeTheoDonVi();
             PSThongKeTheoDonVi ph1thap = new PSThongKeTheoDonVi();
@@ -684,22 +688,22 @@ namespace BioNetSangLocSoSinh.FrmReports
             PSThongKeTheoDonVi ph2cao = new PSThongKeTheoDonVi();
             PSThongKeTheoDonVi dvtk = new PSThongKeTheoDonVi();
             dvtk.MaDV = tk.MaDV;
-            ph1 = BioNet_Bus.LoadDSThongKeDV(p1, dvtk, 1);
+            ph1 = BioNet_Bus.LoadDSThongKeDVNew(p1, dvtk, 1);
             dvtk = new PSThongKeTheoDonVi();
             dvtk.MaDV = tk.MaDV;
-            ph2 = BioNet_Bus.LoadDSThongKeDV(p2, dvtk, 2);
+            ph2 = BioNet_Bus.LoadDSThongKeDVNew(p2, dvtk, 2);
             dvtk = new PSThongKeTheoDonVi();
             dvtk.MaDV = tk.MaDV;
-            ph1thap = BioNet_Bus.LoadDSThongKeDV(t1, dvtk, 1);
+            ph1thap = BioNet_Bus.LoadDSThongKeDVNew(t1, dvtk, 1);
             dvtk = new PSThongKeTheoDonVi();
             dvtk.MaDV = tk.MaDV;
-            ph1cao = BioNet_Bus.LoadDSThongKeDV(c1, dvtk, 2);
+            ph1cao = BioNet_Bus.LoadDSThongKeDVNew(c1, dvtk, 2);
             dvtk = new PSThongKeTheoDonVi();
             dvtk.MaDV = tk.MaDV;
-            ph2thap = BioNet_Bus.LoadDSThongKeDV(t2, dvtk, 1);
+            ph2thap = BioNet_Bus.LoadDSThongKeDVNew(t2, dvtk, 1);
             dvtk = new PSThongKeTheoDonVi();
             dvtk.MaDV = tk.MaDV;
-            ph2cao = BioNet_Bus.LoadDSThongKeDV(c2, dvtk, 2);
+            ph2cao = BioNet_Bus.LoadDSThongKeDVNew(c2, dvtk, 2);
 
             PSThongKePDFDonViXNNhom nhom = new PSThongKePDFDonViXNNhom();
             nhom.STT = 1;
@@ -729,7 +733,8 @@ namespace BioNetSangLocSoSinh.FrmReports
             nhom2.Tong1 = p1.Count().ToString();
             nhom2.Tong2 = p2.Count().ToString();
             nhom2.ThongKe = new List<PSThongKePDFDonViXNCT>();
-            nhom2.ThongKe.Add(GetCTThongKe("13", ph1thap.PSThongKeTuoiMe.Duoi13, ph1cao.PSThongKeTuoiMe.Duoi13, ph1.PSThongKeTuoiMe.Duoi13, ph2thap.PSThongKeTuoiMe.Duoi13, ph2cao.PSThongKeTuoiMe.Duoi13, ph2.PSThongKeTuoiMe.Duoi13));
+            nhom2.ThongKe.Add(GetCTThongKe("<13", ph1thap.PSThongKeTuoiMe.Duoi13, ph1cao.PSThongKeTuoiMe.Duoi13, ph1.PSThongKeTuoiMe.Duoi13, ph2thap.PSThongKeTuoiMe.Duoi13, ph2cao.PSThongKeTuoiMe.Duoi13, ph2.PSThongKeTuoiMe.Duoi13));
+            nhom2.ThongKe.Add(GetCTThongKe("13", ph1thap.PSThongKeTuoiMe.Tuoi13, ph1cao.PSThongKeTuoiMe.Duoi13, ph1.PSThongKeTuoiMe.Duoi13, ph2thap.PSThongKeTuoiMe.Duoi13, ph2cao.PSThongKeTuoiMe.Duoi13, ph2.PSThongKeTuoiMe.Duoi13));
             nhom2.ThongKe.Add(GetCTThongKe("14", ph1thap.PSThongKeTuoiMe.Tuoi14, ph1cao.PSThongKeTuoiMe.Tuoi14, ph1.PSThongKeTuoiMe.Tuoi14, ph2thap.PSThongKeTuoiMe.Tuoi14, ph2cao.PSThongKeTuoiMe.Tuoi14, ph2.PSThongKeTuoiMe.Tuoi14));
             nhom2.ThongKe.Add(GetCTThongKe("15", ph1thap.PSThongKeTuoiMe.Tuoi15, ph1cao.PSThongKeTuoiMe.Tuoi15, ph1.PSThongKeTuoiMe.Tuoi15, ph2thap.PSThongKeTuoiMe.Tuoi15, ph2cao.PSThongKeTuoiMe.Tuoi15, ph2.PSThongKeTuoiMe.Tuoi15));
             nhom2.ThongKe.Add(GetCTThongKe("16", ph1thap.PSThongKeTuoiMe.Tuoi16, ph1cao.PSThongKeTuoiMe.Tuoi16, ph1.PSThongKeTuoiMe.Tuoi16, ph2thap.PSThongKeTuoiMe.Tuoi16, ph2cao.PSThongKeTuoiMe.Tuoi16, ph2.PSThongKeTuoiMe.Tuoi16));
@@ -787,7 +792,7 @@ namespace BioNetSangLocSoSinh.FrmReports
 
 
         }
-        private void XuatFile3(List<PSBaoCaoTuyChonDonVi> tk, string MaDV, string Link, int i)
+        private void XuatFile3(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> tk, string MaDV, string Link, int i)
         {
             Reports.RepostsBaoCao.rptBaoCaoDonViTKCoBan bv = new Reports.RepostsBaoCao.rptBaoCaoDonViTKCoBan(i);
             bv.DataSource = BioNet_Bus.GetBaoCaoDonViXNCoBan(tk, MaDV, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date);
@@ -797,30 +802,10 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             try
             {
-                string MaDonVi = String.Empty;
-                List<PSThongKeTheoDonVi> ldv = new List<PSThongKeTheoDonVi>();
-                if (txtDonVi.EditValue.ToString() == "all")
-                {
-                    if (txtChiCuc.EditValue.ToString() == "all")
-                    {
-                        MaDonVi = "all";
-                        ldv = lstTK;
-                    }
-                    else
-                    {
-                        MaDonVi = this.txtChiCuc.EditValue.ToString();
-                        ldv = lstTK.Where(x => x.MaDV.Contains(MaDonVi)).ToList();
-                    }
-                }
-                else
-                {
-                    MaDonVi = this.txtDonVi.EditValue.ToString();
-                    ldv = lstTK.Where(x => x.MaDV.Equals(MaDonVi)).ToList();
-                }
                 string Folder = BioNet_Bus.GetFileReport("DonVi", "PDF");
                 //File1
                 SplashScreenManager.ShowForm(typeof(WaitingLoadData), true, false);
-                foreach (var tk in ldv)
+                foreach (var tk in lstTK)
                 {
                     string TenDonVi = BioNet_Bus.GetThongTinDonViCoSo(tk.MaDV).TenDVCS;
 
@@ -833,7 +818,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                     }
                     document.Open();
                     string fileName = BioNet_Bus.SaveFileTemp("DonVi", TenDonVi, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, "1.pdf");
-                    XuatFile1(tk, fileName);
+                    this.XuatFile1(tk, fileName);
                     PdfReader reader = new PdfReader(fileName);
                     reader.ConsolidateNamedDestinations();
                     int str = 1;
@@ -855,7 +840,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                     }
                     //File2
                     string fileName2 = BioNet_Bus.SaveFileTemp("DonVi", TenDonVi, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, "2.pdf");
-                    XuatFile2(tk, fileName2, str);
+                    this.XuatFile2(tk, fileName2, str);
                     PdfReader reader2 = new PdfReader(fileName2);
                     reader2.ConsolidateNamedDestinations();
                     for (int i = 1; i <= reader2.NumberOfPages; i++)
@@ -876,7 +861,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                     }
                     //File 3
                     string fileName3 = BioNet_Bus.SaveFileTemp("DonVi", TenDonVi, dllNgay.tungay.Value.Date, dllNgay.denngay.Value.Date, "3.pdf");
-                    List<PSBaoCaoTuyChonDonVi> listdv = listBaoCao.Where(x => x.phieu1.IDCoSo.Equals(tk.MaDV)).ToList();
+                    List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> listdv = ListBC.Where(x => x.IDCoSo.Equals(tk.MaDV)).ToList();
                     XuatFile3(listdv, tk.MaDV, fileName3, str);
                     PdfReader reader3 = new PdfReader(fileName3);
                     reader3.ConsolidateNamedDestinations();
@@ -935,16 +920,16 @@ namespace BioNetSangLocSoSinh.FrmReports
             return ct;
         }
 
-        private PSThongKePDFDonViXNCT GetCTThongKeDanToc(int name, List<PSBaoCaoTuyChonDonVi> thap1, List<PSBaoCaoTuyChonDonVi> cao1, List<PSBaoCaoTuyChonDonVi> p1, List<PSBaoCaoTuyChonDonVi> thap2, List<PSBaoCaoTuyChonDonVi> cao2, List<PSBaoCaoTuyChonDonVi> p2)
+        private PSThongKePDFDonViXNCT GetCTThongKeDanToc(int name, List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> thap1, List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> cao1, List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> p1, List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> thap2, List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> cao2, List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> p2)
         {
             PSThongKePDFDonViXNCT ct = new PSThongKePDFDonViXNCT();
             ct.TenThongKe = BioNet_Bus.GetTenDanToc(name);
-            ct.NguyCoThap1 = thap1.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
-            ct.NguyCoThap2 = thap2.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
-            ct.Tong1 = p1.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
-            ct.NguyCoCao1 = cao1.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
-            ct.NguyCoCao2 = cao2.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
-            ct.Tong2 = p2.Where(x => x.patient.DanTocID.Equals(name)).Count().ToString();
+            ct.NguyCoThap1 = thap1.Where(x => x.DanTocID.Equals(name)).Count().ToString();
+            ct.NguyCoThap2 = thap2.Where(x => x.DanTocID.Equals(name)).Count().ToString();
+            ct.Tong1 = p1.Where(x => x.DanTocID.Equals(name)).Count().ToString();
+            ct.NguyCoCao1 = cao1.Where(x => x.DanTocID.Equals(name)).Count().ToString();
+            ct.NguyCoCao2 = cao2.Where(x => x.DanTocID.Equals(name)).Count().ToString();
+            ct.Tong2 = p2.Where(x => x.DanTocID.Equals(name)).Count().ToString();
             return ct;
         }
     }

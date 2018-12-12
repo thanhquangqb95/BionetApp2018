@@ -2430,10 +2430,25 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.LoadDSThongKeDonVi(NgayBD, NgayKT, MaDV);
         }
+        public static List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> LoadDSThongKeTheoBenhNhan(DateTime NgayBD, DateTime NgayKT, string MaDV)
+        {
+            var db = new DataObjects();
+            return db.LoadDSThongKeTheoBenhNhan(NgayBD, NgayKT, MaDV);
+        }
         public static List<PSThongKeTheoDonVi> LoadDSThongKeDonViCT(List<PSBaoCaoTuyChonDonVi> lst)
         {
             var db = new DataObjects();
             return db.LoadDSThongKeDonViCT(lst);
+        }
+        public static List<PSThongKeTheoDonVi> LoadDSThongKeDonViCTNew(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst)
+        {
+            var db = new DataObjects();
+            return db.LoadDSThongKeDonViCTNew(lst);
+        }
+        public static PSThongKeTheoDonVi LoadDSThongKeDVNew(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst, PSThongKeTheoDonVi dv,int phieu)
+        {
+            var db = new DataObjects();
+            return db.LoadDSThongKeDVNew(lst, dv, phieu);
         }
         public static PSThongKeTheoDonVi LoadDSThongKeDV(List<PSBaoCaoTuyChonDonVi> lst, PSThongKeTheoDonVi dv,int phieu)
         {

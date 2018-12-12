@@ -66,6 +66,7 @@ namespace BioNetModel
     public class PSThongKeTuoiMe
     {
         public int Duoi13 { get; set; }
+        public int Tuoi13 { get; set; }
         public int Tuoi14 { get; set; }
         public int Tuoi15 { get; set; }
         public int Tuoi16 { get; set; }
