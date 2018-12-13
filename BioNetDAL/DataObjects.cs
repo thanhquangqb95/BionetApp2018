@@ -9679,7 +9679,7 @@ namespace BioNetDAL
                     dv.PSTKPPSinh.NA = lst.Where(x => x.PhuongPhapSinh == 2).Count();
                     dv.PSThongKeTuoiMe = new PSThongKeTuoiMe();
                     dv.PSThongKeTuoiMe.Duoi13 = lst.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 13).Count();
-                    dv.PSThongKeTuoiMe.Tuoi13 = lst.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) <= 13).Count();
+                    dv.PSThongKeTuoiMe.Tuoi13 = lst.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 13).Count();
                     dv.PSThongKeTuoiMe.Tuoi14 = lst.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 14).Count();
                     dv.PSThongKeTuoiMe.Tuoi15 = lst.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 15).Count();
                     dv.PSThongKeTuoiMe.Tuoi16 = lst.Where(x => (x.NgayGioSinh.Value.Year - x.MotherBirthday.Value.Year) == 16).Count();
@@ -9983,7 +9983,7 @@ namespace BioNetDAL
             return dv;
         }
 
-        public PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<PSBaoCaoTuyChonDonVi> lst,string MaDVCS,DateTime NgayBD,DateTime NgayKT)
+        public PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst,string MaDVCS,DateTime NgayBD,DateTime NgayKT)
         {
             PSThongKePDFXetNghiem Repo = new PSThongKePDFXetNghiem();
             try
@@ -9992,44 +9992,70 @@ namespace BioNetDAL
                 Repo.ThoiGian = "Từ ngày " + NgayBD.Date.ToString("dd/MM/yyyy") + " đến " + NgayKT.Date.ToString("dd/MM/yyyy") + ".";
                 Repo.LuuY = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.ToString("dd/MM/yyyy") + ".";
                 Repo.PSThongKePDFXetNghiemCT = new List<PSThongKePDFXetNghiemCT>();
-                Repo.CanThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true).ToList().Count().ToString();
-                Repo.MauDaThuLaiL2 = lst.Where(x => x.phieu2!=null).ToList().Count().ToString();
-                Repo.MauChuaThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2==null).ToList().Count().ToString();
+                Repo.CanThuLaiL2 = lst.Where(x => x.NguyCoCao1 == true).ToList().Count().ToString();
+                Repo.MauDaThuLaiL2 = lst.Where(x => x.NguyCoCao2!=null).ToList().Count().ToString();
+                Repo.MauChuaThuLaiL2 = lst.Where(x => x.NguyCoCao1 == true && x.NguyCoCao2==null).ToList().Count().ToString();
+                Repo.TongMauMoi = lst.Count().ToString();
+                Repo.MauLan1NCC= lst.Where(x => x.NguyCoCao1 == true).ToList().Count().ToString();
+                Repo.MauLan1NCT = lst.Where(x => x.NguyCoCao1 == false).ToList().Count().ToString();
+                Repo.TileMauLan1NCC = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.MauLan1NCC.ToString()))/ (double)(Double.Parse(Repo.TongMauMoi.ToString()))) * 100) + "%";
+                Repo.TileMauLan1NCT = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.MauLan1NCT.ToString())) / (double)(Double.Parse(Repo.TongMauMoi.ToString()))) * 100) + "%";
+                Repo.TileCanThuLaiL2 = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.CanThuLaiL2.ToString())) / (double)(Double.Parse(Repo.TongMauMoi.ToString()))) * 100) + "%";
+                Repo.TileMauDaThuLaiL2 = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.MauDaThuLaiL2.ToString())) / (double)(Double.Parse(Repo.CanThuLaiL2.ToString()))) * 100) + "%";
+                Repo.TileMauChuaThuLaiL2 = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.MauChuaThuLaiL2.ToString())) / (double)(Double.Parse(Repo.CanThuLaiL2.ToString()))) * 100) + "%";
                 Repo.DonVi = GetThongTinDonViCoSo(MaDVCS).TenDVCS;
-                List<PSXN_TraKetQua> kq2 = lst.Where(x => x.phieu2 != null).Select(x => x.KQ2).ToList();
-                var kq1ncc = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2 == null).Select(x => x.KQ1).ToList();
-                Repo.MauChuaThuLaiL2 = lst.Where(x => x.KQ1.isNguyCoCao == true && x.phieu2 == null).ToList().Count().ToString();
+                var kq2nct = lst.Where(x => x.NguyCoCao2 ==false).ToList();
+                var kq2ncc = lst.Where(x => x.NguyCoCao2 == true).ToList();
+                var kq1chuathulai = lst.Where(x => x.NguyCoCao1 == true && x.NguyCoCao2 == null).ToList();
                 var dv = db.PSDanhMucDichVus.ToList();
                 foreach(var d in dv)
                 {
                     PSThongKePDFXetNghiemCT ct = new PSThongKePDFXetNghiemCT();
                     ct.TenDichVu = d.TenDichVu;
-                    try
-                    {
-                        var ct2 = kq2.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu))).ToList();
-                        ct2 = ct2.Where(x => x != null).ToList();
-                        //var ct2 = kq2.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu)).isNguyCo).ToList();
-                        ct.MauL2NCT = ct2.Where(x => x.isNguyCo == false).ToList().Count().ToString();
-                        ct.MauL2NCC = ct2.Where(x => x.isNguyCo == true).ToList().Count().ToString();
-                        //ct.MauL2NCT = ct2.Where(x => x == false).ToList().Count().ToString();
-                        //ct.MauL2NCC = ct2.Where(x => x == true).ToList().Count().ToString();
-                    }
-                    catch
-                    {
-                        ct.MauL2NCT = "0";
-                        ct.MauL2NCC = "0";
-                    }
-                    try
-                    {
-                        var ct1c = kq1ncc.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu))).ToList();
-                        ct1c = ct1c.Where(x => x != null).ToList();
-                       // var ct1cc = kq1ncc.Select(x => x.PSXN_TraKQ_ChiTiets.FirstOrDefault(y => y.MaDichVu.Equals(d.IDDichVu)).isNguyCo).ToList();
-                        ct.MauL1NCCChuaThuLaiMau = ct1c.Where(x => x.isNguyCo == true).ToList().Count().ToString();
-                        //ct.MauL1NCCChuaThuLaiMau = ct1cc.Where(x => x == true).ToList().Count().ToString();
-                    }
-                    catch
-                    {
-                        ct.MauL1NCCChuaThuLaiMau = "0";
+                    switch (d.TenDichVu)
+                     {
+                        case "G6PD":
+                            {
+                                ct.MauL1NCCChuaThuLaiMau = kq1chuathulai.Count(x => x.G6PD1_NguyCo ==true).ToString();
+                                ct.MauL2NCT = kq2nct.Count(x => x.G6PD2_NguyCo == false).ToString();
+                                ct.MauL2NCC = kq2ncc.Count(x => x.G6PD2_NguyCo == true).ToString();
+                                break;
+                            }
+                        case "CH":
+                            {
+                                ct.MauL2NCT = kq2nct.Count(x => x.CH2_NguyCo == false).ToString();
+                                ct.MauL2NCC = kq2ncc.Count(x => x.CH2_NguyCo == true).ToString();
+                                ct.MauL1NCCChuaThuLaiMau = kq1chuathulai.Count(x => x.CH1_NguyCo == true).ToString();
+                                break;
+                            }
+                        case "PKU":
+                            {
+                                ct.MauL2NCT = kq2nct.Count(x => x.PKU2_NguyCo == false).ToString();
+                                ct.MauL2NCC = kq2ncc.Count(x => x.PKU2_NguyCo == true).ToString();
+                                ct.MauL1NCCChuaThuLaiMau = kq1chuathulai.Count(x => x.PKU1_NguyCo == true).ToString();
+                                break;
+                            }
+                        case "GAL":
+                            {
+                                ct.MauL2NCT = kq2nct.Count(x => x.GAL2_NguyCo == false).ToString();
+                                ct.MauL2NCC = kq2ncc.Count(x => x.GAL2_NguyCo == true).ToString();
+                                ct.MauL1NCCChuaThuLaiMau = kq1chuathulai.Count(x => x.GAL1_NguyCo == true).ToString();
+                                break;
+                            }
+                        case "CAH":
+                            {
+                                ct.MauL2NCT = kq2nct.Count(x => x.CAH2_NguyCo == false).ToString();
+                                ct.MauL2NCC = kq2ncc.Count(x => x.CAH2_NguyCo == true).ToString();
+                                ct.MauL1NCCChuaThuLaiMau = kq1chuathulai.Count(x => x.CAH1_NguyCo == true).ToString();
+                                break;
+                            }
+                        case "HEMO":
+                            {
+                                ct.MauL2NCT = kq2nct.Count(x => x.HEMO2_NguyCo == false).ToString();
+                                ct.MauL2NCC = kq2ncc.Count(x => x.HEMO2_NguyCo == true).ToString();
+                                ct.MauL1NCCChuaThuLaiMau = kq1chuathulai.Count(x => x.HEMO1_NguyCo == true).ToString();
+                                break;
+                            }
                     }
                     Repo.PSThongKePDFXetNghiemCT.Add(ct);
                 }

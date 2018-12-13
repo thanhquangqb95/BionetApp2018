@@ -221,13 +221,13 @@ namespace BioNetSangLocSoSinh.FrmReports
             DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             col1.Name = "TuoiMeDuoi13";
             col1.FieldName = "PSThongKeTuoiMe.Duoi13";
-            col1.Caption = "Dưới 13 tuổi";
+            col1.Caption = "N/A";
             col1.OptionsColumn.AllowEdit = false;
             col1.Visible = true;
             band.Columns.Add(col1);
 
             DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            col13.Name = "TuoiMeDuoi13";
+            col13.Name = "TuoiMeTuoi13";
             col13.FieldName = "PSThongKeTuoiMe.Tuoi13";
             col13.Caption = "13 tuổi";
             col13.OptionsColumn.AllowEdit = false;
@@ -616,8 +616,9 @@ namespace BioNetSangLocSoSinh.FrmReports
                 nhom2.STT = 4;
                 nhom2.TenNhom = "Tuổi mẹ khi sinh (Chi tiết tại Trang 2)";
                 nhom2.ThongKe = new List<PSThongKePDFDonViCT>();
+                nhom2.ThongKe.Add(GetPDFCT("N/A", tk.PSThongKeTuoiMe.Duoi13, tk.Tong));
                 nhom2.ThongKe.Add(GetPDFCT("Dưới 18 tuổi", tk.PSThongKeTuoiMe.Tuoi14 + tk.PSThongKeTuoiMe.Tuoi15 + tk.PSThongKeTuoiMe.Tuoi16
-                    + tk.PSThongKeTuoiMe.Tuoi17 + tk.PSThongKeTuoiMe.Duoi13, tk.Tong));
+                    + tk.PSThongKeTuoiMe.Tuoi17 + tk.PSThongKeTuoiMe.Tuoi13, tk.Tong));
                 nhom2.ThongKe.Add(GetPDFCT("Từ 18 đến 35 tuổi", tk.PSThongKeTuoiMe.Tuoi17den20 + tk.PSThongKeTuoiMe.Tuoi20den25 + tk.PSThongKeTuoiMe.Tuoi25den30 + tk.PSThongKeTuoiMe.Tuoi30den35, tk.Tong));
                 nhom2.ThongKe.Add(GetPDFCT("Trên 35 tuổi", tk.PSThongKeTuoiMe.Tuoi35den40 + tk.PSThongKeTuoiMe.Tuoi40den45 + tk.PSThongKeTuoiMe.TuoiTren45, tk.Tong));
                 pdfdv.PSThongKePDFDonViNhom.Add(nhom2);
@@ -733,8 +734,8 @@ namespace BioNetSangLocSoSinh.FrmReports
             nhom2.Tong1 = p1.Count().ToString();
             nhom2.Tong2 = p2.Count().ToString();
             nhom2.ThongKe = new List<PSThongKePDFDonViXNCT>();
-            nhom2.ThongKe.Add(GetCTThongKe("<13", ph1thap.PSThongKeTuoiMe.Duoi13, ph1cao.PSThongKeTuoiMe.Duoi13, ph1.PSThongKeTuoiMe.Duoi13, ph2thap.PSThongKeTuoiMe.Duoi13, ph2cao.PSThongKeTuoiMe.Duoi13, ph2.PSThongKeTuoiMe.Duoi13));
-            nhom2.ThongKe.Add(GetCTThongKe("13", ph1thap.PSThongKeTuoiMe.Tuoi13, ph1cao.PSThongKeTuoiMe.Duoi13, ph1.PSThongKeTuoiMe.Duoi13, ph2thap.PSThongKeTuoiMe.Duoi13, ph2cao.PSThongKeTuoiMe.Duoi13, ph2.PSThongKeTuoiMe.Duoi13));
+            nhom2.ThongKe.Add(GetCTThongKe("N/A", ph1thap.PSThongKeTuoiMe.Duoi13, ph1cao.PSThongKeTuoiMe.Duoi13, ph1.PSThongKeTuoiMe.Duoi13, ph2thap.PSThongKeTuoiMe.Duoi13, ph2cao.PSThongKeTuoiMe.Duoi13, ph2.PSThongKeTuoiMe.Duoi13));
+            nhom2.ThongKe.Add(GetCTThongKe("13", ph1thap.PSThongKeTuoiMe.Tuoi13, ph1cao.PSThongKeTuoiMe.Tuoi13, ph1.PSThongKeTuoiMe.Tuoi13, ph2thap.PSThongKeTuoiMe.Tuoi13, ph2cao.PSThongKeTuoiMe.Tuoi13, ph2.PSThongKeTuoiMe.Tuoi13));
             nhom2.ThongKe.Add(GetCTThongKe("14", ph1thap.PSThongKeTuoiMe.Tuoi14, ph1cao.PSThongKeTuoiMe.Tuoi14, ph1.PSThongKeTuoiMe.Tuoi14, ph2thap.PSThongKeTuoiMe.Tuoi14, ph2cao.PSThongKeTuoiMe.Tuoi14, ph2.PSThongKeTuoiMe.Tuoi14));
             nhom2.ThongKe.Add(GetCTThongKe("15", ph1thap.PSThongKeTuoiMe.Tuoi15, ph1cao.PSThongKeTuoiMe.Tuoi15, ph1.PSThongKeTuoiMe.Tuoi15, ph2thap.PSThongKeTuoiMe.Tuoi15, ph2cao.PSThongKeTuoiMe.Tuoi15, ph2.PSThongKeTuoiMe.Tuoi15));
             nhom2.ThongKe.Add(GetCTThongKe("16", ph1thap.PSThongKeTuoiMe.Tuoi16, ph1cao.PSThongKeTuoiMe.Tuoi16, ph1.PSThongKeTuoiMe.Tuoi16, ph2thap.PSThongKeTuoiMe.Tuoi16, ph2cao.PSThongKeTuoiMe.Tuoi16, ph2.PSThongKeTuoiMe.Tuoi16));
@@ -757,10 +758,13 @@ namespace BioNetSangLocSoSinh.FrmReports
             nhom3.Tong1 = p1.Count().ToString();
             nhom3.Tong2 = p2.Count().ToString();
             nhom3.ThongKe = new List<PSThongKePDFDonViXNCT>();
-            foreach (var dt in BioNet_Bus.GetDanhSachDanToc(-1))
+            var lsdt = t1.Select(x => x.DanTocID).Distinct();
+            List<PSThongKePDFDonViXNCT> lstTam = new List<PSThongKePDFDonViXNCT>();
+            foreach (var dt in lsdt)
             {
-                nhom3.ThongKe.Add(GetCTThongKeDanToc(dt.IDDanToc, t1, c1, p1, t2, c2, p2));
+                lstTam.Add(GetCTThongKeDanToc(dt.Value, t1, c1, p1, t2, c2, p2));
             }
+            nhom3.ThongKe.AddRange(lstTam.OrderByDescending(x => int.Parse(x.Tong1)));
             //PSThongKePDFDonViXNNhom nhom4 = new PSThongKePDFDonViXNNhom();
             //nhom4.STT = 4;
             //nhom4.TenNhom = "Kết quả sàng lọc sơ sinh";

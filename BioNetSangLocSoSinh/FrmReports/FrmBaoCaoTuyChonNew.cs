@@ -240,5 +240,51 @@ namespace BioNetSangLocSoSinh.FrmReports
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
         }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+
+            if (this.GVBaoCaoTuyChon.RowCount > 0)
+            {
+                this.ExportDataToExcelFile();
+            }
+            else
+            {
+                XtraMessageBox.Show("Không có dữ liệu, vui lòng lấy dữ liệu lại và kiểm tra điều kiện lọc.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void ExportDataToExcelFile()
+        {
+            SaveFileDialog ofd = new SaveFileDialog();
+            ofd.Filter = "Excel File(*.xlsx)|*.xlsx";
+            ofd.FileName = "BaoCaoTuyChon" + DateTime.Now.Date.ToString("yyyy-MM-dd") + ".xlsx";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                if (ofd.FileName.Length > 0)
+                {
+                    try
+                    {
+
+                        this.GVBaoCaoTuyChon.ExportToXlsx(ofd.FileName);
+                    }
+                    catch
+                    {
+                        XtraMessageBox.Show("Không thể lưu file này! Vui lòng chọn đường dẫn khác.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void txtChiCuc_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SearchLookUpEdit sear = sender as SearchLookUpEdit;
+                var value = sear.EditValue.ToString();
+                this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi(value.ToString());
+                this.txtDonVi.EditValue = "all";
+            }
+            catch { }
+        }
     }
 }

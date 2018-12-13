@@ -463,7 +463,14 @@ namespace BioNetSangLocSoSinh.FrmReports
                 }
                 else if (max==0)
                  {
-                    tk.Ten = ">" + min.ToString();
+                    if(min==5000)
+                    {
+                        tk.Ten ="N/A";
+                    }
+                    else
+                    {
+                        tk.Ten = ">" + min.ToString();
+                    }
                     tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) >min).Count().ToString();
                     tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
                     tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
@@ -900,7 +907,10 @@ namespace BioNetSangLocSoSinh.FrmReports
             baoc3.TongGene = new List<TKGene>();
             baoc3.TongGene.Add(ThongKeTKExcelCanNang(0, 2500));
             baoc3.TongGene.Add(ThongKeTKExcelCanNang(2500, 3000));
-            baoc3.TongGene.Add(ThongKeTKExcelCanNang(3000, 0));
+            baoc3.TongGene.Add(ThongKeTKExcelCanNang(3000, 3500));
+            baoc3.TongGene.Add(ThongKeTKExcelCanNang(3500, 4000));
+            baoc3.TongGene.Add(ThongKeTKExcelCanNang(4000,5000));
+            baoc3.TongGene.Add(ThongKeTKExcelCanNang(5000, 0));
             baoct.Gene.Add(baoc3);
             rptBaoCaoExcelGene baoc4 = new rptBaoCaoExcelGene();
             baoc4.NgayIn = DateTime.Now;
@@ -1084,7 +1094,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                 TongSoXD = tabTongGene.Where(x => x.Equals("KXĐ")).Count();
                 baocao.NgayIn = DateTime.Now;
                 rptBaoCaoExcelTong baoct = new rptBaoCaoExcelTong();
-                baoct.Tieude = "";
+                baoct.Tieude = Donvi;
                 baoct.NgayIn = DateTime.Now;
                 baoct.Gene = new List<rptBaoCaoExcelGene>();
                 rptBaoCaoExcelGene baoc = new rptBaoCaoExcelGene();
@@ -1100,13 +1110,15 @@ namespace BioNetSangLocSoSinh.FrmReports
                 baoc.TongGene.Add(ThongKeTKExcelGeneDV("KXĐ", Donvi, TongSoMauDV));
                 baoc.TongGene.Add(ThongKeTKExcelGeneDV("Xac dinh", Donvi, TongSoMauDV));
                 baoc.STT = "1";
+                List<TKGene> GeneTemp = new List<TKGene>();
                 foreach (var t in tabTongsoGene)
                 {
                     if (!t.Equals("KXĐ"))
                     {
-                        baoc.TongGene.Add(ThongKeTKExcelGeneDV(t.ToString(), Donvi, TongSoMauDV));
+                        GeneTemp.Add(ThongKeTKExcelGeneDV(t.ToString(), Donvi, TongSoMauDV));
                     }
                 }
+                baoc.TongGene.AddRange(GeneTemp.OrderByDescending(x=>int.Parse(x.Tong)));
                 baoct.Gene.Add(baoc);
                 rptBaoCaoExcelGene baoc2 = new rptBaoCaoExcelGene();
                 baoc2.NgayIn = DateTime.Now;
@@ -1124,9 +1136,12 @@ namespace BioNetSangLocSoSinh.FrmReports
                 baoc3.STT = "3";
                 baoc3.NgayIn = DateTime.Now;
                 baoc3.TongGene = new List<TKGene>();
-                baoc3.TongGene.Add(ThongKeTKExcelCanNang(0, 2500));
-                baoc3.TongGene.Add(ThongKeTKExcelCanNang(2500, 3000));
-                baoc3.TongGene.Add(ThongKeTKExcelCanNang(3000, 0));
+                baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(0, 2500,Donvi));
+                baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(2500, 3000,Donvi));
+                baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(3000, 3500,Donvi));
+                baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(3500, 4000, Donvi));
+                baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(4000, 5000, Donvi));
+                baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(5000, 0, Donvi));
                 baoct.Gene.Add(baoc3);
                 rptBaoCaoExcelGene baoc4 = new rptBaoCaoExcelGene();
                 baoc4.NgayIn = DateTime.Now;
@@ -1154,16 +1169,20 @@ namespace BioNetSangLocSoSinh.FrmReports
                 baoc6.STT = "6";
                 baoc6.NgayIn = DateTime.Now;
                 baoc6.TongGene = new List<TKGene>();
-                baoc6.TongGene.Add(ThongKeTKExcelCLMauTong("Dân tộc"));
+                baoc6.TongGene.Add(ThongKeTKExcelDonVi("Tổng","Dân tộc",Donvi));
                 var dsdantoc = (from DataRow myRow in tab.Rows
                                 where !string.IsNullOrEmpty(myRow["Dân tộc"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                 select myRow["Dân tộc"]).Distinct().ToList();
+                GeneTemp = new List<TKGene>();
                 foreach (var dt in dsdantoc)
                 {
-                    baoc6.TongGene.Add(ThongKeTKExcelDonVi(dt.ToString(), "Dân tộc", Donvi));
+                    GeneTemp.Add(ThongKeTKExcelDonVi(dt.ToString(), "Dân tộc", Donvi));
                 }
+                baoc6.TongGene.AddRange(GeneTemp.OrderByDescending( x => int.Parse(x.Tong)));
                 baoct.Gene.Add(baoc6);
                 Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
+                datarp.Parameters["LuuY"].Value= "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + " )";
+                datarp.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
                 datarp.DataSource = baoct;
                 string Link = BioNet_Bus.SaveFileReport(FoderLink, "DonVi", Donvi, DateTime.Now, DateTime.Now, ".pdf");
                 datarp.ExportToPdf(Link);
@@ -1372,18 +1391,25 @@ namespace BioNetSangLocSoSinh.FrmReports
                     tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
                     tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
                     tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
-                    tk.Tile = String.Format("{0:0.00}", ((double)tabTongGene.Where(x => int.Parse(x.ToString()) <= max).Count() / (double)TongSoMau) * 100) + "%";
+                    tk.Tile = String.Format("{0:0.00}", ((double)tk.Tong.Count() / (double)tabTongGene.Count()) * 100) + "%";
                 }
                 else if (max == 0)
                 {
-                    tk.Ten = ">" + min.ToString();
+                    if(min==5000)
+                    {
+                        tk.Ten = "N/A";
+                    }
+                    else
+                    {
+                        tk.Ten = ">" + min.ToString();
+                    }
                     tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
                     tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
                     tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
                     tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
                     tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
                     tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
-                    tk.Tile = String.Format("{0:0.00}", ((double)tabTongGene.Where(x => int.Parse(x.ToString()) > min).Count() / (double)TongSoMau) * 100) + "%";
+                    tk.Tile = String.Format("{0:0.00}", ((double)tk.Tong.Count() / (double)tabTongGene.Count()) * 100) + "%";
                 }
                 else
                 {
@@ -1394,7 +1420,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                     tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
                     tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
                     tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
-                    tk.Tile = String.Format("{0:0.00}", ((double)tabTongGene.Where(x => int.Parse(x.ToString()) <= max).Count() / (double)TongSoMau) * 100) + "%";
+                    tk.Tile = String.Format("{0:0.00}", ((double)tk.Tong.Count() / (double)tabTongGene.Count()) * 100) + "%";
                 }
             }
             catch
@@ -1402,6 +1428,12 @@ namespace BioNetSangLocSoSinh.FrmReports
 
             }
             return tk;
+        }
+
+        private void FrmBaoCaoExcelNguyCo_Load(object sender, EventArgs e)
+        {
+            dateEditDenNgay.DateTime = DateTime.Now;
+            dateEditTuNgay.DateTime = DateTime.Now;
         }
     }
 }

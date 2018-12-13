@@ -146,8 +146,16 @@ namespace BioNetModel
         public string ThoiGian { get; set; }
         public string DonVi { get; set; }
         public string LuuY { get; set; }
+            public string TongMauMoi { get; set; }
+        public string MauLan1NCT { get; set; }
+        public string MauLan1NCC { get; set; }
         public string CanThuLaiL2 { get; set; }
         public string MauDaThuLaiL2 { get; set; }
+        public string TileMauChuaThuLaiL2 { get; set; }
+        public string TileMauLan1NCT { get; set; }
+        public string TileMauLan1NCC { get; set; }
+        public string TileCanThuLaiL2 { get; set; }
+        public string TileMauDaThuLaiL2 { get; set; }
         public string MauChuaThuLaiL2 { get; set; }
         public List<PSThongKePDFXetNghiemCT> PSThongKePDFXetNghiemCT { get; set; }
     }

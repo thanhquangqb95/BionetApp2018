@@ -80,6 +80,8 @@
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.col_GioiTinh = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemGridLookUpEditGioiTinh = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.col_TenTre = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.lblTenDonVi = new System.Windows.Forms.Label();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
@@ -135,8 +137,6 @@
             this.btnXuatExcel = new DevExpress.XtraEditors.SimpleButton();
             this.btnLayDuLieu = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.repositoryItemGridLookUpEditGioiTinh = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
-            this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGoiXN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditChuongTrinh)).BeginInit();
@@ -149,6 +149,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditCheDoDinhDuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditDanToc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -163,8 +165,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCBaoCaoTuyChon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             this.SuspendLayout();
             // 
             // bandedGridColumn16
@@ -625,6 +625,21 @@
             this.col_GioiTinh.Visible = true;
             this.col_GioiTinh.Width = 72;
             // 
+            // repositoryItemGridLookUpEditGioiTinh
+            // 
+            this.repositoryItemGridLookUpEditGioiTinh.AutoHeight = false;
+            this.repositoryItemGridLookUpEditGioiTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemGridLookUpEditGioiTinh.Name = "repositoryItemGridLookUpEditGioiTinh";
+            this.repositoryItemGridLookUpEditGioiTinh.View = this.gridView8;
+            // 
+            // gridView8
+            // 
+            this.gridView8.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView8.Name = "gridView8";
+            this.gridView8.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView8.OptionsView.ShowGroupPanel = false;
+            // 
             // col_TenTre
             // 
             this.col_TenTre.Caption = "Tên trẻ";
@@ -743,6 +758,7 @@
             this.txtChiCuc.Properties.View = this.gridView2;
             this.txtChiCuc.Size = new System.Drawing.Size(239, 20);
             this.txtChiCuc.TabIndex = 1063;
+            this.txtChiCuc.EditValueChanged += new System.EventHandler(this.txtChiCuc_EditValueChanged);
             // 
             // gridView2
             // 
@@ -935,7 +951,6 @@
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "IDPhieu", this.col_MaPhieu, "Tổng phiếu = {0}")});
             this.GVBaoCaoTuyChon.Name = "GVBaoCaoTuyChon";
             this.GVBaoCaoTuyChon.OptionsPrint.EnableAppearanceOddRow = true;
-            this.GVBaoCaoTuyChon.OptionsView.ColumnAutoWidth = true;
             this.GVBaoCaoTuyChon.OptionsView.ShowFooter = true;
             this.GVBaoCaoTuyChon.OptionsView.ShowGroupPanel = false;
             // 
@@ -1221,6 +1236,7 @@
             this.btnXuatExcel.Size = new System.Drawing.Size(94, 23);
             this.btnXuatExcel.TabIndex = 8;
             this.btnXuatExcel.Text = "Xuất Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // btnLayDuLieu
             // 
@@ -1257,21 +1273,6 @@
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // repositoryItemGridLookUpEditGioiTinh
-            // 
-            this.repositoryItemGridLookUpEditGioiTinh.AutoHeight = false;
-            this.repositoryItemGridLookUpEditGioiTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemGridLookUpEditGioiTinh.Name = "repositoryItemGridLookUpEditGioiTinh";
-            this.repositoryItemGridLookUpEditGioiTinh.View = this.gridView8;
-            // 
-            // gridView8
-            // 
-            this.gridView8.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView8.Name = "gridView8";
-            this.gridView8.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView8.OptionsView.ShowGroupPanel = false;
-            // 
             // FrmBaoCaoTuyChonNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1295,6 +1296,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditCheDoDinhDuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditDanToc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
@@ -1309,8 +1312,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GCBaoCaoTuyChon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditGioiTinh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -7882,6 +7882,13 @@ D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTheoPattent.resources
 D:\Github\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoBaoTheoDonVI.resources
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Xpo.v17.1.dll
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Xpo.v17.1.xml
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraScheduler.v17.1.Core.xml
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ja\DevExpress.XtraScheduler.v17.1.Core.resources.dll
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Properties.Resources.resources
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02.resources
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptDanhSachDaCapMaXetNghiem.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetSangLocSoSinh.exe.config
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetSangLocSoSinh.exe
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\BioNetSangLocSoSinh.pdb
@@ -7915,7 +7922,6 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.TreeMap.v17.1.Core.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Utils.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Utils.v17.1.UI.dll
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Xpo.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraBars.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraCharts.v17.1.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraCharts.v17.1.Extensions.dll
@@ -7982,7 +7988,6 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Snap.v17.1.Extensions.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Utils.v17.1.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Utils.v17.1.UI.xml
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Xpo.v17.1.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraBars.v17.1.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.Sparkline.v17.1.Core.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraCharts.v17.1.xml
@@ -8005,7 +8010,6 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraRichEdit.v17.1.Extensions.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraScheduler.v17.1.Reporting.Extensions.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraScheduler.v17.1.xml
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraScheduler.v17.1.Core.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraScheduler.v17.1.Reporting.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraTreeList.v17.1.xml
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\DevExpress.XtraWizard.v17.1.xml
@@ -8167,7 +8171,6 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ru\DevExpress.XtraScheduler.v17.1.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\de\DevExpress.XtraScheduler.v17.1.Core.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\es\DevExpress.XtraScheduler.v17.1.Core.resources.dll
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ja\DevExpress.XtraScheduler.v17.1.Core.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\ru\DevExpress.XtraScheduler.v17.1.Core.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\de\DevExpress.XtraScheduler.v17.1.Reporting.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\bin\Debug\es\DevExpress.XtraScheduler.v17.1.Reporting.resources.dll
@@ -8262,6 +8265,7 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoExcelNguyCo.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTaiChinhCTDonVi.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTuyChonCT.resources
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTuyChonNew.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTuyChon_TrungTam.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTaiChinh.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmGuiMail.resources
@@ -8272,7 +8276,6 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmStartup.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Language.AppBionetEN.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.PrintRibbonControllerResources.resources
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Properties.Resources.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.DashBoardReport.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.frmDanhSachDaCapMa.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.frmReport.resources
@@ -8291,14 +8294,12 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportCapMaXetNghiemCoBan.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptQuanLyMauDuongTinh.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportQuanLyMauDuongTinh.resources
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanViTriMAYXN02.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportGanVTMAY01.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsCapMaXetNghiep.rptReportSoDoCapMa.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.RepostsSMS.FrmDSSMS.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptBaoCaoChiTietTrungTamTheoDonVi.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptBaoCaoThongKeCoBan.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptBaocaoTrungTamSoBo.resources
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptDanhSachDaCapMaXetNghiem.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptPhieuTraKetQua_TheoDonVi3.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptPhieuTraKetQua.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.Reports.rptPhieuTraKetQuaNew.resources
@@ -8320,4 +8321,3 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Deb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\Bionet App.csproj.CopyComplete
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.exe
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.pdb
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetSangLocSoSinh\obj\Debug\BioNetSangLocSoSinh.FrmReports.FrmBaoCaoTuyChonNew.resources

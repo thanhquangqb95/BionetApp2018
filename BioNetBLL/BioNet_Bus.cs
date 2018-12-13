@@ -2455,7 +2455,7 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.LoadDSThongKeDV(lst, dv,phieu);
         }
-        public static PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<PSBaoCaoTuyChonDonVi> lst, string MaDVCS, DateTime NgayBD, DateTime NgayKT)
+        public static PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst, string MaDVCS, DateTime NgayBD, DateTime NgayKT)
         {
             var db = new DataObjects();
             return db.GetBaoCaoDonViXNCoBan(lst, MaDVCS, NgayBD, NgayKT);
