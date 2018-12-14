@@ -105,10 +105,10 @@
             this.btnXuatPDF.Appearance.Options.UseForeColor = true;
             this.btnXuatPDF.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf__1_;
             this.btnXuatPDF.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnXuatPDF.Location = new System.Drawing.Point(745, 41);
+            this.btnXuatPDF.Location = new System.Drawing.Point(764, 41);
             this.btnXuatPDF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXuatPDF.Name = "btnXuatPDF";
-            this.btnXuatPDF.Size = new System.Drawing.Size(188, 31);
+            this.btnXuatPDF.Size = new System.Drawing.Size(169, 31);
             this.btnXuatPDF.TabIndex = 1085;
             this.btnXuatPDF.Text = "Xuất PDF Báo Cáo";
             this.btnXuatPDF.Click += new System.EventHandler(this.btnXuatPDF_Click);
@@ -132,12 +132,13 @@
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnClear.Location = new System.Drawing.Point(607, 41);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(120, 31);
+            this.btnClear.Size = new System.Drawing.Size(151, 31);
             toolTipTitleItem1.Text = "Bỏ lọc";
             superToolTip1.Items.Add(toolTipTitleItem1);
             this.btnClear.SuperTip = superToolTip1;
             this.btnClear.TabIndex = 1080;
-            this.btnClear.Text = "Bỏ lọc";
+            this.btnClear.Text = "Xuất PDF chi cục";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnThongke
             // 
@@ -150,7 +151,7 @@
             this.btnThongke.Location = new System.Drawing.Point(607, 5);
             this.btnThongke.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongke.Name = "btnThongke";
-            this.btnThongke.Size = new System.Drawing.Size(120, 31);
+            this.btnThongke.Size = new System.Drawing.Size(151, 31);
             this.btnThongke.TabIndex = 1079;
             this.btnThongke.Text = "Thống kê";
             this.btnThongke.Click += new System.EventHandler(this.btnThongke_Click);
@@ -166,9 +167,9 @@
             this.btnXuatFile.Appearance.Options.UseForeColor = true;
             this.btnXuatFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.excel;
             this.btnXuatFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnXuatFile.Location = new System.Drawing.Point(745, 5);
+            this.btnXuatFile.Location = new System.Drawing.Point(764, 5);
             this.btnXuatFile.Name = "btnXuatFile";
-            this.btnXuatFile.Size = new System.Drawing.Size(188, 31);
+            this.btnXuatFile.Size = new System.Drawing.Size(169, 31);
             this.btnXuatFile.TabIndex = 2;
             this.btnXuatFile.Text = "Xuất Excel Thống Kê";
             this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);

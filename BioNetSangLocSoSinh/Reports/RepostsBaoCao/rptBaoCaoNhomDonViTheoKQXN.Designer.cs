@@ -399,7 +399,7 @@
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "BÁO CÁO THÔNG KÊ";
+            this.xrLabel1.Text = "BÁO CÁO THỐNG KÊ";
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel11
@@ -451,7 +451,7 @@
             this.xrLabel10.StylePriority.UseForeColor = false;
             this.xrLabel10.StylePriority.UsePadding = false;
             this.xrLabel10.StylePriority.UseTextAlignment = false;
-            this.xrLabel10.Text = "Nguy cơ thấp L2 (Mẫu thu lần 2)";
+            this.xrLabel10.Text = "Nguy cơ thấp     (Mẫu thu lần 2)";
             this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel12
@@ -476,7 +476,7 @@
             this.xrLabel12.StylePriority.UseForeColor = false;
             this.xrLabel12.StylePriority.UsePadding = false;
             this.xrLabel12.StylePriority.UseTextAlignment = false;
-            this.xrLabel12.Text = "Nguy cơ thấp L1 (Mẫu thu lần 1)";
+            this.xrLabel12.Text = "Nguy cơ thấp    (Mẫu thu lần 1)";
             this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel13
@@ -501,7 +501,7 @@
             this.xrLabel13.StylePriority.UseForeColor = false;
             this.xrLabel13.StylePriority.UsePadding = false;
             this.xrLabel13.StylePriority.UseTextAlignment = false;
-            this.xrLabel13.Text = "Nguy cơ cao L2   (Mẫu thu lần 1)";
+            this.xrLabel13.Text = "Nguy cơ cao      (Mẫu thu lần 1)";
             this.xrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel15
@@ -551,7 +551,7 @@
             this.xrLabel16.StylePriority.UseForeColor = false;
             this.xrLabel16.StylePriority.UsePadding = false;
             this.xrLabel16.StylePriority.UseTextAlignment = false;
-            this.xrLabel16.Text = "Nguy cơ cao L2   (Mẫu thu lần 2)";
+            this.xrLabel16.Text = "Nguy cơ cao      (Mẫu thu lần 2)";
             this.xrLabel16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel17
@@ -661,13 +661,13 @@
             // xrLabel9
             // 
             this.xrLabel9.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(281.9166F, 219.4584F);
+            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(1.000484F, 219.4584F);
             this.xrLabel9.Name = "xrLabel9";
             this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(242.0833F, 25F);
+            this.xrLabel9.SizeF = new System.Drawing.SizeF(823.0001F, 25F);
             this.xrLabel9.StylePriority.UseFont = false;
             this.xrLabel9.StylePriority.UseTextAlignment = false;
-            this.xrLabel9.Text = "II - CÁC CHỈ TIÊU CHI TIẾT";
+            this.xrLabel9.Text = "II - MỘT SỐ CHỈ TIÊU TRÊN MẪU XÉT NGHIỆM";
             this.xrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel20

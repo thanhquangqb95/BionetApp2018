@@ -2004,11 +2004,10 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\de\DevEx
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\es\DevExpress.XtraGrid.v17.1.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\ja\DevExpress.XtraGrid.v17.1.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\bin\Debug\ru\DevExpress.XtraGrid.v17.1.resources.dll
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csprojAssemblyReference.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.Properties.Resources.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.GenerateResource.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.dll.licenses
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CoreCompileInputs.cache
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CopyComplete
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.pdb
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csprojResolveAssemblyReference.cache

@@ -9662,6 +9662,22 @@ namespace BioNetDAL
             }
             return result;
         }
+        public PSThongKeTheoDonVi LoadDSThongKeChiCucTNew(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst,string ChiCuc,int STT)
+        {
+            PSThongKeTheoDonVi result = new PSThongKeTheoDonVi();
+            try
+            {
+                    PSThongKeTheoDonVi tk = new PSThongKeTheoDonVi();
+                    tk.MaDV = ChiCuc;
+                    tk.STT = STT;
+                result = LoadDSThongKeDVNew(lst.Where(x => x.IDCoSo.Equals(ChiCuc)).ToList(), tk, tk.STT);
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
         public PSThongKeTheoDonVi LoadDSThongKeDVNew(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst, PSThongKeTheoDonVi dv, int phieu)
         {
             try
@@ -9990,7 +10006,7 @@ namespace BioNetDAL
             {
                 //Repo.DonVi = GetThongTinDonViCoSo(MaDVCS).TenDVCS;
                 Repo.ThoiGian = "Từ ngày " + NgayBD.Date.ToString("dd/MM/yyyy") + " đến " + NgayKT.Date.ToString("dd/MM/yyyy") + ".";
-                Repo.LuuY = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.ToString("dd/MM/yyyy") + ".";
+                Repo.LuuY = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.ToString("dd/MM/yyyy") + ").";
                 Repo.PSThongKePDFXetNghiemCT = new List<PSThongKePDFXetNghiemCT>();
                 Repo.CanThuLaiL2 = lst.Where(x => x.NguyCoCao1 == true).ToList().Count().ToString();
                 Repo.MauDaThuLaiL2 = lst.Where(x => x.NguyCoCao2!=null).ToList().Count().ToString();

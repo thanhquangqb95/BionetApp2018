@@ -39,6 +39,7 @@
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPanel3 = new DevExpress.XtraReports.UI.XRPanel();
+            this.xrPanel5 = new DevExpress.XtraReports.UI.XRPanel();
             this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
             this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
@@ -87,7 +88,6 @@
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
             this.objectDataSource2 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
             this.Trang = new DevExpress.XtraReports.Parameters.Parameter();
-            this.xrPanel5 = new DevExpress.XtraReports.UI.XRPanel();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -185,7 +185,7 @@
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "BÁO CÁO THÔNG KÊ";
+            this.xrLabel1.Text = "BÁO CÁO THỐNG KÊ";
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrPanel3
@@ -197,6 +197,14 @@
             this.xrPanel3.Name = "xrPanel3";
             this.xrPanel3.SizeF = new System.Drawing.SizeF(411.4997F, 60.00005F);
             this.xrPanel3.StylePriority.UseBorders = false;
+            // 
+            // xrPanel5
+            // 
+            this.xrPanel5.Borders = DevExpress.XtraPrinting.BorderSide.Left;
+            this.xrPanel5.LocationFloat = new DevExpress.Utils.PointFloat(211.2745F, 9.536743E-05F);
+            this.xrPanel5.Name = "xrPanel5";
+            this.xrPanel5.SizeF = new System.Drawing.SizeF(200.2251F, 40.00012F);
+            this.xrPanel5.StylePriority.UseBorders = false;
             // 
             // xrPanel2
             // 
@@ -306,7 +314,7 @@
             this.xrLabel12.StylePriority.UseForeColor = false;
             this.xrLabel12.StylePriority.UsePadding = false;
             this.xrLabel12.StylePriority.UseTextAlignment = false;
-            this.xrLabel12.Text = "Tị lệ";
+            this.xrLabel12.Text = "Tỉ lệ";
             this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel11
@@ -1050,14 +1058,6 @@
             // 
             this.Trang.Name = "Trang";
             this.Trang.Visible = false;
-            // 
-            // xrPanel5
-            // 
-            this.xrPanel5.Borders = DevExpress.XtraPrinting.BorderSide.Left;
-            this.xrPanel5.LocationFloat = new DevExpress.Utils.PointFloat(211.2745F, 9.536743E-05F);
-            this.xrPanel5.Name = "xrPanel5";
-            this.xrPanel5.SizeF = new System.Drawing.SizeF(200.2251F, 40.00012F);
-            this.xrPanel5.StylePriority.UseBorders = false;
             // 
             // rptBaoCaoCBTheoDonVi
             // 

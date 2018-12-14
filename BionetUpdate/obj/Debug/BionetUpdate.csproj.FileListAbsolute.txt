@@ -37,12 +37,11 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\bin\Debug\de\D
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\bin\Debug\es\DevExpress.Pdf.v17.1.Core.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\bin\Debug\ja\DevExpress.Pdf.v17.1.Core.resources.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\bin\Debug\ru\DevExpress.Pdf.v17.1.Core.resources.dll
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.csprojAssemblyReference.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.FrmBionetUpdate.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.Properties.Resources.resources
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.csproj.GenerateResource.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.exe.licenses
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.csproj.CoreCompileInputs.cache
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.csproj.CopyComplete
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.exe
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.pdb
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BionetUpdate\obj\Debug\BionetUpdate.csprojResolveAssemblyReference.cache

@@ -177,8 +177,7 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\bin\Debug\BioNetD
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\bin\Debug\BioNetModel.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\bin\Debug\BioNetModel.pdb
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\bin\Debug\BioNetModel.dll.config
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\obj\Debug\BioNetDAL.csprojAssemblyReference.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\obj\Debug\BioNetDAL.csproj.CoreCompileInputs.cache
-C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\obj\Debug\BioNetDAL.csproj.CopyComplete
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\obj\Debug\BioNetDAL.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\BioNetDAL\obj\Debug\BioNetDAL.pdb
+C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\BioNetDAL\obj\Debug\BioNetDAL.csprojResolveAssemblyReference.cache
