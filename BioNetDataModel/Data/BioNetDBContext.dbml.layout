@@ -1,503 +1,497 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 37.125, 35.75" name="BioNetDBContext">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 29, 33" name="BioNetDBContext">
   <DataContextMoniker Name="/BioNetDBContextDataContext" />
   <nestedChildShapes>
-    <classShape Id="82058563-8a35-4225-bbe3-c7a6756673b7" absoluteBounds="14.75, 10.75, 2, 1.1939925130208344">
+    <classShape Id="5c770d6a-b6ab-43ac-925c-33eefc240147" absoluteBounds="14.75, 10.75, 2, 1.1939925130208344">
       <DataClassMoniker Name="/BioNetDBContextDataContext/BangGhiDuLieu" />
       <nestedChildShapes>
-        <elementListCompartment Id="03822d50-1a4a-43e2-8319-0cb4977c697f" absoluteBounds="14.765, 11.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="303bc4a2-acc9-4fdd-b08c-0a159f44a294" absoluteBounds="14.765, 11.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="67fb6a21-a68d-4f5a-9b63-1137629f45fa" absoluteBounds="14.75, 12.75, 2, 2.3478011067708344">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXuatKho_ChiTiet" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d3796190-4ed8-46a5-a445-8eee90eff1fc" absoluteBounds="14.765, 13.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d20be005-b5b5-407d-8e8a-ea16da96095b" absoluteBounds="14.75, 16.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/DanhMucVatTu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="932c58d3-83d7-44dd-957c-2aeec4ba5a73" absoluteBounds="14.765, 17.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="6463be3b-3f0a-4246-8afb-597342ada372" absoluteBounds="17.75, 0.75, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSAccount_Sync" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a4741bcb-3724-48da-9240-3869accb95f9" absoluteBounds="17.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="b2922fbf-78a6-4279-9464-65a92b7eaa5a" absoluteBounds="14.75, 5, 2, 4.0785139973958335">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSBenhNhanNguyCoCao" />
-      <nestedChildShapes>
-        <elementListCompartment Id="0de5f6d9-62bd-402b-8577-0436ff405c7f" absoluteBounds="14.765, 5.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c950844f-e67d-4f3b-8d14-ec3f09fa9897" absoluteBounds="0.75, 10.25, 2, 5.0400211588541666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e840d04f-5165-460b-b96c-2a7fb66d6afa" absoluteBounds="0.765, 10.71, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="679d1ffb-16b0-4964-80b8-1958524bf9c8" absoluteBounds="3.5, 8.25, 2, 3.3093082682291666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVuChiTiet" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c2572487-e618-4e73-bd00-e4af75156df5" absoluteBounds="3.515, 8.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d837cd1c-5c5b-4b04-bd30-2b29777a4dac" absoluteBounds="17.75, 9.75, 2, 2.3478011067708344">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiTietDanhGiaChatLuong" />
-      <nestedChildShapes>
-        <elementListCompartment Id="5a742050-57dd-4a9c-9a68-0e4c84dcfe4e" absoluteBounds="17.765, 10.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f0646541-ef85-41f3-9096-6760db05e977" absoluteBounds="17.75, 13.75, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiTietGoiDichVuChung" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1a11a127-2262-45b1-abb5-b5b9f864b1e9" absoluteBounds="17.765, 14.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="af646766-e5a5-4d73-b435-57dcf73289f9" absoluteBounds="17.75, 16.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiTietXoaPhieu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="dd4c3229-0dbf-4bee-ba72-f202031c5970" absoluteBounds="17.765, 17.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="b6466488-c6ca-4c6b-90a8-5f381532df21" absoluteBounds="0.75, 18.75, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucChauLuc" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9e776d91-4b08-40c2-b94d-67031fe0c6fc" absoluteBounds="0.765, 19.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="9fc8a362-4e47-4640-858b-5c3f8b8189c8" absoluteBounds="3.75, 18.75, 2, 3.1170068359375023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucChiCuc" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d609d89e-c3c0-4aa6-b16e-ff6ec91cb52e" absoluteBounds="3.765, 19.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="9c8b1a9a-94eb-4d01-8ee7-449b92618002" absoluteBounds="6.75, 19.75, 2, 1.9631982421875023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucChuongTrinh" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a943db88-2144-4452-9330-f5c029c85462" absoluteBounds="6.765, 20.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="132e5bd7-9dc3-4566-9fa9-8256ae5f82f6" absoluteBounds="9.75, 19.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDanhGiaChatLuongMau" />
-      <nestedChildShapes>
-        <elementListCompartment Id="af04c797-e8df-41fc-83b1-91ba0fa2100d" absoluteBounds="9.765, 20.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="85f1a9ab-fb17-4906-9f36-4936e3aad7d6" absoluteBounds="12.75, 19.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDanToc" />
-      <nestedChildShapes>
-        <elementListCompartment Id="512e8280-be4b-4776-9e8f-aac64b925f95" absoluteBounds="12.765, 20.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="fef6d99e-773e-4923-9f9e-ae53c28061bc" absoluteBounds="15.75, 19.75, 2, 2.3478011067708309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDichVu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b1f05ab6-9115-4f6a-aab0-a19390bfe6a7" absoluteBounds="15.765, 20.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f44f8a92-d57c-4971-bbe4-a3b3bab0b66c" absoluteBounds="18.75, 19.75, 2, 2.5401025390625023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDichVuTheoDonVi" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1c9f3631-019b-4d23-96d4-fe22ac1e21a5" absoluteBounds="18.765, 20.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a859f9f1-71b1-48d8-a67d-a976c469690f" absoluteBounds="20.75, 0.75, 2, 4.4631168619791666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDonViCoSo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c9de4803-e7e2-4e3d-b1c6-ea3fe02b98b6" absoluteBounds="20.765, 1.21, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="eb027b8e-be39-4f27-abcf-922ae1b4e422" absoluteBounds="20.75, 6.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGhiChu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b0f17c63-edc0-47e0-8a12-2ac2b3cdb23a" absoluteBounds="20.765, 7.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="26b05b4f-ae16-4087-86dd-6a6daa697293" absoluteBounds="20.75, 9.75, 2, 1.9631982421874987">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGhiChuXN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="18bb4db3-8630-46e6-9757-2e702ebb0d2d" absoluteBounds="20.765, 10.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="4f65d980-c8aa-425d-b2e3-82768c87adab" absoluteBounds="20.75, 12.75, 2, 1.9631982421874987">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGoiDichVuChung" />
-      <nestedChildShapes>
-        <elementListCompartment Id="616744fc-97d9-4316-85d5-684cdd00849d" absoluteBounds="20.765, 13.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="2c98405f-8ee7-43d3-b2e5-c4fed06ef38f" absoluteBounds="20.75, 15.75, 2, 2.3478011067708326">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGoiDichVuTheoDonVi" />
-      <nestedChildShapes>
-        <elementListCompartment Id="88379576-48e3-42de-8b56-a9e949cfebdb" absoluteBounds="20.765, 16.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="3c087f67-8bc5-4c78-b9f9-0199cfa35c3b" absoluteBounds="21.75, 19.75, 2, 1.9631982421875023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucKyThuatXN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="565fb888-0136-4075-ae98-7adbe2ae913a" absoluteBounds="21.765, 20.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="227c0a5e-69bb-40bc-825a-e90db85bc68e" absoluteBounds="0.75, 22.75, 2, 2.3478011067708309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMauSMS" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d50087aa-90a2-404b-ae4f-3c650faa03e6" absoluteBounds="0.765, 23.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="e4267356-23b6-4c7c-b117-2f156c32c7ba" absoluteBounds="3.75, 22.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMayDucLo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="fe4cdec6-4470-4c71-88be-0005de6bd4dc" absoluteBounds="3.765, 23.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="2d5e916f-4e65-4be7-8bd8-67141705608d" absoluteBounds="6.75, 22.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMayXN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="db8de822-a194-4b40-ad11-d46b3f49b074" absoluteBounds="6.765, 23.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="aeab80fa-f1e0-46da-b530-ecac16dbee0a" absoluteBounds="9.75, 22.75, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucNhom" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3725411e-7eac-49d8-ba68-620b2fec672c" absoluteBounds="9.765, 23.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c0c3901b-f1cc-45e3-9638-e2d43a7e4878" absoluteBounds="21.75, 22.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucQuocGia" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6df12f71-eb1d-4852-8dee-d39e16d9b1be" absoluteBounds="21.765, 23.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="b942c8f3-e3b2-4e34-8663-b91878819c12" absoluteBounds="23.75, 0.75, 2, 3.8862125651041666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucThongSoXN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1e440ec5-9884-4edd-8509-241f3b91e153" absoluteBounds="23.765, 1.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="1b9a68f7-d264-4feb-85c8-33d639f27cba" absoluteBounds="23.75, 5.75, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucVatTu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="0b0cc566-5e6f-433a-822e-4079c7a1d2dc" absoluteBounds="23.765, 6.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="015c7455-4916-4c5c-ad5c-bba737d41abb" absoluteBounds="17.5, 5.375, 2, 3.3093082682291666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDotChuanDoan" />
-      <nestedChildShapes>
-        <elementListCompartment Id="62fbaf23-a11d-44b2-8b7e-ffd30e29fc44" absoluteBounds="17.515, 5.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="2f385efe-687c-40b6-9250-8d5f4a63ccaf" absoluteBounds="6.5, 2.375, 2, 3.8862125651041666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSEmployee" />
-      <nestedChildShapes>
-        <elementListCompartment Id="180fccae-7c91-4912-9270-a1a16d0e85a3" absoluteBounds="6.515, 2.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="044eba30-f1d7-4798-a6cf-29d6e9e2ae53" absoluteBounds="3.75, 0.75, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSEmployeeGroup" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9f078e8e-0f4b-457d-8737-885ec71b04f1" absoluteBounds="3.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="352550d5-e82c-45de-baf1-01db64dfd758" absoluteBounds="0.75, 3.625, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4f956824-85b4-4de4-8f48-ed666d02f82f" absoluteBounds="0.765, 4.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a342bd96-3c1c-4a56-af92-4c5d002bc6e1" absoluteBounds="23.75, 8.75, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSKQ_PhieuPDF" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9f87564e-df16-465b-8e17-68fd7895bf92" absoluteBounds="23.765, 9.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="cf492208-d505-4bab-ad97-c5d85c9daf41" absoluteBounds="23.75, 11.75, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsMayDucLo_MayXN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d324bf28-e36d-473c-beb2-8af9b7825f2a" absoluteBounds="23.765, 12.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="74f69a26-f300-45fb-b139-63b4746c7812" absoluteBounds="12.75, 23.75, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsMayXN_DichVu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="39839fc7-77e6-49e1-b8e9-096aa5650eb8" absoluteBounds="12.765, 24.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0f69f167-a3fd-46a2-acfe-24e637a0fa21" absoluteBounds="23.75, 14.75, 2, 1.9631982421875005">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsViTriMayXN" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ffb10432-64a5-4f79-b7a1-4ce83816d7ec" absoluteBounds="23.765, 15.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="63ad5ff3-082b-4650-8f65-95e5389dff5b" absoluteBounds="15.75, 23.75, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsXN_DichVu" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1b5e8b79-b023-4cf1-b48a-353d20621423" absoluteBounds="15.765, 24.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="412a98cd-064a-4384-8333-636af9666f2e" absoluteBounds="24.75, 17.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsXN_ThongSo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e3150aa4-0601-460a-84b0-2128fbf62e1a" absoluteBounds="24.765, 18.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="38d35840-09b0-45e2-93cd-ac4d544d838b" absoluteBounds="24.75, 20.75, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuForm" />
-      <nestedChildShapes>
-        <elementListCompartment Id="cc9ff616-68c7-4496-8ef2-80ed860aa595" absoluteBounds="24.765, 21.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="10a88951-ad00-4c12-b643-f43e71d1a98c" absoluteBounds="24.75, 23.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuItem" />
-      <nestedChildShapes>
-        <elementListCompartment Id="84315915-3f7a-4a36-b48c-7d306bf36261" absoluteBounds="24.765, 24.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="6692972b-ccf7-47f7-ae10-0a935c05b4f4" absoluteBounds="3.75, 25.75, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuItemCT" />
-      <nestedChildShapes>
-        <elementListCompartment Id="631d5f4f-8eb2-4e68-909a-c29516bb3687" absoluteBounds="3.765, 26.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="bddd2ca4-c209-44ab-a52d-7eb218edb8a1" absoluteBounds="6.75, 25.75, 2, 1.3862939453125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuLanguage" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e9a1b8d9-7267-4310-befe-6e5f30978556" absoluteBounds="6.765, 26.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="1add9c0b-39e3-43cd-a6a4-ab4fa6da675b" absoluteBounds="9.25, 3.5, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuSecurity" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7cfaf012-f4aa-4aa8-a8ed-5a9f2abde748" absoluteBounds="9.265, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a9489310-3d34-488a-a39b-ac00f27d1c33" absoluteBounds="3.5, 3.5, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuSecurityPosition" />
-      <nestedChildShapes>
-        <elementListCompartment Id="24619c1a-5f65-45e1-b8cc-7cced7df5039" absoluteBounds="3.515, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d7eed83e-1630-4ddf-b111-b70505861b5e" absoluteBounds="18.75, 25.75, 2, 1.7708968098958309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhaCungCap" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ae6bdad7-ba54-4d9c-ae41-327ad033c7d5" absoluteBounds="18.765, 26.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="c61623cd-5085-43ae-9082-41b1a3ee325a" absoluteBounds="26.75, 0.75, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhanVien" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7ea3d056-9586-4fd7-b033-a4adc2480627" absoluteBounds="26.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="f24f66dd-0a1d-4b87-8964-0c6b7582f92c" absoluteBounds="26.75, 4.75, 2, 2.5401025390625005">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhapKho" />
-      <nestedChildShapes>
-        <elementListCompartment Id="de1c6cc4-664d-4aac-8e5f-77782b13678b" absoluteBounds="26.765, 5.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="991aa951-d619-44e3-883e-618ba2786191" absoluteBounds="26.75, 8.75, 2, 2.9247054036458309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhapKho_ChiTiet" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a4a0d90d-b533-4feb-b7a9-04682449e8a3" absoluteBounds="26.765, 9.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="85bc4129-130d-477f-99c4-a407f051a8d3" absoluteBounds="9.75, 26.75, 2, 5.6169254557291666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSPatient" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ef34964c-dcf6-4c4e-add4-958fa6149641" absoluteBounds="9.765, 27.21, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7ad67b55-7120-4e33-a032-ae38af799f01" absoluteBounds="12.75, 26.75, 2, 8.69374837239583">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSPhieuSangLoc" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e16dd689-abfb-457f-a4ea-ba7f0f3a1728" absoluteBounds="12.765, 27.21, 1.9700000000000002, 8.1337483723958321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="8c49876e-a3f2-4cd7-bb07-d0f323a5e197" absoluteBounds="11.75, 1, 2, 2.9247054036458326">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSSMSC" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7129cf25-c5fc-421d-ac6c-4470163ea976" absoluteBounds="11.765, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7155970c-c125-4287-9b96-34979b3478c9" absoluteBounds="14.5, 1.125, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSSMSLog" />
-      <nestedChildShapes>
-        <elementListCompartment Id="96e94f96-c2c3-42d4-a514-fc79f5763ee2" absoluteBounds="14.515, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="77be19b8-f75e-41c4-9bff-197379c07c55" absoluteBounds="21.75, 26.75, 2, 5.6169254557291666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSThongTinTrungTam" />
-      <nestedChildShapes>
-        <elementListCompartment Id="34c5b278-1b6e-4b0a-8ecd-233b60f09315" absoluteBounds="21.765, 27.21, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="9aeb74bf-c58f-4326-a55d-088d45abfe9d" absoluteBounds="26.75, 12.75, 2, 3.5016097005208309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSTiepNhan" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3852757e-b609-4bf5-9105-629cba150f0b" absoluteBounds="26.765, 13.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="3c903b77-fdc3-44c2-b4e6-d127948b92ee" absoluteBounds="3.5, 12.375, 2, 5.0400211588541666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b16931d9-769a-4b98-a111-e71683259ff4" absoluteBounds="3.515, 12.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="4eac061b-d181-4742-8f38-f7bbc7820c28" absoluteBounds="6.25, 12.375, 2, 5.0400211588541666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua_ChiTiet" />
-      <nestedChildShapes>
-        <elementListCompartment Id="024104ac-afd0-4468-9693-d220699c5647" absoluteBounds="6.265, 12.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="29030806-9ba2-4bd0-9881-2e5acf771d0f" absoluteBounds="8.75, 13.125, 2, 5.8092268880208309">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_TraKetQua" />
-      <nestedChildShapes>
-        <elementListCompartment Id="91e88a1d-4fb3-4cd0-b3cc-731c70b02a25" absoluteBounds="8.765, 13.585, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="cc43bf15-4ad2-45b2-9e77-9e08d2694c02" absoluteBounds="11.5, 13.25, 2, 5.6169254557291666">
+    <classShape Id="220b48d1-dbdb-43e2-b46a-abcd486b0fbc" absoluteBounds="11.5, 13.25, 2, 5.6169254557291666">
       <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_TraKQ_ChiTiet" />
       <nestedChildShapes>
-        <elementListCompartment Id="6db11653-29ad-42c1-98fb-75168185f2f9" absoluteBounds="11.515, 13.71, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1e9fd462-3f00-4221-9931-a788f0b4a41c" absoluteBounds="11.515, 13.71, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f556656d-a9f4-4c5b-aeca-861c48a23d71" absoluteBounds="24.75, 26.75, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXuatKho" />
+    <classShape Id="b18a3fbf-022b-45a7-86ff-78813d94c424" absoluteBounds="14.75, 12.75, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/DanhMucVatTu" />
       <nestedChildShapes>
-        <elementListCompartment Id="18258ca0-3a74-48ed-bf2a-97d6d2171551" absoluteBounds="24.765, 27.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="9c1bcaf3-20f4-4e31-8ae6-0de813505108" absoluteBounds="14.765, 13.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="285ea48e-40c7-44bf-84b0-0e13eaaf6354" absoluteBounds="14.75, 15.75, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSAccount_Sync" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5beae345-c1d6-476f-a4e0-052fce316451" absoluteBounds="14.765, 16.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8ac1e453-1397-44fe-af6a-c5880c2f4a2b" absoluteBounds="14.75, 5, 2, 4.0785139973958335">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSBenhNhanNguyCoCao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bcd7e939-2dee-4b36-99e2-78f27369391f" absoluteBounds="14.765, 5.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2459d25d-1280-4e2c-95df-4986e8ab3adc" absoluteBounds="0.75, 10.25, 2, 5.0400211588541666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba542a26-a175-46d0-803f-f02d146f8731" absoluteBounds="0.765, 10.71, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="85cbe22e-db94-4118-9526-163ec4a18a06" absoluteBounds="3.5, 8.25, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVuChiTiet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="01658d9f-cea4-40d3-90ce-5fb3f98248da" absoluteBounds="3.515, 8.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b56d57f6-c5ca-40c4-bcb0-54a6d4556771" absoluteBounds="17.75, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiTietDanhGiaChatLuong" />
+      <nestedChildShapes>
+        <elementListCompartment Id="48e17830-4720-417d-a202-9bc2576bb2d8" absoluteBounds="17.765, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="92fa78d5-a9a1-4c45-a5ab-0584e39fe739" absoluteBounds="17.75, 9.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiTietGoiDichVuChung" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3308c64-5c1a-445f-9159-75300301cd1f" absoluteBounds="17.765, 10.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3fe7e362-8db4-43f4-9a25-b9cb0c5f3e03" absoluteBounds="14.75, 17.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiTietXoaPhieu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba039d72-a96e-4169-83f0-bc0ec48c2d55" absoluteBounds="14.765, 18.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1b9ded02-e15c-44a7-938a-c9e39ce66d9c" absoluteBounds="6.75, 8, 2, 3.1170068359375014">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_DSGanMay" />
+      <nestedChildShapes>
+        <elementListCompartment Id="110c53d5-84fb-4d08-af6b-e1756db6a98a" absoluteBounds="6.765, 8.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="50e05015-8b09-474f-b76b-97d3fbe4dea5" absoluteBounds="9.5, 8.125, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc6ed35b-fcab-445d-9710-e3c1efc205c5" absoluteBounds="9.515, 8.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aaceee2c-de8f-403f-a194-6c874a684eaa" absoluteBounds="12.25, 8, 2, 3.1170068359375014">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTriCT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a632a70-c535-4df4-a550-b9488ddca54a" absoluteBounds="12.265, 8.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f62d62f-a6f3-41e4-ab20-f458a96918cf" absoluteBounds="17.75, 15.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucChauLuc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="687a75da-b1af-4ec6-98c9-8546a797d8c8" absoluteBounds="17.765, 16.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="003765a2-15ce-404b-b4b2-d5a8bdb4796b" absoluteBounds="0.75, 18.75, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucChiCuc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac5f9d67-eca6-4cfd-b02a-5ec1ea064e37" absoluteBounds="0.765, 19.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f026e0bf-1a58-46f6-be21-8dc404afde10" absoluteBounds="3.75, 18.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucChuongTrinh" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e8da1f56-a58f-459d-8a20-34abf2b62783" absoluteBounds="3.765, 19.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="50a8c200-ef7b-4607-9d25-8fb4f50a66ce" absoluteBounds="17.75, 18.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDanhGiaChatLuongMau" />
+      <nestedChildShapes>
+        <elementListCompartment Id="81437889-9943-434c-a7e4-1024447389a8" absoluteBounds="17.765, 19.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ac569ad6-a560-43fc-9232-a9a793ca3807" absoluteBounds="6.75, 19.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDanToc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="68d14704-5c9c-4857-b595-6d73af1b1718" absoluteBounds="6.765, 20.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b946d1ba-8ef1-434b-8cb2-2ddacf83c84d" absoluteBounds="9.75, 19.75, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDichVu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fecfb277-2bdc-412d-96f5-7e69981411f3" absoluteBounds="9.765, 20.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e98355a0-1be5-453d-9e7a-4b722b3f4434" absoluteBounds="20.75, 0.75, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDichVuTheoDonVi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8472635-302b-4c08-80a0-a370ac7b05e2" absoluteBounds="20.765, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f6f2d60c-6769-4b01-81af-0b35c194255a" absoluteBounds="20.75, 4.75, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucDonViCoSo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c77b4160-6bd1-4555-9afb-048bef833133" absoluteBounds="20.765, 5.21, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bcae740f-3ab9-42f5-b50d-b751d0321d0f" absoluteBounds="20.75, 10.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGhiChu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="296cb350-66db-4064-bdff-eeb5dedced49" absoluteBounds="20.765, 11.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7b1b1238-a092-4e33-af8a-e5f76fa79608" absoluteBounds="12.75, 20.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGhiChuXN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a723204a-ea76-40f7-94e5-5ef1b38e41e7" absoluteBounds="12.765, 21.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="92b12369-5a39-4342-9957-6b60de63a2fa" absoluteBounds="20.75, 13.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGoiDichVuChung" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7141d744-172e-4981-b696-7d65d8767d7e" absoluteBounds="20.765, 14.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dc8b2d6d-dde7-49d1-bdc2-b90910adb669" absoluteBounds="20.75, 16.75, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucGoiDichVuTheoDonVi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3b817abd-f0d7-43fe-95fd-1fd4df9483ee" absoluteBounds="20.765, 17.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="30bd7731-3632-4dc0-b7ee-3094808db4df" absoluteBounds="20.75, 20.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucKyThuatXN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9b004ffb-8b42-4f16-821d-ba53bbc89246" absoluteBounds="20.765, 21.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c196f188-db0a-49a8-b7a0-3dda51e515bb" absoluteBounds="15.75, 21.75, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMauSMS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d6cd9107-dee6-4ea4-b05e-8af71a994895" absoluteBounds="15.765, 22.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2ca138dc-f6af-401a-ac03-6b4fb47e6b83" absoluteBounds="0.75, 22.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMayDucLo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5624c5c2-4286-45d8-aab0-516e384b5eef" absoluteBounds="0.765, 23.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d8a5f32c-717a-4d06-a88f-af1d4fade83e" absoluteBounds="3.75, 22.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucMayXN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c97fe4b-edd6-4d61-ae70-9666ed8c1664" absoluteBounds="3.765, 23.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3694226d-9528-4990-8660-327b7b439f86" absoluteBounds="23.75, 0.75, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucNhom" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aeaa0f1e-4bd0-40d8-a681-e10bcc49d96f" absoluteBounds="23.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="757fb266-98cc-47d3-80f7-1c691abdc1b2" absoluteBounds="23.75, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucQuocGia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73696c8d-ac8e-4da8-baef-6ef17dc7f7c6" absoluteBounds="23.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a736b30f-ec70-49b3-a2a5-7b30698b9004" absoluteBounds="23.75, 6.75, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDanhMucThongSoXN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38145ee0-d36c-4b57-81c5-7945e14c1ef9" absoluteBounds="23.765, 7.21, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6390ab02-8048-4c17-ab03-2f726d539f36" absoluteBounds="17.5, 5.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSDotChuanDoan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d846c701-eb28-4437-9584-ac537e1170a9" absoluteBounds="17.515, 5.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bf40f755-2536-44c6-91d4-f9cd8e0f53a3" absoluteBounds="6.5, 2.375, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSEmployee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="772a5052-770e-41cd-8d22-1c0709feb105" absoluteBounds="6.515, 2.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4d7894ab-6576-4c2b-a07b-edb5a3815ecf" absoluteBounds="3.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSEmployeeGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cd37db4a-13f2-46d1-a716-f0d66147872e" absoluteBounds="3.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="46837f21-70ba-49f2-8910-4d6788997287" absoluteBounds="0.75, 3.625, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3da645fb-0161-4e86-97dd-314e7a6f1169" absoluteBounds="0.765, 4.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a6eabec6-7a23-4861-8b22-e447bebca829" absoluteBounds="6.75, 23.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSKQ_PhieuPDF" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b6c44576-1a61-492f-953a-2258851681ae" absoluteBounds="6.765, 24.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="089006b0-3fc2-4f71-8610-975ac0e7ab42" absoluteBounds="9.75, 23.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsMayDucLo_MayXN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eac96a01-47cc-4441-af69-febc6fa9ee16" absoluteBounds="9.765, 24.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99356f0d-f2cd-4bcb-b7d5-054d6212dc3a" absoluteBounds="23.75, 11.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsMayXN_DichVu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6304482c-41b6-49d6-9038-fc958d470bfe" absoluteBounds="23.765, 12.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ccaf06ae-de06-4be3-91af-85614a49c00c" absoluteBounds="23.75, 14.75, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsViTriMayXN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="357447f4-8b7b-4bdd-af4a-5e651a5f83ac" absoluteBounds="23.765, 15.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9826dfc9-dd83-4c30-b8fc-bae45dcd9679" absoluteBounds="23.75, 17.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsXN_DichVu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64704b23-cda3-4d30-b65b-e579ac650486" absoluteBounds="23.765, 18.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a03964d5-2f39-4421-914e-733e37cadae7" absoluteBounds="18.75, 23.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMapsXN_ThongSo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c784c2fa-092d-431d-b66e-da5cb1ddaccf" absoluteBounds="18.765, 24.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b04c1cb0-7690-46e9-93df-075875a1562e" absoluteBounds="23.75, 20.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuForm" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8737ec8e-fee4-4d13-8cf7-ec8542c23c3f" absoluteBounds="23.765, 21.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b4ad234d-1d01-43fa-92d9-9d023b56745e" absoluteBounds="21.75, 23.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ab637cf-570a-42da-84a7-3750574b7bcc" absoluteBounds="21.765, 24.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77d5ca80-69e6-4250-aebe-0d791a9059e7" absoluteBounds="24.75, 23.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuItemCT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c367294-37e4-4ef6-963f-188af8790b64" absoluteBounds="24.765, 24.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b746ccc-3bb5-4bb8-a90b-bd3baf3e188b" absoluteBounds="0.75, 25.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuLanguage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a1106eca-0612-40f7-8f73-d24ada15e018" absoluteBounds="0.765, 26.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e3c744fa-530c-4975-94a0-8822f92affc4" absoluteBounds="9.25, 3.5, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuSecurity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="391d0c6c-b447-4bed-96ff-5287a94c7278" absoluteBounds="9.265, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34183c58-1e75-457a-bd14-00a49ad3fb5c" absoluteBounds="3.5, 3.5, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSMenuSecurityPosition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c64c6102-f633-4519-bd1c-435c640c5da0" absoluteBounds="3.515, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e8062617-d915-45ea-ae63-dc26b251954d" absoluteBounds="12.75, 25.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhaCungCap" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12246e0b-99a3-4ce6-aeea-cf3387ce845d" absoluteBounds="12.765, 26.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bd38e052-8c89-4df4-9088-378b29b11363" absoluteBounds="26.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhanVien" />
+      <nestedChildShapes>
+        <elementListCompartment Id="51f676fe-646a-49db-84b6-e2353312bc67" absoluteBounds="26.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e42f1c37-65ad-4ab4-8e48-dec2dc4efe1a" absoluteBounds="3.75, 26.75, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhapKho" />
+      <nestedChildShapes>
+        <elementListCompartment Id="824dd0e3-bd41-4779-b3c4-174b8aa0649b" absoluteBounds="3.765, 27.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b1b34ccd-bad7-47ec-98bf-b467da5afb8f" absoluteBounds="26.75, 4.75, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSNhapKho_ChiTiet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9c3fccf6-3f0c-4404-9a48-cd5a03a2f66b" absoluteBounds="26.765, 5.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d077686b-5460-4c53-9da5-7baee2c92929" absoluteBounds="6.75, 26.75, 2, 5.6169254557291666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSPatient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56cc03dd-6dd8-44f2-8a60-73898b435870" absoluteBounds="6.765, 27.21, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e1efc893-58b3-41a1-842a-7f876fb3ba4d" absoluteBounds="26.75, 8.75, 2, 8.69374837239583">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSPhieuSangLoc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="25126084-4c5c-403e-9388-4c7bff3b7a37" absoluteBounds="26.765, 9.21, 1.9700000000000002, 8.1337483723958321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="211cf098-d367-457f-91ac-4874e2a8e5ec" absoluteBounds="11.75, 1, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSSMSC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ecb6c77b-9191-4301-a588-1084fe40dd20" absoluteBounds="11.765, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="356fa090-5149-4ee9-bc09-a59abdf7f026" absoluteBounds="14.5, 1.125, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSSMSLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f2e8a91-d072-4647-84c5-763cf8537ec8" absoluteBounds="14.515, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a36b384f-c71b-4918-9425-eb09285c9e7a" absoluteBounds="15.75, 26.75, 2, 5.6169254557291666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSThongTinTrungTam" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e960ba7-28a4-4eb7-997c-c597fcbb03e7" absoluteBounds="15.765, 27.21, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4783a399-2052-4580-a702-72c529e3173e" absoluteBounds="26.75, 18.75, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSTiepNhan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2083f46-503c-48fa-a456-1a0b08af10f1" absoluteBounds="26.765, 19.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6aca9556-16ec-446d-87db-c7d9fc694883" absoluteBounds="3.5, 12.375, 2, 5.0400211588541666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a22ca5fd-5338-42ed-9291-f2bd6a051478" absoluteBounds="3.515, 12.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="be5a00b8-fb55-4a21-9186-ef4bbeaac4f2" absoluteBounds="6.25, 12.375, 2, 5.0400211588541666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua_ChiTiet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aabdebd9-4983-48d1-aa77-fb30b670e8bf" absoluteBounds="6.265, 12.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b65adb5b-f34b-4d7b-9dd7-5aa7bb6c430f" absoluteBounds="8.75, 13.125, 2, 5.8092268880208309">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSXN_TraKetQua" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85e31cc9-e81d-44d6-a61a-859dd1219378" absoluteBounds="8.765, 13.585, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.75 : 10.9046541341146); (3.5 : 10.9046541341146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVu/PSChiDinhDichVu_PSChiDinhDichVuChiTiet" />
       <nodes>
-        <classShapeMoniker Id="c950844f-e67d-4f3b-8d14-ec3f09fa9897" />
-        <classShapeMoniker Id="679d1ffb-16b0-4964-80b8-1958524bf9c8" />
+        <classShapeMoniker Id="2459d25d-1280-4e2c-95df-4986e8ab3adc" />
+        <classShapeMoniker Id="85cbe22e-db94-4118-9526-163ec4a18a06" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 9.58735270182292); (9.5 : 9.58735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BioNetDBContextDataContext/PSCM_DSGanMay/PSCM_DSGanMay_PSCM_GanViTri" />
+      <nodes>
+        <classShapeMoniker Id="1b9ded02-e15c-44a7-938a-c9e39ce66d9c" />
+        <classShapeMoniker Id="50e05015-8b09-474f-b76b-97d3fbe4dea5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.5 : 9.58735270182292); (12.25 : 9.58735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri/PSCM_GanViTri_PSCM_GanViTriCT" />
+      <nodes>
+        <classShapeMoniker Id="50e05015-8b09-474f-b76b-97d3fbe4dea5" />
+        <classShapeMoniker Id="aaceee2c-de8f-403f-a194-6c874a684eaa" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(16.75 : 7.02965413411458); (17.5 : 7.02965413411458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSBenhNhanNguyCoCao/PSBenhNhanNguyCoCao_PSDotChuanDoan" />
       <nodes>
-        <classShapeMoniker Id="b2922fbf-78a6-4279-9464-65a92b7eaa5a" />
-        <classShapeMoniker Id="015c7455-4916-4c5c-ad5c-bba737d41abb" />
+        <classShapeMoniker Id="8ac1e453-1397-44fe-af6a-c5880c2f4a2b" />
+        <classShapeMoniker Id="6390ab02-8048-4c17-ab03-2f726d539f36" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.75 : 1.34699625651042); (7.5 : 1.34699625651042); (7.5 : 2.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeeGroup/PSEmployeeGroup_PSEmployee" />
       <nodes>
-        <classShapeMoniker Id="044eba30-f1d7-4798-a6cf-29d6e9e2ae53" />
-        <classShapeMoniker Id="2f385efe-687c-40b6-9250-8d5f4a63ccaf" />
+        <classShapeMoniker Id="4d7894ab-6576-4c2b-a07b-edb5a3815ecf" />
+        <classShapeMoniker Id="bf40f755-2536-44c6-91d4-f9cd8e0f53a3" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 5.0112939453125); (1.75 : 5.7973046875); (6.5 : 5.7973046875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.65625 : 5.0112939453125); (2.65625 : 5.63544840494792); (6.5 : 5.63544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition/PSEmployeePosition_PSEmployee" />
       <nodes>
-        <classShapeMoniker Id="352550d5-e82c-45de-baf1-01db64dfd758" />
-        <classShapeMoniker Id="2f385efe-687c-40b6-9250-8d5f4a63ccaf" />
+        <classShapeMoniker Id="46837f21-70ba-49f2-8910-4d6788997287" />
+        <classShapeMoniker Id="bf40f755-2536-44c6-91d4-f9cd8e0f53a3" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(8.5 : 4.38544840494792); (9.25 : 4.38544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployee/PSEmployee_PSMenuSecurity" />
       <nodes>
-        <classShapeMoniker Id="2f385efe-687c-40b6-9250-8d5f4a63ccaf" />
-        <classShapeMoniker Id="1add9c0b-39e3-43cd-a6a4-ab4fa6da675b" />
+        <classShapeMoniker Id="bf40f755-2536-44c6-91d4-f9cd8e0f53a3" />
+        <classShapeMoniker Id="e3c744fa-530c-4975-94a0-8822f92affc4" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 4.31814697265625); (3.5 : 4.31814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSEmployeePosition/PSEmployeePosition_PSMenuSecurityPosition" />
       <nodes>
-        <classShapeMoniker Id="352550d5-e82c-45de-baf1-01db64dfd758" />
-        <classShapeMoniker Id="a9489310-3d34-488a-a39b-ac00f27d1c33" />
+        <classShapeMoniker Id="46837f21-70ba-49f2-8910-4d6788997287" />
+        <classShapeMoniker Id="34183c58-1e75-457a-bd14-00a49ad3fb5c" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(13.75 : 2.49120198567708); (14.5 : 2.49120198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSSMSC/PSSMSC_PSSMSLog" />
       <nodes>
-        <classShapeMoniker Id="8c49876e-a3f2-4cd7-bb07-d0f323a5e197" />
-        <classShapeMoniker Id="7155970c-c125-4287-9b96-34979b3478c9" />
+        <classShapeMoniker Id="211cf098-d367-457f-91ac-4874e2a8e5ec" />
+        <classShapeMoniker Id="356fa090-5149-4ee9-bc09-a59abdf7f026" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 13.8325105794271); (3.5 : 13.8325105794271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSChiDinhDichVu/PSChiDinhDichVu_PSXN_KetQua" />
       <nodes>
-        <classShapeMoniker Id="c950844f-e67d-4f3b-8d14-ec3f09fa9897" />
-        <classShapeMoniker Id="3c903b77-fdc3-44c2-b4e6-d127948b92ee" />
+        <classShapeMoniker Id="2459d25d-1280-4e2c-95df-4986e8ab3adc" />
+        <classShapeMoniker Id="6aca9556-16ec-446d-87db-c7d9fc694883" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 14.8950105794271); (6.25 : 14.8950105794271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSXN_KetQua/PSXN_KetQua_PSXN_KetQua_ChiTiet" />
       <nodes>
-        <classShapeMoniker Id="3c903b77-fdc3-44c2-b4e6-d127948b92ee" />
-        <classShapeMoniker Id="4eac061b-d181-4742-8f38-f7bbc7820c28" />
+        <classShapeMoniker Id="6aca9556-16ec-446d-87db-c7d9fc694883" />
+        <classShapeMoniker Id="be5a00b8-fb55-4a21-9186-ef4bbeaac4f2" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(10.75 : 16.0584627278646); (11.5 : 16.0584627278646)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BioNetDBContextDataContext/PSXN_TraKetQua/PSXN_TraKetQua_PSXN_TraKQ_ChiTiet" />
       <nodes>
-        <classShapeMoniker Id="29030806-9ba2-4bd0-9881-2e5acf771d0f" />
-        <classShapeMoniker Id="cc43bf15-4ad2-45b2-9e77-9e08d2694c02" />
+        <classShapeMoniker Id="b65adb5b-f34b-4d7b-9dd7-5aa7bb6c430f" />
+        <classShapeMoniker Id="220b48d1-dbdb-43e2-b46a-abcd486b0fbc" />
       </nodes>
     </associationConnector>
-    <classShape Id="1399073c-6e27-4863-a866-e86f44e41fde" absoluteBounds="0.75, 26.75, 2, 4.2708154296875023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/View_DucLo" />
-      <nestedChildShapes>
-        <elementListCompartment Id="9ebba4bc-a0a5-42c3-88d0-6fc342ac1192" absoluteBounds="0.765, 27.21, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="9c0ebc31-3ef7-42ca-9c44-c847c4b3418c" absoluteBounds="15.75, 26.75, 2, 5.6169254557291666">
+    <classShape Id="db1ef3f2-c034-4e1a-86d7-334a5477ae20" absoluteBounds="9.375, 26.75, 2, 5.6169254557291666">
       <DataClassMoniker Name="/BioNetDBContextDataContext/View_KQPhieu1" />
       <nestedChildShapes>
-        <elementListCompartment Id="f51881d5-7915-4a19-ae8f-0d3d3970d718" absoluteBounds="15.765, 27.21, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cd64722b-69a0-442c-aa2f-c26dc14bd4f4" absoluteBounds="9.39, 27.21, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="385016ef-c4ee-4982-bf96-24a889f809dc" absoluteBounds="27.75, 17.75, 2, 5.4246240234375023">
+    <classShape Id="344fb33e-d086-4cf5-9273-8cdb15d98125" absoluteBounds="18.375, 26.75, 2, 5.4246240234375023">
       <DataClassMoniker Name="/BioNetDBContextDataContext/View_KQPhieu2" />
       <nestedChildShapes>
-        <elementListCompartment Id="4e81ea45-5aef-46e6-b097-24e4a0c40a42" absoluteBounds="27.765, 18.21, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d096bf10-8843-4222-9391-87098e76ab02" absoluteBounds="18.39, 27.21, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4e3690ac-4683-4c38-8dd6-f610da57bf43" absoluteBounds="27.75, 24.75, 2, 3.6939111328125023">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/ViewBaoCao" />
-      <nestedChildShapes>
-        <elementListCompartment Id="a194e540-0f6e-4740-a7b5-c56dae63a998" absoluteBounds="27.765, 25.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="5c1da2f7-0396-417e-96ba-95df283cc60d" absoluteBounds="29.375, 1, 2, 3.1170068359375005">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_DSGanMay" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4db1e5aa-bc82-4b0d-9a3c-eda7ff628ed2" absoluteBounds="29.39, 1.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="2b7781a7-e3be-45b0-b87e-940fbb2cbe39" absoluteBounds="32.125, 1.125, 2, 2.9247054036458326">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri" />
-      <nestedChildShapes>
-        <elementListCompartment Id="edfac889-9502-40ae-a5c3-c0ca7a06df1b" absoluteBounds="32.14, 1.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="156de427-f9ab-48a0-b47b-97800b0abcd8" absoluteBounds="34.875, 1, 2, 3.1170068359375005">
-      <DataClassMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTriCT" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ff35d8f2-1688-45eb-a564-e250972cd528" absoluteBounds="34.89, 1.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(31.375 : 2.58735270182292); (32.125 : 2.58735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BioNetDBContextDataContext/PSCM_DSGanMay/PSCM_DSGanMay_PSCM_GanViTri" />
-      <nodes>
-        <classShapeMoniker Id="5c1da2f7-0396-417e-96ba-95df283cc60d" />
-        <classShapeMoniker Id="2b7781a7-e3be-45b0-b87e-940fbb2cbe39" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(34.125 : 2.58735270182292); (34.875 : 2.58735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BioNetDBContextDataContext/PSCM_GanViTri/PSCM_GanViTri_PSCM_GanViTriCT" />
-      <nodes>
-        <classShapeMoniker Id="2b7781a7-e3be-45b0-b87e-940fbb2cbe39" />
-        <classShapeMoniker Id="156de427-f9ab-48a0-b47b-97800b0abcd8" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="afab20f9-1a6d-4121-9b72-ce7b704276e1" absoluteBounds="4.625, 29, 2, 6.0015283203125">
+    <classShape Id="d997fbe2-0e6e-4438-845d-91a66d98f796" absoluteBounds="21.375, 26.75, 2, 6.0015283203125023">
       <DataClassMoniker Name="/BioNetDBContextDataContext/View_TraKQ" />
       <nestedChildShapes>
-        <elementListCompartment Id="b14e843e-e846-4992-bc32-6c47ac53ad9c" absoluteBounds="4.64, 29.46, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d5c67c40-d325-4377-b956-bc9b8b256d04" absoluteBounds="21.39, 27.21, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="39d71acf-5e8b-4284-8cbf-384469c0527f" absoluteBounds="24.375, 26.75, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/ViewBaoCao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b7e2169f-10cd-46a8-8fe4-b57f403952e8" absoluteBounds="24.39, 27.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eccb8510-273b-487f-bb54-18fee3534f42" absoluteBounds="18.25, 13.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/PSChiTietSuaPhieu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="926d4a74-0fce-429b-8b6d-fb559d5af281" absoluteBounds="18.265, 13.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76e98e24-eb57-4529-b0cb-7b1ca2da7d42" absoluteBounds="0.5, 6.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/View_MaBN_DaTraKQ" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf920e88-8f1c-42a6-8ecd-3d498bc2f1fb" absoluteBounds="0.51500000000000012, 6.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f13f91b4-eee9-4e01-ac9c-02fb2b2b080d" absoluteBounds="3.125, 6, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/BioNetDBContextDataContext/View_MABN_ChuaTraKQ" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d542478c-21a9-4d03-92b8-6a347e83fd4a" absoluteBounds="3.14, 6.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

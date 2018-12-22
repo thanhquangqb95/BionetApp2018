@@ -146,6 +146,7 @@
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -499,6 +500,12 @@
     <Compile Include="Entry\FrmSuaPhieuLoi.Designer.cs">
       <DependentUpon>FrmSuaPhieuLoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmSuaThongTinPhieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmSuaThongTinPhieu.Designer.cs">
+      <DependentUpon>FrmSuaThongTinPhieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entry\FrmThongTinTrungTam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -706,6 +713,12 @@
     </Compile>
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoDonViTKCoBan.Designer.cs">
       <DependentUpon>rptBaoCaoDonViTKCoBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoExcelDanTocGene.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RepostsBaoCao\rptBaoCaoExcelDanTocGene.Designer.cs">
+      <DependentUpon>rptBaoCaoExcelDanTocGene.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.cs">
       <SubType>Component</SubType>
@@ -1081,6 +1094,9 @@
     <EmbeddedResource Include="Entry\FrmSuaPhieuLoi.resx">
       <DependentUpon>FrmSuaPhieuLoi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmSuaThongTinPhieu.resx">
+      <DependentUpon>FrmSuaThongTinPhieu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmThongTinTrungTam.resx">
       <DependentUpon>FrmThongTinTrungTam.cs</DependentUpon>
     </EmbeddedResource>
@@ -1195,6 +1211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoDonViTKCoBan.resx">
       <DependentUpon>rptBaoCaoDonViTKCoBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoExcelDanTocGene.resx">
+      <DependentUpon>rptBaoCaoExcelDanTocGene.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepostsBaoCao\rptBaoCaoExcelNguyCo.resx">
       <DependentUpon>rptBaoCaoExcelNguyCo.cs</DependentUpon>
@@ -1375,6 +1394,7 @@
   <ItemGroup>
     <Content Include="bionetnew.ico" />
     <Content Include="BioNet_icon.ico" />
+    <None Include="Resources\savefolder.png" />
     <None Include="Resources\smartphone.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\result %281%29.png" />
@@ -1444,6 +1464,10 @@
     <None Include="Resources\card.png" />
     <None Include="Resources\calendar.png" />
     <None Include="Resources\computer.png" />
+    <None Include="Resources\backBionet.jpg" />
+    <None Include="Resources\BionetHappyNewYear.png" />
+    <None Include="Resources\BionetLoginNoel.png" />
+    <None Include="Resources\BionetLoginNoel1.png" />
     <Content Include="Resources\email.png" />
     <None Include="Resources\sign-check-icon.png" />
     <None Include="Resources\loading.gif" />
@@ -1493,6 +1517,8 @@
     <None Include="Resources\pdf %281%29.png" />
     <None Include="Resources\money.png" />
     <None Include="Resources\man %281%29.png" />
+    <None Include="Resources\notepad %281%29.png" />
+    <None Include="Resources\money-bag.png" />
     <Content Include="Resources\pdf-icon.png" />
     <Content Include="Resources\pdf-icon1.png" />
     <None Include="Resources\sync.png" />

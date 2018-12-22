@@ -215,5 +215,16 @@ namespace BioNetModel.Properties {
                 return ((string)(this["Bio_TestSyncConnectionString3"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-IC47MD5;Initial Catalog=Bio_TestSync_ThucTe;Integrated Securi" +
+            "ty=True")]
+        public string Bio_TestSync_ThucTeConnectionString {
+            get {
+                return ((string)(this["Bio_TestSync_ThucTeConnectionString"]));
+            }
+        }
     }
 }

@@ -139,6 +139,7 @@
             this.barSubItem9 = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem10 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem67 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem74 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem11 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem68 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem69 = new DevExpress.XtraBars.BarButtonItem();
@@ -303,9 +304,10 @@
             this.barButtonItem72,
             this.barSubItem13,
             this.barButtonItem73,
-            this.txtNameNV});
+            this.txtNameNV,
+            this.barButtonItem74});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 44;
+            this.ribbon.MaxItemId = 45;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1,
@@ -1240,7 +1242,8 @@
             this.barSubItem10.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.tools;
             this.barSubItem10.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem43),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem67, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem67, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem74)});
             this.barSubItem10.Name = "barSubItem10";
             this.barSubItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
@@ -1253,6 +1256,14 @@
             this.barButtonItem67.Name = "barButtonItem67";
             this.barButtonItem67.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem67.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem67_ItemClick);
+            // 
+            // barButtonItem74
+            // 
+            this.barButtonItem74.Caption = "Sửa TT Phiếu";
+            this.barButtonItem74.Id = 44;
+            this.barButtonItem74.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.notepad__1_;
+            this.barButtonItem74.Name = "barButtonItem74";
+            this.barButtonItem74.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem74_ItemClick);
             // 
             // barSubItem11
             // 
@@ -1576,7 +1587,7 @@
             // picBackgroun
             // 
             this.picBackgroun.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picBackgroun.Image = ((System.Drawing.Image)(resources.GetObject("picBackgroun.Image")));
+            this.picBackgroun.Image = global::BioNetSangLocSoSinh.Properties.Resources.BionetHappyNewYear;
             this.picBackgroun.Location = new System.Drawing.Point(0, 0);
             this.picBackgroun.Name = "picBackgroun";
             this.picBackgroun.Size = new System.Drawing.Size(1268, 649);
@@ -1773,5 +1784,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem73;
         private DevExpress.XtraBars.BarHeaderItem txtNameNV;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem74;
     }
 }

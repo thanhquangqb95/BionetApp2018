@@ -86,21 +86,22 @@ namespace BioNetModel
     }
     public class TKExcelXNGene
     {
-        public string TongDaLamXNGene { get; set; }
-        public string GeneKXD { get; set; }
-        public string GeneXD { get; set; }
-        public string Conton { get; set; }
+        public int STT { get; set; }
+        public string DanToc { get; set; }
+        public string Tong { get; set; }
+        public string Canton { get; set; }
         public string Kaiping { get; set; }
         public string Viangchan { get; set; }
         public string Coimbra { get; set; }
         public string Union { get; set; }
         public string Mahidol { get; set; }
-        public string Mediterradean { get; set; }
-        public string VanuaLava { get; set; }
-        public string CantonKaiping { get; set; }
-        public string CantonViangchang { get; set; }
-        public string UnionViangchan { get; set; }
-        public string UnionKaiping { get; set; }
-        public string KaipingViangchan { get; set; }
+        public string Mediterranean { get; set; }
+        public string Canton_Kaiping { get; set; }
+        public string Union_Kaiping		 { get; set; }
+        public string Kaiping_Viangchan { get; set; }
+        public string Canton_Viangchan { get; set; }
+        public string Union_Viangchan { get; set; }
+        public string Canton_Coimbra { get; set; }
+        public string Union_Canton { get; set; }
     }
 }

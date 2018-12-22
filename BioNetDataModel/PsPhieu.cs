@@ -40,6 +40,7 @@ namespace BioNetModel
         public string TenNhanVienLayMau { get; set; }
         public string SoDTNhanVienLayMau { get; set; }
         public string LuuYPhieu { get; set; }
+        public string GiaGoiXN { get; set; }
         public PSPatient BenhNhan { get; set; }
         public List<PSChiDinhTrenPhieu> lstChiDinh { get; set; }
         public PSDanhMucDonViCoSo DonVi { get; set; }

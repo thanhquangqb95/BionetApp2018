@@ -42,6 +42,7 @@ namespace BioNetModel
         public PSThongKeCon PSTKCon { get; set; }
         public PSThongKeGoiBenh PSThongKeGoiBenh { get; set; }
         public PSThongKeGioiTinh PSThongKeGioiTinh { get; set; }
+        public PSThongKeChatLuongMau PSThongKeChatLuongMau { get; set; }
     }
 
     public class PSThongKeChiTiet
@@ -114,6 +115,18 @@ namespace BioNetModel
         public int Benh2Hemo { get; set; }
         public int Benh3Hemo { get; set; }
         public int Benh5Hemo { get; set; }
+    }
+
+    public class PSThongKeChatLuongMau
+    {
+        public int KhongDat { get; set; }
+        public int Dat { get; set; }
+        public List<PSThongKeChatLuongMauCT> ChatLuongMauCT {get;set;}
+    }
+    public class PSThongKeChatLuongMauCT
+    {
+        public string LyDo { get; set; }
+        public int SoLuong { get; set; }
     }
 
     #region thống kê đơn vi cơ bản

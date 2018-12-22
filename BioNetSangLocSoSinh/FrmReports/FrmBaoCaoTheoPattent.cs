@@ -122,6 +122,7 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             this.LookupEditTenDV.DataSource = BioNet_Bus.GetDanhSachDonViCoSo();
             this.LookupEditTenVietTat.DataSource = BioNet_Bus.GetDanhSachDonViCoSo();
+            this.LookupEditTenChiCuc.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             List<CLPPSinh> CLPPSinhs = new List<CLPPSinh>();
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "0", TenPPSinh = "Sinh thường" });
             CLPPSinhs.Add(new CLPPSinh() { PPSinh = "1", TenPPSinh = "Sinh mổ" });
@@ -205,6 +206,8 @@ namespace BioNetSangLocSoSinh.FrmReports
                     {
 
                         this.GVDanhSachDuongTinh.ExportToXlsx(ofd.FileName);
+                        XtraMessageBox.Show("Lưu file thành cộng.", "BioNet - Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        System.Diagnostics.Process.Start(ofd.FileName);
                     }
                     catch
                     {

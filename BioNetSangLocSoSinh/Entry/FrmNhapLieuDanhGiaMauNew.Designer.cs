@@ -31,10 +31,12 @@ namespace BioNetSangLocSoSinh.Entry
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhapLieuDanhGiaMauNew));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabDanhSachCho = new DevExpress.XtraTab.XtraTabPage();
@@ -218,6 +220,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_MaDichVu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LookUpDichVu_GCDichVuChiDinh = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_TenDichVu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -397,6 +400,10 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // GVDanhSachTiepNhan
             // 
+            this.GVDanhSachTiepNhan.Appearance.GroupRow.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.GVDanhSachTiepNhan.Appearance.GroupRow.ForeColor = System.Drawing.Color.Maroon;
+            this.GVDanhSachTiepNhan.Appearance.GroupRow.Options.UseFont = true;
+            this.GVDanhSachTiepNhan.Appearance.GroupRow.Options.UseForeColor = true;
             this.GVDanhSachTiepNhan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.col_RowIDPhieu,
             this.col_MaPhieu_GCTiepNhan,
@@ -407,6 +414,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_isDaNhapLieu,
             this.col_maTiepNhan});
             this.GVDanhSachTiepNhan.GridControl = this.GCDanhSachTiepNhan;
+            this.GVDanhSachTiepNhan.GroupCount = 1;
             this.GVDanhSachTiepNhan.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaPhieu", null, "(có {0} phiếu)")});
             this.GVDanhSachTiepNhan.Name = "GVDanhSachTiepNhan";
@@ -417,7 +425,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.GVDanhSachTiepNhan.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.GVDanhSachTiepNhan.OptionsView.ShowFooter = true;
             this.GVDanhSachTiepNhan.OptionsView.ShowGroupPanel = false;
-            this.GVDanhSachTiepNhan.Click += new System.EventHandler(this.GVDanhSachTiepNhan_Click);
+            this.GVDanhSachTiepNhan.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_DonViCoSo_GCTiepNhan, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.GVDanhSachTiepNhan.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDanhSachTiepNhan_RowCellStyle);
             this.GVDanhSachTiepNhan.DoubleClick += new System.EventHandler(this.GVDanhSachTiepNhan_DoubleClick);
             // 
             // col_RowIDPhieu
@@ -439,10 +449,14 @@ namespace BioNetSangLocSoSinh.Entry
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaPhieu", "Tổng: {0} phiếu")});
             this.col_MaPhieu_GCTiepNhan.Visible = true;
             this.col_MaPhieu_GCTiepNhan.VisibleIndex = 1;
-            this.col_MaPhieu_GCTiepNhan.Width = 65;
+            this.col_MaPhieu_GCTiepNhan.Width = 86;
             // 
             // col_DonViCoSo_GCTiepNhan
             // 
+            this.col_DonViCoSo_GCTiepNhan.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.col_DonViCoSo_GCTiepNhan.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.col_DonViCoSo_GCTiepNhan.AppearanceCell.Options.UseFont = true;
+            this.col_DonViCoSo_GCTiepNhan.AppearanceCell.Options.UseForeColor = true;
             this.col_DonViCoSo_GCTiepNhan.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.col_DonViCoSo_GCTiepNhan.AppearanceHeader.Options.UseFont = true;
             this.col_DonViCoSo_GCTiepNhan.Caption = "Đơn vị";
@@ -453,7 +467,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_DonViCoSo_GCTiepNhan.OptionsColumn.AllowFocus = false;
             this.col_DonViCoSo_GCTiepNhan.Visible = true;
             this.col_DonViCoSo_GCTiepNhan.VisibleIndex = 2;
-            this.col_DonViCoSo_GCTiepNhan.Width = 59;
+            this.col_DonViCoSo_GCTiepNhan.Width = 77;
             // 
             // LookUpEditDonVi
             // 
@@ -483,7 +497,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_NgayTiepNhan.FieldName = "NgayTiepNhan";
             this.col_NgayTiepNhan.Name = "col_NgayTiepNhan";
             this.col_NgayTiepNhan.Visible = true;
-            this.col_NgayTiepNhan.VisibleIndex = 3;
+            this.col_NgayTiepNhan.VisibleIndex = 2;
+            this.col_NgayTiepNhan.Width = 105;
             // 
             // col_MaNhanVienTiepNhan
             // 
@@ -541,17 +556,22 @@ namespace BioNetSangLocSoSinh.Entry
             // btnBackPhieu
             // 
             this.btnBackPhieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnBackPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnBackPhieu.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnBackPhieu.Appearance.Options.UseFont = true;
+            this.btnBackPhieu.Appearance.Options.UseForeColor = true;
             this.btnBackPhieu.Enabled = false;
-            this.btnBackPhieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBackPhieu.ImageOptions.Image")));
+            this.btnBackPhieu.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
             this.btnBackPhieu.Location = new System.Drawing.Point(5, 4);
             this.btnBackPhieu.Name = "btnBackPhieu";
-            this.btnBackPhieu.Size = new System.Drawing.Size(163, 23);
+            this.btnBackPhieu.Size = new System.Drawing.Size(148, 23);
             this.btnBackPhieu.TabIndex = 36;
             this.btnBackPhieu.TabStop = false;
             this.btnBackPhieu.Text = "Hủy Tiếp Nhận Phiếu";
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.simpleButton1);
             this.panelControl4.Controls.Add(this.btnCapNhatDSTiepNhan);
             this.panelControl4.Controls.Add(this.labelControl40);
             this.panelControl4.Controls.Add(this.labelControl7);
@@ -571,7 +591,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnCapNhatDSTiepNhan.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnCapNhatDSTiepNhan.Location = new System.Drawing.Point(9, 82);
             this.btnCapNhatDSTiepNhan.Name = "btnCapNhatDSTiepNhan";
-            this.btnCapNhatDSTiepNhan.Size = new System.Drawing.Size(312, 23);
+            this.btnCapNhatDSTiepNhan.Size = new System.Drawing.Size(259, 23);
             this.btnCapNhatDSTiepNhan.TabIndex = 23;
             this.btnCapNhatDSTiepNhan.Text = "Cập nhật danh sách";
             this.btnCapNhatDSTiepNhan.Click += new System.EventHandler(this.btnCapNhatDSTiepNhan_Click);
@@ -935,9 +955,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnClear_DaDuyet.Location = new System.Drawing.Point(252, 137);
             this.btnClear_DaDuyet.Name = "btnClear_DaDuyet";
             this.btnClear_DaDuyet.Size = new System.Drawing.Size(68, 23);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear_DaDuyet.SuperTip = superToolTip1;
+            toolTipTitleItem2.Text = "Bỏ lọc";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnClear_DaDuyet.SuperTip = superToolTip2;
             this.btnClear_DaDuyet.TabIndex = 36;
             // 
             // btnCapNhatDanhSachDaDuyet
@@ -1372,9 +1392,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnChiTietKQ1.Location = new System.Drawing.Point(288, 119);
             this.btnChiTietKQ1.Name = "btnChiTietKQ1";
             this.btnChiTietKQ1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem2.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.btnChiTietKQ1.SuperTip = superToolTip2;
+            toolTipTitleItem3.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.btnChiTietKQ1.SuperTip = superToolTip3;
             this.btnChiTietKQ1.TabIndex = 37;
             this.btnChiTietKQ1.Visible = false;
             // 
@@ -2362,9 +2382,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl8.AppearanceCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.groupControl8.AppearanceCaption.Options.UseFont = true;
             this.groupControl8.Controls.Add(this.txtGhiChu);
-            this.groupControl8.Location = new System.Drawing.Point(11, 538);
+            this.groupControl8.Location = new System.Drawing.Point(11, 503);
             this.groupControl8.Name = "groupControl8";
-            this.groupControl8.Size = new System.Drawing.Size(338, 100);
+            this.groupControl8.Size = new System.Drawing.Size(338, 135);
             this.groupControl8.TabIndex = 39;
             this.groupControl8.Text = "Ghi Chú";
             // 
@@ -2377,7 +2397,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtGhiChu.Location = new System.Drawing.Point(2, 22);
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.ReadOnly = true;
-            this.txtGhiChu.Size = new System.Drawing.Size(334, 76);
+            this.txtGhiChu.Size = new System.Drawing.Size(334, 111);
             this.txtGhiChu.TabIndex = 37;
             // 
             // groupControl2
@@ -2390,7 +2410,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl2.Controls.Add(this.txtLuuY);
             this.groupControl2.Location = new System.Drawing.Point(11, 370);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(337, 162);
+            this.groupControl2.Size = new System.Drawing.Size(337, 123);
             this.groupControl2.TabIndex = 6;
             this.groupControl2.Text = "Lưu ý mẫu";
             // 
@@ -2402,7 +2422,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtLuuY.Location = new System.Drawing.Point(2, 22);
             this.txtLuuY.Name = "txtLuuY";
             this.txtLuuY.ReadOnly = true;
-            this.txtLuuY.Size = new System.Drawing.Size(333, 138);
+            this.txtLuuY.Size = new System.Drawing.Size(333, 99);
             this.txtLuuY.TabIndex = 33;
             this.txtLuuY.Text = "Lưu ý";
             // 
@@ -2473,7 +2493,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // panelButton
             // 
-            this.panelButton.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelButton.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.panelButton.Controls.Add(this.btnLuu);
             this.panelButton.Controls.Add(this.btnHuy);
             this.panelButton.Controls.Add(this.btnDuyet);
@@ -2486,9 +2506,8 @@ namespace BioNetSangLocSoSinh.Entry
             // btnLuu
             // 
             this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLuu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnLuu.Enabled = false;
-            this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
+            this.btnLuu.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.savefolder;
             this.btnLuu.Location = new System.Drawing.Point(184, 6);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(78, 23);
@@ -2500,8 +2519,11 @@ namespace BioNetSangLocSoSinh.Entry
             // btnHuy
             // 
             this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnHuy.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
+            this.btnHuy.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnHuy.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnHuy.Appearance.Options.UseFont = true;
+            this.btnHuy.Appearance.Options.UseForeColor = true;
+            this.btnHuy.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.delete__1_;
             this.btnHuy.Location = new System.Drawing.Point(8, 6);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(78, 23);
@@ -2513,7 +2535,6 @@ namespace BioNetSangLocSoSinh.Entry
             // btnDuyet
             // 
             this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnDuyet.Enabled = false;
             this.btnDuyet.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDuyet.ImageOptions.Image")));
             this.btnDuyet.Location = new System.Drawing.Point(268, 6);
@@ -2599,6 +2620,18 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_TenDichVu.Visible = true;
             this.col_TenDichVu.VisibleIndex = 1;
             this.col_TenDichVu.Width = 179;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
+            this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(274, 83);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(47, 23);
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.simpleButton1.SuperTip = superToolTip1;
+            this.simpleButton1.TabIndex = 37;
             // 
             // FrmNhapLieuDanhGiaMauNew
             // 
@@ -2932,5 +2965,6 @@ namespace BioNetSangLocSoSinh.Entry
         private DevExpress.XtraEditors.TextEdit txtMaPhieu;
         private DevExpress.XtraEditors.SimpleButton btnChiTietKQ1;
         private DevExpress.XtraEditors.DateEdit txtNamSinhMe;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

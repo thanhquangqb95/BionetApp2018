@@ -102,6 +102,7 @@
             this.col_Luuy1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_NgayLayMau1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_NgayNhanMau1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.col_NgayCoKQ1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KQL1_1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KQL1_2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KQCuoi1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -111,11 +112,14 @@
             this.col_Luuy2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_NgayLayMau2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_NgayNhanMau2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.col_NgayCoKQ2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KQL2_1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KQL2_2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KQCuoi2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_KetLuan2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.col_GiaiQuyet = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.col_MaChiCuc = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.col_TenChiCucE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.LookupYesNo = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.LookupViTriLayMau = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
@@ -124,8 +128,8 @@
             this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.LookupChuongTrinh = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.repositoryItemGridLookUpEdit3View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.col_NgayCoKQ1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.col_NgayCoKQ2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.LookupEditTenChiCuc = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -166,6 +170,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupChuongTrinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit3View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookupEditTenChiCuc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -444,7 +450,8 @@
             this.LookupChuongTrinh,
             this.LookupDanToc,
             this.ComboDanhGiaMau,
-            this.LookupEditTenVietTat});
+            this.LookupEditTenVietTat,
+            this.LookupEditTenChiCuc});
             this.GCDanhSachMauDuongTinh.Size = new System.Drawing.Size(1268, 619);
             this.GCDanhSachMauDuongTinh.TabIndex = 4;
             this.GCDanhSachMauDuongTinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -505,7 +512,9 @@
             this.col_GiaiQuyet,
             this.col_DanToc,
             this.col_NgayCoKQ1,
-            this.col_NgayCoKQ2});
+            this.col_NgayCoKQ2,
+            this.col_MaChiCuc,
+            this.col_TenChiCucE});
             this.GVDanhSachDuongTinh.GridControl = this.GCDanhSachMauDuongTinh;
             this.GVDanhSachDuongTinh.Name = "GVDanhSachDuongTinh";
             this.GVDanhSachDuongTinh.OptionsBehavior.ReadOnly = true;
@@ -585,6 +594,7 @@
             this.col_MaKhachHang.FieldName = "MaKhachHang";
             this.col_MaKhachHang.Name = "col_MaKhachHang";
             this.col_MaKhachHang.Visible = true;
+            this.col_MaKhachHang.Width = 90;
             // 
             // col_MaPhieuL1
             // 
@@ -689,6 +699,7 @@
             this.col_DiaChiGiaDinh.FieldName = "DiaChi";
             this.col_DiaChiGiaDinh.Name = "col_DiaChiGiaDinh";
             this.col_DiaChiGiaDinh.Visible = true;
+            this.col_DiaChiGiaDinh.Width = 111;
             // 
             // col_Email
             // 
@@ -880,6 +891,13 @@
             this.col_NgayNhanMau1.Visible = true;
             this.col_NgayNhanMau1.Width = 111;
             // 
+            // col_NgayCoKQ1
+            // 
+            this.col_NgayCoKQ1.Caption = "Ngày có KQ 1";
+            this.col_NgayCoKQ1.FieldName = "NgayCoKQ1";
+            this.col_NgayCoKQ1.Name = "col_NgayCoKQ1";
+            this.col_NgayCoKQ1.Visible = true;
+            // 
             // col_KQL1_1
             // 
             this.col_KQL1_1.Caption = "Lần 1.1";
@@ -951,6 +969,13 @@
             this.col_NgayNhanMau2.Visible = true;
             this.col_NgayNhanMau2.Width = 99;
             // 
+            // col_NgayCoKQ2
+            // 
+            this.col_NgayCoKQ2.Caption = "Ngày có KQ 2";
+            this.col_NgayCoKQ2.FieldName = "NgayCoKQ2";
+            this.col_NgayCoKQ2.Name = "col_NgayCoKQ2";
+            this.col_NgayCoKQ2.Visible = true;
+            // 
             // col_KQL2_1
             // 
             this.col_KQL2_1.Caption = "Lần 2.1";
@@ -990,6 +1015,20 @@
             this.col_GiaiQuyet.Name = "col_GiaiQuyet";
             this.col_GiaiQuyet.Visible = true;
             this.col_GiaiQuyet.Width = 167;
+            // 
+            // col_MaChiCuc
+            // 
+            this.col_MaChiCuc.Caption = "Mã Chi Cục";
+            this.col_MaChiCuc.FieldName = "MaChiCuc";
+            this.col_MaChiCuc.Name = "col_MaChiCuc";
+            this.col_MaChiCuc.Visible = true;
+            // 
+            // col_TenChiCucE
+            // 
+            this.col_TenChiCucE.Caption = "Chi cục";
+            this.col_TenChiCucE.FieldName = "MaChiCuc";
+            this.col_TenChiCucE.Name = "col_TenChiCucE";
+            this.col_TenChiCucE.Visible = true;
             // 
             // LookupYesNo
             // 
@@ -1052,24 +1091,29 @@
             this.repositoryItemGridLookUpEdit3View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemGridLookUpEdit3View.OptionsView.ShowGroupPanel = false;
             // 
-            // col_NgayCoKQ1
+            // LookupEditTenChiCuc
             // 
-            this.col_NgayCoKQ1.Caption = "Ngày có KQ 1";
-            this.col_NgayCoKQ1.FieldName = "NgayCoKQ1";
-            this.col_NgayCoKQ1.Name = "col_NgayCoKQ1";
-            this.col_NgayCoKQ1.Visible = true;
+            this.LookupEditTenChiCuc.AutoHeight = false;
+            this.LookupEditTenChiCuc.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.LookupEditTenChiCuc.DisplayMember = "TenChiCuc";
+            this.LookupEditTenChiCuc.Name = "LookupEditTenChiCuc";
+            this.LookupEditTenChiCuc.ValueMember = "MaChiCuc";
+            this.LookupEditTenChiCuc.View = this.gridView11;
             // 
-            // col_NgayCoKQ2
+            // gridView11
             // 
-            this.col_NgayCoKQ2.Caption = "Ngày có KQ 2";
-            this.col_NgayCoKQ2.FieldName = "NgayCoKQ2";
-            this.col_NgayCoKQ2.Name = "col_NgayCoKQ2";
-            this.col_NgayCoKQ2.Visible = true;
+            this.gridView11.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView11.Name = "gridView11";
+            this.gridView11.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView11.OptionsView.ShowGroupPanel = false;
             // 
             // gridBand1
             // 
             this.gridBand1.Caption = "Thông tin đơn vị";
             this.gridBand1.Columns.Add(this.col_STT);
+            this.gridBand1.Columns.Add(this.col_MaChiCuc);
+            this.gridBand1.Columns.Add(this.col_TenChiCucE);
             this.gridBand1.Columns.Add(this.col_MaDonVi);
             this.gridBand1.Columns.Add(this.col_VietTatDV);
             this.gridBand1.Columns.Add(this.col_TenDV);
@@ -1080,7 +1124,7 @@
             this.gridBand1.Columns.Add(this.col_TenDichVu);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 721;
+            this.gridBand1.Width = 886;
             // 
             // gridBand5
             // 
@@ -1097,7 +1141,7 @@
             this.gridBand5.Columns.Add(this.col_TinhTrangTre);
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.VisibleIndex = 1;
-            this.gridBand5.Width = 750;
+            this.gridBand5.Width = 786;
             // 
             // gridBand6
             // 
@@ -1233,6 +1277,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupChuongTrinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit3View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LookupEditTenChiCuc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1331,13 +1377,17 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
         private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit LookupChuongTrinh;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemGridLookUpEdit3View;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_NgayCoKQ1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_NgayCoKQ2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_MaChiCuc;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_TenChiCucE;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_NgayCoKQ1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn col_NgayCoKQ2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit LookupEditTenChiCuc;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView11;
     }
 }

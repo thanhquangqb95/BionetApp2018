@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnXuatPDF = new DevExpress.XtraEditors.SimpleButton();
             this.txtTime = new DevExpress.XtraEditors.TextEdit();
-            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnThongke = new DevExpress.XtraEditors.SimpleButton();
             this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
@@ -47,6 +45,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dllNgay = new UserControlDate.dllNgay();
+            this.cbbBaoCao = new DevExpress.XtraEditors.ComboBoxEdit();
             this.GCDanhSachDonVi = new DevExpress.XtraGrid.GridControl();
             this.GVDanhSachDonVi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -65,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbBaoCao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachDonVi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachDonVi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupeditDV)).BeginInit();
@@ -78,9 +78,9 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.btnXuatPDF);
             this.panelControl1.Controls.Add(this.txtTime);
-            this.panelControl1.Controls.Add(this.btnClear);
             this.panelControl1.Controls.Add(this.btnThongke);
             this.panelControl1.Controls.Add(this.btnXuatFile);
             this.panelControl1.Controls.Add(this.labelControl16);
@@ -88,6 +88,7 @@
             this.panelControl1.Controls.Add(this.txtChiCuc);
             this.panelControl1.Controls.Add(this.txtDonVi);
             this.panelControl1.Controls.Add(this.dllNgay);
+            this.panelControl1.Controls.Add(this.cbbBaoCao);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.LookAndFeel.SkinName = "Office 2007 Blue";
@@ -96,6 +97,14 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1288, 82);
             this.panelControl1.TabIndex = 3;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(307, 61);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(38, 13);
+            this.labelControl1.TabIndex = 1087;
+            this.labelControl1.Text = "Báo cáo";
             // 
             // btnXuatPDF
             // 
@@ -115,30 +124,11 @@
             // 
             // txtTime
             // 
-            this.txtTime.Location = new System.Drawing.Point(348, 54);
+            this.txtTime.Location = new System.Drawing.Point(607, 52);
             this.txtTime.Name = "txtTime";
             this.txtTime.Properties.ReadOnly = true;
-            this.txtTime.Size = new System.Drawing.Size(239, 20);
+            this.txtTime.Size = new System.Drawing.Size(151, 20);
             this.txtTime.TabIndex = 1084;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Appearance.ForeColor = System.Drawing.Color.Navy;
-            this.btnClear.Appearance.Options.UseFont = true;
-            this.btnClear.Appearance.Options.UseForeColor = true;
-            this.btnClear.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
-            this.btnClear.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear.Location = new System.Drawing.Point(607, 41);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(151, 31);
-            toolTipTitleItem1.Text = "Bỏ lọc";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.btnClear.SuperTip = superToolTip1;
-            this.btnClear.TabIndex = 1080;
-            this.btnClear.Text = "Xuất PDF chi cục";
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnThongke
             // 
@@ -192,7 +182,7 @@
             // 
             // txtChiCuc
             // 
-            this.txtChiCuc.Location = new System.Drawing.Point(348, 5);
+            this.txtChiCuc.Location = new System.Drawing.Point(347, 5);
             this.txtChiCuc.Name = "txtChiCuc";
             this.txtChiCuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -204,7 +194,7 @@
             this.txtChiCuc.Properties.ShowFooter = false;
             this.txtChiCuc.Properties.ValueMember = "MaChiCuc";
             this.txtChiCuc.Properties.View = this.gridView2;
-            this.txtChiCuc.Size = new System.Drawing.Size(239, 20);
+            this.txtChiCuc.Size = new System.Drawing.Size(240, 20);
             this.txtChiCuc.TabIndex = 1075;
             this.txtChiCuc.EditValueChanged += new System.EventHandler(this.txtChiCuc_EditValueChanged);
             // 
@@ -235,7 +225,7 @@
             // 
             // txtDonVi
             // 
-            this.txtDonVi.Location = new System.Drawing.Point(348, 31);
+            this.txtDonVi.Location = new System.Drawing.Point(347, 31);
             this.txtDonVi.Name = "txtDonVi";
             this.txtDonVi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -247,7 +237,7 @@
             this.txtDonVi.Properties.ShowFooter = false;
             this.txtDonVi.Properties.ValueMember = "MaDVCS";
             this.txtDonVi.Properties.View = this.gridView1;
-            this.txtDonVi.Size = new System.Drawing.Size(239, 20);
+            this.txtDonVi.Size = new System.Drawing.Size(240, 20);
             this.txtDonVi.TabIndex = 1076;
             // 
             // gridView1
@@ -283,6 +273,25 @@
             this.dllNgay.Name = "dllNgay";
             this.dllNgay.Size = new System.Drawing.Size(295, 73);
             this.dllNgay.TabIndex = 1070;
+            // 
+            // cbbBaoCao
+            // 
+            this.cbbBaoCao.Location = new System.Drawing.Point(347, 57);
+            this.cbbBaoCao.Name = "cbbBaoCao";
+            this.cbbBaoCao.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbBaoCao.Properties.Items.AddRange(new object[] {
+            "Trung tâm",
+            "Chi cục",
+            "Đơn vị"});
+            this.cbbBaoCao.Properties.NullText = "Chọn";
+            this.cbbBaoCao.Properties.PopupFormMinSize = new System.Drawing.Size(350, 350);
+            this.cbbBaoCao.Properties.PopupFormSize = new System.Drawing.Size(270, 300);
+            this.cbbBaoCao.Properties.PopupResizeMode = DevExpress.XtraEditors.Controls.ResizeMode.LiveResize;
+            this.cbbBaoCao.Properties.PopupSizeable = true;
+            this.cbbBaoCao.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbbBaoCao.Size = new System.Drawing.Size(240, 20);
+            this.cbbBaoCao.TabIndex = 1086;
             // 
             // GCDanhSachDonVi
             // 
@@ -418,6 +427,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbBaoCao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GCDanhSachDonVi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVDanhSachDonVi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LookupeditDV)).EndInit();
@@ -431,7 +441,6 @@
         #endregion
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnClear;
         private DevExpress.XtraEditors.SimpleButton btnThongke;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LabelControl labelControl9;
@@ -458,5 +467,7 @@
         private DevExpress.XtraEditors.SimpleButton btnXuatFile;
         private DevExpress.XtraEditors.TextEdit txtTime;
         private DevExpress.XtraEditors.SimpleButton btnXuatPDF;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbbBaoCao;
     }
 }

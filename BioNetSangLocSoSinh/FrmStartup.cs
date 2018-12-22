@@ -1639,6 +1639,16 @@ Vui lòng liên hệ mua bản quyền để sử dụng phần mềm không b�
             }
             catch { }
         }
+
+        private void barButtonItem74_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                Entry.FrmSuaThongTinPhieu frmMenu = new Entry.FrmSuaThongTinPhieu(emp);
+                frmMenu.ShowDialog();
+            }
+            catch { }
+        }
     }
 
 }

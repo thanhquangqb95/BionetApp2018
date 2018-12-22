@@ -88,6 +88,7 @@
     <Compile Include="KetLuan.cs" />
     <Compile Include="KetQua_XetNghiem.cs" />
     <Compile Include="PsBaoCaoCoBanCT.cs" />
+    <Compile Include="PSSuaPhieuTT.cs" />
     <Compile Include="rptBaoCaoExcelGeneCoBan.cs" />
     <Compile Include="PsBaoCaoTaiChinh.cs" />
     <Compile Include="PsBaoCaoTuyChon.cs" />

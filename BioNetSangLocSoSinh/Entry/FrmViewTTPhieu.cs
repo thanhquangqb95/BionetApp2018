@@ -36,9 +36,10 @@ namespace BioNetSangLocSoSinh.Entry
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 TimKiem(txtMaPhieu.Text.Trim());
+                txtMaPhieu.ResetText();
+                txtMaPhieu.Focus();
             }
-            txtMaPhieu.ResetText();
-            txtMaPhieu.Focus();
+           
         }
         private void TimKiem(string MaPhieu)
         {

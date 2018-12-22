@@ -15,6 +15,7 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
+using System.Web.Script.Serialization;
 
 namespace BioNetDAL
 {
@@ -1327,7 +1328,7 @@ namespace BioNetDAL
 
             try
             {
-                var phieu = db.PSXN_TraKetQuas.FirstOrDefault(p => p.MaPhieu == maPhieu && p.IDCoSo == maDonVi && p.isXoa == false);
+                var phieu = db.PSTiepNhans.FirstOrDefault(p => p.MaPhieu == maPhieu && p.MaDonVi == maDonVi && p.isXoa != true );
                 if (phieu != null)
                 {
                     return phieu.MaTiepNhan;
@@ -2698,7 +2699,7 @@ namespace BioNetDAL
             {
                 if (!string.IsNullOrEmpty(maPhieu) && !string.IsNullOrEmpty(maTiepNhan))
                 {
-                    var result = db.PSChiDinhDichVus.FirstOrDefault(p => p.MaPhieu == maPhieu && p.MaTiepNhan == maTiepNhan && p.isXoa == false);
+                    var result = db.PSChiDinhDichVus.FirstOrDefault(p => p.MaPhieu == maPhieu && p.MaTiepNhan == maTiepNhan && p.isXoa != true && p.IDGoiDichVu!= "DVGXN0001");
                     if (result != null) return result;
                     else return null;
                 }
@@ -9074,19 +9075,37 @@ namespace BioNetDAL
             List<PsDanhSachMauDuongTinh> dsduongtinh = new List<PsDanhSachMauDuongTinh>();
             try
             {
-                var res = (from ph in db.PSPhieuSangLocs
-                           join kq in db.PSXN_TraKetQuas on ph.IDPhieu equals kq.MaPhieu
-                           join ct in db.PSXN_TraKQ_ChiTiets on kq.MaPhieu equals ct.MaPhieu
-                           where kq.isTraKQ != true && kq.NgayCoKQ.Value.Date >= NgayBD.Date && kq.NgayCoKQ.Value.Date <= NgayKT.Date
-                          && kq.isXoa != true && ph.isXoa != true && kq.isDaDuyetKQ != true && ct.MaDichVu.Equals(TenDichVu)
-                           select new { ph.MaBenhNhan }).Distinct().ToList();
+               
+                List<string> ListMaBN = new List<string>();
+                if (DonVi.Equals("all"))
+                {
+                    var res = (from vi in db.View_MABN_ChuaTraKQs
+                               join ct in db.PSChiTietGoiDichVuChungs on vi.MaGoiXN equals ct.IDGoiDichVuChung
+                               where ct.IDDichVu.Equals(TenDichVu) && vi.NgayCoKQ.Value.Date >= NgayBD.Date && vi.NgayCoKQ.Value.Date <= NgayKT.Date
+                               select new { vi.MaBenhNhan }).Distinct().ToList();
+                    ListMaBN = res.Select(s => s.MaBenhNhan).ToList();
+                }
+                else
+                {
+                    var res = (from vi in db.View_MABN_ChuaTraKQs
+                               join ct in db.PSChiTietGoiDichVuChungs on vi.MaGoiXN equals ct.IDGoiDichVuChung
+                               where ct.IDDichVu.Equals(TenDichVu) && vi.NgayCoKQ.Value.Date >= NgayBD.Date && vi.NgayCoKQ.Value.Date <= NgayKT.Date && vi.IDCoSo.Contains(DonVi)
+                               select new { vi.MaBenhNhan }).Distinct().ToList();
+                    ListMaBN = res.Select(s => s.MaBenhNhan).ToList();
+                }
+                //var res = (from ph in db.PSPhieuSangLocs
+                //           join kq in db.PSXN_TraKetQuas on ph.IDPhieu equals kq.MaPhieu
+                //           join ct in db.PSXN_TraKQ_ChiTiets on kq.MaPhieu equals ct.MaPhieu
+                //           where kq.isTraKQ != true && kq.NgayCoKQ.Value.Date >= NgayBD.Date && kq.NgayCoKQ.Value.Date <= NgayKT.Date
+                //          && kq.isXoa != true && ph.isXoa != true && kq.isDaDuyetKQ != true && ct.MaDichVu.Equals(TenDichVu)
+                //           select new { ph.MaBenhNhan }).Distinct().ToList();
                 int STT = 1;
-                foreach (var re in res)
+                foreach (var re in ListMaBN)
                 {
                     try
                     {
                         PsDanhSachMauDuongTinh duongtinh = new PsDanhSachMauDuongTinh();
-                        var pat = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(re.MaBenhNhan));
+                        var pat = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(re));
                         duongtinh.NgaySinh = pat.NgayGioSinh;
                         var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
                         decimal GiaTri = 0;
@@ -9214,18 +9233,34 @@ namespace BioNetDAL
             List<PsDanhSachMauDuongTinh> dsduongtinh = new List<PsDanhSachMauDuongTinh>();
             try
             {
-                var res = (from ph in db.PSPhieuSangLocs
-                           join kq in db.PSXN_KetQuas on ph.IDPhieu equals kq.MaPhieu
-                           join ct in db.PSXN_KetQua_ChiTiets on kq.MaKetQua equals ct.MaKQ
-                           where kq.isCoKQ != true && kq.NgayLamXetNghiem.Value.Date >= NgayBD.Date && kq.NgayLamXetNghiem.Value.Date <= NgayKT.Date
-                          && kq.isXoa != true && ph.isXoa != true && kq.isCoKQ != true && ct.MaDichVu.Equals(TenDichVu)
-                           select new { ph.MaBenhNhan }).Distinct().ToList();
-                foreach (var re in res)
+                List<string> ListMaBN = new List<string>();
+                if(DonVi.Equals("all"))
+                {
+                    var res = (from ph in db.PSPhieuSangLocs
+                               join kq in db.PSXN_KetQuas on ph.IDPhieu equals kq.MaPhieu
+                               join ct in db.PSXN_KetQua_ChiTiets on kq.MaKetQua equals ct.MaKQ
+                               where kq.isCoKQ != true && kq.NgayLamXetNghiem.Value.Date >= NgayBD.Date && kq.NgayLamXetNghiem.Value.Date <= NgayKT.Date
+                              && kq.isXoa != true && ph.isXoa != true && kq.isCoKQ != true && ct.MaDichVu.Equals(TenDichVu)
+                               select new { ph.MaBenhNhan }).Distinct().ToList();
+                    ListMaBN = res.Select(s =>s.MaBenhNhan).ToList();
+                }
+                else
+                {
+                    var res = (from ph in db.PSPhieuSangLocs
+                               join kq in db.PSXN_KetQuas on ph.IDPhieu equals kq.MaPhieu
+                               join ct in db.PSXN_KetQua_ChiTiets on kq.MaKetQua equals ct.MaKQ
+                               where kq.isCoKQ != true && kq.NgayLamXetNghiem.Value.Date >= NgayBD.Date && kq.NgayLamXetNghiem.Value.Date <= NgayKT.Date
+                              && kq.isXoa != true && ph.isXoa != true && kq.isCoKQ != true && ct.MaDichVu.Equals(TenDichVu) && ph.IDCoSo.Contains(DonVi)
+                               select new { ph.MaBenhNhan }).Distinct().ToList();
+                    ListMaBN = res.Select(s => s.MaBenhNhan).ToList();
+                }
+              
+                foreach (var re in ListMaBN)
                 {
                     try
                     {
                         PsDanhSachMauDuongTinh duongtinh = new PsDanhSachMauDuongTinh();
-                        var pat = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(re.MaBenhNhan));
+                        var pat = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan.Equals(re));
                         duongtinh.NgaySinh = pat.NgayGioSinh;
                         var lstphieu = db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(pat.MaBenhNhan) && x.isXoa != true).ToList();
                         decimal GiaTri1 = 0;
@@ -9517,7 +9552,7 @@ namespace BioNetDAL
         }
             #endregion
         
-            #region Báo cáo theo đơn vị
+        #region Báo cáo theo đơn vị
         public List<PSBaoCaoTuyChonDonVi> LoadDSThongKeDonVi(DateTime NgayBD, DateTime NgayKT, string MaDV)
         {
             List<PSBaoCaoTuyChonDonVi> result = new List<PSBaoCaoTuyChonDonVi>();
@@ -9667,10 +9702,21 @@ namespace BioNetDAL
             PSThongKeTheoDonVi result = new PSThongKeTheoDonVi();
             try
             {
+                if (string.IsNullOrEmpty(ChiCuc))
+                {
+                    PSThongKeTheoDonVi tk = new PSThongKeTheoDonVi();
+                    tk.MaDV = "1B1";
+                    tk.STT = STT;
+                    result = LoadDSThongKeDVNew(lst,tk, tk.STT);
+                }
+                else
+                {
                     PSThongKeTheoDonVi tk = new PSThongKeTheoDonVi();
                     tk.MaDV = ChiCuc;
                     tk.STT = STT;
-                result = LoadDSThongKeDVNew(lst.Where(x => x.IDCoSo.Equals(ChiCuc)).ToList(), tk, tk.STT);
+                    result = LoadDSThongKeDVNew(lst.Where(x => x.IDCoSo.Contains(ChiCuc)).ToList(), tk, tk.STT);
+                }
+                  
             }
             catch
             {
@@ -9730,6 +9776,23 @@ namespace BioNetDAL
                     dv.PSThongKeGoiBenh.Benh5Hemo = lst.Where(x => x.MaGoiXN.Equals("DVGXN0006")).Count();
                     dv.PSThongKeGoiBenh.Benh3Hemo = lst.Where(x => x.MaGoiXN.Equals("DVGXN0007")).Count();
                     dv.PSThongKeGoiBenh.Benh2Hemo = lst.Where(x => x.MaGoiXN.Equals("DVGXN0008")).Count();
+                    dv.PSThongKeChatLuongMau = new PSThongKeChatLuongMau();
+                    dv.PSThongKeChatLuongMau.Dat = lst.Where(x => x.isKhongDat1 != true).Count();
+                    dv.PSThongKeChatLuongMau.KhongDat = lst.Where(x => x.isKhongDat1 ==true).Count();
+                    var listkdat = lst.Where(x => x.isKhongDat1 == true).ToList();
+                    List<PSThongKeChatLuongMauCT> temp= new List<PSThongKeChatLuongMauCT>();
+                    foreach (var lydo in GetDanhMucDanhGiaChatLuongMau())
+                    {
+                        PSThongKeChatLuongMauCT ctnew = new PSThongKeChatLuongMauCT();
+                        ctnew.LyDo = lydo.ChatLuongMau;
+                        ctnew.SoLuong = listkdat.Where(x => x.LyDoKhongDat1.Contains(ctnew.LyDo)==true).Count();
+                        if (ctnew.SoLuong != 0)
+                        {
+                            temp.Add(ctnew);
+                        }
+                    }
+                    dv.PSThongKeChatLuongMau.ChatLuongMauCT = new List<PSThongKeChatLuongMauCT>();
+                    dv.PSThongKeChatLuongMau.ChatLuongMauCT.AddRange(temp.OrderBy(x => x.SoLuong));
                 }
                 else
                 {
@@ -9999,12 +10062,26 @@ namespace BioNetDAL
             return dv;
         }
 
-        public PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst,string MaDVCS,DateTime NgayBD,DateTime NgayKT)
+        public PSThongKePDFXetNghiem GetBaoCaoDonViXNCoBan(List<pro_Report_BaoCaoTongHopTheoBenhNhanResult> lst,string MaDVCS,DateTime NgayBD,DateTime NgayKT,bool isDV)
         {
             PSThongKePDFXetNghiem Repo = new PSThongKePDFXetNghiem();
             try
             {
-                //Repo.DonVi = GetThongTinDonViCoSo(MaDVCS).TenDVCS;
+                if(isDV)
+                {
+                    Repo.DonVi = GetThongTinDonViCoSo(MaDVCS).TenDVCS;
+                }
+                else
+                {
+                    if (MaDVCS.Equals("1B1"))
+                    {
+                        Repo.DonVi = "Trung tâm Sàng lọc sơ sinh Bionet (Tổng hợp)";
+                    }
+                    else
+                    {
+                        Repo.DonVi = GetThongTinChiCuc(MaDVCS).TenChiCuc;
+                    }
+                }
                 Repo.ThoiGian = "Từ ngày " + NgayBD.Date.ToString("dd/MM/yyyy") + " đến " + NgayKT.Date.ToString("dd/MM/yyyy") + ".";
                 Repo.LuuY = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.ToString("dd/MM/yyyy") + ").";
                 Repo.PSThongKePDFXetNghiemCT = new List<PSThongKePDFXetNghiemCT>();
@@ -10019,7 +10096,7 @@ namespace BioNetDAL
                 Repo.TileCanThuLaiL2 = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.CanThuLaiL2.ToString())) / (double)(Double.Parse(Repo.TongMauMoi.ToString()))) * 100) + "%";
                 Repo.TileMauDaThuLaiL2 = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.MauDaThuLaiL2.ToString())) / (double)(Double.Parse(Repo.CanThuLaiL2.ToString()))) * 100) + "%";
                 Repo.TileMauChuaThuLaiL2 = String.Format("{0:0.00}", ((double)(Double.Parse(Repo.MauChuaThuLaiL2.ToString())) / (double)(Double.Parse(Repo.CanThuLaiL2.ToString()))) * 100) + "%";
-                Repo.DonVi = GetThongTinDonViCoSo(MaDVCS).TenDVCS;
+             
                 var kq2nct = lst.Where(x => x.NguyCoCao2 ==false).ToList();
                 var kq2ncc = lst.Where(x => x.NguyCoCao2 == true).ToList();
                 var kq1chuathulai = lst.Where(x => x.NguyCoCao1 == true && x.NguyCoCao2 == null).ToList();
@@ -10082,5 +10159,30 @@ namespace BioNetDAL
             return Repo;
         }   
         #endregion
+        public PsReponse EditThongTinPhieu(PSSuaPhieuTT suaphieu, PSSuaPhieuTT phieugoc, string MaNV,string LyDo)
+        {
+            PsReponse reponse = new PsReponse();
+            try
+            {
+                PSPhieuSangLoc ph = db.PSPhieuSangLocs.FirstOrDefault(x => x.IDPhieu.Equals(suaphieu.MaPhieu));
+                db.pro_SuaThongTinPhieu(suaphieu.MaPhieu, suaphieu.MaBenhNhan, suaphieu.MaTiepNhan, suaphieu.IDCoSo, suaphieu.DiaChiLayMau, suaphieu.NoiLayMau, suaphieu.IDGoiXN, suaphieu.GiaGoiXN,suaphieu.NgayTiepNhan);
+                PSChiTietSuaPhieu Sua = new PSChiTietSuaPhieu();
+                Sua.IDPhieu = suaphieu.MaPhieu;
+                Sua.LyDoSuaPhieu = LyDo;
+                Sua.MaNV = MaNV;
+                Sua.NoiDungSuaPhieu= new JavaScriptSerializer().Serialize(suaphieu);
+                Sua.NoiDungGoc = new JavaScriptSerializer().Serialize(phieugoc);
+                Sua.DateSuaPhieu = DateTime.Now;
+                db.PSChiTietSuaPhieus.InsertOnSubmit(Sua);
+                db.SubmitChanges();
+                reponse.Result = true;
+            }
+            catch(Exception ex)
+            {
+                reponse.Result = false;
+                reponse.StringError = ex.ToString();
+            }
+            return reponse;
+        }
     }
 }

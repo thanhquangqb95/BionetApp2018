@@ -232,11 +232,6 @@ namespace BioNetSangLocSoSinh.Entry
             }
         }
 
-        private void GVDanhSachTiepNhan_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void GVDanhSachTiepNhan_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -980,7 +975,7 @@ namespace BioNetSangLocSoSinh.Entry
                 phieuSangLoc.TinhTrangLucLayMau = byte.Parse(this.cbbTTTre.EditValue.ToString());
                 string NgayLayMau = string.IsNullOrEmpty(txtNgayLayMau.Text) ? DateTime.Now.Date.ToString() : txtNgayLayMau.Text;
                 string GioLayMau = string.IsNullOrEmpty(txtGioLayMau.Text) ? "00:00" : txtGioLayMau.Text;
-                phieuSangLoc.NgayGioLayMau = DateTime.ParseExact(NgayLayMau + " " + GioLayMau, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture); ;
+                phieuSangLoc.NgayGioLayMau = DateTime.ParseExact(NgayLayMau + " " + GioLayMau, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture); 
                 phieuSangLoc.NgayNhanMau = this.txtNgayTiepNhan.DateTime;
                 phieuSangLoc.IDPhieu = this.txtMaPhieu.Text;
                 phieuSangLoc.LuuYPhieu = this.txtGhiChu.Text;
@@ -2279,7 +2274,32 @@ namespace BioNetSangLocSoSinh.Entry
          
         }
 
-       
+        private void GVDanhSachTiepNhan_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+
+            try
+            {
+                GridView View = sender as GridView;
+                if (e.RowHandle >= 0)
+                {
+                    bool isDaNhapLieu = View.GetRowCellDisplayText(e.RowHandle, View.Columns["isDaNhapLieu"]) == null ? false : (bool)View.GetRowCellValue(e.RowHandle, this.col_isDaNhapLieu);
+                    if (!isDaNhapLieu)
+                    {
+                        e.Appearance.BackColor = Color.Salmon;
+                        e.Appearance.BackColor2 = Color.SeaShell;
+                    }
+                    else
+                    {
+                        e.Appearance.BackColor = Color.Aqua;
+                        e.Appearance.BackColor2 = Color.AliceBlue;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
     
     }

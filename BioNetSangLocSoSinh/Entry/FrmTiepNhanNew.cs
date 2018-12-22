@@ -16,6 +16,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Columns;
 using System.Threading;
+using DataSync.BioNetSync;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -43,6 +44,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.LoadDataDanhMuc();
             this.GetDanhSachChoTrenHT();
             this.GetDanhSachDaTiepNhan();
+            this.txtTimeCapNhat.EditValue = DateTime.Now.ToString();
         }
 
         private void LoadDataDanhMuc()
@@ -182,8 +184,8 @@ namespace BioNetSangLocSoSinh.Entry
                 string maDonVi = this.cbbDonViChoDuyet.EditValue.ToString();
                 if (!string.IsNullOrEmpty(txtMaPhieuTiepNhan.Text.Trim()))
                 {
-                    var ph = lstChoTiepNhan.FirstOrDefault(x => x.MaPhieu.Equals(txtMaPhieuTiepNhan.Text.Trim()));
-                    if (!maDonVi.Equals("all")|| ph!=null)
+                    var ht = this.lstPhieuChoHT.FirstOrDefault(p => p.maPhieu.Equals(txtMaPhieuTiepNhan.Text.Trim()));
+                    if (!maDonVi.Equals("all")|| ht!=null)
                     {
                         this.CheckPhieuTiepNhan(txtMaPhieuTiepNhan.Text.Trim(), maDonVi);
                         this.txtMaPhieuTiepNhan.ResetText();
@@ -191,8 +193,17 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     else
                     {
-                        DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Yêu cầu chọn đơn vị.");
-                        notData.ShowDialog();
+                        if (ht == null)
+                        {
+                            DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Mã phiếu đã ở danh sách chờ duyệt tiếp nhận.");
+                            notData.ShowDialog();
+                        }
+                        else if (maDonVi.Equals("all"))
+                        {
+                            DiaglogFrm.FrmWarning notData = new DiaglogFrm.FrmWarning("Yêu cầu chọn đơn vị.");
+                            notData.ShowDialog();
+                        }
+                            
                     }
                 }
                 else
@@ -652,23 +663,27 @@ namespace BioNetSangLocSoSinh.Entry
                 if (e.RowHandle >= 0)
                 {
                     string GoiXN = View.GetRowCellDisplayText(e.RowHandle, col_GoiXN);
-                    string NgayTaoPhieu = View.GetRowCellDisplayText(e.RowHandle, col_NgayTaoPhieu_GCPhieuCho);
-                    var TimeS = DateTime.Now.Date - Convert.ToDateTime(NgayTaoPhieu).Date;
-                    if (string.IsNullOrEmpty(GoiXN))
+                    bool isDaNhapLieu = View.GetRowCellDisplayText(e.RowHandle, View.Columns["isDaNhapLieu"]) == null ? false : (bool)View.GetRowCellValue(e.RowHandle, this.col_isDaNhapLieu);
+                    if (!isDaNhapLieu)
                     {
-                        e.Appearance.BackColor = Color.Goldenrod;
-                        e.Appearance.BackColor2 = Color.Gold;
+                        e.Appearance.BackColor = Color.Salmon;
+                        e.Appearance.BackColor2 = Color.SeaShell;
                     }
                     else
                     {
                         e.Appearance.BackColor = Color.Aqua;
                         e.Appearance.BackColor2 = Color.AliceBlue;
                     }
-                    if (TimeS.Days > 7)
-                    {
-                        e.Appearance.BackColor = Color.Goldenrod;
-                        e.Appearance.BackColor2 = Color.Gold;
-                    }
+                    //if (GoiXN!=null)
+                    //{
+                    //    e.Appearance.BackColor = Color.Salmon;
+                    //    e.Appearance.BackColor2 = Color.SeaShell;
+                    //}
+                    //else
+                    //{
+                    //    e.Appearance.BackColor = Color.Aqua;
+                    //    e.Appearance.BackColor2 = Color.AliceBlue;
+                    //}
                 }
             }
             catch
@@ -823,7 +838,10 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 if (lstChoTiepNhan.Count()==0)
                 {
+                    PhieuSangLocSync.GetPhieuSangLoc();
+                    PatientSync.GetPatient();
                     this.GetDanhSachChoTrenHT();
+                    txtTimeCapNhat.EditValue = DateTime.Now.ToString();
                 }
                 else
                 {
@@ -835,6 +853,11 @@ namespace BioNetSangLocSoSinh.Entry
                 XtraMessageBox.Show("Lỗi danh sách chờ "+ex.ToString(), "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
            
+        }
+
+        private void txtTime_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }   
 }

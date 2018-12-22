@@ -3,6 +3,8 @@ using BioNetModel;
 using DevExpress.Spreadsheet;
 using DevExpress.XtraEditors;
 using Excel;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +33,7 @@ namespace BioNetSangLocSoSinh.FrmReports
         private DataTable tabDuongTinh = new DataTable();
         private DataTable tabAmTinh = new DataTable();
         private List<Object> lstdv = new List<Object>();
+        private List<Object> lstchicuc = new List<Object>();
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
@@ -132,7 +135,11 @@ namespace BioNetSangLocSoSinh.FrmReports
                                              select myRow["Tên Đơn Vị"]).Distinct().ToList();
             cbbDonVi.Properties.DataSource = null;
             cbbDonVi.Properties.DataSource = lstdv;
-
+            lstchicuc = (from DataRow myRow in tab.Rows
+                     where !string.IsNullOrEmpty(myRow["Chi cục"].ToString())
+                     select myRow["Chi cục"]).Distinct().ToList();
+            cbbChiCuc.Properties.DataSource = null;
+            cbbChiCuc.Properties.DataSource = lstchicuc;
         }
         private void ThongKe()
         {
@@ -150,7 +157,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             TongSoXD = tabTongGene.Where(x => x.Equals("KXĐ")).Count();
             baocao.NgayIn = DateTime.Now;
             rptBaoCaoExcelTong baoct = new rptBaoCaoExcelTong();
-            baoct.Tieude = "";
+            baoct.Tieude = "Trung tâm sàng lọc sơ sinh Bionet (Tổng hợp)";
             baoct.NgayIn = DateTime.Now;
             baoct.Gene = new List<rptBaoCaoExcelGene>();
             rptBaoCaoExcelGene baoc = new rptBaoCaoExcelGene();
@@ -166,13 +173,15 @@ namespace BioNetSangLocSoSinh.FrmReports
             baoc.TongGene.Add(ThongKeTKExcelGene("KXĐ"));
             baoc.TongGene.Add(ThongKeTKExcelGene("Xac dinh"));
             baoc.STT = "1";
+            List<TKGene> GeneTemp = new List<TKGene>();
             foreach (var t in tabTongsoGene)
             {
                 if (!t.Equals("KXĐ"))
                 {
-                    baoc.TongGene.Add(ThongKeTKExcelGene(t.ToString()));
+                    GeneTemp.Add(ThongKeTKExcelGene(t.ToString()));
                 }
             }
+            baoc.TongGene.AddRange(GeneTemp.OrderByDescending(x => int.Parse(x.Tong)));
             baoct.Gene.Add(baoc);
             rptBaoCaoExcelGene baoc2 = new rptBaoCaoExcelGene();
             baoc2.NgayIn = DateTime.Now;
@@ -180,6 +189,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             baoc2.STT = "2";
             baoc2.NgayIn = DateTime.Now;
             baoc2.TongGene = new List<TKGene>();
+            baoc2.TongGene.Add(ThongKeTKExcelCLMauTong("Giới tính"));
             baoc2.TongGene.Add(ThongKeTKExcelGioiTinh("Nam"));
             baoc2.TongGene.Add(ThongKeTKExcelGioiTinh("Nữ"));
             baoc2.TongGene.Add(ThongKeTKExcelGioiTinh("N/A"));
@@ -190,6 +200,7 @@ namespace BioNetSangLocSoSinh.FrmReports
             baoc3.STT = "3";
             baoc3.NgayIn = DateTime.Now;
             baoc3.TongGene = new List<TKGene>();
+            baoc3.TongGene.Add(ThongKeTKExcelCLMauTong("Cân nặng"));
             baoc3.TongGene.Add(ThongKeTKExcelCanNang(0, 2500));
             baoc3.TongGene.Add(ThongKeTKExcelCanNang(2500, 3000));
             baoc3.TongGene.Add(ThongKeTKExcelCanNang(3000, 3500));
@@ -227,30 +238,19 @@ namespace BioNetSangLocSoSinh.FrmReports
             var dsdantoc = (from DataRow myRow in tab.Rows
                                where !string.IsNullOrEmpty(myRow["Dân tộc"].ToString())
                                select myRow["Dân tộc"]).Distinct().ToList();
-            foreach(var dt in dsdantoc)
+            GeneTemp = new List<TKGene>();
+            foreach (var dt in dsdantoc)
             {
-                baoc6.TongGene.Add(ThongKeTKExcelCLMau(dt.ToString(), "Dân tộc"));
+                GeneTemp.Add(ThongKeTKExcelCLMau(dt.ToString(), "Dân tộc"));
             }
+            baoc6.TongGene.AddRange(GeneTemp.OrderByDescending(x => int.Parse(x.Tong)));
             baoct.Gene.Add(baoc6);
-            //rptBaoCaoExcelGene baoc7 = new rptBaoCaoExcelGene();
-            //baoc7.NgayIn = DateTime.Now;
-            //baoc7.TenNhom = "Đơn vị";
-            //baoc7.STT = "6";
-            //baoc7.NgayIn = DateTime.Now;
-            //baoc7.TongGene = new List<TKGene>();
-            //baoc7.TongGene.Add(ThongKeTKExcelCLMauTong("Tên Đơn Vị"));
-            //var dsdv = (from DataRow myRow in tab.Rows
-            //                where !string.IsNullOrEmpty(myRow["Tên Đơn Vị"].ToString())
-            //                select myRow["Tên Đơn Vị"]).Distinct().ToList();
-            //foreach (var dt in dsdv)
-            //{
-            //    baoc7.TongGene.Add(ThongKeTKExcelCLMau(dt.ToString(), "Tên Đơn Vị"));
-            //}
-            //baoct.Gene.Add(baoc7);
             try
             {
 
                 Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
+                datarp.Parameters["LuuY"].Value = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + ")";
+                datarp.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
                 datarp.DataSource = baoct;
                 TabPageBaoCaoTongHop.Controls.Clear();
                 Reports.frmReport myForm = new Reports.frmReport(datarp);
@@ -681,12 +681,9 @@ namespace BioNetSangLocSoSinh.FrmReports
                             {
                                 listrowAmTinh.Add(r);
                                 break;
-                            }
-                            
+                            }                            
                     }
-
                 }
-
                 foreach (var ro in listrowNghiNgo)
                 {
                     DataRow dr = tabNghiNgo.NewRow();
@@ -1083,8 +1080,6 @@ namespace BioNetSangLocSoSinh.FrmReports
             PsReponse psReponse = new PsReponse();
             try
             {
-                rptBaoCaoExcelGeneCoBan baocao = new rptBaoCaoExcelGeneCoBan();
-                baocao.TongSoMau = new TKExcelSoMau();
                 int TongSoMauDV = (from DataRow myRow in tab.Rows
                                    where !string.IsNullOrEmpty(myRow["STT"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                    select myRow).Count();
@@ -1095,7 +1090,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                                    where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                    select myRow["KQ gene"]).ToList();
                 TongSoXD = tabTongGene.Where(x => x.Equals("KXĐ")).Count();
-                baocao.NgayIn = DateTime.Now;
+               
                 rptBaoCaoExcelTong baoct = new rptBaoCaoExcelTong();
                 baoct.Tieude = Donvi;
                 baoct.NgayIn = DateTime.Now;
@@ -1129,6 +1124,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                 baoc2.STT = "2";
                 baoc2.NgayIn = DateTime.Now;
                 baoc2.TongGene = new List<TKGene>();
+                baoc2.TongGene.Add(ThongKeTKExcelDonVi("Tổng", "Giới tính", Donvi));
                 baoc2.TongGene.Add(ThongKeTKExcelDonVi("Nam", "Giới tính", Donvi));
                 baoc2.TongGene.Add(ThongKeTKExcelDonVi("Nữ", "Giới tính", Donvi));
                 baoc2.TongGene.Add(ThongKeTKExcelDonVi("N/A", "Giới tính", Donvi));
@@ -1139,6 +1135,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                 baoc3.STT = "3";
                 baoc3.NgayIn = DateTime.Now;
                 baoc3.TongGene = new List<TKGene>();
+                baoc3.TongGene.Add(ThongKeTKExcelDonVi("Tổng", "Cân nặng", Donvi));
                 baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(0, 2500,Donvi, TongSoMauDV));
                 baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(2500, 3000,Donvi, TongSoMauDV));
                 baoc3.TongGene.Add(ThongKeTKExcelDonViCanNang(3000, 3500,Donvi, TongSoMauDV));
@@ -1187,8 +1184,54 @@ namespace BioNetSangLocSoSinh.FrmReports
                 datarp.Parameters["LuuY"].Value= "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + ")";
                 datarp.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
                 datarp.DataSource = baoct;
-                string Link = BioNet_Bus.SaveFileReport(FoderLink, "DonVi", Donvi, DateTime.Now, DateTime.Now, ".pdf");
+                
+                string Link = BioNet_Bus.SaveFileReport(FoderLink, "GeneDonVi", Donvi, dateEditTuNgay.DateTime.Date, dateEditDenNgay.DateTime.Date, ".pdf");
                 datarp.ExportToPdf(Link);
+                int str = datarp.Pages.Count();
+                List<TKExcelXNGene> ListExcel = new List<TKExcelXNGene>();
+                List<TKExcelXNGene> ListExcelTemp = new List<TKExcelXNGene>();
+                var tabDTGene= (from DataRow myRow in tab.Rows
+                                        where myRow["Tên Đơn Vị"].Equals(Donvi) && !string.IsNullOrEmpty(myRow["KQ gene"].ToString())
+                                        select myRow["Dân tộc"]).Distinct().ToList();
+
+                foreach (var d in tabDTGene)
+                {
+                    var tabTongGeneDaLam = (from DataRow myRow in tab.Rows
+                                            where myRow["Tên Đơn Vị"].Equals(Donvi) && !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["KL gene"].Equals("Xac dinh")
+                                            && myRow["Dân tộc"].Equals(d.ToString())
+                                            select myRow["KQ gene"]).ToList();
+                    TKExcelXNGene tKExcel = new TKExcelXNGene();
+                    tKExcel.DanToc = d.ToString();
+                    tKExcel.Tong= tabTongGeneDaLam.Count().ToString();
+                    tKExcel.Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Viangchan")).ToString();
+                    tKExcel.Canton = tabTongGeneDaLam.Count(x => x.Equals("Canton")).ToString();
+                    tKExcel.Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Kaiping")).ToString();
+                    tKExcel.Union = tabTongGeneDaLam.Count(x => x.Equals("Union")).ToString();
+                    tKExcel.Coimbra = tabTongGeneDaLam.Count(x => x.Equals("Coimbra")).ToString();
+                    tKExcel.Canton_Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Canton + Kaiping")).ToString();
+                    tKExcel.Union_Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Union + Kaiping")).ToString();
+                    tKExcel.Kaiping_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Kaiping + Viangchan")).ToString();
+                    tKExcel.Canton_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Canton + Viangchan")).ToString();
+                    tKExcel.Union_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Union + Viangchan")).ToString();
+                    tKExcel.Mahidol = tabTongGeneDaLam.Count(x => x.Equals("Mahidol")).ToString();
+                    tKExcel.Canton_Coimbra = tabTongGeneDaLam.Count(x => x.Equals("Canton + Coimbra")).ToString();
+                    tKExcel.Mediterranean = tabTongGeneDaLam.Count(x => x.Equals("Mediterranean")).ToString();
+                    tKExcel.Union_Canton = tabTongGeneDaLam.Count(x => x.Equals("Union + Canton")).ToString();
+                    ListExcelTemp.Add(tKExcel);
+                }
+                ListExcel.AddRange(ListExcelTemp.OrderByDescending(x => int.Parse(x.Tong)).ToList());
+                int stt = 1;
+                foreach(var l in ListExcel)
+                {
+                    l.STT = stt++;
+                }
+                Reports.RepostsBaoCao.rptBaoCaoExcelDanTocGene datarp2 = new Reports.RepostsBaoCao.rptBaoCaoExcelDanTocGene(1);
+                datarp2.Parameters["DonVi"].Value = Donvi;
+                datarp2.Parameters["LuuY"].Value = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + ")";
+                datarp2.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
+                datarp2.DataSource = ListExcel;
+                string fileName3 =  BioNet_Bus.SaveFileReport(FoderLink, "GeneDonVi", Donvi, DateTime.Now, dateEditDenNgay.DateTime.Date, ".docx");
+                datarp2.ExportToDocx(fileName3);
                 psReponse.Result = true;
             }
             catch(Exception ex)
@@ -1293,7 +1336,7 @@ namespace BioNetSangLocSoSinh.FrmReports
                     var tabTongGeneKL = (from DataRow myRow in tab.Rows
                                          where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Tên Đơn Vị"].Equals(Donvi)
                                          select myRow["KL gene"]).ToList();
-                    var tkTong = tabTongGeneKL.Where(x => x.Equals("Xac dinh")).Count().ToString();
+                    var tkTong = tabTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
                     tk.Tong = tabTongGene.Where(x => x.Equals(cso)).Count().ToString();
                     tk.NghiNgo = tabNghiNgoGene.Where(x => x.Equals(cso)).Count().ToString();
                     tk.NguyCoCao = tabNguyCoCaoTongGene.Where(x => x.Equals(cso)).Count().ToString();
@@ -1442,6 +1485,638 @@ namespace BioNetSangLocSoSinh.FrmReports
         {
             dateEditDenNgay.DateTime = DateTime.Now;
             dateEditTuNgay.DateTime = DateTime.Now;
+        }
+
+        private void btnPDFChiCuc_Click(object sender, EventArgs e)
+        {
+            string Folder = BioNet_Bus.GetFileReport("Gene", "PDF");
+            if (cbbChiCuc.EditValue != null)
+            {
+                PsReponse reponse = ThongKeChiCuc(cbbChiCuc.EditValue.ToString(), Folder);
+                if (reponse.Result != true)
+                {
+                    XtraMessageBox.Show("Xuất báo cáo lỗi " + reponse.StringError, "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    XtraMessageBox.Show("Xuất báo cáo thành công", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Diagnostics.Process.Start(Folder);
+                }
+            }
+            else
+            {
+
+                bool kq = true;
+                foreach (var dv in lstchicuc)
+                {
+                    PsReponse reponse = ThongKeChiCuc(dv.ToString(), Folder);
+                    if (reponse.Result != true)
+                    {
+                        kq = false;
+                    }
+                }
+                if (kq)
+                {
+                    XtraMessageBox.Show("Xuất báo cáo thành công", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    System.Diagnostics.Process.Start(Folder);
+                }
+                else
+                {
+                    XtraMessageBox.Show("Xuất báo cáo lỗi", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+        private PsReponse ThongKeChiCuc(string ChiCuc, string FoderLink)
+
+        {
+            PsReponse psReponse = new PsReponse();
+            try
+            {
+                int TongSoMauDV = (from DataRow myRow in tab.Rows
+                                   where !string.IsNullOrEmpty(myRow["STT"].ToString()) && myRow["Chi cục"].Equals(ChiCuc)
+                                   select myRow).Count();
+                TongSoLamGene = (from DataRow myRow in tab.Rows
+                                 where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(ChiCuc)
+                                 select myRow["KL gene"]).Count();
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Chi cục"].Equals(ChiCuc)
+                                   select myRow["KQ gene"]).ToList();
+                TongSoXD = tabTongGene.Where(x => x.Equals("KXĐ")).Count();
+
+                rptBaoCaoExcelTong baoct = new rptBaoCaoExcelTong();
+                baoct.Tieude = ChiCuc;
+                baoct.NgayIn = DateTime.Now;
+                baoct.Gene = new List<rptBaoCaoExcelGene>();
+                rptBaoCaoExcelGene baoc = new rptBaoCaoExcelGene();
+                baoc.NgayIn = DateTime.Now;
+                baoc.TenNhom = "Thông tin về xét nghiệm gene";
+                var tabTongsoGene = (from DataRow myRow in tab.Rows
+                                     where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["Chi cục"].Equals(ChiCuc)
+                                     select myRow["KQ gene"]).Distinct().ToList();
+                baoc.TongGene = new List<TKGene>();
+                baoc.TongGene.Add(ThongKeTKExcelGeneChiCuc("Tổng", ChiCuc, TongSoMauDV));
+                baoc.TongGene.Add(ThongKeTKExcelGeneChiCuc("ChuaXN", ChiCuc, TongSoMauDV));
+                baoc.TongGene.Add(ThongKeTKExcelGeneChiCuc("", ChiCuc, TongSoMauDV));
+                baoc.TongGene.Add(ThongKeTKExcelGeneChiCuc("KXĐ", ChiCuc, TongSoMauDV));
+                baoc.TongGene.Add(ThongKeTKExcelGeneChiCuc("Xac dinh", ChiCuc, TongSoMauDV));
+                baoc.STT = "1";
+                List<TKGene> GeneTemp = new List<TKGene>();
+                foreach (var t in tabTongsoGene)
+                {
+                    if (!t.Equals("KXĐ"))
+                    {
+                        GeneTemp.Add(ThongKeTKExcelGeneChiCuc(t.ToString(), ChiCuc, TongSoMauDV));
+                    }
+                }
+                baoc.TongGene.AddRange(GeneTemp.OrderByDescending(x => int.Parse(x.Tong)));
+                baoct.Gene.Add(baoc);
+                rptBaoCaoExcelGene baoc2 = new rptBaoCaoExcelGene();
+                baoc2.NgayIn = DateTime.Now;
+                baoc2.TenNhom = "Giới tính";
+                baoc2.STT = "2";
+                baoc2.NgayIn = DateTime.Now;
+                baoc2.TongGene = new List<TKGene>();
+                baoc2.TongGene.Add(ThongKeTKExcelChiCuc("Tổng", "Giới tính", ChiCuc));
+                baoc2.TongGene.Add(ThongKeTKExcelChiCuc("Nam", "Giới tính", ChiCuc));
+                baoc2.TongGene.Add(ThongKeTKExcelChiCuc("Nữ", "Giới tính", ChiCuc));
+                baoc2.TongGene.Add(ThongKeTKExcelChiCuc("N/A", "Giới tính", ChiCuc));
+                baoct.Gene.Add(baoc2);
+                rptBaoCaoExcelGene baoc3 = new rptBaoCaoExcelGene();
+                baoc3.NgayIn = DateTime.Now;
+                baoc3.TenNhom = "Cân Nặng";
+                baoc3.STT = "3";
+                baoc3.NgayIn = DateTime.Now;
+                baoc3.TongGene = new List<TKGene>();
+                baoc3.TongGene.Add(ThongKeTKExcelChiCuc("Tổng", "Cân nặng", ChiCuc));
+                baoc3.TongGene.Add(ThongKeTKExcelChiCucCanNang(0, 2500, ChiCuc, TongSoMauDV));
+                baoc3.TongGene.Add(ThongKeTKExcelChiCucCanNang(2500, 3000, ChiCuc, TongSoMauDV));
+                baoc3.TongGene.Add(ThongKeTKExcelChiCucCanNang(3000, 3500, ChiCuc, TongSoMauDV));
+                baoc3.TongGene.Add(ThongKeTKExcelChiCucCanNang(3500, 4000, ChiCuc, TongSoMauDV));
+                baoc3.TongGene.Add(ThongKeTKExcelChiCucCanNang(4000, 5000, ChiCuc, TongSoMauDV));
+                baoc3.TongGene.Add(ThongKeTKExcelChiCucCanNang(5000, 0, ChiCuc, TongSoMauDV));
+                baoct.Gene.Add(baoc3);
+                rptBaoCaoExcelGene baoc4 = new rptBaoCaoExcelGene();
+                baoc4.NgayIn = DateTime.Now;
+                baoc4.TenNhom = "Chất lượng Mẫu lần 1";
+                baoc4.STT = "4";
+                baoc4.NgayIn = DateTime.Now;
+                baoc4.TongGene = new List<TKGene>();
+                baoc4.TongGene.Add(ThongKeTKExcelChiCuc("Tổng", "Chất lượng mẫu 1", ChiCuc));
+                baoc4.TongGene.Add(ThongKeTKExcelChiCuc("Đạt", "Chất lượng mẫu 1", ChiCuc));
+                baoc4.TongGene.Add(ThongKeTKExcelChiCuc("Không Đạt", "Chất lượng mẫu 1", ChiCuc));
+                baoct.Gene.Add(baoc4);
+                rptBaoCaoExcelGene baoc5 = new rptBaoCaoExcelGene();
+                baoc5.NgayIn = DateTime.Now;
+                baoc5.TenNhom = "Chất lượng Mẫu lần 2";
+                baoc5.STT = "5";
+                baoc5.NgayIn = DateTime.Now;
+                baoc5.TongGene = new List<TKGene>();
+                baoc5.TongGene.Add(ThongKeTKExcelChiCuc("Tổng", "Chất lượng mẫu 2", ChiCuc));
+                baoc5.TongGene.Add(ThongKeTKExcelChiCuc("Đạt", "Chất lượng mẫu 2", ChiCuc));
+                baoc5.TongGene.Add(ThongKeTKExcelChiCuc("Không Đạt", "Chất lượng mẫu 2", ChiCuc));
+                baoct.Gene.Add(baoc5);
+                rptBaoCaoExcelGene baoc6 = new rptBaoCaoExcelGene();
+                baoc6.NgayIn = DateTime.Now;
+                baoc6.TenNhom = "Dân tộc";
+                baoc6.STT = "6";
+                baoc6.NgayIn = DateTime.Now;
+                baoc6.TongGene = new List<TKGene>();
+                baoc6.TongGene.Add(ThongKeTKExcelChiCuc("Tổng", "Dân tộc", ChiCuc));
+                var dsdantoc = (from DataRow myRow in tab.Rows
+                                where !string.IsNullOrEmpty(myRow["Dân tộc"].ToString()) && myRow["Chi cục"].Equals(ChiCuc)
+                                select myRow["Dân tộc"]).Distinct().ToList();
+                GeneTemp = new List<TKGene>();
+                foreach (var dt in dsdantoc)
+                {
+                    GeneTemp.Add(ThongKeTKExcelChiCuc(dt.ToString(), "Dân tộc", ChiCuc));
+                }
+                baoc6.TongGene.AddRange(GeneTemp.OrderByDescending(x => int.Parse(x.Tong)));
+                baoct.Gene.Add(baoc6);
+                Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
+                datarp.Parameters["LuuY"].Value = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + ")";
+                datarp.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
+                datarp.DataSource = baoct;
+
+                string Link = BioNet_Bus.SaveFileReport(FoderLink, "GeneChiCuc", ChiCuc, dateEditTuNgay.DateTime.Date, dateEditDenNgay.DateTime.Date, ".pdf");
+                datarp.ExportToPdf(Link);
+                int str = datarp.Pages.Count();
+                List<TKExcelXNGene> ListExcel = new List<TKExcelXNGene>();
+                List<TKExcelXNGene> ListExcelTemp = new List<TKExcelXNGene>();
+                var tabDTGene = (from DataRow myRow in tab.Rows
+                                 where myRow["Chi cục"].Equals(ChiCuc) && !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && !myRow["KQ gene"].ToString().Equals("KXĐ")
+                                 select myRow["Dân tộc"]).Distinct().ToList();
+
+                foreach (var d in tabDTGene)
+                {
+                    var tabTongGeneDaLam = (from DataRow myRow in tab.Rows
+                                            where myRow["Chi cục"].Equals(ChiCuc) && !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["KL gene"].Equals("Xac dinh")
+                                            && myRow["Dân tộc"].Equals(d.ToString())
+                                            select myRow["KQ gene"]).ToList();
+                    TKExcelXNGene tKExcel = new TKExcelXNGene();
+                    tKExcel.DanToc = d.ToString();
+                    tKExcel.Tong = tabTongGeneDaLam.Count().ToString();
+                    tKExcel.Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Viangchan")).ToString();
+                    tKExcel.Canton = tabTongGeneDaLam.Count(x => x.Equals("Canton")).ToString();
+                    tKExcel.Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Kaiping")).ToString();
+                    tKExcel.Union = tabTongGeneDaLam.Count(x => x.Equals("Union")).ToString();
+                    tKExcel.Coimbra = tabTongGeneDaLam.Count(x => x.Equals("Coimbra")).ToString();
+                    tKExcel.Canton_Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Canton + Kaiping")).ToString();
+                    tKExcel.Union_Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Union + Kaiping")).ToString();
+                    tKExcel.Kaiping_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Kaiping + Viangchan")).ToString();
+                    tKExcel.Canton_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Canton + Viangchan")).ToString();
+                    tKExcel.Union_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Union + Viangchan")).ToString();
+                    tKExcel.Mahidol = tabTongGeneDaLam.Count(x => x.Equals("Mahidol")).ToString();
+                    tKExcel.Canton_Coimbra = tabTongGeneDaLam.Count(x => x.Equals("Canton + Coimbra")).ToString();
+                    tKExcel.Mediterranean = tabTongGeneDaLam.Count(x => x.Equals("Mediterranean")).ToString();
+                    tKExcel.Union_Canton = tabTongGeneDaLam.Count(x => x.Equals("Union + Canton")).ToString();
+                    ListExcelTemp.Add(tKExcel);
+                }
+                ListExcel.AddRange(ListExcelTemp.OrderByDescending(x => int.Parse(x.Tong)).ToList());
+                int stt = 1;
+                foreach (var l in ListExcel)
+                {
+                    l.STT = stt++;
+                }
+                Reports.RepostsBaoCao.rptBaoCaoExcelDanTocGene datarp2 = new Reports.RepostsBaoCao.rptBaoCaoExcelDanTocGene(1);
+                datarp2.Parameters["DonVi"].Value = ChiCuc;
+                datarp2.Parameters["LuuY"].Value = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + ")";
+                datarp2.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
+                datarp2.DataSource = ListExcel;
+                string fileName3 = BioNet_Bus.SaveFileReport(FoderLink, "GeneChiCuc", ChiCuc, DateTime.Now, dateEditDenNgay.DateTime.Date, ".docx");
+                datarp2.ExportToDocx(fileName3);
+                psReponse.Result = true;
+            }
+            catch (Exception ex)
+            {
+                psReponse.Result = false;
+                psReponse.StringError = ex.ToString();
+            }
+            return psReponse;
+
+        }
+        private TKGene ThongKeTKExcelGeneChiCuc(string cso, string Donvi, int TongSoMauDV)
+        {
+            TKGene tk = new TKGene();
+            try
+            {
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where myRow["Chi cục"].Equals(Donvi)
+                                   select myRow["KQ gene"]).ToList();
+                var tabNghiNgoGene = (from DataRow myRow in tabNghiNgo.Rows
+                                      where myRow["Chi cục"].Equals(Donvi)
+                                      select myRow["KQ gene"]).ToList();
+                var tabNguyCoCaoTongGene = (from DataRow myRow in tabNguyCoCao.Rows
+                                            where myRow["Chi cục"].Equals(Donvi)
+                                            select myRow["KQ gene"]).ToList();
+                var tabNguyCoThapL2Gene = (from DataRow myRow in tabNguycoThap2.Rows
+                                           where myRow["Chi cục"].Equals(Donvi)
+                                           select myRow["KQ gene"]).ToList();
+                var tabAmTinhGene = (from DataRow myRow in tabAmTinh.Rows
+                                     where myRow["Chi cục"].Equals(Donvi)
+                                     select myRow["KQ gene"]).ToList();
+                var tabDuongTinhGene = (from DataRow myRow in tabDuongTinh.Rows
+                                        where myRow["Chi cục"].Equals(Donvi)
+                                        select myRow["KQ gene"]).ToList();
+                if (string.IsNullOrEmpty(cso))
+                {
+                    tk.Ten = "Tổng đã làm đột biến Gene";
+                    tk.Tong = tabTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.Tile = String.Format("{0:0.00}", ((double)int.Parse(tk.Tong) / (double)tabTongGene.Count()) * 100) + "%";
+                }
+                else if (cso.Equals("Tổng"))
+                {
+                    tk.Ten = "Tổng";
+                    tk.Tong = tabTongGene.Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Count().ToString();
+                    tk.Tile = String.Format("{0:0.00}", ((double)tabTongGene.Count() / (double)tabTongGene.Count()) * 100) + "%";
+                }
+                else if (cso.Equals("ChuaXN"))
+                {
+                    var tkTong = tabTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count();
+                    var tabTongChuaLamGene = tabNghiNgoGene.Count() + tabNguyCoCaoTongGene.Count() - tkTong;
+                    tk.Ten = "Chưa làm Gene";
+                    tk.Tong = tabTongChuaLamGene.ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => x == null || x.Equals("")).Count().ToString();
+                    tk.Tile = String.Format("{0:0.00}", ((double)int.Parse(tk.Tong) / (double)tabTongGene.Count()) * 100) + "%";
+                }
+                else if (cso.Equals("KXĐ") || cso.Equals("Xac dinh"))
+                {
+                    var tkTong = tabTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    var tabTongGeneKL = (from DataRow myRow in tab.Rows
+                                         where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                         select myRow["KL gene"]).ToList();
+                    var tabNghiNgoGeneKL = (from DataRow myRow in tabNghiNgo.Rows
+                                            where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                            select myRow["KL gene"]).ToList();
+                    var tabNgytCoCaoTongGeneKL = (from DataRow myRow in tabNguyCoCao.Rows
+                                                  where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                                  select myRow["KL gene"]).ToList();
+                    var tabNguyCoThapL2GeneKL = (from DataRow myRow in tabNguycoThap2.Rows
+                                                 where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                                 select myRow["KL gene"]).ToList();
+                    var tabAmTinhGeneKL = (from DataRow myRow in tabAmTinh.Rows
+                                           where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                           select myRow["KL gene"]).ToList();
+                    var tabDuongTinhGeneKL = (from DataRow myRow in tabDuongTinh.Rows
+                                              where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                              select myRow["KL gene"]).ToList();
+                    tk.Ten = cso;
+                    tk.Tong = tabTongGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2GeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.AmTinh = tabAmTinhGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGeneKL.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.Tile = String.Format("{0:0.00}", ((double)tabTongGeneKL.Where(x => x.Equals(cso)).Count() / (double)int.Parse(tkTong)) * 100) + "%";
+                }
+                else
+                {
+                    tk.Ten = cso;
+                    var tabTongGeneKL = (from DataRow myRow in tab.Rows
+                                         where !string.IsNullOrEmpty(myRow["KL gene"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                         select myRow["KL gene"]).ToList();
+                    var tkTong = tabTongGene.Where(x => !string.IsNullOrEmpty(x.ToString())).Count().ToString();
+                    tk.Tong = tabTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoCao = tabNguyCoCaoTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.Tile = String.Format("{0:0.00}", ((double)int.Parse(tk.Tong) / (double)int.Parse(tkTong)) * 100) + "%";
+                }
+            }
+            catch
+            {
+
+            }
+            return tk;
+        }
+
+        private TKGene ThongKeTKExcelChiCuc(string cso, string CLM, string Donvi)
+        {
+            TKGene tk = new TKGene();
+            try
+            {
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                   select myRow[CLM]).ToList();
+                var tabNghiNgoGene = (from DataRow myRow in tabNghiNgo.Rows
+                                      where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                      select myRow[CLM]).ToList();
+                var tabNgytCoCaoTongGene = (from DataRow myRow in tabNguyCoCao.Rows
+                                            where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                            select myRow[CLM]).ToList();
+                var tabNguyCoThapL2Gene = (from DataRow myRow in tabNguycoThap2.Rows
+                                           where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                           select myRow[CLM]).ToList();
+                var tabAmTinhGene = (from DataRow myRow in tabAmTinh.Rows
+                                     where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                     select myRow[CLM]).ToList();
+                var tabDuongTinhGene = (from DataRow myRow in tabDuongTinh.Rows
+                                        where !string.IsNullOrEmpty(myRow[CLM].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                        select myRow[CLM]).ToList();
+                tk.Ten = cso;
+                if (cso.Equals("Tổng"))
+                {
+                    tk.Tong = tabTongGene.Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Count().ToString();
+                    tk.Tile = "100%";
+                }
+                else
+                {
+                    tk.Tong = tabTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => x.Equals(cso)).Count().ToString();
+                    tk.Tile = String.Format("{0:0.00}", ((double)tabTongGene.Where(x => x.Equals(cso)).Count() / (double)tabTongGene.Count()) * 100) + "%";
+                }
+
+            }
+            catch
+            {
+
+            }
+            return tk;
+        }
+
+        private TKGene ThongKeTKExcelChiCucCanNang(int? min, int? max, string Donvi, int sophieu)
+        {
+            TKGene tk = new TKGene();
+            try
+            {
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                   select myRow["Cân nặng"]).ToList();
+                var tabNghiNgoGene = (from DataRow myRow in tabNghiNgo.Rows
+                                      where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                      select myRow["Cân nặng"]).ToList();
+                var tabNgytCoCaoTongGene = (from DataRow myRow in tabNguyCoCao.Rows
+                                            where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                            select myRow["Cân nặng"]).ToList();
+                var tabNguyCoThapL2Gene = (from DataRow myRow in tabNguycoThap2.Rows
+                                           where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                           select myRow["Cân nặng"]).ToList();
+                var tabAmTinhGene = (from DataRow myRow in tabAmTinh.Rows
+                                     where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                     select myRow["Cân nặng"]).ToList();
+                var tabDuongTinhGene = (from DataRow myRow in tabDuongTinh.Rows
+                                        where !string.IsNullOrEmpty(myRow["Cân nặng"].ToString()) && myRow["Chi cục"].Equals(Donvi)
+                                        select myRow["Cân nặng"]).ToList();
+
+                if (min == 0)
+                {
+                    tk.Ten = "<=" + max.ToString();
+                    tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) <= max).Count().ToString();
+                    // tk.Tile = String.Format("{0:0.00}", ((double)tk.Tong.Count() / (double)sophieu) * 100) + "%";
+                    tk.Tile = String.Format("{0:0.00}", ((double.Parse(tk.Tong)) / (double)sophieu) * 100) + "%";
+                }
+                else if (max == 0)
+                {
+                    if (min == 5000)
+                    {
+                        tk.Ten = "N/A";
+                    }
+                    else
+                    {
+                        tk.Ten = ">" + min.ToString();
+                    }
+                    tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) > min).Count().ToString();
+                    //  tk.Tile = String.Format("{0:0.00}", ((double)tk.Tong.Count() / (double)sophieu) * 100) + "%";
+                    tk.Tile = String.Format("{0:0.00}", ((double.Parse(tk.Tong)) / (double)sophieu) * 100) + "%";
+                }
+                else
+                {
+                    tk.Ten = min.ToString() + "<X<=" + max.ToString();
+                    tk.Tong = tabTongGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NghiNgo = tabNghiNgoGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoCao = tabNgytCoCaoTongGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.NguyCoThapL2 = tabNguyCoThapL2Gene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.AmTinh = tabAmTinhGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    tk.DuongTinh = tabDuongTinhGene.Where(x => int.Parse(x.ToString()) <= max && int.Parse(x.ToString()) > min).Count().ToString();
+                    //  tk.Tile = String.Format("{0:0.00}", ((double)tk.Tong.Count() / (double)sophieu)*100) + "%";
+                    tk.Tile = String.Format("{0:0.00}", ((double.Parse(tk.Tong)) / (double)sophieu) * 100) + "%";
+                }
+            }
+            catch
+            {
+
+            }
+            return tk;
+        }
+
+        private void btnBCTongHop_Click(object sender, EventArgs e)
+        {
+            string Folder = BioNet_Bus.GetFileReport("Gene", "PDF");
+            PsReponse reponse= this.ThongKeTrungTam(Folder);
+            if (reponse.Result != true)
+            {
+                XtraMessageBox.Show("Xuất báo cáo lỗi " + reponse.StringError, "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                XtraMessageBox.Show("Xuất báo cáo thành công", "Bionet Sàng lọc sơ sinh.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Diagnostics.Process.Start(Folder);
+            }
+        }
+        private PsReponse ThongKeTrungTam( string FoderLink)
+
+        {
+            PsReponse psReponse = new PsReponse();
+            try
+            {
+                rptBaoCaoExcelGeneCoBan baocao = new rptBaoCaoExcelGeneCoBan();
+                baocao.TongSoMau = new TKExcelSoMau();
+                TongSoMau = (from DataRow myRow in tab.Rows
+                             where !string.IsNullOrEmpty(myRow["STT"].ToString())
+                             select myRow).Count();
+                TongSoLamGene = (from DataRow myRow in tab.Rows
+                                 where !string.IsNullOrEmpty(myRow["KL gene"].ToString())
+                                 select myRow["KL gene"]).Count();
+                var tabTongGene = (from DataRow myRow in tab.Rows
+                                   where string.IsNullOrEmpty(myRow["KQ gene"].ToString())
+                                   select myRow["KQ gene"]).ToList();
+                TongSoXD = tabTongGene.Where(x => x.Equals("KXĐ")).Count();
+                baocao.NgayIn = DateTime.Now;
+                rptBaoCaoExcelTong baoct = new rptBaoCaoExcelTong();
+                baoct.Tieude = "Trung tâm sàng lọc sơ sinh Bionet (Tổng hợp)";
+                baoct.NgayIn = DateTime.Now;
+                baoct.Gene = new List<rptBaoCaoExcelGene>();
+                rptBaoCaoExcelGene baoc = new rptBaoCaoExcelGene();
+                baoc.NgayIn = DateTime.Now;
+                baoc.TenNhom = "Thông tin về xét nghiệm gene";
+                var tabTongsoGene = (from DataRow myRow in tab.Rows
+                                     where !string.IsNullOrEmpty(myRow["KQ gene"].ToString())
+                                     select myRow["KQ gene"]).Distinct().ToList();
+                baoc.TongGene = new List<TKGene>();
+                baoc.TongGene.Add(ThongKeTKExcelGene("Tổng"));
+                baoc.TongGene.Add(ThongKeTKExcelGene("ChuaXN"));
+                baoc.TongGene.Add(ThongKeTKExcelGene(""));
+                baoc.TongGene.Add(ThongKeTKExcelGene("KXĐ"));
+                baoc.TongGene.Add(ThongKeTKExcelGene("Xac dinh"));
+                baoc.STT = "1";
+                List<TKGene> GeneTemp = new List<TKGene>();
+                foreach (var t in tabTongsoGene)
+                {
+                    if (!t.Equals("KXĐ"))
+                    {
+                        GeneTemp.Add(ThongKeTKExcelGene(t.ToString()));
+                    }
+                }
+                baoc.TongGene.AddRange(GeneTemp.OrderByDescending(x => int.Parse(x.Tong)));
+                baoct.Gene.Add(baoc);
+                rptBaoCaoExcelGene baoc2 = new rptBaoCaoExcelGene();
+                baoc2.NgayIn = DateTime.Now;
+                baoc2.TenNhom = "Giới tính";
+                baoc2.STT = "2";
+                baoc2.NgayIn = DateTime.Now;
+                baoc2.TongGene = new List<TKGene>();
+                baoc2.TongGene.Add(ThongKeTKExcelCLMauTong("Giới tính"));
+                baoc2.TongGene.Add(ThongKeTKExcelGioiTinh("Nam"));
+                baoc2.TongGene.Add(ThongKeTKExcelGioiTinh("Nữ"));
+                baoc2.TongGene.Add(ThongKeTKExcelGioiTinh("N/A"));
+                baoct.Gene.Add(baoc2);
+                rptBaoCaoExcelGene baoc3 = new rptBaoCaoExcelGene();
+                baoc3.NgayIn = DateTime.Now;
+                baoc3.TenNhom = "Cân Nặng";
+                baoc3.STT = "3";
+                baoc3.NgayIn = DateTime.Now;
+                baoc3.TongGene = new List<TKGene>();
+                baoc3.TongGene.Add(ThongKeTKExcelCLMauTong("Cân nặng"));
+                baoc3.TongGene.Add(ThongKeTKExcelCanNang(0, 2500));
+                baoc3.TongGene.Add(ThongKeTKExcelCanNang(2500, 3000));
+                baoc3.TongGene.Add(ThongKeTKExcelCanNang(3000, 3500));
+                baoc3.TongGene.Add(ThongKeTKExcelCanNang(3500, 4000));
+                baoc3.TongGene.Add(ThongKeTKExcelCanNang(4000, 5000));
+                baoc3.TongGene.Add(ThongKeTKExcelCanNang(5000, 0));
+                baoct.Gene.Add(baoc3);
+                rptBaoCaoExcelGene baoc4 = new rptBaoCaoExcelGene();
+                baoc4.NgayIn = DateTime.Now;
+                baoc4.TenNhom = "Chất lượng Mẫu lần 1";
+                baoc4.STT = "4";
+                baoc4.NgayIn = DateTime.Now;
+                baoc4.TongGene = new List<TKGene>();
+                baoc4.TongGene.Add(ThongKeTKExcelCLMauTong("Chất lượng mẫu 1"));
+                baoc4.TongGene.Add(ThongKeTKExcelCLMau("Đạt", "Chất lượng mẫu 1"));
+                baoc4.TongGene.Add(ThongKeTKExcelCLMau("Không Đạt", "Chất lượng mẫu 1"));
+                baoct.Gene.Add(baoc4);
+                rptBaoCaoExcelGene baoc5 = new rptBaoCaoExcelGene();
+                baoc5.NgayIn = DateTime.Now;
+                baoc5.TenNhom = "Chất lượng Mẫu lần 2";
+                baoc5.STT = "5";
+                baoc5.NgayIn = DateTime.Now;
+                baoc5.TongGene = new List<TKGene>();
+                baoc5.TongGene.Add(ThongKeTKExcelCLMauTong("Chất lượng mẫu 2"));
+                baoc5.TongGene.Add(ThongKeTKExcelCLMau("Đạt", "Chất lượng mẫu 2"));
+                baoc5.TongGene.Add(ThongKeTKExcelCLMau("Không Đạt", "Chất lượng mẫu 2"));
+                baoct.Gene.Add(baoc5);
+                rptBaoCaoExcelGene baoc6 = new rptBaoCaoExcelGene();
+                baoc6.NgayIn = DateTime.Now;
+                baoc6.TenNhom = "Dân tộc";
+                baoc6.STT = "6";
+                baoc6.NgayIn = DateTime.Now;
+                baoc6.TongGene = new List<TKGene>();
+                baoc6.TongGene.Add(ThongKeTKExcelCLMauTong("Dân tộc"));
+                var dsdantoc = (from DataRow myRow in tab.Rows
+                                where !string.IsNullOrEmpty(myRow["Dân tộc"].ToString())
+                                select myRow["Dân tộc"]).Distinct().ToList();
+                GeneTemp = new List<TKGene>();
+                foreach (var dt in dsdantoc)
+                {
+                    GeneTemp.Add(ThongKeTKExcelCLMau(dt.ToString(), "Dân tộc"));
+                }
+                baoc6.TongGene.AddRange(GeneTemp.OrderByDescending(x => int.Parse(x.Tong)));
+                baoct.Gene.Add(baoc6);
+                Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo datarp = new Reports.RepostsBaoCao.rptBaoCaoExcelNguyCo();
+                datarp.Parameters["LuuY"].Value = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + ")";
+                datarp.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
+                datarp.DataSource = baoct;
+
+                string Link = BioNet_Bus.SaveFileReport(FoderLink, "GeneTrungTam", "Trung tâm Bionet", dateEditTuNgay.DateTime.Date, dateEditDenNgay.DateTime.Date, ".pdf");
+                datarp.ExportToPdf(Link);
+                int str = datarp.Pages.Count();
+                List<TKExcelXNGene> ListExcel = new List<TKExcelXNGene>();
+                List<TKExcelXNGene> ListExcelTemp = new List<TKExcelXNGene>();
+                var tabDTGene = (from DataRow myRow in tab.Rows
+                                 where !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["KL gene"].Equals("Xac dinh")
+                                 select myRow["Dân tộc"]).Distinct().ToList();
+
+                foreach (var d in tabDTGene)
+                {
+                    var tabTongGeneDaLam = (from DataRow myRow in tab.Rows
+                                            where   !string.IsNullOrEmpty(myRow["KQ gene"].ToString()) && myRow["KL gene"].Equals("Xac dinh")
+                                            && myRow["Dân tộc"].Equals(d.ToString())
+                                            select myRow["KQ gene"]).ToList();
+                    TKExcelXNGene tKExcel = new TKExcelXNGene();
+                    tKExcel.DanToc = d.ToString();
+                    tKExcel.Tong = tabTongGeneDaLam.Count().ToString();
+                    tKExcel.Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Viangchan")).ToString();
+                    tKExcel.Canton = tabTongGeneDaLam.Count(x => x.Equals("Canton")).ToString();
+                    tKExcel.Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Kaiping")).ToString();
+                    tKExcel.Union = tabTongGeneDaLam.Count(x => x.Equals("Union")).ToString();
+                    tKExcel.Coimbra = tabTongGeneDaLam.Count(x => x.Equals("Coimbra")).ToString();
+                    tKExcel.Canton_Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Canton + Kaiping")).ToString();
+                    tKExcel.Union_Kaiping = tabTongGeneDaLam.Count(x => x.Equals("Union + Kaiping")).ToString();
+                    tKExcel.Kaiping_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Kaiping + Viangchan")).ToString();
+                    tKExcel.Canton_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Canton + Viangchan")).ToString();
+                    tKExcel.Union_Viangchan = tabTongGeneDaLam.Count(x => x.Equals("Union + Viangchan")).ToString();
+                    tKExcel.Mahidol = tabTongGeneDaLam.Count(x => x.Equals("Mahidol")).ToString();
+                    tKExcel.Canton_Coimbra = tabTongGeneDaLam.Count(x => x.Equals("Canton + Coimbra")).ToString();
+                    tKExcel.Mediterranean = tabTongGeneDaLam.Count(x => x.Equals("Mediterranean")).ToString();
+                    tKExcel.Union_Canton = tabTongGeneDaLam.Count(x => x.Equals("Union + Canton")).ToString();
+                    ListExcelTemp.Add(tKExcel);
+                }
+                ListExcel.AddRange(ListExcelTemp.OrderByDescending(x => int.Parse(x.Tong)).ToList());
+                int stt = 1;
+                foreach (var l in ListExcel)
+                {
+                    l.STT = stt++;
+                }
+                Reports.RepostsBaoCao.rptBaoCaoExcelDanTocGene datarp2 = new Reports.RepostsBaoCao.rptBaoCaoExcelDanTocGene(1);
+                datarp2.Parameters["DonVi"].Value = "Trung tâm sàng lọc sơ sinh Bionet(Tổng hợp)";
+                datarp2.Parameters["LuuY"].Value = "(Lưu ý: Báo cáo thống kê có giá trị tại thời điểm xuất báo cáo ngày " + DateTime.Now.Date.ToShortDateString() + ")";
+                datarp2.Parameters["ThoiGian"].Value = "Từ ngày " + dateEditTuNgay.DateTime.Date.ToShortDateString() + " đến " + dateEditDenNgay.DateTime.Date.ToShortDateString();
+                datarp2.DataSource = ListExcel;
+               
+                string fileName3 = BioNet_Bus.SaveFileReport(FoderLink, "GeneTrungTam", "Trung tâm sàng lọc sơ sinh Bionet(Tổng hợp)", DateTime.Now, dateEditDenNgay.DateTime.Date, ".docx");
+                datarp2.ExportToDocx(fileName3);
+                psReponse.Result = true;
+            }
+            catch (Exception ex)
+            {
+                psReponse.Result = false;
+                psReponse.StringError = ex.ToString();
+            }
+            return psReponse;
+
         }
     }
 }

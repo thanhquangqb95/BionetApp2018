@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnPDFChiCuc = new DevExpress.XtraEditors.SimpleButton();
+            this.cbbChiCuc = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEditDenNgay = new DevExpress.XtraEditors.DateEdit();
+            this.dateEditTuNgay = new DevExpress.XtraEditors.DateEdit();
             this.btnPDFDonVi = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnSaveFile = new DevExpress.XtraEditors.SimpleButton();
@@ -65,12 +73,15 @@
             this.previewBar2 = new DevExpress.XtraPrinting.Preview.PreviewBar();
             this.previewBar3 = new DevExpress.XtraPrinting.Preview.PreviewBar();
             this.previewBar4 = new DevExpress.XtraPrinting.Preview.PreviewBar();
-            this.dateEditTuNgay = new DevExpress.XtraEditors.DateEdit();
-            this.dateEditDenNgay = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.btnBCTongHop = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbChiCuc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -98,15 +109,15 @@
             this.xtraTabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GCBaoCaoDonVi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVBaoCaoDonVi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnBCTongHop);
+            this.panelControl1.Controls.Add(this.btnPDFChiCuc);
+            this.panelControl1.Controls.Add(this.cbbChiCuc);
             this.panelControl1.Controls.Add(this.labelControl3);
+            this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.dateEditDenNgay);
             this.panelControl1.Controls.Add(this.dateEditTuNgay);
@@ -119,20 +130,116 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1193, 34);
+            this.panelControl1.Size = new System.Drawing.Size(1193, 63);
             this.panelControl1.TabIndex = 0;
+            // 
+            // btnPDFChiCuc
+            // 
+            this.btnPDFChiCuc.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnPDFChiCuc.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.btnPDFChiCuc.Appearance.Options.UseFont = true;
+            this.btnPDFChiCuc.Appearance.Options.UseForeColor = true;
+            this.btnPDFChiCuc.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf;
+            this.btnPDFChiCuc.Location = new System.Drawing.Point(707, 31);
+            this.btnPDFChiCuc.Name = "btnPDFChiCuc";
+            this.btnPDFChiCuc.Size = new System.Drawing.Size(163, 23);
+            this.btnPDFChiCuc.TabIndex = 19;
+            this.btnPDFChiCuc.Text = "Xuất PDF theo chi cục";
+            this.btnPDFChiCuc.Click += new System.EventHandler(this.btnPDFChiCuc_Click);
+            // 
+            // cbbChiCuc
+            // 
+            this.cbbChiCuc.Location = new System.Drawing.Point(470, 30);
+            this.cbbChiCuc.Name = "cbbChiCuc";
+            this.cbbChiCuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbChiCuc.Properties.NullText = "Chọn chi cục ";
+            this.cbbChiCuc.Properties.PopupSizeable = false;
+            this.cbbChiCuc.Properties.View = this.gridView1;
+            this.cbbChiCuc.Size = new System.Drawing.Size(222, 20);
+            this.cbbChiCuc.TabIndex = 18;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(331, 33);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(121, 13);
+            this.labelControl3.TabIndex = 17;
+            this.labelControl3.Text = "Chi cục xuất thống kê";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(161, 37);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(54, 13);
+            this.labelControl4.TabIndex = 16;
+            this.labelControl4.Text = "Đến ngày";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(161, 10);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(46, 13);
+            this.labelControl2.TabIndex = 14;
+            this.labelControl2.Text = "Từ ngày";
+            // 
+            // dateEditDenNgay
+            // 
+            this.dateEditDenNgay.EditValue = null;
+            this.dateEditDenNgay.Location = new System.Drawing.Point(227, 35);
+            this.dateEditDenNgay.Name = "dateEditDenNgay";
+            this.dateEditDenNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditDenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditDenNgay.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateEditDenNgay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEditDenNgay.Size = new System.Drawing.Size(87, 20);
+            this.dateEditDenNgay.TabIndex = 13;
+            // 
+            // dateEditTuNgay
+            // 
+            this.dateEditTuNgay.EditValue = null;
+            this.dateEditTuNgay.Location = new System.Drawing.Point(227, 7);
+            this.dateEditTuNgay.Name = "dateEditTuNgay";
+            this.dateEditTuNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditTuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditTuNgay.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dateEditTuNgay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEditTuNgay.Size = new System.Drawing.Size(87, 20);
+            this.dateEditTuNgay.TabIndex = 12;
             // 
             // btnPDFDonVi
             // 
-            this.btnPDFDonVi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPDFDonVi.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnPDFDonVi.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.btnPDFDonVi.Appearance.Options.UseFont = true;
             this.btnPDFDonVi.Appearance.Options.UseForeColor = true;
             this.btnPDFDonVi.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf;
-            this.btnPDFDonVi.Location = new System.Drawing.Point(929, 4);
+            this.btnPDFDonVi.Location = new System.Drawing.Point(707, 4);
             this.btnPDFDonVi.Name = "btnPDFDonVi";
-            this.btnPDFDonVi.Size = new System.Drawing.Size(152, 23);
+            this.btnPDFDonVi.Size = new System.Drawing.Size(163, 23);
             this.btnPDFDonVi.TabIndex = 11;
             this.btnPDFDonVi.Text = "Xuất PDF theo đơn vị";
             this.btnPDFDonVi.Click += new System.EventHandler(this.btnPDFDonVi_Click);
@@ -143,7 +250,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(246, 11);
+            this.labelControl1.Location = new System.Drawing.Point(331, 9);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(118, 13);
             this.labelControl1.TabIndex = 9;
@@ -157,11 +264,11 @@
             this.btnSaveFile.Appearance.Options.UseFont = true;
             this.btnSaveFile.Appearance.Options.UseForeColor = true;
             this.btnSaveFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.save;
-            this.btnSaveFile.Location = new System.Drawing.Point(1088, 5);
+            this.btnSaveFile.Location = new System.Drawing.Point(1018, 5);
             this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(97, 23);
+            this.btnSaveFile.Size = new System.Drawing.Size(167, 23);
             this.btnSaveFile.TabIndex = 7;
-            this.btnSaveFile.Text = "Xuất Excel ";
+            this.btnSaveFile.Text = "Xuất Excel tổng hợp";
             this.btnSaveFile.Click += new System.EventHandler(this.simpleButton1_Click_1);
             // 
             // btnLocDanhSach
@@ -171,7 +278,7 @@
             this.btnLocDanhSach.Appearance.Options.UseFont = true;
             this.btnLocDanhSach.Appearance.Options.UseForeColor = true;
             this.btnLocDanhSach.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.filter1;
-            this.btnLocDanhSach.Location = new System.Drawing.Point(111, 5);
+            this.btnLocDanhSach.Location = new System.Drawing.Point(14, 33);
             this.btnLocDanhSach.Name = "btnLocDanhSach";
             this.btnLocDanhSach.Size = new System.Drawing.Size(129, 23);
             this.btnLocDanhSach.TabIndex = 6;
@@ -187,14 +294,14 @@
             this.btnOpenFile.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.excel1;
             this.btnOpenFile.Location = new System.Drawing.Point(14, 5);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(91, 23);
+            this.btnOpenFile.Size = new System.Drawing.Size(129, 23);
             this.btnOpenFile.TabIndex = 0;
             this.btnOpenFile.Text = "Mở File";
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // cbbDonVi
             // 
-            this.cbbDonVi.Location = new System.Drawing.Point(370, 7);
+            this.cbbDonVi.Location = new System.Drawing.Point(470, 6);
             this.cbbDonVi.Name = "cbbDonVi";
             this.cbbDonVi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -215,9 +322,9 @@
             // 
             this.panelControl2.Controls.Add(this.TabConTrol);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 34);
+            this.panelControl2.Location = new System.Drawing.Point(0, 63);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1193, 529);
+            this.panelControl2.Size = new System.Drawing.Size(1193, 500);
             this.panelControl2.TabIndex = 1;
             // 
             // TabConTrol
@@ -228,7 +335,7 @@
             this.TabConTrol.Location = new System.Drawing.Point(2, 2);
             this.TabConTrol.Name = "TabConTrol";
             this.TabConTrol.SelectedTabPage = this.xtraTabPage1;
-            this.TabConTrol.Size = new System.Drawing.Size(1189, 525);
+            this.TabConTrol.Size = new System.Drawing.Size(1189, 496);
             this.TabConTrol.TabIndex = 1;
             this.TabConTrol.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -248,7 +355,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseForeColor = true;
             this.xtraTabPage1.Controls.Add(this.GCFileExcel);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1184, 500);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1184, 471);
             this.xtraTabPage1.Text = "Danh sách dữ liệu";
             // 
             // GCFileExcel
@@ -257,7 +364,7 @@
             this.GCFileExcel.Location = new System.Drawing.Point(0, 0);
             this.GCFileExcel.MainView = this.GVFileExcel;
             this.GCFileExcel.Name = "GCFileExcel";
-            this.GCFileExcel.Size = new System.Drawing.Size(1184, 500);
+            this.GCFileExcel.Size = new System.Drawing.Size(1184, 471);
             this.GCFileExcel.TabIndex = 0;
             this.GCFileExcel.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVFileExcel});
@@ -274,7 +381,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.GCNghiNgo);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1184, 500);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1184, 471);
             this.xtraTabPage2.Text = "Nghi ngờ";
             // 
             // GCNghiNgo
@@ -283,7 +390,7 @@
             this.GCNghiNgo.Location = new System.Drawing.Point(0, 0);
             this.GCNghiNgo.MainView = this.GVNghiNgo;
             this.GCNghiNgo.Name = "GCNghiNgo";
-            this.GCNghiNgo.Size = new System.Drawing.Size(1184, 500);
+            this.GCNghiNgo.Size = new System.Drawing.Size(1184, 471);
             this.GCNghiNgo.TabIndex = 1;
             this.GCNghiNgo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVNghiNgo});
@@ -299,7 +406,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.GCNguycocao);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1184, 500);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1184, 471);
             this.xtraTabPage3.Text = "Nguy cơ cao";
             // 
             // GCNguycocao
@@ -308,7 +415,7 @@
             this.GCNguycocao.Location = new System.Drawing.Point(0, 0);
             this.GCNguycocao.MainView = this.GVNguycocao;
             this.GCNguycocao.Name = "GCNguycocao";
-            this.GCNguycocao.Size = new System.Drawing.Size(1184, 500);
+            this.GCNguycocao.Size = new System.Drawing.Size(1184, 471);
             this.GCNguycocao.TabIndex = 2;
             this.GCNguycocao.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVNguycocao});
@@ -324,7 +431,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.GCNguycothap2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1184, 500);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1184, 471);
             this.xtraTabPage4.Text = "Nguy cơ thấp lần 2";
             // 
             // GCNguycothap2
@@ -333,7 +440,7 @@
             this.GCNguycothap2.Location = new System.Drawing.Point(0, 0);
             this.GCNguycothap2.MainView = this.GVNguycothap2;
             this.GCNguycothap2.Name = "GCNguycothap2";
-            this.GCNguycothap2.Size = new System.Drawing.Size(1184, 500);
+            this.GCNguycothap2.Size = new System.Drawing.Size(1184, 471);
             this.GCNguycothap2.TabIndex = 2;
             this.GCNguycothap2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVNguycothap2});
@@ -349,7 +456,7 @@
             // 
             this.xtraTabPage5.Controls.Add(this.GCDuongtinh);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1184, 500);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1184, 471);
             this.xtraTabPage5.Text = "Danh sách dương tính";
             // 
             // GCDuongtinh
@@ -358,7 +465,7 @@
             this.GCDuongtinh.Location = new System.Drawing.Point(0, 0);
             this.GCDuongtinh.MainView = this.GVDuongTinh;
             this.GCDuongtinh.Name = "GCDuongtinh";
-            this.GCDuongtinh.Size = new System.Drawing.Size(1184, 500);
+            this.GCDuongtinh.Size = new System.Drawing.Size(1184, 471);
             this.GCDuongtinh.TabIndex = 2;
             this.GCDuongtinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDuongTinh});
@@ -374,7 +481,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.GCAmTinh);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1184, 500);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1184, 471);
             this.xtraTabPage6.Text = "Danh sách âm tính";
             // 
             // GCAmTinh
@@ -383,7 +490,7 @@
             this.GCAmTinh.Location = new System.Drawing.Point(0, 0);
             this.GCAmTinh.MainView = this.GVAmTinh;
             this.GCAmTinh.Name = "GCAmTinh";
-            this.GCAmTinh.Size = new System.Drawing.Size(1184, 500);
+            this.GCAmTinh.Size = new System.Drawing.Size(1184, 471);
             this.GCAmTinh.TabIndex = 2;
             this.GCAmTinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVAmTinh});
@@ -402,7 +509,7 @@
             this.TabPageBaoCaoTongHop.Appearance.Header.Options.UseFont = true;
             this.TabPageBaoCaoTongHop.Appearance.Header.Options.UseForeColor = true;
             this.TabPageBaoCaoTongHop.Name = "TabPageBaoCaoTongHop";
-            this.TabPageBaoCaoTongHop.Size = new System.Drawing.Size(1184, 500);
+            this.TabPageBaoCaoTongHop.Size = new System.Drawing.Size(1184, 471);
             this.TabPageBaoCaoTongHop.Text = "Báo cáo tổng hợp";
             // 
             // xtraTabPage8
@@ -413,7 +520,7 @@
             this.xtraTabPage8.Appearance.Header.Options.UseForeColor = true;
             this.xtraTabPage8.Controls.Add(this.GCBaoCaoDonVi);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1184, 500);
+            this.xtraTabPage8.Size = new System.Drawing.Size(1184, 471);
             this.xtraTabPage8.Text = "Báo cáo theo đơn vị";
             // 
             // GCBaoCaoDonVi
@@ -422,7 +529,7 @@
             this.GCBaoCaoDonVi.Location = new System.Drawing.Point(0, 0);
             this.GCBaoCaoDonVi.MainView = this.GVBaoCaoDonVi;
             this.GCBaoCaoDonVi.Name = "GCBaoCaoDonVi";
-            this.GCBaoCaoDonVi.Size = new System.Drawing.Size(1184, 500);
+            this.GCBaoCaoDonVi.Size = new System.Drawing.Size(1184, 471);
             this.GCBaoCaoDonVi.TabIndex = 3;
             this.GCBaoCaoDonVi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVBaoCaoDonVi});
@@ -472,57 +579,20 @@
             this.previewBar4.OptionsBar.UseWholeRow = true;
             this.previewBar4.Text = "Main Menu";
             // 
-            // dateEditTuNgay
+            // btnBCTongHop
             // 
-            this.dateEditTuNgay.EditValue = null;
-            this.dateEditTuNgay.Location = new System.Drawing.Point(708, 5);
-            this.dateEditTuNgay.Name = "dateEditTuNgay";
-            this.dateEditTuNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditTuNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditTuNgay.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dateEditTuNgay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEditTuNgay.Size = new System.Drawing.Size(87, 20);
-            this.dateEditTuNgay.TabIndex = 12;
-            // 
-            // dateEditDenNgay
-            // 
-            this.dateEditDenNgay.EditValue = null;
-            this.dateEditDenNgay.Location = new System.Drawing.Point(815, 5);
-            this.dateEditDenNgay.Name = "dateEditDenNgay";
-            this.dateEditDenNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditDenNgay.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditDenNgay.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dateEditDenNgay.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEditDenNgay.Size = new System.Drawing.Size(87, 20);
-            this.dateEditDenNgay.TabIndex = 13;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(598, 10);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(104, 13);
-            this.labelControl2.TabIndex = 14;
-            this.labelControl2.Text = "Thời gian thống kê";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(799, 8);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(9, 13);
-            this.labelControl3.TabIndex = 15;
-            this.labelControl3.Text = "~";
+            this.btnBCTongHop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBCTongHop.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnBCTongHop.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.btnBCTongHop.Appearance.Options.UseFont = true;
+            this.btnBCTongHop.Appearance.Options.UseForeColor = true;
+            this.btnBCTongHop.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf;
+            this.btnBCTongHop.Location = new System.Drawing.Point(1018, 35);
+            this.btnBCTongHop.Name = "btnBCTongHop";
+            this.btnBCTongHop.Size = new System.Drawing.Size(167, 23);
+            this.btnBCTongHop.TabIndex = 20;
+            this.btnBCTongHop.Text = "Báo cáo tổng hợp ";
+            this.btnBCTongHop.Click += new System.EventHandler(this.btnBCTongHop_Click);
             // 
             // FrmBaoCaoExcelNguyCo
             // 
@@ -541,6 +611,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbChiCuc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -568,10 +644,6 @@
             this.xtraTabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GCBaoCaoDonVi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GVBaoCaoDonVi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditTuNgay.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditDenNgay.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -615,9 +687,14 @@
         private DevExpress.XtraEditors.SearchLookUpEdit cbbDonVi;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
         private DevExpress.XtraEditors.SimpleButton btnPDFDonVi;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.DateEdit dateEditDenNgay;
         private DevExpress.XtraEditors.DateEdit dateEditTuNgay;
+        private DevExpress.XtraEditors.SimpleButton btnPDFChiCuc;
+        private DevExpress.XtraEditors.SearchLookUpEdit cbbChiCuc;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnBCTongHop;
     }
 }

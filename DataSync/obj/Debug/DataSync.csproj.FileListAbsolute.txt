@@ -2010,4 +2010,5 @@ C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CoreCompileInputs.cache
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.dll
 C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.pdb
-C:\Users\LeThanhQuang\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csprojResolveAssemblyReference.cache
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csprojAssemblyReference.cache
+C:\Users\LETHANHQUANG\Documents\GitHub\BionetApp2018\DataSync\obj\Debug\DataSync.csproj.CopyComplete
