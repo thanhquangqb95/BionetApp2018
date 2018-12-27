@@ -1514,8 +1514,15 @@ namespace BioNetBLL
             return lst;
 
         }
+        public static List<View_ChoDuyetPhieu> GetDanhSachPhieuDaTiepNhanNew(string maDonVi)
+        {
+            List<View_ChoDuyetPhieu> lst = new List<View_ChoDuyetPhieu>();
+            var db = new DataObjects();
+            lst = db.GetDanhSachPhieuDaTiepNhanNew(maDonVi);
+            return lst;
+        }
 
-        public static List<PSTiepNhan> GetDanhSachPhieuDaDanhGia(string maDonvi, DateTime tuNgay, DateTime denNgay)
+            public static List<PSTiepNhan> GetDanhSachPhieuDaDanhGia(string maDonvi, DateTime tuNgay, DateTime denNgay)
         {
             List<PSTiepNhan> lst = new List<PSTiepNhan>();
             var db = new DataObjects();
@@ -2359,6 +2366,12 @@ namespace BioNetBLL
 
         #endregion
         #region Duyệt phiếu
+        public static PsReponse DuyetPhieuThuCong(PSTTPhieu ttphieu)
+        {
+            var db = new BioData();
+            return db.DuyetPhieuThuCong(ttphieu);
+        }
+
         public static PsReponse DuyetPhieuBT(PSTTPhieu phieu)
         {
             var db = new BioData();

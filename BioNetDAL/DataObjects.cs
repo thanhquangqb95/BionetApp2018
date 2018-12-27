@@ -3996,7 +3996,25 @@ namespace BioNetDAL
             }
             return lst;
         }
-
+        public List<View_ChoDuyetPhieu> GetDanhSachPhieuDaTiepNhanNew(string maDonVi)
+        {
+            List<View_ChoDuyetPhieu> lst = new List<View_ChoDuyetPhieu>();
+            try
+            {
+                if (maDonVi.Equals("all"))
+                {
+                    lst = db.View_ChoDuyetPhieus.OrderBy(p => p.MaDonVi).ThenBy(p=>p.MaPhieu).ToList();
+                }
+                else
+                {
+                    lst = db.View_ChoDuyetPhieus.Where(p =>p.MaDonVi.Contains(maDonVi)).OrderBy(p => p.MaPhieu).ToList();
+                }
+            }
+            catch
+            {
+            }
+            return lst;
+        }
         public List<PSChiDinhDichVu> GetDanhSachPhieuDaDuyet(string maDonVi, DateTime tuNgay, DateTime denNgay)
         {
             List<PSChiDinhDichVu> lst = new List<PSChiDinhDichVu>();
@@ -9080,16 +9098,14 @@ namespace BioNetDAL
                 if (DonVi.Equals("all"))
                 {
                     var res = (from vi in db.View_MABN_ChuaTraKQs
-                               join ct in db.PSChiTietGoiDichVuChungs on vi.MaGoiXN equals ct.IDGoiDichVuChung
-                               where ct.IDDichVu.Equals(TenDichVu) && vi.NgayCoKQ.Value.Date >= NgayBD.Date && vi.NgayCoKQ.Value.Date <= NgayKT.Date
+                               where vi.MaDichVu.Equals(TenDichVu) && vi.NgayCoKQ.Value.Date >= NgayBD.Date && vi.NgayCoKQ.Value.Date <= NgayKT.Date
                                select new { vi.MaBenhNhan }).Distinct().ToList();
                     ListMaBN = res.Select(s => s.MaBenhNhan).ToList();
                 }
                 else
                 {
                     var res = (from vi in db.View_MABN_ChuaTraKQs
-                               join ct in db.PSChiTietGoiDichVuChungs on vi.MaGoiXN equals ct.IDGoiDichVuChung
-                               where ct.IDDichVu.Equals(TenDichVu) && vi.NgayCoKQ.Value.Date >= NgayBD.Date && vi.NgayCoKQ.Value.Date <= NgayKT.Date && vi.IDCoSo.Contains(DonVi)
+                               where vi.MaDichVu.Equals(TenDichVu) && vi.NgayCoKQ.Value.Date >= NgayBD.Date && vi.NgayCoKQ.Value.Date <= NgayKT.Date && vi.IDCoSo.Contains(DonVi)
                                select new { vi.MaBenhNhan }).Distinct().ToList();
                     ListMaBN = res.Select(s => s.MaBenhNhan).ToList();
                 }
@@ -9215,7 +9231,7 @@ namespace BioNetDAL
                     catch { }
 
                 }
-                dsduongtinh = dsduongtinh.OrderBy(x => x.MaGoiXN).ToList();
+                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x=>x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
                 int stt = 1;
                 foreach(var ds in dsduongtinh)
                 {
@@ -9414,7 +9430,7 @@ namespace BioNetDAL
                     catch { }
 
                 }
-                dsduongtinh = dsduongtinh.OrderBy(x => x.MaGoiXN).ThenBy(x => x.VietTatDV).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L1).ThenBy(y => y.KetQua2L2).ThenBy(x=>x.KetQua1L2).ToList();
+                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x => x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
                 int stt = 1;
                 foreach (var ds in dsduongtinh)
                 {

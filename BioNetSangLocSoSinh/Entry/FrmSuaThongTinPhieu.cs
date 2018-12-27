@@ -78,19 +78,20 @@ namespace BioNetSangLocSoSinh.Entry
                 txtNoiLayMau.EditValue = ttphieu.NoiLayMau;
                 dateTiepNhan.EditValue = ttphieu.ngayNhanMau;
                 GioTiepNhan.EditValue = ttphieu.ngayNhanMau;
-                GiaGoiXN.EditValue = BioNet_Bus.GetThongTinhChiDinh(ttphieu.maPhieu, MaTiepNhan).DonGia;
                 txtMaPhieuKQ.EditValue = txtMaPhieu.EditValue;
-                NgayTiepNhan= DateTime.ParseExact(dateTiepNhan.Text + " " + GioTiepNhan.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+               
                 ttphieugoc = new PSSuaPhieuTT();
                 ttphieugoc.IDCoSo = ttphieu.maDonViCoSo;
-                ttphieugoc.GiaGoiXN= BioNet_Bus.GetThongTinhChiDinh(ttphieu.maPhieu, MaTiepNhan).DonGia;
-                ttphieugoc.IDGoiXN= ttphieu.maGoiXetNghiem;
+                ttphieugoc.IDGoiXN = ttphieu.maGoiXetNghiem;
                 ttphieugoc.DiaChiLayMau = ttphieu.DiaChiLayMau;
                 ttphieugoc.NoiLayMau = ttphieu.NoiLayMau;
                 ttphieugoc.NgayTiepNhan = ttphieu.ngayNhanMau;
                 ttphieugoc.MaBenhNhan = ttphieu.maBenhNhan;
                 ttphieugoc.MaTiepNhan = MaTiepNhan;
-                ttphieugoc.MaPhieu=MaPhieu;
+                ttphieugoc.MaPhieu = MaPhieu;
+                ttphieugoc.GiaGoiXN = BioNet_Bus.GetThongTinhChiDinh(ttphieu.maPhieu, MaTiepNhan).DonGia;
+                GiaGoiXN.EditValue = BioNet_Bus.GetThongTinhChiDinh(ttphieu.maPhieu, MaTiepNhan).DonGia;
+                
             }
             catch { }
         }
@@ -169,6 +170,7 @@ namespace BioNetSangLocSoSinh.Entry
                                 ttsuaphieu.DiaChiLayMau = txtDiaChiLayMau.Text;
                                 ttsuaphieu.IDGoiXN = cbbGoiXN.EditValue.ToString();
                                 ttsuaphieu.GiaGoiXN = decimal.Parse(GiaGoiXN.EditValue.ToString());
+                                NgayTiepNhan = DateTime.ParseExact(dateTiepNhan.Text + " " + GioTiepNhan.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                                 ttsuaphieu.NgayTiepNhan = NgayTiepNhan;
                                 ttsuaphieu.MaTiepNhan = ttphieugoc.MaTiepNhan;
                                 ttsuaphieu.MaBenhNhan = ttphieugoc.MaBenhNhan;
@@ -220,14 +222,6 @@ namespace BioNetSangLocSoSinh.Entry
                     GioTiepNhan.Enabled = true;
                     txtMatKhau.Enabled = true;
                     txtLyDo.Enabled = true;
-                    if (int.Parse(cbbTrangThaiPhieu.EditValue.ToString()) <3)
-                    {
-                        cbbGoiXN.Enabled = true;
-                    }
-                    else
-                    {
-                        cbbGoiXN.Enabled = false;
-                    }
                 }
                 else
                 {
@@ -235,7 +229,6 @@ namespace BioNetSangLocSoSinh.Entry
                     cbbDonVi.Enabled = false;
                     txtDiaChiLayMau.Enabled = false;
                     txtNoiLayMau.Enabled = false;
-                    cbbGoiXN.Enabled = false;
                     GiaGoiXN.Enabled = false;
                     dateTiepNhan.Enabled = false;
                     GioTiepNhan.Enabled = false;

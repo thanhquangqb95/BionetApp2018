@@ -15,6 +15,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraSplashScreen;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Text.RegularExpressions;
 
 namespace BioNetSangLocSoSinh.Entry
 {
@@ -30,7 +31,7 @@ namespace BioNetSangLocSoSinh.Entry
         private List<PSTiepNhan> lstDSCanDanhGia = new List<PSTiepNhan>();
         public List<PSDanhMucDanhGiaChatLuongMau> lstCLMau = new List<PSDanhMucDanhGiaChatLuongMau>();
         public List<PsDanhGiaMauSoBo> lstDanhGiaSoBo = new List<PsDanhGiaMauSoBo>();
-        public List<PSTiepNhan> lstTiepNhan = new List<PSTiepNhan>();
+        // public List<PSTiepNhan> lstTiepNhan = new List<PSTiepNhan>();
         public List<PSChiDinhDichVu> lstDaDuyet = new List<PSChiDinhDichVu>();
         private List<PSDanhMucDanhGiaChatLuongMau> sourceListDanhGiaChatLuong = new List<PSDanhMucDanhGiaChatLuongMau>();
         private List<PSChiTietDanhGiaChatLuong> lstDanhGiaChatLuong = new List<PSChiTietDanhGiaChatLuong>();
@@ -43,10 +44,7 @@ namespace BioNetSangLocSoSinh.Entry
             emp = Employee;
         }
 
-        private void txtNgayLayMau_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void labelControl39_Click(object sender, EventArgs e)
         {
@@ -66,7 +64,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.LoadDanhSachDaDuyet();
             this.LoadNew();
             this.sourceListDanhGiaChatLuong = BioNet_Bus.GetDanhMucDanhGiaChatLuong();
-
         }
 
         private void LoadDataDanhMuc()
@@ -81,7 +78,6 @@ namespace BioNetSangLocSoSinh.Entry
                 this.cbbChiCucDaDuyet.Properties.DataSource = lstChiCuc;
                 this.cbbChiCucDaDuyet.EditValue = "all";
                 this.cbbDonViDaDuyet.EditValue = "all";
-                
                 this.LookUpEditDonVi.DataSource = lstDonVi;
                 this.LookUpEditDonViDaDuyet.DataSource = lstDonVi;
                 this.cbbDonViChon.Properties.DataSource = lstDonVi;
@@ -144,10 +140,11 @@ namespace BioNetSangLocSoSinh.Entry
             this.lstDanhGiaSoBo.Add(dg4);
         }
 
-        private void LoadDanhSachTiepNhan(List<PSTiepNhan> lst)
+        private void LoadDanhSachTiepNhan()
         {
             this.GCDanhSachTiepNhan.DataSource = null;
-            this.GCDanhSachTiepNhan.DataSource = lst;
+            // this.GCDanhSachTiepNhan.DataSource = lst;
+            this.GCDanhSachTiepNhan.DataSource = BioNet_Bus.GetDanhSachPhieuDaTiepNhanNew("all");
             this.GVDanhSachTiepNhan.Columns["MaDonVi"].Group();
             this.GVDanhSachTiepNhan.ExpandAllGroups();
         }
@@ -159,12 +156,12 @@ namespace BioNetSangLocSoSinh.Entry
             this.GVDanhSachDaTracking.ExpandAllGroups();
         }
 
-        private void LoadDanhSachTiepNhan()
-        {
-            this.lstTiepNhan.Clear();
-            this.lstTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia("all");
-            this.LoadDanhSachTiepNhan(lstTiepNhan);
-        }
+        //private void LoadDanhSachTiepNhan()
+        //{
+        //    this.lstTiepNhan.Clear();
+        //    this.lstTiepNhan = BioNet_Bus.GetDanhSachPhieuChuaDanhGia("all");
+        //    this.LoadDanhSachTiepNhan(lstTiepNhan);
+        //}
         private void LoadDanhSachDaDuyet()
         {
             this.lstDaDuyet.Clear();
@@ -246,7 +243,7 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                 }
             }
-            catch { }
+            catch (Exception Ẽ) { }
         }
         private void HienThiThongTinPhieu(string maPhieu, string maDonVi)
         {
@@ -260,9 +257,9 @@ namespace BioNetSangLocSoSinh.Entry
             //Thông tin tiếp nhận
             this.txtMaTiepNhan.Text = data.TiepNhan.MaTiepNhan;
             this.txtNVTiepNhan.Text = BioNet_Bus.GetThongTinNhanVien(data.TiepNhan.MaNVTiepNhan).EmployeeName;
-            this.txtNgayTiepNhan.EditValue = data.TiepNhan.NgayTiepNhan.Value.Date;
+            this.txtNgayTiepNhan.EditValue = data.TiepNhan.NgayTiepNhan;
             if (data.Phieu != null)
-            {               
+            {
                 if (data.ChiDinh != null)
                 {
                     this.txtMaChiDinh.Text = data.ChiDinh.MaChiDinh;
@@ -271,7 +268,7 @@ namespace BioNetSangLocSoSinh.Entry
                 }
                 //Thông tin đơn vị
                 this.txtTrangThaiMau.EditValue = data.Phieu.TrangThaiMau != null ? data.Phieu.TrangThaiMau.ToString() : "1";
-                if(int.Parse(this.txtTrangThaiMau.EditValue.ToString())>1)
+                if (int.Parse(this.txtTrangThaiMau.EditValue.ToString()) > 1)
                 {
                     this.btnDuyet.Enabled = false;
                     this.btnDuyet.Visible = false;
@@ -298,10 +295,9 @@ namespace BioNetSangLocSoSinh.Entry
                 this.cbbViTriLayMau.EditValue = data.Phieu.IDViTriLayMau.ToString();
                 this.cbbChuongTrinh.EditValue = data.Phieu.IDChuongTrinh;
                 this.radioGroupGoiXN.EditValue = data.Phieu.MaGoiXN;
-                this.txtGioLayMau.EditValue = Convert.ToDateTime(data.Phieu.NgayGioLayMau.Value.ToString("HH:mm"));
-                this.txtNgayLayMau.EditValue = data.Phieu.NgayGioLayMau.Value.Date;
+                this.txtNgayLayMau.EditValue = data.Phieu.NgayGioLayMau;
                 this.txtNguoiLayMau.Text = String.IsNullOrEmpty(data.Phieu.TenNhanVienLayMau) ? this.txtNguoiLayMau.Text : data.Phieu.TenNhanVienLayMau;
-                if(string.IsNullOrEmpty(data.Phieu.DiaChiLayMau))
+                if (string.IsNullOrEmpty(data.Phieu.DiaChiLayMau))
                 {
                     this.txtDiaChiNoiLayMau.Text = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonVi)).DiaChiDVCS.ToString();
                 }
@@ -309,7 +305,7 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     this.txtDiaChiNoiLayMau.Text = data.Phieu.DiaChiLayMau;
                 }
-               
+
 
                 this.txtNoiLayMau.Text = data.Phieu.NoiLayMau;
                 this.radioDanhGia.SelectedIndex = (data.Phieu.isKhongDat ?? false) == false ? 0 : 1;
@@ -330,7 +326,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtPara.Text = data.Benhnhan.Para;
                     //Thông tin trẻ
                     this.txtTenBenhNhan.Text = data.Benhnhan.TenBenhNhan;
-                    this.txtGioiTinh.SelectedIndex = data.Benhnhan.GioiTinh ?? 2;
+                    this.txtGioiTinh.EditValue = data.Benhnhan.GioiTinh == null ? "2" : data.Benhnhan.GioiTinh.ToString();
                     this.cboPhuongPhapSinh.SelectedIndex = data.Benhnhan.PhuongPhapSinh ?? 2;
                     this.cbbDanToc.EditValue = data.Benhnhan.DanTocID;
                     if (string.IsNullOrEmpty(data.Benhnhan.NoiSinh))
@@ -341,14 +337,11 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         this.txtNoiSinh.Text = data.Benhnhan.NoiSinh;
                     }
-                    if (data.Benhnhan.NgayGioSinh != null)
-                    {
-                        this.txtGioSinhBenhNhan.EditValue = Convert.ToDateTime(data.Benhnhan.NgayGioSinh.Value.ToString("HH:mm"));
-                        this.txtNamSinhBenhNhan.EditValue = data.Benhnhan.NgayGioSinh.Value.Date;
-                    }
-                    this.txtCanNang.Text = data.Benhnhan.CanNang == null ? "0" : data.Benhnhan.CanNang.ToString();
-                    this.txtTuanTuoi.Text = data.Benhnhan.TuanTuoiKhiSinh == null ? "0" : data.Benhnhan.TuanTuoiKhiSinh.ToString();
-                    this.cbbDanToc.EditValue = data.Benhnhan.DanTocID == null ? 0 : data.Benhnhan.DanTocID;
+                    this.txtNamSinhBenhNhan.EditValue = data.Benhnhan.NgayGioSinh;
+
+                    this.txtCanNang.Text = data.Benhnhan.CanNang == null ? null : data.Benhnhan.CanNang.ToString();
+                    this.txtTuanTuoi.Text = data.Benhnhan.TuanTuoiKhiSinh == null ? null : data.Benhnhan.TuanTuoiKhiSinh.ToString();
+                    this.cbbDanToc.EditValue = data.Benhnhan.DanTocID == null ? 1 : data.Benhnhan.DanTocID;
                     this.cbbCheDoDD.EditValue = data.Phieu.CheDoDinhDuong.ToString();
                     if (data.ChiDinh != null)
                     {
@@ -360,7 +353,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 this.txtTrangThaiMau.EditValue = "1";
                 this.txtDiaChiNoiLayMau.Text = lstDonVi.FirstOrDefault(x => x.MaDVCS.Equals(maDonVi)).DiaChiDVCS.ToString();
-                this.txtNoiLayMau.Text = cbbDonViChon.Text.ToString();  
+                this.txtNoiLayMau.Text = cbbDonViChon.Text.ToString();
                 this.btnDuyet.Enabled = true;
                 this.btnDuyet.Visible = true;
                 this.btnLuu.Enabled = false;
@@ -370,6 +363,7 @@ namespace BioNetSangLocSoSinh.Entry
             KiemTraIsDaNhapLieu();
             ValidateNheCan();
             ValidateSinhNon();
+            ValidatePara();
             ValidateGuiMauTre(string.Empty, string.Empty);
             ValidateThuMauSom(string.Empty, string.Empty);
         }
@@ -388,10 +382,12 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void LoadNew()
         {
+            //Nút
             this.btnDuyet.Enabled = false;
             this.btnLuu.Enabled = false;
             this.btnHuy.Enabled = false;
             this.btnBackPhieu.Enabled = false;
+            //Thông tin
             this.checkedListBoxXN.Enabled = false;
             this.txtMaTiepNhan.ResetText();
             this.txtMaChiDinh.ResetText();
@@ -405,18 +401,16 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtMaBenhNhan.ResetText();
             this.txtMaPhieuHienThi.ResetText();
             this.txtMaPhieu.ResetText();
-            this.txtPara.ResetText();
-            this.cboPhuongPhapSinh.EditValue = "0";
-            this.txtCanNang.EditValue = "0";
+            this.txtPara.EditValue = null;
+            this.cboPhuongPhapSinh.ResetText();
+            this.txtCanNang.EditValue = null;
+            this.txtTuanTuoi.EditValue = null;
             this.cbbChuongTrinh.ItemIndex = 0;
             this.cbbDanToc.ItemIndex = 0;
-            this.txtGioLayMau.ResetText();
-            this.txtGioSinhBenhNhan.EditValue = null;
             this.txtGhiChu.ResetText();
             this.txtDiaChiGiaDinh.ResetText();
             this.txtDiaChiGiaDinh.ResetText();
-            this.txtCanNang.ResetText();
-            this.txtGioiTinh.ResetText();
+            this.txtGioiTinh.EditValue = "2";
             this.txtNamSinhBenhNhan.ResetText();
             this.txtNamSinhCha.ResetText();
             this.txtNamSinhMe.ResetText();
@@ -431,12 +425,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.radioGroupGoiXN.EditValue = null;
             this.cbbTTTre.EditValue = "0";
             this.cbbViTriLayMau.EditValue = "0";
-            this.txtTuanTuoi.ResetText();
-            this.txtGioiTinh.ResetText();
-            this.cbbDanToc.ResetText();
+            this.txtGioiTinh.EditValue=2;
+            this.cbbDanToc.EditValue = null;
             this.cbbChuongTrinh.ResetText();
-            this.txtGioSinhBenhNhan.ResetText();
-            this.txtGioLayMau.EditValue = null;
             this.txtDiaChiGiaDinh.ResetText();
             this.txtNoiLayMau.ResetText();
             this.txtNgayLayMau.ResetText();
@@ -452,8 +443,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtPara.Enabled = isreadonly;
             this.cboPhuongPhapSinh.Enabled = isreadonly;
             this.txtCanNang.Enabled = isreadonly;
-            this.txtGioLayMau.Enabled = isreadonly;
-            this.txtGioSinhBenhNhan.Enabled = isreadonly;
             this.txtGhiChu.Enabled = isreadonly;
             this.txtDiaChiGiaDinh.Enabled = isreadonly;
             this.txtCanNang.Enabled = isreadonly;
@@ -477,8 +466,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtGioiTinh.Enabled = isreadonly;
             this.cbbDanToc.Enabled = isreadonly;
             this.cbbChuongTrinh.Enabled = isreadonly;
-            this.txtGioSinhBenhNhan.Enabled = isreadonly;
-            this.txtGioLayMau.Enabled = isreadonly;
             this.txtDiaChiNoiLayMau.Enabled = isreadonly;
             this.txtSDTNguoiLayMau.Enabled = isreadonly;
             this.txtNguoiLayMau.Enabled = isreadonly;
@@ -521,7 +508,7 @@ namespace BioNetSangLocSoSinh.Entry
                 var ts = rd.EditValue;
                 if (ts.Equals("DVGXN0001"))
                 {
-                    if(int.Parse(txtTrangThaiMau.EditValue.ToString())<2)
+                    if (int.Parse(txtTrangThaiMau.EditValue.ToString()) < 2)
                     {
                         this.checkedListBoxXN.Enabled = true;
                         this.txtMaPhieu1.Enabled = true;
@@ -544,7 +531,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.checkedListBoxXN.DataSource = null;
                     this.lstChiDinhDichVu = BioNet_Bus.GetDanhSachDichVuTheoMaGoi(radioGroupGoiXN.EditValue.ToString(), cbbDonViChon.EditValue.ToString());
                     var list = BioNet_Bus.GetDanhsachGoiDichVuTrungTam(cbbDonViChon.EditValue.ToString());
-                    this.txtGiaGoiXN.EditValue = list.FirstOrDefault(x => x.IDGoiDichVuChung == radioGroupGoiXN.Text).DonGia;            
+                    this.txtGiaGoiXN.EditValue = list.FirstOrDefault(x => x.IDGoiDichVuChung == radioGroupGoiXN.Text).DonGia;
                     this.LoadDanhSachDichVu();
                     this.LoadGCChiDinhDichVu();
                     this.txtMaPhieu1.Enabled = false;
@@ -560,8 +547,8 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadGCChiDinhDichVu()
         {
             this.GCChiDinhDichVu.DataSource = null;
-           
-            if(!radioGroupGoiXN.EditValue.Equals("DVGXN0001"))
+
+            if (!radioGroupGoiXN.EditValue.Equals("DVGXN0001"))
             {
                 this.GCChiDinhDichVu.DataSource = this.lstChiDinhDichVu;
                 foreach (CheckedListBoxItem item in this.checkedListBoxXN.Items)
@@ -600,12 +587,12 @@ namespace BioNetSangLocSoSinh.Entry
                     catch (Exception ex) { }
                 }
             }
-           
+
         }
 
         private void cbbTTTre_EditValueChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void radioDanhGia_EditValueChanged(object sender, EventArgs e)
@@ -646,7 +633,7 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     if (this.KiemTraCacTruongDuLieuTruocKhiLuu())
                     {
-                            this.LuuThongTinPhieu(true);
+                        this.LuuThongTinPhieu(true);
                     }
                 }
                 else
@@ -658,7 +645,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
 
             }
-            
+
         }
 
         private bool KiemTraCacTruongDuLieuTruocKhiLuu()
@@ -674,15 +661,6 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 this.txtTenMe.BackColor = Color.White;
             }
-            if (string.IsNullOrEmpty(this.txtGioLayMau.Text.Trim()))
-            {
-                this.txtGioLayMau.BackColor = Color.PapayaWhip;
-                kq = false;
-            }
-            else
-            {
-                this.txtGioLayMau.BackColor = Color.White;
-            }
             if (string.IsNullOrEmpty(this.txtTenBenhNhan.Text.Trim()))
             {
                 this.txtTenBenhNhan.BackColor = Color.PapayaWhip;
@@ -690,7 +668,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
             else
             {
-                this.txtGioLayMau.BackColor = Color.White;
+                this.txtTenBenhNhan.BackColor = Color.White;
             }
             //if (string.IsNullOrEmpty(this.txtTenCha.Text.Trim()))
             //{
@@ -719,7 +697,7 @@ namespace BioNetSangLocSoSinh.Entry
                     this.txtNamSinhMe.BackColor = Color.White;
                 }
             }
-            if(!string.IsNullOrEmpty(this.txtTenCha.Text))
+            if (!string.IsNullOrEmpty(this.txtTenCha.Text))
             {
                 if (string.IsNullOrEmpty(this.txtNamSinhCha.Text))
                 {
@@ -738,7 +716,7 @@ namespace BioNetSangLocSoSinh.Entry
                         this.txtNamSinhCha.BackColor = Color.White;
                     }
                 }
-            }          
+            }
 
             if (string.IsNullOrEmpty(this.txtDiaChiGiaDinh.Text.Trim()))
             {
@@ -780,7 +758,7 @@ namespace BioNetSangLocSoSinh.Entry
                     if (((DateTime)this.txtNgayLayMau.EditValue) > ((DateTime)this.txtNgayTiepNhan.EditValue))
                     {
                         XtraMessageBox.Show("Ngày lấy mẫu không được lớn hơn ngày nhận mẫu!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        kq= false;
+                        kq = false;
                     }
                 }
                 catch
@@ -794,7 +772,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 try
                 {
-                    TimeSpan time = DateTime.ParseExact(this.txtNamSinhBenhNhan.Text + " " + this.txtGioSinhBenhNhan.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture) - DateTime.ParseExact(this.txtNgayLayMau.Text + " " + this.txtGioLayMau.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                    TimeSpan time = DateTime.ParseExact(this.txtNamSinhBenhNhan.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture) - DateTime.ParseExact(this.txtNgayLayMau.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                     if (time.Minutes > 0)
                     {
                         XtraMessageBox.Show("Ngày tháng năm sinh trẻ không thể sau ngày lấy mẫu", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -809,7 +787,7 @@ namespace BioNetSangLocSoSinh.Entry
                 }
             }
 
-            if (this.txtGioiTinh.SelectedIndex < 0)
+            if (this.txtGioiTinh.EditValue == null)
             {
                 txtGioiTinh.BackColor = Color.PapayaWhip;
                 kq = false;
@@ -839,11 +817,15 @@ namespace BioNetSangLocSoSinh.Entry
 
             if (!string.IsNullOrEmpty(this.txtCanNang.Text))
             {
-                if (int.Parse(this.txtCanNang.Text.ToString()) < 500)
+                if (IsNumber(this.txtCanNang.Text))
                 {
-                    this.txtCanNang.BackColor = Color.PapayaWhip;
-                    kq = false;
+                    if (int.Parse(this.txtCanNang.Text.ToString()) < 500)
+                    {
+                        this.txtCanNang.BackColor = Color.PapayaWhip;
+                        kq = false;
+                    }
                 }
+
             }
             else
             {
@@ -852,16 +834,20 @@ namespace BioNetSangLocSoSinh.Entry
 
             if (!string.IsNullOrEmpty(this.txtTuanTuoi.Text))
             {
-                if (int.Parse(this.txtTuanTuoi.Text.ToString()) < 21 && int.Parse(this.txtTuanTuoi.Text) >= 0)
+                if (IsNumber(this.txtTuanTuoi.Text))
                 {
-                    this.txtTuanTuoi.BackColor = Color.PapayaWhip;
-                    kq = false;
+                    if (int.Parse(this.txtTuanTuoi.Text.ToString()) < 21 && int.Parse(this.txtTuanTuoi.Text) >= 0)
+                    {
+                        this.txtTuanTuoi.BackColor = Color.PapayaWhip;
+                        kq = false;
+                    }
                 }
+
             }
             else
             {
                 this.txtTuanTuoi.BackColor = Color.PapayaWhip;
-            }           
+            }
 
             if (!this.txtSoLuongTruyenMau.ReadOnly && int.Parse(this.cbbTTTre.EditValue.ToString() ?? "0") > 3)
             {
@@ -910,7 +896,7 @@ namespace BioNetSangLocSoSinh.Entry
                     kq = false;
                 }
             }
-           
+
 
             return kq;
         }
@@ -926,16 +912,29 @@ namespace BioNetSangLocSoSinh.Entry
                 #region TT bệnh nhân
                 PSPatient benhNhan = new PSPatient();
                 benhNhan.TenBenhNhan = this.ChuyenSangChuHoa(this.txtTenBenhNhan.Text.Trim());
-                benhNhan.GioiTinh = this.txtGioiTinh.SelectedIndex < 0 ? 2 : this.txtGioiTinh.SelectedIndex;
-                benhNhan.CanNang = int.Parse(this.txtCanNang.Text);
+                benhNhan.GioiTinh = string.IsNullOrEmpty(this.txtGioiTinh.EditValue.ToString()) != true ? int.Parse(this.txtGioiTinh.EditValue.ToString()) : 2;
+                if (IsNumber(this.txtCanNang.Text))
+                {
+                    benhNhan.CanNang = int.Parse(this.txtCanNang.EditValue.ToString());
+                }
+                else
+                {
+                    benhNhan.CanNang = null;
+                }
+                if (IsNumber(this.txtTuanTuoi.Text))
+                {
+                    benhNhan.TuanTuoiKhiSinh = int.Parse(this.txtTuanTuoi.EditValue.ToString());
+                }
+                else
+                {
+                    benhNhan.TuanTuoiKhiSinh = null;
+                }
                 benhNhan.DanTocID = this.cbbDanToc.EditValue == null ? 1 : int.Parse(this.cbbDanToc.EditValue.ToString());
                 string NgaySinhBN = string.IsNullOrEmpty(txtNamSinhBenhNhan.Text) ? DateTime.Now.Date.ToString() : txtNamSinhBenhNhan.Text;
-                string GioSinhBN = string.IsNullOrEmpty(txtGioSinhBenhNhan.Text) ? "00:00" : txtGioSinhBenhNhan.Text;
-                benhNhan.NgayGioSinh = DateTime.ParseExact(NgaySinhBN + " " + GioSinhBN, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                benhNhan.NgayGioSinh = DateTime.ParseExact(NgaySinhBN, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                 benhNhan.NoiSinh = this.txtNoiSinh.Text;
                 benhNhan.PhuongPhapSinh = this.cboPhuongPhapSinh.EditValue == null ? 2 : this.cboPhuongPhapSinh.SelectedIndex;
                 benhNhan.QuocTichID = 1;
-                benhNhan.TuanTuoiKhiSinh = int.Parse(this.txtTuanTuoi.Text);
                 benhNhan.MaBenhNhan = this.txtMaBenhNhan.Text;
                 if (!string.IsNullOrEmpty(txtTenCha.Text))
                 {
@@ -951,8 +950,10 @@ namespace BioNetSangLocSoSinh.Entry
                 benhNhan.MotherName = this.ChuyenSangChuHoa(this.txtTenMe.Text);
                 benhNhan.DiaChi = this.txtDiaChiGiaDinh.Text;
                 benhNhan.Para = this.txtPara.Text.TrimEnd();
-                benhNhan.MaKhachHang = this.txtMaKhachHang.Text.TrimEnd();
+                benhNhan.MaKhachHang = this.txtMaKhachHang.Text.Trim();
                 phieu.Benhnhan = benhNhan;
+                phieu.MaBenhNhan = benhNhan.MaBenhNhan;
+                phieu.MaNV = emp.EmployeeCode;
                 #endregion
 
                 #region Phiếu sàng lọc
@@ -969,13 +970,12 @@ namespace BioNetSangLocSoSinh.Entry
                 else phieuSangLoc.isLayMauLan2 = false;
                 phieuSangLoc.MaBenhNhan = this.txtMaBenhNhan.Text.Trim();
                 phieuSangLoc.CheDoDinhDuong = byte.Parse(this.cbbCheDoDD.EditValue.ToString());
-                phieuSangLoc.IDChuongTrinh = this.cbbChuongTrinh.EditValue.ToString();
+                phieuSangLoc.IDChuongTrinh = string.IsNullOrEmpty(this.cbbChuongTrinh.EditValue.ToString()) == true ? string.Empty : this.cbbChuongTrinh.EditValue.ToString();
                 phieuSangLoc.MaGoiXN = this.radioGroupGoiXN.EditValue.ToString();
                 phieuSangLoc.IDPhieuLan1 = this.txtMaPhieu1.Text;
                 phieuSangLoc.TinhTrangLucLayMau = byte.Parse(this.cbbTTTre.EditValue.ToString());
                 string NgayLayMau = string.IsNullOrEmpty(txtNgayLayMau.Text) ? DateTime.Now.Date.ToString() : txtNgayLayMau.Text;
-                string GioLayMau = string.IsNullOrEmpty(txtGioLayMau.Text) ? "00:00" : txtGioLayMau.Text;
-                phieuSangLoc.NgayGioLayMau = DateTime.ParseExact(NgayLayMau + " " + GioLayMau, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture); 
+                phieuSangLoc.NgayGioLayMau = DateTime.ParseExact(NgayLayMau, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                 phieuSangLoc.NgayNhanMau = this.txtNgayTiepNhan.DateTime;
                 phieuSangLoc.IDPhieu = this.txtMaPhieu.Text;
                 phieuSangLoc.LuuYPhieu = this.txtGhiChu.Text;
@@ -986,12 +986,12 @@ namespace BioNetSangLocSoSinh.Entry
                         phieuSangLoc.SLTruyenMau = short.Parse(this.txtSoLuongTruyenMau.Text);
                 }
                 phieuSangLoc.SDTNhanVienLayMau = this.txtSDTNguoiLayMau.Text;
-                phieuSangLoc.TenNhanVienLayMau = this.ChuyenSangChuHoa(this.txtNguoiLayMau.Text);
+                phieuSangLoc.TenNhanVienLayMau = this.ChuyenSangChuHoa(this.txtNguoiLayMau.Text.Trim());
                 phieuSangLoc.NoiLayMau = this.txtNoiLayMau.Text;
                 phieuSangLoc.DiaChiLayMau = this.txtDiaChiNoiLayMau.Text;
                 phieuSangLoc.Para = this.txtPara.Text.TrimEnd();
                 phieuSangLoc.NgayTaoPhieu = DateTime.Now;
-                
+
                 // this.ValidateFrom();
 
                 foreach (var item in this.lstDanhGiaSoBo)
@@ -1024,7 +1024,6 @@ namespace BioNetSangLocSoSinh.Entry
                             var res = lstTTLyDo.FirstOrDefault(o => o.IDDanhGiaChatLuongMau == ld.IDDanhGiaChatLuongMau);
                             if (res != null)
                             {
-                                ld.TenLyDo = res.ChatLuongMau;
                                 if (string.IsNullOrEmpty(lydokhongdat))
                                     lydokhongdat += res.ChatLuongMau;
                                 else lydokhongdat += ". " + res.ChatLuongMau;
@@ -1034,6 +1033,10 @@ namespace BioNetSangLocSoSinh.Entry
                 }
                 phieuSangLoc.LyDoKhongDat = lydokhongdat;
                 phieu.Phieu = phieuSangLoc;
+                phieu.MaPhieu = phieuSangLoc.IDPhieu;
+                phieu.MaPhieu1 = phieuSangLoc.IDPhieuLan1;
+                phieu.MaGoiXN = phieuSangLoc.MaGoiXN;
+                phieu.MaDonVi = phieuSangLoc.IDCoSo;
                 #endregion
                 #region Đợt chỉ định
                 PSChiDinhDichVu DotchiDinh = new PSChiDinhDichVu();
@@ -1050,6 +1053,8 @@ namespace BioNetSangLocSoSinh.Entry
                 DotchiDinh.SoLuong = 1;
                 DotchiDinh.DonGia = int.Parse(this.txtGiaGoiXN.EditValue.ToString());
                 DotchiDinh.isLayMauLai = false;
+                phieu.MaChiDinh = DotchiDinh.MaChiDinh;
+                phieu.DonGiaGoi = DotchiDinh.DonGia;
                 #endregion
                 #region Tiếp nhận
                 PSTiepNhan tiepNhan = new PSTiepNhan();
@@ -1057,27 +1062,28 @@ namespace BioNetSangLocSoSinh.Entry
                 tiepNhan.MaDonVi = this.cbbDonViChon.EditValue.ToString();
                 tiepNhan.MaPhieu = this.txtMaPhieu.Text;
                 phieu.TiepNhan = tiepNhan;
+                phieu.MaTiepNhan = tiepNhan.MaTiepNhan;
                 #endregion
                 phieu.ChiDinh = DotchiDinh;
-                    SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.WaitingfromSave), true, true, false);
-                    var result = BioNet_Bus.DuyetPhieuBT(phieu);
-                    SplashScreenManager.CloseForm();
-                    if (result.Result)
-                    {
-                        BioNet_Bus.UpdateThongTinPhieuLan1(this.txtMaPhieu1.Text.Trim().ToString());
-                        XtraMessageBox.Show("Đã lưu!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
-                        this.LoadNew();
-                        this.ReadOnly(false);
-                        this.LoadDanhSachTiepNhan();
-                        this.LoadDanhSachDaDuyet();
-                        this.btnDuyet.Enabled = false;
-                        this.btnLuu.Enabled = false;
-                        this.GVDanhSachTiepNhan.Focus();
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Lỗi không thể lưu thông tin phiếu và đánh giá mẫu.\r\n Lỗi chi tiết " + result.StringError, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.WaitingfromSave), true, true, false);
+                var result = BioNet_Bus.DuyetPhieuThuCong(phieu);
+                SplashScreenManager.CloseForm();
+                if (result.Result)
+                {
+                    BioNet_Bus.UpdateThongTinPhieuLan1(this.txtMaPhieu1.Text.Trim().ToString());
+                    XtraMessageBox.Show("Đã lưu!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                    this.LoadNew();
+                    this.ReadOnly(false);
+                    this.LoadDanhSachTiepNhan();
+                    this.LoadDanhSachDaDuyet();
+                    this.btnDuyet.Enabled = false;
+                    this.btnLuu.Enabled = false;
+                    this.GVDanhSachTiepNhan.Focus();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Lỗi không thể lưu thông tin phiếu và đánh giá mẫu.\r\n Lỗi chi tiết " + result.StringError, "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
 
             catch (Exception ex)
@@ -1108,33 +1114,79 @@ namespace BioNetSangLocSoSinh.Entry
         {
             try
             {
-                if (!string.IsNullOrEmpty(this.txtTuanTuoi.Text.Trim()))
+                if (txtTuanTuoi.EditValue == null)
                 {
-                    bool giatri = false;
-                    int tuan = int.Parse(this.txtTuanTuoi.EditValue.ToString());
-                    if(tuan<=this.GiaTriSinhNon)
+                    PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
+                    dg1.giaTri = true;
+                    dg1.maGiaTri = "isSinhNon";
+                    dg1.noiDungChuThich = "Tuần tuổi thai không xác định";
+                    this.lstDanhGiaSoBo.Add(dg1);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(this.txtTuanTuoi.Text.Trim()))
                     {
-                        giatri = true;
+                        bool giatri = false;
+                        int tuan = int.Parse(this.txtTuanTuoi.EditValue.ToString());
+                        if (tuan <= this.GiaTriSinhNon)
+                        {
+                            giatri = true;
+                        }
+                        else
+                        {
+                            giatri = false;
+                        }
+                        var tt = this.lstDanhGiaSoBo.FirstOrDefault(p => p.maGiaTri == "isSinhNon");
+                        if (tt != null)
+                        {
+                            tt.giaTri = giatri;
+                        }
+                        else
+                        {
+                            PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
+                            dg1.giaTri = giatri;
+                            dg1.maGiaTri = "isSinhNon";
+                            dg1.noiDungChuThich = "Sinh non";
+                            this.lstDanhGiaSoBo.Add(dg1);
+                        }
+
                     }
-                    else
+                }
+            
+                this.LoadThongTinLuuY();
+            }
+            catch { }
+        }
+        private void ValidatePara()
+        {
+            try
+            {
+                if (txtTuanTuoi.EditValue == null)
+                {
+                    PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
+                    dg1.giaTri = true;
+                    dg1.maGiaTri = "isPara";
+                    dg1.noiDungChuThich = "Para không xác định";
+                    this.lstDanhGiaSoBo.Add(dg1);
+                }
+                else
+                {
+                    var tt = this.lstDanhGiaSoBo.FirstOrDefault(p => p.maGiaTri == "isPara");
+                    if (tt != null)
                     {
-                        giatri = false;
-                    }
-                    var tt = this.lstDanhGiaSoBo.FirstOrDefault(p => p.maGiaTri == "isSinhNon");
-                    if(tt!=null)
-                    {
-                        tt.giaTri = giatri;
+                        tt.giaTri = false;
                     }
                     else
                     {
                         PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
-                        dg1.giaTri = giatri;
-                        dg1.maGiaTri = "isSinhNon";
-                        dg1.noiDungChuThich = "Sinh non";
+                        dg1.giaTri = false;
+                        dg1.maGiaTri = "isPara";
+                        dg1.noiDungChuThich = "";
                         this.lstDanhGiaSoBo.Add(dg1);
                     }
-                    this.LoadThongTinLuuY();
                 }
+
+                this.LoadThongTinLuuY();
             }
             catch { }
         }
@@ -1142,7 +1194,15 @@ namespace BioNetSangLocSoSinh.Entry
         {
             try
             {
-                if (!string.IsNullOrEmpty(this.txtCanNang.Text.Trim()))
+               if(txtCanNang.EditValue==null)
+                {
+                    PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
+                    dg1.giaTri = true;
+                    dg1.maGiaTri = "isNheCan";
+                    dg1.noiDungChuThich = "Cân nặng không xác định";
+                    this.lstDanhGiaSoBo.Add(dg1);
+                }
+                else
                 {
                     if (!string.IsNullOrEmpty(this.txtCanNang.Text.Trim()))
                     {
@@ -1164,19 +1224,19 @@ namespace BioNetSangLocSoSinh.Entry
                         else
                         {
                             PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
-                            dg1.giaTri = true;
+                            dg1.giaTri = giatri;
                             dg1.maGiaTri = "isNheCan";
                             dg1.noiDungChuThich = "Nhẹ cân";
                             this.lstDanhGiaSoBo.Add(dg1);
                         }
                         this.LoadThongTinLuuY();
                     }
-                    this.LoadThongTinLuuY();
                 }
+                    
             }
             catch { }
         }
-        private void ValidateGuiMauTre(string ngaylaymau,string ngaynhanmau)
+        private void ValidateGuiMauTre(string ngaylaymau, string ngaynhanmau)
         {
             try
             {
@@ -1187,9 +1247,9 @@ namespace BioNetSangLocSoSinh.Entry
 
                     time = DateTime.Parse(ngaynhanmau) - DateTime.Parse(ngaylaymau);
                 }
-                else if (!string.IsNullOrEmpty(this.txtNgayLayMau.Text) && !string.IsNullOrEmpty(this.txtGioLayMau.Text))
+                else if (!string.IsNullOrEmpty(this.txtNgayLayMau.Text))
                 {
-                    DateTime ngayGioLayMau = DateTime.ParseExact(this.txtNgayLayMau.Text + " " + this.txtGioLayMau.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime ngayGioLayMau = DateTime.ParseExact(this.txtNgayLayMau.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                     DateTime ngayNhanMau = DateTime.ParseExact(this.txtNgayTiepNhan.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                     time = ngayNhanMau - ngayGioLayMau;
                 }
@@ -1199,7 +1259,7 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         dg.giaTri = true;
                         dg.noiDungChuThich = "Chưa có dữ liệu khoảng thời gian gửi mẫu";
-                    }    
+                    }
                     else
                     {
                         PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
@@ -1213,7 +1273,7 @@ namespace BioNetSangLocSoSinh.Entry
                 }
                 if (time.TotalMinutes > 5760)
                 {
-                   
+
                     if (dg != null)
                     {
                         dg.giaTri = true;
@@ -1225,7 +1285,7 @@ namespace BioNetSangLocSoSinh.Entry
                         {
                             dg.noiDungChuThich = "Gửi mẫu muộn";
                         }
-                    } 
+                    }
                     else
                     {
                         PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
@@ -1247,7 +1307,7 @@ namespace BioNetSangLocSoSinh.Entry
                     if (dg != null)
                     {
                         dg.giaTri = false;
-                    }  
+                    }
                     else
                     {
                         PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
@@ -1270,10 +1330,10 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     time = DateTime.Parse(ngaylaymau) - DateTime.Parse(ngayGioSinh);
                 }
-                else if (!string.IsNullOrEmpty(this.txtNgayLayMau.Text) && !string.IsNullOrEmpty(this.txtGioLayMau.Text) && !string.IsNullOrEmpty(this.txtNamSinhBenhNhan.Text) && !string.IsNullOrEmpty(this.txtGioSinhBenhNhan.Text))
+                else if (!string.IsNullOrEmpty(this.txtNgayLayMau.Text) && !string.IsNullOrEmpty(this.txtNamSinhBenhNhan.Text))
                 {
-                    DateTime ngayGioLayMau = DateTime.ParseExact(this.txtNgayLayMau.Text + " " + this.txtGioLayMau.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-                    DateTime ngaySinh = DateTime.ParseExact(this.txtNamSinhBenhNhan.Text + " " + this.txtGioSinhBenhNhan.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime ngayGioLayMau = DateTime.ParseExact(this.txtNgayLayMau.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime ngaySinh = DateTime.ParseExact(this.txtNamSinhBenhNhan.Text, "dd/MM/yyyy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                     time = ngayGioLayMau - ngaySinh;
                 }
                 else
@@ -1301,7 +1361,7 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         dg.giaTri = true;
                         dg.noiDungChuThich = "Lấy mẫu trước 30h sau khi sinh";
-                    }             
+                    }
                     else
                     {
                         PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
@@ -1316,7 +1376,7 @@ namespace BioNetSangLocSoSinh.Entry
                     if (dg != null)
                     {
                         dg.giaTri = false;
-                    }  
+                    }
                     else
                     {
                         PsDanhGiaMauSoBo dg1 = new PsDanhGiaMauSoBo();
@@ -1332,7 +1392,7 @@ namespace BioNetSangLocSoSinh.Entry
         private bool KiemTraIsDaNhapLieu()
         {
             bool kq = true;
-            if(string.IsNullOrEmpty(txtTenBenhNhan.Text))
+            if (string.IsNullOrEmpty(txtTenBenhNhan.Text))
             {
                 txtTenBenhNhan.BackColor = Color.PapayaWhip;
             }
@@ -1451,7 +1511,7 @@ namespace BioNetSangLocSoSinh.Entry
             return kq;
         }
         #endregion
-       
+
         private string ChuyenSangChuHoa(string chuoi)
         {
             if (!string.IsNullOrEmpty(chuoi))
@@ -1464,40 +1524,60 @@ namespace BioNetSangLocSoSinh.Entry
 
         }
 
-        
+
 
         private void txtCanNang_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCanNang.Text))
+            if ( txtCanNang.EditValue == null)
             {
                 txtCanNang.BackColor = Color.PapayaWhip;
+                
             }
             else
             {
-                txtCanNang.BackColor = Color.White;
+                if(string.IsNullOrEmpty(txtCanNang.EditValue.ToString()) || txtCanNang.EditValue.ToString() == "0")
+                {
+                    txtCanNang.BackColor = Color.PapayaWhip;
+                    txtCanNang.EditValue = null;
+                }
+                else
+                {
+                    txtCanNang.BackColor = Color.White;
+                }
+
             }
             ValidateNheCan();
         }
 
         private void txtTuanTuoi_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTuanTuoi.Text))
+            if (txtTuanTuoi.EditValue == null)
             {
                 txtTuanTuoi.BackColor = Color.PapayaWhip;
+
             }
             else
             {
-                txtTuanTuoi.BackColor = Color.White;
+                if (string.IsNullOrEmpty(txtTuanTuoi.EditValue.ToString()) ||txtTuanTuoi.EditValue.ToString()=="0")
+                {
+                    txtTuanTuoi.BackColor = Color.PapayaWhip;
+                    txtTuanTuoi.EditValue = null;
+                }
+                else
+                {
+                    txtTuanTuoi.BackColor = Color.White;
+                }
+
             }
             ValidateSinhNon();
         }
 
         private void txtMaPhieuHienThi_Validated(object sender, EventArgs e)
         {
-           
+
         }
 
-      
+
 
         private void txtTenMe_Validated(object sender, EventArgs e)
         {
@@ -1505,19 +1585,36 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtPara_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPara.Text) || txtPara.Text.Length!=4)
+            if (txtPara.EditValue == null)
             {
                 txtPara.BackColor = Color.PapayaWhip;
             }
             else
             {
-                txtPara.BackColor = Color.White;
+                if (txtPara.EditValue.ToString().Length != 4)
+                {
+                    if (txtPara.EditValue.ToString().Length == 0)
+                    {
+                        txtPara.BackColor = Color.White;
+                        txtPara.EditValue = null;
+                    }
+                    else
+                    {
+                        txtPara.BackColor = Color.PapayaWhip;
+                    }
+                }
+                else
+                {
+                    txtPara.BackColor = Color.White;
+                }
+
             }
+            ValidatePara();
         }
 
         private void txtTenBenhNhan_Validated(object sender, EventArgs e)
         {
-          
+
         }
 
         private void txtNamSinhMe_Validating(object sender, CancelEventArgs e)
@@ -1528,7 +1625,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
             else
             {
-                if (int.Parse(this.txtNamSinhMe.Text.ToString()) < 1945 || int.Parse(this.txtNamSinhMe.Text)>=DateTime.Now.Year)
+                if (int.Parse(this.txtNamSinhMe.Text.ToString()) < 1945 || int.Parse(this.txtNamSinhMe.Text) >= DateTime.Now.Year)
                 {
                     this.txtNamSinhMe.BackColor = Color.PapayaWhip;
                 }
@@ -1539,7 +1636,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
         }
 
-       
+
 
         private void txtNoiLayMau_Validated(object sender, EventArgs e)
         {
@@ -1577,31 +1674,37 @@ namespace BioNetSangLocSoSinh.Entry
             }
         }
 
-       
+
 
         private void txtNgayLayMau_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.txtNgayLayMau.Text.Trim()))
+            if (txtNgayLayMau.Text == null || txtNgayLayMau.Text.Trim() == "")
             {
-                this.txtNgayLayMau.BackColor = Color.PapayaWhip;
+                txtNgayLayMau.BackColor = Color.PapayaWhip;
             }
             else
             {
-                this.txtNgayLayMau.BackColor = Color.White;
+                try
+                {
+                    if (DateTime.Parse(txtNgayLayMau.EditValue.ToString()) > DateTime.Parse(txtNgayTiepNhan.EditValue.ToString()))
+                    {
+                        txtNgayLayMau.BackColor = Color.PapayaWhip;
+                    }
+                    else
+                    {
+                        txtNgayLayMau.BackColor = Color.White;
+                    }
+
+                }
+                catch
+                {
+
+                }
+
             }
         }
 
-        private void txtGioLayMau_Validated(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(this.txtGioLayMau.Text.Trim()))
-            {
-                this.txtGioLayMau.BackColor = Color.PapayaWhip;
-            }
-            else
-            {
-                this.txtGioLayMau.BackColor = Color.White;
-            }
-        }
+
 
         private void cbbViTriLayMau_TextChanged(object sender, EventArgs e)
         {
@@ -1682,12 +1785,12 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtMaPhieu1_Validated(object sender, EventArgs e)
         {
-            
+
         }
 
         private void HienThiTTPhieuLan1(PSTTPhieu ph)
-        { 
-            if(string.IsNullOrEmpty(txtTenBenhNhan.Text))
+        {
+            if (string.IsNullOrEmpty(txtTenBenhNhan.Text))
             {
                 txtTenBenhNhan.Text = ph.Benhnhan.TenBenhNhan;
             }
@@ -1702,9 +1805,8 @@ namespace BioNetSangLocSoSinh.Entry
             if (string.IsNullOrEmpty(txtNamSinhBenhNhan.EditValue.ToString()))
             {
                 txtNamSinhBenhNhan.EditValue = ph.Benhnhan.NgayGioSinh.Value;
-                txtGioSinhBenhNhan.EditValue = ph.Benhnhan.NgayGioSinh.Value;
             }
-            if(string.IsNullOrEmpty(txtTenMe.Text))
+            if (string.IsNullOrEmpty(txtTenMe.Text))
             {
                 txtTenMe.Text = ph.Benhnhan.MotherName;
                 txtNamSinhMe.EditValue = ph.Benhnhan.MotherBirthday;
@@ -1720,7 +1822,7 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 txtPara.Text = ph.Benhnhan.Para;
             }
-            cbbDanToc.EditValue= cbbDanToc.EditValue.ToString() != ph.Benhnhan.DanTocID.ToString() ? ph.Benhnhan.DanTocID:cbbDanToc.EditValue;
+            cbbDanToc.EditValue = cbbDanToc.EditValue.ToString() != ph.Benhnhan.DanTocID.ToString() ? ph.Benhnhan.DanTocID : cbbDanToc.EditValue;
             cboPhuongPhapSinh.EditValue = cboPhuongPhapSinh.EditValue.ToString() != ph.Benhnhan.PhuongPhapSinh.ToString() ? ph.Benhnhan.PhuongPhapSinh : cboPhuongPhapSinh.EditValue;
             cbbCheDoDD.EditValue = cbbCheDoDD.EditValue.ToString() != ph.Phieu.CheDoDinhDuong.ToString() ? ph.Phieu.CheDoDinhDuong : cbbCheDoDD.EditValue;
             cbbTTTre.EditValue = cbbTTTre.EditValue.ToString() != ph.Phieu.TinhTrangLucLayMau.ToString() ? ph.Phieu.TinhTrangLucLayMau : cbbTTTre.EditValue;
@@ -1732,7 +1834,7 @@ namespace BioNetSangLocSoSinh.Entry
             txtDiaChiNoiLayMau.Text = ph.Phieu.DiaChiLayMau;
             txtMaBenhNhan.Text = ph.Phieu.MaBenhNhan;
             btnChiTietKQ1.Visible = true;
-            
+
 
         }
 
@@ -1773,7 +1875,7 @@ namespace BioNetSangLocSoSinh.Entry
                     var phieu = BioNet_Bus.GetTTPhieu(txtMaPhieu1.Text, this.cbbDonViChon.EditValue.ToString());
                     if (phieu.Phieu != null)
                     {
-                        if (phieu.Phieu.TrangThaiMau > 5 )
+                        if (phieu.Phieu.TrangThaiMau > 5)
                         {
                             this.listdvcanlamlai.Clear();
                             this.listdvcanlamlai = BioNet_Bus.GetDichVuCanLamLaiCuaPhieu(phieu.Phieu.IDPhieu, phieu.Phieu.IDCoSo);
@@ -1781,7 +1883,7 @@ namespace BioNetSangLocSoSinh.Entry
                             {
                                 XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + "được chỉ định thu lại \r\n nhưng không tìm thấy danh sách thông số nguy cơ cao cần xét nghiệm lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                             }
-                            if(int.Parse(txtTrangThaiMau.EditValue.ToString())<2)
+                            if (int.Parse(txtTrangThaiMau.EditValue.ToString()) < 2)
                             {
                                 if (!BioNet_Bus.KiemTraPhieuThuMauLaiDaDuocChiDinhChua(txtMaPhieu1.Text, txtMaPhieu.Text.TrimEnd()))
                                 {
@@ -1794,7 +1896,7 @@ namespace BioNetSangLocSoSinh.Entry
                                 }
                             }
                         }
-                        else 
+                        else
                             XtraMessageBox.Show("Phiếu " + txtMaPhieu1.Text + " Không có được yêu cầu lấy mẫu lại. \r\n Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else XtraMessageBox.Show("Không tìm thấy thông tin cũ của phiếu " + txtMaPhieu1.Text + " thuộc đơn vị " + this.cbbDonViChon.Text + ". Vui lòng kiểm tra lại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1847,7 +1949,7 @@ namespace BioNetSangLocSoSinh.Entry
                         SplashScreenManager.ShowForm(this, typeof(DiaglogFrm.WaitingfromSave), true, true, false);
                         foreach (var item in this.lstDSCanDanhGia)
                         {
-                            var result=this.DuyetPhieu(item.MaDonVi, item.MaPhieu,maGoiXN);
+                            var result = this.DuyetPhieu(item.MaDonVi, item.MaPhieu, maGoiXN);
                             if (!result.Result)
                             {
                                 PsPhieuLoiKhiDanhGia phieu = new PsPhieuLoiKhiDanhGia();
@@ -1878,12 +1980,12 @@ namespace BioNetSangLocSoSinh.Entry
 
             }
         }
-        private PsReponse DuyetPhieu(String MaDonVi,String MaPhieu,String MaGoiXN)
+        private PsReponse DuyetPhieu(String MaDonVi, String MaPhieu, String MaGoiXN)
         {
             PsReponse res = new PsReponse();
             try
             {
-                
+
                 PsPhieu phieu = BioNet_Bus.GetThongTinPhieu(MaPhieu, MaDonVi);
                 PSTiepNhan tiepnhan = BioNet_Bus.GetThongTinTiepNhanTheoMaPhieu(MaPhieu);
                 var donvi = BioNet_Bus.GetThongTinDonViCoSo(MaDonVi);
@@ -1900,7 +2002,7 @@ namespace BioNetSangLocSoSinh.Entry
                     phieu.TenNhanVienLayMau = phieu.TenNhanVienLayMau == null ? this.ChuyenSangChuHoa(this.txtNguoiLayMau.Text) : phieu.TenNhanVienLayMau;
                     phieu.SoDTNhanVienLayMau = phieu.SoDTNhanVienLayMau ?? txtSDTNguoiLayMau.Text.ToString();
                     phieu.LuuYPhieu = "";
-                    phieu.maGoiXetNghiem = string.IsNullOrEmpty(phieu.maGoiXetNghiem)!=true ? phieu.maGoiXetNghiem : MaGoiXN;
+                    phieu.maGoiXetNghiem = string.IsNullOrEmpty(phieu.maGoiXetNghiem) != true ? phieu.maGoiXetNghiem : MaGoiXN;
                     phieu.lstChiDinhDichVu = BioNet_Bus.GetDanhSachDichVuTheoMaGoi(phieu.maGoiXetNghiem, MaDonVi);
                     if (phieu.BenhNhan.CanNang != null)
                     {
@@ -1931,7 +2033,7 @@ namespace BioNetSangLocSoSinh.Entry
                     phieu.BenhNhan.DanTocID = phieu.BenhNhan.DanTocID ?? 1;
                     phieu.BenhNhan.QuocTichID = phieu.BenhNhan.QuocTichID ?? 1;
                     phieu.BenhNhan.PhuongPhapSinh = phieu.BenhNhan.PhuongPhapSinh ?? 1;
-                    DotchiDinh.MaNVChiDinh =emp.EmployeeCode;
+                    DotchiDinh.MaNVChiDinh = emp.EmployeeCode;
                     DotchiDinh.MaDonVi = phieu.maDonViCoSo;
                     DotchiDinh.MaGoiDichVu = phieu.maGoiXetNghiem;
                     DotchiDinh.Phieu = phieu;
@@ -1999,9 +2101,9 @@ namespace BioNetSangLocSoSinh.Entry
                     DotchiDinh.SoLuong = 1;
                     DotchiDinh.lstDichVu = phieuN.lstChiDinhDichVu;
                     var list = BioNet_Bus.GetDanhsachGoiDichVuTrungTam(MaDonVi);
-                    var dg=list.FirstOrDefault(x => x.IDGoiDichVuChung == phieuN.maGoiXetNghiem).DonGia;
+                    var dg = list.FirstOrDefault(x => x.IDGoiDichVuChung == phieuN.maGoiXetNghiem).DonGia;
                     DotchiDinh.DonGia = dg.Value;
-                    
+
                 }
                 var result = BioNet_Bus.InsertDotChiDinhDichVu(DotchiDinh);
 
@@ -2027,10 +2129,7 @@ namespace BioNetSangLocSoSinh.Entry
             LoadDanhSachDaDuyet();
         }
 
-        private void txtGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -2040,7 +2139,7 @@ namespace BioNetSangLocSoSinh.Entry
                 {
                     if (this.KiemTraCacTruongDuLieuTruocKhiLuu())
                     {
-                            this.LuuThongTinPhieu(true);
+                        this.LuuThongTinPhieu(true);
                     }
                 }
                 else
@@ -2058,13 +2157,13 @@ namespace BioNetSangLocSoSinh.Entry
         {
             try
             {
-                if(e.KeyChar == Convert.ToChar(Keys.Enter))
+                if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 {
                     var phieu = BioNet_Bus.GetThongTinTiepNhanTheoMaPhieu(txtMaPhieuHienThi.Text);
                     if (phieu != null)
                     {
                         HienThiThongTinPhieu(phieu.MaPhieu, phieu.MaDonVi);
-                        
+
                     }
                     else
                     {
@@ -2118,11 +2217,11 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void txtTenMe_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
         private void txtNamSinhMe_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
         }
         private void txtNamSinhMe_KeyDown(object sender, KeyEventArgs e)
         {
@@ -2139,25 +2238,25 @@ namespace BioNetSangLocSoSinh.Entry
                 this.txtNamSinhCha.Focus();
             }
         }
-      
+
         public static string VietHoaChuCaiDau(string s)
+        {
+            if (String.IsNullOrEmpty(s))
+                return s;
+            string result = "";
+            string[] words = s.Split(' ');
+            foreach (string word in words)
             {
-                if (String.IsNullOrEmpty(s))
-                    return s;
-                string result = "";
-                string[] words = s.Split(' ');
-                foreach (string word in words)
+                if (word.Trim() != "")
                 {
-                    if (word.Trim() != "")
-                    {
-                        if (word.Length > 1)
-                            result += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower() + " ";
-                        else
-                            result += word.ToUpper() + " ";
-                    }
+                    if (word.Length > 1)
+                        result += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower() + " ";
+                    else
+                        result += word.ToUpper() + " ";
                 }
-                return result.Trim();
             }
+            return result.Trim();
+        }
 
 
 
@@ -2165,114 +2264,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         #endregion
 
-        private void txtTenMe_EditValueChanged(object sender, EventArgs e)
-        {
-           
-            if (string.IsNullOrEmpty(txtTenMe.Text))
-            {
-                txtTenMe.BackColor = Color.PapayaWhip;
-            }
-            else
-            {
-                txtTenMe.BackColor = Color.White;
-                txtTenMe.Text = txtTenMe.Text.ToUpper();
-            }
-        }
-
-        private void txtTenCha_EditValueChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtTenMe.Text))
-            {
-                txtTenMe.Text = txtTenMe.Text.ToUpper();
-            }
-        }
-
-        private void txtDiaChiGiaDinh_EditValueChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(this.txtDiaChiGiaDinh.Text.Trim()))
-            {
-                this.txtDiaChiGiaDinh.BackColor = Color.PapayaWhip;
-               
-            }
-            else
-            {
-                txtDiaChiGiaDinh.Text = VietHoaChuCaiDau(txtDiaChiGiaDinh.Text.Trim());
-                this.txtDiaChiGiaDinh.BackColor = Color.White;
-            }
-
-        }
-
-        private void txtSDTMe_EditValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtTenBenhNhan_EditValueChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtTenBenhNhan.Text))
-            {
-                txtTenBenhNhan.BackColor = Color.PapayaWhip;
-            }
-            else
-            {
-                txtTenBenhNhan.BackColor = Color.White;
-                txtTenBenhNhan.Text = txtTenBenhNhan.Text.ToUpper();
-            }
-        }
-
-        private void txtNoiSinh_EditValueChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNoiSinh.Text))
-            {
-                txtNoiSinh.BackColor = Color.PapayaWhip;
-            }
-            else
-            {
-                txtNoiSinh.BackColor = Color.White;
-                txtNoiSinh.Text = VietHoaChuCaiDau(txtNoiSinh.Text.Trim());
-            }
-        }
-
-        private void cbbTTTre_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (cbbTTTre.EditValue.ToString() == "4")
-                {
-                    lblNgayTruyen.Visible = true;
-                    lblSLTruyenMau.Visible = true;
-                    txtSoLuongTruyenMau.Visible = true;
-                    txtNgayTruyenMau.Visible = true;
-                }
-                else
-                {
-                    lblNgayTruyen.Visible = false;
-                    lblSLTruyenMau.Visible = false;
-                    txtSoLuongTruyenMau.Visible = false;
-                    txtNgayTruyenMau.Visible = false;
-                }
-            }
-            catch
-            { 
-            }
-        }
-
-        private void txtSDTMe_Validated(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSDTMe.Text))
-            {
-                txtSDTMe.BackColor = Color.PapayaWhip;
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(txtTenCha.Text) && string.IsNullOrEmpty(txtSDTCha.Text))
-                {
-                    txtSDTCha.Text = txtSDTMe.Text;
-                    txtSDTMe.BackColor = Color.White;
-                }
-            }
-         
-        }
+     
 
         private void GVDanhSachTiepNhan_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
@@ -2300,8 +2292,314 @@ namespace BioNetSangLocSoSinh.Entry
 
             }
         }
+        private bool IsNumber(string pText)
+        {
+            Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
+            return regex.IsMatch(pText);
+        }
+
+        private void checkedListBoxLydoKhongDat_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            try
+            {
+                CheckedListBoxControl obj = sender as CheckedListBoxControl;
+                string check = obj.GetItemCheckState(e.Index).ToString();
+                if (check.Equals("Checked"))
+                {
+                    string value = obj.GetItemValue(e.Index).ToString();
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        var psCTDanhGia = sourceListDanhGiaChatLuong.FirstOrDefault(x => x.IDDanhGiaChatLuongMau.Equals(value));
+                        PSChiTietDanhGiaChatLuong dg = new PSChiTietDanhGiaChatLuong();
+                        dg.IDPhieu = this.txtMaPhieu.Text;
+                        dg.IDDanhGiaChatLuongMau = value;
+                        dg.MaTiepNhan = this.txtMaTiepNhan.Text.Trim();
+                        dg.TenLyDo = psCTDanhGia.ChatLuongMau;
+                        dg.Stt = psCTDanhGia.STT;
+                        dg.RowIDChatLuongMau = psCTDanhGia.RowIDChatLuongMau;
+                        this.ThayDoiThongTinChiTietKhongDat(dg, true);
+                    }
+                }
+                else
+                {
+                    string value = obj.GetItemValue(e.Index).ToString();
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        var psCTDanhGia = sourceListDanhGiaChatLuong.FirstOrDefault(x => x.IDDanhGiaChatLuongMau.Equals(value));
+                        PSChiTietDanhGiaChatLuong dg = new PSChiTietDanhGiaChatLuong();
+                        dg.IDPhieu = this.txtMaPhieu.Text;
+                        dg.IDDanhGiaChatLuongMau = value;
+                        dg.MaTiepNhan = this.txtMaTiepNhan.Text.Trim();
+                        dg.TenLyDo = psCTDanhGia.ChatLuongMau;
+                        dg.Stt = psCTDanhGia.STT;
+                        dg.RowIDChatLuongMau = psCTDanhGia.RowIDChatLuongMau;
+                        this.ThayDoiThongTinChiTietKhongDat(dg, false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void ThayDoiThongTinChiTietKhongDat(PSChiTietDanhGiaChatLuong LydoKhongDat, bool isThem)
+        {
+            if (isThem)
+            {
+                if (this.lstDanhGiaChatLuong.Count == 0)
+                {
+                    this.lstDanhGiaChatLuong.Add(LydoKhongDat);
+                }
+                else
+                {
+                    if (this.lstDanhGiaChatLuong.FindAll(p => p.IDDanhGiaChatLuongMau == LydoKhongDat.IDDanhGiaChatLuongMau).Count < 1)
+                    {
+                        this.lstDanhGiaChatLuong.Add(LydoKhongDat);
+                    }
+                }
+            }
+            else
+            {
+                if (this.lstDanhGiaChatLuong.Count > 0)
+                {
+                    var ld = this.lstDanhGiaChatLuong.FirstOrDefault(p => p.IDDanhGiaChatLuongMau == LydoKhongDat.IDDanhGiaChatLuongMau);
+                    if (ld != null)
+                    {
+                        this.lstDanhGiaChatLuong.Remove(ld);
+                    }
+                }
+
+            }
+        }
+        #region Các trường lỗi
+        //Tên mẹ
+        private void txtTenMe_EditValueChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenMe.Text))
+            {
+                txtTenMe.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                txtTenMe.BackColor = Color.White;
+                txtTenMe.Text = txtTenMe.Text.ToUpper();
+            }
+        }
+        //tên cha
+        private void txtTenCha_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtTenCha.Text))
+            {
+                txtTenCha.Text = txtTenCha.Text.ToUpper();
+            }
+        }
+        //Dịa chỉ gia đình
+        private void txtDiaChiGiaDinh_EditValueChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.txtDiaChiGiaDinh.Text.Trim()))
+            {
+                this.txtDiaChiGiaDinh.BackColor = Color.PapayaWhip;
+
+            }
+            else
+            {
+                txtDiaChiGiaDinh.Text = VietHoaChuCaiDau(txtDiaChiGiaDinh.Text.Trim());
+                this.txtDiaChiGiaDinh.BackColor = Color.White;
+            }
+
+        }
+        //Sdt mẹ
+        private void txtSDTMe_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtSDTMe.Text))
+            {
+                txtSDTMe.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                txtSDTMe.BackColor = Color.White;
+            }
+        }
+        //Ten Bệnh nhân
+        private void txtTenBenhNhan_EditValueChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenBenhNhan.Text))
+            {
+                txtTenBenhNhan.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                txtTenBenhNhan.BackColor = Color.White;
+                txtTenBenhNhan.Text = txtTenBenhNhan.Text.ToUpper();
+            }
+        }
+        //Noi SInh
+        private void txtNoiSinh_EditValueChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNoiSinh.Text))
+            {
+                txtNoiSinh.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                txtNoiSinh.BackColor = Color.White;
+                txtNoiSinh.Text = VietHoaChuCaiDau(txtNoiSinh.Text.Trim());
+            }
+        }
+        //Tình trạng trẻ
+        private void cbbTTTre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbbTTTre.EditValue.ToString() == "4")
+                {
+                    lblNgayTruyen.Visible = true;
+                    lblSLTruyenMau.Visible = true;
+                    txtSoLuongTruyenMau.Visible = true;
+                    txtNgayTruyenMau.Visible = true;
+                }
+                else
+                {
+                    lblNgayTruyen.Visible = false;
+                    lblSLTruyenMau.Visible = false;
+                    txtSoLuongTruyenMau.Visible = false;
+                    txtNgayTruyenMau.Visible = false;
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void txtSDTMe_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSDTMe.Text))
+            {
+                txtSDTMe.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtTenCha.Text) && string.IsNullOrEmpty(txtSDTCha.Text))
+                {
+                    txtSDTCha.Text = txtSDTMe.Text;
+                    txtSDTMe.BackColor = Color.White;
+                }
+            }
+
+        }
+        //Năm sinh mẹ
+        private void txtNamSinhMe_EditValueChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNamSinhMe.Text))
+            {
+                txtNamSinhMe.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                txtNamSinhMe.BackColor = Color.White;
+            }
+        }
+        //Para
+        private void txtPara_EditValueChanged(object sender, EventArgs e)
+        {
+           if (txtPara.EditValue == null)
+            {
+                txtPara.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                if(txtPara.EditValue.ToString().Length!= 4) 
+                {
+                    if(txtPara.EditValue.ToString().Length == 0)
+                    {
+                        txtPara.BackColor = Color.White;
+                        txtPara.EditValue = null;
+                    }
+                    else
+                    {
+                        txtPara.BackColor = Color.PapayaWhip;
+                    }
+                }
+                else
+                {
+                    txtPara.BackColor = Color.White;
+                }
+               
+            }
+        }
+        private void txtNgayLayMau_EditValueChanged(object sender, EventArgs e)
+        {
+            if (txtNgayLayMau.Text==null || txtNgayLayMau.Text.Trim()== "")
+            {
+                txtNgayLayMau.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                try
+                {
+                    if (DateTime.Parse(txtNgayLayMau.EditValue.ToString()) > DateTime.Parse(txtNgayTiepNhan.EditValue.ToString()))
+                    {
+                        txtNgayLayMau.BackColor = Color.PapayaWhip;
+                    }
+                    else
+                    {
+                        txtNgayLayMau.BackColor = Color.White;
+                    }
+                        
+                }
+                catch
+                {
+
+                }
+              
+            }
+        }
+        private void txtNamSinhBenhNhan_Validated(object sender, EventArgs e)
+        {
+            if (txtNamSinhBenhNhan.Text == null || txtNamSinhBenhNhan.Text.Trim() == "")
+            {
+                txtNamSinhBenhNhan.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                try
+                {
+                    if (DateTime.Parse(txtNamSinhBenhNhan.EditValue.ToString()) > DateTime.Parse(txtNgayTiepNhan.EditValue.ToString()))
+                    {
+                        txtNamSinhBenhNhan.BackColor = Color.PapayaWhip;
+                    }
+                    else
+                    {
+                        txtNamSinhBenhNhan.BackColor = Color.White;
+                    }
+
+                }
+                catch
+                {
+
+                }
+
+            }
+        }
+        #endregion
+
+        private void cboPhuongPhapSinh_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGioiTinh_EditValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cboPhuongPhapSinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
-    
-    }
+
+}
     
 

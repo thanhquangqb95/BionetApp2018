@@ -199,6 +199,7 @@
             // 
             this.cbbGoiXN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbGoiXN.Enabled = false;
             this.cbbGoiXN.Location = new System.Drawing.Point(61, 194);
             this.cbbGoiXN.Name = "cbbGoiXN";
             this.cbbGoiXN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
