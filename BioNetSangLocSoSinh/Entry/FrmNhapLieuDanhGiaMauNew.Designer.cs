@@ -31,12 +31,12 @@ namespace BioNetSangLocSoSinh.Entry
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhapLieuDanhGiaMauNew));
-            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabDanhSachCho = new DevExpress.XtraTab.XtraTabPage();
@@ -84,8 +84,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.lookupGoiXN = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.col_isDaNhapLieu_GCTracking = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.btnClear_DaDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatDanhSachDaDuyet = new DevExpress.XtraEditors.SimpleButton();
@@ -114,6 +112,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.txtMaPhieu = new DevExpress.XtraEditors.TextEdit();
             this.txtNVChiDinh = new DevExpress.XtraEditors.TextEdit();
+            this.txtMaBenhNhan = new DevExpress.XtraEditors.TextEdit();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.txtNgayChiDinh = new DevExpress.XtraEditors.DateEdit();
             this.txtNVTiepNhan = new DevExpress.XtraEditors.TextEdit();
@@ -149,10 +148,10 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_DiaChiDVCS_HienThi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
             this.cbbChuongTrinh = new DevExpress.XtraEditors.LookUpEdit();
+            this.txtMaChiDinh = new DevExpress.XtraEditors.TextEdit();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.txtTuanTuoi = new DevExpress.XtraEditors.TextEdit();
             this.cbbCheDoDD = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.txtMaBenhNhan = new DevExpress.XtraEditors.TextEdit();
             this.cbbTTTre = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.labelControl38 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
@@ -166,7 +165,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtGioiTinh = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.cbbDanToc = new DevExpress.XtraEditors.LookUpEdit();
             this.txtNamSinhBenhNhan = new DevExpress.XtraEditors.DateEdit();
-            this.txtMaKhachHang = new DevExpress.XtraEditors.TextEdit();
             this.txtSoLuongTruyenMau = new DevExpress.XtraEditors.TextEdit();
             this.lblNgayTruyen = new DevExpress.XtraEditors.LabelControl();
             this.lblSLTruyenMau = new DevExpress.XtraEditors.LabelControl();
@@ -174,6 +172,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtNoiSinh = new DevExpress.XtraEditors.TextEdit();
             this.txtTenBenhNhan = new DevExpress.XtraEditors.TextEdit();
             this.txtCanNang = new DevExpress.XtraEditors.TextEdit();
+            this.txtMaTiepNhan = new DevExpress.XtraEditors.TextEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.txtNamSinhMe = new DevExpress.XtraEditors.DateEdit();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
@@ -188,13 +187,12 @@ namespace BioNetSangLocSoSinh.Entry
             this.cboPhuongPhapSinh = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.txtPara = new DevExpress.XtraEditors.TextEdit();
             this.txtSDTCha = new DevExpress.XtraEditors.TextEdit();
-            this.txtMaChiDinh = new DevExpress.XtraEditors.TextEdit();
             this.txtSDTMe = new DevExpress.XtraEditors.TextEdit();
             this.txtTenCha = new DevExpress.XtraEditors.TextEdit();
-            this.txtMaTiepNhan = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.txtTenMe = new DevExpress.XtraEditors.TextEdit();
             this.txtNamSinhCha = new DevExpress.XtraEditors.DateEdit();
+            this.txtMaKhachHang = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl37 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl9 = new DevExpress.XtraEditors.GroupControl();
@@ -241,8 +239,6 @@ namespace BioNetSangLocSoSinh.Entry
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditDonViDaDuyet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupGoiXN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
-            this.panelControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CheckisNhapLieu.Properties)).BeginInit();
@@ -264,6 +260,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNVChiDinh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaBenhNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayChiDinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayChiDinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNVTiepNhan.Properties)).BeginInit();
@@ -287,23 +284,23 @@ namespace BioNetSangLocSoSinh.Entry
             ((System.ComponentModel.ISupportInitialize)(this.cbbDonViChon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbChuongTrinh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaChiDinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuanTuoi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCheDoDD.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaBenhNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbTTTre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGioiTinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDanToc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTruyenMau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayTruyenMau.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayTruyenMau.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenBenhNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCanNang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaTiepNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhMe.Properties.CalendarTimeProperties)).BeginInit();
@@ -312,13 +309,12 @@ namespace BioNetSangLocSoSinh.Entry
             ((System.ComponentModel.ISupportInitialize)(this.cboPhuongPhapSinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPara.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTCha.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaChiDinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCha.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaTiepNhan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl9)).BeginInit();
             this.groupControl9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).BeginInit();
@@ -380,13 +376,13 @@ namespace BioNetSangLocSoSinh.Entry
             // GCDanhSachTiepNhan
             // 
             this.GCDanhSachTiepNhan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GCDanhSachTiepNhan.Location = new System.Drawing.Point(0, 115);
+            this.GCDanhSachTiepNhan.Location = new System.Drawing.Point(0, 109);
             this.GCDanhSachTiepNhan.MainView = this.GVDanhSachTiepNhan;
             this.GCDanhSachTiepNhan.Name = "GCDanhSachTiepNhan";
             this.GCDanhSachTiepNhan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.LookUpEditDonVi,
             this.LookUpEditXetNghiem});
-            this.GCDanhSachTiepNhan.Size = new System.Drawing.Size(329, 502);
+            this.GCDanhSachTiepNhan.Size = new System.Drawing.Size(329, 508);
             this.GCDanhSachTiepNhan.TabIndex = 2;
             this.GCDanhSachTiepNhan.TabStop = false;
             this.GCDanhSachTiepNhan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -438,7 +434,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_MaPhieu_GCTiepNhan.FieldName = "MaPhieu";
             this.col_MaPhieu_GCTiepNhan.Name = "col_MaPhieu_GCTiepNhan";
             this.col_MaPhieu_GCTiepNhan.OptionsColumn.AllowEdit = false;
-            this.col_MaPhieu_GCTiepNhan.OptionsColumn.AllowFocus = false;
             this.col_MaPhieu_GCTiepNhan.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "MaPhieu", "Tổng: {0} phiếu")});
             this.col_MaPhieu_GCTiepNhan.Visible = true;
@@ -490,6 +485,8 @@ namespace BioNetSangLocSoSinh.Entry
             this.col_NgayTiepNhan.Caption = "Ngày Tiếp Nhận";
             this.col_NgayTiepNhan.FieldName = "NgayTiepNhan";
             this.col_NgayTiepNhan.Name = "col_NgayTiepNhan";
+            this.col_NgayTiepNhan.OptionsColumn.AllowEdit = false;
+            this.col_NgayTiepNhan.OptionsColumn.AllowFocus = false;
             this.col_NgayTiepNhan.Visible = true;
             this.col_NgayTiepNhan.VisibleIndex = 2;
             this.col_NgayTiepNhan.Width = 105;
@@ -576,35 +573,39 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(329, 115);
+            this.panelControl4.Size = new System.Drawing.Size(329, 109);
             this.panelControl4.TabIndex = 0;
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(274, 83);
+            this.simpleButton1.Location = new System.Drawing.Point(248, 75);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(47, 23);
-            toolTipTitleItem16.Text = "Bỏ lọc";
-            superToolTip16.Items.Add(toolTipTitleItem16);
-            this.simpleButton1.SuperTip = superToolTip16;
+            this.simpleButton1.Size = new System.Drawing.Size(73, 23);
+            toolTipTitleItem7.Text = "Bỏ lọc";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            this.simpleButton1.SuperTip = superToolTip7;
             this.simpleButton1.TabIndex = 37;
             // 
             // btnCapNhatDSTiepNhan
             // 
+            this.btnCapNhatDSTiepNhan.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnCapNhatDSTiepNhan.Appearance.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnCapNhatDSTiepNhan.Appearance.Options.UseFont = true;
+            this.btnCapNhatDSTiepNhan.Appearance.Options.UseForeColor = true;
             this.btnCapNhatDSTiepNhan.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.recycle;
             this.btnCapNhatDSTiepNhan.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnCapNhatDSTiepNhan.Location = new System.Drawing.Point(9, 82);
+            this.btnCapNhatDSTiepNhan.Location = new System.Drawing.Point(9, 76);
             this.btnCapNhatDSTiepNhan.Name = "btnCapNhatDSTiepNhan";
-            this.btnCapNhatDSTiepNhan.Size = new System.Drawing.Size(259, 23);
+            this.btnCapNhatDSTiepNhan.Size = new System.Drawing.Size(233, 23);
             this.btnCapNhatDSTiepNhan.TabIndex = 23;
             this.btnCapNhatDSTiepNhan.Text = "Cập nhật danh sách";
             this.btnCapNhatDSTiepNhan.Click += new System.EventHandler(this.btnCapNhatDSTiepNhan_Click);
             // 
             // labelControl40
             // 
-            this.labelControl40.Location = new System.Drawing.Point(9, 62);
+            this.labelControl40.Location = new System.Drawing.Point(9, 58);
             this.labelControl40.Name = "labelControl40";
             this.labelControl40.Size = new System.Drawing.Size(43, 13);
             this.labelControl40.TabIndex = 22;
@@ -665,7 +666,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             this.cbbDonViTiepNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbDonViTiepNhan.Location = new System.Drawing.Point(62, 29);
+            this.cbbDonViTiepNhan.Location = new System.Drawing.Point(62, 27);
             this.cbbDonViTiepNhan.Name = "cbbDonViTiepNhan";
             this.cbbDonViTiepNhan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -706,7 +707,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(9, 36);
+            this.labelControl1.Location = new System.Drawing.Point(9, 34);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(31, 13);
             this.labelControl1.TabIndex = 14;
@@ -716,7 +717,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             this.txtMaPhieuSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaPhieuSearch.Location = new System.Drawing.Point(62, 55);
+            this.txtMaPhieuSearch.Location = new System.Drawing.Point(62, 51);
             this.txtMaPhieuSearch.Name = "txtMaPhieuSearch";
             this.txtMaPhieuSearch.Size = new System.Drawing.Size(259, 20);
             this.txtMaPhieuSearch.TabIndex = 9;
@@ -728,7 +729,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.xtraTabDanhSachDaDuyet.Appearance.Header.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.xtraTabDanhSachDaDuyet.Appearance.Header.Options.UseFont = true;
             this.xtraTabDanhSachDaDuyet.Controls.Add(this.GCDanhSachDaTracking);
-            this.xtraTabDanhSachDaDuyet.Controls.Add(this.panelControl8);
             this.xtraTabDanhSachDaDuyet.Controls.Add(this.panelControl6);
             this.xtraTabDanhSachDaDuyet.Image = global::BioNetSangLocSoSinh.Properties.Resources.checklist;
             this.xtraTabDanhSachDaDuyet.Name = "xtraTabDanhSachDaDuyet";
@@ -738,14 +738,14 @@ namespace BioNetSangLocSoSinh.Entry
             // GCDanhSachDaTracking
             // 
             this.GCDanhSachDaTracking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GCDanhSachDaTracking.Location = new System.Drawing.Point(0, 168);
+            this.GCDanhSachDaTracking.Location = new System.Drawing.Point(0, 158);
             this.GCDanhSachDaTracking.MainView = this.GVDanhSachDaTracking;
             this.GCDanhSachDaTracking.Name = "GCDanhSachDaTracking";
             this.GCDanhSachDaTracking.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.LookUpEditDonViDaDuyet,
             this.lookupGoiXN,
             this.repositoryItemCheckEdit1});
-            this.GCDanhSachDaTracking.Size = new System.Drawing.Size(329, 441);
+            this.GCDanhSachDaTracking.Size = new System.Drawing.Size(329, 494);
             this.GCDanhSachDaTracking.TabIndex = 3;
             this.GCDanhSachDaTracking.TabStop = false;
             this.GCDanhSachDaTracking.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -909,28 +909,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.repositoryItemCheckEdit1.PictureUnchecked = ((System.Drawing.Image)(resources.GetObject("repositoryItemCheckEdit1.PictureUnchecked")));
             this.repositoryItemCheckEdit1.ValueGrayed = false;
             // 
-            // panelControl8
-            // 
-            this.panelControl8.Controls.Add(this.simpleButton2);
-            this.panelControl8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl8.Location = new System.Drawing.Point(0, 609);
-            this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(329, 43);
-            this.panelControl8.TabIndex = 2;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.simpleButton2.Enabled = false;
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(16, 11);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(163, 23);
-            this.simpleButton2.TabIndex = 36;
-            this.simpleButton2.TabStop = false;
-            this.simpleButton2.Text = "Hủy duyệt phiếu";
-            // 
             // panelControl6
             // 
             this.panelControl6.Controls.Add(this.btnClear_DaDuyet);
@@ -951,35 +929,35 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(329, 168);
+            this.panelControl6.Size = new System.Drawing.Size(329, 158);
             this.panelControl6.TabIndex = 1;
             // 
             // btnClear_DaDuyet
             // 
             this.btnClear_DaDuyet.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.eraser;
             this.btnClear_DaDuyet.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnClear_DaDuyet.Location = new System.Drawing.Point(252, 137);
+            this.btnClear_DaDuyet.Location = new System.Drawing.Point(229, 122);
             this.btnClear_DaDuyet.Name = "btnClear_DaDuyet";
-            this.btnClear_DaDuyet.Size = new System.Drawing.Size(68, 23);
-            toolTipTitleItem17.Text = "Bỏ lọc";
-            superToolTip17.Items.Add(toolTipTitleItem17);
-            this.btnClear_DaDuyet.SuperTip = superToolTip17;
+            this.btnClear_DaDuyet.Size = new System.Drawing.Size(91, 23);
+            toolTipTitleItem8.Text = "Bỏ lọc";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            this.btnClear_DaDuyet.SuperTip = superToolTip8;
             this.btnClear_DaDuyet.TabIndex = 36;
             // 
             // btnCapNhatDanhSachDaDuyet
             // 
             this.btnCapNhatDanhSachDaDuyet.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.recycle;
             this.btnCapNhatDanhSachDaDuyet.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnCapNhatDanhSachDaDuyet.Location = new System.Drawing.Point(8, 137);
+            this.btnCapNhatDanhSachDaDuyet.Location = new System.Drawing.Point(8, 122);
             this.btnCapNhatDanhSachDaDuyet.Name = "btnCapNhatDanhSachDaDuyet";
-            this.btnCapNhatDanhSachDaDuyet.Size = new System.Drawing.Size(238, 23);
+            this.btnCapNhatDanhSachDaDuyet.Size = new System.Drawing.Size(213, 23);
             this.btnCapNhatDanhSachDaDuyet.TabIndex = 35;
             this.btnCapNhatDanhSachDaDuyet.Text = "Cập nhật danh sách";
             this.btnCapNhatDanhSachDaDuyet.Click += new System.EventHandler(this.btnCapNhatDanhSachDaDuyet_Click);
             // 
             // CheckisNhapLieu
             // 
-            this.CheckisNhapLieu.Location = new System.Drawing.Point(227, 112);
+            this.CheckisNhapLieu.Location = new System.Drawing.Point(227, 98);
             this.CheckisNhapLieu.Name = "CheckisNhapLieu";
             this.CheckisNhapLieu.Properties.Caption = "Chưa nhập liệu";
             this.CheckisNhapLieu.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -988,7 +966,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // labelControl46
             // 
-            this.labelControl46.Location = new System.Drawing.Point(187, 62);
+            this.labelControl46.Location = new System.Drawing.Point(189, 56);
             this.labelControl46.Name = "labelControl46";
             this.labelControl46.Size = new System.Drawing.Size(8, 13);
             this.labelControl46.TabIndex = 33;
@@ -996,7 +974,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // labelControl42
             // 
-            this.labelControl42.Location = new System.Drawing.Point(10, 114);
+            this.labelControl42.Location = new System.Drawing.Point(10, 104);
             this.labelControl42.Name = "labelControl42";
             this.labelControl42.Size = new System.Drawing.Size(43, 13);
             this.labelControl42.TabIndex = 32;
@@ -1004,7 +982,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // labelControl43
             // 
-            this.labelControl43.Location = new System.Drawing.Point(10, 11);
+            this.labelControl43.Location = new System.Drawing.Point(10, 12);
             this.labelControl43.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl43.Name = "labelControl43";
             this.labelControl43.Size = new System.Drawing.Size(36, 13);
@@ -1015,7 +993,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             this.cbbChiCucDaDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbChiCucDaDuyet.Location = new System.Drawing.Point(70, 9);
+            this.cbbChiCucDaDuyet.Location = new System.Drawing.Point(70, 5);
             this.cbbChiCucDaDuyet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbChiCucDaDuyet.Name = "cbbChiCucDaDuyet";
             this.cbbChiCucDaDuyet.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1058,7 +1036,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtDenNgay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDenNgay.EditValue = new System.DateTime(2018, 7, 10, 15, 50, 15, 150);
-            this.txtDenNgay.Location = new System.Drawing.Point(207, 58);
+            this.txtDenNgay.Location = new System.Drawing.Point(207, 51);
             this.txtDenNgay.Name = "txtDenNgay";
             this.txtDenNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1077,7 +1055,7 @@ namespace BioNetSangLocSoSinh.Entry
             // txtTuNgay
             // 
             this.txtTuNgay.EditValue = new System.DateTime(2018, 7, 10, 15, 50, 4, 648);
-            this.txtTuNgay.Location = new System.Drawing.Point(70, 58);
+            this.txtTuNgay.Location = new System.Drawing.Point(70, 51);
             this.txtTuNgay.Name = "txtTuNgay";
             this.txtTuNgay.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1095,7 +1073,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // labelControl44
             // 
-            this.labelControl44.Location = new System.Drawing.Point(10, 61);
+            this.labelControl44.Location = new System.Drawing.Point(10, 58);
             this.labelControl44.Name = "labelControl44";
             this.labelControl44.Size = new System.Drawing.Size(56, 13);
             this.labelControl44.TabIndex = 27;
@@ -1105,7 +1083,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             this.cbbDonViDaDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbDonViDaDuyet.Location = new System.Drawing.Point(70, 34);
+            this.cbbDonViDaDuyet.Location = new System.Drawing.Point(70, 27);
             this.cbbDonViDaDuyet.Name = "cbbDonViDaDuyet";
             this.cbbDonViDaDuyet.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1146,7 +1124,7 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             // labelControl45
             // 
-            this.labelControl45.Location = new System.Drawing.Point(10, 37);
+            this.labelControl45.Location = new System.Drawing.Point(10, 34);
             this.labelControl45.Name = "labelControl45";
             this.labelControl45.Size = new System.Drawing.Size(31, 13);
             this.labelControl45.TabIndex = 25;
@@ -1156,26 +1134,26 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             this.txtMaPhieuDaDuyetSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaPhieuDaDuyetSearch.Location = new System.Drawing.Point(59, 111);
+            this.txtMaPhieuDaDuyetSearch.Location = new System.Drawing.Point(70, 97);
             this.txtMaPhieuDaDuyetSearch.Name = "txtMaPhieuDaDuyetSearch";
-            this.txtMaPhieuDaDuyetSearch.Size = new System.Drawing.Size(162, 20);
+            this.txtMaPhieuDaDuyetSearch.Size = new System.Drawing.Size(151, 20);
             this.txtMaPhieuDaDuyetSearch.TabIndex = 23;
             this.txtMaPhieuDaDuyetSearch.TabStop = false;
             this.txtMaPhieuDaDuyetSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhieuDaDuyetSearch_KeyPress);
             // 
             // labelControl41
             // 
-            this.labelControl41.Location = new System.Drawing.Point(10, 87);
+            this.labelControl41.Location = new System.Drawing.Point(10, 81);
             this.labelControl41.Name = "labelControl41";
-            this.labelControl41.Size = new System.Drawing.Size(71, 13);
+            this.labelControl41.Size = new System.Drawing.Size(31, 13);
             this.labelControl41.TabIndex = 12;
-            this.labelControl41.Text = "Gói xét nghiệm";
+            this.labelControl41.Text = "Gói XN";
             // 
             // cbbGoiXNLoc
             // 
             this.cbbGoiXNLoc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbGoiXNLoc.Location = new System.Drawing.Point(87, 84);
+            this.cbbGoiXNLoc.Location = new System.Drawing.Point(70, 74);
             this.cbbGoiXNLoc.Name = "cbbGoiXNLoc";
             this.cbbGoiXNLoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1185,7 +1163,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbGoiXNLoc.Properties.DisplayMember = "TenGoiDichVuChung";
             this.cbbGoiXNLoc.Properties.NullText = "";
             this.cbbGoiXNLoc.Properties.ValueMember = "IDGoiDichVuChung";
-            this.cbbGoiXNLoc.Size = new System.Drawing.Size(233, 20);
+            this.cbbGoiXNLoc.Size = new System.Drawing.Size(250, 20);
             this.cbbGoiXNLoc.TabIndex = 19;
             this.cbbGoiXNLoc.EditValueChanged += new System.EventHandler(this.cbbGoiXNLoc_EditValueChanged);
             // 
@@ -1278,6 +1256,15 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtNVChiDinh.Size = new System.Drawing.Size(165, 20);
             this.txtNVChiDinh.TabIndex = 58;
             // 
+            // txtMaBenhNhan
+            // 
+            this.txtMaBenhNhan.Location = new System.Drawing.Point(384, 68);
+            this.txtMaBenhNhan.Name = "txtMaBenhNhan";
+            this.txtMaBenhNhan.Properties.ReadOnly = true;
+            this.txtMaBenhNhan.Size = new System.Drawing.Size(148, 20);
+            this.txtMaBenhNhan.TabIndex = 60;
+            this.txtMaBenhNhan.Visible = false;
+            // 
             // labelControl35
             // 
             this.labelControl35.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1348,7 +1335,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtMaPhieuHienThi.Size = new System.Drawing.Size(100, 20);
             this.txtMaPhieuHienThi.TabIndex = 1;
             this.txtMaPhieuHienThi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhieuHienThi_KeyPress);
-            this.txtMaPhieuHienThi.Validated += new System.EventHandler(this.txtMaPhieuHienThi_Validated);
             // 
             // groupControl6
             // 
@@ -1391,9 +1377,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnChiTietKQ1.Location = new System.Drawing.Point(288, 114);
             this.btnChiTietKQ1.Name = "btnChiTietKQ1";
             this.btnChiTietKQ1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem18.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            this.btnChiTietKQ1.SuperTip = superToolTip18;
+            toolTipTitleItem9.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            this.btnChiTietKQ1.SuperTip = superToolTip9;
             this.btnChiTietKQ1.TabIndex = 37;
             this.btnChiTietKQ1.Visible = false;
             // 
@@ -1411,7 +1397,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtGiaGoiXN.Size = new System.Drawing.Size(59, 20);
             this.txtGiaGoiXN.TabIndex = 36;
             this.txtGiaGoiXN.Visible = false;
-            this.txtGiaGoiXN.EditValueChanged += new System.EventHandler(this.txtGiaGoiXN_EditValueChanged);
             // 
             // txtTrangThaiMau
             // 
@@ -1465,10 +1450,9 @@ namespace BioNetSangLocSoSinh.Entry
             // 
             this.labelControl39.Location = new System.Drawing.Point(8, 53);
             this.labelControl39.Name = "labelControl39";
-            this.labelControl39.Size = new System.Drawing.Size(35, 13);
+            this.labelControl39.Size = new System.Drawing.Size(32, 13);
             this.labelControl39.TabIndex = 32;
-            this.labelControl39.Text = "Địa chỉ ";
-            this.labelControl39.Click += new System.EventHandler(this.labelControl39_Click);
+            this.labelControl39.Text = "Địa chỉ";
             // 
             // txtMaPhieu1
             // 
@@ -1478,7 +1462,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtMaPhieu1.Size = new System.Drawing.Size(205, 20);
             this.txtMaPhieu1.TabIndex = 31;
             this.txtMaPhieu1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaPhieu1_KeyPress);
-            this.txtMaPhieu1.Validated += new System.EventHandler(this.txtMaPhieu1_Validated);
             // 
             // labelControl36
             // 
@@ -1527,6 +1510,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.radioGroupGoiXN.Size = new System.Drawing.Size(205, 119);
             this.radioGroupGoiXN.TabIndex = 32;
             this.radioGroupGoiXN.EditValueChanged += new System.EventHandler(this.radioGroupGoiXN_EditValueChanged);
+            this.radioGroupGoiXN.Validated += new System.EventHandler(this.radioGroupGoiXN_Validated);
             // 
             // txtNgayLayMau
             // 
@@ -1546,7 +1530,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtNgayLayMau.Size = new System.Drawing.Size(206, 20);
             this.txtNgayLayMau.TabIndex = 29;
             this.txtNgayLayMau.EditValueChanged += new System.EventHandler(this.txtNgayLayMau_EditValueChanged);
-            this.txtNgayLayMau.Validated += new System.EventHandler(this.txtNgayLayMau_Validated);
             // 
             // txtSDTNguoiLayMau
             // 
@@ -1557,6 +1540,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtSDTNguoiLayMau.Name = "txtSDTNguoiLayMau";
             this.txtSDTNguoiLayMau.Size = new System.Drawing.Size(191, 20);
             this.txtSDTNguoiLayMau.TabIndex = 28;
+            this.txtSDTNguoiLayMau.EditValueChanged += new System.EventHandler(this.txtSDTNguoiLayMau_EditValueChanged);
             // 
             // txtNguoiLayMau
             // 
@@ -1640,6 +1624,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbDonViChon.Size = new System.Drawing.Size(352, 20);
             this.cbbDonViChon.TabIndex = 2;
             this.cbbDonViChon.TabStop = false;
+            this.cbbDonViChon.EditValueChanged += new System.EventHandler(this.cbbDonViChon_EditValueChanged_1);
             // 
             // gridView2
             // 
@@ -1699,6 +1684,15 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbChuongTrinh.Size = new System.Drawing.Size(352, 20);
             this.cbbChuongTrinh.TabIndex = 3;
             this.cbbChuongTrinh.TabStop = false;
+            // 
+            // txtMaChiDinh
+            // 
+            this.txtMaChiDinh.Location = new System.Drawing.Point(344, 92);
+            this.txtMaChiDinh.Name = "txtMaChiDinh";
+            this.txtMaChiDinh.Properties.ReadOnly = true;
+            this.txtMaChiDinh.Size = new System.Drawing.Size(34, 20);
+            this.txtMaChiDinh.TabIndex = 40;
+            this.txtMaChiDinh.Visible = false;
             // 
             // groupControl5
             // 
@@ -1764,15 +1758,6 @@ namespace BioNetSangLocSoSinh.Entry
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Khác", "2", -1)});
             this.cbbCheDoDD.Size = new System.Drawing.Size(107, 20);
             this.cbbCheDoDD.TabIndex = 21;
-            // 
-            // txtMaBenhNhan
-            // 
-            this.txtMaBenhNhan.Location = new System.Drawing.Point(384, 68);
-            this.txtMaBenhNhan.Name = "txtMaBenhNhan";
-            this.txtMaBenhNhan.Properties.ReadOnly = true;
-            this.txtMaBenhNhan.Size = new System.Drawing.Size(148, 20);
-            this.txtMaBenhNhan.TabIndex = 60;
-            this.txtMaBenhNhan.Visible = false;
             // 
             // cbbTTTre
             // 
@@ -1878,7 +1863,6 @@ namespace BioNetSangLocSoSinh.Entry
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("N/A", "2", -1)});
             this.txtGioiTinh.Size = new System.Drawing.Size(73, 20);
             this.txtGioiTinh.TabIndex = 14;
-            this.txtGioiTinh.EditValueChanged += new System.EventHandler(this.txtGioiTinh_EditValueChanged);
             // 
             // cbbDanToc
             // 
@@ -1916,15 +1900,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtNamSinhBenhNhan.Size = new System.Drawing.Size(120, 20);
             this.txtNamSinhBenhNhan.TabIndex = 15;
             this.txtNamSinhBenhNhan.Validated += new System.EventHandler(this.txtNamSinhBenhNhan_Validated);
-            // 
-            // txtMaKhachHang
-            // 
-            this.txtMaKhachHang.Location = new System.Drawing.Point(384, 92);
-            this.txtMaKhachHang.Name = "txtMaKhachHang";
-            this.txtMaKhachHang.Properties.ReadOnly = true;
-            this.txtMaKhachHang.Size = new System.Drawing.Size(148, 20);
-            this.txtMaKhachHang.TabIndex = 48;
-            this.txtMaKhachHang.Visible = false;
             // 
             // txtSoLuongTruyenMau
             // 
@@ -1988,7 +1963,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtTenBenhNhan.Size = new System.Drawing.Size(299, 20);
             this.txtTenBenhNhan.TabIndex = 13;
             this.txtTenBenhNhan.EditValueChanged += new System.EventHandler(this.txtTenBenhNhan_EditValueChanged);
-            this.txtTenBenhNhan.Validated += new System.EventHandler(this.txtTenBenhNhan_Validated);
             // 
             // txtCanNang
             // 
@@ -2005,6 +1979,15 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtCanNang.Size = new System.Drawing.Size(57, 20);
             this.txtCanNang.TabIndex = 18;
             this.txtCanNang.Validated += new System.EventHandler(this.txtCanNang_Validated);
+            // 
+            // txtMaTiepNhan
+            // 
+            this.txtMaTiepNhan.Location = new System.Drawing.Point(344, 68);
+            this.txtMaTiepNhan.Name = "txtMaTiepNhan";
+            this.txtMaTiepNhan.Properties.ReadOnly = true;
+            this.txtMaTiepNhan.Size = new System.Drawing.Size(34, 20);
+            this.txtMaTiepNhan.TabIndex = 34;
+            this.txtMaTiepNhan.Visible = false;
             // 
             // groupControl4
             // 
@@ -2150,8 +2133,6 @@ namespace BioNetSangLocSoSinh.Entry
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Khác", "2", -1)});
             this.cboPhuongPhapSinh.Size = new System.Drawing.Size(191, 20);
             this.cboPhuongPhapSinh.TabIndex = 12;
-            this.cboPhuongPhapSinh.SelectedIndexChanged += new System.EventHandler(this.cboPhuongPhapSinh_SelectedIndexChanged);
-            this.cboPhuongPhapSinh.EditValueChanged += new System.EventHandler(this.cboPhuongPhapSinh_EditValueChanged);
             // 
             // txtPara
             // 
@@ -2164,7 +2145,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtPara.TabIndex = 11;
             this.txtPara.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Cursor;
             this.txtPara.EditValueChanged += new System.EventHandler(this.txtPara_EditValueChanged);
-            this.txtPara.Validated += new System.EventHandler(this.txtPara_Validated);
             // 
             // txtSDTCha
             // 
@@ -2175,15 +2155,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtSDTCha.Name = "txtSDTCha";
             this.txtSDTCha.Size = new System.Drawing.Size(191, 20);
             this.txtSDTCha.TabIndex = 10;
-            // 
-            // txtMaChiDinh
-            // 
-            this.txtMaChiDinh.Location = new System.Drawing.Point(344, 92);
-            this.txtMaChiDinh.Name = "txtMaChiDinh";
-            this.txtMaChiDinh.Properties.ReadOnly = true;
-            this.txtMaChiDinh.Size = new System.Drawing.Size(34, 20);
-            this.txtMaChiDinh.TabIndex = 40;
-            this.txtMaChiDinh.Visible = false;
+            this.txtSDTCha.EditValueChanged += new System.EventHandler(this.txtSDTCha_EditValueChanged);
             // 
             // txtSDTMe
             // 
@@ -2206,15 +2178,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtTenCha.TabIndex = 6;
             this.txtTenCha.EditValueChanged += new System.EventHandler(this.txtTenCha_EditValueChanged);
             // 
-            // txtMaTiepNhan
-            // 
-            this.txtMaTiepNhan.Location = new System.Drawing.Point(344, 68);
-            this.txtMaTiepNhan.Name = "txtMaTiepNhan";
-            this.txtMaTiepNhan.Properties.ReadOnly = true;
-            this.txtMaTiepNhan.Size = new System.Drawing.Size(34, 20);
-            this.txtMaTiepNhan.TabIndex = 34;
-            this.txtMaTiepNhan.Visible = false;
-            // 
             // labelControl11
             // 
             this.labelControl11.Location = new System.Drawing.Point(8, 75);
@@ -2233,7 +2196,6 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtTenMe.Size = new System.Drawing.Size(297, 20);
             this.txtTenMe.TabIndex = 4;
             this.txtTenMe.EditValueChanged += new System.EventHandler(this.txtTenMe_EditValueChanged);
-            this.txtTenMe.Validated += new System.EventHandler(this.txtTenMe_Validated);
             // 
             // txtNamSinhCha
             // 
@@ -2254,6 +2216,16 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtNamSinhCha.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtNamSinhCha.Size = new System.Drawing.Size(79, 20);
             this.txtNamSinhCha.TabIndex = 7;
+            this.txtNamSinhCha.EditValueChanged += new System.EventHandler(this.txtNamSinhCha_EditValueChanged);
+            // 
+            // txtMaKhachHang
+            // 
+            this.txtMaKhachHang.Location = new System.Drawing.Point(384, 92);
+            this.txtMaKhachHang.Name = "txtMaKhachHang";
+            this.txtMaKhachHang.Properties.ReadOnly = true;
+            this.txtMaKhachHang.Size = new System.Drawing.Size(148, 20);
+            this.txtMaKhachHang.TabIndex = 48;
+            this.txtMaKhachHang.Visible = false;
             // 
             // labelControl15
             // 
@@ -2419,9 +2391,8 @@ namespace BioNetSangLocSoSinh.Entry
             // btnLuu
             // 
             this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLuu.Enabled = false;
             this.btnLuu.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.savefolder;
-            this.btnLuu.Location = new System.Drawing.Point(244, 6);
+            this.btnLuu.Location = new System.Drawing.Point(247, 6);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(78, 23);
             this.btnLuu.TabIndex = 0;
@@ -2443,14 +2414,12 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnHuy.TabIndex = 0;
             this.btnHuy.TabStop = false;
             this.btnHuy.Text = "Hủy";
-            this.btnHuy.Visible = false;
             // 
             // btnDuyet
             // 
             this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDuyet.Enabled = false;
             this.btnDuyet.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDuyet.ImageOptions.Image")));
-            this.btnDuyet.Location = new System.Drawing.Point(328, 6);
+            this.btnDuyet.Location = new System.Drawing.Point(331, 6);
             this.btnDuyet.Name = "btnDuyet";
             this.btnDuyet.Size = new System.Drawing.Size(75, 23);
             this.btnDuyet.TabIndex = 33;
@@ -2573,8 +2542,6 @@ namespace BioNetSangLocSoSinh.Entry
             ((System.ComponentModel.ISupportInitialize)(this.LookUpEditDonViDaDuyet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookupGoiXN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
-            this.panelControl8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
@@ -2598,6 +2565,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaPhieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNVChiDinh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaBenhNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayChiDinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayChiDinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNVTiepNhan.Properties)).EndInit();
@@ -2622,24 +2590,24 @@ namespace BioNetSangLocSoSinh.Entry
             ((System.ComponentModel.ISupportInitialize)(this.cbbDonViChon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbChuongTrinh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaChiDinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             this.groupControl5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTuanTuoi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCheDoDD.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaBenhNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbTTTre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGioiTinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbDanToc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhBenhNhan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTruyenMau.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayTruyenMau.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgayTruyenMau.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoiSinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenBenhNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCanNang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaTiepNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
@@ -2649,13 +2617,12 @@ namespace BioNetSangLocSoSinh.Entry
             ((System.ComponentModel.ISupportInitialize)(this.cboPhuongPhapSinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPara.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTCha.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaChiDinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSDTMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenCha.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaTiepNhan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNamSinhCha.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaKhachHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl9)).EndInit();
             this.groupControl9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).EndInit();
@@ -2782,8 +2749,6 @@ namespace BioNetSangLocSoSinh.Entry
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LookUpEditXetNghiem;
         private DevExpress.XtraEditors.SimpleButton btnBackPhieu;
         private DevExpress.XtraEditors.SimpleButton btnDuyetNhieuPhieu;
-        private DevExpress.XtraEditors.PanelControl panelControl8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraGrid.GridControl GCDanhSachDaTracking;
         private DevExpress.XtraGrid.Views.Grid.GridView GVDanhSachDaTracking;

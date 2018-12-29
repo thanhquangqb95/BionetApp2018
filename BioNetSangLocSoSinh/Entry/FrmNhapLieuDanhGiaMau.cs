@@ -200,6 +200,7 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void LoadNew()
         {
+            this.btnHuy.Enabled = false;
             this.btnBackPhieu.Enabled = false;
             this.txtMaPhieuLan1.ResetText();
             this.txtNoiSinh.ResetText();
@@ -571,8 +572,6 @@ namespace BioNetSangLocSoSinh.Entry
                 this.txtMaChiDinh.Text = chdinh.MaChiDinh;
                 this.radioGroupGoiXN.EditValue = chdinh.IDGoiDichVu.TrimEnd();
                 this.listdvcanlamlai = BioNet_Bus.GetChiDinhDichVuChiTiet(chdinh.MaChiDinh);
-                this.btnHuy.Visible = true;
-                this.btnHuy.Enabled = true;
             }
             this.txtMaPhieu.Text = maPhieu;
             this.txtMaTiepNhan.Text = maTiepNhan;
@@ -682,11 +681,13 @@ namespace BioNetSangLocSoSinh.Entry
             {
                 this.btnDuyet.Enabled = true;
                 this.btnSua.Enabled = false;
+                this.btnHuy.Enabled = true;
             }
             else
             {
                 this.btnDuyet.Enabled = false;
                 this.btnSua.Enabled = true;
+                this.btnHuy.Enabled = true;
             }
 
             DienThongTinMacDinhCuaDonViLenPhieu(this.lookupDonVi.EditValue.ToString());
