@@ -588,8 +588,6 @@ namespace BioNetSangLocSoSinh.FrmReports
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
             List<PsRptBaoCaoHoaDon> bc = new List<PsRptBaoCaoHoaDon>();
-
-            
             var temp = (from a in kq select new { a.TenDVCS, a.MaDVCS,a.DiaChiDVCS }).ToList();
             var IDCoSo = temp.Distinct().ToList();
             foreach(var dv in IDCoSo)
@@ -660,7 +658,6 @@ namespace BioNetSangLocSoSinh.FrmReports
             Reports.frmDanhSachDaCapMa phd = new Reports.frmDanhSachDaCapMa(hd);
             phd.ShowDialog();
 
-
         }
         private void AddItemForm()
         {
@@ -672,6 +669,80 @@ namespace BioNetSangLocSoSinh.FrmReports
             BioNet_Bus.AddMenuForm(fo);
             long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
             CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
+        }
+
+        private void btnXuatHoaDonTongHopDonVi_Click(object sender, EventArgs e)
+        {
+            List<PsRptBaoCaoHoaDon> bc = new List<PsRptBaoCaoHoaDon>();
+            var temp = (from a in kq select new { a.TenDVCS, a.MaDVCS, a.DiaChiDVCS }).ToList();
+            var IDCoSo = temp.Distinct().ToList();
+            foreach (var dv in IDCoSo)
+            {
+                PsRptBaoCaoHoaDon ct = new PsRptBaoCaoHoaDon();
+                ct.TenDVCS = dv.TenDVCS;
+                ct.MaDVCS = dv.MaDVCS;
+                ct.DiaChiDVCS = dv.DiaChiDVCS;
+                var phieu = kq.Where(g => g.MaDVCS.Contains(ct.MaDVCS)).ToList();
+                var goi = (from a in phieu select new { a.MaGoiXN, a.TenGoiDichVuChung }).ToList();
+                var ctgoi = goi.Distinct().ToList();
+                List<PsRptBaoCaoHoaDonCT> listct = new List<PsRptBaoCaoHoaDonCT>();
+                foreach (var g in ctgoi)
+                {
+                    PsRptBaoCaoHoaDonCT bcct = new PsRptBaoCaoHoaDonCT();
+
+                    switch (g.MaGoiXN)
+                    {
+                        case "DVGXN0002":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 02 bệnh";
+                                break;
+                            }
+                        case "DVGXN0003":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 03 bệnh";
+                                break;
+                            }
+                        case "DVGXN0004":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 05 bệnh";
+                                break;
+                            }
+                        case "DVGXN0006":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 05 bệnh + Hemo";
+                                break;
+                            }
+                        case "DVGXN0007":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 03 bệnh + Hemo";
+                                break;
+                            }
+                        case "DVGXN0008":
+                            {
+                                bcct.TenGoiDV = "Gói XN cơ bản 02 bệnh + Hemo";
+                                break;
+                            }
+                        default:
+                            {
+                                bcct.TenGoiDV = "Gói XN lại";
+                                break;
+                            }
+                    }
+
+                    bcct.IDGoiDV = g.MaGoiXN;
+                    bcct.SL = phieu.Where(x => x.MaGoiXN == g.MaGoiXN).ToList().Count();
+                    bcct.DonGia = Convert.ToInt32(phieu.Where(y => y.MaGoiXN == g.MaGoiXN).Select(x => x.DonGia).FirstOrDefault());
+                    bcct.TongTien = bcct.SL * bcct.DonGia;
+                    listct.Add(bcct);
+                }
+                ct.PsRptBaoCaoHoaDonCT = listct;
+                bc.Add(ct);
+            }
+            rptBaoCaoHoaDon hd = new rptBaoCaoHoaDon();
+            hd.DataSource = bc;
+            hd.Parameters["BCthang"].Value = "Xét nghiệm SLSS tháng " + this.dllNgay.tungay.Value.Month + "/" + this.dllNgay.tungay.Value.Year + " gồm:";
+            Reports.frmDanhSachDaCapMa phd = new Reports.frmDanhSachDaCapMa(hd);
+            phd.ShowDialog();
         }
     }
 }

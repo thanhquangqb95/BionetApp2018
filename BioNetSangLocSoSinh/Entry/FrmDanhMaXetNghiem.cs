@@ -925,5 +925,10 @@ namespace BioNetSangLocSoSinh.Entry
                 GVDanhSachCho.Columns["MaPhieu"].FilterInfo = new ColumnFilterInfo();
             }
         }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

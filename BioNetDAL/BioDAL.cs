@@ -725,7 +725,16 @@ namespace BioNetDAL
             }
             catch { return lstGoiDichVuChung = new List<PSDanhMucGoiDichVuChung>(); }
         }
-
+        public List<PSDanhMucKyThuatXN> GetDanhMucKyThuatXNs()
+        {
+            List<PSDanhMucKyThuatXN> lstDMKyThuanXN = new List<PSDanhMucKyThuatXN>();
+            try
+            {
+                lstDMKyThuanXN = db.PSDanhMucKyThuatXNs.OrderBy(x => x.STT).ToList();
+            }
+            catch {}
+            return lstDMKyThuanXN;
+        }
         #endregion
 
         #region DM Gói dịch vụ cơ sở
@@ -860,6 +869,17 @@ namespace BioNetDAL
                 return lstDichVu;
             }
             catch { return lstDichVu = new List<PSDanhMucDichVu>(); }
+        }
+        public List<PSDanhMucDichVu> GetListDichVuTheoNhom(int Nhom)
+        {
+            List<PSDanhMucDichVu> lstDichVu = new List<PSDanhMucDichVu>();
+            try
+            {
+                lstDichVu = db.PSDanhMucDichVus.Where(x=>x.MaNhom==Nhom).ToList();
+              
+            }
+            catch { }
+            return lstDichVu;
         }
 
         public bool InsDichVu(PSDanhMucDichVu dichVu)
@@ -1645,25 +1665,30 @@ namespace BioNetDAL
             {
                 db.Connection.Open();
                 db.Transaction = db.Connection.BeginTransaction();
-
-                var patient = db.PSPatients.Where(x => x.MaBenhNhan == infoPerson.MaBenhNhan).FirstOrDefault();
-                patient.TenBenhNhan = infoPerson.TenBenhNhan;
-                patient.NgayGioSinh = infoPerson.NgayGioSinh;
-                patient.NoiSinh = infoPerson.NoiSinh;
-                patient.DanTocID = infoPerson.DanTocID;
-                patient.DiaChi = infoPerson.DiaChi;
-                patient.TuanTuoiKhiSinh = infoPerson.TuanTuoiKhiSinh;
-                patient.CanNang = infoPerson.CanNang;
-                patient.PhuongPhapSinh = infoPerson.PhuongPhapSinh;
-                patient.GioiTinh = infoPerson.GioiTinh;
-                patient.FatherName = infoPerson.FatherName;
-                patient.MotherName = infoPerson.MotherName;
-                patient.FatherBirthday = infoPerson.FatherBirthday;
-                patient.MotherBirthday = infoPerson.MotherBirthday;
-                patient.FatherPhoneNumber = infoPerson.FatherPhoneNumber;
-                patient.MotherPhoneNumber  = infoPerson.MotherPhoneNumber;
-                patient.DiaChi = infoPerson.DiaChi;
-                patient.isDongBo = false;
+                var patient = db.PSPatients.FirstOrDefault(x => x.MaBenhNhan == infoPerson.MaBenhNhan);
+                if(patient!=null)
+                {
+                    patient.TenBenhNhan = infoPerson.TenBenhNhan;
+                    patient.NgayGioSinh = infoPerson.NgayGioSinh;
+                    patient.NoiSinh = infoPerson.NoiSinh;
+                    patient.DanTocID = infoPerson.DanTocID;
+                    patient.DiaChi = infoPerson.DiaChi;
+                    patient.TuanTuoiKhiSinh = infoPerson.TuanTuoiKhiSinh;
+                    patient.CanNang = infoPerson.CanNang;
+                    patient.PhuongPhapSinh = infoPerson.PhuongPhapSinh;
+                    patient.GioiTinh = infoPerson.GioiTinh;
+                    patient.Para = infoPerson.Para;
+                    patient.FatherName = infoPerson.FatherName;
+                    patient.MotherName = infoPerson.MotherName;
+                    patient.FatherBirthday = infoPerson.FatherBirthday;
+                    patient.MotherBirthday = infoPerson.MotherBirthday;
+                    patient.FatherPhoneNumber = infoPerson.FatherPhoneNumber;
+                    patient.MotherPhoneNumber = infoPerson.MotherPhoneNumber;
+                    patient.DiaChi = infoPerson.DiaChi;
+                    patient.isDongBo = false;
+                    db.SubmitChanges();
+                }
+                db.PSPhieuSangLocs.Where(x => x.MaBenhNhan.Equals(infoPerson.MaBenhNhan)).ToList().ForEach(x=>x.Para=infoPerson.Para);
                 db.SubmitChanges();
                 db.Transaction.Commit();
                 db.Connection.Close();
@@ -2011,7 +2036,6 @@ namespace BioNetDAL
                 ts.GiaTriTrungBinhNam = thongSo.GiaTriTrungBinhNam;
                 ts.MaNhom = thongSo.MaNhom;
                 ts.Stt = thongSo.Stt;
-                ts.GiaTri = thongSo.GiaTri;
                 ts.isLocked = thongSo.isLocked;
                 ts.DonViTinh = thongSo.DonViTinh;
                 db.SubmitChanges();

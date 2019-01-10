@@ -15,7 +15,14 @@ namespace BioNetSangLocSoSinh.Entry
     public partial class FrmDMGoiDichVuChiTiet : DevExpress.XtraEditors.XtraForm
     {
         private string idServicePackage = string.Empty;
+        private string Nhom = string.Empty;
         private DataTable dtGoiDV = new DataTable();
+        private class PSDanhMucDichVuChon
+        {
+            public  PSDanhMucDichVu PSDanhMucDichVu { get; set; }
+            public  bool? Check { get; set; }
+        }
+        private List<PSDanhMucDichVuChon> lstDV = new List<PSDanhMucDichVuChon>();
         public FrmDMGoiDichVuChiTiet()
         {
             InitializeComponent();
@@ -24,32 +31,44 @@ namespace BioNetSangLocSoSinh.Entry
         private void FrmDMGoiDichVuChiTiet_Load(object sender, EventArgs e)
         {
             gridControl_GoiDichVuChung.DataSource = BioBLL.GetListGoiDichVuChung();
+            repositoryItemGridLookUpEditKyThuat.DataSource = BioBLL.GetDanhMucKyThuatXNs();
 
-            this.dtGoiDV = BioBLL.GetListDichVu();
-            this.dtGoiDV.Columns.Add("Check", typeof(bool));
-            foreach (DataRow row in this.dtGoiDV.Rows)
-                row["Check"] = false;
-            gridControl_DichVu.DataSource = this.dtGoiDV;
-            AddItemForm();
+
+            //AddItemForm();
         }
 
         private void gridView_GoiDichVuChung_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             this.idServicePackage = gridView_GoiDichVuChung.GetRowCellValue(gridView_GoiDichVuChung.FocusedRowHandle, col_th_IDGoiDichVuChung).ToString();
-            CheckService(this.idServicePackage);
+            Nhom = gridView_GoiDichVuChung.GetRowCellValue(gridView_GoiDichVuChung.FocusedRowHandle, col_th_GroupTraKQ).ToString();
+            CheckService(idServicePackage,Nhom);
         }
 
-        private void CheckService(string id)
+        private void CheckService(string id,string Nhom)
         {
+            lstDV = new List<PSDanhMucDichVuChon>();
+            if (string.IsNullOrEmpty(Nhom))
+            {
+                Nhom = "1";
+            }
+            var lst = BioBLL.GetListDichVuTheoNhom(int.Parse(Nhom));
+            foreach (var ls in lst)
+            {
+                PSDanhMucDichVuChon dv = new PSDanhMucDichVuChon();
+                dv.PSDanhMucDichVu = ls;
+                dv.Check = false;
+                lstDV.Add(dv);
+            }
             List<string> lstService = new List<string>();
             lstService = BioBLL.GetListServicePackageByIDGoi(id).Select(x => x.IDDichVu).ToList();
-            foreach (DataRow row in this.dtGoiDV.Rows)
+            foreach (var row in this.lstDV)
             {
-                if(lstService.Contains(row["IDDichVu"].ToString()))
-                    row["Check"] = true;
+                if (lstService.FirstOrDefault(x=>x.Equals(row.PSDanhMucDichVu.IDDichVu.ToString()))!=null)
+                    row.Check = true;
                 else
-                    row["Check"] = false;
+                    row.Check = false;
             }
+            gridControl_DichVu.DataSource = lstDV;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -72,7 +91,7 @@ namespace BioNetSangLocSoSinh.Entry
             else
             {
                 XtraMessageBox.Show("Cập nhật chi tiết gói dịch vụ thất bại!", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                CheckService(this.idServicePackage);
+                CheckService(this.idServicePackage,this.Nhom);
             }
         }
 
@@ -106,6 +125,11 @@ namespace BioNetSangLocSoSinh.Entry
             long? idfo = BioNet_Bus.GetMenuIDForm(this.Name);
             CustomLayouts.TransLanguage.AddItemCT(this.Controls, idfo);
             CustomLayouts.TransLanguage.Trans(this.Controls, idfo);
+        }
+
+        private void gridView_DichVu_DoubleClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

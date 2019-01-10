@@ -53,7 +53,6 @@ namespace BioNetSangLocSoSinh.Entry
                     thongSo.GiaTriTrungBinhNam = (gridView_thongso.GetRowCellValue(e.RowHandle, "GiaTriTrungBinhNam")??String.Empty).ToString();
                     thongSo.MaNhom = Convert.ToByte(gridView_thongso.GetRowCellValue(e.RowHandle, "MaNhom").ToString());
                     thongSo.Stt= Convert.ToByte((gridView_thongso.GetRowCellValue(e.RowHandle, col_th_Stt) ?? 0).ToString());
-                    thongSo.GiaTri = (gridView_thongso.GetRowCellValue(e.RowHandle, col_GiaTri)??String.Empty).ToString();
                     thongSo.DonViTinh = gridView_thongso.GetRowCellValue(e.RowHandle, "DonViTinh").ToString();
                     //string a = (gridView_thongso.GetRowCellValue(e.RowHandle, col_isLocked) ?? "False").ToString();
                     thongSo.isLocked = (gridView_thongso.GetRowCellValue(e.RowHandle, col_isLocked) ?? "False").ToString()=="True"? true :false;

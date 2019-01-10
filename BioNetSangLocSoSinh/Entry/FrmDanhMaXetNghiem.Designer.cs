@@ -168,7 +168,7 @@
             this.LookUpMaXetNghiem,
             this.SearchLookUpMaXetNghiem,
             this.LookUpEditGoiXN});
-            this.GCDanhSachDaCapMa.Size = new System.Drawing.Size(935, 800);
+            this.GCDanhSachDaCapMa.Size = new System.Drawing.Size(935, 809);
             this.GCDanhSachDaCapMa.TabIndex = 6;
             this.GCDanhSachDaCapMa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachDaCapMa});
@@ -190,6 +190,7 @@
             this.GVDanhSachDaCapMa.OptionsDetail.EnableMasterViewMode = false;
             this.GVDanhSachDaCapMa.OptionsView.ShowFooter = true;
             this.GVDanhSachDaCapMa.OptionsView.ShowGroupPanel = false;
+            this.GVDanhSachDaCapMa.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDanhSachDaCapMa_RowCellStyle);
             this.GVDanhSachDaCapMa.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.GVDanhSachDaCapMa_PopupMenuShowing);
             this.GVDanhSachDaCapMa.ShownEditor += new System.EventHandler(this.GVDanhSachDaCapMa_ShownEditor);
             this.GVDanhSachDaCapMa.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.GVDanhSachDaCapMa_CellValueChanged);
@@ -312,34 +313,40 @@
             this.pn2.Controls.Add(this.btnXuatExcel);
             this.pn2.Controls.Add(this.btnDuaVaoXN);
             this.pn2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pn2.Location = new System.Drawing.Point(2, 822);
+            this.pn2.Location = new System.Drawing.Point(2, 831);
             this.pn2.Name = "pn2";
-            this.pn2.Size = new System.Drawing.Size(935, 46);
+            this.pn2.Size = new System.Drawing.Size(935, 37);
             this.pn2.TabIndex = 5;
             // 
             // btnXuatExcel
             // 
+            this.btnXuatExcel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnXuatExcel.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.btnXuatExcel.Appearance.Options.UseFont = true;
+            this.btnXuatExcel.Appearance.Options.UseForeColor = true;
             this.btnXuatExcel.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__3_1;
-            this.btnXuatExcel.Location = new System.Drawing.Point(271, 9);
+            this.btnXuatExcel.Location = new System.Drawing.Point(232, 9);
             this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(168, 29);
+            this.btnXuatExcel.Size = new System.Drawing.Size(168, 23);
             this.btnXuatExcel.TabIndex = 1;
             this.btnXuatExcel.Text = "Xuất file Excel";
             this.btnXuatExcel.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnDuaVaoXN
             // 
-            this.btnDuaVaoXN.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDuaVaoXN.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDuaVaoXN.Appearance.ForeColor = System.Drawing.Color.Maroon;
             this.btnDuaVaoXN.Appearance.Options.UseFont = true;
+            this.btnDuaVaoXN.Appearance.Options.UseForeColor = true;
             this.btnDuaVaoXN.Appearance.Options.UseTextOptions = true;
             this.btnDuaVaoXN.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnDuaVaoXN.AutoWidthInLayoutControl = true;
             this.btnDuaVaoXN.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__1_;
-            this.btnDuaVaoXN.Location = new System.Drawing.Point(21, 9);
+            this.btnDuaVaoXN.Location = new System.Drawing.Point(15, 9);
             this.btnDuaVaoXN.Name = "btnDuaVaoXN";
-            this.btnDuaVaoXN.Size = new System.Drawing.Size(211, 30);
+            this.btnDuaVaoXN.Size = new System.Drawing.Size(211, 23);
             this.btnDuaVaoXN.TabIndex = 0;
-            this.btnDuaVaoXN.Text = "Đưa vào xét nghiệm";
+            this.btnDuaVaoXN.Text = "Duyệt danh sách mã";
             this.btnDuaVaoXN.Click += new System.EventHandler(this.btnCapToanBo_Click);
             // 
             // popUpMenuDanhSachCho
@@ -666,10 +673,14 @@
             // 
             // btnDuaVaoDanhSachCapMa
             // 
+            this.btnDuaVaoDanhSachCapMa.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnDuaVaoDanhSachCapMa.Appearance.ForeColor = System.Drawing.Color.Maroon;
+            this.btnDuaVaoDanhSachCapMa.Appearance.Options.UseFont = true;
+            this.btnDuaVaoDanhSachCapMa.Appearance.Options.UseForeColor = true;
             this.btnDuaVaoDanhSachCapMa.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.import__2_;
-            this.btnDuaVaoDanhSachCapMa.Location = new System.Drawing.Point(74, 7);
+            this.btnDuaVaoDanhSachCapMa.Location = new System.Drawing.Point(8, 8);
             this.btnDuaVaoDanhSachCapMa.Name = "btnDuaVaoDanhSachCapMa";
-            this.btnDuaVaoDanhSachCapMa.Size = new System.Drawing.Size(168, 32);
+            this.btnDuaVaoDanhSachCapMa.Size = new System.Drawing.Size(187, 23);
             this.btnDuaVaoDanhSachCapMa.TabIndex = 0;
             this.btnDuaVaoDanhSachCapMa.Text = "Đưa vào danh sách cấp mã";
             this.btnDuaVaoDanhSachCapMa.Click += new System.EventHandler(this.btnDuaVaoDanhSachCapMa_Click);
@@ -713,7 +724,7 @@
             this.GCDanhSachCho.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpDonVu_GCDanhSachCho,
             this.LookUpGoiXN});
-            this.GCDanhSachCho.Size = new System.Drawing.Size(321, 643);
+            this.GCDanhSachCho.Size = new System.Drawing.Size(321, 650);
             this.GCDanhSachCho.TabIndex = 7;
             this.GCDanhSachCho.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GVDanhSachCho});
@@ -740,6 +751,7 @@
             this.GVDanhSachCho.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_maDonVi__GCDanhSachCho, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.col_MaGoiXN, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.GVDanhSachCho.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.GVDanhSachCho_RowCellStyle);
             this.GVDanhSachCho.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.GVDanhSachCho_PopupMenuShowing);
             // 
             // col_maPhieu_GCDanhSachCho
@@ -817,10 +829,11 @@
             // 
             this.panelControl1.Controls.Add(this.btnDuaVaoDanhSachCapMa);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(2, 824);
+            this.panelControl1.Location = new System.Drawing.Point(2, 831);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(321, 44);
+            this.panelControl1.Size = new System.Drawing.Size(321, 37);
             this.panelControl1.TabIndex = 6;
+            this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
             // col_MaDonVi_GCChuaCoKQ
             // 

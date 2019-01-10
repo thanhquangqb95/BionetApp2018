@@ -376,10 +376,15 @@ namespace BioNetBLL
             var db = new BioDAL();
             return db.GetListGoiDichVuChung();
         }
-        #endregion
+        public static List<PSDanhMucKyThuatXN> GetDanhMucKyThuatXNs()
+        {
+            var db = new BioDAL();
+            return db.GetDanhMucKyThuatXNs();
+        }
+            #endregion
 
-        #region DM Gói dịch vụ cơ sở
-        public static List <PSDanhMucGoiDichVuTheoDonVi> GetListGoiDichVuTheoDonVi ()
+            #region DM Gói dịch vụ cơ sở
+            public static List <PSDanhMucGoiDichVuTheoDonVi> GetListGoiDichVuTheoDonVi ()
         {
             var db = new BioDAL();
             return db.GetListGoiDichVuCoSo();
@@ -497,8 +502,12 @@ namespace BioNetBLL
             var db = new BioDAL();
             return db.GetListDichVu();
         }
-
-        public static bool InsDichVu(PSDanhMucDichVu dichVu)
+        public static List<PSDanhMucDichVu> GetListDichVuTheoNhom(int Nhom)
+        {
+            var db = new BioDAL();
+            return db.GetListDichVuTheoNhom(Nhom);
+        }
+            public static bool InsDichVu(PSDanhMucDichVu dichVu)
         {
             var db = new BioDAL();
             return db.InsDichVu(dichVu);
@@ -804,7 +813,6 @@ namespace BioNetBLL
                 dt.Columns.Add(new DataColumn("GiaTriTrungBinhNam", typeof(string)));
                 dt.Columns.Add(new DataColumn("MaNhom", typeof(byte)));
                 dt.Columns.Add(new DataColumn("Stt", typeof(int)));
-                dt.Columns.Add(new DataColumn("GiaTri", typeof(string)));
                 dt.Columns.Add(new DataColumn("DonViTinh", typeof(string)));
                 dt.Columns.Add(new DataColumn("isLocked", typeof(bool)));
                 var vlist = db.GetListThongSoXN();
@@ -825,9 +833,8 @@ namespace BioNetBLL
                     dr[9] = lt1.GiaTriTrungBinhNam;
                     dr[10] = lt1.MaNhom;
                     dr[11] = lt1.Stt;
-                    dr[12] = lt1.GiaTri;
-                    dr[13] = lt1.DonViTinh;
-                    dr[14] = lt1.isLocked;
+                    dr[12] = lt1.DonViTinh;
+                    dr[13] = lt1.isLocked;
                     dr.EndEdit();
                     dt.Rows.Add(dr);
                 }

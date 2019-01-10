@@ -329,6 +329,11 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.InsertKetQuaXN(rowKQ);
         }
+        public static PsReponse InsertKetQuaXNNew(PSXN_KetQuaNew rowXN)
+        {
+            var db = new DataObjects();
+            return db.InsertKetQuaXNNew(rowXN);
+        }
         public static PsReponse HuyChiDinhDichVu(string maCD, string maNV, string lydoHuy, string maPhieu, string maTiepNhan)
         {
             var db = new DataObjects();
@@ -542,6 +547,11 @@ namespace BioNetBLL
         {
             var db = new DataObjects();
             return db.GetGhiChuPhongXetNghiem(maKQ);
+        }
+        public static string GetGhiChuPhongXetNghiemNew(string maKQ)
+        {
+            var db = new DataObjects();
+            return db.GetGhiChuPhongXetNghiemNew(maKQ);
         }
         public static rptChiTietTrungTam GetBaoCaoTrungTamTongHopChiTietTheoDonVi(DateTime tuNgay, DateTime denNgay)
         {
@@ -995,12 +1005,24 @@ namespace BioNetBLL
             }
             return lst;
         }
+
+        public static List<PSXN_KetQuaNew_ChiTiet> GetDanhSachKetQuaChiTietNew(string maKQ, string maPhieu, string MaXN)
+        {
+            var db = new DataObjects();
+            List<PSXN_KetQuaNew_ChiTiet> lst = db.GetDanhSachChiTietNewKetQua(maKQ, MaXN,maPhieu);
+            return lst;
+        }
         public static PSXN_KetQua GetPhieuXNKetQua(string MaPhieu, string MaXN, string MaGoiXN)
         {
             var db = new DataObjects();
             return db.GetPhieuXNKetQua(MaPhieu, MaXN, MaGoiXN);
         }
-        public static List<PsRptDanhSachDaCapMaXetNghiem> GetDanhSachDaCapMaXetNghiem(DateTime tuNgay, DateTime denNgay, string maDonVi)
+        public static PSXN_KetQuaNew GetPhieuXNKetQuaNew(string maPhieu, string MaXN, string MaGoiXN)
+        {
+            var db = new DataObjects();
+            return db.GetPhieuXNKetQuaNew(maPhieu, MaXN, MaGoiXN);
+        }
+            public static List<PsRptDanhSachDaCapMaXetNghiem> GetDanhSachDaCapMaXetNghiem(DateTime tuNgay, DateTime denNgay, string maDonVi)
         {
             List<PsRptDanhSachDaCapMaXetNghiem> lst = new List<PsRptDanhSachDaCapMaXetNghiem>();
             var db = new DataObjects();
@@ -1137,6 +1159,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetThongTinChiDinh(maCD);
         }
+        public static PSChiDinhDichVuNew GetThongTinChiDinhNew(string maCD)
+        {
+            var db = new DataObjects();
+            return db.GetThongTinChiDinhNew(maCD);
+        }
+
         public static bool KiemTraPhieuThuMauLaiDaDuocChiDinhChua(string maphieulan1, string maphieulamlai)
         {
             var db = new DataObjects();
@@ -1211,12 +1239,27 @@ namespace BioNetBLL
             lst = db.GetDanhSachChuaCapMaXN(2);
             return lst;
         }
+        public static List<PSChiDinhDichVuNew> GetDanhSachChuaCapMaXNNew(int trangthai)
+        {
+            var db = new DataObjects();
+            return db.GetDanhSachChuaCapMaXNNew(trangthai);
+        }
+        public static List<PSChiDinhDichVuNew> GetDanhSachChiDinhNewPhieu(string MaPhieu, string MaDonVi)
+        {
+            var db = new DataObjects();
+            return db.GetDanhSachChiDinhNewPhieu(MaPhieu,MaDonVi);
+        }
         public static List<PSXN_KetQua> GetDanhSachChuaCoKQ()
         {
             List<PSXN_KetQua> lst = new List<PSXN_KetQua>();
             var db = new DataObjects();
             lst = db.GetDSPhongXN(false);
             return lst;
+        }
+        public static List<PSXN_KetQuaNew> GetDanhSachChuaCoKQNew()
+        {
+            var db = new DataObjects();
+            return db.GetDSPhongXNNew(false);
         }
         public static List<PSGanViTriXNKQ> GetDSChuaGanXN()
         {
@@ -1436,6 +1479,12 @@ namespace BioNetBLL
                 }
             }
             return lst;
+        }
+        public static List<PSChiTietGoiDichVuChung> GetDichVuTheoMaGoi(string maGoiDichVi)
+        {
+            var db = new DataObjects();
+            return db.GetDichVuTheoMaGoi(maGoiDichVi);
+           
         }
         public static PSTTPhieu GetTTPhieu(string maGoi, string maDonVi)
         {

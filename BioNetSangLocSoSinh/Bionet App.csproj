@@ -344,6 +344,12 @@
     <Compile Include="DiaglogFrm\XtraForm1.Designer.cs">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entry\FrmCapMaXetNghiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entry\FrmCapMaXetNghiem.Designer.cs">
+      <DependentUpon>FrmCapMaXetNghiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entry\FrmDanhMaXetNghiem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1015,6 +1021,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DiaglogFrm\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entry\FrmCapMaXetNghiem.resx">
+      <DependentUpon>FrmCapMaXetNghiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entry\FrmDanhMaXetNghiem.resx">
       <DependentUpon>FrmDanhMaXetNghiem.cs</DependentUpon>

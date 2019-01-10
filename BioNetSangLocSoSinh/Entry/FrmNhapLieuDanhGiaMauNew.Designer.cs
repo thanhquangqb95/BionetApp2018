@@ -31,12 +31,12 @@ namespace BioNetSangLocSoSinh.Entry
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhapLieuDanhGiaMauNew));
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabDanhSachCho = new DevExpress.XtraTab.XtraTabPage();
@@ -575,6 +575,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(329, 109);
             this.panelControl4.TabIndex = 0;
+            this.panelControl4.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl4_Paint);
             // 
             // simpleButton1
             // 
@@ -583,9 +584,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.simpleButton1.Location = new System.Drawing.Point(248, 75);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(73, 23);
-            toolTipTitleItem7.Text = "Bỏ lọc";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            this.simpleButton1.SuperTip = superToolTip7;
+            toolTipTitleItem1.Text = "Bỏ lọc";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.simpleButton1.SuperTip = superToolTip1;
             this.simpleButton1.TabIndex = 37;
             // 
             // btnCapNhatDSTiepNhan
@@ -939,9 +940,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnClear_DaDuyet.Location = new System.Drawing.Point(229, 122);
             this.btnClear_DaDuyet.Name = "btnClear_DaDuyet";
             this.btnClear_DaDuyet.Size = new System.Drawing.Size(91, 23);
-            toolTipTitleItem8.Text = "Bỏ lọc";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            this.btnClear_DaDuyet.SuperTip = superToolTip8;
+            toolTipTitleItem2.Text = "Bỏ lọc";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.btnClear_DaDuyet.SuperTip = superToolTip2;
             this.btnClear_DaDuyet.TabIndex = 36;
             // 
             // btnCapNhatDanhSachDaDuyet
@@ -1264,6 +1265,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtMaBenhNhan.Size = new System.Drawing.Size(148, 20);
             this.txtMaBenhNhan.TabIndex = 60;
             this.txtMaBenhNhan.Visible = false;
+            this.txtMaBenhNhan.EditValueChanged += new System.EventHandler(this.txtMaBenhNhan_EditValueChanged);
             // 
             // labelControl35
             // 
@@ -1377,9 +1379,9 @@ namespace BioNetSangLocSoSinh.Entry
             this.btnChiTietKQ1.Location = new System.Drawing.Point(288, 114);
             this.btnChiTietKQ1.Name = "btnChiTietKQ1";
             this.btnChiTietKQ1.Size = new System.Drawing.Size(27, 20);
-            toolTipTitleItem9.Text = "Chi tiết phiếu kết quả 1";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            this.btnChiTietKQ1.SuperTip = superToolTip9;
+            toolTipTitleItem3.Text = "Chi tiết phiếu kết quả 1";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.btnChiTietKQ1.SuperTip = superToolTip3;
             this.btnChiTietKQ1.TabIndex = 37;
             this.btnChiTietKQ1.Visible = false;
             // 
@@ -1988,6 +1990,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.txtMaTiepNhan.Size = new System.Drawing.Size(34, 20);
             this.txtMaTiepNhan.TabIndex = 34;
             this.txtMaTiepNhan.Visible = false;
+            this.txtMaTiepNhan.EditValueChanged += new System.EventHandler(this.txtMaTiepNhan_EditValueChanged);
             // 
             // groupControl4
             // 

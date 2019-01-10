@@ -97,6 +97,7 @@
             this.dllNgay = new UserControlDate.dllNgay();
             this.btnXuatExcel = new DevExpress.XtraEditors.SimpleButton();
             this.btnLayDuLieu = new DevExpress.XtraEditors.SimpleButton();
+            this.btnXuatHoaDonTongHopDonVi = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxTrangThaiMau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEditMaGoi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
@@ -730,6 +731,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnXuatHoaDonTongHopDonVi);
             this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Controls.Add(this.lblTenDonVi);
             this.panelControl1.Controls.Add(this.labelControl16);
@@ -751,7 +753,7 @@
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(552, 58);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(158, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(180, 23);
             this.simpleButton1.TabIndex = 1068;
             this.simpleButton1.Text = "Xuất Báo Cáo Theo Tháng";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -762,7 +764,7 @@
             this.lblTenDonVi.BackColor = System.Drawing.Color.Transparent;
             this.lblTenDonVi.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenDonVi.ForeColor = System.Drawing.Color.BlueViolet;
-            this.lblTenDonVi.Location = new System.Drawing.Point(716, 31);
+            this.lblTenDonVi.Location = new System.Drawing.Point(738, 31);
             this.lblTenDonVi.Name = "lblTenDonVi";
             this.lblTenDonVi.Size = new System.Drawing.Size(75, 29);
             this.lblTenDonVi.TabIndex = 1067;
@@ -772,7 +774,7 @@
             // 
             this.labelControl16.Appearance.ForeColor = System.Drawing.Color.Blue;
             this.labelControl16.Appearance.Options.UseForeColor = true;
-            this.labelControl16.Location = new System.Drawing.Point(312, 31);
+            this.labelControl16.Location = new System.Drawing.Point(307, 41);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(38, 13);
             this.labelControl16.TabIndex = 1065;
@@ -780,7 +782,7 @@
             // 
             // txtDonVi
             // 
-            this.txtDonVi.Location = new System.Drawing.Point(354, 28);
+            this.txtDonVi.Location = new System.Drawing.Point(354, 34);
             this.txtDonVi.Name = "txtDonVi";
             this.txtDonVi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -824,7 +826,7 @@
             // 
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Blue;
             this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(307, 5);
+            this.labelControl9.Location = new System.Drawing.Point(307, 15);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(41, 13);
             this.labelControl9.TabIndex = 1063;
@@ -832,7 +834,7 @@
             // 
             // txtChiCuc
             // 
-            this.txtChiCuc.Location = new System.Drawing.Point(354, 2);
+            this.txtChiCuc.Location = new System.Drawing.Point(354, 8);
             this.txtChiCuc.Name = "txtChiCuc";
             this.txtChiCuc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -886,9 +888,9 @@
             // 
             this.btnXuatExcel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnXuatExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatExcel.ImageOptions.Image")));
-            this.btnXuatExcel.Location = new System.Drawing.Point(552, 32);
+            this.btnXuatExcel.Location = new System.Drawing.Point(552, 5);
             this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(158, 23);
+            this.btnXuatExcel.Size = new System.Drawing.Size(180, 23);
             this.btnXuatExcel.TabIndex = 10;
             this.btnXuatExcel.Text = "Xuất Báo Cáo Đơn Vị";
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
@@ -897,12 +899,27 @@
             // 
             this.btnLayDuLieu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.btnLayDuLieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLayDuLieu.ImageOptions.Image")));
-            this.btnLayDuLieu.Location = new System.Drawing.Point(552, 3);
+            this.btnLayDuLieu.Location = new System.Drawing.Point(307, 58);
             this.btnLayDuLieu.Name = "btnLayDuLieu";
-            this.btnLayDuLieu.Size = new System.Drawing.Size(158, 23);
+            this.btnLayDuLieu.Size = new System.Drawing.Size(239, 23);
             this.btnLayDuLieu.TabIndex = 11;
             this.btnLayDuLieu.Text = "Lấy dữ liệu";
             this.btnLayDuLieu.Click += new System.EventHandler(this.btnLayDuLieu_Click);
+            // 
+            // btnXuatHoaDonTongHopDonVi
+            // 
+            this.btnXuatHoaDonTongHopDonVi.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatHoaDonTongHopDonVi.Appearance.ForeColor = System.Drawing.Color.Sienna;
+            this.btnXuatHoaDonTongHopDonVi.Appearance.Options.UseFont = true;
+            this.btnXuatHoaDonTongHopDonVi.Appearance.Options.UseForeColor = true;
+            this.btnXuatHoaDonTongHopDonVi.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btnXuatHoaDonTongHopDonVi.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pdf;
+            this.btnXuatHoaDonTongHopDonVi.Location = new System.Drawing.Point(552, 31);
+            this.btnXuatHoaDonTongHopDonVi.Name = "btnXuatHoaDonTongHopDonVi";
+            this.btnXuatHoaDonTongHopDonVi.Size = new System.Drawing.Size(180, 23);
+            this.btnXuatHoaDonTongHopDonVi.TabIndex = 1069;
+            this.btnXuatHoaDonTongHopDonVi.Text = "Xuất Hóa Đơn Tổng Hợp";
+            this.btnXuatHoaDonTongHopDonVi.Click += new System.EventHandler(this.btnXuatHoaDonTongHopDonVi_Click);
             // 
             // FrmBaoCaoTaiChinhCTDonVi
             // 
@@ -1029,5 +1046,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton btnGuiMail;
         private DevExpress.XtraEditors.SimpleButton btnHoaDon;
+        private DevExpress.XtraEditors.SimpleButton btnXuatHoaDonTongHopDonVi;
     }
 }

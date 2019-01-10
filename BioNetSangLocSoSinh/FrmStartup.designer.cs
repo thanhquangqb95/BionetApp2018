@@ -159,7 +159,9 @@
             this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -180,6 +182,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonPage9 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem75 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -305,9 +309,10 @@
             this.barSubItem13,
             this.barButtonItem73,
             this.txtNameNV,
-            this.barButtonItem74});
+            this.barButtonItem74,
+            this.barButtonItem75});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 45;
+            this.ribbon.MaxItemId = 46;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1,
@@ -1014,6 +1019,7 @@
             this.barButtonItem48.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.versions;
             this.barButtonItem48.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.versions;
             this.barButtonItem48.Name = "barButtonItem48";
+            this.barButtonItem48.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem48.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem48_ItemClick);
             // 
             // barButtonItem49
@@ -1023,6 +1029,7 @@
             this.barButtonItem49.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.business;
             this.barButtonItem49.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.versions;
             this.barButtonItem49.Name = "barButtonItem49";
+            this.barButtonItem49.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem49.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem49_ItemClick);
             // 
             // barButtonItem50
@@ -1031,6 +1038,7 @@
             this.barButtonItem50.Id = 3;
             this.barButtonItem50.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.versions;
             this.barButtonItem50.Name = "barButtonItem50";
+            this.barButtonItem50.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem50.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem50_ItemClick);
             // 
             // barButtonItem51
@@ -1040,6 +1048,7 @@
             this.barButtonItem51.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.analytics;
             this.barButtonItem51.ImageOptions.LargeImage = global::BioNetSangLocSoSinh.Properties.Resources.versions;
             this.barButtonItem51.Name = "barButtonItem51";
+            this.barButtonItem51.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem51.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem51_ItemClick);
             // 
             // barButtonItem52
@@ -1221,6 +1230,7 @@
             this.barButtonItem66.Caption = "Báo cáo trạng thái";
             this.barButtonItem66.Id = 29;
             this.barButtonItem66.Name = "barButtonItem66";
+            this.barButtonItem66.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem66.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem66_ItemClick);
             // 
             // barSubItem9
@@ -1312,6 +1322,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem72),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem73)});
             this.barSubItem12.Name = "barSubItem12";
+            this.barSubItem12.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // barButtonItem71
             // 
@@ -1319,6 +1330,7 @@
             this.barButtonItem71.Id = 38;
             this.barButtonItem71.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.pie_chart;
             this.barButtonItem71.Name = "barButtonItem71";
+            this.barButtonItem71.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem71.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem71_ItemClick);
             // 
             // barButtonItem72
@@ -1327,6 +1339,7 @@
             this.barButtonItem72.Id = 39;
             this.barButtonItem72.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.bar_chart;
             this.barButtonItem72.Name = "barButtonItem72";
+            this.barButtonItem72.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem72.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem72_ItemClick);
             // 
             // barButtonItem73
@@ -1335,6 +1348,7 @@
             this.barButtonItem73.Id = 41;
             this.barButtonItem73.ImageOptions.Image = global::BioNetSangLocSoSinh.Properties.Resources.result__1_;
             this.barButtonItem73.Name = "barButtonItem73";
+            this.barButtonItem73.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem73.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem73_ItemClick);
             // 
             // barSubItem13
@@ -1346,6 +1360,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem49),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem51)});
             this.barSubItem13.Name = "barSubItem13";
+            this.barSubItem13.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // txtNameNV
             // 
@@ -1423,21 +1438,35 @@
             // ribbonPage6
             // 
             this.ribbonPage6.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup12});
+            this.ribbonPageGroup10,
+            this.ribbonPageGroup11,
+            this.ribbonPageGroup14});
             this.ribbonPage6.Name = "ribbonPage6";
             this.ribbonPage6.Text = "Báo Cáo";
             this.ribbonPage6.Visible = false;
             // 
-            // ribbonPageGroup12
+            // ribbonPageGroup10
             // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem48);
-            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem50);
-            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem66);
-            this.ribbonPageGroup12.ItemLinks.Add(this.barSubItem13);
-            this.ribbonPageGroup12.ItemLinks.Add(this.barSubItem12);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
-            this.ribbonPageGroup12.Text = "Báo Cáo Đơn Vị";
-            this.ribbonPageGroup12.Visible = false;
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem48);
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem50);
+            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem66);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "Báo cáo cơ bản";
+            this.ribbonPageGroup10.Visible = false;
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.barSubItem13);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            this.ribbonPageGroup11.Text = "Báo cáo tài chính";
+            this.ribbonPageGroup11.Visible = false;
+            // 
+            // ribbonPageGroup14
+            // 
+            this.ribbonPageGroup14.ItemLinks.Add(this.barSubItem12);
+            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
+            this.ribbonPageGroup14.Text = "Báo cáo New";
+            this.ribbonPageGroup14.Visible = false;
             // 
             // ribbonPage3
             // 
@@ -1488,8 +1517,10 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.barSubItem9);
             this.ribbonPageGroup4.ItemLinks.Add(this.barSubItem10);
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem70);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem75);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Sữa Lỗi Phiếu";
+            this.ribbonPageGroup4.Visible = false;
             // 
             // ribbonPage4
             // 
@@ -1530,6 +1561,7 @@
             this.Thong.ItemLinks.Add(this.barButtonItem18);
             this.Thong.Name = "Thong";
             this.Thong.Text = "Thông Tin Phần Mềm";
+            this.Thong.Visible = false;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -1609,6 +1641,24 @@
             // 
             this.ribbonPage9.Name = "ribbonPage9";
             this.ribbonPage9.Text = "ribbonPage9";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem48);
+            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem50);
+            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem66);
+            this.ribbonPageGroup12.ItemLinks.Add(this.barSubItem13);
+            this.ribbonPageGroup12.ItemLinks.Add(this.barSubItem12);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup12.Text = "Báo Cáo Đơn Vị";
+            this.ribbonPageGroup12.Visible = false;
+            // 
+            // barButtonItem75
+            // 
+            this.barButtonItem75.Caption = "Cấp mã mới";
+            this.barButtonItem75.Id = 45;
+            this.barButtonItem75.Name = "barButtonItem75";
+            this.barButtonItem75.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem75_ItemClick);
             // 
             // FrmStartup
             // 
@@ -1727,7 +1777,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage6;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem43;
@@ -1785,5 +1834,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem73;
         private DevExpress.XtraBars.BarHeaderItem txtNameNV;
         private DevExpress.XtraBars.BarButtonItem barButtonItem74;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem75;
     }
 }

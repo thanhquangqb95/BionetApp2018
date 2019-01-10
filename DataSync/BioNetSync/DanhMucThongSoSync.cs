@@ -87,7 +87,6 @@ namespace DataSync.BioNetSync
                     {
                         PSDanhMucThongSoXN kyth = new PSDanhMucThongSoXN();
                         kyth.DonViTinh = cl.DonViTinh;
-                        kyth.GiaTri = cl.GiaTri;
                         kyth.GiaTriMacDinh = cl.GiaTriMacDinh;
                         kyth.GiaTriMaxNam = cl.GiaTriMaxNam;
                         kyth.GiaTriMaxNu = cl.GiaTriMaxNu;

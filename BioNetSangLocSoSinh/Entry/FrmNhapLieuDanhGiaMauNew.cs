@@ -1097,8 +1097,6 @@ namespace BioNetSangLocSoSinh.Entry
                     this.ReadOnly(false);
                     this.LoadDanhSachTiepNhan();
                     this.LoadDanhSachDaDuyet();
-                    this.btnDuyet.Enabled = false;
-                    this.btnLuu.Enabled = false;
                     this.GVDanhSachTiepNhan.Focus();
                 }
                 else
@@ -2637,9 +2635,23 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch { }
         }
+
         #endregion
 
+        private void txtMaTiepNhan_EditValueChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void txtMaBenhNhan_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelControl4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
     

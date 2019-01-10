@@ -165,46 +165,14 @@ namespace BioNetDAL
         {
             PsReponse result = new PsReponse();
             try
-            {
-                db.Connection.Open();
-                db.Transaction = db.Connection.BeginTransaction();
-                var kq = db.PSXN_TraKetQuas.FirstOrDefault(p => p.isXoa == false && p.MaPhieu == maPhieu && p.MaTiepNhan == maTiepNhan);
-                if (kq != null)
-                {
-                    kq.isDaDuyetKQ = true;
-                    kq.isTraKQ = true;
-                    kq.isDongBo = false;
-                    kq.NgayTraKQ = DateTime.Now;
-                }
-                db.SubmitChanges();
-                var lstkq = db.PSXN_TraKQ_ChiTiets.Where(p => p.isXoa == false && p.MaPhieu == maPhieu && p.MaTiepNhan == maTiepNhan).ToList();
-                if (lstkq.Count > 0)
-                {
-                    foreach (var item in lstkq)
-                    {
-                        item.isDaDuyetKQ = true;
-                        item.isDongBo = false;
-                        db.SubmitChanges();
-                    }
-                }
-                var phieu = db.PSPhieuSangLocs.FirstOrDefault(p => p.IDPhieu == maPhieu && p.isXoa == false);
-                if (phieu != null)
-                {
-
-                    phieu.TrangThaiMau = 4;
-
-                    db.SubmitChanges();
-                }
+            {              
                 result.Result = true;
                 db.Transaction.Commit();
                 db.Connection.Close();
             }
             catch (Exception ex)
             {
-                db.Transaction.Rollback();
-                db.Connection.Close();
                 result.Result = false;
-                if (string.IsNullOrEmpty(result.StringError))
                     result.StringError = ex.ToString();
             }
             return result;
@@ -303,7 +271,7 @@ namespace BioNetDAL
                         {
                             try
                             {
-                                var ttdv = db.PSDanhMucDichVus.FirstOrDefault(x => x.IDDichVu == phieu.IDPhieu) ;
+                                var ttdv = db.PSDanhMucDichVus.FirstOrDefault(x => x.IDDichVu == phieu.IDPhieu);
                                 PSChiDinhDichVuChiTiet chitiet = new PSChiDinhDichVuChiTiet();
                                 chitiet.GiaTien = ttdv.GiaDichVu;
                                 chitiet.isDongBo = false;
@@ -489,14 +457,159 @@ namespace BioNetDAL
                 }
                 #endregion
 
-                ttphieu.isDaNhapLieu = KiemTraNhapLieu(bn, ph);
-                #region Chỉ định phiếu
-                PSChiDinhDichVu cd = new PSChiDinhDichVu();
-                if (!string.IsNullOrEmpty(ttphieu.MaChiDinh))
+                #region Chi tiết đánh giá chất lượng
+                var CTDanhGIa = db.PSChiTietDanhGiaChatLuongs.Where(p => p.MaTiepNhan.Equals(ttphieu.MaTiepNhan) && p.IDPhieu.Equals(ttphieu.MaPhieu)).ToList();
+                db.PSChiTietDanhGiaChatLuongs.DeleteAllOnSubmit(CTDanhGIa);
+                db.SubmitChanges();
+                if (ttphieu.lstLyDoKhongDat.Count > 0)
                 {
-                    cd = db.PSChiDinhDichVus.FirstOrDefault(p => p.MaChiDinh.Equals(ttphieu.MaChiDinh) && p.MaDonVi.Equals(ttphieu.MaDonVi)
-                     && p.MaPhieu.Equals(ttphieu.MaPhieu) && p.MaTiepNhan.Equals(ttphieu.MaTiepNhan));
-                    if (cd == null)
+                    foreach (var ld in ttphieu.lstLyDoKhongDat)
+                    {
+                        ld.isDongBo = false;
+                        ld.isXoa = false;
+                        ld.MaTiepNhan = ttphieu.MaTiepNhan;
+                        db.PSChiTietDanhGiaChatLuongs.InsertOnSubmit(ld);
+                        db.SubmitChanges();
+                    }
+                }
+                #endregion
+
+                ttphieu.isDaNhapLieu = KiemTraNhapLieu(bn, ph);
+
+                #region Chỉ định phiếu
+                PSDanhMucGoiDichVuChung goi = new PSDanhMucGoiDichVuChung();
+                if (!string.IsNullOrEmpty(ttphieu.MaPhieu1))
+                {
+                    var ph1 = db.PSPhieuSangLocs.FirstOrDefault(x => x.IDPhieu.Equals(ttphieu.MaPhieu1));
+                    goi = db.PSDanhMucGoiDichVuChungs.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(ph1.MaGoiXN));
+                }
+                else
+                {
+                    goi = db.PSDanhMucGoiDichVuChungs.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(ph.MaGoiXN));
+                }
+                if (goi.GroupTraKQ==2)
+                {
+                    PSChiDinhDichVuNew cd = new PSChiDinhDichVuNew();
+                    if (!string.IsNullOrEmpty(ttphieu.MaChiDinh))
+                    {
+                        cd = db.PSChiDinhDichVuNews.FirstOrDefault(p => p.MaChiDinh.Equals(ttphieu.MaChiDinh) && p.MaDonVi.Equals(ttphieu.MaDonVi)
+                         && p.MaPhieu.Equals(ttphieu.MaPhieu) && p.MaTiepNhan.Equals(ttphieu.MaTiepNhan));
+                        if (cd == null)
+                        {
+                            cd.IDGoiDichVu = ttphieu.MaGoiXN;
+                            cd.MaChiDinh = "CD" + GetID();
+                            ttphieu.MaChiDinh = cd.MaChiDinh;
+                            cd.isDaNhapLieu = ttphieu.isDaNhapLieu;
+                            cd.MaDonVi = ttphieu.MaDonVi;
+                            cd.IDNhanVienChiDinh = ttphieu.MaNV;
+                            cd.IDNhanVienChiDinh = ttphieu.MaNV;
+                            cd.MaTiepNhan = ttphieu.MaTiepNhan;
+                            cd.MaPhieu = ttphieu.MaPhieu;
+                            cd.MaPhieuLan1 = ttphieu.MaPhieu1;
+                            cd.NgayChiDinhLamViec = DateTime.Now;
+                            cd.TrangThai = 1;
+                            cd.DonGia = ttphieu.DonGiaGoi;
+                            cd.isXoa = false;
+                            cd.isDongBo = false;
+                            db.PSChiDinhDichVuNews.InsertOnSubmit(cd);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
+                            cd.TrangThai = 1;
+                            cd.isDongBo = false;
+                            cd.isXoa = false;
+                            cd.isDaNhapLieu = ttphieu.isDaNhapLieu;
+                            db.SubmitChanges();
+                        }
+                    }
+                    else
+                    {
+                        cd.IDGoiDichVu = ttphieu.MaGoiXN;
+                        cd.MaChiDinh = "CD" + GetID();
+                        ttphieu.MaChiDinh = cd.MaChiDinh;
+                        cd.isDaNhapLieu = ttphieu.isDaNhapLieu;
+                        cd.MaDonVi = ttphieu.MaDonVi;
+                        cd.IDNhanVienChiDinh = ttphieu.MaNV;
+                        cd.IDNhanVienChiDinh = ttphieu.MaNV;
+                        cd.MaTiepNhan = ttphieu.MaTiepNhan;
+                        cd.MaPhieu = ttphieu.MaPhieu;
+                        cd.MaPhieuLan1 = ttphieu.MaPhieu1;
+                        cd.NgayChiDinhLamViec = DateTime.Now;
+                        cd.TrangThai = 1;
+                        cd.DonGia = ttphieu.DonGiaGoi;
+                        cd.isXoa = false;
+                        cd.isDongBo = false;
+                        db.PSChiDinhDichVuNews.InsertOnSubmit(cd);
+                        db.SubmitChanges();
+                    }
+
+                    foreach (var ctdv in ttphieu.lstChiDinhDichVu)
+                    {
+                        var kq = db.PSChiDinhDichVuNewChiTiets.FirstOrDefault(x => x.MaChiDinh.Equals(ttphieu.MaChiDinh) && x.MaDichVu.Equals(ctdv.IDDichVu) && x.MaPhieu.Equals(ttphieu.MaPhieu));
+                        if (kq == null)
+                        {
+                            PSChiDinhDichVuNewChiTiet CTiet = new PSChiDinhDichVuNewChiTiet();
+                            CTiet.MaChiDinh = ttphieu.MaChiDinh;
+                            CTiet.MaDichVu = ctdv.IDDichVu;
+                            CTiet.MaPhieu = ttphieu.MaPhieu;
+                            CTiet.isDongBo = false;
+                            CTiet.isXoa = false;
+                            db.PSChiDinhDichVuNewChiTiets.InsertOnSubmit(CTiet);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
+                            kq.MaChiDinh = ttphieu.MaChiDinh;
+                            kq.MaDichVu = ctdv.IDDichVu;
+                            kq.MaPhieu = ttphieu.MaPhieu;
+                            kq.isDongBo = false;
+                            kq.isXoa = false;
+                            db.SubmitChanges();
+                        }
+                    }
+                }
+                else
+                {
+                    PSChiDinhDichVu cd = new PSChiDinhDichVu();
+                    if (!string.IsNullOrEmpty(ttphieu.MaChiDinh))
+                    {
+                        cd = db.PSChiDinhDichVus.FirstOrDefault(p => p.MaChiDinh.Equals(ttphieu.MaChiDinh) && p.MaDonVi.Equals(ttphieu.MaDonVi)
+                         && p.MaPhieu.Equals(ttphieu.MaPhieu) && p.MaTiepNhan.Equals(ttphieu.MaTiepNhan));
+                        if (cd == null)
+                        {
+                            cd.IDGoiDichVu = ttphieu.MaGoiXN;
+                            cd.isLayMauLai = false;
+                            cd.MaChiDinh = "CD" + GetID();
+                            ttphieu.MaChiDinh = cd.MaChiDinh;
+                            cd.isDaNhapLieu = ttphieu.isDaNhapLieu;
+                            cd.MaDonVi = ttphieu.MaDonVi;
+                            cd.MaNVChiDinh = ttphieu.MaNV;
+                            cd.IDNhanVienChiDinh = ttphieu.MaNV;
+                            cd.MaTiepNhan = ttphieu.MaTiepNhan;
+                            cd.MaPhieu = ttphieu.MaPhieu;
+                            cd.MaPhieuLan1 = ttphieu.MaPhieu1;
+                            cd.NgayChiDinhHienTai = DateTime.Now;
+                            cd.NgayChiDinhLamViec = DateTime.Now;
+                            cd.SoLuong = 1;
+                            cd.TrangThai = 1;
+                            cd.NgayTiepNhan = ttphieu.TiepNhan.NgayTiepNhan;
+                            cd.DonGia = ttphieu.DonGiaGoi;
+                            cd.isXoa = false;
+                            cd.isDongBo = false;
+                            db.PSChiDinhDichVus.InsertOnSubmit(cd);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
+                            cd.TrangThai = 1;
+                            cd.isDongBo = false;
+                            cd.isXoa = false;
+                            cd.isDaNhapLieu = ttphieu.isDaNhapLieu;
+                            db.SubmitChanges();
+                        }
+                    }
+                    else
                     {
                         cd.IDGoiDichVu = ttphieu.MaGoiXN;
                         cd.isLayMauLai = false;
@@ -520,89 +633,40 @@ namespace BioNetDAL
                         db.PSChiDinhDichVus.InsertOnSubmit(cd);
                         db.SubmitChanges();
                     }
-                    else
-                    {
-                        cd.TrangThai = 1;
-                        cd.isDongBo = false;
-                        cd.isXoa = false;
-                        cd.isDaNhapLieu = ttphieu.isDaNhapLieu;
-                        db.SubmitChanges();
-                    }
-                }
-                else
-                {
-                    cd.IDGoiDichVu = ttphieu.MaGoiXN;
-                    cd.isLayMauLai = false;
-                    cd.MaChiDinh = "CD" + GetID();
-                    ttphieu.MaChiDinh = cd.MaChiDinh;
-                    cd.isDaNhapLieu = ttphieu.isDaNhapLieu;
-                    cd.MaDonVi = ttphieu.MaDonVi;
-                    cd.MaNVChiDinh = ttphieu.MaNV;
-                    cd.IDNhanVienChiDinh = ttphieu.MaNV;
-                    cd.MaTiepNhan = ttphieu.MaTiepNhan;
-                    cd.MaPhieu = ttphieu.MaPhieu;
-                    cd.MaPhieuLan1 = ttphieu.MaPhieu1;
-                    cd.NgayChiDinhHienTai = DateTime.Now;
-                    cd.NgayChiDinhLamViec = DateTime.Now;
-                    cd.SoLuong = 1;
-                    cd.TrangThai = 1;
-                    cd.NgayTiepNhan = ttphieu.TiepNhan.NgayTiepNhan;
-                    cd.DonGia = ttphieu.DonGiaGoi;
-                    cd.isXoa = false;
-                    cd.isDongBo = false;
-                    db.PSChiDinhDichVus.InsertOnSubmit(cd);
-                    db.SubmitChanges();
-                }
 
-                foreach (var ctdv in ttphieu.lstChiDinhDichVu)
-                {
-                    var kq = db.PSChiDinhDichVuChiTiets.FirstOrDefault(x => x.MaChiDinh.Equals(ttphieu.MaChiDinh) && x.MaChiDinh.Equals(ctdv.IDDichVu));
-                    if (kq == null)
+                    foreach (var ctdv in ttphieu.lstChiDinhDichVu)
                     {
-                        PSChiDinhDichVuChiTiet CTiet = new PSChiDinhDichVuChiTiet();
-                        CTiet.MaChiDinh = ttphieu.MaChiDinh;
-                        CTiet.MaDichVu = ctdv.IDDichVu;
-                        CTiet.MaPhieu = ttphieu.MaPhieu;
-                        CTiet.MaGoiDichVu = ttphieu.MaGoiXN;
-                        CTiet.MaDonVi = ttphieu.MaDonVi;
-                        CTiet.isXetNghiemLan2 = false;
-                        CTiet.isDongBo = false;
-                        CTiet.isXoa = false;
-                        CTiet.SoLuong = 1;
-                        CTiet.GiaTien = ctdv.GiaDichVu;
-                        db.PSChiDinhDichVuChiTiets.InsertOnSubmit(CTiet);
-                        db.SubmitChanges();
-                    }
-                    else
-                    {
-                        kq.MaChiDinh = ttphieu.MaChiDinh;
-                        kq.MaDichVu = ctdv.IDDichVu;
-                        kq.MaPhieu = ttphieu.MaPhieu;
-                        kq.MaGoiDichVu = ttphieu.MaGoiXN;
-                        kq.MaDonVi = ttphieu.MaDonVi;
-                        kq.isXetNghiemLan2 = false;
-                        kq.isDongBo = false;
-                        kq.isXoa = false;
-                        kq.SoLuong = 1;
-                        kq.GiaTien = ctdv.GiaDichVu;
-                        db.SubmitChanges();
-                    }
-                }
-                #endregion
-
-                #region Chi tiết đánh giá chất lượng
-                var CTDanhGIa = db.PSChiTietDanhGiaChatLuongs.Where(p => p.MaTiepNhan.Equals(ttphieu.MaTiepNhan) && p.IDPhieu.Equals(ttphieu.MaPhieu)).ToList();
-                db.PSChiTietDanhGiaChatLuongs.DeleteAllOnSubmit(CTDanhGIa);
-                db.SubmitChanges();
-                if (ttphieu.lstLyDoKhongDat.Count > 0)
-                {
-                    foreach (var ld in ttphieu.lstLyDoKhongDat)
-                    {
-                        ld.isDongBo = false;
-                        ld.isXoa = false;
-                        ld.MaTiepNhan = ttphieu.MaTiepNhan;
-                        db.PSChiTietDanhGiaChatLuongs.InsertOnSubmit(ld);
-                        db.SubmitChanges();
+                        var kq = db.PSChiDinhDichVuChiTiets.FirstOrDefault(x => x.MaChiDinh.Equals(ttphieu.MaChiDinh) && x.MaDichVu.Equals(ctdv.IDDichVu));
+                        if (kq == null)
+                        {
+                            PSChiDinhDichVuChiTiet CTiet = new PSChiDinhDichVuChiTiet();
+                            CTiet.MaChiDinh = ttphieu.MaChiDinh;
+                            CTiet.MaDichVu = ctdv.IDDichVu;
+                            CTiet.MaPhieu = ttphieu.MaPhieu;
+                            CTiet.MaGoiDichVu = ttphieu.MaGoiXN;
+                            CTiet.MaDonVi = ttphieu.MaDonVi;
+                            CTiet.isXetNghiemLan2 = false;
+                            CTiet.isDongBo = false;
+                            CTiet.isXoa = false;
+                            CTiet.SoLuong = 1;
+                            CTiet.GiaTien = ctdv.GiaDichVu;
+                            db.PSChiDinhDichVuChiTiets.InsertOnSubmit(CTiet);
+                            db.SubmitChanges();
+                        }
+                        else
+                        {
+                            kq.MaChiDinh = ttphieu.MaChiDinh;
+                            kq.MaDichVu = ctdv.IDDichVu;
+                            kq.MaPhieu = ttphieu.MaPhieu;
+                            kq.MaGoiDichVu = ttphieu.MaGoiXN;
+                            kq.MaDonVi = ttphieu.MaDonVi;
+                            kq.isXetNghiemLan2 = false;
+                            kq.isDongBo = false;
+                            kq.isXoa = false;
+                            kq.SoLuong = 1;
+                            kq.GiaTien = ctdv.GiaDichVu;
+                            db.SubmitChanges();
+                        }
                     }
                 }
                 #endregion
@@ -626,10 +690,401 @@ namespace BioNetDAL
             }
             return reponse;
         }
-        public bool KiemTraNhapLieu(PSPatient pa,PSPhieuSangLoc ph)
+        public PsReponse DuyetPhieuThuCongNew(PSTTPhieu ttphieu)
+        {
+            PsReponse result = new PsReponse();
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction();
+            try
+            {
+               PSPhieuSangLoc phieu = db.PSPhieuSangLocs.FirstOrDefault(p => p.IDPhieu.Equals(ttphieu.Phieu.IDPhieu) && p.IDCoSo.Equals(ttphieu.Phieu.IDCoSo) && p.isXoa != true);
+                if (phieu != null)
+                {
+                    if (phieu.TrangThaiMau >= 2)
+                    {
+                        if (string.IsNullOrEmpty(ttphieu.Phieu.MaBenhNhan))
+                        {
+                            phieu.MaBenhNhan = GetID();
+                        }
+                        else
+                        {
+                            phieu.MaBenhNhan= ttphieu.MaBenhNhan;
+                        }
+                    }
+                    else
+                    {
+                        phieu.TrangThaiPhieu = ttphieu.Phieu.TrangThaiPhieu;
+                        phieu.TrangThaiMau = ttphieu.Phieu.TrangThaiMau;
+                        phieu.isLayMauLan2 = ttphieu.Phieu.isLayMauLan2;
+                        phieu.IDCoSo = ttphieu.Phieu.IDCoSo;
+                        phieu.MaGoiXN = ttphieu.Phieu.MaGoiXN;
+                        phieu.IDPhieuLan1 = ttphieu.Phieu.IDPhieuLan1;
+                    }
+                    phieu.TenNhanVienLayMau = ttphieu.Phieu.TenNhanVienLayMau;
+                    phieu.SDTNhanVienLayMau = ttphieu.Phieu.SDTNhanVienLayMau;
+                    phieu.NgayGioLayMau = ttphieu.Phieu.NgayGioLayMau;
+                    phieu.NoiLayMau = ttphieu.Phieu.NoiLayMau;
+                    phieu.DiaChiLayMau = ttphieu.Phieu.DiaChiLayMau;
+                    phieu.NgayNhanMau = ttphieu.Phieu.NgayNhanMau;
+                    phieu.TinhTrangLucLayMau = ttphieu.Phieu.TinhTrangLucLayMau;
+                    phieu.NgayTruyenMau = ttphieu.Phieu.NgayTruyenMau;
+                    phieu.SLTruyenMau = ttphieu.Phieu.SLTruyenMau;
+                    phieu.CheDoDinhDuong = ttphieu.Phieu.CheDoDinhDuong;
+                    phieu.Para = ttphieu.Phieu.Para;
+                    phieu.IDChuongTrinh = ttphieu.Phieu.IDChuongTrinh;
+                    phieu.isKhongDat = ttphieu.Phieu.isKhongDat;
+                    phieu.LyDoKhongDat = ttphieu.Phieu.LyDoKhongDat;
+                    phieu.LuuYPhieu = ttphieu.Phieu.LuuYPhieu;
+                    phieu.IDViTriLayMau = ttphieu.Phieu.IDViTriLayMau;
+                    phieu.isTruoc24h = ttphieu.Phieu.isTruoc24h;
+                    phieu.isSinhNon = ttphieu.Phieu.isSinhNon;
+                    phieu.isNheCan = ttphieu.Phieu.isNheCan;
+                    phieu.isGuiMauTre = ttphieu.Phieu.isGuiMauTre;
+                    phieu.isXoa = false;
+                    phieu.isDongBo = false;
+                }
+                else
+                {
+                    phieu = new PSPhieuSangLoc();
+                    phieu = ttphieu.Phieu;
+                    if (string.IsNullOrEmpty(phieu.MaBenhNhan))
+                    {
+                        phieu.MaBenhNhan = GetID();
+                    }
+                    phieu.isXoa = false;
+                    phieu.isDongBo = false;
+                    db.PSPhieuSangLocs.InsertOnSubmit(ttphieu.Phieu);
+                }
+                db.SubmitChanges();
+
+                #region Chi tiết đánh giá chất lượng
+                var CTDanhGIa = db.PSChiTietDanhGiaChatLuongs.Where(p => p.MaTiepNhan.Equals(ttphieu.MaTiepNhan) && p.IDPhieu.Equals(ttphieu.Phieu.IDPhieu)).ToList();
+                db.PSChiTietDanhGiaChatLuongs.DeleteAllOnSubmit(CTDanhGIa);
+                db.SubmitChanges();
+                if (ttphieu.lstLyDoKhongDat.Count > 0)
+                {
+                    foreach (var ld in ttphieu.lstLyDoKhongDat)
+                    {
+                        ld.isDongBo = false;
+                        ld.isXoa = false;
+                        ld.MaTiepNhan = ttphieu.MaTiepNhan;
+                        db.PSChiTietDanhGiaChatLuongs.InsertOnSubmit(ld);
+                        db.SubmitChanges();
+                    }
+                }
+                #endregion
+                PSPatient pa = db.PSPatients.FirstOrDefault(p => p.MaBenhNhan.Equals(ttphieu.Benhnhan.MaBenhNhan) && p.isXoa != true);
+                if (pa != null)
+                {
+                    if (string.IsNullOrEmpty(pa.MaKhachHang))
+                    {
+                        pa.MaKhachHang = GetNewMaKhachHang(ttphieu.MaDonVi, SoBanDau());
+                    }
+                    pa.FatherName = ttphieu.Benhnhan.FatherName.ToUpper();
+                    pa.MotherName = ttphieu.Benhnhan.MotherName.ToUpper();
+                    pa.FatherPhoneNumber = ttphieu.Benhnhan.FatherPhoneNumber;
+                    pa.FatherBirthday = ttphieu.Benhnhan.FatherBirthday;
+                    pa.MotherBirthday = ttphieu.Benhnhan.MotherBirthday;
+                    pa.MotherPhoneNumber = ttphieu.Benhnhan.MotherPhoneNumber;
+                    pa.DiaChi = ttphieu.Benhnhan.DiaChi;
+                    pa.TenBenhNhan = ttphieu.Benhnhan.TenBenhNhan.ToUpper();
+                    pa.QuocTichID = ttphieu.Benhnhan.QuocTichID;
+                    pa.TuanTuoiKhiSinh = ttphieu.Benhnhan.TuanTuoiKhiSinh;
+                    pa.PhuongPhapSinh = ttphieu.Benhnhan.PhuongPhapSinh;
+                    pa.NoiSinh = ttphieu.Benhnhan.NoiSinh;
+                    pa.NgayGioSinh = ttphieu.Benhnhan.NgayGioSinh;
+                    pa.GioiTinh = ttphieu.Benhnhan.GioiTinh;
+                    pa.DanTocID = ttphieu.Benhnhan.DanTocID;
+                    pa.CanNang = ttphieu.Benhnhan.CanNang;
+                    pa.Para = ttphieu.Benhnhan.Para;
+                    pa.isXoa = false;
+                    pa.isDongBo = false;
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    pa = new PSPatient();
+                    pa = ttphieu.Benhnhan;
+                    if (string.IsNullOrEmpty(pa.MaKhachHang))
+                    {
+                       pa.MaKhachHang = GetNewMaKhachHang(ttphieu.MaDonVi, SoBanDau());
+                    }
+                    pa.isDongBo = false;
+                    pa.isXoa = false;
+                    db.PSPatients.InsertOnSubmit(pa);
+                    db.SubmitChanges();
+                }
+                bool isDaNhapLieu = KiemTraNhapLieu(pa, phieu);
+                #region Chỉ định phiếu
+                PSDanhMucGoiDichVuChung goi = db.PSDanhMucGoiDichVuChungs.FirstOrDefault(x => x.IDGoiDichVuChung.Equals(phieu.MaGoiXN));
+                if(goi.GroupTraKQ==0)
+                {
+
+                }
+                else
+                {
+
+                }
+                #endregion
+
+
+                #region Phiếu tiếp nhận
+                PSTiepNhan TiepNhan = db.PSTiepNhans.FirstOrDefault(p => p.isXoa != true && p.MaPhieu.Equals(ttphieu.Phieu.IDPhieu) && p.MaDonVi.Equals(ttphieu.MaDonVi));
+                if (TiepNhan != null)
+                {
+                    TiepNhan.isDongBo = false;
+                    TiepNhan.isDaDanhGia = true;
+                    TiepNhan.isDaNhapLieu = isDaNhapLieu;
+                    db.SubmitChanges();
+                }
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                result.Result = false;
+                if (string.IsNullOrEmpty(result.StringError))
+                    result.StringError = ex.ToString();
+            }
+            return result;
+        }
+        public PsReponse UpdatePSPhieuSangLoc(PSPhieuSangLoc phieu, string MaTiepNhan, List<PSChiTietDanhGiaChatLuong> ChiTietDanhGia, bool isDaNhapLieu)
+        {
+            PsReponse result = new PsReponse();
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction();
+            try
+            {
+                PSPhieuSangLoc phieuseach = db.PSPhieuSangLocs.FirstOrDefault(p => p.IDPhieu.Equals(phieu.IDPhieu) && p.IDCoSo.Equals(phieu.IDCoSo) && p.isXoa != true);
+                if (phieuseach != null)
+                {
+                    if (phieuseach.TrangThaiMau >= 2)
+                    {
+                        if (string.IsNullOrEmpty(phieu.MaBenhNhan))
+                        {
+                            phieu.MaBenhNhan = GetID();
+                        }
+                    }
+                    else
+                    {
+                        phieuseach.TrangThaiPhieu = phieu.TrangThaiPhieu;
+                        phieuseach.TrangThaiMau = phieu.TrangThaiMau;
+                        phieuseach.isLayMauLan2 = phieu.isLayMauLan2;
+                        phieuseach.IDCoSo = phieu.IDCoSo;
+                        phieuseach.MaGoiXN = phieu.MaGoiXN;
+                        phieuseach.IDPhieuLan1 = phieu.IDPhieuLan1;
+                    }
+                    phieuseach.TenNhanVienLayMau = phieu.TenNhanVienLayMau;
+                    phieuseach.SDTNhanVienLayMau = phieu.SDTNhanVienLayMau;
+                    phieuseach.NgayGioLayMau = phieu.NgayGioLayMau;
+                    phieuseach.NoiLayMau = phieu.NoiLayMau;
+                    phieuseach.DiaChiLayMau = phieu.DiaChiLayMau;
+                    phieuseach.NgayNhanMau = phieu.NgayNhanMau;
+                    phieuseach.TinhTrangLucLayMau = phieu.TinhTrangLucLayMau;
+                    phieuseach.NgayTruyenMau = phieu.NgayTruyenMau;
+                    phieuseach.SLTruyenMau = phieu.SLTruyenMau;
+                    phieuseach.CheDoDinhDuong = phieu.CheDoDinhDuong;
+                    phieuseach.Para = phieu.Para;
+                    phieuseach.IDChuongTrinh = phieu.IDChuongTrinh;
+                    phieuseach.isKhongDat = phieu.isKhongDat;
+                    phieuseach.LyDoKhongDat = phieu.LyDoKhongDat;
+                    phieuseach.LuuYPhieu = phieu.LuuYPhieu;
+                    phieuseach.IDViTriLayMau = phieu.IDViTriLayMau;
+                    phieuseach.isTruoc24h = phieu.isTruoc24h;
+                    phieuseach.isSinhNon = phieu.isSinhNon;
+                    phieuseach.isNheCan = phieu.isNheCan;
+                    phieuseach.isGuiMauTre = phieu.isGuiMauTre;
+                    phieuseach.isXoa = false;
+                    phieuseach.isDongBo = false;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(phieu.MaBenhNhan))
+                    {
+                        phieu.MaBenhNhan = GetID();
+                    }
+                    phieu.isXoa = false;
+                    phieu.isDongBo = false;
+                    db.PSPhieuSangLocs.InsertOnSubmit(phieu);
+                }
+                db.SubmitChanges();
+
+                #region Chi tiết đánh giá chất lượng
+                var CTDanhGIa = db.PSChiTietDanhGiaChatLuongs.Where(p => p.MaTiepNhan.Equals(MaTiepNhan) && p.IDPhieu.Equals(phieu.IDPhieu)).ToList();
+                db.PSChiTietDanhGiaChatLuongs.DeleteAllOnSubmit(CTDanhGIa);
+                db.SubmitChanges();
+                if (ChiTietDanhGia.Count > 0)
+                {
+                    foreach (var ld in ChiTietDanhGia)
+                    {
+                        ld.isDongBo = false;
+                        ld.isXoa = false;
+                        ld.MaTiepNhan = MaTiepNhan;
+                        db.PSChiTietDanhGiaChatLuongs.InsertOnSubmit(ld);
+                        db.SubmitChanges();
+                    }
+                }
+                #endregion
+
+                #region Phiếu tiếp nhận
+                PSTiepNhan TiepNhan = db.PSTiepNhans.FirstOrDefault(p => p.isXoa != true && p.MaPhieu.Equals(phieu.IDPhieu) && p.MaDonVi.Equals(phieu.IDCoSo));
+                if (TiepNhan != null)
+                {
+                    TiepNhan.isDongBo = false;
+                    TiepNhan.isDaDanhGia = true;
+                    TiepNhan.isDaNhapLieu = isDaNhapLieu;
+                    db.SubmitChanges();
+                }
+                #endregion
+                db.Transaction.Commit();
+                db.Connection.Close();
+                result.Result = true;
+            }
+            catch (Exception ex)
+            {
+                db.Transaction.Rollback();
+                db.Connection.Close();
+                result.Result = false;
+                if (string.IsNullOrEmpty(result.StringError))
+                    result.StringError = ex.ToString();
+            }
+            return result;
+        }
+        public PsReponse UpdatePSPattent(PSPatient patient, string MaDVCS)
+        {
+            PsReponse result = new PsReponse();
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction();
+            try
+            {
+                PSPatient pa = db.PSPatients.FirstOrDefault(p => p.MaBenhNhan.Equals(patient.MaBenhNhan) && p.isXoa != true);
+                if (pa != null)
+                {
+                    if (string.IsNullOrEmpty(pa.MaKhachHang))
+                    {
+                        pa.MaKhachHang = GetNewMaKhachHang(MaDVCS, SoBanDau());
+                    }
+                    pa.FatherName = patient.FatherName.ToUpper();
+                    pa.MotherName = patient.MotherName.ToUpper();
+                    pa.FatherPhoneNumber = patient.FatherPhoneNumber;
+                    pa.FatherBirthday = patient.FatherBirthday;
+                    pa.MotherBirthday = patient.MotherBirthday;
+                    pa.MotherPhoneNumber = patient.MotherPhoneNumber;
+                    pa.DiaChi = patient.DiaChi;
+                    pa.TenBenhNhan = patient.TenBenhNhan.ToUpper();
+                    pa.QuocTichID = patient.QuocTichID;
+                    pa.TuanTuoiKhiSinh = patient.TuanTuoiKhiSinh;
+                    pa.PhuongPhapSinh = patient.PhuongPhapSinh;
+                    pa.NoiSinh = patient.NoiSinh;
+                    pa.NgayGioSinh = patient.NgayGioSinh;
+                    pa.GioiTinh = patient.GioiTinh;
+                    pa.DanTocID = patient.DanTocID;
+                    pa.CanNang = patient.CanNang;
+                    pa.Para = patient.Para;
+                    pa.isXoa = false;
+                    pa.isDongBo = false;
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(patient.MaKhachHang))
+                    {
+                        patient.MaKhachHang = GetNewMaKhachHang(MaDVCS, SoBanDau());
+                    }
+                    patient.isDongBo = false;
+                    patient.isXoa = false;
+                    db.PSPatients.InsertOnSubmit(patient);
+                    db.SubmitChanges();
+                }
+
+                db.Transaction.Commit();
+                db.Connection.Close();
+                result.Result = true;
+            }
+            catch (Exception ex)
+            {
+                db.Transaction.Rollback();
+                db.Connection.Close();
+                result.Result = false;
+                if (string.IsNullOrEmpty(result.StringError))
+                    result.StringError = ex.ToString();
+            }
+            return result;
+        }
+        public PsReponse UpdatePSChiDinhDichVuNew(PSChiDinhDichVu cddv, bool isDaNhapLieu)
+        {
+            PsReponse result = new PsReponse();
+            db.Connection.Open();
+            db.Transaction = db.Connection.BeginTransaction();
+            try
+            {
+                #region Chỉ định phiếu
+                PSChiDinhDichVuNew cd = db.PSChiDinhDichVuNews.FirstOrDefault(p => p.MaChiDinh.Equals(cddv.MaChiDinh) && p.MaDonVi.Equals(cddv.MaDonVi)
+                    && p.MaPhieu.Equals(cddv.MaPhieu) && p.MaTiepNhan.Equals(cddv.MaTiepNhan));
+                if (cd == null)
+                {
+                    cd.IDGoiDichVu = cddv.IDGoiDichVu;
+                    cd.MaChiDinh = "CD" + GetID();
+                    cd.isDaNhapLieu = isDaNhapLieu;
+                    cd.MaDonVi = cddv.MaDonVi;
+                    cd.IDNhanVienChiDinh = cddv.MaNVChiDinh;
+                    cd.MaTiepNhan = cddv.MaTiepNhan;
+                    cd.MaPhieu = cddv.MaPhieu;
+                    cd.MaPhieuLan1 = cddv.MaPhieuLan1;
+                    cd.NgayChiDinhLamViec = DateTime.Now;
+                    cd.TrangThai = 1;
+                    cd.DonGia = cddv.DonGia;
+                    cd.TrangThai = 1;
+                    cd.isXoa = false;
+                    cd.isDongBo = false;
+                    db.PSChiDinhDichVuNews.InsertOnSubmit(cd);
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    cd = new PSChiDinhDichVuNew();
+                    cd.TrangThai = 1;
+                    cd.isDongBo = false;
+                    cd.isXoa = false;
+                    cd.isDaNhapLieu = isDaNhapLieu;
+                    db.SubmitChanges();
+                }
+                #endregion
+
+                foreach (var ctdv in cddv.PSChiDinhDichVuChiTiets)
+                {
+                    PSChiDinhDichVuNewChiTiet ct = db.PSChiDinhDichVuNewChiTiets.FirstOrDefault(x => x.MaChiDinh.Equals(ctdv.MaChiDinh) && x.MaDichVu.Equals(ctdv.MaDichVu) && x.MaPhieu.Equals(ctdv.MaPhieu));
+                    if (ct == null)
+                    {
+                        ct = new PSChiDinhDichVuNewChiTiet();
+                        ct.MaChiDinh = cd.MaChiDinh;
+                        ct.MaDichVu = ctdv.MaDichVu;
+                        ct.MaPhieu = ctdv.MaPhieu;
+                        ct.isDongBo = false;
+                        ct.isXoa = false;
+                        db.PSChiDinhDichVuNewChiTiets.InsertOnSubmit(ct);
+                        db.SubmitChanges();
+                    }
+                }
+
+                db.Transaction.Commit();
+                db.Connection.Close();
+                result.Result = true;
+            }
+            catch (Exception ex)
+            {
+                db.Transaction.Rollback();
+                db.Connection.Close();
+                result.Result = false;
+                if (string.IsNullOrEmpty(result.StringError))
+                    result.StringError = ex.ToString();
+            }
+            return result;
+        }
+
+        public bool KiemTraNhapLieu(PSPatient pa, PSPhieuSangLoc ph)
         {
             bool isDaNhapLieu = true;
-            if(string.IsNullOrEmpty(pa.TenBenhNhan))
+            if (string.IsNullOrEmpty(pa.TenBenhNhan))
             {
                 isDaNhapLieu = false;
                 return isDaNhapLieu;
@@ -686,12 +1141,12 @@ namespace BioNetDAL
             }
             return isDaNhapLieu;
         }
-            public PsReponse DuyetPhieuBT(PSTTPhieu ttphieu)
+        public PsReponse DuyetPhieuBT(PSTTPhieu ttphieu)
         {
             PsReponse reponse = new PsReponse();
             try
             {
-                string MaBN=string.Empty;
+                string MaBN = string.Empty;
                 string MaCD = string.Empty;
                 string MaDV = ttphieu.Phieu.IDCoSo;
                 string MaPhieu = ttphieu.Phieu.IDPhieu;
@@ -718,7 +1173,7 @@ namespace BioNetDAL
                     ph.SLTruyenMau = ttphieu.Phieu.SLTruyenMau;
                     ph.TenNhanVienLayMau = ttphieu.Phieu.TenNhanVienLayMau;
                     ph.TinhTrangLucLayMau = ttphieu.Phieu.TinhTrangLucLayMau;
-                    if(string.IsNullOrEmpty(ph.MaBenhNhan))
+                    if (string.IsNullOrEmpty(ph.MaBenhNhan))
                     {
                         ph.MaBenhNhan = GetID();
                     }
@@ -726,7 +1181,7 @@ namespace BioNetDAL
                     {
                         ph.MaBenhNhan = ttphieu.Phieu.MaBenhNhan;
                     }
-                    
+
                     MaBN = ph.MaBenhNhan;
                     if (ph.TrangThaiMau < 2)
                     {
@@ -737,7 +1192,7 @@ namespace BioNetDAL
                         }
                         else ph.isLayMauLan2 = false;
                         ph.MaGoiXN = ttphieu.Phieu.MaGoiXN;
-                        ph.TrangThaiMau = 2; 
+                        ph.TrangThaiMau = 2;
                     }
                     ph.isXoa = false;
                     ph.isDongBo = false;
@@ -771,7 +1226,7 @@ namespace BioNetDAL
                     var bn = db.PSPatients.FirstOrDefault(p => p.MaBenhNhan == MaBN && p.isXoa != true);
                     if (bn != null)
                     {
-                       
+
                         bn.FatherName = ttphieu.Benhnhan.FatherName;
                         bn.MotherName = ttphieu.Benhnhan.MotherName;
                         bn.FatherPhoneNumber = ttphieu.Benhnhan.FatherPhoneNumber;
@@ -843,7 +1298,7 @@ namespace BioNetDAL
                         cd.SoLuong = ttphieu.ChiDinh.SoLuong;
                         cd.NgayTiepNhan = ttphieu.ChiDinh.NgayTiepNhan;
                         cd.DonGia = ttphieu.ChiDinh.DonGia;
-                        cd.TrangThai = ttphieu.ChiDinh.TrangThai==null?1: ttphieu.ChiDinh.TrangThai;
+                        cd.TrangThai = ttphieu.ChiDinh.TrangThai == null ? 1 : ttphieu.ChiDinh.TrangThai;
                         cd.isDongBo = false;
                         cd.isXoa = false;
                         cd.isDaNhapLieu = isNhapLieu;
@@ -867,11 +1322,11 @@ namespace BioNetDAL
                     cd.IDGoiDichVu = ttphieu.ChiDinh.IDGoiDichVu;
                     cd.IDNhanVienChiDinh = ttphieu.ChiDinh.MaNVChiDinh;
                     cd.isLayMauLai = ttphieu.ChiDinh.isLayMauLai;
-                    if (cd.isLayMauLai==true)
+                    if (cd.isLayMauLai == true)
                     {
                         cd.MaChiDinh = "XN" + GetID();
                         isMaulaylai = true;
-                    }  
+                    }
                     else
                     {
                         cd.MaChiDinh = "CD" + GetID();
@@ -885,7 +1340,7 @@ namespace BioNetDAL
                     cd.NgayChiDinhHienTai = ttphieu.ChiDinh.NgayChiDinhHienTai;
                     cd.NgayChiDinhLamViec = ttphieu.ChiDinh.NgayChiDinhLamViec;
                     cd.SoLuong = ttphieu.ChiDinh.SoLuong;
-                    cd.TrangThai =1;
+                    cd.TrangThai = 1;
                     cd.NgayTiepNhan = ttphieu.ChiDinh.NgayTiepNhan;
                     cd.DonGia = ttphieu.ChiDinh.DonGia;
                     cd.isXoa = false;
@@ -893,11 +1348,11 @@ namespace BioNetDAL
                     db.PSChiDinhDichVus.InsertOnSubmit(cd);
                     db.SubmitChanges();
                     MaCD = cd.MaChiDinh;
-                }         
-                    foreach(var ctdv in  ttphieu.lstChiDinhDichVu)
-                    {
+                }
+                foreach (var ctdv in ttphieu.lstChiDinhDichVu)
+                {
                     var kq = db.PSChiDinhDichVuChiTiets.FirstOrDefault(x => x.MaChiDinh.Equals(MaCD) && x.MaChiDinh.Equals(ctdv.IDDichVu));
-                    if(kq==null)
+                    if (kq == null)
                     {
                         PSChiDinhDichVuChiTiet CTiet = new PSChiDinhDichVuChiTiet();
                         CTiet.MaChiDinh = MaCD;
@@ -911,21 +1366,21 @@ namespace BioNetDAL
                         CTiet.SoLuong = 1;
                         CTiet.GiaTien = ctdv.GiaDichVu;
                     }
-                        
-                    }
+
+                }
                 var lstld = db.PSChiTietDanhGiaChatLuongs.Where(p => p.MaTiepNhan == MaTiepNhan && p.IDPhieu == MaPhieu).ToList();
-                    db.PSChiTietDanhGiaChatLuongs.DeleteAllOnSubmit(lstld);
-                    db.SubmitChanges();
-                    if (ttphieu.lstLyDoKhongDat.Count > 0)
+                db.PSChiTietDanhGiaChatLuongs.DeleteAllOnSubmit(lstld);
+                db.SubmitChanges();
+                if (ttphieu.lstLyDoKhongDat.Count > 0)
+                {
+                    foreach (var ld in ttphieu.lstLyDoKhongDat)
                     {
-                        foreach (var ld in ttphieu.lstLyDoKhongDat)
-                        {
-                            ld.isDongBo = false;
-                            ld.isXoa = false;
-                            db.PSChiTietDanhGiaChatLuongs.InsertOnSubmit(ld);
-                            db.SubmitChanges();
-                        }
+                        ld.isDongBo = false;
+                        ld.isXoa = false;
+                        db.PSChiTietDanhGiaChatLuongs.InsertOnSubmit(ld);
+                        db.SubmitChanges();
                     }
+                }
 
                 var results = db.PSTiepNhans.Where(p => p.isXoa == false && p.MaPhieu == ttphieu.Phieu.IDPhieu && p.MaDonVi == ttphieu.Phieu.IDCoSo).ToList();
                 if (results.Count > 0)
@@ -1177,7 +1632,7 @@ namespace BioNetDAL
         }
         public PSDanhMucMayXN GetTTMayXN(string IDMayXN)
         {
-            return  db.PSDanhMucMayXNs.FirstOrDefault(x => x.IDMayXN.Equals(IDMayXN));
+            return db.PSDanhMucMayXNs.FirstOrDefault(x => x.IDMayXN.Equals(IDMayXN));
         }
         public PSDanhMucMayDucLo GetTTMayDucLo(string IDMayDucLo)
         {
@@ -1228,7 +1683,7 @@ namespace BioNetDAL
             }
             return LinkCenter;
         }
-        public string SaveFileReport(string Folder,string Type, string Unit,DateTime dateBD,DateTime dateKT,string EndFile)
+        public string SaveFileReport(string Folder, string Type, string Unit, DateTime dateBD, DateTime dateKT, string EndFile)
         {
             string LinkCenter = Folder;
             try
@@ -1241,11 +1696,11 @@ namespace BioNetDAL
                 }
                 if (!dateBD.ToString().Equals(dateKT.ToString()))
                 {
-                    LinkCenter = LinkCenter + "\\BaoCao" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd")+EndFile;
+                    LinkCenter = LinkCenter + "\\BaoCao" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + "_" + dateKT.ToString("yyyy.MM.dd") + EndFile;
                 }
                 else
                 {
-                    LinkCenter = LinkCenter + "\\BaoCao" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd")+ EndFile;
+                    LinkCenter = LinkCenter + "\\BaoCao" + Type + "_" + Unit + "_" + dateBD.ToString("yyyy.MM.dd") + EndFile;
                 }
                 if (File.Exists(LinkCenter))
                 {
@@ -1268,7 +1723,7 @@ namespace BioNetDAL
                 {
                     Directory.CreateDirectory(LinkCenter);
                 }
-                LinkCenter = LinkCenter + "\\Temp"  ;
+                LinkCenter = LinkCenter + "\\Temp";
                 if (!File.Exists(LinkCenter))
                 {
                     Directory.CreateDirectory(LinkCenter);
@@ -1302,7 +1757,7 @@ namespace BioNetDAL
             }
             return LinkCenter;
         }
-        public string GetFileGanViTri(string Group,string Machine,string STT)
+        public string GetFileGanViTri(string Group, string Machine, string STT)
         {
             string LinkCenter = Application.StartupPath + "\\SoDoGanViTriMayXN";
             try
@@ -1339,12 +1794,12 @@ namespace BioNetDAL
             }
             return LinkCenter;
         }
-        public string GetFileGanViTriTemp(string Machine, string STT,string IDMayXN)
+        public string GetFileGanViTriTemp(string Machine, string STT, string IDMayXN)
         {
             string LinkCenter = Application.StartupPath + "\\TestChart";
             try
             {
-               
+
                 if (!File.Exists(LinkCenter))
                 {
                     Directory.CreateDirectory(LinkCenter);
@@ -1384,7 +1839,7 @@ namespace BioNetDAL
             }
             return LinkCenter;
         }
-      
+
         #endregion
 
     }

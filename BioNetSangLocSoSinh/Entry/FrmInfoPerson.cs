@@ -49,6 +49,8 @@ namespace BioNetSangLocSoSinh.Entry
             btnEdit.Enabled = btnCancel.Enabled = btnSave.Enabled = false;
             this.txtChiCuc.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_ChiCuc();
             this.txtDonVi.Properties.DataSource = BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
+            this.cbbDonViChon.Properties.DataSource=BioNet_Bus.GetDieuKienLocBaoCao_DonVi("all");
+            this.cbbChuongTrinh.Properties.DataSource = BioNet_Bus.GetDanhSachChuongTrinh(false);
             this.txtDonVi.EditValue = "all";
             this.txtChiCuc.EditValue = "all";
             ReadOnlyText(true);
@@ -97,7 +99,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch
             {
-                MessageBox.Show("Lỗi tìm kiếm.", "BioNet - Chương trình sàng lọc sơ sinh", MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi tìm kiếm.", "BioNet Sàng sàng lọc sơ sinh", MessageBoxButtons.OK);
             }
            
         }
@@ -113,8 +115,8 @@ namespace BioNetSangLocSoSinh.Entry
         private void LoadThongTinBenhNhan(string MaBenhNhan)
         {
             PSPatient infoPerson = BioBLL.GetInfoPersonByMa(MaBenhNhan);
-            txtTenMe.Text = infoPerson.MotherName;
-            txtTenCha.Text = infoPerson.FatherName;
+            txtTenMe.Text = infoPerson.MotherName.ToUpper();
+            txtTenCha.Text = infoPerson.FatherName.ToUpper();
             txtNamSinhMe.EditValue = !string.IsNullOrEmpty(infoPerson.MotherBirthday.ToString()) ? Convert.ToDateTime(infoPerson.MotherBirthday).ToString("yyyy") : string.Empty;
             txtNamSinhCha.EditValue = !string.IsNullOrEmpty(infoPerson.FatherBirthday.ToString()) ? Convert.ToDateTime(infoPerson.FatherBirthday).ToString("yyyy") : string.Empty;
             txtSDTMe.Text = infoPerson.MotherPhoneNumber;
@@ -125,11 +127,13 @@ namespace BioNetSangLocSoSinh.Entry
             txtNamSinhBenhNhan.EditValue = !string.IsNullOrEmpty(infoPerson.NgayGioSinh.ToString()) ? Convert.ToDateTime(infoPerson.NgayGioSinh).ToString() : string.Empty;
             txtNoiSinh.Text = infoPerson.NoiSinh;
             lookUpDanToc.EditValue = infoPerson.DanTocID;
-            txtTuan.Value = Convert.ToDecimal(infoPerson.TuanTuoiKhiSinh);
+            txtTuanTuoi.EditValue = Convert.ToDecimal(infoPerson.TuanTuoiKhiSinh);
             txtNang.Text = infoPerson.CanNang.ToString();
             cboPhuongPhapSinh.EditValue = infoPerson.PhuongPhapSinh;
             txtMaPhieu1.Text = BioNet_Bus.GetMaPhieu1TheoMaBN(MaBenhNhan);
             txtMaKhachHang.Text = infoPerson.MaKhachHang;
+            txtMaBenhNhan.Text = infoPerson.MaBenhNhan;
+            txtPara.Text = infoPerson.Para;
             if (!string.IsNullOrEmpty(txtMaPhieu1.Text))
             {
                 string MaDonVi = BioNet_Bus.GetThongTinTiepNhanTheoMaPhieu(txtMaPhieu1.Text).MaDonVi;
@@ -138,7 +142,9 @@ namespace BioNetSangLocSoSinh.Entry
 
                 if (Phieu != null)
                 {
-                    txtMaDVSC.Text = Phieu.maDonViCoSo;
+                    txtGoiXN.Text = BioNet_Bus.GetDanhsachGoiDichVuChung().FirstOrDefault(x => x.IDGoiDichVuChung.Equals(Phieu.maGoiXetNghiem)).TenGoiDichVuChung;
+                    cbbChuongTrinh.EditValue = Phieu.maChuongTrinh;
+                    cbbDonViChon.EditValue = Phieu.maDonViCoSo;
                     btnSendEmail1.Enabled = true;
                     string CTNguyCoCao = string.Empty;
                     var kq = BioNet_Bus.GetThongTinKetQuaXN(txtMaPhieu1.Text, maTiepNhan);
@@ -157,7 +163,6 @@ namespace BioNetSangLocSoSinh.Entry
                             }
                         }
                     }
-
                     switch (Phieu.trangThaiMau)
                     {
                         case 1:
@@ -204,7 +209,6 @@ namespace BioNetSangLocSoSinh.Entry
                     }
                     if (kq != null)
                     {
-
                         if (kq.isDaGuiMail != true)
                         {
                             btnSendEmail1.ImageOptions.ImageIndex = 0;
@@ -294,6 +298,7 @@ namespace BioNetSangLocSoSinh.Entry
                 btnChiTietKQ2.Enabled = false;
                 btnSendEmail2.Enabled = false;
             }
+            txtTenMe.Focus();
 
         }
         private void CLearText()
@@ -310,13 +315,14 @@ namespace BioNetSangLocSoSinh.Entry
             txtNamSinhBenhNhan.Text = string.Empty;
             txtNoiSinh.Text = string.Empty;
             lookUpDanToc.Text = string.Empty;
-            txtTuan.Text = string.Empty;
-            txtNang.Text = string.Empty;
+            txtTuanTuoi.EditValue = null;
+            txtNang.EditValue = null;
             cboPhuongPhapSinh.Text = string.Empty;
             txtMaPhieu1.ResetText();
             txtMaPhieu2.ResetText();
             txtTrangThaiPhieu.ResetText();
             txtTrangThaiPhieu2.ResetText();
+            txtPara.EditValue = null;
         }
 
         private void ReadOnlyText(bool en)
@@ -333,8 +339,9 @@ namespace BioNetSangLocSoSinh.Entry
             txtNamSinhBenhNhan.ReadOnly = en;
             txtNoiSinh.ReadOnly = en;
             lookUpDanToc.ReadOnly = en;
-            txtTuan.ReadOnly = en;
+            txtTuanTuoi.ReadOnly = en;
             txtNang.ReadOnly = en;
+            txtPara.ReadOnly = en;
             cboPhuongPhapSinh.ReadOnly = en;
         }
 
@@ -360,8 +367,9 @@ namespace BioNetSangLocSoSinh.Entry
                 if(ValidationForm())
                 {
                     Patients.MaBenhNhan = this.maBenhNhan;
-                    Patients.MotherName = txtTenMe.Text;
-                   Patients.FatherName = txtTenCha.Text;
+                    Patients.MaKhachHang = this.txtMaKhachHang.Text;
+                    Patients.MotherName = txtTenMe.Text.ToUpper();
+                   Patients.FatherName = txtTenCha.Text.ToUpper();
                     if (!string.IsNullOrEmpty(txtNamSinhMe.EditValue.ToString()))
                        Patients.MotherBirthday = Convert.ToDateTime("01/01/"+txtNamSinhMe.EditValue);
                     if (!string.IsNullOrEmpty(txtNamSinhCha.EditValue.ToString()))
@@ -375,11 +383,12 @@ namespace BioNetSangLocSoSinh.Entry
                     string strNgayGio = Convert.ToDateTime(txtNamSinhBenhNhan.EditValue).ToString();
                     Patients.NgayGioSinh = Convert.ToDateTime(strNgayGio);
                     Patients.NoiSinh = txtNoiSinh.Text;
+                    Patients.Para = txtPara.EditValue.ToString();
                     if (!string.IsNullOrEmpty(lookUpDanToc.EditValue.ToString()))
                         Patients.DanTocID = Convert.ToInt32(lookUpDanToc.EditValue);
                     
-                    if (!string.IsNullOrEmpty(txtTuan.Value.ToString()))
-                        Patients.TuanTuoiKhiSinh = Convert.ToByte(txtTuan.Value);
+                    if (!string.IsNullOrEmpty(txtTuanTuoi.EditValue.ToString()))
+                        Patients.TuanTuoiKhiSinh = Convert.ToByte(txtTuanTuoi.EditValue);
                     if (!string.IsNullOrEmpty(txtNang.Text))
                         Patients.CanNang = Convert.ToInt16(txtNang.Text);
                     if (!string.IsNullOrEmpty(cboPhuongPhapSinh.EditValue.ToString()))
@@ -409,12 +418,15 @@ namespace BioNetSangLocSoSinh.Entry
             string error = string.Empty;
             if (string.IsNullOrEmpty(txtTenMe.Text))
                 error += "Tên mẹ không được để trống \n";
-            if(string.IsNullOrEmpty(txtTenCha.Text))
-                error += "Tên cha không được để trống \n";
-            if (string.IsNullOrEmpty(txtNamSinhMe.Text))
+            if(string.IsNullOrEmpty(txtNamSinhMe.Text))
                 error += "Năm sinh mẹ không được để trống \n";
-            if (string.IsNullOrEmpty(txtNamSinhCha.Text))
-                error += "Năm sinh cha không được để trống \n";
+            if (!string.IsNullOrEmpty(txtTenCha.Text))
+            {
+                if (string.IsNullOrEmpty(txtNamSinhCha.Text))
+                {
+                    error += "Năm sinh cha không được để trống \n";
+                }
+            }
             if (string.IsNullOrEmpty(txtTenBenhNhan.Text))
                 error += "Tên trẻ không được để trống \n";
             if (string.IsNullOrEmpty(txtGioiTinh.Text))
@@ -423,7 +435,7 @@ namespace BioNetSangLocSoSinh.Entry
                 error += "Năm sinh trẻ không được để trống \n";
             if (!string.IsNullOrEmpty(error))
             {
-                XtraMessageBox.Show("Lỗi ! \n" + error, "PowerSoft - Bệnh viện điện tử", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Lỗi ! \n" + error, "Bionet Sàng lọc sơ sinh", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else
@@ -573,7 +585,7 @@ namespace BioNetSangLocSoSinh.Entry
 
         private void btnSDT1_Click(object sender, EventArgs e)
         {
-            UserControl.ucLogSMS ucLogSMS = new UserControl.ucLogSMS(txtMaPhieu1.Text,txtMaKhachHang.Text,txtSDTMe.Text,txtMaDVSC.Text);
+            UserControl.ucLogSMS ucLogSMS = new UserControl.ucLogSMS(txtMaPhieu1.Text,txtMaKhachHang.Text,txtSDTMe.Text,cbbDonViChon.EditValue.ToString());
             ucLogSMS.ShowDialog();
 
         }
@@ -600,6 +612,63 @@ namespace BioNetSangLocSoSinh.Entry
             {
             }
           
+        }
+
+        private void txtTenMe_Validated(object sender, EventArgs e)
+        {
+            txtTenMe.Text = txtTenMe.Text.ToUpper();
+        }
+
+        private void txtTenCha_Validated(object sender, EventArgs e)
+        {
+            txtTenCha.Text = txtTenCha.Text.ToUpper();
+        }
+
+        private void txtPara_EditValueChanged(object sender, EventArgs e)
+        {
+            if (txtPara.EditValue == null)
+            {
+                txtPara.BackColor = Color.PapayaWhip;
+            }
+            else
+            {
+                if (txtPara.EditValue.ToString().Length != 4)
+                {
+                    if (txtPara.EditValue.ToString().Length == 0)
+                    {
+                        txtPara.BackColor = Color.White;
+                        txtPara.EditValue = null;
+                    }
+                    else
+                    {
+                        txtPara.BackColor = Color.PapayaWhip;
+                    }
+                }
+                else
+                {
+                    txtPara.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void txtNang_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupControl5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtTenBenhNhan_Validated(object sender, EventArgs e)
+        {
+            txtTenBenhNhan.Text = txtTenBenhNhan.Text.ToUpper();
         }
     }
 }
