@@ -4508,25 +4508,21 @@ namespace BioNetDAL
         public List<PSDanhMucGoiDichVuChung> GetDanhMucGoiXetNghiemChung(string idGoiDichVuChung)
         {
             List<PSDanhMucGoiDichVuChung> lst = new List<PSDanhMucGoiDichVuChung>();
-            if (!string.IsNullOrEmpty(idGoiDichVuChung))
+            try
             {
-                var result = db.PSDanhMucGoiDichVuChungs.FirstOrDefault(p => p.IDGoiDichVuChung == idGoiDichVuChung);
-                if (result != null) { lst.Add(result); return lst; }
-                else return null;
-            }
-            else
-            {
-                var results = db.PSDanhMucGoiDichVuChungs.ToList();
-                if (results.Count > 0)
+                if (!string.IsNullOrEmpty(idGoiDichVuChung))
                 {
-                    foreach (var result in results)
-                    {
-                        lst.Add(result);
-                    }
-                    return lst;
+                    lst = db.PSDanhMucGoiDichVuChungs.Where(p => p.IDGoiDichVuChung == idGoiDichVuChung).ToList();
                 }
-                else return null;
+                else
+                {
+                    lst = db.PSDanhMucGoiDichVuChungs.ToList();
+                }
             }
+            catch(Exception ex)
+            {
+            }
+            return lst;
         }
         public List<PSDanhMucDichVu> GetDanhSachDichVu(bool isLocked)
         {
@@ -9490,7 +9486,7 @@ namespace BioNetDAL
                     catch { }
 
                 }
-                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x=>x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
+                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x => x.VietTatDV).ToList();
                 int stt = 1;
                 foreach(var ds in dsduongtinh)
                 {
@@ -9689,7 +9685,7 @@ namespace BioNetDAL
                     catch { }
 
                 }
-                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x => x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
+                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x => x.VietTatDV).ToList();
                 int stt = 1;
                 foreach (var ds in dsduongtinh)
                 {

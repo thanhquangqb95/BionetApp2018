@@ -1736,17 +1736,8 @@ namespace BioNetBLL
 
         public static List<PSDanhMucGoiDichVuChung> GetDanhsachGoiDichVuChung()
         {
-            List<PSDanhMucGoiDichVuChung> lst = new List<PSDanhMucGoiDichVuChung>();
             var db = new DataObjects();
-            var results = db.GetDanhMucGoiXetNghiemChung(null);
-            try
-            {
-                foreach (var result in results)
-                {
-                    lst.Add(result);
-                }
-            }
-            catch { }
+            List<PSDanhMucGoiDichVuChung> lst = db.GetDanhMucGoiXetNghiemChung(null);
             return lst;
         }
         public static List<PsDichVu> GetDanhSachDichVu(bool isLocked)

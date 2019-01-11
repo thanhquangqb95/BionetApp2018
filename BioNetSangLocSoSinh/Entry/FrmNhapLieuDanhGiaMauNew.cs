@@ -95,7 +95,7 @@ namespace BioNetSangLocSoSinh.Entry
                 this.lookupGoiXN.DataSource = this.lstgoiXN;
                 this.cbbGoiXNLoc.Properties.DataSource = this.lstgoiXN;
             }
-            catch { }
+            catch(Exception ex) { }
         }
 
         private void LoadDanhSachDichVu()
