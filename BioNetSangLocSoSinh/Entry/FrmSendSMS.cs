@@ -31,7 +31,7 @@ namespace BioNetSangLocSoSinh.Entry
         private List<PSDanhMucChiCuc> lstChiCuc = new List<PSDanhMucChiCuc>();
         private List<PSDanhSachGuiSMS> lstsms = new List<PSDanhSachGuiSMS>();
        private List<DonViChon> lstdvchon = new List<DonViChon>();
-        private List<PSDanhMucMauSMS> lstmausms = new List<PSDanhMucMauSMS>();
+        private List<PSDanhMucMauSMSC> lstmausms = new List<PSDanhMucMauSMSC>();
         private class VietTat
         {
             public int IDVietTat { get; set; }
@@ -257,7 +257,7 @@ namespace BioNetSangLocSoSinh.Entry
             this.cbbKieukitu.Enabled = false;
             this.btnOK.Enabled = false;
             this.btnCancel.Enabled = true;
-            PSDanhMucMauSMS sms = new PSDanhMucMauSMS();
+            PSDanhMucMauSMSC sms = new PSDanhMucMauSMSC();
             sms.RowIDMauSMS = int.Parse(cbbMauTinNhan.EditValue.ToString());
             sms.DoiTuongNhanTN = cbbDoiTuong.EditValue.ToString();
             sms.HinhThucGuiTN = cbbHinhThuc.EditValue.ToString();
@@ -364,9 +364,27 @@ namespace BioNetSangLocSoSinh.Entry
                             string MaKH = this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang) != null ? this.GVCTDSGuiTinNhan.GetRowCellValue(index, this.col_MaKhachHang).ToString() : string.Empty;
                             if (!string.IsNullOrEmpty(sdt1))
                             {
-                                PsReponseSMS res = BioNet_Bus.SMS(NoidungTN, sdt1, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                                PsReponseSMS res = new PsReponseSMS();
+                                if (sdt1.Count() != 11)
+                                {
+                                    res = BioNet_Bus.SMS(NoidungTN, sdt1, Boolean.Parse(cbbKieukitu.EditValue.ToString()));
+                                }
+                                else
+                                {
+                                    res.Result =false ;
+                                    res.MobileNumber = sdt1;
+                                    res.StringError = "Không phải 10 số";
+                                }
                                 var ls = lstsms.FirstOrDefault(x => x.MaPhieu.Equals(MaPhieu) && x.MaKhachHang.Equals(MaKH));
                                 BioNet_Bus.InsertSMSNumber(ls, res, emp.EmployeeCode);
+                                if(res.Result)
+                                {
+                                    this.GVCTDSGuiTinNhan.SetRowCellValue(index, this.col_TinhTrangGui,2);
+                                }
+                                else
+                                {
+                                    this.GVCTDSGuiTinNhan.SetRowCellValue(index, this.col_TinhTrangGui,3);
+                                }
                             }
                         }
                         catch
@@ -484,7 +502,7 @@ namespace BioNetSangLocSoSinh.Entry
         }
         private void LocSMS()
         {
-            PSDanhMucMauSMS kq = new PSDanhMucMauSMS();
+            PSDanhMucMauSMSC kq = new PSDanhMucMauSMSC();
             try
             {
                 switch (CbbNguyCo.EditValue.ToString())

@@ -1812,19 +1812,19 @@ namespace BioNetDAL
             lst[1] = KetLuan;
             return lst;
         }
-        public PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
+        public PsReponse InsertMauSMS(PSDanhMucMauSMSC sms)
         {
             PsReponse res = new PsReponse();
             try
             {
                 if (sms.RowIDMauSMS == 0)
                 {
-                    db.PSDanhMucMauSMS.InsertOnSubmit(sms);
+                    db.PSDanhMucMauSMSCs.InsertOnSubmit(sms);
                     db.SubmitChanges();
                 }
                 else
                 {
-                    var sm = db.PSDanhMucMauSMS.FirstOrDefault(x => x.RowIDMauSMS == sms.RowIDMauSMS);
+                    var sm = db.PSDanhMucMauSMSCs.FirstOrDefault(x => x.RowIDMauSMS == sms.RowIDMauSMS);
                     sm.MauNoiDungGui = sms.MauNoiDungGui;
                     db.SubmitChanges();
                 }
@@ -1837,12 +1837,12 @@ namespace BioNetDAL
             return res;
         }
         #region SMS
-        public List<PSDanhMucMauSMS> LoadMauSMS(string HinhThucGuiTN, string DoituongNhanTinNhan, string Noidunggui)
+        public List<PSDanhMucMauSMSC> LoadMauSMS(string HinhThucGuiTN, string DoituongNhanTinNhan, string Noidunggui)
         {
-            List<PSDanhMucMauSMS> danhmucsms = new List<PSDanhMucMauSMS>();
+            List<PSDanhMucMauSMSC> danhmucsms = new List<PSDanhMucMauSMSC>();
             try
             {
-                danhmucsms = db.PSDanhMucMauSMS.OrderBy(y => y.STT).Where(x => x.HinhThucGuiTN == HinhThucGuiTN && x.DoiTuongNhanTN == DoituongNhanTinNhan && x.NoidungGui == Noidunggui).ToList();
+                danhmucsms = db.PSDanhMucMauSMSCs.OrderBy(y => y.STT).Where(x => x.HinhThucGuiTN == HinhThucGuiTN && x.DoiTuongNhanTN == DoituongNhanTinNhan && x.NoidungGui == Noidunggui).ToList();
             }
             catch
             {
@@ -4603,9 +4603,8 @@ namespace BioNetDAL
         public List<PSChiTietDanhGiaChatLuong> GetChiTietDanhGiaMạuKhongDatTrenPhieu(string maPhieu, string maTiepNhan)
         {
             List<PSChiTietDanhGiaChatLuong> lst = new List<PSChiTietDanhGiaChatLuong>();
-            var res = db.PSChiTietDanhGiaChatLuongs.Where(p => p.MaTiepNhan == p.MaTiepNhan && p.IDPhieu == maPhieu && p.isXoa == false).ToList();
-            if (res.Count > 0) return res;
-            else return lst;
+            lst = db.PSChiTietDanhGiaChatLuongs.Where(p => p.MaTiepNhan == p.MaTiepNhan && p.IDPhieu == maPhieu && p.isXoa !=true).ToList();
+            return lst;
         }
         public PSXN_TraKetQua GetThongTinTraKetQua(string maPhieu, string maTiepNhan)
         {
@@ -7260,6 +7259,8 @@ namespace BioNetDAL
                                 }
                                 
                             }
+                            TraKetQua.isNguyCoCao = isNC;
+                            db.SubmitChanges();
                         }
                     }     
                 }
@@ -9127,6 +9128,7 @@ namespace BioNetDAL
                         decimal GiaTri = 0;
                         string kl = string.Empty;
                         bool isL2 = false;
+                        duongtinh.is2L1 = 0;
                         foreach (var ls in lstphieu)
                         {
                             if (ls.isLayMauLan2 == true)
@@ -9141,6 +9143,7 @@ namespace BioNetDAL
                                 duongtinh.TenDichVu = ctkq.TenThongSo;
                                 duongtinh.MaDichVu = ctkq.MaDichVu;
                                 duongtinh.MaGoiXN = ls.MaGoiXN;
+                                duongtinh.is2L1 = 1;
                                 if (!string.IsNullOrEmpty(ls.LyDoKhongDat))
                                 {
                                     duongtinh.CLMau = duongtinh.CLMau + "CL2: " + ls.LyDoKhongDat;
@@ -9160,10 +9163,12 @@ namespace BioNetDAL
                                 if (!string.IsNullOrEmpty(ctkq.GiaTri2))
                                 {
                                    GiaTri = Decimal.Parse(ctkq.GiaTri2);
+                                    duongtinh.is2L2 = 1;
                                 }
                                 else
                                 {
                                    GiaTri = Decimal.Parse(ctkq.GiaTri1);
+                                    duongtinh.is2L2 = 0;
                                 }
                             }
                             else
@@ -9174,19 +9179,30 @@ namespace BioNetDAL
                                 duongtinh.KetQuaCuoiL1 = ctkq.GiaTriCuoi;
                                 duongtinh.KetQua1L1 = ctkq.GiaTri1;
                                 duongtinh.KetQua1L2 = ctkq.GiaTri2;
+                                if (!string.IsNullOrEmpty(ctkq.GiaTri2))
+                                {
+                                    duongtinh.is1L2 = 1;
+                                }
+                                else
+                                {
+                                    duongtinh.is1L2 = 0;
+                                }
                                 duongtinh.TenDichVu = ctkq.TenThongSo;
                                 duongtinh.MaDichVu = ctkq.MaDichVu;
+                                if(string.IsNullOrEmpty(duongtinh.MaPhieuL2))
+                                {
+                                    duongtinh.NgayLayMau = ls.NgayGioLayMau;
+                                    duongtinh.NgayNhanMau = ls.NgayNhanMau;
+                                    duongtinh.MaGoiXN = ls.MaGoiXN;
+                                }
                                 duongtinh.VietTatDV = GetVietTatDV(ls.IDCoSo);
-                                duongtinh.NgayLayMau = ls.NgayGioLayMau;
-                                duongtinh.NgayNhanMau = ls.NgayNhanMau;
                                 if (!string.IsNullOrEmpty(ls.LyDoKhongDat))
                                 {
                                     duongtinh.CLMau = duongtinh.CLMau + " CL1: " + ls.LyDoKhongDat;
                                 }
                                 kl = ctkq.KetLuan;
-                                if(!isL2)
-                                {
-                                    duongtinh.MaGoiXN = ls.MaGoiXN;
+                                if (!isL2)
+                                {                                   
                                     if (!string.IsNullOrEmpty(ctkq.GiaTri2))
                                     {
                                         GiaTri = Decimal.Parse(ctkq.GiaTri2);
@@ -9229,11 +9245,10 @@ namespace BioNetDAL
                         }
                     }
                     catch { }
-
                 }
-                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x=>x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
+                dsduongtinh = dsduongtinh.OrderBy(x => x.is2L2).ThenBy(x => x.is2L1).ThenBy(x => x.is1L2).ThenBy(x => x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
                 int stt = 1;
-                foreach(var ds in dsduongtinh)
+                foreach (var ds in dsduongtinh)
                 {
                     ds.STT = stt++;
                 }
@@ -9284,6 +9299,7 @@ namespace BioNetDAL
                         string kl = string.Empty;
                         bool isL2 = false;
                         int MP = 0;
+                        duongtinh.is2L1 = 0;
                         foreach (var ls in lstphieu)
                         {
                             if(ls.isLayMauLan2!=true)
@@ -9310,12 +9326,15 @@ namespace BioNetDAL
                                         //Có KQ2
                                         duongtinh.KetQua1L2 = ctkq1.GiaTri;
                                         isXN2 = 2;
+                                        duongtinh.is1L2 = 1;
                                     }
                                     else
                                     {
                                         //Có KQ1
                                         duongtinh.KetQua1L1 = ctkq1.GiaTri;
                                         isXN2 = 1;
+                                        duongtinh.is1L2 = 0;
+
                                     } 
 
                                 }
@@ -9357,7 +9376,8 @@ namespace BioNetDAL
                                 duongtinh.KetQuaCuoiL1 = kq1.GiaTriCuoi;
                                 int isXN2 = 0;
                                 var kq2 = db.PSXN_KetQuas.Where(x => x.MaPhieu.Equals(duongtinh.MaPhieuL2) && x.isXoa != true).ToList();
-                               
+                                duongtinh.is2L1 = 1;
+                                duongtinh.is2L2 = 0;
                                 foreach (var kq in kq2)
                                 {
                                     var ctkq1 = kq.PSXN_KetQua_ChiTiets.FirstOrDefault(x => x.MaDichVu.Equals(TenDichVu) && x.isXoa != true);
@@ -9368,12 +9388,14 @@ namespace BioNetDAL
                                         isXN2 = 2;
                                         float gtcuoi = (float.Parse(duongtinh.KetQua1L1) + float.Parse(duongtinh.KetQua1L2)) / 2;
                                         duongtinh.KetQuaCuoiL1 = String.Format("{0:0.##}", gtcuoi);
+                                        duongtinh.is2L2 = 1;
                                     }
                                     else
                                     {
                                         //Có KQ1
                                         duongtinh.KetQua2L1 = ctkq1.GiaTri;
                                         isXN2 = 1;
+                                       
                                     }
                                 }
                                 if (isXN2 == 2)
@@ -9430,7 +9452,7 @@ namespace BioNetDAL
                     catch { }
 
                 }
-                dsduongtinh = dsduongtinh.OrderBy(y => y.KetQua2L2).ThenBy(y => y.KetQua2L1).ThenBy(y => y.KetQua1L2).ThenBy(x => x.KetQua1L1).ThenBy(x => x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
+                dsduongtinh = dsduongtinh.OrderBy(x => x.is2L2).ThenBy(x => x.is2L1).ThenBy(x => x.is1L2).ThenBy(x=>x.MaGoiXN).ThenBy(x => x.VietTatDV).ToList();
                 int stt = 1;
                 foreach (var ds in dsduongtinh)
                 {

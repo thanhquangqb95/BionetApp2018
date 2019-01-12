@@ -551,7 +551,7 @@ namespace BioNetSangLocSoSinh.Entry
         {
             if (this.checkedListBoxLydoKhongDat.Items.Count > 0)
             {
-                var lstDanhGia = BioNet_Bus.GetChiTietDanhGiaMạuKhongDatTrenPhieu(this.txtMaPhieuHienThi.Text.Trim(), this.txtMaTiepNhan.Text.Trim());
+                var lstDanhGia = BioNet_Bus.GetChiTietDanhGiaMạuKhongDatTrenPhieu(this.txtMaPhieu.Text.Trim(), this.txtMaTiepNhan.Text.Trim());
                 if (lstDanhGia.Count > 0)
                 {
                     foreach (CheckedListBoxItem item in this.checkedListBoxLydoKhongDat.Items)
@@ -1097,8 +1097,6 @@ namespace BioNetSangLocSoSinh.Entry
                     this.ReadOnly(false);
                     this.LoadDanhSachTiepNhan();
                     this.LoadDanhSachDaDuyet();
-                    this.btnDuyet.Enabled = false;
-                    this.btnLuu.Enabled = false;
                     this.GVDanhSachTiepNhan.Focus();
                 }
                 else

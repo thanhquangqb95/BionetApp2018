@@ -32,7 +32,7 @@ namespace BioNetSangLocSoSinh.DiaglogFrm
         {
             try
             {
-                PSDanhMucMauSMS sms = new PSDanhMucMauSMS();
+                PSDanhMucMauSMSC sms = new PSDanhMucMauSMSC();
                 sms.RowIDMauSMS = 0;
                 sms.NameMauSMS = txtNameMauSMS.Text;
                 sms.DoiTuongNhanTN = cbbDoiTuongSMS.EditValue.ToString();

@@ -429,12 +429,12 @@ namespace BioNetBLL
             var db = new DataObjects();
             return db.GetLogSMS(MaPhieu, MaKhachHang,SDT,DV);
         }
-            public static PsReponse InsertMauSMS(PSDanhMucMauSMS sms)
+            public static PsReponse InsertMauSMS(PSDanhMucMauSMSC sms)
         {
             var db = new DataObjects();
             return db.InsertMauSMS(sms);
         }
-        public static List<PSDanhMucMauSMS> LoadMauSMS(string HinhThucGuiTN, string DoituongNhanTinNhan, string Noidunggui)
+        public static List<PSDanhMucMauSMSC> LoadMauSMS(string HinhThucGuiTN, string DoituongNhanTinNhan, string Noidunggui)
         {
             var db = new DataObjects();
             return db.LoadMauSMS(HinhThucGuiTN, DoituongNhanTinNhan, Noidunggui);

@@ -99,9 +99,7 @@ namespace BioNetSangLocSoSinh.Entry
             }
             catch
             {
-
-            }
-            
+            }          
         }
 
         private void FrmQuanLyMauDuongTinh_Load(object sender, EventArgs e)
@@ -158,7 +156,16 @@ namespace BioNetSangLocSoSinh.Entry
                     {
                         rptQuanLyMauDuongTinh dt = new rptQuanLyMauDuongTinh();
                         dt.DataSource = lstMauDT;
-                        dt.Parameters["MaDonVi"].Value = TenDV;
+                        dt.Parameters["Thoigianxuatds"].Value = DateTime.Now;
+                        if (cbbKetQua.EditValue.ToString().Equals("True"))
+                        {
+                            dt.Parameters["TieuDe"].Value = "DANH SÁCH MẪU DƯƠNG TINH ĐÃ ĐẦY ĐỦ KẾT QUẢ";
+                        }
+                        else
+                        {
+                            dt.Parameters["TieuDe"].Value = "DANH SÁCH MẪU DƯƠNG TINH CHƯA ĐẦY ĐỦ KQ";
+                        }
+                           
                         dt.Parameters["Thoigiancapma"].Value = dllNgay.tungay.Value.ToString("dd/MM/yyyy") + " đến "+ dllNgay.denngay.Value.ToString("dd/MM/yyyy");
                         dt.Parameters["TenNV"].Value = Emp.EmployeeName;
                         dt.ExportToXlsx(ofd.FileName);

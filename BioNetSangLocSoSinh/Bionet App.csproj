@@ -431,7 +431,7 @@
     <Compile Include="Entry\FrmInfoPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entry\FrmInfoPerson.Designer.cs">
+    <Compile Include="Entry\FrmInfoPerson.designer.cs">
       <DependentUpon>FrmInfoPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="Entry\FrmKhamBenh.cs">
@@ -503,7 +503,7 @@
     <Compile Include="Entry\FrmSuaThongTinPhieu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entry\FrmSuaThongTinPhieu.Designer.cs">
+    <Compile Include="Entry\FrmSuaThongTinPhieu.designer.cs">
       <DependentUpon>FrmSuaThongTinPhieu.cs</DependentUpon>
     </Compile>
     <Compile Include="Entry\FrmThongTinTrungTam.cs">

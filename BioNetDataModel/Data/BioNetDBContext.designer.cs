@@ -22,7 +22,7 @@ namespace BioNetModel.Data
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Bio_TestSync_ThucTe")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Bio_TestSync")]
 	public partial class BioNetDBContextDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -87,6 +87,9 @@ namespace BioNetModel.Data
     partial void InsertPSDanhMucDichVu(PSDanhMucDichVu instance);
     partial void UpdatePSDanhMucDichVu(PSDanhMucDichVu instance);
     partial void DeletePSDanhMucDichVu(PSDanhMucDichVu instance);
+    partial void InsertPSDanhMucDichVuTheoDonVi(PSDanhMucDichVuTheoDonVi instance);
+    partial void UpdatePSDanhMucDichVuTheoDonVi(PSDanhMucDichVuTheoDonVi instance);
+    partial void DeletePSDanhMucDichVuTheoDonVi(PSDanhMucDichVuTheoDonVi instance);
     partial void InsertPSDanhMucDonViCoSo(PSDanhMucDonViCoSo instance);
     partial void UpdatePSDanhMucDonViCoSo(PSDanhMucDonViCoSo instance);
     partial void DeletePSDanhMucDonViCoSo(PSDanhMucDonViCoSo instance);
@@ -105,9 +108,9 @@ namespace BioNetModel.Data
     partial void InsertPSDanhMucKyThuatXN(PSDanhMucKyThuatXN instance);
     partial void UpdatePSDanhMucKyThuatXN(PSDanhMucKyThuatXN instance);
     partial void DeletePSDanhMucKyThuatXN(PSDanhMucKyThuatXN instance);
-    partial void InsertPSDanhMucMauSMS(PSDanhMucMauSMS instance);
-    partial void UpdatePSDanhMucMauSMS(PSDanhMucMauSMS instance);
-    partial void DeletePSDanhMucMauSMS(PSDanhMucMauSMS instance);
+    partial void InsertPSDanhMucMauSMSC(PSDanhMucMauSMSC instance);
+    partial void UpdatePSDanhMucMauSMSC(PSDanhMucMauSMSC instance);
+    partial void DeletePSDanhMucMauSMSC(PSDanhMucMauSMSC instance);
     partial void InsertPSDanhMucMayDucLo(PSDanhMucMayDucLo instance);
     partial void UpdatePSDanhMucMayDucLo(PSDanhMucMayDucLo instance);
     partial void DeletePSDanhMucMayDucLo(PSDanhMucMayDucLo instance);
@@ -171,9 +174,6 @@ namespace BioNetModel.Data
     partial void InsertPSMenuSecurityPosition(PSMenuSecurityPosition instance);
     partial void UpdatePSMenuSecurityPosition(PSMenuSecurityPosition instance);
     partial void DeletePSMenuSecurityPosition(PSMenuSecurityPosition instance);
-    partial void InsertPSNhaCungCap(PSNhaCungCap instance);
-    partial void UpdatePSNhaCungCap(PSNhaCungCap instance);
-    partial void DeletePSNhaCungCap(PSNhaCungCap instance);
     partial void InsertPSNhanVien(PSNhanVien instance);
     partial void UpdatePSNhanVien(PSNhanVien instance);
     partial void DeletePSNhanVien(PSNhanVien instance);
@@ -207,7 +207,7 @@ namespace BioNetModel.Data
     #endregion
 		
 		public BioNetDBContextDataContext() : 
-				base(global::BioNetModel.Properties.Settings.Default.Bio_TestSync_ThucTeConnectionString, mappingSource)
+				base(global::BioNetModel.Properties.Settings.Default.Bio_TestSyncConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -249,14 +249,6 @@ namespace BioNetModel.Data
 			get
 			{
 				return this.GetTable<PSXN_TraKQ_ChiTiet>();
-			}
-		}
-		
-		public System.Data.Linq.Table<DanhMucVatTu> DanhMucVatTus
-		{
-			get
-			{
-				return this.GetTable<DanhMucVatTu>();
 			}
 		}
 		
@@ -396,6 +388,14 @@ namespace BioNetModel.Data
 			}
 		}
 		
+		public System.Data.Linq.Table<PSDanhMucDichVuTheoDonVi> PSDanhMucDichVuTheoDonVis
+		{
+			get
+			{
+				return this.GetTable<PSDanhMucDichVuTheoDonVi>();
+			}
+		}
+		
 		public System.Data.Linq.Table<PSDanhMucDonViCoSo> PSDanhMucDonViCoSos
 		{
 			get
@@ -444,11 +444,11 @@ namespace BioNetModel.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<PSDanhMucMauSMS> PSDanhMucMauSMS
+		public System.Data.Linq.Table<PSDanhMucMauSMSC> PSDanhMucMauSMSCs
 		{
 			get
 			{
-				return this.GetTable<PSDanhMucMauSMS>();
+				return this.GetTable<PSDanhMucMauSMSC>();
 			}
 		}
 		
@@ -617,14 +617,6 @@ namespace BioNetModel.Data
 			get
 			{
 				return this.GetTable<PSMenuSecurityPosition>();
-			}
-		}
-		
-		public System.Data.Linq.Table<PSNhaCungCap> PSNhaCungCaps
-		{
-			get
-			{
-				return this.GetTable<PSNhaCungCap>();
 			}
 		}
 		
@@ -1666,105 +1658,6 @@ namespace BioNetModel.Data
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DanhMucVatTu")]
-	public partial class DanhMucVatTu
-	{
-		
-		private string _MaVatTu;
-		
-		private string _TenVatTu;
-		
-		private System.Nullable<int> _SoLuongQuyDoi;
-		
-		private string _DonQuyDoi;
-		
-		private string _DonViTinh;
-		
-		public DanhMucVatTu()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaVatTu", DbType="NChar(15)")]
-		public string MaVatTu
-		{
-			get
-			{
-				return this._MaVatTu;
-			}
-			set
-			{
-				if ((this._MaVatTu != value))
-				{
-					this._MaVatTu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenVatTu", DbType="NVarChar(50)")]
-		public string TenVatTu
-		{
-			get
-			{
-				return this._TenVatTu;
-			}
-			set
-			{
-				if ((this._TenVatTu != value))
-				{
-					this._TenVatTu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongQuyDoi", DbType="Int")]
-		public System.Nullable<int> SoLuongQuyDoi
-		{
-			get
-			{
-				return this._SoLuongQuyDoi;
-			}
-			set
-			{
-				if ((this._SoLuongQuyDoi != value))
-				{
-					this._SoLuongQuyDoi = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonQuyDoi", DbType="NVarChar(50)")]
-		public string DonQuyDoi
-		{
-			get
-			{
-				return this._DonQuyDoi;
-			}
-			set
-			{
-				if ((this._DonQuyDoi != value))
-				{
-					this._DonQuyDoi = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonViTinh", DbType="NVarChar(50)")]
-		public string DonViTinh
-		{
-			get
-			{
-				return this._DonViTinh;
-			}
-			set
-			{
-				if ((this._DonViTinh != value))
-				{
-					this._DonViTinh = value;
-				}
 			}
 		}
 	}
@@ -6094,8 +5987,6 @@ namespace BioNetModel.Data
 		
 		private string _TenHienThiDichVu;
 		
-		private System.Nullable<int> _STT;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -6116,8 +6007,6 @@ namespace BioNetModel.Data
     partial void OnisGoiXnChanged();
     partial void OnTenHienThiDichVuChanging(string value);
     partial void OnTenHienThiDichVuChanged();
-    partial void OnSTTChanging(System.Nullable<int> value);
-    partial void OnSTTChanged();
     #endregion
 		
 		public PSDanhMucDichVu()
@@ -6285,22 +6174,256 @@ namespace BioNetModel.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", DbType="Int")]
-		public System.Nullable<int> STT
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSDanhMucDichVuTheoDonVi")]
+	public partial class PSDanhMucDichVuTheoDonVi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _RowIDDichVuTheoDonVi;
+		
+		private string _MaDonVi;
+		
+		private string _IDDichVu;
+		
+		private string _TenDichVu;
+		
+		private string _TenHienThi;
+		
+		private System.Nullable<decimal> _DonGia;
+		
+		private string _MaNhom;
+		
+		private System.Nullable<bool> _isLocked;
+		
+		private System.Nullable<double> _ChietKhau;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRowIDDichVuTheoDonViChanging(long value);
+    partial void OnRowIDDichVuTheoDonViChanged();
+    partial void OnMaDonViChanging(string value);
+    partial void OnMaDonViChanged();
+    partial void OnIDDichVuChanging(string value);
+    partial void OnIDDichVuChanged();
+    partial void OnTenDichVuChanging(string value);
+    partial void OnTenDichVuChanged();
+    partial void OnTenHienThiChanging(string value);
+    partial void OnTenHienThiChanged();
+    partial void OnDonGiaChanging(System.Nullable<decimal> value);
+    partial void OnDonGiaChanged();
+    partial void OnMaNhomChanging(string value);
+    partial void OnMaNhomChanged();
+    partial void OnisLockedChanging(System.Nullable<bool> value);
+    partial void OnisLockedChanged();
+    partial void OnChietKhauChanging(System.Nullable<double> value);
+    partial void OnChietKhauChanged();
+    #endregion
+		
+		public PSDanhMucDichVuTheoDonVi()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowIDDichVuTheoDonVi", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long RowIDDichVuTheoDonVi
 		{
 			get
 			{
-				return this._STT;
+				return this._RowIDDichVuTheoDonVi;
 			}
 			set
 			{
-				if ((this._STT != value))
+				if ((this._RowIDDichVuTheoDonVi != value))
 				{
-					this.OnSTTChanging(value);
+					this.OnRowIDDichVuTheoDonViChanging(value);
 					this.SendPropertyChanging();
-					this._STT = value;
-					this.SendPropertyChanged("STT");
-					this.OnSTTChanged();
+					this._RowIDDichVuTheoDonVi = value;
+					this.SendPropertyChanged("RowIDDichVuTheoDonVi");
+					this.OnRowIDDichVuTheoDonViChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDonVi", DbType="NVarChar(15)")]
+		public string MaDonVi
+		{
+			get
+			{
+				return this._MaDonVi;
+			}
+			set
+			{
+				if ((this._MaDonVi != value))
+				{
+					this.OnMaDonViChanging(value);
+					this.SendPropertyChanging();
+					this._MaDonVi = value;
+					this.SendPropertyChanged("MaDonVi");
+					this.OnMaDonViChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDDichVu", DbType="NVarChar(15)")]
+		public string IDDichVu
+		{
+			get
+			{
+				return this._IDDichVu;
+			}
+			set
+			{
+				if ((this._IDDichVu != value))
+				{
+					this.OnIDDichVuChanging(value);
+					this.SendPropertyChanging();
+					this._IDDichVu = value;
+					this.SendPropertyChanged("IDDichVu");
+					this.OnIDDichVuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenDichVu", DbType="NVarChar(50)")]
+		public string TenDichVu
+		{
+			get
+			{
+				return this._TenDichVu;
+			}
+			set
+			{
+				if ((this._TenDichVu != value))
+				{
+					this.OnTenDichVuChanging(value);
+					this.SendPropertyChanging();
+					this._TenDichVu = value;
+					this.SendPropertyChanged("TenDichVu");
+					this.OnTenDichVuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenHienThi", DbType="NVarChar(100)")]
+		public string TenHienThi
+		{
+			get
+			{
+				return this._TenHienThi;
+			}
+			set
+			{
+				if ((this._TenHienThi != value))
+				{
+					this.OnTenHienThiChanging(value);
+					this.SendPropertyChanging();
+					this._TenHienThi = value;
+					this.SendPropertyChanged("TenHienThi");
+					this.OnTenHienThiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonGia", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> DonGia
+		{
+			get
+			{
+				return this._DonGia;
+			}
+			set
+			{
+				if ((this._DonGia != value))
+				{
+					this.OnDonGiaChanging(value);
+					this.SendPropertyChanging();
+					this._DonGia = value;
+					this.SendPropertyChanged("DonGia");
+					this.OnDonGiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNhom", DbType="NVarChar(15)")]
+		public string MaNhom
+		{
+			get
+			{
+				return this._MaNhom;
+			}
+			set
+			{
+				if ((this._MaNhom != value))
+				{
+					this.OnMaNhomChanging(value);
+					this.SendPropertyChanging();
+					this._MaNhom = value;
+					this.SendPropertyChanged("MaNhom");
+					this.OnMaNhomChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isLocked", DbType="Bit")]
+		public System.Nullable<bool> isLocked
+		{
+			get
+			{
+				return this._isLocked;
+			}
+			set
+			{
+				if ((this._isLocked != value))
+				{
+					this.OnisLockedChanging(value);
+					this.SendPropertyChanging();
+					this._isLocked = value;
+					this.SendPropertyChanged("isLocked");
+					this.OnisLockedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChietKhau", DbType="Float")]
+		public System.Nullable<double> ChietKhau
+		{
+			get
+			{
+				return this._ChietKhau;
+			}
+			set
+			{
+				if ((this._ChietKhau != value))
+				{
+					this.OnChietKhauChanging(value);
+					this.SendPropertyChanging();
+					this._ChietKhau = value;
+					this.SendPropertyChanged("ChietKhau");
+					this.OnChietKhauChanged();
 				}
 			}
 		}
@@ -7154,8 +7277,6 @@ namespace BioNetModel.Data
 		
 		private System.Nullable<int> _Stt;
 		
-		private System.Nullable<int> _GroupTraKQ;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -7172,8 +7293,6 @@ namespace BioNetModel.Data
     partial void OnDonGiaChanged();
     partial void OnSttChanging(System.Nullable<int> value);
     partial void OnSttChanged();
-    partial void OnGroupTraKQChanging(System.Nullable<int> value);
-    partial void OnGroupTraKQChanged();
     #endregion
 		
 		public PSDanhMucGoiDichVuChung()
@@ -7297,26 +7416,6 @@ namespace BioNetModel.Data
 					this._Stt = value;
 					this.SendPropertyChanged("Stt");
 					this.OnSttChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupTraKQ", DbType="Int")]
-		public System.Nullable<int> GroupTraKQ
-		{
-			get
-			{
-				return this._GroupTraKQ;
-			}
-			set
-			{
-				if ((this._GroupTraKQ != value))
-				{
-					this.OnGroupTraKQChanging(value);
-					this.SendPropertyChanging();
-					this._GroupTraKQ = value;
-					this.SendPropertyChanged("GroupTraKQ");
-					this.OnGroupTraKQChanged();
 				}
 			}
 		}
@@ -7754,8 +7853,8 @@ namespace BioNetModel.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSDanhMucMauSMS")]
-	public partial class PSDanhMucMauSMS : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSDanhMucMauSMSC")]
+	public partial class PSDanhMucMauSMSC : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -7798,7 +7897,7 @@ namespace BioNetModel.Data
     partial void OnSTTChanged();
     #endregion
 		
-		public PSDanhMucMauSMS()
+		public PSDanhMucMauSMSC()
 		{
 			OnCreated();
 		}
@@ -11858,164 +11957,6 @@ namespace BioNetModel.Data
 						this._PositionCode = default(int);
 					}
 					this.SendPropertyChanged("PSEmployeePosition");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PSNhaCungCap")]
-	public partial class PSNhaCungCap : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _RowID;
-		
-		private string _MaNhaCungCap;
-		
-		private string _TenNhaCungCap;
-		
-		private string _DiaChi;
-		
-		private string _DienThoai;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRowIDChanging(long value);
-    partial void OnRowIDChanged();
-    partial void OnMaNhaCungCapChanging(string value);
-    partial void OnMaNhaCungCapChanged();
-    partial void OnTenNhaCungCapChanging(string value);
-    partial void OnTenNhaCungCapChanged();
-    partial void OnDiaChiChanging(string value);
-    partial void OnDiaChiChanged();
-    partial void OnDienThoaiChanging(string value);
-    partial void OnDienThoaiChanged();
-    #endregion
-		
-		public PSNhaCungCap()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long RowID
-		{
-			get
-			{
-				return this._RowID;
-			}
-			set
-			{
-				if ((this._RowID != value))
-				{
-					this.OnRowIDChanging(value);
-					this.SendPropertyChanging();
-					this._RowID = value;
-					this.SendPropertyChanged("RowID");
-					this.OnRowIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNhaCungCap", DbType="NChar(15)")]
-		public string MaNhaCungCap
-		{
-			get
-			{
-				return this._MaNhaCungCap;
-			}
-			set
-			{
-				if ((this._MaNhaCungCap != value))
-				{
-					this.OnMaNhaCungCapChanging(value);
-					this.SendPropertyChanging();
-					this._MaNhaCungCap = value;
-					this.SendPropertyChanged("MaNhaCungCap");
-					this.OnMaNhaCungCapChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNhaCungCap", DbType="NVarChar(300)")]
-		public string TenNhaCungCap
-		{
-			get
-			{
-				return this._TenNhaCungCap;
-			}
-			set
-			{
-				if ((this._TenNhaCungCap != value))
-				{
-					this.OnTenNhaCungCapChanging(value);
-					this.SendPropertyChanging();
-					this._TenNhaCungCap = value;
-					this.SendPropertyChanged("TenNhaCungCap");
-					this.OnTenNhaCungCapChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(100)")]
-		public string DiaChi
-		{
-			get
-			{
-				return this._DiaChi;
-			}
-			set
-			{
-				if ((this._DiaChi != value))
-				{
-					this.OnDiaChiChanging(value);
-					this.SendPropertyChanging();
-					this._DiaChi = value;
-					this.SendPropertyChanged("DiaChi");
-					this.OnDiaChiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="NVarChar(50)")]
-		public string DienThoai
-		{
-			get
-			{
-				return this._DienThoai;
-			}
-			set
-			{
-				if ((this._DienThoai != value))
-				{
-					this.OnDienThoaiChanging(value);
-					this.SendPropertyChanging();
-					this._DienThoai = value;
-					this.SendPropertyChanged("DienThoai");
-					this.OnDienThoaiChanged();
 				}
 			}
 		}

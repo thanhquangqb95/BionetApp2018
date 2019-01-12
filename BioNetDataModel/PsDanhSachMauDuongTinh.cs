@@ -17,6 +17,9 @@ namespace BioNetModel
         public string KetQuaCuoiL1 { get; set; }
         public string KetQua1L1 {get;set;}
         public string KetQua1L2 { get; set; }
+        public int is1L2 { get; set; }
+        public int is2L2 { get; set; }
+        public int is2L1 { get; set; }
         public string KetQuaCuoiL2 { get; set; }
         public string KetQua2L1 { get; set; }
         public string KetQua2L2 { get; set; }
